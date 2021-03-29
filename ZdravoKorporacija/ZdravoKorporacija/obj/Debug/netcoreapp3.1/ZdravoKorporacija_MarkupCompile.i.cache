@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\shand\Desktop\SIMS 25\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\
+C:\Users\shand\Desktop\sims ovde\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\
 ZdravoKorporacija
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
-C:\Users\shand\Desktop\SIMS 25\sims-team25\ZdravoKorporacija\ZdravoKorporacija\App.xaml
+C:\Users\shand\Desktop\sims ovde\sims-team25\ZdravoKorporacija\ZdravoKorporacija\App.xaml
 101290909124
 
 43821266234
 1932146115015
 MainWindow.xaml;Stranice\LekarCRUD\izmeniPregled.xaml;Stranice\LekarCRUD\lekarStart.xaml;Stranice\LekarCRUD\otkaziPregled.xaml;Stranice\LekarCRUD\zakaziPregled.xaml;Stranice\login.xaml;Stranice\PacijentCRUD\izmeniPregled.xaml;Stranice\PacijentCRUD\otkaziPregled.xaml;Stranice\PacijentCRUD\pacijentStart.xaml;Stranice\PacijentCRUD\zakaziPregled.xaml;
 
-True
+False
 

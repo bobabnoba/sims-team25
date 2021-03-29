@@ -53,11 +53,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\shand\\Desktop\\SIMS 25\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\ZdravoKorporacija.csproj",
+      "projectUniqueName": "C:\\Users\\shand\\Desktop\\sims ovde\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\ZdravoKorporacija.csproj",
       "projectName": "ZdravoKorporacija",
-      "projectPath": "C:\\Users\\shand\\Desktop\\SIMS 25\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\ZdravoKorporacija.csproj",
+      "projectPath": "C:\\Users\\shand\\Desktop\\sims ovde\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\ZdravoKorporacija.csproj",
       "packagesPath": "C:\\Users\\shand\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\shand\\Desktop\\SIMS 25\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\obj\\",
+      "outputPath": "C:\\Users\\shand\\Desktop\\sims ovde\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\shand\\AppData\\Roaming\\NuGet\\NuGet.Config",

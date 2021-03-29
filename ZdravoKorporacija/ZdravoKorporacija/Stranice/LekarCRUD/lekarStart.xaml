@@ -9,9 +9,9 @@
       Title="lekarStart">
 
     <Grid>
-        <Button Content="Zakaži pregled" HorizontalAlignment="Left" Margin="217,67,0,0" VerticalAlignment="Top" Width="92" Click="zakaziPregled" Height="44"/>
-        <Button Content="Izmeni pregled" HorizontalAlignment="Center" Margin="0,67,0,0" VerticalAlignment="Top" Width="92" Click="izmeniPregled" Height="44" RenderTransformOrigin="0.255,-0.75"/>
-        <Button Content="Otkaži pregled" HorizontalAlignment="Left" Margin="486,67,0,0" VerticalAlignment="Top" Width="92" Click="otkaziPregled" Height="44" RenderTransformOrigin="0.033,-1.977"/>
+        <Button Content="Zakaži pregled" HorizontalAlignment="Left" Margin="217,67,0,0" VerticalAlignment="Top" Width="92" Height="44"/>
+        <Button Content="Izmeni pregled" HorizontalAlignment="Center" Margin="0,67,0,0" VerticalAlignment="Top" Width="92" Height="44" RenderTransformOrigin="0.255,-0.75"/>
+        <Button Content="Otkaži pregled" HorizontalAlignment="Left" Margin="486,67,0,0" VerticalAlignment="Top" Width="92" Height="44" RenderTransformOrigin="0.033,-1.977"/>
         <ListView Margin="120,141,120,33">
             <ListView.View>
                 <GridView>
@@ -19,7 +19,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox HorizontalAlignment="Left" Margin="10,422,0,0" Text="ulogovani ste kao lekar" BorderBrush="CadetBlue" Background="CadetBlue" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" TextChanged="TextBox_TextChanged"/>
 
     </Grid>
 </Page>
