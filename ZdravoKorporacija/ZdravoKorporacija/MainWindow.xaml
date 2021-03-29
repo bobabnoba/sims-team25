@@ -5,14 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija"
         mc:Ignorable="d"
-         Title="Primeri upotrebe WPF" Height="350" Width="525">
+         Title="KLINIKA 25" Height="450" Width="800" Background="CadetBlue">
     <DockPanel>
         <Menu DockPanel.Dock ="Top">
             <MenuItem x:Name="AutoColumns" Header="Auto generisane kolone" Click="AutoColumns_Click"/>
             <MenuItem x:Name="ManualColumns" Header="Ručno generisane kolone" Click="ManualColumns_Click"/>
             <MenuItem x:Name="Binding" Header="Data binding na element" Click="Binding_Click"/>
         </Menu>
-        <Grid DockPanel.Dock="Bottom" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <Grid DockPanel.Dock="Bottom" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel Height="44" Width="808" HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Top" Margin="0,289,0,0">
+                <Button Content="Logovanje" Click="log" Width="100" Margin="350,0,0,0"/>
+
+            </StackPanel>
         </Grid>
     </DockPanel>
 </Window>

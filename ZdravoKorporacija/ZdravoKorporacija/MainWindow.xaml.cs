@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using ZdravoKorporacija.Model;
 using System.Collections.Generic;
 using System.Collections;
+using ZdravoKorporacija.Stranice;
 
 namespace ZdravoKorporacija
 {
@@ -51,5 +52,13 @@ namespace ZdravoKorporacija
             private void Binding_Click(object sender, RoutedEventArgs e)
             {
             }
+
+  
+
+        private void log(object sender, RoutedEventArgs e)
+        {
+            this.Content = new login();
+
         }
+    }
     }

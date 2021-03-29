@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "FZv9awe20vVhFXBKZcLYD9hTOxcNe4r+giFk0JQ0xVSeuuUHMYuVs5JIT6KuR0kjVwFm+HKXVIimLIU+jaPJTA==",
+  "dgSpecHash": "uyvZTTe/ooDhU3j8+58hUjoQVp07XF+7N8tQ4TgnqzeP8NJMOn4z5nNT/tWvt79x1kWgvIz1lZG2E6VwqSSjFg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\papov\\Desktop\\c# projekat\\ZdravoKorporacija\\ZdravoKorporacija\\ZdravoKorporacija.csproj",
+  "projectFilePath": "C:\\Users\\shand\\Desktop\\SIMS 25\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\ZdravoKorporacija.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\papov\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+    "C:\\Users\\shand\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
   ],
   "logs": []
 }
