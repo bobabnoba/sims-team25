@@ -22,5 +22,26 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         {
             InitializeComponent();
         }
+
+        private void izmeniPregled(object sender, RoutedEventArgs e)
+        {
+            izmeniPregledLekar ip = new izmeniPregledLekar();
+            ip.Show();
+        }
+
+
+
+        private void zakaziPregled(object sender, RoutedEventArgs e)
+        {
+            zakaziPregledLekar zp = new zakaziPregledLekar();
+            zp.Show();
+        }
+
+        private void otkaziPregled(object sender, RoutedEventArgs e)
+        {
+            oktaziPregledLekar op = new oktaziPregledLekar();
+            op.Show();
+        }
+
     }
 }

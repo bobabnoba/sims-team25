@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdravoKorporacija.Stranice.LekarCRUD;
 
 namespace ZdravoKorporacija.Stranice
 {
@@ -24,7 +25,7 @@ namespace ZdravoKorporacija.Stranice
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            LOGF.Content = new pacijentStart();
+            LOGF.Content = new lekarStart();
         }
 
       

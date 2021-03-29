@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 C:\Users\shand\Desktop\sims ovde\sims-team25\ZdravoKorporacija\ZdravoKorporacija\App.xaml
-101290909124
+10227853665
 
-42487265402
+42-853179348
 1932146115015
-MainWindow.xaml;Stranice\LekarCRUD\izmeniPregled.xaml;Stranice\LekarCRUD\lekarStart.xaml;Stranice\LekarCRUD\otkaziPregled.xaml;Stranice\LekarCRUD\zakaziPregled.xaml;Stranice\login.xaml;Stranice\PacijentCRUD\izmeniPregled.xaml;Stranice\PacijentCRUD\otkaziPregled.xaml;Stranice\PacijentCRUD\pacijentStart.xaml;Stranice\PacijentCRUD\zakaziPregled.xaml;
+MainWindow.xaml;Stranice\LekarCRUD\izmeniPregledLekar.xaml;Stranice\LekarCRUD\lekarStart.xaml;Stranice\LekarCRUD\oktaziPregledLekar.xaml;Stranice\LekarCRUD\zakaziPregledLekar.xaml;Stranice\login.xaml;Stranice\PacijentCRUD\izmeniPregled.xaml;Stranice\PacijentCRUD\otkaziPregled.xaml;Stranice\PacijentCRUD\pacijentStart.xaml;Stranice\PacijentCRUD\zakaziPregled.xaml;
 
 False
 

@@ -13,23 +13,13 @@ using System.Windows.Shapes;
 namespace ZdravoKorporacija.Stranice.LekarCRUD
 {
     /// <summary>
-    /// Interaction logic for otkaziPregled.xaml
+    /// Interaction logic for oktaziPregledLekar.xaml
     /// </summary>
-    public partial class otkaziPregled : Window
+    public partial class oktaziPregledLekar : Window
     {
-        public otkaziPregled()
+        public oktaziPregledLekar()
         {
             InitializeComponent();
-        }
-
-        private void da(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void ne(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
     }
 }

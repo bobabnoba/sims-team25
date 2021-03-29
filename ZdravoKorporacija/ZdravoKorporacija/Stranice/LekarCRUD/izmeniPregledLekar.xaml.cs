@@ -13,11 +13,11 @@ using System.Windows.Shapes;
 namespace ZdravoKorporacija.Stranice.LekarCRUD
 {
     /// <summary>
-    /// Interaction logic for izmeniPregled.xaml
+    /// Interaction logic for izmeniPregledLekar.xaml
     /// </summary>
-    public partial class izmeniPregled : Window
+    public partial class izmeniPregledLekar : Window
     {
-        public izmeniPregled()
+        public izmeniPregledLekar()
         {
             InitializeComponent();
         }
