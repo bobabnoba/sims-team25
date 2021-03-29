@@ -26,7 +26,8 @@ namespace ZdravoKorporacija.Stranice
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            LOGF.Content = new sekretarStart();
+            // LOGF.Content = new sekretarStart();
+               LOGF.Content = new pacijentStart();
         }
 
       

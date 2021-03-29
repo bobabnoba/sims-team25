@@ -22,6 +22,12 @@ namespace ZdravoKorporacija.Stranice
         public pacijentStart()
         {
             InitializeComponent();
+            List<Pacijent> pacijenti = new List<Pacijent>();
+            Pacijent p1 = new Pacijent("Dusan", "Lekic");
+            Pacijent p2 = new Pacijent("Aleksa", "Papovic");
+            pacijenti.Add(p1);
+            pacijenti.Add(p2);
+            dgUsers.ItemsSource = pacijenti;
         }
 
         private void izmeniPregled(object sender, RoutedEventArgs e)
