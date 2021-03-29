@@ -2,23 +2,53 @@
   {
     "termin": [
       {
-        "izvestaj": null,
-        "Tip": null,
-        "Pocetak": "0001-01-01T00:00:00",
-        "Trajanje": 0.0
+        "izvestaj": [],
+        "Tip": 0,
+        "Pocetak": "2020-05-01T08:30:52",
+        "Trajanje": 90.0
       }
     ],
     "ZdravstveniKarton": null,
     "Guest": false,
-    "Ime": null,
-    "Prezime": null,
-    "Jmbg": 0,
-    "BrojTelefona": 0,
-    "Mejl": null,
-    "AdresaStanovanja": null,
-    "Pol": null,
-    "Username": null,
-    "Password": null,
-    "Uloga": null
+    "Ime": "Dusan",
+    "Prezime": "Markovic",
+    "Jmbg": 1234567890123,
+    "BrojTelefona": 69000333,
+    "Mejl": "dusanmarkovic@gmail.com",
+    "AdresaStanovanja": "Smederevska tvrdjava",
+    "Pol": 0,
+    "Username": "dukikidu",
+    "Password": "markovic99",
+    "Uloga": 3
+  },
+  {
+    "termin": null,
+    "ZdravstveniKarton": null,
+    "Guest": false,
+    "Ime": "Dusan",
+    "Prezime": "Lekic",
+    "Jmbg": 3214567890122,
+    "BrojTelefona": 66333999,
+    "Mejl": "dusanlekic@gmail.com",
+    "AdresaStanovanja": "Rokijev potok",
+    "Pol": 0,
+    "Username": "leka",
+    "Password": "leka99",
+    "Uloga": 3
+  },
+  {
+    "termin": null,
+    "ZdravstveniKarton": null,
+    "Guest": false,
+    "Ime": "Aleksa",
+    "Prezime": "Papovic",
+    "Jmbg": 2134567890213,
+    "BrojTelefona": 66393654,
+    "Mejl": "aleksapapovic@gmail.com",
+    "AdresaStanovanja": "Grbavica",
+    "Pol": 0,
+    "Username": "pape",
+    "Password": "pape99",
+    "Uloga": 3
   }
 ]

@@ -1,0 +1,18 @@
+[
+  {
+    "inventar": [],
+    "Id": 1,
+    "Naziv": "soba za pregled",
+    "Tip": 1,
+    "Slobodna": true,
+    "Sprat": 2
+  },
+  {
+    "inventar": [],
+    "Id": 2,
+    "Naziv": "soba za operaciju",
+    "Tip": 0,
+    "Slobodna": true,
+    "Sprat": 1
+  }
+]

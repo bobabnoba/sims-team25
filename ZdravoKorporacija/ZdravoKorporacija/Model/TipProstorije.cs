@@ -6,12 +6,10 @@
 
 using System;
 
-public class TipProstorije
-{
+
    public enum TipProstorijeEnum 
    {
    OperacionaSala,
    Soba,
    Ordinacija
    }
-}

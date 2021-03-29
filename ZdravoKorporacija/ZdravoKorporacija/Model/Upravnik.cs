@@ -8,7 +8,12 @@ using System;
 
 public class Upravnik : Korisnik
 {
-   public Prostorija DodajProstoriju()
+    public Upravnik(String Ime, String Prezime) : base(Ime, Prezime)
+    {
+
+    }
+
+    public Prostorija DodajProstoriju()
    {
       // TODO: implement
       return null;

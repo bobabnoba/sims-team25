@@ -6,8 +6,7 @@
 
 using System;
 
-public class Otpust
-{
+
    public enum OtpustEnum
    {
    OtpustKuci,
@@ -15,5 +14,3 @@ public class Otpust
    OtpusutenNaSopstveniZahtev,
    Umro
    }
-
-}

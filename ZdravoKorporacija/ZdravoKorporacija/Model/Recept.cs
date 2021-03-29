@@ -4,13 +4,24 @@
 // Purpose: Definition of Class Prescription
 
 using System;
+using System.Collections;
 
 public class Recept
 {
    public System.Collections.ArrayList lek;
-   
-   /// <pdGenerated>default getter</pdGenerated>
-   public System.Collections.ArrayList GetLek()
+
+    public Recept(Doktor doktor, ZdravstveniKarton zdravstveniKarton, int id, string doziranje)
+    {
+        this.lek = new System.Collections.ArrayList(); ;
+        this.doktor = doktor;
+        this.zdravstveniKarton = zdravstveniKarton;
+        Id = id;
+        Doziranje = doziranje;
+    }
+
+
+    /// <pdGenerated>default getter</pdGenerated>
+    public System.Collections.ArrayList GetLek()
    {
       if (lek == null)
          lek = new System.Collections.ArrayList();

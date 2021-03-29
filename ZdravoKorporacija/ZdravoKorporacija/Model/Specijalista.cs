@@ -8,6 +8,11 @@ using System;
 
 public class Specijalista : Doktor
 {
-   private Scepijalizacija Specijalizacija  {get; set;}
+    public Specijalista(String Ime, String Prezime) : base(Ime, Prezime)
+    {
+
+    }
+
+    private SpecijalizacijaEnum Specijalizacija { get; set; }
 
 }

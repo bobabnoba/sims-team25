@@ -6,9 +6,8 @@
 
 using System;
 
-public class Scepijalizacija
-{
-   public enum ScepijalizacijaEnum
+
+   public enum SpecijalizacijaEnum
    {
     Oftamolog,
     Stomatolog,
@@ -16,4 +15,3 @@ public class Scepijalizacija
     Otorinolaringolog,
     Neurolog
    }
-}

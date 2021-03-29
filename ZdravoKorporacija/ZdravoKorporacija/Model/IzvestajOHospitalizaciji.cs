@@ -9,9 +9,21 @@ using System;
 public class IzvestajOHospitalizaciji
 {
    public ZdravstveniKarton zdravstveniKarton;
-   
-   /// <pdGenerated>default parent getter</pdGenerated>
-   public ZdravstveniKarton GetZdravstveniKarton()
+
+    public IzvestajOHospitalizaciji(ZdravstveniKarton zdravstveniKarton, int idIzvestaja, string nazivUstanove, int idUstanove, int brojDanaProvedenihUUstanovi, DateTime datumOtpusta, OtpustEnum vrstaOtpusta)
+    {
+        this.zdravstveniKarton = zdravstveniKarton;
+        IdIzvestaja = idIzvestaja;
+        NazivUstanove = nazivUstanove;
+        IdUstanove = idUstanove;
+        BrojDanaProvedenihUUstanovi = brojDanaProvedenihUUstanovi;
+        DatumOtpusta = datumOtpusta;
+        VrstaOtpusta = vrstaOtpusta;
+    }
+
+
+    /// <pdGenerated>default parent getter</pdGenerated>
+    public ZdravstveniKarton GetZdravstveniKarton()
    {
       return zdravstveniKarton;
    }
@@ -41,6 +53,6 @@ public class IzvestajOHospitalizaciji
    public int IdUstanove {get; set;}
    public int BrojDanaProvedenihUUstanovi {get; set;}
    public DateTime DatumOtpusta {get; set;}
-   public Otpust VrstaOtpusta {get; set;}
+   public OtpustEnum VrstaOtpusta {get; set;}
 
 }

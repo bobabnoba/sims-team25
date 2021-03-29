@@ -5,11 +5,9 @@
 
 using System;
 
-public class TipTermina
-{
+
    public enum TipTerminaEnum 
    {
    Pregled,
    Operacija
    }
-}

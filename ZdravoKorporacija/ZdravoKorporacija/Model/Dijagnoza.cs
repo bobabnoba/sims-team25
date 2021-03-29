@@ -4,13 +4,20 @@
 // Purpose: Definition of Class Dijagnoza
 
 using System;
+using System.Collections;
 
 public class Dijagnoza : Izvestaj
 {
    public System.Collections.ArrayList terapija;
-   
-   /// <pdGenerated>default getter</pdGenerated>
-   public System.Collections.ArrayList GetTerapija()
+
+    public Dijagnoza(string oboljenje, Termin termin, int id, string opis, string simptomi):base(termin, id, opis, simptomi)
+    {
+        this.terapija = new System.Collections.ArrayList();
+        Oboljenje = oboljenje;
+    }
+
+    /// <pdGenerated>default getter</pdGenerated>
+    public System.Collections.ArrayList GetTerapija()
    {
       if (terapija == null)
          terapija = new System.Collections.ArrayList();

@@ -6,8 +6,6 @@
 
 using System;
 
-public class Uloga
-{
     public enum UlogaEnum
     {
         Lekar,
@@ -15,4 +13,3 @@ public class Uloga
         Upravnik,
         Pacijent
     }
-}

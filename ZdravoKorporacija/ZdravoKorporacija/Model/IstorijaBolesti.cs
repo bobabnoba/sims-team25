@@ -5,13 +5,22 @@
  ***********************************************************************/
 
 using System;
+using System.Collections;
 
 public class IstorijaBolesti
 {
    public System.Collections.ArrayList dijagnoza;
-   
-   /// <pdGenerated>default getter</pdGenerated>
-   public System.Collections.ArrayList GetDijagnoza()
+
+    public IstorijaBolesti(ZdravstveniKarton zdravstveniKarton, DateTime datumPoseteLekaru, string opisPosete)
+    {
+        this.dijagnoza = new System.Collections.ArrayList();
+        this.zdravstveniKarton = zdravstveniKarton;
+        DatumPoseteLekaru = datumPoseteLekaru;
+        OpisPosete = opisPosete;
+    }
+
+    /// <pdGenerated>default getter</pdGenerated>
+    public System.Collections.ArrayList GetDijagnoza()
    {
       if (dijagnoza == null)
          dijagnoza = new System.Collections.ArrayList();

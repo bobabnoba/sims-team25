@@ -4,13 +4,29 @@
 // Purpose: Definition of Class MedicalRecord
 
 using System;
+using System.Collections;
 
 public class ZdravstveniKarton
 {
    public System.Collections.ArrayList izvestajOHospitalizaciji;
-   
-   /// <pdGenerated>default getter</pdGenerated>
-   public System.Collections.ArrayList GetIzvestajOHospitalizaciji()
+
+    public ZdravstveniKarton( Pacijent patient, int id, StanjePacijentaEnum zdravstvenoStanje, string alergije, KrvnaGrupaEnum krvnaGrupa, string vakcine)
+    {
+        this.izvestajOHospitalizaciji = new System.Collections.ArrayList();
+        this.istorijaBolesti = new System.Collections.ArrayList();
+        this.recept = new System.Collections.ArrayList();
+        this.termin = new System.Collections.ArrayList();
+        this.patient = patient;
+        Id = id;
+        ZdravstvenoStanje = zdravstvenoStanje;
+        Alergije = alergije;
+        KrvnaGrupa = krvnaGrupa;
+        Vakcine = vakcine;
+    }
+
+
+    /// <pdGenerated>default getter</pdGenerated>
+    public System.Collections.ArrayList GetIzvestajOHospitalizaciji()
    {
       if (izvestajOHospitalizaciji == null)
          izvestajOHospitalizaciji = new System.Collections.ArrayList();
@@ -246,9 +262,9 @@ public class ZdravstveniKarton
    public Pacijent patient{get; set;}
 
    public int Id{get; set;}
-   public StanjePacijenta ZdravstvenoStanje{get; set;}
+   public StanjePacijentaEnum ZdravstvenoStanje{get; set;}
    public String Alergije{get; set;}
-   public KrvnaGrupa KrvnaGrupa{get; set;}
+   public KrvnaGrupaEnum KrvnaGrupa{get; set;}
    public String Vakcine{get; set;}
 
 }

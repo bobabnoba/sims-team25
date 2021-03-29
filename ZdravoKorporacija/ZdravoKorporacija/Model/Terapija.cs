@@ -4,13 +4,22 @@
 // Purpose: Definition of Class Therapy
 
 using System;
+using System.Collections;
 
 public class Terapija
 {
    public System.Collections.ArrayList recept;
-   
-   /// <pdGenerated>default getter</pdGenerated>
-   public System.Collections.ArrayList GetRecept()
+
+    public Terapija(int tipTerapije, string doziranje)
+    {
+        this.recept = new System.Collections.ArrayList(); ;
+        TipTerapije = tipTerapije;
+        Doziranje = doziranje;
+    }
+
+
+    /// <pdGenerated>default getter</pdGenerated>
+    public System.Collections.ArrayList GetRecept()
    {
       if (recept == null)
          recept = new System.Collections.ArrayList();

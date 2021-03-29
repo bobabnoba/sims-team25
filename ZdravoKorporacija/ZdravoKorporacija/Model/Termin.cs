@@ -4,14 +4,25 @@
 // Purpose: Definition of Class Appointment
 
 using System;
+using System.Collections;
 
 public class Termin
 {
 
     public Termin() { }
 
+    public Termin(ZdravstveniKarton zdravstveniKarton, Prostorija prostorija, Doktor doktor, TipTerminaEnum tip, DateTime pocetak, double trajanje)
+    {
+        this.izvestaj = new System.Collections.ArrayList();
+        this.zdravstveniKarton = zdravstveniKarton;
+        this.prostorija = prostorija;
+        this.doktor = doktor;
+        Tip = tip;
+        Pocetak = pocetak;
+        Trajanje = trajanje;
+    }
 
-   public System.Collections.ArrayList izvestaj;
+    public System.Collections.ArrayList izvestaj;
    
    /// <pdGenerated>default getter</pdGenerated>
    public System.Collections.ArrayList GetIzvestaj()
@@ -126,7 +137,7 @@ public class Termin
       }
    }
 
-   public TipTermina Tip {get; set;}
+   public TipTerminaEnum Tip {get; set;}
    public DateTime Pocetak {get; set;}
    public double Trajanje {get; set;}
 

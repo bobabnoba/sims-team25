@@ -8,9 +8,17 @@ using System;
 public class Izvestaj
 {
    public Termin termin;
-   
-   /// <pdGenerated>default parent getter</pdGenerated>
-   public Termin GetTermin()
+
+    public Izvestaj(Termin termin, int id, string opis, string simptomi)
+    {
+        this.termin = termin;
+        Id = id;
+        Opis = opis;
+        Simptomi = simptomi;
+    }
+
+    /// <pdGenerated>default parent getter</pdGenerated>
+    public Termin GetTermin()
    {
       return termin;
    }

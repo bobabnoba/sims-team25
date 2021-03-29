@@ -5,8 +5,7 @@
 
 using System;
 
-public class KrvnaGrupa
-{
+
 public enum KrvnaGrupaEnum 
    {
    OPoiztivna,
@@ -18,5 +17,3 @@ public enum KrvnaGrupaEnum
    BNegativna,
    ABNegativna
    }
-
-}

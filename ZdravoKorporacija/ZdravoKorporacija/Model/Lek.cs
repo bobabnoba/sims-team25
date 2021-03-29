@@ -7,6 +7,15 @@ using System;
 
 public class Lek
 {
+    public Lek(string id, string proiazvodjac, string sastaojci, string nusPaojave)
+    {
+        Id = id;
+        Proiazvodjac = proiazvodjac;
+        Sastaojci = sastaojci;
+        NusPaojave = nusPaojave;
+    }
+
+
    public String Id {get; set;}
    public String Proiazvodjac {get; set;}
    public String Sastaojci{get; set;}

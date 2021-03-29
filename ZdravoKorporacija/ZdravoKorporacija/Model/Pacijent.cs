@@ -8,6 +8,13 @@ using System.Collections;
 
 public class Pacijent : Korisnik
 {
+    public Pacijent(ZdravstveniKarton zdravstveniKarton, bool guest, string ime, string prezime, int jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password, UlogaEnum uloga) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password, uloga)
+    {
+        this.termin = new System.Collections.ArrayList();
+        ZdravstveniKarton = zdravstveniKarton;
+        Guest = guest;
+    }
+
     public Pregled ZakaziPregled()
     {
         // TODO: implement
@@ -32,6 +39,18 @@ public class Pacijent : Korisnik
     }
 
     public System.Collections.ArrayList termin;
+
+
+    public Pacijent(String Ime,String Prezime):base(Ime,Prezime)
+    {
+    
+    }
+
+    public Pacijent(string ime, string prezime, Int64 jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password, UlogaEnum uloga) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password, uloga)
+    {
+    }
+
+    
 
     /// <pdGenerated>default getter</pdGenerated>
     public System.Collections.ArrayList GetTermin()
@@ -79,5 +98,5 @@ public class Pacijent : Korisnik
     public ZdravstveniKarton ZdravstveniKarton { get; set; }
 
     public bool Guest {get; set;}
-
+   
 }

@@ -5,13 +5,25 @@
  ***********************************************************************/
 
 using System;
+using System.Collections;
 
 public class Prostorija
 {
    public System.Collections.ArrayList inventar;
-   
-   /// <pdGenerated>default getter</pdGenerated>
-   public System.Collections.ArrayList GetInventar()
+
+    public Prostorija(int id, string naziv, TipProstorijeEnum tip, bool slobodna, int sprat)
+    {
+        this.inventar = new System.Collections.ArrayList(); ;
+        Id = id;
+        Naziv = naziv;
+        Tip = tip;
+        Slobodna = slobodna;
+        Sprat = sprat;
+    }
+
+
+    /// <pdGenerated>default getter</pdGenerated>
+    public System.Collections.ArrayList GetInventar()
    {
       if (inventar == null)
          inventar = new System.Collections.ArrayList();
@@ -56,7 +68,7 @@ public class Prostorija
 
    public int Id {get; set;}
    public String Naziv {get; set;}
-   public TipProstorije Tip {get; set;}
+   public TipProstorijeEnum Tip {get; set;}
    public bool Slobodna {get; set;}
    public int Sprat {get; set;}
 

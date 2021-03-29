@@ -7,7 +7,16 @@ using System;
 using System.Collections;
 public class Doktor : Korisnik
 {
-   public Pregled ZakaziTermin()
+    public Doktor(String Ime, String Prezime) : base(Ime, Prezime)
+    {
+
+    }
+
+    public Doktor(string ime, string prezime, Int64 jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password, UlogaEnum uloga) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password, uloga)
+    {
+    }
+
+    public Pregled ZakaziTermin()
    {
       // TODO: implement
       return null;

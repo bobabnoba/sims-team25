@@ -6,11 +6,9 @@
 
 using System;
 
-public class Pol
-{
+
     public enum PolEnum 
     { 
         Muski,
         Zenski
     }
-}

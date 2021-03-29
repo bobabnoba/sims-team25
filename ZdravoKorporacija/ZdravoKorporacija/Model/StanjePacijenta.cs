@@ -5,12 +5,9 @@
 
 using System;
 
-public class StanjePacijenta
-{
+
    public enum StanjePacijentaEnum{
    Stabilno,
    Kriticno,
    Stacionarno
    }
-
-}
