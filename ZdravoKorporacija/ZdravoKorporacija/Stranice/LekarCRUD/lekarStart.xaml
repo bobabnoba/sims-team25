@@ -19,6 +19,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <TextBox HorizontalAlignment="Left" Margin="10,422,0,0" Text="ulogovani ste kao lekar" BorderBrush="CadetBlue" Background="CadetBlue" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" />
 
     </Grid>
 </Page>

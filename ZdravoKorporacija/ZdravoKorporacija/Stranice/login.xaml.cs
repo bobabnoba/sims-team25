@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ZdravoKorporacija.Stranice.LekarCRUD;
+using ZdravoKorporacija.Stranice.SekretarCRUD;
 
 namespace ZdravoKorporacija.Stranice
 {
@@ -25,7 +26,7 @@ namespace ZdravoKorporacija.Stranice
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            LOGF.Content = new lekarStart();
+            LOGF.Content = new sekretarStart();
         }
 
       

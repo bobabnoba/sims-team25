@@ -1,0 +1,25 @@
+﻿<Page x:Class="ZdravoKorporacija.Stranice.SekretarCRUD.sekretarStart"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.SekretarCRUD"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800" Background="CadetBlue"
+      Title="sekretarStart">
+
+    <Grid>
+        <Button Content="Kreiraj nalog" HorizontalAlignment="Left" Margin="217,67,0,0" VerticalAlignment="Top" Width="92" Height="44" Click="kreiraj"/>
+        <Button Content="Izmeni nalog" HorizontalAlignment="Center" Margin="0,67,0,0" VerticalAlignment="Top" Width="92" Height="44" RenderTransformOrigin="0.255,-0.75" Click="izmeni"/>
+        <Button Content="Obriši nalog" HorizontalAlignment="Left" Margin="486,67,0,0" VerticalAlignment="Top" Width="92" Height="44" RenderTransformOrigin="0.033,-1.977" Click="izbrisi"/>
+        <ListView Margin="120,141,120,33">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBox HorizontalAlignment="Left" Margin="10,422,0,0" Text="ulogovani ste kao sekretar" BorderBrush="CadetBlue" Background="CadetBlue" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" />
+
+    </Grid>
+</Page>

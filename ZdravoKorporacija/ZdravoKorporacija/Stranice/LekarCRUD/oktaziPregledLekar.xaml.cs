@@ -21,5 +21,17 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         {
             InitializeComponent();
         }
+
+        private void da(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+
+        }
+
+        private void ne(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+
+        }
     }
 }

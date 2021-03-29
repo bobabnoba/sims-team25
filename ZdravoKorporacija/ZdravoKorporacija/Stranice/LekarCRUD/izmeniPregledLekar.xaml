@@ -24,8 +24,8 @@
         <TextBlock Text="Datum i vreme:" TextWrapping="Wrap" Margin="33,24,0,22" Grid.Row="1"/>
         <DatePicker Grid.Column="1" HorizontalAlignment="Left" Margin="39,0,0,0" Grid.Row="1" VerticalAlignment="Center"/>
         <ComboBox Grid.Column="1" Margin="164,27,62,27" Grid.Row="1"/>
-        <Button Content="POTVRDI" HorizontalAlignment="Left" Margin="72,35,0,0" Grid.Row="5" VerticalAlignment="Top" Width="80" Grid.ColumnSpan="2"/>
-        <Button Content="ODUSTANI" HorizontalAlignment="Left" Margin="70,35,0,0" Grid.Row="5" VerticalAlignment="Top" Width="80" Grid.Column="1"/>
+        <Button Content="POTVRDI" HorizontalAlignment="Left" Margin="72,35,0,0" Grid.Row="5" VerticalAlignment="Top" Width="80" Grid.ColumnSpan="2" Click="potvrdi"/>
+        <Button Content="ODUSTANI" HorizontalAlignment="Left" Margin="70,35,0,0" Grid.Row="5" VerticalAlignment="Top" Width="80" Grid.Column="1" Click="odustani"/>
         <TextBlock Text="Pacijent:" TextWrapping="Wrap" Margin="52,10,235,1" Grid.Row="4" Grid.ColumnSpan="2"/>
         <ComboBox Grid.Column="1" Margin="58,10,77,39" Grid.Row="4"/>
         <TextBlock Text="Lekar:" TextWrapping="Wrap" Margin="53,44,234,35" Grid.Row="3" Grid.ColumnSpan="2" Grid.RowSpan="2"/>

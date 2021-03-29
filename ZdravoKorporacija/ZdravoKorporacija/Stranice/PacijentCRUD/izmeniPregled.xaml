@@ -26,8 +26,8 @@
         <ComboBox Grid.Column="1" Margin="164,27,62,27" Grid.Row="1"/>
         <TextBlock Text="Lekar:" TextWrapping="Wrap" Margin="33,36,0,10" Grid.Row="2"/>
         <ComboBox Grid.Column="1" Margin="39,36,77,18" Grid.Row="2"/>
-        <Button Content="POTVRDI" HorizontalAlignment="Left" Margin="0,53,0,0" Grid.Row="4" VerticalAlignment="Top" Width="80" Grid.Column="1" Grid.RowSpan="2"/>
-        <Button Content="ODUSTANI" HorizontalAlignment="Left" Margin="112,53,0,0" Grid.Row="4" VerticalAlignment="Top" Width="80" Grid.Column="1" Grid.RowSpan="2"/>
+        <Button Content="POTVRDI" HorizontalAlignment="Left" Margin="0,53,0,0" Grid.Row="4" VerticalAlignment="Top" Width="80" Grid.Column="1" Grid.RowSpan="2" Click="potvrdi"/>
+        <Button Content="ODUSTANI" HorizontalAlignment="Left" Margin="112,53,0,0" Grid.Row="4" VerticalAlignment="Top" Width="80" Grid.Column="1" Grid.RowSpan="2" Click="odustani"/>
      
 
 

@@ -21,5 +21,17 @@ namespace ZdravoKorporacija.Stranice
         {
             InitializeComponent();
         }
+
+        private void potvrdi(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+
+        }
+
+        private void odustani(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+
+        }
     }
 }

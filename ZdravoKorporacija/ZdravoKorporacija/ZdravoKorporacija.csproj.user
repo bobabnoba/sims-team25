@@ -34,6 +34,30 @@
     <Compile Update="Stranice\PacijentCRUD\zakaziPregled.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Stranice\SekretarCRUD\izmeniNalogSekretar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\SekretarCRUD\kreirajNalogSekretar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\SekretarCRUD\obrisiNalogSekretar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\SekretarCRUD\sekretarStart.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\UpravnikCRUD\dodajProstorijuUpravnik.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\UpravnikCRUD\izbrisiProstorijuUpravnik.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\UpravnikCRUD\izmeniProstorijuUpravnik.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\UpravnikCRUD\upravnikStart.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
@@ -64,6 +88,30 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\PacijentCRUD\zakaziPregled.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\SekretarCRUD\izmeniNalogSekretar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\SekretarCRUD\kreirajNalogSekretar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\SekretarCRUD\obrisiNalogSekretar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\SekretarCRUD\sekretarStart.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\UpravnikCRUD\dodajProstorijuUpravnik.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\UpravnikCRUD\izbrisiProstorijuUpravnik.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\UpravnikCRUD\izmeniProstorijuUpravnik.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\UpravnikCRUD\upravnikStart.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
