@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\papov\\Desktop\\projekat\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\ZdravoKorporacija.csproj": {}
+    "C:\\Users\\shand\\Desktop\\sims ovde\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\ZdravoKorporacija.csproj": {}
   },
   "projects": {
-    "C:\\Users\\papov\\Desktop\\projekat\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\ZdravoKorporacija.csproj": {
+    "C:\\Users\\shand\\Desktop\\sims ovde\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\ZdravoKorporacija.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\papov\\Desktop\\projekat\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\ZdravoKorporacija.csproj",
+        "projectUniqueName": "C:\\Users\\shand\\Desktop\\sims ovde\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\ZdravoKorporacija.csproj",
         "projectName": "ZdravoKorporacija",
-        "projectPath": "C:\\Users\\papov\\Desktop\\projekat\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\ZdravoKorporacija.csproj",
-        "packagesPath": "C:\\Users\\papov\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\papov\\Desktop\\projekat\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\obj\\",
+        "projectPath": "C:\\Users\\shand\\Desktop\\sims ovde\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\ZdravoKorporacija.csproj",
+        "packagesPath": "C:\\Users\\shand\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\shand\\Desktop\\sims ovde\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\papov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\shand\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +26,6 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -38,7 +37,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Newtonsoft.Json": {
               "target": "Package",
@@ -63,7 +61,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

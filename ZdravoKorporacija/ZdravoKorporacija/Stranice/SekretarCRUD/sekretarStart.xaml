@@ -26,7 +26,7 @@
                     <DataTemplate>
 
                         <TextBlock Text="{Binding Mejl}" Margin="10" />
-                      
+
                     </DataTemplate>
                 </DataGrid.RowDetailsTemplate>
             </DataGrid>

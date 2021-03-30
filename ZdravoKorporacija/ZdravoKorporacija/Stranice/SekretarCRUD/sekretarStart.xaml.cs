@@ -36,12 +36,12 @@ namespace ZdravoKorporacija.Stranice.SekretarCRUD
         }
         private void izmeni(object sender, RoutedEventArgs e)
         {
-            izmeniNalogSekretar izn = new izmeniNalogSekretar();
+            izmeniNalogSekretar izn = new izmeniNalogSekretar((Pacijent)dgUsers.SelectedItem, pacijenti);
             izn.Show();
         }
         private void izbrisi(object sender, RoutedEventArgs e)
         {
-            obrisiNalogSekretar on = new obrisiNalogSekretar();
+            obrisiNalogSekretar on = new obrisiNalogSekretar((Pacijent)dgUsers.SelectedItem, pacijenti);
             on.Show();
         }
     }
