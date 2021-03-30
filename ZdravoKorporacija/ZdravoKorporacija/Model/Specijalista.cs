@@ -6,7 +6,7 @@
 
 using System;
 
-public class Specijalista : Doktor
+public class Specijalista : Lekar
 {
     public Specijalista(String Ime, String Prezime) : base(Ime, Prezime)
     {

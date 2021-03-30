@@ -12,13 +12,18 @@
         <Button Content="Dodaj prostoriju" HorizontalAlignment="Left" Margin="217,67,0,0" VerticalAlignment="Top" Width="92" Height="44" Click="dodaj"/>
         <Button Content="Izmeni prostoriju" HorizontalAlignment="Center" Margin="0,67,0,0" VerticalAlignment="Top" Width="92" Height="44" RenderTransformOrigin="0.255,-0.75"/>
         <Button Content="Izbriši prostoriju" HorizontalAlignment="Left" Margin="486,67,0,0" VerticalAlignment="Top" Width="92" Height="44" RenderTransformOrigin="0.033,-1.977"/>
-        <ListView Margin="120,141,120,33">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="0,114,0,28">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
+                    <DataGridTextColumn Header="Naziv" Binding="{Binding Naziv}" />
+                </DataGrid.Columns>
+                <DataGrid.RowDetailsTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Details}" Margin="10" />
+                    </DataTemplate>
+                </DataGrid.RowDetailsTemplate>
+            </DataGrid>
+        
 
     </Grid>
 </Page>

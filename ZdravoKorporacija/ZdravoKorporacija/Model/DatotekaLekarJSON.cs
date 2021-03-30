@@ -14,7 +14,7 @@ namespace ZdravoKorporacija.Model
             this.lokacija = @"..\..\..\Data\lekar.json";
         }
 
-        public void UpisivanjeUFajl(List<Doktor> lekari)
+        public void UpisivanjeUFajl(List<Lekar> lekari)
         {
             JsonSerializer serializer = new JsonSerializer();
             serializer.Formatting = Formatting.Indented;
@@ -24,15 +24,15 @@ namespace ZdravoKorporacija.Model
             jWriter.Close();
             writer.Close();
         }
-        public List<Doktor> CitanjeIzFajla()
+        public List<Lekar> CitanjeIzFajla()
         {
-            List<Doktor> lekari = new List<Doktor>();
+            List<Lekar> lekari = new List<Lekar>();
             if (File.Exists(lokacija))
             {
                 string jsonText = File.ReadAllText(lokacija);
                 if (!string.IsNullOrEmpty(jsonText))
                 {
-                   lekari = JsonConvert.DeserializeObject<List<Doktor>>(jsonText);
+                   lekari = JsonConvert.DeserializeObject<List<Lekar>>(jsonText);
                 }
             }
             return lekari;

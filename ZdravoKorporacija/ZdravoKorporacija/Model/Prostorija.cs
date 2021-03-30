@@ -11,6 +11,7 @@ public class Prostorija
 {
    public System.Collections.ArrayList inventar;
 
+
     public Prostorija(int id, string naziv, TipProstorijeEnum tip, bool slobodna, int sprat)
     {
         this.inventar = new System.Collections.ArrayList(); ;

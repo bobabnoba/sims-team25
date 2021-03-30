@@ -10,10 +10,10 @@ public class Recept
 {
    public System.Collections.ArrayList lek;
 
-    public Recept(Doktor doktor, ZdravstveniKarton zdravstveniKarton, int id, string doziranje)
+    public Recept(Lekar Lekar, ZdravstveniKarton zdravstveniKarton, int id, string doziranje)
     {
         this.lek = new System.Collections.ArrayList(); ;
-        this.doktor = doktor;
+        this.Lekar = Lekar;
         this.zdravstveniKarton = zdravstveniKarton;
         Id = id;
         Doziranje = doziranje;
@@ -63,7 +63,7 @@ public class Recept
       if (lek != null)
          lek.Clear();
    }
-   public Doktor doktor;
+   public Lekar Lekar;
    public ZdravstveniKarton zdravstveniKarton;
    
    /// <pdGenerated>default parent getter</pdGenerated>

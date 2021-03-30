@@ -8,13 +8,25 @@
         Title="dodajProstorijuUpravnik" Height="450" Width="450" Background="CadetBlue">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="120,87,0,0" Text="Naziv:" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="225,87,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
+        <TextBox x:Name="textboxNaziv" HorizontalAlignment="Left" Margin="225,87,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
         <TextBlock HorizontalAlignment="Left" Margin="120,140,0,0" Text="Tip:" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="120,199,0,0" Text="Sprat:" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left" Margin="225,140,0,0" VerticalAlignment="Top" Width="158"/>
-        <ComboBox HorizontalAlignment="Left" Margin="225,196,0,0" VerticalAlignment="Top" Width="158"/>
+        <ComboBox x:Name="comboBoxSprat" HorizontalAlignment="Left" Margin="225,0,0,0" VerticalAlignment="Center" Width="158" Cursor="AppStarting" SelectionChanged="comboBoxTip_SelectionChanged">
+            <ComboBoxItem Content="0"/>
+            <ComboBoxItem Content="0"/>
+            <ComboBoxItem Content="0"/>
+            <ComboBoxItem Content="0"/>
+        </ComboBox>
+        <ComboBox x:Name="comboBoxTip" HorizontalAlignment="Left" Margin="225,137,0,0" VerticalAlignment="Top" Width="158" SelectionChanged="comboBoxSprat_SelectionChanged">
+            <ComboBoxItem Content="Operaciona sala"/>
+            <ComboBoxItem Content="Soba"/>
+            <ComboBoxItem Content="Ordinacija"/>
+        </ComboBox>
         <Button Width="100" Content="POTVRDI" HorizontalAlignment="Left" Margin="86,374,0,0" VerticalAlignment="Top" Click="potvrdi"/>
         <Button Width="100" Content="ODUSTANI" HorizontalAlignment="Left" Margin="283,374,0,0" VerticalAlignment="Top" Click="odustani"/>
+        <TextBox x:Name="textboxNaziv_Copy" HorizontalAlignment="Left" Margin="225,87,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
+        <TextBlock HorizontalAlignment="Left" Margin="120,38,0,0" Text="Id:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxId" HorizontalAlignment="Left" Margin="225,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
 
     </Grid>
 </Window>

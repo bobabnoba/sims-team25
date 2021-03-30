@@ -13,27 +13,8 @@ public class Upravnik : Korisnik
 
     }
 
-    public Prostorija DodajProstoriju()
-   {
-      // TODO: implement
-      return null;
-   }
-   
-   public void ObrisiProstoriju(Prostorija prostorija)
-   {
-      // TODO: implement
-   }
-   
-   public bool AzurirajProstoriju(Prostorija prostorija)
-   {
-      // TODO: implement
-      return false;
-   }
-   
-   public Array PregledajProstorije()
-   {
-      // TODO: implement
-      return null;
-   }
+    public Upravnik(string ime, string prezime, long jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password, UlogaEnum uloga) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password, uloga)
+    {
 
+    }
 }

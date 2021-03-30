@@ -5,39 +5,17 @@
 
 using System;
 using System.Collections;
-public class Doktor : Korisnik
+public class Lekar : Korisnik
 {
-    public Doktor(String Ime, String Prezime) : base(Ime, Prezime)
+    public Lekar(String Ime, String Prezime) : base(Ime, Prezime)
     {
 
     }
 
-    public Doktor(string ime, string prezime, Int64 jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password, UlogaEnum uloga) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password, uloga)
+    public Lekar(string ime, string prezime, Int64 jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password, UlogaEnum uloga) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password, uloga)
     {
     }
 
-    public Pregled ZakaziTermin()
-   {
-      // TODO: implement
-      return null;
-   }
-   
-   public void AzurirajTermin(Termin pregled)
-   {
-      // TODO: implement
-   }
-   
-   public bool OtkaziTermin(Termin pregled)
-   {
-      // TODO: implement
-      return false;
-   }
-   
-   public ArrayList UvidUTermine()
-   {
-      // TODO: implement
-      return null;
-   }
 
    public System.Collections.ArrayList termin;
    
@@ -67,7 +45,7 @@ public class Doktor : Korisnik
       if (!this.termin.Contains(newTermin))
       {
          this.termin.Add(newTermin);
-         newTermin.SetDoktor(this);      
+         newTermin.SetLekar(this);      
       }
    }
    
@@ -80,7 +58,7 @@ public class Doktor : Korisnik
          if (this.termin.Contains(oldTermin))
          {
             this.termin.Remove(oldTermin);
-            oldTermin.SetDoktor((Doktor)null);
+            oldTermin.SetLekar((Lekar)null);
          }
    }
    
@@ -94,7 +72,7 @@ public class Doktor : Korisnik
             tmpTermin.Add(oldTermin);
          termin.Clear();
          foreach (Termin oldTermin in tmpTermin)
-            oldTermin.SetDoktor((Doktor)null);
+            oldTermin.SetLekar((Lekar)null);
          tmpTermin.Clear();
       }
    }
