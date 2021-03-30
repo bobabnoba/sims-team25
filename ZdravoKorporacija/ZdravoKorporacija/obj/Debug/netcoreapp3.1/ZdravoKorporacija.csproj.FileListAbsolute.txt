@@ -217,3 +217,25 @@ C:\Users\User\Desktop\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\
 C:\Users\User\Desktop\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\ZdravoKorporacija.dll
 C:\Users\User\Desktop\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\ZdravoKorporacija.pdb
 C:\Users\User\Desktop\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\ZdravoKorporacija.genruntimeconfig.cache
+C:\Users\shand\Desktop\SIMS 25\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\LekarCRUD\izmeniPregledLekar.g.cs
+C:\Users\shand\Desktop\SIMS 25\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\LekarCRUD\oktaziPregledLekar.g.cs
+C:\Users\shand\Desktop\SIMS 25\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\LekarCRUD\zakaziPregledLekar.g.cs
+C:\Users\shand\Desktop\SIMS 25\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\SekretarCRUD\izmeniNalogSekretar.g.cs
+C:\Users\shand\Desktop\SIMS 25\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\SekretarCRUD\kreirajNalogSekretar.g.cs
+C:\Users\shand\Desktop\SIMS 25\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\SekretarCRUD\obrisiNalogSekretar.g.cs
+C:\Users\shand\Desktop\SIMS 25\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\SekretarCRUD\sekretarStart.g.cs
+C:\Users\shand\Desktop\SIMS 25\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\UpravnikCRUD\dodajProstorijuUpravnik.g.cs
+C:\Users\shand\Desktop\SIMS 25\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\UpravnikCRUD\izbrisiProstorijuUpravnik.g.cs
+C:\Users\shand\Desktop\SIMS 25\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\UpravnikCRUD\izmeniProstorijuUpravnik.g.cs
+C:\Users\shand\Desktop\SIMS 25\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\UpravnikCRUD\upravnikStart.g.cs
+C:\Users\shand\Desktop\SIMS 25\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\LekarCRUD\izmeniPregledLekar.baml
+C:\Users\shand\Desktop\SIMS 25\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\LekarCRUD\oktaziPregledLekar.baml
+C:\Users\shand\Desktop\SIMS 25\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\LekarCRUD\zakaziPregledLekar.baml
+C:\Users\shand\Desktop\SIMS 25\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\SekretarCRUD\izmeniNalogSekretar.baml
+C:\Users\shand\Desktop\SIMS 25\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\SekretarCRUD\kreirajNalogSekretar.baml
+C:\Users\shand\Desktop\SIMS 25\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\SekretarCRUD\obrisiNalogSekretar.baml
+C:\Users\shand\Desktop\SIMS 25\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\SekretarCRUD\sekretarStart.baml
+C:\Users\shand\Desktop\SIMS 25\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\UpravnikCRUD\dodajProstorijuUpravnik.baml
+C:\Users\shand\Desktop\SIMS 25\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\UpravnikCRUD\izbrisiProstorijuUpravnik.baml
+C:\Users\shand\Desktop\SIMS 25\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\UpravnikCRUD\izmeniProstorijuUpravnik.baml
+C:\Users\shand\Desktop\SIMS 25\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\UpravnikCRUD\upravnikStart.baml

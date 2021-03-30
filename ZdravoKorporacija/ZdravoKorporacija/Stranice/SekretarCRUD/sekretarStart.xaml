@@ -12,14 +12,25 @@
         <Button Content="Kreiraj nalog" HorizontalAlignment="Left" Margin="217,67,0,0" VerticalAlignment="Top" Width="92" Height="44" Click="kreiraj"/>
         <Button Content="Izmeni nalog" HorizontalAlignment="Center" Margin="0,67,0,0" VerticalAlignment="Top" Width="92" Height="44" RenderTransformOrigin="0.255,-0.75" Click="izmeni"/>
         <Button Content="Obriši nalog" HorizontalAlignment="Left" Margin="486,67,0,0" VerticalAlignment="Top" Width="92" Height="44" RenderTransformOrigin="0.033,-1.977" Click="izbrisi"/>
-        <ListView Margin="120,141,120,33">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <TextBox HorizontalAlignment="Left" Margin="10,422,0,0" Text="ulogovani ste kao sekretar" BorderBrush="CadetBlue" Background="CadetBlue" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" />
+        <Grid Margin="10">
+            <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="0,114,0,28">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding Jmbg}" />
+                    <DataGridTextColumn Header="Pime" Binding="{Binding Ime}"/>
+                    <DataGridTextColumn Header="Pprezime" Binding="{Binding Prezime}" />
+                    <DataGridTextColumn Header="Pol" Binding="{Binding Pol}"/>
+                    <DataGridTextColumn Header="Telefon" Binding="{Binding BrojTelefona}"/>
+
+                </DataGrid.Columns>
+                <DataGrid.RowDetailsTemplate>
+                    <DataTemplate>
+
+                        <TextBlock Text="{Binding Mejl}" Margin="10" />
+                      
+                    </DataTemplate>
+                </DataGrid.RowDetailsTemplate>
+            </DataGrid>
+        </Grid>
 
     </Grid>
 </Page>

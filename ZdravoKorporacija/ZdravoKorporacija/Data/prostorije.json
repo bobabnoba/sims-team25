@@ -22,5 +22,21 @@
     "Tip": 2,
     "Slobodna": true,
     "Sprat": 0
+  },
+  {
+    "inventar": [],
+    "Id": 1222,
+    "Naziv": "",
+    "Tip": 0,
+    "Slobodna": true,
+    "Sprat": 2
+  },
+  {
+    "inventar": [],
+    "Id": 4,
+    "Naziv": "",
+    "Tip": 1,
+    "Slobodna": true,
+    "Sprat": 1
   }
 ]

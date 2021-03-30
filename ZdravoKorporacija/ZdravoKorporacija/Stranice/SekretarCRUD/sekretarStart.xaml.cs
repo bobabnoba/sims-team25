@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.SekretarCRUD
 {
@@ -18,14 +20,18 @@ namespace ZdravoKorporacija.Stranice.SekretarCRUD
     /// </summary>
     public partial class sekretarStart : Page
     {
+        private ObservableCollection<Pacijent> pacijenti = new ObservableCollection<Pacijent>();
         public sekretarStart()
         {
             InitializeComponent();
+            DatotekaPacijentJSON dat = new DatotekaPacijentJSON();
+            pacijenti = new ObservableCollection<Pacijent>(dat.CitanjeIzFajla());
+            dgUsers.ItemsSource = pacijenti;
         }
 
         private void kreiraj(object sender, RoutedEventArgs e)
         {
-            kreirajNalogSekretar kn = new kreirajNalogSekretar();
+            kreirajNalogSekretar kn = new kreirajNalogSekretar(pacijenti);
             kn.Show();
         }
         private void izmeni(object sender, RoutedEventArgs e)
