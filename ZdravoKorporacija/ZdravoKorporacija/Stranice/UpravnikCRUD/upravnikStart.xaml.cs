@@ -34,14 +34,16 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
             dodajProstorijuUpravnik dp = new dodajProstorijuUpravnik(prostorije);
             dp.Show();
         }
-        private void izmeni(object sender, RoutedEventArgs e)
+       
+        private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            izmeniProstorijuUpravnik ip = new izmeniProstorijuUpravnik();
+            izbrisiProstorijuUpravnik ip = new izbrisiProstorijuUpravnik(prostorije, (Prostorija)dgUsers.SelectedItem);
             ip.Show();
         }
-        private void izbrisi(object sender, RoutedEventArgs e)
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            izbrisiProstorijuUpravnik ip = new izbrisiProstorijuUpravnik();
+            izmeniProstorijuUpravnik ip = new izmeniProstorijuUpravnik(prostorije, (Prostorija)dgUsers.SelectedItem);
             ip.Show();
         }
     }

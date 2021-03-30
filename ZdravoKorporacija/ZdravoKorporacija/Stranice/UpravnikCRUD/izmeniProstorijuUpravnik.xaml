@@ -8,15 +8,26 @@
         Title="izmeniProstorijuUpravnik" Height="450" Width="450" Background="CadetBlue">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="120,87,0,0" Text="Naziv:" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="225,87,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
+        <TextBox x:Name="textBoxIzmenaNaziv" HorizontalAlignment="Left" Margin="225,87,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
         <TextBlock HorizontalAlignment="Left" Margin="120,140,0,0" Text="Tip:" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="120,199,0,0" Text="Sprat:" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left" Margin="225,140,0,0" VerticalAlignment="Top" Width="158"/>
-        <ComboBox HorizontalAlignment="Left" Margin="225,196,0,0" VerticalAlignment="Top" Width="158"/>
+        <ComboBox x:Name="comboBoxIzmenaTip" HorizontalAlignment="Left" Margin="225,140,0,0" VerticalAlignment="Top" Width="158" SelectionChanged="ComboBox_SelectionChanged_2">
+            <ComboBoxItem Content="Operaciona sala"/>
+            <ComboBoxItem Content="Soba"/>
+            <ComboBoxItem Content="Ordinacija"/>
+        </ComboBox>
+        <ComboBox x:Name="comboBoxIzmenaSprat" HorizontalAlignment="Left" Margin="225,196,0,0" VerticalAlignment="Top" Width="158" SelectionChanged="ComboBox_SelectionChanged_1">
+            <ComboBoxItem Content="0"/>
+            <ComboBoxItem Content="1"/>
+            <ComboBoxItem Content="2"/>
+            <ComboBoxItem Content="3"/>
+        </ComboBox>
         <Button Width="100" Content="POTVRDI" HorizontalAlignment="Left" Margin="86,374,0,0" VerticalAlignment="Top" Click="potvrdi"/>
         <Button Width="100" Content="ODUSTANI" HorizontalAlignment="Left" Margin="283,374,0,0" VerticalAlignment="Top" Click="odustani"/>
         <TextBlock HorizontalAlignment="Left" Margin="120,244,0,0" Text="Zauzeta:" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left" Margin="225,241,0,0" VerticalAlignment="Top" Width="158"/>
+        <TextBox x:Name="textBoxIzmenaId" HorizontalAlignment="Left" Margin="225,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
+        <TextBlock HorizontalAlignment="Left" Margin="120,50,0,0" Text="Id:" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.555,-3.452"/>
+        <CheckBox x:Name="checkBoxIzmenaZauzeta" Content="" HorizontalAlignment="Left" Margin="225,245,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

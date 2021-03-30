@@ -12,4 +12,3 @@
         <Button Content="NE" HorizontalAlignment="Left" Width="100" Margin="250,332,0,0" VerticalAlignment="Top" Click="ne"/>
     </Grid>
 </Window>
-

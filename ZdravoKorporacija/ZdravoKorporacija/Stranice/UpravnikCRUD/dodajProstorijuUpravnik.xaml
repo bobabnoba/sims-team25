@@ -10,12 +10,12 @@
         <TextBlock HorizontalAlignment="Left" Margin="120,87,0,0" Text="Naziv:" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBox x:Name="textboxNaziv" HorizontalAlignment="Left" Margin="225,87,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
         <TextBlock HorizontalAlignment="Left" Margin="120,140,0,0" Text="Tip:" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="120,199,0,0" Text="Sprat:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="120,0,0,0" Text="Sprat:" TextWrapping="Wrap" VerticalAlignment="Center"/>
         <ComboBox x:Name="comboBoxSprat" HorizontalAlignment="Left" Margin="225,0,0,0" VerticalAlignment="Center" Width="158" Cursor="AppStarting" SelectionChanged="comboBoxTip_SelectionChanged">
             <ComboBoxItem Content="0"/>
-            <ComboBoxItem Content="0"/>
-            <ComboBoxItem Content="0"/>
-            <ComboBoxItem Content="0"/>
+            <ComboBoxItem Content="1"/>
+            <ComboBoxItem Content="2"/>
+            <ComboBoxItem Content="3"/>
         </ComboBox>
         <ComboBox x:Name="comboBoxTip" HorizontalAlignment="Left" Margin="225,137,0,0" VerticalAlignment="Top" Width="158" SelectionChanged="comboBoxSprat_SelectionChanged">
             <ComboBoxItem Content="Operaciona sala"/>
@@ -27,6 +27,8 @@
         <TextBox x:Name="textboxNaziv_Copy" HorizontalAlignment="Left" Margin="225,87,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
         <TextBlock HorizontalAlignment="Left" Margin="120,38,0,0" Text="Id:" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBox x:Name="textBoxId" HorizontalAlignment="Left" Margin="225,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
+        <TextBlock HorizontalAlignment="Left" Margin="120,269,0,0" Text="Zauzeta:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <CheckBox x:Name="checkBoxZauzeta" Content="" HorizontalAlignment="Left" Margin="225,269,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

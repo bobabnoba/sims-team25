@@ -33,6 +33,7 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
             string ime = textboxNaziv.Text;
             TipProstorijeEnum tip;
             int sprat;
+            bool zauzeta;
             if (comboBoxTip.SelectedIndex == 0)
             {
                 tip = TipProstorijeEnum.OperacionaSala;
@@ -46,12 +47,17 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
                 tip = TipProstorijeEnum.Ordinacija;
             }
             sprat = comboBoxSprat.SelectedIndex;
+           
+            if (checkBoxZauzeta.IsChecked == true) { zauzeta = true; }
+            else
+            {
+                zauzeta = false;
+            }
 
-            Prostorija prostorija = new Prostorija(id,ime,tip,true,sprat);
+            Prostorija prostorija = new Prostorija(id,ime,tip,zauzeta,sprat);
             if (storage.DodajProstoriju(prostorija))
             {
                 this.prostorije.Add(prostorija);
-                System.Console.WriteLine("dodao");
                 this.Close();
             }
             
