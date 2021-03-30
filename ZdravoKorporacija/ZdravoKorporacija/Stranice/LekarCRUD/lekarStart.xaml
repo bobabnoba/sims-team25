@@ -12,13 +12,30 @@
         <Button Content="Zakaži pregled" HorizontalAlignment="Left" Margin="217,67,0,0" VerticalAlignment="Top" Width="92" Height="44" Click="zakaziPregled"/>
         <Button Content="Izmeni pregled" HorizontalAlignment="Center" Margin="0,67,0,0" VerticalAlignment="Top" Width="92" Height="44" RenderTransformOrigin="0.255,-0.75" Click="izmeniPregled"/>
         <Button Content="Otkaži pregled" HorizontalAlignment="Left" Margin="486,67,0,0" VerticalAlignment="Top" Width="92" Height="44" RenderTransformOrigin="0.033,-1.977" Click="otkaziPregled"/>
-        <ListView Margin="120,141,120,33">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <Grid Margin="10">
+            <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="120,141,120,33" SelectionChanged="dgUsers_SelectionChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
+                    <!--<DataGridTextColumn Header="Pacijent">
+                            <DataGridTextColumn.Binding>
+                                <MultiBinding StringFormat="{}{0} {1}">
+                                    <Binding Path="Pacijent.Ime"/>
+                                    <Binding Path="Pacijent.Prezime"/>
+                                </MultiBinding>
+                            </DataGridTextColumn.Binding>
+                        </DataGridTextColumn>
+                    <DataGridTextColumn Header="Karton pacijenta" Binding="{Binding zdravstveniKarton}" />-->
+                    <DataGridTextColumn Header="Datum" Binding="{Binding Pocetak}" />
+                    <DataGridTextColumn Header="Tip pregleda" Binding="{Binding Tip}" />
+                    <DataGridTextColumn Header="Prostorija" Binding="{Binding prostorija.Naziv}"/>
+                </DataGrid.Columns>
+                <DataGrid.RowDetailsTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Details}" Margin="10" />
+                    </DataTemplate>
+                </DataGrid.RowDetailsTemplate>
+            </DataGrid>
+        </Grid>
         <TextBox HorizontalAlignment="Left" Margin="10,422,0,0" Text="ulogovani ste kao lekar" BorderBrush="CadetBlue" Background="CadetBlue" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" />
 
     </Grid>

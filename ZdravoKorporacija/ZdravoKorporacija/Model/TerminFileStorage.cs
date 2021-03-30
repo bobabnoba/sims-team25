@@ -17,7 +17,7 @@ namespace ZdravoKorporacija.Model
             {
                 if (t.Id.Equals(termin.Id))
                 {
-                    return false;
+                   // return false;
                 }
             }
             termini.Add(termin);
