@@ -33,16 +33,23 @@
     "zdravstveniKarton": null,
     "prostorija": null,
     "Lekar": {
-      "termin": null,
-      "Ime": "Milos",
-      "Prezime": "Zivic",
-      "Jmbg": 2234567890113,
-      "BrojTelefona": 69393334,
-      "Mejl": "zivko99@gmail.com",
-      "AdresaStanovanja": "Becej",
+      "termin": [
+        {
+          "izvestaj": [],
+          "Tip": 0,
+          "Pocetak": "2020-05-01T08:30:52",
+          "Trajanje": 90.0
+        }
+      ],
+      "Ime": "Veljko",
+      "Prezime": "Vukovic",
+      "Jmbg": 2334567890213,
+      "BrojTelefona": 66393345,
+      "Mejl": "vuksivuk@gmail.com",
+      "AdresaStanovanja": "Beograd",
       "Pol": 0,
-      "Username": "milos",
-      "Password": "zivic",
+      "Username": "veksi",
+      "Password": "vukovic",
       "Uloga": 0
     },
     "Id": 1,

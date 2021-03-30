@@ -9,18 +9,18 @@
   },
   {
     "inventar": [],
-    "Id": 2,
-    "Naziv": "soba za operaciju23",
-    "Tip": 0,
-    "Slobodna": false,
-    "Sprat": 3
-  },
-  {
-    "inventar": [],
     "Id": 1,
     "Naziv": "soba za pregled",
     "Tip": 1,
     "Slobodna": false,
     "Sprat": 2
+  },
+  {
+    "inventar": [],
+    "Id": 2,
+    "Naziv": "soba za operaciju333",
+    "Tip": 0,
+    "Slobodna": true,
+    "Sprat": 3
   }
 ]

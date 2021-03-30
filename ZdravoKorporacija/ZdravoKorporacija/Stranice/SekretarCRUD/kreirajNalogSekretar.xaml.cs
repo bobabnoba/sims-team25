@@ -65,8 +65,11 @@ namespace ZdravoKorporacija.Stranice.SekretarCRUD
 
             Pacijent nalog = new Pacijent( ime, prezime, jmbg, br, mejl, "", pol, username, password, UlogaEnum.Pacijent);
 
-            this.pacijenti.Add(nalog);
-            this.Close();
+            if (storage.KreirajNalogPacijentu(nalog))
+            {
+                this.pacijenti.Add(nalog);
+                this.Close();
+            }
 
         }
 

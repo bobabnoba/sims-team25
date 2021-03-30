@@ -32,6 +32,8 @@ namespace ZdravoKorporacija.Stranice.SekretarCRUD
 
         private void da(object sender, RoutedEventArgs e)
         {
+            storage.ObrisiNalogPacijentu(p1);
+
             this.pacijenti.Remove(p1);
             this.Close();
 
