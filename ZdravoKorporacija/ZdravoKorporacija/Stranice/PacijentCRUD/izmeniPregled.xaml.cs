@@ -37,19 +37,21 @@ namespace ZdravoKorporacija.Stranice
             s = selektovani; // samo za uklanjanje iz pregleda
             pregledi = termini;
 
-            /*foreach (Lekar l in ljekari)
+            foreach (Lekar l in ljekari)
             {
                 if (l.Jmbg == selektovani.Lekar.Jmbg)
                 {
                     ljekar.SelectedItem = l;
                 }
-            }*/
+            }
             date.SelectedDate = selektovani.Pocetak;
             time.SelectedValue = selektovani.Pocetak.ToString("HH:mm");
 }
 
         private void potvrdi(object sender, RoutedEventArgs e)
         {
+            p.Lekar = (Lekar)ljekar.SelectedItem;
+
             if (storage.AzurirajTermin(p))
             {
                 this.pregledi.Remove(s); 

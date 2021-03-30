@@ -16,7 +16,14 @@
             <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="0,114,0,28">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
-                    <DataGridTextColumn Header="Lekar" Binding="{Binding Lekar }"/>
+                    <DataGridTextColumn Header="Lekar">
+                        <DataGridTextColumn.Binding>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Path="Lekar.Ime"/>
+                                <Binding Path="Lekar.Prezime"/>
+                            </MultiBinding>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
                     <DataGridTextColumn Header="Datum" Binding="{Binding Pocetak}" />
                 </DataGrid.Columns>
                 <DataGrid.RowDetailsTemplate>

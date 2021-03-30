@@ -23,7 +23,7 @@
         </Grid.ColumnDefinitions>
         <TextBlock  Text="Datum i vreme:" TextWrapping="Wrap" Margin="33,24,0,22" Grid.Row="1"/>
         <DatePicker Name="date" Grid.Column="1" HorizontalAlignment="Left" Margin="39,0,0,0" Grid.Row="1" VerticalAlignment="Center"/>
-        <ComboBox Name ="time" Grid.Column="1" Margin="164,27,62,27" Grid.Row="1" RenderTransformOrigin="0.507,0.18" SelectionChanged="ComboBox_SelectionChanged">
+        <ComboBox Name ="time" SelectedValuePath="Content" Grid.Column="1" Margin="164,27,62,27" Grid.Row="1" RenderTransformOrigin="0.507,0.18" SelectionChanged="ComboBox_SelectionChanged">
             <ComboBoxItem>08:00</ComboBoxItem>
             <ComboBoxItem>08:30</ComboBoxItem>
             <ComboBoxItem>09:00</ComboBoxItem>

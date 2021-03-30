@@ -21,21 +21,19 @@ namespace ZdravoKorporacija.Stranice
     {
         private TerminFileStorage storage = new TerminFileStorage();
         private DatotekaLekarJSON ljekariDat = new DatotekaLekarJSON();
-        private List<Lekar> ljekari = new List<Lekar>();
-        private Termin p = new Termin();
+        private List<Lekar> ljekari;
+        private Termin p;
         private ObservableCollection<Termin> pregledi;
 
 
         public zakaziPregled(ObservableCollection<Termin> termini)
         {
             InitializeComponent();
-
+            p = new Termin();
             ljekari = ljekariDat.CitanjeIzFajla();
             ljekar.ItemsSource = ljekari;
             pregledi = termini;
 
-            String t = "", d = "";
-            p.Lekar = (Lekar)ljekar.SelectedItem;
             p.Tip = TipTerminaEnum.Pregled;
             p.Trajanje = 0.5;
             p.Id = pregledi.Count + 1;
@@ -44,6 +42,7 @@ namespace ZdravoKorporacija.Stranice
 
         private void potvrdi(object sender, RoutedEventArgs e)
         {
+            p.Lekar = (Lekar)ljekar.SelectedItem;
             if (storage.ZakaziTermin(p))
             {
                 this.pregledi.Add(p);
