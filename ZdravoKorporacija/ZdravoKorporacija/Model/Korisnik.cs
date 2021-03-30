@@ -8,6 +8,8 @@ using System;
 
 public class Korisnik
 {
+
+    public Korisnik() { }
     public Korisnik(String Ime, String Prezime) { 
     this.Ime = Ime;
     this.Prezime = Prezime;

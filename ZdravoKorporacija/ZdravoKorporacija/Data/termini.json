@@ -1,14 +1,22 @@
 [
   {
     "izvestaj": [],
+    "zdravstveniKarton": null,
+    "prostorija": null,
+    "Lekar": null,
+    "Id": 0,
     "Tip": 0,
     "Pocetak": "2020-05-01T08:30:52",
     "Trajanje": 90.0
   },
   {
-    "izvestaj": [],
+    "izvestaj": null,
+    "zdravstveniKarton": null,
+    "prostorija": null,
+    "Lekar": null,
+    "Id": 1,
     "Tip": 0,
-    "Pocetak": "2020-06-06T06:30:52",
-    "Trajanje": 90.0
+    "Pocetak": "2021-04-01T08:00:00",
+    "Trajanje": 0.5
   }
 ]

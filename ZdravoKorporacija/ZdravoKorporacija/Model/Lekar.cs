@@ -7,6 +7,8 @@ using System;
 using System.Collections;
 public class Lekar : Korisnik
 {
+
+    public Lekar() : base() {}
     public Lekar(String Ime, String Prezime) : base(Ime, Prezime)
     {
 

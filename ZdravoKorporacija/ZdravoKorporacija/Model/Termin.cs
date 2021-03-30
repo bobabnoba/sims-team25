@@ -11,6 +11,19 @@ public class Termin
 
     public Termin() { }
 
+    public Termin(int id, Lekar lekar, TipTerminaEnum tip, DateTime pocetak, double trajanje)
+    {
+        this.Id = id;
+        this.Lekar = lekar;
+        this.Tip = tip;
+        this.Pocetak = pocetak;
+        this.Trajanje = 0.5;
+        this.zdravstveniKarton = null;
+        this.prostorija = null;
+        this.izvestaj = null;
+    }
+
+
     public Termin(ZdravstveniKarton zdravstveniKarton, Prostorija prostorija, Lekar Lekar, TipTerminaEnum tip, DateTime pocetak, double trajanje)
     {
         this.izvestaj = new System.Collections.ArrayList();
@@ -81,7 +94,7 @@ public class Termin
             tmpIzvestaj.Clear();
         }
     }
-    private ZdravstveniKarton zdravstveniKarton;
+    public ZdravstveniKarton zdravstveniKarton;
 
     /// <pdGenerated>default parent getter</pdGenerated>
     public ZdravstveniKarton GetZdravstveniKarton()
@@ -108,8 +121,8 @@ public class Termin
             }
         }
     }
-    private Prostorija prostorija;
-    private Lekar Lekar;
+    public Prostorija prostorija;
+    public Lekar Lekar { get; set;  }
 
     /// <pdGenerated>default parent getter</pdGenerated>
     public Lekar GetLekar()

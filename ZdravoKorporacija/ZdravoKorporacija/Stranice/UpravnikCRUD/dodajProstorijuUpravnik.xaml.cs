@@ -20,7 +20,7 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
     public partial class dodajProstorijuUpravnik : Window
     {
         private ProstorijaFileStorage storage = new ProstorijaFileStorage();
-        private ObservableCollection<Prostorija> prostorije ;
+        private ObservableCollection<Prostorija> prostorije;
         public dodajProstorijuUpravnik(ObservableCollection<Prostorija> pr)
         {
             InitializeComponent();

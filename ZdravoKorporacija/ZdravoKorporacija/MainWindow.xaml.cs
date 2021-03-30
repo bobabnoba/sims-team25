@@ -16,7 +16,6 @@ using ZdravoKorporacija.Model;
 using System.Collections;
 using ZdravoKorporacija.Stranice;
 using ZdravoKorporacija.Stranice.UpravnikCRUD;
-using System.Windows.Navigation;
 using ZdravoKorporacija.Stranice.LekarCRUD;
 using ZdravoKorporacija.Stranice.SekretarCRUD;
 

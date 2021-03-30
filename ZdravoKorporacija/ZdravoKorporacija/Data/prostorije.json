@@ -14,6 +14,13 @@
     "Tip": 0,
     "Slobodna": true,
     "Sprat": 1
+  },
+  {
+    "inventar": [],
+    "Id": 111,
+    "Naziv": "soba2",
+    "Tip": 2,
+    "Slobodna": true,
+    "Sprat": 0
   }
- 
 ]

@@ -8,6 +8,8 @@ using System.Collections;
 
 public class Pacijent : Korisnik
 {
+    public Pacijent() : base() { }
+
     public Pacijent(ZdravstveniKarton zdravstveniKarton, bool guest, string ime, string prezime, int jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password, UlogaEnum uloga) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password, uloga)
     {
         this.termin = new System.Collections.ArrayList();
