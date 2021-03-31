@@ -52,13 +52,25 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                     cbProstorija.SelectedItem = p;
                 }
             }
-/* foreach (Lekar l in lekari)
+            foreach (Lekar l in lekari)
             {
+                if (selektovani.Lekar == null)
+                {
+                    break;
+                }
                 if (l.Jmbg == selektovani.Lekar.Jmbg)
                 {
                     Lekari.SelectedItem = l;
                 }
-            }*/
+            }
+
+            foreach (Pacijent p in pacijenti)
+            {
+                if (p.ZdravstveniKarton == selektovani.zdravstveniKarton)
+                {
+                    cbPacijent.SelectedItem = p;
+                }
+            }
 
             if (s.Tip == TipTerminaEnum.Pregled)
             {
