@@ -95,5 +95,41 @@
     "Tip": 0,
     "Pocetak": "2021-03-05T08:30:00",
     "Trajanje": 0.5
+  },
+  {
+    "izvestaj": null,
+    "zdravstveniKarton": null,
+    "prostorija": {
+      "inventar": [],
+      "Id": 4,
+      "Naziv": "soba76",
+      "Tip": 2,
+      "Slobodna": false,
+      "Sprat": -1
+    },
+    "Lekar": {
+      "termin": [
+        {
+          "izvestaj": [],
+          "Tip": 0,
+          "Pocetak": "2020-05-01T08:30:52",
+          "Trajanje": 90.0
+        }
+      ],
+      "Ime": "Veljko",
+      "Prezime": "Vukovic",
+      "Jmbg": 2334567890213,
+      "BrojTelefona": 66393345,
+      "Mejl": "vuksivuk@gmail.com",
+      "AdresaStanovanja": "Beograd",
+      "Pol": 0,
+      "Username": "veksi",
+      "Password": "vukovic",
+      "Uloga": 0
+    },
+    "Id": 5,
+    "Tip": 0,
+    "Pocetak": "2021-04-01T11:00:00",
+    "Trajanje": 0.5
   }
 ]

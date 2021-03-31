@@ -17,6 +17,8 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private DatotekaPacijentJSON pacijentiDat = new DatotekaPacijentJSON();
         private PacijentFileStorage pacijentiStorage = new PacijentFileStorage();
         private List<Pacijent> pacijenti = new List<Pacijent>();
+        private DatotekaLekarJSON lekariDat = new DatotekaLekarJSON();
+        private List<Lekar> lekari = new List<Lekar>();
         private List<Prostorija> prostorije = new List<Prostorija>();
         private Termin p;
         private ObservableCollection<Termin> pregledi;
@@ -28,6 +30,9 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             pacijenti = pacijentiDat.CitanjeIzFajla();
             cbPacijent.ItemsSource = pacijenti;
             pregledi = termini;
+
+            lekari = lekariDat.CitanjeIzFajla();
+            Lekari.ItemsSource = lekari;
 
             prostorije = prostorijeStorage.PregledSvihProstorija();
             cbProstorija.ItemsSource = prostorije;
@@ -60,6 +65,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             }
 
             p.prostorija = (Prostorija)cbProstorija.SelectedItem;
+            p.Lekar = (Lekar)Lekari.SelectedItem;
 
             if (storage.ZakaziTermin(p))
             {

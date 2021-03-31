@@ -83,6 +83,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 p.Tip = TipTerminaEnum.Operacija;
             }
 
+            p.Lekar = (Lekar)Lekari.SelectedItem;
             p.prostorija = (Prostorija)cbProstorija.SelectedItem;
 
             if (storage.AzurirajTermin(p))
