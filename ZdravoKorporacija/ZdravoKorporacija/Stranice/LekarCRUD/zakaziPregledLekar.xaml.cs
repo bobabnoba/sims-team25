@@ -80,5 +80,10 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
 
         }
+
+        private void time_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

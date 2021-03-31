@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.SekretarCRUD"
       mc:Ignorable="d" 
       Height="450" Width="800" Background="CadetBlue"
-      Title="sekretarStart">
+      Title="Sekretar">
 
     <Grid>
         <Button Content="Kreiraj nalog" HorizontalAlignment="Left" Margin="217,67,0,0" VerticalAlignment="Top" Width="92" Height="44" Click="kreiraj"/>
@@ -16,8 +16,8 @@
             <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="0,114,0,28">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding Jmbg}" />
-                    <DataGridTextColumn Header="Pime" Binding="{Binding Ime}"/>
-                    <DataGridTextColumn Header="Pprezime" Binding="{Binding Prezime}" />
+                    <DataGridTextColumn Header="Ime" Binding="{Binding Ime}"/>
+                    <DataGridTextColumn Header="Prezime" Binding="{Binding Prezime}" />
                     <DataGridTextColumn Header="Pol" Binding="{Binding Pol}"/>
                     <DataGridTextColumn Header="Telefon" Binding="{Binding BrojTelefona}"/>
 

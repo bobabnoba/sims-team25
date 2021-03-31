@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.SekretarCRUD"
         mc:Ignorable="d"
-        Title="izmeniNalogSekretar" Height="450" Width="450" Background="CadetBlue">
+        Title="Izmena naloga" Height="450" Width="450" Background="CadetBlue">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="114,50,0,0" Text="Ime:" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBox x:Name="tbime" HorizontalAlignment="Left" Margin="225,50,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="148"/>
@@ -22,7 +22,7 @@
         <TextBox x:Name="tbuser" HorizontalAlignment="Left" Margin="225,241,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="148"/>
         <TextBlock HorizontalAlignment="Left" Margin="114,276,0,0" Text="Lozinka:" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBox x:Name="tbpass" HorizontalAlignment="Left" Margin="225,275,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="148"/>
-        <ComboBox x:Name="combo" HorizontalAlignment="Left" Margin="225,0,0,0" VerticalAlignment="Center" Width="148" Height="16">
+        <ComboBox x:Name="combo" HorizontalAlignment="Left" Margin="225,0,0,0" VerticalAlignment="Center" Width="148" Height="18">
             <ComboBoxItem Content="muski"/>
             <ComboBoxItem Content="zenski"/>
         </ComboBox>

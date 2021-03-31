@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.UpravnikCRUD"
       mc:Ignorable="d" 
       Height="450" Width="800" Background="CadetBlue"
-      Title="upravnikStart">
+      Title="Upravnik">
 
     <Grid>
         <Button Content="Dodaj prostoriju" HorizontalAlignment="Left" Margin="217,67,0,0" VerticalAlignment="Top" Width="92" Height="44" Click="dodaj"/>
@@ -17,11 +17,11 @@
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
                 <DataGridTextColumn Header="Naziv" Binding="{Binding Naziv}" />
             </DataGrid.Columns>
-            <DataGrid.RowDetailsTemplate>
+            <!--<DataGrid.RowDetailsTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Details}" Margin="10" />
                 </DataTemplate>
-            </DataGrid.RowDetailsTemplate>
+            </DataGrid.RowDetailsTemplate>-->
         </DataGrid>
     </Grid>
 </Window>

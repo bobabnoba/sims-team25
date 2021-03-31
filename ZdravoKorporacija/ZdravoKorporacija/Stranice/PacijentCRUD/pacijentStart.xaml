@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:ZdravoKorporacija.Stranice"
       mc:Ignorable="d" 
       Height="450" Width="800"
-      Title="pacijentStart" Background="CadetBlue">
+      Title="Pacijent" Background="CadetBlue">
 
     <Grid>
         <Button Content="Zakaži pregled" HorizontalAlignment="Left" Margin="217,67,0,0" VerticalAlignment="Top" Width="92" Click="zakaziPregled" Height="44"/>
@@ -26,11 +26,11 @@
                     </DataGridTextColumn>
                     <DataGridTextColumn Header="Datum" Binding="{Binding Pocetak}" />
                 </DataGrid.Columns>
-                <DataGrid.RowDetailsTemplate>
+                <!--<DataGrid.RowDetailsTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Details}" Margin="10" />
                     </DataTemplate>
-                </DataGrid.RowDetailsTemplate>
+                </DataGrid.RowDetailsTemplate>-->
             </DataGrid>
         </Grid>
         <TextBox HorizontalAlignment="Left" Margin="10,422,0,0" Text="ulogovani ste kao pacijent" BorderBrush="CadetBlue" Background="CadetBlue" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" TextChanged="TextBox_TextChanged"/>

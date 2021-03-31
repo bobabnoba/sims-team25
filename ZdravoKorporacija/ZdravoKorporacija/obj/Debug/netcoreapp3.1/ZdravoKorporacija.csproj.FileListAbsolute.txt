@@ -173,7 +173,6 @@ C:\Users\User\Desktop\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\
 C:\Users\User\Desktop\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 C:\Users\User\Desktop\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\LekarCRUD\izmeniPregledLekar.g.cs
 C:\Users\User\Desktop\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\LekarCRUD\lekarStart.g.cs
-C:\Users\User\Desktop\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\LekarCRUD\oktaziPregledLekar.g.cs
 C:\Users\User\Desktop\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\LekarCRUD\zakaziPregledLekar.g.cs
 C:\Users\User\Desktop\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\login.g.cs
 C:\Users\User\Desktop\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\PacijentCRUD\izmeniPregled.g.cs
@@ -194,7 +193,6 @@ C:\Users\User\Desktop\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\
 C:\Users\User\Desktop\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\MainWindow.baml
 C:\Users\User\Desktop\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\LekarCRUD\izmeniPregledLekar.baml
 C:\Users\User\Desktop\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\LekarCRUD\lekarStart.baml
-C:\Users\User\Desktop\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\LekarCRUD\oktaziPregledLekar.baml
 C:\Users\User\Desktop\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\LekarCRUD\zakaziPregledLekar.baml
 C:\Users\User\Desktop\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\login.baml
 C:\Users\User\Desktop\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\PacijentCRUD\izmeniPregled.baml
@@ -349,3 +347,5 @@ C:\Users\Admin\Desktop\New folder\sims-team25\ZdravoKorporacija\ZdravoKorporacij
 C:\Users\Admin\Desktop\New folder\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\ZdravoKorporacija.genruntimeconfig.cache
 C:\Users\Admin\Desktop\New folder\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\LekarCRUD\otkaziPregledLekar.g.cs
 C:\Users\Admin\Desktop\New folder\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\LekarCRUD\otkaziPregledLekar.baml
+C:\Users\User\Desktop\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\LekarCRUD\otkaziPregledLekar.g.cs
+C:\Users\User\Desktop\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\LekarCRUD\otkaziPregledLekar.baml
