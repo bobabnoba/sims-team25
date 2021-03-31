@@ -24,7 +24,6 @@
         </ComboBox>
         <Button Width="100" Content="POTVRDI" HorizontalAlignment="Left" Margin="86,374,0,0" VerticalAlignment="Top" Click="potvrdi"/>
         <Button Width="100" Content="ODUSTANI" HorizontalAlignment="Left" Margin="283,374,0,0" VerticalAlignment="Top" Click="odustani"/>
-        <TextBox x:Name="textboxNaziv_Copy" HorizontalAlignment="Left" Margin="225,87,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
         <TextBlock HorizontalAlignment="Left" Margin="120,38,0,0" Text="Id:" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBox x:Name="textBoxId" HorizontalAlignment="Left" Margin="225,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
         <TextBlock HorizontalAlignment="Left" Margin="120,269,0,0" Text="Zauzeta:" TextWrapping="Wrap" VerticalAlignment="Top"/>

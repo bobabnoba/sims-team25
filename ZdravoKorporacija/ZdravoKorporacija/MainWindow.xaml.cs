@@ -1,38 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using ZdravoKorporacija.Model;
-using System.Collections;
 using ZdravoKorporacija.Stranice;
-using ZdravoKorporacija.Stranice.UpravnikCRUD;
 using ZdravoKorporacija.Stranice.LekarCRUD;
 using ZdravoKorporacija.Stranice.SekretarCRUD;
+using ZdravoKorporacija.Stranice.UpravnikCRUD;
 
 namespace ZdravoKorporacija
 {
 
-        /// <summary>
-        /// Interaction logic for MainWindow.xaml
-        /// </summary>
-        public partial class MainWindow : Window
-        {
-            public MainWindow()
-            {
-                InitializeComponent();
-             
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        public static ContentControl cc = new ContentControl();
+        public MainWindow() 
+        { 
+            InitializeComponent();
+            cc.Content = this.Content;
         }
-      
+
+       
+
 
         private void AutoColumns_Click(object sender, RoutedEventArgs e)
         {
@@ -50,19 +42,19 @@ namespace ZdravoKorporacija
             LekarJSON.UpisivanjeUFajl(lekari);
         }
 
-            private void ManualColumns_Click(object sender, RoutedEventArgs e)
-            {
-           DatotekaPacijentJSON pacijentJSON = new DatotekaPacijentJSON();
+        private void ManualColumns_Click(object sender, RoutedEventArgs e)
+        {
+            DatotekaPacijentJSON pacijentJSON = new DatotekaPacijentJSON();
             List<Pacijent> pacijenti = new List<Pacijent>();
-            Prostorija pr1 = new Prostorija(1,"soba za pregled",TipProstorijeEnum.Soba,true,2);
+            Prostorija pr1 = new Prostorija(1, "soba za pregled", TipProstorijeEnum.Soba, true, 2);
             Prostorija pr2 = new Prostorija(2, "soba za operaciju", TipProstorijeEnum.OperacionaSala, true, 1);
-            Pacijent p1 = new Pacijent("Dusan", "Markovic",1234567890123,069000333,"dusanmarkovic@gmail.com","Smederevska tvrdjava",PolEnum.Muski,"dukikidu","markovic99",UlogaEnum.Pacijent);
+            Pacijent p1 = new Pacijent("Dusan", "Markovic", 1234567890123, 069000333, "dusanmarkovic@gmail.com", "Smederevska tvrdjava", PolEnum.Muski, "dukikidu", "markovic99", UlogaEnum.Pacijent);
             Pacijent p2 = new Pacijent("Dusan", "Lekic", 3214567890122, 066333999, "dusanlekic@gmail.com", "Rokijev potok", PolEnum.Muski, "leka", "leka99", UlogaEnum.Pacijent);
             Pacijent p3 = new Pacijent("Aleksa", "Papovic", 2134567890213, 066393654, "aleksapapovic@gmail.com", "Grbavica", PolEnum.Muski, "pape", "pape99", UlogaEnum.Pacijent);
             Lekar dr1 = new Lekar("Veljko", "Vukovic", 2334567890213, 066393345, "vuksivuk@gmail.com", "Beograd", PolEnum.Muski, "veksi", "vukovic", UlogaEnum.Lekar);
             ZdravstveniKarton zd1 = new ZdravstveniKarton(p1, 1, StanjePacijentaEnum.Kriticno, "pcele", KrvnaGrupaEnum.APozitivna, "nevekcinisan");
             ZdravstveniKarton zd2 = new ZdravstveniKarton(p2, 2, StanjePacijentaEnum.Stabilno, "nema", KrvnaGrupaEnum.ABNegativna, "sinovac");
-            Termin tr1 = new Termin(zd1,pr1,dr1,TipTerminaEnum.Pregled,new DateTime(2020, 5, 1, 8, 30, 52),90);
+            Termin tr1 = new Termin(zd1, pr1, dr1, TipTerminaEnum.Pregled, new DateTime(2020, 5, 1, 8, 30, 52), 90);
             Termin tr2 = new Termin(zd1, pr1, dr1, TipTerminaEnum.Pregled, new DateTime(2020, 6, 6, 6, 30, 52), 90);
             DatotekaTerminJSON terminiJSON = new DatotekaTerminJSON();
             List<Termin> termini = new List<Termin>();
@@ -81,8 +73,8 @@ namespace ZdravoKorporacija
             prostorijeJSON.UpisivanjeUFajl(prostorije);
         }
 
-            private void Binding_Click(object sender, RoutedEventArgs e)
-            {
+        private void Binding_Click(object sender, RoutedEventArgs e)
+        {
             DatotekaSekretarJSON sekretarJSON = new DatotekaSekretarJSON();
             List<Sekretar> sekretari = new List<Sekretar>();
             Sekretar s1 = new Sekretar("Stefan", "Mitrovic", 4444567890123, 0621100333, "mitrovic@gmail.com", "Kragujevac", PolEnum.Muski, "mitros", "mitrovic99", UlogaEnum.Sekretar);
@@ -98,19 +90,23 @@ namespace ZdravoKorporacija
 
         private void openUpravnikFrame(object sender, RoutedEventArgs e)
         {
-            this.Content = new upravnikStart();
+            upravnikStart s = new upravnikStart();
+            s.Show();
         }
         private void openLekarFrame(object sender, RoutedEventArgs e)
         {
-            this.Content = new lekarStart();
+            lekarStart s = new lekarStart();
+            s.Show();
         }
         private void openSekretarFrame(object sender, RoutedEventArgs e)
         {
-            this.Content = new sekretarStart();
+            sekretarStart s = new sekretarStart();
+            s.Show();
         }
         private void openPacijentFrame(object sender, RoutedEventArgs e)
         {
-            this.Content = new pacijentStart();
+            pacijentStart s = new pacijentStart();
+            s.Show();
         }
     }
-    }
+}

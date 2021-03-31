@@ -54,7 +54,29 @@
     },
     "Id": 1,
     "Tip": 0,
-    "Pocetak": "2021-03-19T11:00:00",
+    "Pocetak": "2021-03-05T11:00:00",
+    "Trajanje": 0.5
+  },
+  {
+    "izvestaj": null,
+    "zdravstveniKarton": null,
+    "prostorija": null,
+    "Lekar": {
+      "termin": null,
+      "Ime": "Milos",
+      "Prezime": "Zivic",
+      "Jmbg": 2234567890113,
+      "BrojTelefona": 69393334,
+      "Mejl": "zivko99@gmail.com",
+      "AdresaStanovanja": "Becej",
+      "Pol": 0,
+      "Username": "milos",
+      "Password": "zivic",
+      "Uloga": 0
+    },
+    "Id": 3,
+    "Tip": 0,
+    "Pocetak": "2021-03-21T08:00:00",
     "Trajanje": 0.5
   },
   {
@@ -62,16 +84,33 @@
     "zdravstveniKarton": null,
     "prostorija": {
       "inventar": [],
-      "Id": 2,
-      "Naziv": "soba za operaciju333",
-      "Tip": 0,
-      "Slobodna": true,
-      "Sprat": 3
+      "Id": 1,
+      "Naziv": "soba za pregled",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 2
     },
     "Lekar": null,
-    "Id": 3,
+    "Id": 4,
+    "Tip": 0,
+    "Pocetak": "2021-03-05T08:30:00",
+    "Trajanje": 0.5
+  },
+  {
+    "izvestaj": null,
+    "zdravstveniKarton": null,
+    "prostorija": {
+      "inventar": [],
+      "Id": 1,
+      "Naziv": "soba za pregled",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 2
+    },
+    "Lekar": null,
+    "Id": 5,
     "Tip": 1,
-    "Pocetak": "2021-08-20T09:30:00",
+    "Pocetak": "2021-03-13T09:00:00",
     "Trajanje": 0.5
   }
 ]

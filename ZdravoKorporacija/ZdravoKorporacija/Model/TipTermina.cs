@@ -3,11 +3,10 @@
 // Created: Tuesday, March 23, 2021 10:47:51 PM
 // Purpose: Definition of Enum AppointmentType
 
-using System;
 
 
-   public enum TipTerminaEnum 
-   {
-   Pregled,
-   Operacija
-   }
+public enum TipTerminaEnum
+{
+    Pregled,
+    Operacija
+}

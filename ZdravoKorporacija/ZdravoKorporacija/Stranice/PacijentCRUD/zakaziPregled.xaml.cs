@@ -1,15 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice
@@ -42,6 +35,17 @@ namespace ZdravoKorporacija.Stranice
 
         private void potvrdi(object sender, RoutedEventArgs e)
         {
+            ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
+            String t = null;
+            String d = date.Text;
+            if (cboItem != null)
+            {
+
+                t = cboItem.Content.ToString();
+
+            }
+            p.Pocetak = DateTime.Parse(d + " " + t);
+
             p.Lekar = (Lekar)ljekar.SelectedItem;
             if (storage.ZakaziTermin(p))
             {
@@ -60,16 +64,9 @@ namespace ZdravoKorporacija.Stranice
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
-            if (cboItem != null)
-            {
-                String t = cboItem.Content.ToString();
-                String d = date.Text;
-                p.Pocetak = DateTime.Parse(d + " " + t);
-              
-            }
+
 
         }
-        
+
     }
 }

@@ -16,8 +16,8 @@ public class Lek
     }
 
 
-   public String Id {get; set;}
-   public String Proiazvodjac {get; set;}
-   public String Sastaojci{get; set;}
-   public String NusPaojave{get; set;}
+    public String Id { get; set; }
+    public String Proiazvodjac { get; set; }
+    public String Sastaojci { get; set; }
+    public String NusPaojave { get; set; }
 }

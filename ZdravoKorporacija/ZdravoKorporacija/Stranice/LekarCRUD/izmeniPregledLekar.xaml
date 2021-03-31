@@ -67,7 +67,20 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
         <TextBlock Text="Lekar:" TextWrapping="Wrap" Margin="53,44,234,35" Grid.Row="3" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
-        <ComboBox Grid.Column="1" Margin="59,44,76,5" Grid.Row="3"/>
+        <ComboBox Name="Lekari" Grid.Column="1" Margin="59,44,76,5" Grid.Row="3" SelectionChanged="ComboBox_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Path="Ime"/>
+                                <Binding Path="Prezime"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
         <TextBlock Text="Ordinacija:" TextWrapping="Wrap" Margin="52,11,235,0" Grid.Row="3" Grid.ColumnSpan="2"/>
         <ComboBox Name="cbProstorija" Grid.Column="1" Margin="58,11,77,38" Grid.Row="3">
             <ComboBox.ItemTemplate>

@@ -10,9 +10,10 @@ public class Korisnik
 {
 
     public Korisnik() { }
-    public Korisnik(String Ime, String Prezime) { 
-    this.Ime = Ime;
-    this.Prezime = Prezime;
+    public Korisnik(String Ime, String Prezime)
+    {
+        this.Ime = Ime;
+        this.Prezime = Prezime;
     }
 
     public Korisnik(string ime, string prezime, Int64 jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password, UlogaEnum uloga) : this(ime, prezime)
@@ -27,15 +28,15 @@ public class Korisnik
         Uloga = uloga;
     }
 
-    public String Ime {get; set;}
-   public String Prezime {get; set;}
-   public Int64 Jmbg {get; set;}
-   public int BrojTelefona {get; set;}
-   public String Mejl {get; set;}
-   public String AdresaStanovanja {get; set;}
-   public PolEnum Pol {get; set;}
-   public  String Username {get; set;}
-   public  String Password {get; set;}
-   public  UlogaEnum Uloga {get; set;}
+    public String Ime { get; set; }
+    public String Prezime { get; set; }
+    public Int64 Jmbg { get; set; }
+    public int BrojTelefona { get; set; }
+    public String Mejl { get; set; }
+    public String AdresaStanovanja { get; set; }
+    public PolEnum Pol { get; set; }
+    public String Username { get; set; }
+    public String Password { get; set; }
+    public UlogaEnum Uloga { get; set; }
 
 }

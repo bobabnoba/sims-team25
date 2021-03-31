@@ -4,12 +4,11 @@
  * Purpose: Definition of the Class TipProstorije
  ***********************************************************************/
 
-using System;
 
 
-   public enum TipProstorijeEnum 
-   {
-   OperacionaSala,
-   Soba,
-   Ordinacija
-   }
+public enum TipProstorijeEnum
+{
+    OperacionaSala,
+    Soba,
+    Ordinacija
+}

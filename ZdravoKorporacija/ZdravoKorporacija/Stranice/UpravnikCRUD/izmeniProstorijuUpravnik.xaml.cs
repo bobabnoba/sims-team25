@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.UpravnikCRUD
@@ -28,9 +19,9 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
             this.prostorije = pr;
             this.prostorijaIzmenjena = p;
 
-            textBoxIzmenaId.Text = "" + p.Id;
             textBoxIzmenaNaziv.Text = p.Naziv;
-            if (p.Tip == TipProstorijeEnum.OperacionaSala) {
+            if (p.Tip == TipProstorijeEnum.OperacionaSala)
+            {
                 comboBoxIzmenaTip.SelectedIndex = 0;
             }
             else if (p.Tip == TipProstorijeEnum.Soba)
@@ -51,8 +42,6 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
 
         private void potvrdi(object sender, RoutedEventArgs e)
         {
-            prostorije.Remove(prostorijaIzmenjena);
-            int id = int.Parse(textBoxIzmenaId.Text);
             string ime = textBoxIzmenaNaziv.Text;
             bool zauzeta;
             TipProstorijeEnum tip;
@@ -75,11 +64,12 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
             {
                 zauzeta = false;
             }
-            Prostorija prostorija = new Prostorija(id, ime, tip, zauzeta, sprat);
+            Prostorija prostorija = new Prostorija(prostorijaIzmenjena.Id, ime, tip, zauzeta, sprat);
             if (storage.AzurirajProstoriju(prostorija))
             {
+                prostorije.Remove(prostorijaIzmenjena);
                 this.prostorije.Add(prostorija);
-             
+
             }
             this.Close();
         }

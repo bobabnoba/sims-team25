@@ -1,15 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
@@ -23,6 +16,8 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private ProstorijaFileStorage prostorijeStorage = new ProstorijaFileStorage();
         private DatotekaPacijentJSON pacijentiDat = new DatotekaPacijentJSON();
         private List<Pacijent> pacijenti = new List<Pacijent>();
+        private DatotekaLekarJSON lekariDat = new DatotekaLekarJSON();
+        private List<Lekar> lekari = new List<Lekar>();
         private List<Prostorija> prostorije = new List<Prostorija>();
         private Termin p;
         private Termin s; // selektovani, za ukloniti
@@ -36,6 +31,9 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             cbPacijent.ItemsSource = pacijenti;
             pregledi = termini;
 
+            lekari = lekariDat.CitanjeIzFajla();
+            Lekari.ItemsSource = lekari;
+
             //Termin ne vidi pacijenta ni doktora -- cb nemaju selected item
 
             date.SelectedDate = selektovani.Pocetak;
@@ -45,6 +43,10 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             cbProstorija.ItemsSource = prostorije;
             foreach (Prostorija p in prostorije)
             {
+                if(selektovani.prostorija == null)
+                {
+                    break;
+                }
                 if (p.Id == selektovani.prostorija.Id)
                 {
                     cbProstorija.SelectedItem = p;
@@ -106,5 +108,9 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
         }
 
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

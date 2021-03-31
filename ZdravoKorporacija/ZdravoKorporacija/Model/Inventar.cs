@@ -17,10 +17,10 @@ public class Inventar
         DatumNabavke = datumNabavke;
     }
 
-    public int Id {get; set;}
-   public String Naziv {get; set;}
-   public int Kolicina {get; set;}
-   public String Proizvodjac {get; set;}
-   public DateTime DatumNabavke {get; set;}
+    public int Id { get; set; }
+    public String Naziv { get; set; }
+    public int Kolicina { get; set; }
+    public String Proizvodjac { get; set; }
+    public DateTime DatumNabavke { get; set; }
 
 }

@@ -4,13 +4,12 @@
  * Purpose: Definition of the Class Otpust
  ***********************************************************************/
 
-using System;
 
 
-   public enum OtpustEnum
-   {
-   OtpustKuci,
-   PremestajUDruguUstanovu,
-   OtpusutenNaSopstveniZahtev,
-   Umro
-   }
+public enum OtpustEnum
+{
+    OtpustKuci,
+    PremestajUDruguUstanovu,
+    OtpusutenNaSopstveniZahtev,
+    Umro
+}

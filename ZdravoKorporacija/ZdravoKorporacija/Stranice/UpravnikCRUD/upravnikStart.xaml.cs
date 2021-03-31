@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.UpravnikCRUD
@@ -18,7 +8,7 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
     /// <summary>
     /// Interaction logic for upravnikStart.xaml
     /// </summary>
-    public partial class upravnikStart : Page
+    public partial class upravnikStart : Window
     {
         private ObservableCollection<Prostorija> prostorije = new ObservableCollection<Prostorija>();
         public upravnikStart()
@@ -34,17 +24,31 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
             dodajProstorijuUpravnik dp = new dodajProstorijuUpravnik(prostorije);
             dp.Show();
         }
-       
+
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            izbrisiProstorijuUpravnik ip = new izbrisiProstorijuUpravnik(prostorije, (Prostorija)dgUsers.SelectedItem);
-            ip.Show();
+            if (dgUsers.SelectedItem == null)
+                MessageBox.Show("Niste selektovali red", "Greska");
+            else
+            {
+                izbrisiProstorijuUpravnik ip = new izbrisiProstorijuUpravnik(prostorije, (Prostorija)dgUsers.SelectedItem);
+                ip.Show();
+            }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            izmeniProstorijuUpravnik ip = new izmeniProstorijuUpravnik(prostorije, (Prostorija)dgUsers.SelectedItem);
-            ip.Show();
+            if (dgUsers.SelectedItem == null)
+                MessageBox.Show("Niste selektovali red","Greska");
+            else
+            {
+                izmeniProstorijuUpravnik ip = new izmeniProstorijuUpravnik(prostorije, (Prostorija)dgUsers.SelectedItem);
+                ip.Show();
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

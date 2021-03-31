@@ -4,14 +4,13 @@
  * Purpose: Definition of the Class Scepijalizacija
  ***********************************************************************/
 
-using System;
 
 
-   public enum SpecijalizacijaEnum
-   {
+public enum SpecijalizacijaEnum
+{
     Oftamolog,
     Stomatolog,
     Kardiohirurg,
     Otorinolaringolog,
     Neurolog
-   }
+}

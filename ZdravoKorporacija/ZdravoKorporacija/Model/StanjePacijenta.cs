@@ -3,11 +3,11 @@
 // Created: Wednesday, March 24, 2021 12:51:47 AM
 // Purpose: Definition of Enum PatientCondition
 
-using System;
 
 
-   public enum StanjePacijentaEnum{
-   Stabilno,
-   Kriticno,
-   Stacionarno
-   }
+public enum StanjePacijentaEnum
+{
+    Stabilno,
+    Kriticno,
+    Stacionarno
+}

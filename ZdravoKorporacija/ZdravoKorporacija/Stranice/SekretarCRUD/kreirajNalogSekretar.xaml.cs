@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.SekretarCRUD
@@ -29,8 +20,8 @@ namespace ZdravoKorporacija.Stranice.SekretarCRUD
         {
             InitializeComponent();
             pacijenti = nalozi;
-            
-            
+
+
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -63,7 +54,7 @@ namespace ZdravoKorporacija.Stranice.SekretarCRUD
                 pol = PolEnum.Zenski;
             }
 
-            Pacijent nalog = new Pacijent( ime, prezime, jmbg, br, mejl, "", pol, username, password, UlogaEnum.Pacijent);
+            Pacijent nalog = new Pacijent(ime, prezime, jmbg, br, mejl, "", pol, username, password, UlogaEnum.Pacijent);
 
             if (storage.KreirajNalogPacijentu(nalog))
             {

@@ -4,7 +4,6 @@
 // Purpose: Definition of Class Appointment
 
 using System;
-using System.Collections;
 
 public class Termin
 {
@@ -121,8 +120,8 @@ public class Termin
             }
         }
     }
-    public Prostorija prostorija;
-    public Lekar Lekar { get; set;  }
+    public Prostorija prostorija { get; set; }
+    public Lekar Lekar { get; set; }
 
     /// <pdGenerated>default parent getter</pdGenerated>
     public Lekar GetLekar()
@@ -149,9 +148,9 @@ public class Termin
             }
         }
     }
-   public int Id { get; set; }
-   public TipTerminaEnum Tip {get; set;}
-   public DateTime Pocetak {get; set;}
-   public double Trajanje {get; set;}
+    public int Id { get; set; }
+    public TipTerminaEnum Tip { get; set; }
+    public DateTime Pocetak { get; set; }
+    public double Trajanje { get; set; }
 
 }

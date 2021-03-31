@@ -43,16 +43,16 @@ public class Pacijent : Korisnik
     public System.Collections.ArrayList termin;
 
 
-    public Pacijent(String Ime,String Prezime):base(Ime,Prezime)
+    public Pacijent(String Ime, String Prezime) : base(Ime, Prezime)
     {
-    
+
     }
 
     public Pacijent(string ime, string prezime, Int64 jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password, UlogaEnum uloga) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password, uloga)
     {
     }
 
-    
+
 
     /// <pdGenerated>default getter</pdGenerated>
     public System.Collections.ArrayList GetTermin()
@@ -87,10 +87,11 @@ public class Pacijent : Korisnik
         if (oldTermin == null)
             return;
         if (this.termin != null)
-            if (this.termin.Contains(oldTermin))
+            {
                 this.termin.Remove(oldTermin);
+                System.Diagnostics.Debug.WriteLine("Izbrisalo");
+            }
     }
-
     /// <pdGenerated>default removeAll</pdGenerated>
     public void RemoveAllTermin()
     {
@@ -99,6 +100,6 @@ public class Pacijent : Korisnik
     }
     public ZdravstveniKarton ZdravstveniKarton { get; set; }
 
-    public bool Guest {get; set;}
-   
+    public bool Guest { get; set; }
+
 }

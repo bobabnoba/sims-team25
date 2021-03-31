@@ -4,12 +4,11 @@
  * Purpose: Definition of the Class Uloga
  ***********************************************************************/
 
-using System;
 
-    public enum UlogaEnum
-    {
-        Lekar,
-        Sekretar,
-        Upravnik,
-        Pacijent
-    }
+public enum UlogaEnum
+{
+    Lekar,
+    Sekretar,
+    Upravnik,
+    Pacijent
+}

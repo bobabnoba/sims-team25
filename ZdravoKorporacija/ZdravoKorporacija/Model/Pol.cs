@@ -4,11 +4,10 @@
  * Purpose: Definition of the Class Pol
  ***********************************************************************/
 
-using System;
 
 
-    public enum PolEnum 
-    { 
-        Muski,
-        Zenski
-    }
+public enum PolEnum
+{
+    Muski,
+    Zenski
+}

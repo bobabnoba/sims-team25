@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Collections;
+﻿using System.Collections.Generic;
 
 namespace ZdravoKorporacija.Model
 {
@@ -17,7 +14,7 @@ namespace ZdravoKorporacija.Model
             {
                 if (t.Id.Equals(termin.Id))
                 {
-                   // return false;
+                    // return false;
                 }
             }
             termini.Add(termin);

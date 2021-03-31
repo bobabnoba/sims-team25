@@ -1,15 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.SekretarCRUD
@@ -26,12 +16,12 @@ namespace ZdravoKorporacija.Stranice.SekretarCRUD
         private DatotekaPacijentJSON dat = new DatotekaPacijentJSON();
         private ObservableCollection<Pacijent> pacijenti;
         private Pacijent p1;
-        
+
         public izmeniNalogSekretar(Pacijent izabrani, ObservableCollection<Pacijent> nalozi)
         {
             InitializeComponent();
             p1 = izabrani;
-            
+
             pacijenti = nalozi;
             tbime.Text = izabrani.Ime;
             tbprezime.Text = izabrani.Prezime;
@@ -57,7 +47,7 @@ namespace ZdravoKorporacija.Stranice.SekretarCRUD
             this.pacijenti.Remove(p1);
             string ime = tbime.Text;
             string prezime = tbprezime.Text;
-            long  jmbg = long.Parse(tbjmbg.Text);
+            long jmbg = long.Parse(tbjmbg.Text);
             int br = int.Parse(tbbr.Text);
             string mejl = tbmejl.Text;
             string username = tbuser.Text;

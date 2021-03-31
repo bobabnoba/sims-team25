@@ -13,7 +13,7 @@
     <Compile Update="Stranice\LekarCRUD\lekarStart.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Stranice\LekarCRUD\oktaziPregledLekar.xaml.cs">
+    <Compile Update="Stranice\LekarCRUD\otkaziPregledLekar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Stranice\LekarCRUD\zakaziPregledLekar.xaml.cs">
@@ -69,7 +69,7 @@
     <Page Update="Stranice\LekarCRUD\lekarStart.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Stranice\LekarCRUD\oktaziPregledLekar.xaml">
+    <Page Update="Stranice\LekarCRUD\otkaziPregledLekar.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\LekarCRUD\zakaziPregledLekar.xaml">

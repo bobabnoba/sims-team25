@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Collections;
+﻿using System.Collections.Generic;
 
 namespace ZdravoKorporacija.Model
 {
@@ -42,6 +39,7 @@ namespace ZdravoKorporacija.Model
 
         public bool AzurirajPacijenta(Pacijent pacijent)
         {
+            System.Diagnostics.Debug.WriteLine("Azuriralo");
             DatotekaPacijentJSON datoteka = new DatotekaPacijentJSON();
             List<Pacijent> pacijenti = datoteka.CitanjeIzFajla();
             foreach (Pacijent p in pacijenti)

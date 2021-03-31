@@ -1,15 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
@@ -22,6 +15,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private TerminFileStorage storage = new TerminFileStorage();
         private ProstorijaFileStorage prostorijeStorage = new ProstorijaFileStorage();
         private DatotekaPacijentJSON pacijentiDat = new DatotekaPacijentJSON();
+        private PacijentFileStorage pacijentiStorage = new PacijentFileStorage();
         private List<Pacijent> pacijenti = new List<Pacijent>();
         private List<Prostorija> prostorije = new List<Prostorija>();
         private Termin p;
@@ -44,6 +38,17 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
         private void potvrdi(object sender, RoutedEventArgs e)
         {
+            Pacijent pac = (Pacijent)cbPacijent.SelectedItem;
+            ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
+            String d = date.Text;
+            String t = null;
+            if (cboItem != null)
+            {
+
+                t = cboItem.Content.ToString();
+
+            }
+            p.Pocetak = DateTime.Parse(d + " " + t);
 
             if (cbTip.SelectedIndex == 0)
             {
@@ -60,25 +65,19 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             {
                 this.pregledi.Add(p);
             }
+            pac.AddTermin(p);
+            pacijentiStorage.AzurirajPacijenta(pac);
             this.Close();
         }
 
         private void odustani(object sender, RoutedEventArgs e)
         {
             this.Close();
-
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
-            if (cboItem != null)
-            {
-                String t = cboItem.Content.ToString();
-                String d = date.Text;
-                p.Pocetak = DateTime.Parse(d + " " + t);
 
-            }
 
         }
     }

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace ZdravoKorporacija.Model
 {
@@ -10,8 +8,10 @@ namespace ZdravoKorporacija.Model
         {
             DatotekaProstorijaJSON datoteka = new DatotekaProstorijaJSON();
             List<Prostorija> prostorije = datoteka.CitanjeIzFajla();
-            foreach (Prostorija pr in prostorije) {
-                if (pr.Id.Equals(prostorija.Id)) {
+            foreach (Prostorija pr in prostorije)
+            {
+                if (pr.Id.Equals(prostorija.Id))
+                {
                     return false;
                 }
             }
@@ -68,7 +68,8 @@ namespace ZdravoKorporacija.Model
             return null;
         }
 
-        public List<Prostorija> PregledSvihProstorija() {
+        public List<Prostorija> PregledSvihProstorija()
+        {
             DatotekaProstorijaJSON datoteka = new DatotekaProstorijaJSON();
             List<Prostorija> prostorije = datoteka.CitanjeIzFajla();
             return prostorije;

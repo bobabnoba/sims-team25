@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -32,7 +31,7 @@ namespace ZdravoKorporacija.Model
                 string jsonText = File.ReadAllText(lokacija);
                 if (!string.IsNullOrEmpty(jsonText))
                 {
-                   prostorije = JsonConvert.DeserializeObject<List<Prostorija>>(jsonText);
+                    prostorije = JsonConvert.DeserializeObject<List<Prostorija>>(jsonText);
                 }
             }
             return prostorije;
