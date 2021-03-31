@@ -81,7 +81,7 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <TextBlock Text="Ordinacija:" TextWrapping="Wrap" Margin="52,11,235,0" Grid.Row="3" Grid.ColumnSpan="2"/>
+        <TextBlock Text="Prostorija:" TextWrapping="Wrap" Margin="52,11,235,0" Grid.Row="3" Grid.ColumnSpan="2"/>
         <ComboBox Name="cbProstorija" Grid.Column="1" Margin="58,8,77,36" Grid.Row="3" Height="26">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
