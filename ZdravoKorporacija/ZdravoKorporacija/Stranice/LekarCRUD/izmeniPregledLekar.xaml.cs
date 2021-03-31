@@ -52,6 +52,13 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                     cbProstorija.SelectedItem = p;
                 }
             }
+/* foreach (Lekar l in lekari)
+            {
+                if (l.Jmbg == selektovani.Lekar.Jmbg)
+                {
+                    Lekari.SelectedItem = l;
+                }
+            }*/
 
             if (s.Tip == TipTerminaEnum.Pregled)
             {
@@ -64,7 +71,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
 
             p.Trajanje = 0.5;
-            p.Id = pregledi.Count + 1;
+            p.Id = s.Id;
         }
 
         private void odustani(object sender, RoutedEventArgs e)
@@ -74,6 +81,16 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
         private void potvrdi(object sender, RoutedEventArgs e)
         {
+            ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
+            String t = null;
+            String d = date.Text;
+            if (cboItem != null)
+            {
+
+                t = cboItem.Content.ToString();
+
+            }
+            p.Pocetak = DateTime.Parse(d + " " + t);
             if (cbTip.SelectedIndex == 0)
             {
                 p.Tip = TipTerminaEnum.Pregled;
@@ -92,20 +109,12 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 this.pregledi.Add(p);
             }
             this.Close();
-            this.Close();
 
         }
 
         private void time_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
-            if (cboItem != null)
-            {
-                String t = cboItem.Content.ToString();
-                String d = date.Text;
-                p.Pocetak = DateTime.Parse(d + " " + t);
-
-            }
+           
 
         }
 

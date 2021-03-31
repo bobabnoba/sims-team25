@@ -4,64 +4,6 @@
     "zdravstveniKarton": null,
     "prostorija": null,
     "Lekar": {
-      "termin": [
-        {
-          "izvestaj": [],
-          "Tip": 0,
-          "Pocetak": "2020-05-01T08:30:52",
-          "Trajanje": 90.0
-        }
-      ],
-      "Ime": "Veljko",
-      "Prezime": "Vukovic",
-      "Jmbg": 2334567890213,
-      "BrojTelefona": 66393345,
-      "Mejl": "vuksivuk@gmail.com",
-      "AdresaStanovanja": "Beograd",
-      "Pol": 0,
-      "Username": "veksi",
-      "Password": "vukovic",
-      "Uloga": 0
-    },
-    "Id": 2,
-    "Tip": 0,
-    "Pocetak": "2021-04-02T18:00:00",
-    "Trajanje": 0.5
-  },
-  {
-    "izvestaj": null,
-    "zdravstveniKarton": null,
-    "prostorija": null,
-    "Lekar": {
-      "termin": [
-        {
-          "izvestaj": [],
-          "Tip": 0,
-          "Pocetak": "2020-05-01T08:30:52",
-          "Trajanje": 90.0
-        }
-      ],
-      "Ime": "Veljko",
-      "Prezime": "Vukovic",
-      "Jmbg": 2334567890213,
-      "BrojTelefona": 66393345,
-      "Mejl": "vuksivuk@gmail.com",
-      "AdresaStanovanja": "Beograd",
-      "Pol": 0,
-      "Username": "veksi",
-      "Password": "vukovic",
-      "Uloga": 0
-    },
-    "Id": 1,
-    "Tip": 0,
-    "Pocetak": "2021-03-05T11:00:00",
-    "Trajanje": 0.5
-  },
-  {
-    "izvestaj": null,
-    "zdravstveniKarton": null,
-    "prostorija": null,
-    "Lekar": {
       "termin": null,
       "Ime": "Milos",
       "Prezime": "Zivic",
@@ -128,6 +70,40 @@
       "Uloga": 0
     },
     "Id": 5,
+    "Tip": 0,
+    "Pocetak": "2021-04-01T11:00:00",
+    "Trajanje": 0.5
+  },
+  {
+    "izvestaj": null,
+    "zdravstveniKarton": null,
+    "prostorija": {
+      "inventar": [],
+      "Id": 111,
+      "Naziv": "soba11",
+      "Tip": 2,
+      "Slobodna": true,
+      "Sprat": 0
+    },
+    "Lekar": null,
+    "Id": 6,
+    "Tip": 1,
+    "Pocetak": "2020-04-01T11:00:00",
+    "Trajanje": 0.5
+  },
+  {
+    "izvestaj": null,
+    "zdravstveniKarton": null,
+    "prostorija": {
+      "inventar": [],
+      "Id": 111,
+      "Naziv": "soba11",
+      "Tip": 2,
+      "Slobodna": true,
+      "Sprat": 0
+    },
+    "Lekar": null,
+    "Id": 6,
     "Tip": 0,
     "Pocetak": "2021-04-01T11:00:00",
     "Trajanje": 0.5
