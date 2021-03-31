@@ -21,9 +21,9 @@
             <ColumnDefinition Width="59*"/>
             <ColumnDefinition Width="141*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Datum i vreme:" TextWrapping="Wrap" Margin="33,24,0,22" Grid.Row="1"/>
-        <DatePicker Name ="date" Grid.Column="1" HorizontalAlignment="Left" Margin="35,24,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="1.156,1.209" Height="24"/>
-        <ComboBox Name ="time" SelectedValuePath="Content" Grid.Column="1" Margin="156,24,80,20" Grid.Row="1" SelectionChanged="time_SelectionChanged" Height="24">
+        <TextBlock Text="Datum i vreme:" TextWrapping="Wrap" Margin="33,27,0,19" Grid.Row="1"/>
+        <DatePicker Name ="date" Grid.Column="1" HorizontalAlignment="Left" Margin="35,24,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="1.156,1.209" Height="28"/>
+        <ComboBox Name ="time" SelectedValuePath="Content" Grid.Column="1" Margin="157,24,77,16" Grid.Row="1" SelectionChanged="time_SelectionChanged" Height="28" Width="60">
             <ComboBoxItem>08:00</ComboBoxItem>
             <ComboBoxItem>08:30</ComboBoxItem>
             <ComboBoxItem>09:00</ComboBoxItem>
@@ -52,7 +52,7 @@
         <Button Content="POTVRDI" HorizontalAlignment="Left" Margin="72,35,0,0" Grid.Row="5" VerticalAlignment="Top" Width="80" Grid.ColumnSpan="2" Click="potvrdi"/>
         <Button Content="ODUSTANI" HorizontalAlignment="Left" Margin="70,35,0,0" Grid.Row="5" VerticalAlignment="Top" Width="80" Grid.Column="1" Click="odustani"/>
         <TextBlock Text="Pacijent:" TextWrapping="Wrap" Margin="52,10,235,1" Grid.Row="4" Grid.ColumnSpan="2"/>
-        <ComboBox Name="cbPacijent" Grid.Column="1" Margin="58,10,77,34" Grid.Row="4" Height="24" >
+        <ComboBox Name="cbPacijent" Grid.Column="1" Margin="58,10,77,34" Grid.Row="4" Height="26" >
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
@@ -67,7 +67,7 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
         <TextBlock Text="Lekar:" TextWrapping="Wrap" Margin="53,44,234,35" Grid.Row="3" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
-        <ComboBox Name="Lekari" Grid.Column="1" Margin="58,44,77,0" Grid.Row="3" SelectionChanged="ComboBox_SelectionChanged" Height="24">
+        <ComboBox Name="Lekari" Grid.Column="1" Margin="58,44,77,0" Grid.Row="3" SelectionChanged="ComboBox_SelectionChanged" Height="26">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
@@ -82,7 +82,7 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
         <TextBlock Text="Ordinacija:" TextWrapping="Wrap" Margin="52,11,235,0" Grid.Row="3" Grid.ColumnSpan="2"/>
-        <ComboBox Name="cbProstorija" Grid.Column="1" Margin="58,8,77,36" Grid.Row="3" Height="24">
+        <ComboBox Name="cbProstorija" Grid.Column="1" Margin="58,8,77,36" Grid.Row="3" Height="26">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
@@ -96,8 +96,8 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <TextBlock Text="Tip:" TextWrapping="Wrap" Margin="52,39,235,40" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
-        <ComboBox Name="cbTip" Grid.Column="1" Margin="58,36,77,8" Grid.Row="2" Height="24">
+        <TextBlock Text="Tip:" TextWrapping="Wrap" Margin="53,40,235,10" Grid.Row="2" Grid.ColumnSpan="2"/>
+        <ComboBox Name="cbTip" Grid.Column="1" Margin="58,36,77,8" Grid.Row="2" Height="26">
             <ComboBoxItem>Pregled</ComboBoxItem>
             <ComboBoxItem>Operacija</ComboBoxItem>
         </ComboBox>

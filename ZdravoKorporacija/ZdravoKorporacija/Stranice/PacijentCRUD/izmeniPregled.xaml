@@ -22,8 +22,8 @@
             <ColumnDefinition Width="141*"/>
         </Grid.ColumnDefinitions>
         <TextBlock  Text="Datum i vreme:" TextWrapping="Wrap" Margin="33,24,0,22" Grid.Row="1"/>
-        <DatePicker Name="date" Grid.Column="1" HorizontalAlignment="Left" Margin="39,0,0,0" Grid.Row="1" VerticalAlignment="Center"/>
-        <ComboBox Name ="time" SelectedValuePath="Content" Grid.Column="1" Margin="167,24,77,24" Grid.Row="1" RenderTransformOrigin="0.507,0.18" SelectionChanged="ComboBox_SelectionChanged" Height="24" Width="50">
+        <DatePicker Name="date" Grid.Column="1" HorizontalAlignment="Left" Margin="39,20,0,0" Grid.Row="1" VerticalAlignment="Top" Height="28"/>
+        <ComboBox Name ="time" SelectedValuePath="Content" Grid.Column="1" Margin="168,20,76,24" Grid.Row="1" RenderTransformOrigin="0.507,0.18" SelectionChanged="ComboBox_SelectionChanged" Height="28" Width="60">
             <ComboBoxItem>08:00</ComboBoxItem>
             <ComboBoxItem>08:30</ComboBoxItem>
             <ComboBoxItem>09:00</ComboBoxItem>
@@ -50,7 +50,7 @@
             <ComboBoxItem>19:30</ComboBoxItem>
         </ComboBox>
         <TextBlock Text="Lekar:" TextWrapping="Wrap" Margin="33,36,0,10" Grid.Row="2"/>
-        <ComboBox Name ="ljekar"  Grid.Column="1" Margin="40,33,76,15" Grid.Row="2" Height="24">
+        <ComboBox Name ="ljekar"  Grid.Column="1" Margin="40,33,76,15" Grid.Row="2" Height="28">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
@@ -66,7 +66,7 @@
         </ComboBox>
         <Button Content="POTVRDI" HorizontalAlignment="Left" Margin="0,53,0,0" Grid.Row="4" VerticalAlignment="Top" Width="80" Grid.Column="1" Grid.RowSpan="2" Click="potvrdi"/>
         <Button Content="ODUSTANI" HorizontalAlignment="Left" Margin="112,53,0,0" Grid.Row="4" VerticalAlignment="Top" Width="80" Grid.Column="1" Grid.RowSpan="2" Click="odustani"/>
-     
+
 
 
     </Grid>

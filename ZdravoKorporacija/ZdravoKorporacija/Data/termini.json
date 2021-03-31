@@ -95,22 +95,5 @@
     "Tip": 0,
     "Pocetak": "2021-03-05T08:30:00",
     "Trajanje": 0.5
-  },
-  {
-    "izvestaj": null,
-    "zdravstveniKarton": null,
-    "prostorija": {
-      "inventar": [],
-      "Id": 1,
-      "Naziv": "soba za pregled",
-      "Tip": 1,
-      "Slobodna": false,
-      "Sprat": 2
-    },
-    "Lekar": null,
-    "Id": 5,
-    "Tip": 1,
-    "Pocetak": "2021-03-13T09:00:00",
-    "Trajanje": 0.5
   }
 ]

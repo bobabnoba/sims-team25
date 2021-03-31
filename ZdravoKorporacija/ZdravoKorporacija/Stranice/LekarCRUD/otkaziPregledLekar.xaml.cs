@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Collections.ObjectModel;
+using System.Windows;
+using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
 {
@@ -7,13 +9,20 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     /// </summary>
     public partial class oktaziPregledLekar : Window
     {
-        public oktaziPregledLekar()
+        private TerminFileStorage storage = new TerminFileStorage();
+        private ObservableCollection<Termin> termini;
+        Termin termin;
+        public oktaziPregledLekar(ObservableCollection<Termin> ts, Termin t)
         {
             InitializeComponent();
+            termini = ts;
+            termin = t;
         }
 
         private void da(object sender, RoutedEventArgs e)
         {
+            storage.OtkaziTermin(termin);
+            termini.Remove(termin);
             this.Close();
 
         }

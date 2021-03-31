@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Model;
+using ZdravoKorporacija.Stranice.PacijentCRUD;
 
 namespace ZdravoKorporacija.Stranice
 {
@@ -49,7 +50,7 @@ namespace ZdravoKorporacija.Stranice
 
         private void otkaziPregled(object sender, RoutedEventArgs e)
         {
-            if (dgUsers.SelectedItem == null)
+          /*  if (dgUsers.SelectedItem == null)
                 MessageBox.Show("Niste selektovali red", "Greska");
             else
             {
@@ -64,10 +65,10 @@ namespace ZdravoKorporacija.Stranice
                         termini.Remove((Termin)dgUsers.SelectedItem);
                     }
                 }
-            }
+            }*/
 
-            //otkaziPregled op = new otkaziPregled();
-            //   op.Show();
+            otkaziPregled op = new otkaziPregled(termini, (Termin)dgUsers.SelectedItem);
+            op.Show();
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

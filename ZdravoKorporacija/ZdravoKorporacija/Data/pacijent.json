@@ -4,21 +4,6 @@
     "ZdravstveniKarton": null,
     "Guest": false,
     "Ime": "Dusan",
-    "Prezime": "Markovic",
-    "Jmbg": 1234567890123,
-    "BrojTelefona": 69000333,
-    "Mejl": "dusanmarkovic@gmail.com",
-    "AdresaStanovanja": "Smederevska tvrdjava",
-    "Pol": 0,
-    "Username": "dukikidu",
-    "Password": "markovic99",
-    "Uloga": 3
-  },
-  {
-    "termin": null,
-    "ZdravstveniKarton": null,
-    "Guest": false,
-    "Ime": "Dusan",
     "Prezime": "Lekic",
     "Jmbg": 3214567890122,
     "BrojTelefona": 66333999,
@@ -93,6 +78,39 @@
     "Pol": 0,
     "Username": "asdad1",
     "Password": "aasdsd2",
+    "Uloga": 3
+  },
+  {
+    "termin": [
+      {
+        "izvestaj": null,
+        "zdravstveniKarton": null,
+        "prostorija": {
+          "inventar": [],
+          "Id": 111,
+          "Naziv": "soba11",
+          "Tip": 2,
+          "Slobodna": true,
+          "Sprat": 0
+        },
+        "Lekar": null,
+        "Id": 6,
+        "Tip": 1,
+        "Pocetak": "2021-03-27T09:00:00",
+        "Trajanje": 0.5
+      }
+    ],
+    "ZdravstveniKarton": null,
+    "Guest": false,
+    "Ime": "Dusan",
+    "Prezime": "Markovic",
+    "Jmbg": 1234567890123,
+    "BrojTelefona": 69000333,
+    "Mejl": "dusanmarkovic@gmail.com",
+    "AdresaStanovanja": "Smederevska tvrdjava",
+    "Pol": 0,
+    "Username": "dukikidu",
+    "Password": "markovic99",
     "Uloga": 3
   }
 ]
