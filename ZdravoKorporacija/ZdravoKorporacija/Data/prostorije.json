@@ -1,42 +1,66 @@
 [
   {
     "inventar": [],
-    "Id": 1,
-    "Naziv": "soba za pregled",
+    "Id": 4,
+    "Naziv": "fsdfdsfdsf",
     "Tip": 1,
     "Slobodna": false,
     "Sprat": 2
   },
   {
     "inventar": [],
-    "Id": 4,
-    "Naziv": "soba76",
-    "Tip": 2,
+    "Id": 5,
+    "Naziv": "dfdsfsdfdsfds",
+    "Tip": 1,
     "Slobodna": false,
-    "Sprat": -1
+    "Sprat": 1
   },
   {
     "inventar": [],
-    "Id": 111,
-    "Naziv": "soba11",
-    "Tip": 2,
-    "Slobodna": true,
-    "Sprat": 0
+    "Id": 6,
+    "Naziv": "sdfdsfdsfsdf",
+    "Tip": 1,
+    "Slobodna": false,
+    "Sprat": 1
   },
   {
     "inventar": [],
-    "Id": 23,
-    "Naziv": "fa",
+    "Id": 0,
+    "Naziv": "fddsfsd",
+    "Tip": 1,
+    "Slobodna": false,
+    "Sprat": 1
+  },
+  {
+    "inventar": [],
+    "Id": 1,
+    "Naziv": "fsdsfds",
     "Tip": 2,
     "Slobodna": false,
-    "Sprat": -1
+    "Sprat": 2
   },
   {
     "inventar": [],
     "Id": 2,
-    "Naziv": "soba za operaciju3",
+    "Naziv": "fdsfdsf",
     "Tip": 0,
     "Slobodna": false,
-    "Sprat": 3
+    "Sprat": 2
+  },
+  {
+    "inventar": [],
+    "Id": 7,
+    "Naziv": "dsfdsfsd",
+    "Tip": 1,
+    "Slobodna": false,
+    "Sprat": 0
+  },
+  {
+    "inventar": [],
+    "Id": 8,
+    "Naziv": "fdssdfdsf",
+    "Tip": 1,
+    "Slobodna": false,
+    "Sprat": 1
   }
 ]

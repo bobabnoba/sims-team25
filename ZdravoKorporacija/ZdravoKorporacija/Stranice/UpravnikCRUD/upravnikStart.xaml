@@ -16,6 +16,8 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
                 <DataGridTextColumn Header="Naziv" Binding="{Binding Naziv}" />
+                <DataGridTextColumn Header="Sprat" Binding="{Binding Sprat}" />
+                <DataGridTextColumn Header="Tip" Binding="{Binding Tip}" />
             </DataGrid.Columns>
             <!--<DataGrid.RowDetailsTemplate>
                 <DataTemplate>

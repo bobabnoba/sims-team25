@@ -35,15 +35,14 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
 
             comboBoxIzmenaSprat.SelectedIndex = p.Sprat;
 
-            if (p.Slobodna) { checkBoxIzmenaZauzeta.IsChecked = false; }
-            else { checkBoxIzmenaZauzeta.IsChecked = true; }
+          
 
         }
 
         private void potvrdi(object sender, RoutedEventArgs e)
         {
             string ime = textBoxIzmenaNaziv.Text;
-            bool zauzeta;
+            
             TipProstorijeEnum tip;
             int sprat;
             if (comboBoxIzmenaTip.SelectedIndex == 0)
@@ -59,12 +58,8 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
                 tip = TipProstorijeEnum.Ordinacija;
             }
             sprat = comboBoxIzmenaSprat.SelectedIndex;
-            if (checkBoxIzmenaZauzeta.IsChecked == true) { zauzeta = true; }
-            else
-            {
-                zauzeta = false;
-            }
-            Prostorija prostorija = new Prostorija(prostorijaIzmenjena.Id, ime, tip, zauzeta, sprat);
+            
+            Prostorija prostorija = new Prostorija(prostorijaIzmenjena.Id, ime, tip, false, sprat);
             if (storage.AzurirajProstoriju(prostorija))
             {
                 prostorije.Remove(prostorijaIzmenjena);

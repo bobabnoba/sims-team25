@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Model;
@@ -11,17 +12,27 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
     public partial class upravnikStart : Window
     {
         private ObservableCollection<Prostorija> prostorije = new ObservableCollection<Prostorija>();
+
+        Dictionary<int, int> ids = new Dictionary<int, int>();
+
         public upravnikStart()
         {
             InitializeComponent();
             DatotekaProstorijaJSON datoteka = new DatotekaProstorijaJSON();
             prostorije = new ObservableCollection<Prostorija>(datoteka.CitanjeIzFajla());
+            IDSerializer datotekaID = new IDSerializer("iDMapProstorija");
+            ids = datotekaID.CitanjeIzFajla();
             dgUsers.ItemsSource = prostorije;
+            // inicijalizacija
+            //for(int i = 0; i < 1000; i++)
+            //{
+            //ids[i] =0;
+            //}
         }
 
         private void dodaj(object sender, RoutedEventArgs e)
         {
-            dodajProstorijuUpravnik dp = new dodajProstorijuUpravnik(prostorije);
+            dodajProstorijuUpravnik dp = new dodajProstorijuUpravnik(prostorije, ids);
             dp.Show();
         }
 
@@ -31,7 +42,7 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
                 MessageBox.Show("Niste selektovali red", "Greska");
             else
             {
-                izbrisiProstorijuUpravnik ip = new izbrisiProstorijuUpravnik(prostorije, (Prostorija)dgUsers.SelectedItem);
+                izbrisiProstorijuUpravnik ip = new izbrisiProstorijuUpravnik(prostorije, (Prostorija)dgUsers.SelectedItem, ids);
                 ip.Show();
             }
         }

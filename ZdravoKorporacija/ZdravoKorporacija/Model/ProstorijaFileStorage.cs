@@ -4,10 +4,14 @@ namespace ZdravoKorporacija.Model
 {
     class ProstorijaFileStorage
     {
-        public bool DodajProstoriju(Prostorija prostorija)
+        public bool DodajProstoriju(Prostorija prostorija, Dictionary<int, int> id_map)
         {
             DatotekaProstorijaJSON datoteka = new DatotekaProstorijaJSON();
             List<Prostorija> prostorije = datoteka.CitanjeIzFajla();
+
+            IDSerializer datotekaID = new IDSerializer("iDMapProstorija");
+       
+
             foreach (Prostorija pr in prostorije)
             {
                 if (pr.Id.Equals(prostorija.Id))
@@ -17,13 +21,15 @@ namespace ZdravoKorporacija.Model
             }
             prostorije.Add(prostorija);
             datoteka.UpisivanjeUFajl(prostorije);
+            datotekaID.UpisivanjeUFajl(id_map);
             return true;
 
         }
 
-        public bool ObrisiProstoriju(Prostorija prostorija)
+        public bool ObrisiProstoriju(Prostorija prostorija, Dictionary<int, int> id_map)
         {
             DatotekaProstorijaJSON datoteka = new DatotekaProstorijaJSON();
+            IDSerializer datotekaID = new IDSerializer("iDMapProstorija");
             List<Prostorija> prostorije = datoteka.CitanjeIzFajla();
             foreach (Prostorija pr in prostorije)
             {
@@ -31,6 +37,7 @@ namespace ZdravoKorporacija.Model
                 {
                     prostorije.Remove(pr);
                     datoteka.UpisivanjeUFajl(prostorije);
+                    datotekaID.UpisivanjeUFajl(id_map);
                     return true;
                 }
             }

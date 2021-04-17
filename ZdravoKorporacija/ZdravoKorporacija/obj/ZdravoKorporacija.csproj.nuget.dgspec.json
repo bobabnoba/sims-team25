@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\Desktop\\zadnji\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\ZdravoKorporacija.csproj": {}
+    "C:\\Users\\papov\\Desktop\\git projekat\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\ZdravoKorporacija.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\Desktop\\zadnji\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\ZdravoKorporacija.csproj": {
+    "C:\\Users\\papov\\Desktop\\git projekat\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\ZdravoKorporacija.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\zadnji\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\ZdravoKorporacija.csproj",
+        "projectUniqueName": "C:\\Users\\papov\\Desktop\\git projekat\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\ZdravoKorporacija.csproj",
         "projectName": "ZdravoKorporacija",
-        "projectPath": "C:\\Users\\Admin\\Desktop\\zadnji\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\ZdravoKorporacija.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\Desktop\\zadnji\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\obj\\",
+        "projectPath": "C:\\Users\\papov\\Desktop\\git projekat\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\ZdravoKorporacija.csproj",
+        "packagesPath": "C:\\Users\\papov\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\papov\\Desktop\\git projekat\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\papov\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
