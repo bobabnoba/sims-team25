@@ -6,16 +6,16 @@ using System.Text;
 
 namespace ZdravoKorporacija.Model
 {
-    class IDSerializer
+    class IDRepozitorijum
     {
 
         private string lokacija;
-        public IDSerializer(string nazivID)
+        public IDRepozitorijum(string nazivID)
         {
             this.lokacija = @"..\..\..\Data\"+nazivID +".json";
         }
 
-    public void UpisivanjeUFajl(Dictionary<int, int> id_map)
+    public void sacuvaj(Dictionary<int, int> id_map)
     {
         JsonSerializer serializer = new JsonSerializer();
         serializer.Formatting = Formatting.Indented;
@@ -25,7 +25,7 @@ namespace ZdravoKorporacija.Model
         jWriter.Close();
         writer.Close();
     }
-    public Dictionary<int, int> CitanjeIzFajla()
+    public Dictionary<int, int> dobaviSve()
     {
         Dictionary<int, int> id_map = new Dictionary<int, int>();
         if (File.Exists(lokacija))

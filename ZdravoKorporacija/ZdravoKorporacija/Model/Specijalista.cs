@@ -5,14 +5,16 @@
  ***********************************************************************/
 
 using System;
-
-public class Specijalista : Lekar
+namespace Model
 {
-    public Specijalista(String Ime, String Prezime) : base(Ime, Prezime)
+    public class Specijalista : Lekar
     {
+        public Specijalista(String Ime, String Prezime) : base(Ime, Prezime)
+        {
+
+        }
+
+        private SpecijalizacijaEnum Specijalizacija { get; set; }
 
     }
-
-    private SpecijalizacijaEnum Specijalizacija { get; set; }
-
 }

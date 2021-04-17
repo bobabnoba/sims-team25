@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using Model;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Model;
@@ -14,8 +15,8 @@ namespace ZdravoKorporacija.Stranice.SekretarCRUD
         public sekretarStart()
         {
             InitializeComponent();
-            DatotekaPacijentJSON dat = new DatotekaPacijentJSON();
-            pacijenti = new ObservableCollection<Pacijent>(dat.CitanjeIzFajla());
+            PacijentRepozitorijum dat = new PacijentRepozitorijum();
+            pacijenti = new ObservableCollection<Pacijent>(dat.dobaviSve());
             dgUsers.ItemsSource = pacijenti;
         }
 

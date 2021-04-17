@@ -6,100 +6,104 @@
 using System;
 using System.Collections;
 
-public class Pacijent : Korisnik
+namespace Model
 {
-    public Pacijent() : base() { }
 
-    public Pacijent(ZdravstveniKarton zdravstveniKarton, bool guest, string ime, string prezime, int jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password, UlogaEnum uloga) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password, uloga)
+    public class Pacijent : Korisnik
     {
-        this.termin = new System.Collections.ArrayList();
-        ZdravstveniKarton = zdravstveniKarton;
-        Guest = guest;
-    }
+        public Pacijent() : base() { }
 
-    public Pregled ZakaziPregled()
-    {
-        // TODO: implement
-        return null;
-    }
-
-    public void AzurirajPregled(Termin pregled)
-    {
-        // TODO: implement
-    }
-
-    public bool OtkaziPregled(Termin pregled)
-    {
-        // TODO: implement
-        return false;
-    }
-
-    public ArrayList UvidUPreglede()
-    {
-        // TODO: implement
-        return null;
-    }
-
-    public System.Collections.ArrayList termin;
-
-
-    public Pacijent(String Ime, String Prezime) : base(Ime, Prezime)
-    {
-
-    }
-
-    public Pacijent(string ime, string prezime, Int64 jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password, UlogaEnum uloga) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password, uloga)
-    {
-    }
-
-
-
-    /// <pdGenerated>default getter</pdGenerated>
-    public System.Collections.ArrayList GetTermin()
-    {
-        if (termin == null)
-            termin = new System.Collections.ArrayList();
-        return termin;
-    }
-
-    /// <pdGenerated>default setter</pdGenerated>
-    public void SetTermin(System.Collections.ArrayList newTermin)
-    {
-        RemoveAllTermin();
-        foreach (Termin oTermin in newTermin)
-            AddTermin(oTermin);
-    }
-
-    /// <pdGenerated>default Add</pdGenerated>
-    public void AddTermin(Termin newTermin)
-    {
-        if (newTermin == null)
-            return;
-        if (this.termin == null)
+        public Pacijent(ZdravstveniKarton zdravstveniKarton, bool guest, string ime, string prezime, int jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password, UlogaEnum uloga) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password, uloga)
+        {
             this.termin = new System.Collections.ArrayList();
-        if (!this.termin.Contains(newTermin))
-            this.termin.Add(newTermin);
-    }
+            ZdravstveniKarton = zdravstveniKarton;
+            Guest = guest;
+        }
 
-    /// <pdGenerated>default Remove</pdGenerated>
-    public void RemoveTermin(Termin oldTermin)
-    {
-        if (oldTermin == null)
-            return;
-        if (this.termin != null)
+        public Pregled ZakaziPregled()
+        {
+            // TODO: implement
+            return null;
+        }
+
+        public void AzurirajPregled(Termin pregled)
+        {
+            // TODO: implement
+        }
+
+        public bool OtkaziPregled(Termin pregled)
+        {
+            // TODO: implement
+            return false;
+        }
+
+        public ArrayList UvidUPreglede()
+        {
+            // TODO: implement
+            return null;
+        }
+
+        public System.Collections.ArrayList termin;
+
+
+        public Pacijent(String Ime, String Prezime) : base(Ime, Prezime)
+        {
+
+        }
+
+        public Pacijent(string ime, string prezime, Int64 jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password, UlogaEnum uloga) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password, uloga)
+        {
+        }
+
+
+
+        /// <pdGenerated>default getter</pdGenerated>
+        public System.Collections.ArrayList GetTermin()
+        {
+            if (termin == null)
+                termin = new System.Collections.ArrayList();
+            return termin;
+        }
+
+        /// <pdGenerated>default setter</pdGenerated>
+        public void SetTermin(System.Collections.ArrayList newTermin)
+        {
+            RemoveAllTermin();
+            foreach (Termin oTermin in newTermin)
+                AddTermin(oTermin);
+        }
+
+        /// <pdGenerated>default Add</pdGenerated>
+        public void AddTermin(Termin newTermin)
+        {
+            if (newTermin == null)
+                return;
+            if (this.termin == null)
+                this.termin = new System.Collections.ArrayList();
+            if (!this.termin.Contains(newTermin))
+                this.termin.Add(newTermin);
+        }
+
+        /// <pdGenerated>default Remove</pdGenerated>
+        public void RemoveTermin(Termin oldTermin)
+        {
+            if (oldTermin == null)
+                return;
+            if (this.termin != null)
             {
                 this.termin.Remove(oldTermin);
                 System.Diagnostics.Debug.WriteLine("Izbrisalo");
             }
-    }
-    /// <pdGenerated>default removeAll</pdGenerated>
-    public void RemoveAllTermin()
-    {
-        if (termin != null)
-            termin.Clear();
-    }
-    public ZdravstveniKarton ZdravstveniKarton { get; set; }
+        }
+        /// <pdGenerated>default removeAll</pdGenerated>
+        public void RemoveAllTermin()
+        {
+            if (termin != null)
+                termin.Clear();
+        }
+        public ZdravstveniKarton ZdravstveniKarton { get; set; }
 
-    public bool Guest { get; set; }
+        public bool Guest { get; set; }
 
+    }
 }

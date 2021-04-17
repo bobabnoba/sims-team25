@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using Model;
+using System.Collections.ObjectModel;
 using System.Windows;
 using ZdravoKorporacija.Model;
 
@@ -9,7 +10,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     /// </summary>
     public partial class oktaziPregledLekar : Window
     {
-        private TerminFileStorage storage = new TerminFileStorage();
+        private TerminService storage = new TerminService();
         private ObservableCollection<Termin> termini;
         Termin termin;
         public oktaziPregledLekar(ObservableCollection<Termin> ts, Termin t)

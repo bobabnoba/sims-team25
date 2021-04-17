@@ -5,19 +5,22 @@
 
 using System;
 
-public class Lek
+namespace Model
 {
-    public Lek(string id, string proiazvodjac, string sastaojci, string nusPaojave)
+    public class Lek
     {
-        Id = id;
-        Proiazvodjac = proiazvodjac;
-        Sastaojci = sastaojci;
-        NusPaojave = nusPaojave;
+        public Lek(string id, string proiazvodjac, string sastaojci, string nusPaojave)
+        {
+            Id = id;
+            Proiazvodjac = proiazvodjac;
+            Sastaojci = sastaojci;
+            NusPaojave = nusPaojave;
+        }
+
+
+        public String Id { get; set; }
+        public String Proiazvodjac { get; set; }
+        public String Sastaojci { get; set; }
+        public String NusPaojave { get; set; }
     }
-
-
-    public String Id { get; set; }
-    public String Proiazvodjac { get; set; }
-    public String Sastaojci { get; set; }
-    public String NusPaojave { get; set; }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -12,8 +13,8 @@ namespace ZdravoKorporacija.Stranice
     /// </summary>
     public partial class zakaziPregled : Window
     {
-        private TerminFileStorage storage = new TerminFileStorage();
-        private DatotekaLekarJSON ljekariDat = new DatotekaLekarJSON();
+        private TerminService storage = new TerminService();
+        private LekarRepozitorijum ljekariDat = new LekarRepozitorijum();
         private List<Lekar> ljekari;
         private Termin p;
         private ObservableCollection<Termin> pregledi;
@@ -23,7 +24,7 @@ namespace ZdravoKorporacija.Stranice
         {
             InitializeComponent();
             p = new Termin();
-            ljekari = ljekariDat.CitanjeIzFajla();
+            ljekari = ljekariDat.dobaviSve();
             ljekar.ItemsSource = ljekari;
             pregledi = termini;
 

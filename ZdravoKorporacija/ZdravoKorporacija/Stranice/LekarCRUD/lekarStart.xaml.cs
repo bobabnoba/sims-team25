@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using Model;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Model;
@@ -10,9 +11,9 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     /// </summary>
     public partial class lekarStart : Window
     {
-        private TerminFileStorage storage = new TerminFileStorage();
+        private TerminService storage = new TerminService();
         private ObservableCollection<Termin> termini = new ObservableCollection<Termin>();
-        private PacijentFileStorage storagePacijent = new PacijentFileStorage();
+        private PacijentService storagePacijent = new PacijentService();
         private Pacijent pac = new Pacijent();
         public lekarStart()
         {

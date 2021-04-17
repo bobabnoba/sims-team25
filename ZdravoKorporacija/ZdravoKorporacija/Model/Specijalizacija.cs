@@ -4,13 +4,15 @@
  * Purpose: Definition of the Class Scepijalizacija
  ***********************************************************************/
 
-
-
-public enum SpecijalizacijaEnum
+namespace Model
 {
-    Oftamolog,
-    Stomatolog,
-    Kardiohirurg,
-    Otorinolaringolog,
-    Neurolog
+
+    public enum SpecijalizacijaEnum
+    {
+        Oftamolog,
+        Stomatolog,
+        Kardiohirurg,
+        Otorinolaringolog,
+        Neurolog
+    }
 }

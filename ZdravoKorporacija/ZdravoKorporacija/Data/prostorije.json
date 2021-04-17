@@ -1,66 +1,32 @@
 [
   {
     "inventar": [],
-    "Id": 4,
-    "Naziv": "fsdfdsfdsf",
-    "Tip": 1,
-    "Slobodna": false,
-    "Sprat": 2
-  },
-  {
-    "inventar": [],
-    "Id": 5,
-    "Naziv": "dfdsfsdfdsfds",
-    "Tip": 1,
-    "Slobodna": false,
-    "Sprat": 1
-  },
-  {
-    "inventar": [],
-    "Id": 6,
-    "Naziv": "sdfdsfdsfsdf",
-    "Tip": 1,
-    "Slobodna": false,
-    "Sprat": 1
-  },
-  {
-    "inventar": [],
+    "statickaOprema": null,
+    "dinamickaOprema": null,
     "Id": 0,
-    "Naziv": "fddsfsd",
-    "Tip": 1,
-    "Slobodna": false,
-    "Sprat": 1
-  },
-  {
-    "inventar": [],
-    "Id": 1,
-    "Naziv": "fsdsfds",
-    "Tip": 2,
-    "Slobodna": false,
-    "Sprat": 2
-  },
-  {
-    "inventar": [],
-    "Id": 2,
-    "Naziv": "fdsfdsf",
-    "Tip": 0,
-    "Slobodna": false,
-    "Sprat": 2
-  },
-  {
-    "inventar": [],
-    "Id": 7,
-    "Naziv": "dsfdsfsd",
+    "Naziv": "ytggh",
     "Tip": 1,
     "Slobodna": false,
     "Sprat": 0
   },
   {
     "inventar": [],
-    "Id": 8,
-    "Naziv": "fdssdfdsf",
+    "statickaOprema": null,
+    "dinamickaOprema": null,
+    "Id": 2,
+    "Naziv": "fghfghfghgf",
     "Tip": 1,
     "Slobodna": false,
-    "Sprat": 1
+    "Sprat": 2
+  },
+  {
+    "inventar": [],
+    "statickaOprema": null,
+    "dinamickaOprema": null,
+    "Id": 3,
+    "Naziv": "hfghfhhgrg",
+    "Tip": 1,
+    "Slobodna": false,
+    "Sprat": 2
   }
 ]

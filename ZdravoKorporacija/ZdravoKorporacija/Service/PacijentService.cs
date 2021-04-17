@@ -1,14 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using Model;
+using System.Collections.Generic;
 
 namespace ZdravoKorporacija.Model
 {
-    class PacijentFileStorage
+    class PacijentService
     {
 
         public bool KreirajNalogPacijentu(Pacijent pacijent)
         {
-            DatotekaPacijentJSON datoteka = new DatotekaPacijentJSON();
-            List<Pacijent> pacijenti = datoteka.CitanjeIzFajla();
+            PacijentRepozitorijum datoteka = new PacijentRepozitorijum();
+            List<Pacijent> pacijenti = datoteka.dobaviSve();
             foreach (Pacijent p in pacijenti)
             {
                 if (p.Jmbg.Equals(pacijent))
@@ -17,20 +18,20 @@ namespace ZdravoKorporacija.Model
                 }
             }
             pacijenti.Add(pacijent);
-            datoteka.UpisivanjeUFajl(pacijenti);
+            datoteka.sacuvaj(pacijenti);
             return true;
         }
 
         public bool ObrisiNalogPacijentu(Pacijent pacijent)
         {
-            DatotekaPacijentJSON datoteka = new DatotekaPacijentJSON();
-            List<Pacijent> pacijenti = datoteka.CitanjeIzFajla();
+            PacijentRepozitorijum datoteka = new PacijentRepozitorijum();
+            List<Pacijent> pacijenti = datoteka.dobaviSve();
             foreach (Pacijent p in pacijenti)
             {
                 if (p.Jmbg.Equals(pacijent.Jmbg))
                 {
                     pacijenti.Remove(p);
-                    datoteka.UpisivanjeUFajl(pacijenti);
+                    datoteka.sacuvaj(pacijenti);
                     return true;
                 }
             }
@@ -40,15 +41,15 @@ namespace ZdravoKorporacija.Model
         public bool AzurirajPacijenta(Pacijent pacijent)
         {
             System.Diagnostics.Debug.WriteLine("Azuriralo");
-            DatotekaPacijentJSON datoteka = new DatotekaPacijentJSON();
-            List<Pacijent> pacijenti = datoteka.CitanjeIzFajla();
+            PacijentRepozitorijum datoteka = new PacijentRepozitorijum();
+            List<Pacijent> pacijenti = datoteka.dobaviSve();
             foreach (Pacijent p in pacijenti)
             {
                 if (p.Jmbg.Equals(pacijent.Jmbg))
                 {
                     pacijenti.Remove(p);
                     pacijenti.Add(pacijent);
-                    datoteka.UpisivanjeUFajl(pacijenti);
+                    datoteka.sacuvaj(pacijenti);
                     return true;
                 }
             }
@@ -57,8 +58,8 @@ namespace ZdravoKorporacija.Model
 
         public Pacijent PregledPacijenta(string jmbg)
         {
-            DatotekaPacijentJSON datoteka = new DatotekaPacijentJSON();
-            List<Pacijent> pacijenti = datoteka.CitanjeIzFajla();
+            PacijentRepozitorijum datoteka = new PacijentRepozitorijum();
+            List<Pacijent> pacijenti = datoteka.dobaviSve();
             foreach (Pacijent p in pacijenti)
             {
                 if (p.Jmbg.Equals(jmbg))
@@ -71,8 +72,8 @@ namespace ZdravoKorporacija.Model
 
         public List<Pacijent> PregledSvihPacijenata()
         {
-            DatotekaPacijentJSON datoteka = new DatotekaPacijentJSON();
-            List<Pacijent> pacijenti = datoteka.CitanjeIzFajla();
+            PacijentRepozitorijum datoteka = new PacijentRepozitorijum();
+            List<Pacijent> pacijenti = datoteka.dobaviSve();
             return pacijenti;
         }
 

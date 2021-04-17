@@ -1,15 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using Model;
+using System.Collections.Generic;
 
 namespace ZdravoKorporacija.Model
 {
-    class ProstorijaFileStorage
+    class ProstorijaService
     {
         public bool DodajProstoriju(Prostorija prostorija, Dictionary<int, int> id_map)
         {
-            DatotekaProstorijaJSON datoteka = new DatotekaProstorijaJSON();
-            List<Prostorija> prostorije = datoteka.CitanjeIzFajla();
+            ProstorijaRepozitorijum datoteka = new ProstorijaRepozitorijum();
+            List<Prostorija> prostorije = datoteka.dobaviSve();
 
-            IDSerializer datotekaID = new IDSerializer("iDMapProstorija");
+            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapProstorija");
        
 
             foreach (Prostorija pr in prostorije)
@@ -20,24 +21,24 @@ namespace ZdravoKorporacija.Model
                 }
             }
             prostorije.Add(prostorija);
-            datoteka.UpisivanjeUFajl(prostorije);
-            datotekaID.UpisivanjeUFajl(id_map);
+            datoteka.sacuvaj(prostorije);
+            datotekaID.sacuvaj(id_map);
             return true;
 
         }
 
         public bool ObrisiProstoriju(Prostorija prostorija, Dictionary<int, int> id_map)
         {
-            DatotekaProstorijaJSON datoteka = new DatotekaProstorijaJSON();
-            IDSerializer datotekaID = new IDSerializer("iDMapProstorija");
-            List<Prostorija> prostorije = datoteka.CitanjeIzFajla();
+            ProstorijaRepozitorijum datoteka = new ProstorijaRepozitorijum();
+            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapProstorija");
+            List<Prostorija> prostorije = datoteka.dobaviSve();
             foreach (Prostorija pr in prostorije)
             {
                 if (pr.Id.Equals(prostorija.Id))
                 {
                     prostorije.Remove(pr);
-                    datoteka.UpisivanjeUFajl(prostorije);
-                    datotekaID.UpisivanjeUFajl(id_map);
+                    datoteka.sacuvaj(prostorije);
+                    datotekaID.sacuvaj(id_map);
                     return true;
                 }
             }
@@ -46,15 +47,15 @@ namespace ZdravoKorporacija.Model
 
         public bool AzurirajProstoriju(Prostorija prostorija)
         {
-            DatotekaProstorijaJSON datoteka = new DatotekaProstorijaJSON();
-            List<Prostorija> prostorije = datoteka.CitanjeIzFajla();
+            ProstorijaRepozitorijum datoteka = new ProstorijaRepozitorijum();
+            List<Prostorija> prostorije = datoteka.dobaviSve();
             foreach (Prostorija pr in prostorije)
             {
                 if (pr.Id.Equals(prostorija.Id))
                 {
                     prostorije.Remove(pr);
                     prostorije.Add(prostorija);
-                    datoteka.UpisivanjeUFajl(prostorije);
+                    datoteka.sacuvaj(prostorije);
                     return true;
                 }
             }
@@ -63,8 +64,8 @@ namespace ZdravoKorporacija.Model
 
         public Prostorija PregledProstorije(string id)
         {
-            DatotekaProstorijaJSON datoteka = new DatotekaProstorijaJSON();
-            List<Prostorija> prostorije = datoteka.CitanjeIzFajla();
+            ProstorijaRepozitorijum datoteka = new ProstorijaRepozitorijum();
+            List<Prostorija> prostorije = datoteka.dobaviSve();
             foreach (Prostorija pr in prostorije)
             {
                 if (pr.Id.Equals(id))
@@ -77,8 +78,8 @@ namespace ZdravoKorporacija.Model
 
         public List<Prostorija> PregledSvihProstorija()
         {
-            DatotekaProstorijaJSON datoteka = new DatotekaProstorijaJSON();
-            List<Prostorija> prostorije = datoteka.CitanjeIzFajla();
+            ProstorijaRepozitorijum datoteka = new ProstorijaRepozitorijum();
+            List<Prostorija> prostorije = datoteka.dobaviSve();
             return prostorije;
         }
 

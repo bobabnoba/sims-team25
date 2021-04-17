@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Model;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,10 +19,10 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
         public upravnikStart()
         {
             InitializeComponent();
-            DatotekaProstorijaJSON datoteka = new DatotekaProstorijaJSON();
-            prostorije = new ObservableCollection<Prostorija>(datoteka.CitanjeIzFajla());
-            IDSerializer datotekaID = new IDSerializer("iDMapProstorija");
-            ids = datotekaID.CitanjeIzFajla();
+            ProstorijaRepozitorijum datoteka = new ProstorijaRepozitorijum();
+            prostorije = new ObservableCollection<Prostorija>(datoteka.dobaviSve());
+            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapProstorija");
+            ids = datotekaID.dobaviSve();
             dgUsers.ItemsSource = prostorije;
             // inicijalizacija
             //for(int i = 0; i < 1000; i++)

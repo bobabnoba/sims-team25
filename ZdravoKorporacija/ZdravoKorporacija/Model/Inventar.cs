@@ -6,21 +6,25 @@
 
 using System;
 
-public class Inventar
+namespace Model
 {
-    public Inventar(int id, string naziv, int kolicina, string proizvodjac, DateTime datumNabavke)
+    public class Inventar
     {
-        Id = id;
-        Naziv = naziv;
-        Kolicina = kolicina;
-        Proizvodjac = proizvodjac;
-        DatumNabavke = datumNabavke;
-    }
+        public Inventar(int id, string naziv, int ukupnaKolicina, string proizvodjac, DateTime datumNabavke)
+        {
+            Id = id;
+            Naziv = naziv;
+            UkupnaKolicina = ukupnaKolicina;
+            Proizvodjac = proizvodjac;
+            DatumNabavke = datumNabavke;
+        }
 
-    public int Id { get; set; }
-    public String Naziv { get; set; }
-    public int Kolicina { get; set; }
-    public String Proizvodjac { get; set; }
-    public DateTime DatumNabavke { get; set; }
+        public int Id { get; set; }
+        public String Naziv { get; set; }
+        public int UkupnaKolicina { get; set; }
+        public String Proizvodjac { get; set; }
+        public DateTime DatumNabavke { get; set; }
+
+    }
 
 }

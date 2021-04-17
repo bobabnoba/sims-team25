@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -12,11 +13,11 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     /// </summary>
     public partial class izmeniPregledLekar : Window
     {
-        private TerminFileStorage storage = new TerminFileStorage();
-        private ProstorijaFileStorage prostorijeStorage = new ProstorijaFileStorage();
-        private DatotekaPacijentJSON pacijentiDat = new DatotekaPacijentJSON();
+        private TerminService storage = new TerminService();
+        private ProstorijaService prostorijeStorage = new ProstorijaService();
+        private PacijentRepozitorijum pacijentiDat = new PacijentRepozitorijum();
         private List<Pacijent> pacijenti = new List<Pacijent>();
-        private DatotekaLekarJSON lekariDat = new DatotekaLekarJSON();
+        private LekarRepozitorijum lekariDat = new LekarRepozitorijum();
         private List<Lekar> lekari = new List<Lekar>();
         private List<Prostorija> prostorije = new List<Prostorija>();
         private Termin p;
@@ -27,11 +28,11 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             InitializeComponent();
             p = selektovani;
             s = selektovani;
-            pacijenti = pacijentiDat.CitanjeIzFajla();
+            pacijenti = pacijentiDat.dobaviSve();
             cbPacijent.ItemsSource = pacijenti;
             pregledi = termini;
 
-            lekari = lekariDat.CitanjeIzFajla();
+            lekari = lekariDat.dobaviSve();
             Lekari.ItemsSource = lekari;
 
             //Termin ne vidi pacijenta ni doktora -- cb nemaju selected item

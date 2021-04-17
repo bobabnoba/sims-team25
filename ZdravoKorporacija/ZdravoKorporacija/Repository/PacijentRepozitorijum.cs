@@ -1,40 +1,42 @@
-﻿using Newtonsoft.Json;
+﻿using Model;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 
 namespace ZdravoKorporacija.Model
 {
-    class DatotekaSekretarJSON
+    class PacijentRepozitorijum
     {
+
         private string lokacija;
 
-        public DatotekaSekretarJSON()
+        public PacijentRepozitorijum()
         {
-            this.lokacija = @"..\..\..\Data\sekretar.json";
+            this.lokacija = @"..\..\..\Data\pacijent.json";
         }
 
-        public void UpisivanjeUFajl(List<Sekretar> sekretari)
+        public void sacuvaj(List<Pacijent> pacijenti)
         {
             JsonSerializer serializer = new JsonSerializer();
             serializer.Formatting = Formatting.Indented;
             StreamWriter writer = new StreamWriter(lokacija);
             JsonWriter jWriter = new JsonTextWriter(writer);
-            serializer.Serialize(jWriter, sekretari);
+            serializer.Serialize(jWriter, pacijenti);
             jWriter.Close();
             writer.Close();
         }
-        public List<Sekretar> CitanjeIzFajla()
+        public List<Pacijent> dobaviSve()
         {
-            List<Sekretar> sekretari = new List<Sekretar>();
+            List<Pacijent> pacijenti = new List<Pacijent>();
             if (File.Exists(lokacija))
             {
                 string jsonText = File.ReadAllText(lokacija);
                 if (!string.IsNullOrEmpty(jsonText))
                 {
-                    sekretari = JsonConvert.DeserializeObject<List<Sekretar>>(jsonText);
+                    pacijenti = JsonConvert.DeserializeObject<List<Pacijent>>(jsonText);
                 }
             }
-            return sekretari;
+            return pacijenti;
         }
     }
 }

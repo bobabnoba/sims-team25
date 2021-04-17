@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using Model;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Model;
@@ -10,7 +11,7 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
     /// </summary>
     public partial class izmeniProstorijuUpravnik : Window
     {
-        private ProstorijaFileStorage storage = new ProstorijaFileStorage();
+        private ProstorijaService storage = new ProstorijaService();
         private ObservableCollection<Prostorija> prostorije;
         private Prostorija prostorijaIzmenjena;
         public izmeniProstorijuUpravnik(ObservableCollection<Prostorija> pr, Prostorija p)

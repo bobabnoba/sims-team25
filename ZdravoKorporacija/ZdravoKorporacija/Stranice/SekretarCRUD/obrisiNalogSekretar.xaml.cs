@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using Model;
+using System.Collections.ObjectModel;
 using System.Windows;
 using ZdravoKorporacija.Model;
 
@@ -9,8 +10,8 @@ namespace ZdravoKorporacija.Stranice.SekretarCRUD
     /// </summary>
     public partial class obrisiNalogSekretar : Window
     {
-        private PacijentFileStorage storage = new PacijentFileStorage();
-        private DatotekaPacijentJSON dat = new DatotekaPacijentJSON();
+        private PacijentService storage = new PacijentService();
+        private PacijentRepozitorijum dat = new PacijentRepozitorijum();
         private ObservableCollection<Pacijent> pacijenti;
         private Pacijent p1;
         public obrisiNalogSekretar(Pacijent selected, ObservableCollection<Pacijent> nalozi)

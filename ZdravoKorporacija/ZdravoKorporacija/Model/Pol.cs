@@ -5,9 +5,11 @@
  ***********************************************************************/
 
 
-
-public enum PolEnum
+namespace Model
 {
-    Muski,
-    Zenski
+    public enum PolEnum
+    {
+        Muski,
+        Zenski
+    }
 }

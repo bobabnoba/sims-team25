@@ -5,11 +5,13 @@
  ***********************************************************************/
 
 
-
-public enum OtpustEnum
+namespace Model
 {
-    OtpustKuci,
-    PremestajUDruguUstanovu,
-    OtpusutenNaSopstveniZahtev,
-    Umro
+    public enum OtpustEnum
+    {
+        OtpustKuci,
+        PremestajUDruguUstanovu,
+        OtpusutenNaSopstveniZahtev,
+        Umro
+    }
 }

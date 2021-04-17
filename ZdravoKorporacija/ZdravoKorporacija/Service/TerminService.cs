@@ -1,15 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using Model;
+using System.Collections.Generic;
 
 namespace ZdravoKorporacija.Model
 {
-    class TerminFileStorage
+    class TerminService
     {
 
 
         public bool ZakaziTermin(Termin termin)
         {
-            DatotekaTerminJSON datoteka = new DatotekaTerminJSON();
-            List<Termin> termini = datoteka.CitanjeIzFajla();
+            TerminRepozitorijum datoteka = new TerminRepozitorijum();
+            List<Termin> termini = datoteka.dobaviSve();
             foreach (Termin t in termini)
             {
                 if (t.Id.Equals(termin.Id))
@@ -18,21 +19,21 @@ namespace ZdravoKorporacija.Model
                 }
             }
             termini.Add(termin);
-            datoteka.UpisivanjeUFajl(termini);
+            datoteka.sacuvaj(termini);
             return true;
         }
 
         public bool AzurirajTermin(Termin termin)
         {
-            DatotekaTerminJSON datoteka = new DatotekaTerminJSON();
-            List<Termin> termini = datoteka.CitanjeIzFajla();
+            TerminRepozitorijum datoteka = new TerminRepozitorijum();
+            List<Termin> termini = datoteka.dobaviSve();
             foreach (Termin t in termini)
             {
                 if (t.Id.Equals(termin.Id))
                 {
                     termini.Remove(t);
                     termini.Add(termin);
-                    datoteka.UpisivanjeUFajl(termini);
+                    datoteka.sacuvaj(termini);
                     return true;
                 }
             }
@@ -41,14 +42,14 @@ namespace ZdravoKorporacija.Model
 
         public bool OtkaziTermin(Termin termin)
         {
-            DatotekaTerminJSON datoteka = new DatotekaTerminJSON();
-            List<Termin> termini = datoteka.CitanjeIzFajla();
+            TerminRepozitorijum datoteka = new TerminRepozitorijum();
+            List<Termin> termini = datoteka.dobaviSve();
             foreach (Termin t in termini)
             {
                 if (t.Id.Equals(termin.Id))
                 {
                     termini.Remove(t);
-                    datoteka.UpisivanjeUFajl(termini);
+                    datoteka.sacuvaj(termini);
                     return true;
                 }
             }
@@ -57,8 +58,8 @@ namespace ZdravoKorporacija.Model
 
         public Termin PregledTermina(int id)
         {
-            DatotekaTerminJSON datoteka = new DatotekaTerminJSON();
-            List<Termin> termini = datoteka.CitanjeIzFajla();
+            TerminRepozitorijum datoteka = new TerminRepozitorijum();
+            List<Termin> termini = datoteka.dobaviSve();
             foreach (Termin t in termini)
             {
                 if (t.Id.Equals(id))
@@ -70,8 +71,8 @@ namespace ZdravoKorporacija.Model
         }
         public List<Termin> PregledSvihTermina()
         {
-            DatotekaTerminJSON datoteka = new DatotekaTerminJSON();
-            List<Termin> termini = datoteka.CitanjeIzFajla();
+            TerminRepozitorijum datoteka = new TerminRepozitorijum();
+            List<Termin> termini = datoteka.dobaviSve();
             return termini;
         }
     }

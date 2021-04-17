@@ -4,10 +4,12 @@
 // Purpose: Definition of Enum PatientCondition
 
 
-
-public enum StanjePacijentaEnum
+namespace Model
 {
-    Stabilno,
-    Kriticno,
-    Stacionarno
+    public enum StanjePacijentaEnum
+    {
+        Stabilno,
+        Kriticno,
+        Stacionarno
+    }
 }

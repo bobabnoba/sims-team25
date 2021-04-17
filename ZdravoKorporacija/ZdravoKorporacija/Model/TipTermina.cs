@@ -4,9 +4,11 @@
 // Purpose: Definition of Enum AppointmentType
 
 
-
-public enum TipTerminaEnum
+namespace Model
 {
-    Pregled,
-    Operacija
+    public enum TipTerminaEnum
+    {
+        Pregled,
+        Operacija
+    }
 }

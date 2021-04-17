@@ -5,54 +5,56 @@
  ***********************************************************************/
 
 using System;
-
-public class IzvestajOHospitalizaciji
+namespace Model
 {
-    public ZdravstveniKarton zdravstveniKarton;
-
-    public IzvestajOHospitalizaciji(ZdravstveniKarton zdravstveniKarton, int idIzvestaja, string nazivUstanove, int idUstanove, int brojDanaProvedenihUUstanovi, DateTime datumOtpusta, OtpustEnum vrstaOtpusta)
+    public class IzvestajOHospitalizaciji
     {
-        this.zdravstveniKarton = zdravstveniKarton;
-        IdIzvestaja = idIzvestaja;
-        NazivUstanove = nazivUstanove;
-        IdUstanove = idUstanove;
-        BrojDanaProvedenihUUstanovi = brojDanaProvedenihUUstanovi;
-        DatumOtpusta = datumOtpusta;
-        VrstaOtpusta = vrstaOtpusta;
-    }
+        public ZdravstveniKarton zdravstveniKarton;
 
-
-    /// <pdGenerated>default parent getter</pdGenerated>
-    public ZdravstveniKarton GetZdravstveniKarton()
-    {
-        return zdravstveniKarton;
-    }
-
-    /// <pdGenerated>default parent setter</pdGenerated>
-    /// <param>newZdravstveniKarton</param>
-    public void SetZdravstveniKarton(ZdravstveniKarton newZdravstveniKarton)
-    {
-        if (this.zdravstveniKarton != newZdravstveniKarton)
+        public IzvestajOHospitalizaciji(ZdravstveniKarton zdravstveniKarton, int idIzvestaja, string nazivUstanove, int idUstanove, int brojDanaProvedenihUUstanovi, DateTime datumOtpusta, OtpustEnum vrstaOtpusta)
         {
-            if (this.zdravstveniKarton != null)
+            this.zdravstveniKarton = zdravstveniKarton;
+            IdIzvestaja = idIzvestaja;
+            NazivUstanove = nazivUstanove;
+            IdUstanove = idUstanove;
+            BrojDanaProvedenihUUstanovi = brojDanaProvedenihUUstanovi;
+            DatumOtpusta = datumOtpusta;
+            VrstaOtpusta = vrstaOtpusta;
+        }
+
+
+        /// <pdGenerated>default parent getter</pdGenerated>
+        public ZdravstveniKarton GetZdravstveniKarton()
+        {
+            return zdravstveniKarton;
+        }
+
+        /// <pdGenerated>default parent setter</pdGenerated>
+        /// <param>newZdravstveniKarton</param>
+        public void SetZdravstveniKarton(ZdravstveniKarton newZdravstveniKarton)
+        {
+            if (this.zdravstveniKarton != newZdravstveniKarton)
             {
-                ZdravstveniKarton oldZdravstveniKarton = this.zdravstveniKarton;
-                this.zdravstveniKarton = null;
-                oldZdravstveniKarton.RemoveIzvestajOHospitalizaciji(this);
-            }
-            if (newZdravstveniKarton != null)
-            {
-                this.zdravstveniKarton = newZdravstveniKarton;
-                this.zdravstveniKarton.AddIzvestajOHospitalizaciji(this);
+                if (this.zdravstveniKarton != null)
+                {
+                    ZdravstveniKarton oldZdravstveniKarton = this.zdravstveniKarton;
+                    this.zdravstveniKarton = null;
+                    oldZdravstveniKarton.RemoveIzvestajOHospitalizaciji(this);
+                }
+                if (newZdravstveniKarton != null)
+                {
+                    this.zdravstveniKarton = newZdravstveniKarton;
+                    this.zdravstveniKarton.AddIzvestajOHospitalizaciji(this);
+                }
             }
         }
+
+        public int IdIzvestaja { get; set; }
+        public String NazivUstanove { get; set; }
+        public int IdUstanove { get; set; }
+        public int BrojDanaProvedenihUUstanovi { get; set; }
+        public DateTime DatumOtpusta { get; set; }
+        public OtpustEnum VrstaOtpusta { get; set; }
+
     }
-
-    public int IdIzvestaja { get; set; }
-    public String NazivUstanove { get; set; }
-    public int IdUstanove { get; set; }
-    public int BrojDanaProvedenihUUstanovi { get; set; }
-    public DateTime DatumOtpusta { get; set; }
-    public OtpustEnum VrstaOtpusta { get; set; }
-
 }

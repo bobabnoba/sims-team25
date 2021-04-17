@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using Model;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Model;
@@ -11,8 +12,8 @@ namespace ZdravoKorporacija.Stranice.SekretarCRUD
     public partial class kreirajNalogSekretar : Window
     {
 
-        private PacijentFileStorage storage = new PacijentFileStorage();
-        private DatotekaPacijentJSON pacijentiDat = new DatotekaPacijentJSON();
+        private PacijentService storage = new PacijentService();
+        private PacijentRepozitorijum pacijentiDat = new PacijentRepozitorijum();
         private Pacijent nalog = new Pacijent();
         private ObservableCollection<Pacijent> pacijenti;
 

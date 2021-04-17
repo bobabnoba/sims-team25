@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Model;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,7 +12,7 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
     /// </summary>
     public partial class dodajProstorijuUpravnik : Window
     {
-        private ProstorijaFileStorage storage = new ProstorijaFileStorage();
+        private ProstorijaService storage = new ProstorijaService();
         private ObservableCollection<Prostorija> prostorije;
         Dictionary<int, int> id_map = new Dictionary<int, int>();
         public dodajProstorijuUpravnik(ObservableCollection<Prostorija> pr, Dictionary<int, int> ids)

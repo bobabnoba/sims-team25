@@ -4,11 +4,13 @@
  * Purpose: Definition of the Class Uloga
  ***********************************************************************/
 
-
-public enum UlogaEnum
+namespace Model
 {
-    Lekar,
-    Sekretar,
-    Upravnik,
-    Pacijent
+    public enum UlogaEnum
+    {
+        Lekar,
+        Sekretar,
+        Upravnik,
+        Pacijent
+    }
 }

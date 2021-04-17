@@ -1,20 +1,21 @@
-﻿using Newtonsoft.Json;
+﻿using Model;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 
 namespace ZdravoKorporacija.Model
 {
-    class DatotekaUpravnikJSON
+    class UpravnikRepozitorijum
     {
 
         private string lokacija;
 
-        public DatotekaUpravnikJSON()
+        public UpravnikRepozitorijum()
         {
             this.lokacija = @"..\..\..\Data\upravnik.json";
         }
 
-        public void UpisivanjeUFajl(List<Upravnik> upravnici)
+        public void sacuvaj(List<Upravnik> upravnici)
         {
             JsonSerializer serializer = new JsonSerializer();
             serializer.Formatting = Formatting.Indented;
@@ -24,7 +25,7 @@ namespace ZdravoKorporacija.Model
             jWriter.Close();
             writer.Close();
         }
-        public List<Upravnik> CitanjeIzFajla()
+        public List<Upravnik> dobaviSve()
         {
             List<Upravnik> upravnici = new List<Upravnik>();
             if (File.Exists(lokacija))
