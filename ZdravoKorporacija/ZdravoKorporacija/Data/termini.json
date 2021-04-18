@@ -2,9 +2,28 @@
   {
     "izvestaj": null,
     "zdravstveniKarton": null,
-    "prostorija": null,
+    "prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 3,
+      "Naziv": "hfghfhhgrg",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 2
+    },
     "Lekar": {
-      "termin": null,
+      "termin": [
+        {
+          "izvestaj": null,
+          "zdravstveniKarton": null,
+          "prostorija": null,
+          "Id": 0,
+          "Tip": 0,
+          "Pocetak": "0001-01-01T00:00:00",
+          "Trajanje": 0.0
+        }
+      ],
       "Ime": "Milos",
       "Prezime": "Zivic",
       "Jmbg": 2234567890113,
@@ -16,9 +35,9 @@
       "Password": "zivic",
       "Uloga": 0
     },
-    "Id": 3,
+    "Id": 0,
     "Tip": 0,
-    "Pocetak": "2021-03-21T08:00:00",
+    "Pocetak": "2021-05-08T17:30:00",
     "Trajanje": 0.5
   },
   {
@@ -26,36 +45,24 @@
     "zdravstveniKarton": null,
     "prostorija": {
       "inventar": [],
-      "Id": 1,
-      "Naziv": "soba za pregled",
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 0,
+      "Naziv": "ytggh",
       "Tip": 1,
       "Slobodna": false,
-      "Sprat": 2
-    },
-    "Lekar": null,
-    "Id": 4,
-    "Tip": 0,
-    "Pocetak": "2021-03-05T08:30:00",
-    "Trajanje": 0.5
-  },
-  {
-    "izvestaj": null,
-    "zdravstveniKarton": null,
-    "prostorija": {
-      "inventar": [],
-      "Id": 4,
-      "Naziv": "soba76",
-      "Tip": 2,
-      "Slobodna": false,
-      "Sprat": -1
+      "Sprat": 0
     },
     "Lekar": {
       "termin": [
         {
-          "izvestaj": [],
+          "izvestaj": null,
+          "zdravstveniKarton": null,
+          "prostorija": null,
+          "Id": 1,
           "Tip": 0,
-          "Pocetak": "2020-05-01T08:30:52",
-          "Trajanje": 90.0
+          "Pocetak": "0001-01-01T00:00:00",
+          "Trajanje": 0.0
         }
       ],
       "Ime": "Veljko",
@@ -69,137 +76,9 @@
       "Password": "vukovic",
       "Uloga": 0
     },
-    "Id": 5,
-    "Tip": 0,
-    "Pocetak": "2021-04-01T11:00:00",
-    "Trajanje": 0.5
-  },
-  {
-    "izvestaj": null,
-    "zdravstveniKarton": null,
-    "prostorija": {
-      "inventar": [],
-      "Id": 111,
-      "Naziv": "soba11",
-      "Tip": 2,
-      "Slobodna": true,
-      "Sprat": 0
-    },
-    "Lekar": null,
-    "Id": 6,
+    "Id": 1,
     "Tip": 1,
-    "Pocetak": "2020-04-01T11:00:00",
-    "Trajanje": 0.5
-  },
-  {
-    "izvestaj": null,
-    "zdravstveniKarton": null,
-    "prostorija": {
-      "inventar": [],
-      "Id": 111,
-      "Naziv": "soba11",
-      "Tip": 2,
-      "Slobodna": true,
-      "Sprat": 0
-    },
-    "Lekar": null,
-    "Id": 6,
-    "Tip": 0,
-    "Pocetak": "2021-04-01T11:00:00",
-    "Trajanje": 0.5
-  },
-  {
-    "izvestaj": null,
-    "zdravstveniKarton": null,
-    "prostorija": {
-      "inventar": [],
-      "Id": 4,
-      "Naziv": "soba76",
-      "Tip": 2,
-      "Slobodna": false,
-      "Sprat": -1
-    },
-    "Lekar": {
-      "termin": null,
-      "Ime": "Milos",
-      "Prezime": "Zivic",
-      "Jmbg": 2234567890113,
-      "BrojTelefona": 69393334,
-      "Mejl": "zivko99@gmail.com",
-      "AdresaStanovanja": "Becej",
-      "Pol": 0,
-      "Username": "milos",
-      "Password": "zivic",
-      "Uloga": 0
-    },
-    "Id": 6,
-    "Tip": 1,
-    "Pocetak": "2021-03-07T09:00:00",
-    "Trajanje": 0.5
-  },
-  {
-    "izvestaj": null,
-    "zdravstveniKarton": null,
-    "prostorija": {
-      "inventar": [],
-      "Id": 4,
-      "Naziv": "soba76",
-      "Tip": 2,
-      "Slobodna": false,
-      "Sprat": -1
-    },
-    "Lekar": {
-      "termin": null,
-      "Ime": "Milos",
-      "Prezime": "Zivic",
-      "Jmbg": 2234567890113,
-      "BrojTelefona": 69393334,
-      "Mejl": "zivko99@gmail.com",
-      "AdresaStanovanja": "Becej",
-      "Pol": 0,
-      "Username": "milos",
-      "Password": "zivic",
-      "Uloga": 0
-    },
-    "Id": 7,
-    "Tip": 0,
-    "Pocetak": "2021-02-28T10:00:00",
-    "Trajanje": 0.5
-  },
-  {
-    "izvestaj": null,
-    "zdravstveniKarton": null,
-    "prostorija": {
-      "inventar": [],
-      "Id": 1,
-      "Naziv": "soba za pregled",
-      "Tip": 1,
-      "Slobodna": false,
-      "Sprat": 2
-    },
-    "Lekar": {
-      "termin": [
-        {
-          "izvestaj": [],
-          "Tip": 0,
-          "Pocetak": "2020-05-01T08:30:52",
-          "Trajanje": 90.0
-        }
-      ],
-      "Ime": "Veljko",
-      "Prezime": "Vukovic",
-      "Jmbg": 2334567890213,
-      "BrojTelefona": 66393345,
-      "Mejl": "vuksivuk@gmail.com",
-      "AdresaStanovanja": "Beograd",
-      "Pol": 0,
-      "Username": "veksi",
-      "Password": "vukovic",
-      "Uloga": 0
-    },
-    "Id": 8,
-    "Tip": 1,
-    "Pocetak": "2021-03-07T08:00:00",
+    "Pocetak": "2021-07-22T17:30:00",
     "Trajanje": 0.5
   }
 ]

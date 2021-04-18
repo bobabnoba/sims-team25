@@ -2679,19 +2679,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\papov\\.nuget\\packages\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\papov\\Desktop\\git projekat\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\ZdravoKorporacija.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Desktop\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\ZdravoKorporacija.csproj",
       "projectName": "ZdravoKorporacija",
-      "projectPath": "C:\\Users\\papov\\Desktop\\git projekat\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\ZdravoKorporacija.csproj",
-      "packagesPath": "C:\\Users\\papov\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\papov\\Desktop\\git projekat\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\obj\\",
+      "projectPath": "C:\\Users\\User\\Desktop\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\ZdravoKorporacija.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\Desktop\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\papov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2740,7 +2740,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }

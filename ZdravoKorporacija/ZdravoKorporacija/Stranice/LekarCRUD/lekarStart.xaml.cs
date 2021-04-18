@@ -1,4 +1,5 @@
 ﻿using Model;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,9 +16,14 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private ObservableCollection<Termin> termini = new ObservableCollection<Termin>();
         private PacijentService storagePacijent = new PacijentService();
         private Pacijent pac = new Pacijent();
+        private Dictionary<int, int> ids = new Dictionary<int, int>();
+
         public lekarStart()
         {
             InitializeComponent();
+
+            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
+            ids = datotekaID.dobaviSve();
 
             termini = new ObservableCollection<Termin>(storage.PregledSvihTermina());
             dgUsers.ItemsSource = termini;
@@ -27,7 +33,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private void izmeniPregled(object sender, RoutedEventArgs e)
         {
             if (dgUsers.SelectedItem == null)
-                MessageBox.Show("Niste selektovali red", "Greska");
+                MessageBox.Show("Pregled nije izabran. Molimo označite pregled koji želite da izmenite.", "Greška");
             else
             {
                 izmeniPregledLekar ip = new izmeniPregledLekar((Termin)dgUsers.SelectedItem, termini);
@@ -39,7 +45,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
         private void zakaziPregled(object sender, RoutedEventArgs e)
         {
-            zakaziPregledLekar zp = new zakaziPregledLekar(termini);
+            zakaziPregledLekar zp = new zakaziPregledLekar(termini, ids);
             zp.Show();
         }
 
@@ -60,10 +66,16 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                           termini.Remove((Termin)dgUsers.SelectedItem);
                       }
                   }*/
-                oktaziPregledLekar op = new oktaziPregledLekar(termini, (Termin)dgUsers.SelectedItem);
-                   // otkaziPregledLekar op = new otkaziPregledLekar(termini, (Termin)dgUsers.SelectedItem);
+
+            if (dgUsers.SelectedItem == null)
+                MessageBox.Show("Pregled nije izabran. Molimo označite pregled koji želite da otkažete.", "Greška");
+            else
+            {
+                oktaziPregledLekar op = new oktaziPregledLekar(termini, (Termin)dgUsers.SelectedItem, ids); 
                 op.Show();
-            
+            }
+
+           
         }
 
         private void dgUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
