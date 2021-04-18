@@ -16,7 +16,13 @@
     <Compile Update="Stranice\LekarCRUD\otkaziPregledLekar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Stranice\LekarCRUD\pregledPacijenata.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Stranice\LekarCRUD\zakaziPregledLekar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\LekarCRUD\zdravstveniKartonPrikaz.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Stranice\PacijentCRUD\izmeniPregled.xaml.cs">
@@ -72,7 +78,13 @@
     <Page Update="Stranice\LekarCRUD\otkaziPregledLekar.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Stranice\LekarCRUD\pregledPacijenata.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Stranice\LekarCRUD\zakaziPregledLekar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\LekarCRUD\zdravstveniKartonPrikaz.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\PacijentCRUD\izmeniPregled.xaml">

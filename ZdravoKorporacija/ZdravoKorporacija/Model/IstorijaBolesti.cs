@@ -10,15 +10,10 @@ namespace Model
 {
     public class IstorijaBolesti
     {
-        public System.Collections.ArrayList dijagnoza;
+        public DateTime DatumPoseteLekaru;
+        public String PorodicnaIstorijaBolesti;
 
-        public IstorijaBolesti(ZdravstveniKarton zdravstveniKarton, DateTime datumPoseteLekaru, string opisPosete)
-        {
-            this.dijagnoza = new System.Collections.ArrayList();
-            this.zdravstveniKarton = zdravstveniKarton;
-            DatumPoseteLekaru = datumPoseteLekaru;
-            OpisPosete = opisPosete;
-        }
+        public System.Collections.ArrayList dijagnoza;
 
         /// <pdGenerated>default getter</pdGenerated>
         public System.Collections.ArrayList GetDijagnoza()
@@ -90,9 +85,6 @@ namespace Model
                 }
             }
         }
-
-        public DateTime DatumPoseteLekaru { get; set; }
-        public String OpisPosete { get; set; }
 
     }
 }

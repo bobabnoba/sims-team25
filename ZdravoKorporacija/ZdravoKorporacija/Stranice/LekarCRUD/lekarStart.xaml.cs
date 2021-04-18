@@ -13,8 +13,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     {
         private TerminService storage = new TerminService();
         private ObservableCollection<Termin> termini = new ObservableCollection<Termin>();
-        private PacijentService storagePacijent = new PacijentService();
-        private Pacijent pac = new Pacijent();
+        private PacijentService pacijentServis = new PacijentService();
         public lekarStart()
         {
             InitializeComponent();
@@ -41,6 +40,12 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         {
             zakaziPregledLekar zp = new zakaziPregledLekar(termini);
             zp.Show();
+        }
+
+        private void prikaziKarton(object sender, RoutedEventArgs e)
+        {
+            //zdravstveniKartonPrikaz zk = new zdravstveniKartonPrikaz((Pacijent)dgUsers);
+            //zk.Show();
         }
 
         private void otkaziPregled(object sender, RoutedEventArgs e)
@@ -71,5 +76,16 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
         }
 
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            pregledPacijenata pp = new pregledPacijenata();
+            this.Close();
+            pp.Show();
+        }
     }
 }

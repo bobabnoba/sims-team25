@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\papov\Desktop\git projekat\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\
+C:\Users\Admin\Desktop\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\
 ZdravoKorporacija
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
-C:\Users\papov\Desktop\git projekat\sims-team25\ZdravoKorporacija\ZdravoKorporacija\App.xaml
-181949777742
+C:\Users\Admin\Desktop\sims-team25\ZdravoKorporacija\ZdravoKorporacija\App.xaml
+202126989450
 
-60-1482829337
-1931544265846
-MainWindow.xaml;Stranice\LekarCRUD\izmeniPregledLekar.xaml;Stranice\LekarCRUD\lekarStart.xaml;Stranice\LekarCRUD\otkaziPregledLekar.xaml;Stranice\LekarCRUD\zakaziPregledLekar.xaml;Stranice\login.xaml;Stranice\PacijentCRUD\izmeniPregled.xaml;Stranice\PacijentCRUD\otkaziPregled.xaml;Stranice\PacijentCRUD\pacijentStart.xaml;Stranice\PacijentCRUD\zakaziPregled.xaml;Stranice\SekretarCRUD\izmeniNalogSekretar.xaml;Stranice\SekretarCRUD\kreirajNalogSekretar.xaml;Stranice\SekretarCRUD\obrisiNalogSekretar.xaml;Stranice\SekretarCRUD\sekretarStart.xaml;Stranice\UpravnikCRUD\dodajProstorijuUpravnik.xaml;Stranice\UpravnikCRUD\izbrisiProstorijuUpravnik.xaml;Stranice\UpravnikCRUD\izmeniProstorijuUpravnik.xaml;Stranice\UpravnikCRUD\upravnikStart.xaml;
+76-524573433
+193-1338408254
+MainWindow.xaml;Stranice\LekarCRUD\izmeniPregledLekar.xaml;Stranice\LekarCRUD\lekarStart.xaml;Stranice\LekarCRUD\otkaziPregledLekar.xaml;Stranice\LekarCRUD\pregledPacijenata.xaml;Stranice\LekarCRUD\zakaziPregledLekar.xaml;Stranice\LekarCRUD\zdravstveniKartonPrikaz.xaml;Stranice\login.xaml;Stranice\PacijentCRUD\izmeniPregled.xaml;Stranice\PacijentCRUD\otkaziPregled.xaml;Stranice\PacijentCRUD\pacijentStart.xaml;Stranice\PacijentCRUD\zakaziPregled.xaml;Stranice\SekretarCRUD\izmeniNalogSekretar.xaml;Stranice\SekretarCRUD\kreirajNalogSekretar.xaml;Stranice\SekretarCRUD\obrisiNalogSekretar.xaml;Stranice\SekretarCRUD\sekretarStart.xaml;Stranice\UpravnikCRUD\dodajProstorijuUpravnik.xaml;Stranice\UpravnikCRUD\izbrisiProstorijuUpravnik.xaml;Stranice\UpravnikCRUD\izmeniProstorijuUpravnik.xaml;Stranice\UpravnikCRUD\upravnikStart.xaml;
 
-False
+True
 
