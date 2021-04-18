@@ -5,15 +5,15 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.SekretarPREGLEDI"
       mc:Ignorable="d" 
-      Height="450" Width="800" Background="CadetBlue"
+      Height="350" Width="800" Background="CadetBlue"
       Title="Sekretar">
 
     <Grid>
-        <Button Content="Zakaži pregled" HorizontalAlignment="Left" Margin="217,67,0,0" VerticalAlignment="Top" Width="92" Height="44" Click="zakaziPregled"/>
-        <Button Content="Izmeni pregled" HorizontalAlignment="Center" Margin="0,67,0,0" VerticalAlignment="Top" Width="92" Height="44" RenderTransformOrigin="0.255,-0.75" Click="izmeniPregled"/>
-        <Button Content="Otkaži pregled" HorizontalAlignment="Left" Margin="486,67,0,0" VerticalAlignment="Top" Width="92" Height="44" RenderTransformOrigin="0.033,-1.977" Click="otkaziPregled"/>
-        <Grid Margin="10">
-            <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="120,141,120,33" SelectionChanged="dgUsers_SelectionChanged">
+        <Button Content="Zakaži pregled" HorizontalAlignment="Left" Margin="217,22,0,0" VerticalAlignment="Top" Width="92" Height="44" Click="zakaziPregled"/>
+        <Button Content="Izmeni pregled" HorizontalAlignment="Center" Margin="0,22,0,0" VerticalAlignment="Top" Width="92" Height="44" RenderTransformOrigin="0.255,-0.75" Click="izmeniPregled"/>
+        <Button Content="Otkaži pregled" HorizontalAlignment="Left" Margin="486,22,0,0" VerticalAlignment="Top" Width="92" Height="44" RenderTransformOrigin="0.033,-1.977" Click="otkaziPregled"/>
+        <Grid Margin="10,-35,10,55">
+            <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="139,139,139,-20" SelectionChanged="dgUsers_SelectionChanged">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
                     <!--<DataGridTextColumn Header="Pacijent">
@@ -36,7 +36,7 @@
                 </DataGrid.RowDetailsTemplate>-->
             </DataGrid>
         </Grid>
-        <TextBox HorizontalAlignment="Left" Margin="10,422,0,0" Text="ulogovani ste kao sekretar" BorderBrush="CadetBlue" Background="CadetBlue" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" />
-
+        <TextBox HorizontalAlignment="Left" Margin="10,377,0,0" Text="ulogovani ste kao sekretar" BorderBrush="CadetBlue" Background="CadetBlue" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" />
+        <Frame x:Name="frejm" NavigationUIVisibility="Hidden" Margin="5,0,5,10"/>
     </Grid>
-    </Page>
+</Page>

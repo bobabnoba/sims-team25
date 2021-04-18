@@ -78,6 +78,10 @@ namespace ZdravoKorporacija.Model
             return pacijenti;
         }
 
+        public void dodajAlergen(Pacijent pacijent, string dodaj)
+        {
+            pacijent.zdravstveniKarton.dodajAlergije(dodaj);
+        }
       
 
     }

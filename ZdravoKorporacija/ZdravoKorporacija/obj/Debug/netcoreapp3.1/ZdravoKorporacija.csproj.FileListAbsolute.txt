@@ -518,3 +518,9 @@ C:\Users\shand\Desktop\sins\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\
 C:\Users\shand\Desktop\sins\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\SekretarPREGLEDI\zakaziPregledSekretar.baml
 C:\Users\shand\Desktop\sins\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\SekretarPREGLEDI\sekretarPREGLEDI.g.cs
 C:\Users\shand\Desktop\sins\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\SekretarPREGLEDI\sekretarPREGLEDI.baml
+C:\Users\shand\Desktop\sins\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\SekretarPREGLEDI\sekretarNALOZI.g.cs
+C:\Users\shand\Desktop\sins\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\SekretarPREGLEDI\sekretarNALOZI.baml
+C:\Users\shand\Desktop\sins\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\SekretarPREGLEDI\dodajAlergen.g.cs
+C:\Users\shand\Desktop\sins\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\SekretarPREGLEDI\dodajAlergen.baml
+C:\Users\shand\Desktop\sins\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\SekretarPREGLEDI\prikaziKarton.g.cs
+C:\Users\shand\Desktop\sins\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\SekretarPREGLEDI\prikaziKarton.baml

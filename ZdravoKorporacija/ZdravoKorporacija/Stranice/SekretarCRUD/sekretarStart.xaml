@@ -30,8 +30,10 @@
                     </DataTemplate>
                 </DataGrid.RowDetailsTemplate>
             </DataGrid>
-            <Button Content="PREGLEDI" HorizontalAlignment="Left" Margin="599,40,0,0" VerticalAlignment="Top" Height="52" Width="138" Click="Button_Click_1"/>
+            <Button Content="NALOZI" HorizontalAlignment="Left" VerticalAlignment="Top" Height="52" Width="138" Click="Button_Click" Margin="252,0,0,0"/>
+            <Button Content="PREGLEDI" HorizontalAlignment="Left" VerticalAlignment="Top" Height="52" Width="138" Click="Button_Click_1" Margin="395,0,0,0"/>
         </Grid>
-
+        <Button Content="Button" HorizontalAlignment="Left" Margin="1078,111,0,0" VerticalAlignment="Top" Width="0"/>
+        <Frame x:Name="fr" NavigationUIVisibility="hidden" Margin="0,67,10,0" />
     </Grid>
 </Window>

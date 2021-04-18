@@ -46,6 +46,15 @@
     <Compile Update="Stranice\SekretarCRUD\sekretarStart.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Stranice\SekretarPREGLEDI\dodajAlergen.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\SekretarPREGLEDI\prikaziKarton.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\SekretarPREGLEDI\sekretarNALOZI.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Stranice\SekretarPREGLEDI\sekretarPREGLEDI.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -106,6 +115,15 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\SekretarCRUD\sekretarStart.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\SekretarPREGLEDI\dodajAlergen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\SekretarPREGLEDI\prikaziKarton.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\SekretarPREGLEDI\sekretarNALOZI.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\SekretarPREGLEDI\sekretarPREGLEDI.xaml">

@@ -1,138 +1,73 @@
 [
   {
-    "termin": [
-      {
-        "izvestaj": null,
-        "zdravstveniKarton": null,
-        "prostorija": {
-          "inventar": [],
-          "Id": 111,
-          "Naziv": "soba11",
-          "Tip": 2,
-          "Slobodna": true,
-          "Sprat": 0
-        },
-        "Lekar": null,
-        "Id": 6,
-        "Tip": 1,
-        "Pocetak": "2021-03-27T09:00:00",
-        "Trajanje": 0.5
-      },
-      {
-        "izvestaj": null,
-        "zdravstveniKarton": null,
-        "prostorija": {
-          "inventar": [],
-          "statickaOprema": null,
-          "dinamickaOprema": null,
-          "Id": 2,
-          "Naziv": "fghfghfghgf",
-          "Tip": 1,
-          "Slobodna": false,
-          "Sprat": 2
-        },
-        "Lekar": {
-          "termin": null,
-          "Ime": "Milos",
-          "Prezime": "Zivic",
-          "Jmbg": 2234567890113,
-          "BrojTelefona": 69393334,
-          "Mejl": "zivko99@gmail.com",
-          "AdresaStanovanja": "Becej",
-          "Pol": 0,
-          "Username": "milos",
-          "Password": "zivic",
-          "Uloga": 0
-        },
-        "Id": 9,
-        "Tip": 0,
-        "Pocetak": "2021-04-07T09:00:00",
-        "Trajanje": 0.5
-      }
-    ],
+    "termin": null,
     "ZdravstveniKarton": null,
     "Guest": false,
-    "Ime": "Dusan",
-    "Prezime": "Markovic",
-    "Jmbg": 1234567890123,
-    "BrojTelefona": 69000333,
-    "Mejl": "dusanmarkovic@gmail.com",
-    "AdresaStanovanja": "Smederevska tvrdjava",
+    "Ime": "ddaasss",
+    "Prezime": "ssaaa",
+    "Jmbg": 123,
+    "BrojTelefona": 3211111,
+    "Mejl": "asdasd",
+    "AdresaStanovanja": "",
     "Pol": 0,
-    "Username": "dukikidu",
-    "Password": "markovic99",
+    "Username": "asdad1",
+    "Password": "aasdsd2a",
     "Uloga": 3
   },
   {
-    "termin": [
-      {
-        "izvestaj": null,
-        "zdravstveniKarton": null,
-        "prostorija": {
-          "inventar": [],
-          "Id": 4,
-          "Naziv": "soba76",
-          "Tip": 2,
-          "Slobodna": false,
-          "Sprat": -1
-        },
-        "Lekar": {
-          "termin": null,
-          "Ime": "Milos",
-          "Prezime": "Zivic",
-          "Jmbg": 2234567890113,
-          "BrojTelefona": 69393334,
-          "Mejl": "zivko99@gmail.com",
-          "AdresaStanovanja": "Becej",
-          "Pol": 0,
-          "Username": "milos",
-          "Password": "zivic",
-          "Uloga": 0
-        },
-        "Id": 6,
-        "Tip": 1,
-        "Pocetak": "2021-03-07T09:00:00",
-        "Trajanje": 0.5
-      },
-      {
-        "izvestaj": null,
-        "zdravstveniKarton": null,
-        "prostorija": {
-          "inventar": [],
-          "statickaOprema": null,
-          "dinamickaOprema": null,
-          "Id": 0,
-          "Naziv": "ytggh",
-          "Tip": 1,
-          "Slobodna": false,
-          "Sprat": 0
-        },
-        "Lekar": {
-          "termin": [
-            {
-              "izvestaj": [],
-              "Tip": 0,
-              "Pocetak": "2020-05-01T08:30:52",
-              "Trajanje": 90.0
-            }
-          ],
-          "Ime": "Veljko",
-          "Prezime": "Vukovic",
-          "Jmbg": 2334567890213,
-          "BrojTelefona": 66393345,
-          "Mejl": "vuksivuk@gmail.com",
-          "AdresaStanovanja": "Beograd",
-          "Pol": 0,
-          "Username": "veksi",
-          "Password": "vukovic",
-          "Uloga": 0
-        },
-        "Id": 10,
-        "Tip": 0,
-        "Pocetak": "2021-04-14T10:00:00",
-        "Trajanje": 0.5
-      }
-    ],
+    "termin": null,
+    
+      "Guest"
+      :
+      false,
+      "Ime"
+      :
+      "Dusan",
+      "Prezime"
+      :
+      "Markovic",
+      "Jmbg"
+      :
+      1234567890123,
+      "BrojTelefona"
+      :
+      69000333,
+      "Mejl"
+      :
+      "dusanmarkovic@gmail.com",
+      "AdresaStanovanja"
+      :
+      "",
+      "Pol"
+      :
+      0,
+      "Username"
+      :
+      "dukikidua",
+      "Password"
+      :
+      "markovic99",
+      "Uloga"
+      :
+      3
+  },
+  {
+    "termin": null,
+    "ZdravstveniKarton": null,
+    "Guest": false,
+    "Ime": "Aleksa",
+    "Prezime": "Papovic",
+    "Jmbg": 2134567890213,
+    "BrojTelefona": 66393654,
+    "Mejl": "aleksapapovic@gmail.com",
+    "AdresaStanovanja": "",
+    "Pol": 0,
+    "Username": "pape",
+    "Password": "pape99",
+    "Uloga": 3
+  },
+  {
+    "termin": null,
     "ZdravstveniKarton": null,
     "Guest": false,
     "Ime": "Dusan",
@@ -140,7 +75,7 @@
     "Jmbg": 3214567890122,
     "BrojTelefona": 66333999,
     "Mejl": "dusanlekic@gmail.com",
-    "AdresaStanovanja": "Rokijev potok",
+    "AdresaStanovanja": "",
     "Pol": 0,
     "Username": "leka",
     "Password": "leka99",
@@ -153,30 +88,16 @@
         "zdravstveniKarton": null,
         "prostorija": {
           "inventar": [],
-          "Id": 1,
-          "Naziv": "soba za pregled",
+          "statickaOprema": null,
+          "dinamickaOprema": null,
+          "Id": 0,
+          "Naziv": "ytggh",
           "Tip": 1,
           "Slobodna": false,
-          "Sprat": 2
-        },
-        "Lekar": null,
-        "Id": 5,
-        "Tip": 1,
-        "Pocetak": "2021-03-13T09:00:00",
-        "Trajanje": 0.5
-      },
-      {
-        "izvestaj": null,
-        "zdravstveniKarton": null,
-        "prostorija": {
-          "inventar": [],
-          "Id": 1,
-          "Naziv": "soba za pregled",
-          "Tip": 1,
-          "Slobodna": false,
-          "Sprat": 2
+          "Sprat": 0
         },
         "Lekar": {
+          "termini": null,
           "termin": [
             {
               "izvestaj": [],
@@ -196,183 +117,23 @@
           "Password": "vukovic",
           "Uloga": 0
         },
-        "Id": 8,
-        "Tip": 1,
-        "Pocetak": "2021-03-07T08:00:00",
-        "Trajanje": 0.5
-      },
-      {
-        "izvestaj": null,
-        "zdravstveniKarton": null,
-        "prostorija": {
-          "inventar": [],
-          "statickaOprema": null,
-          "dinamickaOprema": null,
-          "Id": 0,
-          "Naziv": "ytggh",
-          "Tip": 1,
-          "Slobodna": false,
-          "Sprat": 0
-        },
-        "Lekar": {
-          "termin": null,
-          "Ime": "Milos",
-          "Prezime": "Zivic",
-          "Jmbg": 2234567890113,
-          "BrojTelefona": 69393334,
-          "Mejl": "zivko99@gmail.com",
-          "AdresaStanovanja": "Becej",
-          "Pol": 0,
-          "Username": "milos",
-          "Password": "zivic",
-          "Uloga": 0
-        },
-        "Id": 9,
-        "Tip": 1,
-        "Pocetak": "2021-05-06T10:30:00",
+        "Id": 13,
+        "Tip": 0,
+        "Pocetak": "2021-04-07T08:30:00",
         "Trajanje": 0.5
       }
     ],
     "ZdravstveniKarton": null,
     "Guest": false,
-    "Ime": "ddaa",
-    "Prezime": "ssaaa",
-    "Jmbg": 123,
-    "BrojTelefona": 321,
-    "Mejl": "asdasd",
+    "Ime": "Petar",
+    "Prezime": "Peric",
+    "Jmbg": 2300954,
+    "BrojTelefona": 631123,
+    "Mejl": "perke@peric.com",
     "AdresaStanovanja": "",
     "Pol": 0,
-    "Username": "asdad1",
-    "Password": "aasdsd2",
-    "Uloga": 3
-  },
-  {
-    "termin": [
-      {
-        "izvestaj": null,
-        "zdravstveniKarton": null,
-        "prostorija": {
-          "inventar": [],
-          "Id": 1,
-          "Naziv": "soba za pregled",
-          "Tip": 1,
-          "Slobodna": false,
-          "Sprat": 2
-        },
-        "Lekar": null,
-        "Id": 4,
-        "Tip": 0,
-        "Pocetak": "2021-03-05T08:30:00",
-        "Trajanje": 0.5
-      },
-      {
-        "izvestaj": null,
-        "zdravstveniKarton": null,
-        "prostorija": {
-          "inventar": [],
-          "Id": 4,
-          "Naziv": "soba76",
-          "Tip": 2,
-          "Slobodna": false,
-          "Sprat": -1
-        },
-        "Lekar": {
-          "termin": [
-            {
-              "izvestaj": [],
-              "Tip": 0,
-              "Pocetak": "2020-05-01T08:30:52",
-              "Trajanje": 90.0
-            }
-          ],
-          "Ime": "Veljko",
-          "Prezime": "Vukovic",
-          "Jmbg": 2334567890213,
-          "BrojTelefona": 66393345,
-          "Mejl": "vuksivuk@gmail.com",
-          "AdresaStanovanja": "Beograd",
-          "Pol": 0,
-          "Username": "veksi",
-          "Password": "vukovic",
-          "Uloga": 0
-        },
-        "Id": 5,
-        "Tip": 0,
-        "Pocetak": "2021-04-01T11:00:00",
-        "Trajanje": 0.5
-      },
-      {
-        "izvestaj": null,
-        "zdravstveniKarton": null,
-        "prostorija": {
-          "inventar": [],
-          "Id": 4,
-          "Naziv": "soba76",
-          "Tip": 2,
-          "Slobodna": false,
-          "Sprat": -1
-        },
-        "Lekar": {
-          "termin": null,
-          "Ime": "Milos",
-          "Prezime": "Zivic",
-          "Jmbg": 2234567890113,
-          "BrojTelefona": 69393334,
-          "Mejl": "zivko99@gmail.com",
-          "AdresaStanovanja": "Becej",
-          "Pol": 0,
-          "Username": "milos",
-          "Password": "zivic",
-          "Uloga": 0
-        },
-        "Id": 7,
-        "Tip": 0,
-        "Pocetak": "2021-02-28T10:00:00",
-        "Trajanje": 0.5
-      },
-      {
-        "izvestaj": null,
-        "zdravstveniKarton": null,
-        "prostorija": {
-          "inventar": [],
-          "statickaOprema": null,
-          "dinamickaOprema": null,
-          "Id": 0,
-          "Naziv": "ytggh",
-          "Tip": 1,
-          "Slobodna": false,
-          "Sprat": 0
-        },
-        "Lekar": {
-          "termin": [],
-          "Ime": "Milos",
-          "Prezime": "Zivic",
-          "Jmbg": 2234567890113,
-          "BrojTelefona": 69393334,
-          "Mejl": "zivko99@gmail.com",
-          "AdresaStanovanja": "Becej",
-          "Pol": 0,
-          "Username": "milos",
-          "Password": "zivic",
-          "Uloga": 0
-        },
-        "Id": 10,
-        "Tip": 1,
-        "Pocetak": "2021-05-06T10:30:00",
-        "Trajanje": 0.5
-      }
-    ],
-    "ZdravstveniKarton": null,
-    "Guest": false,
-    "Ime": "Aleksaaaaaa",
-    "Prezime": "Papovic",
-    "Jmbg": 2134567890213,
-    "BrojTelefona": 66393654,
-    "Mejl": "aleksapapovic@gmail.com",
-    "AdresaStanovanja": "",
-    "Pol": 0,
-    "Username": "pape",
-    "Password": "pape99",
+    "Username": "perke92",
+    "Password": "perkelepi",
     "Uloga": 3
   }
 ]

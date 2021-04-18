@@ -11,12 +11,16 @@ namespace Model
 
     public class Pacijent : Korisnik
     {
+       
         public Pacijent() : base() { }
 
-        public Pacijent(ZdravstveniKarton zdravstveniKarton, bool guest, string ime, string prezime, int jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password, UlogaEnum uloga) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password, uloga)
+        public ZdravstveniKarton zdravstveniKarton = new ZdravstveniKarton();
+
+        public Pacijent(ZdravstveniKarton zk, bool guest, string ime, string prezime, int jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password, UlogaEnum uloga) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password, uloga)
         {
             this.termin = new System.Collections.ArrayList();
-            ZdravstveniKarton = zdravstveniKarton;
+            zk = new ZdravstveniKarton("KORONA, ");
+            zdravstveniKarton =  zk;
             Guest = guest;
         }
 
@@ -101,7 +105,7 @@ namespace Model
             if (termin != null)
                 termin.Clear();
         }
-        public ZdravstveniKarton ZdravstveniKarton { get; set; }
+       
 
         public bool Guest { get; set; }
 

@@ -1,0 +1,27 @@
+[
+  {
+    "izvestajOHospitalizaciji": null,
+    "istorijaBolesti": null,
+    "recept": null,
+    "patient": {
+      "termin": null,
+      "ZdravstveniKarton": null,
+      "Guest": false,
+      "Ime": "Dusan",
+      "Prezime": "Markovic",
+      "Jmbg": 1234567890123,
+      "BrojTelefona": 69000333,
+      "Mejl": "dusanmarkovic@gmail.com",
+      "AdresaStanovanja": "",
+      "Pol": 0,
+      "Username": "dukikidua",
+      "Password": "markovic99",
+      "Uloga": 3
+    },
+    "Id": 12,
+    "ZdravstvenoStanje": 1,
+    "alergije": "polen, ",
+    "KrvnaGrupa": 0,
+    "Vakcine": "tetanus, "
+  }
+]

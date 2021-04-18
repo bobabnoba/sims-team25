@@ -24,7 +24,29 @@ namespace Model
             Vakcine = vakcine;
         }
 
+        public ZdravstveniKarton(string a) 
+        {
+            this.Alergije = a;
+        }
 
+        public ZdravstveniKarton()
+        {
+        }
+
+        public void setAlergije(string alergije)
+        {
+            this.Alergije = alergije;
+        }
+
+        public string getAlergije()
+        {
+            return Alergije;
+        }
+
+        public void dodajAlergije(string dodaj)
+        {
+            this.Alergije += dodaj;
+        }
         /// <pdGenerated>default getter</pdGenerated>
         public System.Collections.ArrayList GetIzvestajOHospitalizaciji()
         {

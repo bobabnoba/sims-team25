@@ -32,6 +32,7 @@
       "Sprat": -1
     },
     "Lekar": {
+      "termini": null,
       "termin": [
         {
           "izvestaj": [],
@@ -89,6 +90,7 @@
       "Sprat": -1
     },
     "Lekar": {
+      "termini": null,
       "termin": null,
       "Ime": "Milos",
       "Prezime": "Zivic",
@@ -120,6 +122,7 @@
       "Sprat": 0
     },
     "Lekar": {
+      "termini": null,
       "termin": [
         {
           "izvestaj": [],
@@ -147,39 +150,9 @@
   {
     "izvestaj": null,
     "zdravstveniKarton": null,
-    "prostorija": {
-      "inventar": [],
-      "statickaOprema": null,
-      "dinamickaOprema": null,
-      "Id": 0,
-      "Naziv": "ytggh",
-      "Tip": 1,
-      "Slobodna": false,
-      "Sprat": 0
-    },
-    "Lekar": {
-      "termin": null,
-      "Ime": "Milos",
-      "Prezime": "Zivic",
-      "Jmbg": 2234567890113,
-      "BrojTelefona": 69393334,
-      "Mejl": "zivko99@gmail.com",
-      "AdresaStanovanja": "Becej",
-      "Pol": 0,
-      "Username": "milos",
-      "Password": "zivic",
-      "Uloga": 0
-    },
-    "Id": 9,
-    "Tip": 1,
-    "Pocetak": "2021-05-06T10:30:00",
-    "Trajanje": 0.5
-  },
-  {
-    "izvestaj": null,
-    "zdravstveniKarton": null,
     "prostorija": null,
     "Lekar": {
+      "termini": null,
       "termin": [],
       "Ime": "Milos",
       "Prezime": "Zivic",
@@ -211,6 +184,7 @@
       "Sprat": 0
     },
     "Lekar": {
+      "termini": null,
       "termin": [],
       "Ime": "Milos",
       "Prezime": "Zivic",
@@ -242,6 +216,7 @@
       "Sprat": 0
     },
     "Lekar": {
+      "termini": null,
       "termin": [
         {
           "izvestaj": [],
@@ -280,6 +255,7 @@
       "Sprat": 2
     },
     "Lekar": {
+      "termini": null,
       "termin": null,
       "Ime": "Milos",
       "Prezime": "Zivic",
@@ -295,6 +271,123 @@
     "Id": 9,
     "Tip": 0,
     "Pocetak": "2021-05-06T10:30:00",
+    "Trajanje": 0.5
+  },
+  {
+    "izvestaj": null,
+    "zdravstveniKarton": null,
+    "prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 0,
+      "Naziv": "ytggh",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 0
+    },
+    "Lekar": {
+      "termini": null,
+      "termin": [
+        {
+          "izvestaj": [],
+          "Tip": 0,
+          "Pocetak": "2020-05-01T08:30:52",
+          "Trajanje": 90.0
+        }
+      ],
+      "Ime": "Veljko",
+      "Prezime": "Vukovic",
+      "Jmbg": 2334567890213,
+      "BrojTelefona": 66393345,
+      "Mejl": "vuksivuk@gmail.com",
+      "AdresaStanovanja": "Beograd",
+      "Pol": 0,
+      "Username": "veksi",
+      "Password": "vukovic",
+      "Uloga": 0
+    },
+    "Id": 11,
+    "Tip": 0,
+    "Pocetak": "2021-04-07T09:00:00",
+    "Trajanje": 0.5
+  },
+  {
+    "izvestaj": null,
+    "zdravstveniKarton": null,
+    "prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 0,
+      "Naziv": "ytggh",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 0
+    },
+    "Lekar": {
+      "termini": null,
+      "termin": [
+        {
+          "izvestaj": [],
+          "Tip": 0,
+          "Pocetak": "2020-05-01T08:30:52",
+          "Trajanje": 90.0
+        }
+      ],
+      "Ime": "Veljko",
+      "Prezime": "Vukovic",
+      "Jmbg": 2334567890213,
+      "BrojTelefona": 66393345,
+      "Mejl": "vuksivuk@gmail.com",
+      "AdresaStanovanja": "Beograd",
+      "Pol": 0,
+      "Username": "veksi",
+      "Password": "vukovic",
+      "Uloga": 0
+    },
+    "Id": 12,
+    "Tip": 0,
+    "Pocetak": "2021-04-08T09:00:00",
+    "Trajanje": 0.5
+  },
+  {
+    "izvestaj": null,
+    "zdravstveniKarton": null,
+    "prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 0,
+      "Naziv": "ytggh",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 0
+    },
+    "Lekar": {
+      "termini": null,
+      "termin": [
+        {
+          "izvestaj": [],
+          "Tip": 0,
+          "Pocetak": "2020-05-01T08:30:52",
+          "Trajanje": 90.0
+        }
+      ],
+      "Ime": "Veljko",
+      "Prezime": "Vukovic",
+      "Jmbg": 2334567890213,
+      "BrojTelefona": 66393345,
+      "Mejl": "vuksivuk@gmail.com",
+      "AdresaStanovanja": "Beograd",
+      "Pol": 0,
+      "Username": "veksi",
+      "Password": "vukovic",
+      "Uloga": 0
+    },
+    "Id": 13,
+    "Tip": 0,
+    "Pocetak": "2021-04-07T08:30:00",
     "Trajanje": 0.5
   }
 ]

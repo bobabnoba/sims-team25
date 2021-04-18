@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using Model;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Stranice.LekarCRUD;
+using ZdravoKorporacija.Stranice.SekretarCRUD;
 
 namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
 {
@@ -51,6 +52,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
         private void zakaziPregled(object sender, RoutedEventArgs e)
         {
             zakaziPregledLekar zp = new zakaziPregledLekar(termini);
+           
             zp.Show();
         }
 
@@ -80,6 +82,13 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
         private void dgUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            sekretarStart s = new sekretarStart();
+           
+            s.Show();
         }
     }
 }

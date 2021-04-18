@@ -67,7 +67,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
             foreach (Pacijent p in pacijenti)
             {
-                if (p.ZdravstveniKarton == selektovani.zdravstveniKarton)
+                if (p.zdravstveniKarton == selektovani.zdravstveniKarton)
                 {
                     cbPacijent.SelectedItem = p;
                 }
