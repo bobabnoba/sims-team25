@@ -76,7 +76,7 @@ namespace ZdravoKorporacija.Model
             return null;
         }
 
-        public List<Prostorija> PregledSvihProstorija()
+        public  List<Prostorija> PregledSvihProstorija()
         {
             ProstorijaRepozitorijum datoteka = new ProstorijaRepozitorijum();
             List<Prostorija> prostorije = datoteka.dobaviSve();

@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Model;
+using ZdravoKorporacija.Stranice.SekretarPREGLEDI;
 
 namespace ZdravoKorporacija.Stranice.SekretarCRUD
 {
@@ -11,6 +12,10 @@ namespace ZdravoKorporacija.Stranice.SekretarCRUD
     /// </summary>
     public partial class sekretarStart : Window
     {
+        private TerminService storage = new TerminService();
+        private ObservableCollection<Termin> termini = new ObservableCollection<Termin>();
+        private PacijentService storagePacijent = new PacijentService();
+        
         private ObservableCollection<Pacijent> pacijenti = new ObservableCollection<Pacijent>();
         public sekretarStart()
         {
@@ -18,6 +23,10 @@ namespace ZdravoKorporacija.Stranice.SekretarCRUD
             PacijentRepozitorijum dat = new PacijentRepozitorijum();
             pacijenti = new ObservableCollection<Pacijent>(dat.dobaviSve());
             dgUsers.ItemsSource = pacijenti;
+
+            termini = new ObservableCollection<Termin>(storage.PregledSvihTermina());
+            
+            this.DataContext = this;
         }
 
         private void kreiraj(object sender, RoutedEventArgs e)
@@ -48,6 +57,11 @@ namespace ZdravoKorporacija.Stranice.SekretarCRUD
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Content = new sekretarPREGLEDI();
         }
     }
 }

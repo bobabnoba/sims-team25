@@ -4,6 +4,7 @@
 // Purpose: Definition of Class Doctor
 
 using System;
+using System.Collections.Generic;
 
 namespace Model
 {
@@ -20,8 +21,14 @@ namespace Model
         {
         }
 
-
+        public List<Termin> termini;
         public System.Collections.ArrayList termin;
+
+
+        public List<Termin> GetTermini()
+        {
+            return termini;
+        }
 
         /// <pdGenerated>default getter</pdGenerated>
         public System.Collections.ArrayList GetTermin()
@@ -65,6 +72,8 @@ namespace Model
                     oldTermin.SetLekar((Lekar)null);
                 }
         }
+
+      
 
         /// <pdGenerated>default removeAll</pdGenerated>
         public void RemoveAllTermin()

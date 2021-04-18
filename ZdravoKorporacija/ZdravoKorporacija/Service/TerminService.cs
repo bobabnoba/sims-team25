@@ -1,4 +1,5 @@
 ﻿using Model;
+using System;
 using System.Collections.Generic;
 
 namespace ZdravoKorporacija.Model
@@ -56,6 +57,8 @@ namespace ZdravoKorporacija.Model
             return false;
         }
 
+     
+
         public Termin PregledTermina(int id)
         {
             TerminRepozitorijum datoteka = new TerminRepozitorijum();
@@ -75,5 +78,9 @@ namespace ZdravoKorporacija.Model
             List<Termin> termini = datoteka.dobaviSve();
             return termini;
         }
+
+
+
+
     }
 }

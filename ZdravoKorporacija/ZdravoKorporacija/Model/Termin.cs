@@ -126,10 +126,21 @@ namespace Model
         public Lekar Lekar { get; set; }
 
         /// <pdGenerated>default parent getter</pdGenerated>
+        /// 
+        public Prostorija GetProstorija()
+        {
+            return prostorija;
+        }
         public Lekar GetLekar()
         {
             return Lekar;
         }
+
+        public DateTime GetVreme()
+        {
+            return Pocetak;
+        }
+        
 
         /// <pdGenerated>default parent setter</pdGenerated>
         /// <param>newLekar</param>

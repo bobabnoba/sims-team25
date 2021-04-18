@@ -6,25 +6,25 @@ using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Model;
 
-namespace ZdravoKorporacija.Stranice.LekarCRUD
+namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
 {
     /// <summary>
-    /// Interaction logic for zakaziPregledLekar.xaml
+    /// Interaction logic for zakaziPregledSekretar.xaml
     /// </summary>
-    public partial class zakaziPregledLekar : Window
-    {
-        private TerminService storage = new TerminService();
-        private ProstorijaService prostorijeStorage = new ProstorijaService();
-        private PacijentRepozitorijum pacijentiDat = new PacijentRepozitorijum();
-        private PacijentService pacijentiStorage = new PacijentService();
-        private List<Pacijent> pacijenti = new List<Pacijent>();
-        private LekarRepozitorijum lekariDat = new LekarRepozitorijum();
-        private List<Lekar> lekari = new List<Lekar>();
-        private List<Prostorija> prostorije = new List<Prostorija>();
-        private Termin p;
-        private ObservableCollection<Termin> pregledi;
-
-        public zakaziPregledLekar(ObservableCollection<Termin> termini)
+    public partial class zakaziPregledSekretar : Window
+    { 
+           private TerminService storage = new TerminService();
+    private ProstorijaService prostorijeStorage = new ProstorijaService();
+    private PacijentRepozitorijum pacijentiDat = new PacijentRepozitorijum();
+    private PacijentService pacijentiStorage = new PacijentService();
+    private List<Pacijent> pacijenti = new List<Pacijent>();
+    private LekarRepozitorijum lekariDat = new LekarRepozitorijum();
+    private List<Lekar> lekari = new List<Lekar>();
+    private List<Prostorija> prostorije = new List<Prostorija>();
+    private Termin p;
+    private ObservableCollection<Termin> pregledi;
+    
+        public zakaziPregledSekretar(ObservableCollection<Termin> termini)
         {
             InitializeComponent();
             p = new Termin();
@@ -33,17 +33,15 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             pregledi = termini;
 
             lekari = lekariDat.dobaviSve();
-            
             Lekari.ItemsSource = lekari;
 
             prostorije = prostorijeStorage.PregledSvihProstorija();
             cbProstorija.ItemsSource = prostorije;
             p.Trajanje = 0.5;
             p.Id = pregledi.Count + 1;
-
         }
 
-        private void potvrdi(object sender, RoutedEventArgs e)
+        private void da(object sender, RoutedEventArgs e)
         {
             Pacijent pac = (Pacijent)cbPacijent.SelectedItem;
             ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
@@ -66,14 +64,9 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 p.Tip = TipTerminaEnum.Operacija;
             }
 
-            
-
             p.prostorija = (Prostorija)cbProstorija.SelectedItem;
             p.Lekar = (Lekar)Lekari.SelectedItem;
-           
-            
 
-           
             if (storage.ZakaziTermin(p))
             {
                 this.pregledi.Add(p);
@@ -82,20 +75,17 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             pacijentiStorage.AzurirajPacijenta(pac);
             this.Close();
         }
-
-        private void odustani(object sender, RoutedEventArgs e)
+        private void ne(object sender, RoutedEventArgs e)
         {
-            this.Close();
-        }
 
+        }
+        private void vreme_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-
-        }
-
-        private void time_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
 
         }
     }
