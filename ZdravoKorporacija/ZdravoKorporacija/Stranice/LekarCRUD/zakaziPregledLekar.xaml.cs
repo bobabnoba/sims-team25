@@ -23,14 +23,19 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private List<Prostorija> prostorije = new List<Prostorija>();
         private Termin p;
         private ObservableCollection<Termin> pregledi;
+        private Dictionary<int, int> ids = new Dictionary<int, int>();
 
-        public zakaziPregledLekar(ObservableCollection<Termin> termini)
+
+        public zakaziPregledLekar(ObservableCollection<Termin> termini, Dictionary<int, int> ids)
         {
             InitializeComponent();
+
             p = new Termin();
             pacijenti = pacijentiDat.dobaviSve();
             cbPacijent.ItemsSource = pacijenti;
             pregledi = termini;
+            this.ids = ids;
+
 
             lekari = lekariDat.dobaviSve();
             Lekari.ItemsSource = lekari;
@@ -38,12 +43,23 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             prostorije = prostorijeStorage.PregledSvihProstorija();
             cbProstorija.ItemsSource = prostorije;
             p.Trajanje = 0.5;
-            p.Id = pregledi.Count + 1;
+            //p.Id = pregledi.Count + 1;
 
         }
 
         private void potvrdi(object sender, RoutedEventArgs e)
         {
+            int id = 0;
+            for (int i = 0; i < 1000; i++)
+            {
+                if (ids[i] == 0)
+                {
+                    id = i;
+                    ids[i] = 1;
+                    break;
+                }
+            }
+            p.Id = id;
             Pacijent pac = (Pacijent)cbPacijent.SelectedItem;
             ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
             String d = date.Text;
@@ -68,9 +84,15 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             p.prostorija = (Prostorija)cbProstorija.SelectedItem;
             p.Lekar = (Lekar)Lekari.SelectedItem;
 
-            if (storage.ZakaziTermin(p))
+            Termin tZaLjekara = new Termin();
+            tZaLjekara.Id = p.Id;
+            p.Lekar.AddTermin(tZaLjekara);
+
+            if (storage.ZakaziTermin(p, ids))
             {
                 this.pregledi.Add(p);
+                lekariDat.sacuvaj(lekari);
+                //pacijentiDat.sacuvaj(pacijenti); // višakk?
             }
             pac.AddTermin(p);
             pacijentiStorage.AzurirajPacijenta(pac);

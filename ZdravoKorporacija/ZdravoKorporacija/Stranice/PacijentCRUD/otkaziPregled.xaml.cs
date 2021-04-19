@@ -1,4 +1,5 @@
 ﻿using Model;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using ZdravoKorporacija.Model;
@@ -13,17 +14,22 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
         private TerminService storage = new TerminService();
         private ObservableCollection<Termin> termini;
         Termin termin;
-        public otkaziPregled(ObservableCollection<Termin> ts, Termin t)
+        private Dictionary<int, int> ids = new Dictionary<int, int>();
+
+        public otkaziPregled(ObservableCollection<Termin> ts, Termin t, Dictionary<int, int> ids)
         {
             InitializeComponent();
             termini = ts;
             termin = t;
+            this.ids = ids;
         }
 
         private void da(object sender, RoutedEventArgs e)
         {
-            storage.OtkaziTermin(termin);
+            this.ids[this.termin.Id] = 0;
+            storage.OtkaziTermin(termin, ids);
             termini.Remove(termin);
+            //termin.Lekar.RemoveTermin(termin); // provjeri je l ovo radi okej
             this.Close();
 
         }

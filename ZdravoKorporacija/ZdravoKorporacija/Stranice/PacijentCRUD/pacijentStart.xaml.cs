@@ -1,4 +1,5 @@
 ﻿using Model;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,9 +17,14 @@ namespace ZdravoKorporacija.Stranice
         private ObservableCollection<Termin> termini = new ObservableCollection<Termin>();
         private PacijentService storagePacijent = new PacijentService();
         private Pacijent pac = new Pacijent();
+        private Dictionary<int, int> ids = new Dictionary<int, int>(); 
+
         public pacijentStart()
         {
             InitializeComponent();
+
+            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
+            ids = datotekaID.dobaviSve();
 
             termini = new ObservableCollection<Termin>(storage.PregledSvihTermina());
             dgUsers.ItemsSource = termini;
@@ -33,7 +39,7 @@ namespace ZdravoKorporacija.Stranice
         private void izmeniPregled(object sender, RoutedEventArgs e)
         {
             if (dgUsers.SelectedItem == null)
-                MessageBox.Show("Niste selektovali red", "Greska");
+                MessageBox.Show("Pregled nije izabran. Molimo označite pregled koji želite da izmenite.", "Greška");
             else
             {
                 izmeniPregled ip = new izmeniPregled((Termin)dgUsers.SelectedItem, termini);
@@ -45,31 +51,38 @@ namespace ZdravoKorporacija.Stranice
 
         private void zakaziPregled(object sender, RoutedEventArgs e)
         {
-            zakaziPregled zp = new zakaziPregled(termini);
+            zakaziPregled zp = new zakaziPregled(termini, ids);
             zp.Show();
         }
 
         private void otkaziPregled(object sender, RoutedEventArgs e)
         {
-          /*  if (dgUsers.SelectedItem == null)
-                MessageBox.Show("Niste selektovali red", "Greska");
+            /*  if (dgUsers.SelectedItem == null)
+                  MessageBox.Show("Niste selektovali red", "Greska");
+              else
+              {
+                  if (dgUsers.SelectedItem != null)
+                  {
+                      MessageBoxResult result = MessageBox.Show("Da li ste sigurni da želite da otkažete ovaj termin?", "Potvrda brisanja", MessageBoxButton.YesNo);
+                      if (result == MessageBoxResult.Yes)
+                      {
+                          pac.RemoveTermin((Termin)dgUsers.SelectedItem);
+                          storagePacijent.AzurirajPacijenta(pac);
+                          storage.OtkaziTermin((Termin)dgUsers.SelectedItem);
+                          termini.Remove((Termin)dgUsers.SelectedItem);
+                      }
+                  }
+              }*/
+
+            if (dgUsers.SelectedItem == null)
+                MessageBox.Show("Pregled nije izabran. Molimo označite pregled koji želite da otkažete.", "Greška");
             else
             {
-                if (dgUsers.SelectedItem != null)
-                {
-                    MessageBoxResult result = MessageBox.Show("Da li ste sigurni da želite da otkažete ovaj termin?", "Potvrda brisanja", MessageBoxButton.YesNo);
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        pac.RemoveTermin((Termin)dgUsers.SelectedItem);
-                        storagePacijent.AzurirajPacijenta(pac);
-                        storage.OtkaziTermin((Termin)dgUsers.SelectedItem);
-                        termini.Remove((Termin)dgUsers.SelectedItem);
-                    }
-                }
-            }*/
+                otkaziPregled op = new otkaziPregled(termini, (Termin)dgUsers.SelectedItem, ids);
+                op.Show();
+            }
 
-            otkaziPregled op = new otkaziPregled(termini, (Termin)dgUsers.SelectedItem);
-            op.Show();
+            
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
