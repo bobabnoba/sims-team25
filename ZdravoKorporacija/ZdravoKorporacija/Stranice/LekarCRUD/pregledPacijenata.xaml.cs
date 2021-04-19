@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Model;
+using System;
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
 {
@@ -21,18 +22,28 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             InitializeComponent();
             termini = new ObservableCollection<Termin>(terminServis.PregledSvihTermina());
             pacijenti = new ObservableCollection<Pacijent>(pacijentServis.PregledSvihPacijenata());
-            foreach (Termin t in termini)
+            try
             {
-                foreach (Pacijent p in pacijenti)
-                    if (t.zdravstveniKarton.Id.Equals(p.ZdravstveniKarton.Id))
+                foreach (Termin t in termini)
+                {
+                    if (t.zdravstveniKarton != null)
                     {
-                        if (!pacijentiPrikaz.Contains(p))
-                            pacijentiPrikaz.Add(p);
+                        foreach (Pacijent p in pacijenti)
+                            if (t.zdravstveniKarton.Id.Equals(p.ZdravstveniKarton.Id))
+                            {
+                                if (!pacijentiPrikaz.Contains(p))
+                                    pacijentiPrikaz.Add(p);
+                            }
                     }
+                }
+                dgUsers.ItemsSource = pacijentiPrikaz;
+                this.DataContext = this;
+            }
+            catch (NullReferenceException) 
+            {
+                return;
             }
 
-            dgUsers.ItemsSource = pacijentiPrikaz;
-            this.DataContext = this;
         }
         private void dgUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

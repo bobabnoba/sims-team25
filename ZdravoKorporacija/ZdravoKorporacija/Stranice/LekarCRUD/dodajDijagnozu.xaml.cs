@@ -23,7 +23,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     {
         private ZdravstveniKartonServis kartonServis = new ZdravstveniKartonServis();
         private ZdravstveniKartonRepozitorijum kartonDat = new ZdravstveniKartonRepozitorijum();
-        private List<Lekar> ljekari;
+        //private List<Lekar> ljekari;
         Dijagnoza d;
         public dodajDijagnozu(ObservableCollection<Dijagnoza> dijagnoze)
         {

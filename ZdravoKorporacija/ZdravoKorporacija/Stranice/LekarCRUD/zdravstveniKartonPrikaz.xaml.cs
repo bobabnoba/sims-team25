@@ -46,7 +46,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             PolLabel.Content = selektovani.Pol;
 
             try { KrvnaGrupaLabel.Content = selektovani.ZdravstveniKarton.KrvnaGrupa; }
-            catch(NullReferenceException ex)
+            catch(NullReferenceException)
             { }
         }
 
@@ -78,7 +78,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 PolLabel.Content = p.Pol;
 
                 try { KrvnaGrupaLabel.Content = p.ZdravstveniKarton.KrvnaGrupa; }
-                catch (NullReferenceException ex)
+                catch (NullReferenceException)
                 { }
             }
         }

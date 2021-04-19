@@ -50,7 +50,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 date.SelectedDate = selektovani.Pocetak;
                 time.SelectedValue = selektovani.Pocetak.ToString("HH:mm");
             }
-            catch(Exception e) { }
+            catch(Exception) { }
             prostorije = prostorijeStorage.PregledSvihProstorija();
             cbProstorija.ItemsSource = prostorije;
             foreach (Prostorija p in prostorije)

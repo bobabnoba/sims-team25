@@ -7,14 +7,15 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <Compile Update="Stranice\DinamickaOprema\dinamickaOpremaStart.xaml.cs">
-=======
-    <Compile Update="Stranice\LekarCRUD\dodajDijagnozu.xaml.cs">
+
+	  <Compile Update="Stranice\DinamickaOprema\dinamickaOpremaStart.xaml.cs">
+		  <SubType>Code</SubType>
+	  </Compile>
+  <Compile Update="Stranice\LekarCRUD\dodajDijagnozu.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Stranice\LekarCRUD\istorijaBolestiPrikaz.xaml.cs">
->>>>>>> prikazpacijenta
+
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Stranice\LekarCRUD\izmeniPregledLekar.xaml.cs">
@@ -32,14 +33,14 @@
     <Compile Update="Stranice\LekarCRUD\zakaziPregledLekar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-<<<<<<< HEAD
+
     <Compile Update="Stranice\Magacin\MagacinDodavanje.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Stranice\Magacin\MagacinStart.xaml.cs">
-=======
+	</Compile>
     <Compile Update="Stranice\LekarCRUD\zdravstveniKartonPrikaz.xaml.cs">
->>>>>>> prikazpacijenta
+
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Stranice\PacijentCRUD\izmeniPregled.xaml.cs">
@@ -95,14 +96,15 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-<<<<<<< HEAD
+
     <Page Update="Stranice\DinamickaOprema\dinamickaOpremaStart.xaml">
-=======
+		<SubType>Designer</SubType>
+	</Page>
     <Page Update="Stranice\LekarCRUD\dodajDijagnozu.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\LekarCRUD\istorijaBolestiPrikaz.xaml">
->>>>>>> prikazpacijenta
+
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\LekarCRUD\izmeniPregledLekar.xaml">
@@ -120,14 +122,15 @@
     <Page Update="Stranice\LekarCRUD\zakaziPregledLekar.xaml">
       <SubType>Designer</SubType>
     </Page>
-<<<<<<< HEAD
+
     <Page Update="Stranice\Magacin\MagacinDodavanje.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\Magacin\MagacinStart.xaml">
-=======
-    <Page Update="Stranice\LekarCRUD\zdravstveniKartonPrikaz.xaml">
->>>>>>> prikazpacijenta
+		<SubType>Designer</SubType>
+	</Page>
+ <Page Update="Stranice\LekarCRUD\zdravstveniKartonPrikaz.xaml">
+
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\PacijentCRUD\izmeniPregled.xaml">

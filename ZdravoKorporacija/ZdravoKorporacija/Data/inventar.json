@@ -26,5 +26,12 @@
     "UkupnaKolicina": 20,
     "Proizvodjac": "helas",
     "DatumNabavke": "0001-01-01T00:00:00"
+  },
+  {
+    "Id": 4,
+    "Naziv": "Hanzaplast",
+    "UkupnaKolicina": 25,
+    "Proizvodjac": "Keek",
+    "DatumNabavke": "0001-01-01T00:00:00"
   }
 ]
