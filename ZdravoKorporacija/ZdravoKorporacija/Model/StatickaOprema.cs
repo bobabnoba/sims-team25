@@ -10,7 +10,7 @@ namespace Model
 {
     public class StatickaOprema : Inventar
     {
-        public Termin termin;
+        public Termin termin { get; set; }
 
         public StatickaOprema(Termin termin, int id, string naziv, int ukupnaKolicina, string proizvodjac, DateTime datumNabavke) : base(id, naziv, ukupnaKolicina, proizvodjac, datumNabavke)
         {

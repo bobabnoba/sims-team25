@@ -48,6 +48,13 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
                 }
             }
             string ime = textboxNaziv.Text;
+
+            if (ime.Trim() == "") {
+                MessageBox.Show("Ne možemo da pronadjemo naziv prostorije, molimo vas unesite ponovo naziv", "Greška");
+                return;
+            }
+
+
             TipProstorijeEnum tip;
             int sprat;
             if (comboBoxTip.SelectedIndex == 0)

@@ -1,0 +1,37 @@
+﻿<Window x:Class="ZdravoKorporacija.Stranice.StatickaOprema.statickaOpremaStart"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.StatickaOprema"
+        mc:Ignorable="d"
+        Title="Staticka Oprema" Height="478" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="28*"/>
+            <ColumnDefinition Width="93*"/>
+            <ColumnDefinition Width="113*"/>
+            <ColumnDefinition Width="566*"/>
+        </Grid.ColumnDefinitions>
+        <Button Content="Premesti iz magacina" Margin="10,393,509,0" VerticalAlignment="Top" Height="25" Click="dodaj" Grid.Column="2" Grid.ColumnSpan="2" RenderTransformOrigin="0.554,-0.153"/>
+        <Button Content="Izmeni opremu" HorizontalAlignment="Left" Margin="6,347,0,0" VerticalAlignment="Top" Width="118" Height="25" RenderTransformOrigin="0.255,-0.75" Click="Button_Click_1" Grid.Column="3"/>
+        <Button Content="Izbriši opremu" HorizontalAlignment="Left" Margin="178,347,0,0" VerticalAlignment="Top" Width="120" Height="25" RenderTransformOrigin="0.033,-1.977" Click="Button_Click_2" Grid.Column="3"/>
+        <DataGrid Name="dgStatickaOprema" AutoGenerateColumns="False" Margin="28,105,246,136" Grid.ColumnSpan="3" Grid.Column="1" SelectionChanged="dgStatickaOprema_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
+                <DataGridTextColumn Header="Naziv" Binding="{Binding Naziv}" />
+                <DataGridTextColumn Header="Sprat" Binding="{Binding Sprat}" />
+                <DataGridTextColumn Header="Tip" Binding="{Binding Tip}" />
+            </DataGrid.Columns>
+            <!--<DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Details}" Margin="10" />
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>-->
+        </DataGrid>
+        <Label Content="Statička oprema" HorizontalAlignment="Left" Margin="46,30,0,0" VerticalAlignment="Top" FontSize="32" Grid.ColumnSpan="3" Grid.Column="1"/>
+        <Button Content="Dodaj opremu" HorizontalAlignment="Left" Margin="51,347,0,0" VerticalAlignment="Top" Width="120" Height="25" Click="dodaj" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Button Content="Kreiraj izveštaj" HorizontalAlignment="Left" Margin="385,291,0,0" VerticalAlignment="Top" Width="130" Height="25" RenderTransformOrigin="0.033,-1.977" Click="Button_Click_2" Grid.Column="3"/>
+        <Button Content="Premesti iz prostorije" Margin="87,393,319,0" VerticalAlignment="Top" Height="25" Click="dodaj" Grid.Column="3" RenderTransformOrigin="0.554,-0.153"/>
+    </Grid>
+</Window>

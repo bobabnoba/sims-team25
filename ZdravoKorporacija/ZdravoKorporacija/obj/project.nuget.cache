@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bkZs1zp+K+ayR0Ud4OzwQVPV190/pY8OiuTng88/B/WN24JN3EsvXatKPYdT2SNGf1hzF9kKkvJ3AXC1qhlgCg==",
+  "dgSpecHash": "OUakwoYWHGs2roMVSDM/MlBf/x0WNA9SunsohgB4f555/BxvR2R/iueVbizyBCGmRqlqFTynRucbX4p8IqbepQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\papov\\Desktop\\git projekat\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\ZdravoKorporacija.csproj",
+  "projectFilePath": "C:\\Users\\papov\\Desktop\\New folder\\sims-team25\\ZdravoKorporacija\\ZdravoKorporacija\\ZdravoKorporacija.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\papov\\.nuget\\packages\\microsoft.csharp\\4.0.1\\microsoft.csharp.4.0.1.nupkg.sha512",
     "C:\\Users\\papov\\.nuget\\packages\\microsoft.netcore.platforms\\1.0.1\\microsoft.netcore.platforms.1.0.1.nupkg.sha512",

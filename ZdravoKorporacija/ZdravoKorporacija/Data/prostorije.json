@@ -4,17 +4,27 @@
     "statickaOprema": null,
     "dinamickaOprema": null,
     "Id": 0,
-    "Naziv": "ytggh",
+    "Naziv": "soba11",
     "Tip": 1,
     "Slobodna": false,
-    "Sprat": 0
+    "Sprat": 1
+  },
+  {
+    "inventar": [],
+    "statickaOprema": null,
+    "dinamickaOprema": null,
+    "Id": 1,
+    "Naziv": "soba12",
+    "Tip": 1,
+    "Slobodna": false,
+    "Sprat": 1
   },
   {
     "inventar": [],
     "statickaOprema": null,
     "dinamickaOprema": null,
     "Id": 2,
-    "Naziv": "fghfghfghgf",
+    "Naziv": "soba21",
     "Tip": 1,
     "Slobodna": false,
     "Sprat": 2
@@ -24,9 +34,29 @@
     "statickaOprema": null,
     "dinamickaOprema": null,
     "Id": 3,
-    "Naziv": "hfghfhhgrg",
+    "Naziv": "soba22",
     "Tip": 1,
     "Slobodna": false,
     "Sprat": 2
+  },
+  {
+    "inventar": [],
+    "statickaOprema": null,
+    "dinamickaOprema": null,
+    "Id": 4,
+    "Naziv": "soba31",
+    "Tip": 1,
+    "Slobodna": false,
+    "Sprat": 3
+  },
+  {
+    "inventar": [],
+    "statickaOprema": null,
+    "dinamickaOprema": null,
+    "Id": 5,
+    "Naziv": "soba33",
+    "Tip": 1,
+    "Slobodna": false,
+    "Sprat": 3
   }
 ]

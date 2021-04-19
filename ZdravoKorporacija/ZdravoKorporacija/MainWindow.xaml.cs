@@ -91,7 +91,7 @@ namespace ZdravoKorporacija
 
         private void openUpravnikFrame(object sender, RoutedEventArgs e)
         {
-            upravnikStart s = new upravnikStart();
+            upravnikPocetna s = new upravnikPocetna();
             s.Show();
         }
         private void openLekarFrame(object sender, RoutedEventArgs e)
