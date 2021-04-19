@@ -10,6 +10,8 @@ namespace Model
     {
         Stabilno,
         Kriticno,
-        Stacionarno
+        Stacionarno,
+        None
     }
+   
 }

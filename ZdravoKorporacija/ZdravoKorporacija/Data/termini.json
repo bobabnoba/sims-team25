@@ -1,18 +1,39 @@
 [
   {
     "izvestaj": null,
+<<<<<<< HEAD
     "zdravstveniKarton": null,
+=======
+    "zdravstveniKarton": {
+      "izvestajOHospitalizaciji": null,
+      "istorijaBolesti": null,
+      "recept": null,
+      "termin": null,
+      "patient": null,
+      "Id": 0,
+      "ZdravstvenoStanje": 0,
+      "Alergije": null,
+      "KrvnaGrupa": 0,
+      "Vakcine": null
+    },
+>>>>>>> prikazpacijenta
     "prostorija": {
       "inventar": [],
       "statickaOprema": null,
       "dinamickaOprema": null,
+<<<<<<< HEAD
       "Id": 3,
       "Naziv": "hfghfhhgrg",
+=======
+      "Id": 2,
+      "Naziv": "fghfghfghgf",
+>>>>>>> prikazpacijenta
       "Tip": 1,
       "Slobodna": false,
       "Sprat": 2
     },
     "Lekar": {
+<<<<<<< HEAD
       "termin": [
         {
           "izvestaj": null,
@@ -24,6 +45,9 @@
           "Trajanje": 0.0
         }
       ],
+=======
+      "termin": null,
+>>>>>>> prikazpacijenta
       "Ime": "Milos",
       "Prezime": "Zivic",
       "Jmbg": 2234567890113,
@@ -35,6 +59,7 @@
       "Password": "zivic",
       "Uloga": 0
     },
+<<<<<<< HEAD
     "Id": 0,
     "Tip": 0,
     "Pocetak": "2021-05-08T17:30:00",
@@ -79,6 +104,53 @@
     "Id": 1,
     "Tip": 1,
     "Pocetak": "2021-07-22T17:30:00",
+=======
+    "Id": 2,
+    "Tip": 0,
+    "Pocetak": "2021-04-19T12:30:00",
+    "Trajanje": 0.5
+  },
+  {
+    "izvestaj": null,
+    "zdravstveniKarton": {
+      "izvestajOHospitalizaciji": null,
+      "istorijaBolesti": null,
+      "recept": null,
+      "termin": null,
+      "patient": null,
+      "Id": 0,
+      "ZdravstvenoStanje": 0,
+      "Alergije": null,
+      "KrvnaGrupa": 0,
+      "Vakcine": null
+    },
+    "prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 2,
+      "Naziv": "fghfghfghgf",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 2
+    },
+    "Lekar": {
+      "termin": null,
+      "Ime": "Milos",
+      "Prezime": "Zivic",
+      "Jmbg": 2234567890113,
+      "BrojTelefona": 69393334,
+      "Mejl": "zivko99@gmail.com",
+      "AdresaStanovanja": "Becej",
+      "Pol": 0,
+      "Username": "milos",
+      "Password": "zivic",
+      "Uloga": 0
+    },
+    "Id": 2,
+    "Tip": 0,
+    "Pocetak": "2021-04-19T16:30:00",
+>>>>>>> prikazpacijenta
     "Trajanje": 0.5
   }
 ]

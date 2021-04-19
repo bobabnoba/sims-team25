@@ -23,7 +23,11 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private List<Prostorija> prostorije = new List<Prostorija>();
         private Termin p;
         private ObservableCollection<Termin> pregledi;
+<<<<<<< HEAD
         private Dictionary<int, int> ids = new Dictionary<int, int>();
+=======
+        DateTime dateTime = DateTime.Now;
+>>>>>>> prikazpacijenta
 
 
         public zakaziPregledLekar(ObservableCollection<Termin> termini, Dictionary<int, int> ids)
@@ -34,8 +38,13 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             pacijenti = pacijentiDat.dobaviSve();
             cbPacijent.ItemsSource = pacijenti;
             pregledi = termini;
+<<<<<<< HEAD
             this.ids = ids;
 
+=======
+            CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
+            date.BlackoutDates.Add(cdr);
+>>>>>>> prikazpacijenta
 
             lekari = lekariDat.dobaviSve();
             Lekari.ItemsSource = lekari;
@@ -62,6 +71,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             p.Id = id;
             Pacijent pac = (Pacijent)cbPacijent.SelectedItem;
             ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
+            
             String d = date.Text;
             String t = null;
             if (cboItem != null)
@@ -70,9 +80,13 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 t = cboItem.Content.ToString();
 
             }
-            p.Pocetak = DateTime.Parse(d + " " + t);
-
-            if (cbTip.SelectedIndex == 0)
+            try
+            {
+                p.Pocetak = DateTime.Parse(d + " " + t);
+            }
+            catch(InvalidCastException ex)
+            { }
+                    if (cbTip.SelectedIndex == 0)
             {
                 p.Tip = TipTerminaEnum.Pregled;
             }
@@ -83,6 +97,13 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
             p.prostorija = (Prostorija)cbProstorija.SelectedItem;
             p.Lekar = (Lekar)Lekari.SelectedItem;
+            if (pac.ZdravstveniKarton != null)
+                p.zdravstveniKarton = pac.ZdravstveniKarton;
+            else
+            {
+                p.zdravstveniKarton = new ZdravstveniKarton(null, pacijenti.Count + 1, StanjePacijentaEnum.None,null,KrvnaGrupaEnum.None,null) ;
+                pac.ZdravstveniKarton = new ZdravstveniKarton(null, pacijenti.Count + 1, StanjePacijentaEnum.None, null, KrvnaGrupaEnum.None, null);
+            }
 
             Termin tZaLjekara = new Termin();
             tZaLjekara.Id = p.Id;

@@ -11,6 +11,8 @@ namespace Model
     {
         public Termin termin;
 
+        public Izvestaj() { }
+
         public Izvestaj(Termin termin, int id, string opis, string simptomi)
         {
             this.termin = termin;
