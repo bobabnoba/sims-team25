@@ -4,7 +4,7 @@
     "istorijaBolesti": null,
     "recept": null,
     "termin": null,
-    "Alergije": "polen, kikiriki,  asdasdasdasdasd, macija dlakabundeva",
+    "Alergije": "polen, kikiriki, macija dlaka, bundeva",
     "Id": 13,
     "ZdravstvenoStanje": 1,
     "KrvnaGrupa": 2,
@@ -31,5 +31,17 @@
     "ZdravstvenoStanje": 1,
     "KrvnaGrupa": 1,
     "Vakcine": "tetanus, "
+  },
+  {
+    "izvestajOHospitalizaciji": null,
+    "istorijaBolesti": null,
+    "recept": null,
+    "termin": null,
+    "Alergije": "pseca dlaka",
+    "Id": 12,
+    "ZdravstvenoStanje": 1,
+    "KrvnaGrupa": 1,
+    "Vakcine": "tetanus, "
   }
+
 ]

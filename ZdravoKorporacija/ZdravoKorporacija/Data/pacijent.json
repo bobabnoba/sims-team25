@@ -1,7 +1,7 @@
 [
   {
+    "zdravstveniKarton": null,
     "termin": null,
-    "ZdravstveniKarton": null,
     "Guest": false,
     "Ime": "ddaasss",
     "Prezime": "ssaaa",
@@ -15,45 +15,8 @@
     "Uloga": 3
   },
   {
+    "zdravstveniKarton": null,
     "termin": null,
-    
-      "Guest"
-      :
-      false,
-      "Ime"
-      :
-      "Dusan",
-      "Prezime"
-      :
-      "Markovic",
-      "Jmbg"
-      :
-      13,
-      "BrojTelefona"
-      :
-      69000333,
-      "Mejl"
-      :
-      "dusanmarkovic@gmail.com",
-      "AdresaStanovanja"
-      :
-      "",
-      "Pol"
-      :
-      0,
-      "Username"
-      :
-      "dukikidua",
-      "Password"
-      :
-      "markovic99",
-      "Uloga"
-      :
-      3
-  },
-  {
-    "termin": null,
-    "ZdravstveniKarton": null,
     "Guest": false,
     "Ime": "Aleksa",
     "Prezime": "Papovic",
@@ -67,21 +30,7 @@
     "Uloga": 3
   },
   {
-    "termin": null,
-  
-    "Guest": false,
-    "Ime": "Dusan",
-    "Prezime": "Lekic",
-    "Jmbg": 3214567890122,
-    "BrojTelefona": 66333999,
-    "Mejl": "dusanlekic@gmail.com",
-    "AdresaStanovanja": "",
-    "Pol": 0,
-    "Username": "leka",
-    "Password": "leka99",
-    "Uloga": 3
-  },
-  {
+    "zdravstveniKarton": null,
     "termin": [
       {
         "izvestaj": null,
@@ -123,7 +72,6 @@
         "Trajanje": 0.5
       }
     ],
-    "ZdravstveniKarton": null,
     "Guest": false,
     "Ime": "Petar",
     "Prezime": "Peric",
@@ -134,6 +82,56 @@
     "Pol": 0,
     "Username": "perke92",
     "Password": "perkelepi",
+    "Uloga": 3
+  },
+  {
+    "zdravstveniKarton": {
+      "izvestajOHospitalizaciji": null,
+      "istorijaBolesti": null,
+      "recept": null,
+      "termin": null,
+      "Alergije": null,
+      "Id": 0,
+      "ZdravstvenoStanje": 0,
+      "KrvnaGrupa": 0,
+      "Vakcine": null
+    },
+    "termin": null,
+    "Guest": false,
+    "Ime": "Dusan",
+    "Prezime": "Markovic",
+    "Jmbg": 13,
+    "BrojTelefona": 69000333,
+    "Mejl": "dusanmarkovic@gmail.com",
+    "AdresaStanovanja": "",
+    "Pol": 0,
+    "Username": "dukikidua",
+    "Password": "markovic99",
+    "Uloga": 3
+  },
+  {
+    "zdravstveniKarton": {
+      "izvestajOHospitalizaciji": null,
+      "istorijaBolesti": null,
+      "recept": null,
+      "termin": null,
+      "Alergije": null,
+      "Id": 0,
+      "ZdravstvenoStanje": 0,
+      "KrvnaGrupa": 0,
+      "Vakcine": null
+    },
+    "termin": null,
+    "Guest": false,
+    "Ime": "Dusans",
+    "Prezime": "Lekic",
+    "Jmbg": 3214567890122,
+    "BrojTelefona": 66333999,
+    "Mejl": "dusanlekic@gmail.com",
+    "AdresaStanovanja": "",
+    "Pol": 0,
+    "Username": "leka",
+    "Password": "leka99",
     "Uloga": 3
   }
 ]
