@@ -8,7 +8,12 @@
         Title="prikaziKarton" Height="250" Width="455" Background="CadetBlue">
     <Grid Margin="0,0,0,3">
         <Button Content="NAZAD" Click="Button_Click_1" HorizontalAlignment="Center" VerticalAlignment="Top" Height="34" Width="64" Margin="0,163,0,0"/>
-        <TextBlock Name="alergije"  TextWrapping="Wrap" Margin="140,42,139,105"/>
+        <DataGrid Name="dgKarton" Margin="98,29,97,85">
+            <DataGrid.Columns>
+                
+                
+            </DataGrid.Columns>
+        </DataGrid>
 
     </Grid>
 </Window>

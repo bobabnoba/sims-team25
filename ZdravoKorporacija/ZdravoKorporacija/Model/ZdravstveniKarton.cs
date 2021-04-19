@@ -9,7 +9,7 @@ namespace Model
     public class ZdravstveniKarton
     {
         public System.Collections.ArrayList izvestajOHospitalizaciji;
-
+        private Pacijent patient;
         public ZdravstveniKarton(Pacijent patient, int id, StanjePacijentaEnum zdravstvenoStanje, string alergije, KrvnaGrupaEnum krvnaGrupa, string vakcine)
         {
             this.izvestajOHospitalizaciji = new System.Collections.ArrayList();
@@ -17,6 +17,19 @@ namespace Model
             this.recept = new System.Collections.ArrayList();
             this.termin = new System.Collections.ArrayList();
             this.patient = patient;
+            Id = id;
+            ZdravstvenoStanje = zdravstvenoStanje;
+            Alergije = alergije;
+            KrvnaGrupa = krvnaGrupa;
+            Vakcine = vakcine;
+        }
+        public ZdravstveniKarton(int id, StanjePacijentaEnum zdravstvenoStanje, string alergije, KrvnaGrupaEnum krvnaGrupa, string vakcine)
+        {
+            this.izvestajOHospitalizaciji = new System.Collections.ArrayList();
+            this.istorijaBolesti = new System.Collections.ArrayList();
+            this.recept = new System.Collections.ArrayList();
+            this.termin = new System.Collections.ArrayList();
+            
             Id = id;
             ZdravstvenoStanje = zdravstvenoStanje;
             Alergije = alergije;
@@ -281,11 +294,11 @@ namespace Model
                 tmpTermin.Clear();
             }
         }
-        public Pacijent patient { get; set; }
+        public string Alergije { get; set; }
 
         public int Id { get; set; }
         public StanjePacijentaEnum ZdravstvenoStanje { get; set; }
-        public String Alergije { get; set; }
+       
         public KrvnaGrupaEnum KrvnaGrupa { get; set; }
         public String Vakcine { get; set; }
 

@@ -28,7 +28,7 @@
       "Markovic",
       "Jmbg"
       :
-      1234567890123,
+      13,
       "BrojTelefona"
       :
       69000333,
@@ -57,7 +57,7 @@
     "Guest": false,
     "Ime": "Aleksa",
     "Prezime": "Papovic",
-    "Jmbg": 2134567890213,
+    "Jmbg": 12,
     "BrojTelefona": 66393654,
     "Mejl": "aleksapapovic@gmail.com",
     "AdresaStanovanja": "",
@@ -68,7 +68,7 @@
   },
   {
     "termin": null,
-    "ZdravstveniKarton": null,
+  
     "Guest": false,
     "Ime": "Dusan",
     "Prezime": "Lekic",

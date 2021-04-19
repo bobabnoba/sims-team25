@@ -16,15 +16,16 @@
             <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="111,115,111,-45">
                 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding="{Binding Jmbg}" />
+                    
                     <DataGridTextColumn Header="Ime" Binding="{Binding Ime}"/>
                     <DataGridTextColumn Header="Prezime" Binding="{Binding Prezime}" />
                     <DataGridTextColumn Header="Pol" Binding="{Binding Pol}"/>
                     <DataGridTextColumn Header="Telefon" Binding="{Binding BrojTelefona}"/>
+                   
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Click="pogledaj">Pogledaj alergene</Button>
+                                <Button Click="pogledaj">Pogledaj karton</Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>

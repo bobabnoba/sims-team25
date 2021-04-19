@@ -19,8 +19,16 @@ namespace Model
         public Pacijent(ZdravstveniKarton zk, bool guest, string ime, string prezime, int jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password, UlogaEnum uloga) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password, uloga)
         {
             this.termin = new System.Collections.ArrayList();
-            zk = new ZdravstveniKarton("KORONA, ");
+            
             zdravstveniKarton =  zk;
+            Guest = guest;
+        }
+
+        public Pacijent( bool guest, string ime, string prezime, int jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password, UlogaEnum uloga) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password, uloga)
+        {
+            this.termin = new System.Collections.ArrayList();
+
+            
             Guest = guest;
         }
 
@@ -106,6 +114,10 @@ namespace Model
                 termin.Clear();
         }
        
+        public long GetJmbg()
+        {
+            return this.Jmbg;
+        }
 
         public bool Guest { get; set; }
 

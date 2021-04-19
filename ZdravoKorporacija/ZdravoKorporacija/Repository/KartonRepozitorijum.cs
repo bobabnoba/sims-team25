@@ -27,7 +27,24 @@ namespace ZdravoKorporacija.Repository
             jWriter.Close();
             writer.Close();
         }
-        
+
+        public bool Azuriraj(ZdravstveniKarton zk)
+        {
+            KartonRepozitorijum datoteka = new KartonRepozitorijum();
+            List<ZdravstveniKarton> kartoni = datoteka.dobaviSve();
+            foreach (ZdravstveniKarton t in kartoni)
+            {
+                if (t.Id.Equals(zk.Id))
+                {
+                    kartoni.Remove(t);
+                    kartoni.Add(zk);
+                    datoteka.sacuvaj(kartoni);
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public List<ZdravstveniKarton> dobaviSve()
         {
             List<ZdravstveniKarton> kartoni = new List<ZdravstveniKarton>();
@@ -40,6 +57,16 @@ namespace ZdravoKorporacija.Repository
                 }
             }
             return kartoni;
+        }
+        public ZdravstveniKarton findById(long id) {
+            List<ZdravstveniKarton> kartoni = dobaviSve();
+            foreach(ZdravstveniKarton zk in kartoni)
+            {
+                if (zk.Id == id)
+                    return zk;
+                
+            }
+            return null;
         }
 
     }
