@@ -33,7 +33,6 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
 
             istorijaBolestiGrid.ItemsSource = selektovani.ZdravstveniKarton.GetIstorijaBolesti();
-            istorijaPorodicnihGrid.ItemsSource = selektovani.ZdravstveniKarton.GetIstorijaBolesti();
             alergijeGrid.ItemsSource = selektovani.ZdravstveniKarton.Alergije;
 
             terapijaGrid.ItemsSource = selektovani.ZdravstveniKarton.GetRecept();
@@ -63,7 +62,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
 
             istorijaBolestiGrid.ItemsSource = t.zdravstveniKarton.GetIstorijaBolesti();
-            istorijaPorodicnihGrid.ItemsSource = t.zdravstveniKarton.GetIstorijaBolesti();
+            
             alergijeGrid.ItemsSource = t.zdravstveniKarton.Alergije;
 
             terapijaGrid.ItemsSource = t.zdravstveniKarton.GetRecept();

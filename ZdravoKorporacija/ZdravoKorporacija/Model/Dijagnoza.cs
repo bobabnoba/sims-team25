@@ -59,7 +59,10 @@ namespace Model
                 terapija.Clear();
         }
         public IstorijaBolesti istorijaBolesti;
+       public Dijagnoza():base()
+        {
 
+        }
         public Dijagnoza(string oboljenje, string opis, ArrayList terapija, IstorijaBolesti istorijaBolesti, Termin termin, int id, string simptomi) : base(termin, id, opis, simptomi)
         {
             Oboljenje = oboljenje;
@@ -68,9 +71,7 @@ namespace Model
             this.istorijaBolesti = istorijaBolesti;
         }
 
-        public Dijagnoza()
-        {
-        }
+        
 
         /// <pdGenerated>default parent getter</pdGenerated>
         public IstorijaBolesti GetIstorijaBolesti()

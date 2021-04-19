@@ -518,3 +518,5 @@ C:\Users\Admin\Desktop\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug
 C:\Users\Admin\Desktop\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\LekarCRUD\pregledPacijenata.baml
 C:\Users\Admin\Desktop\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\LekarCRUD\zdravstveniKartonPrikaz.g.cs
 C:\Users\Admin\Desktop\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\LekarCRUD\zdravstveniKartonPrikaz.baml
+C:\Users\Admin\Desktop\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\LekarCRUD\dodajDijagnozu.g.cs
+C:\Users\Admin\Desktop\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\LekarCRUD\istorijaBolestiPrikaz.g.cs

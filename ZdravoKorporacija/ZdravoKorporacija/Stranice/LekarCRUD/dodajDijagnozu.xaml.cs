@@ -1,5 +1,6 @@
 ﻿using Model;
 using Repository;
+using Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -35,7 +36,8 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             d.Oboljenje = oboljenjeText.Text;
             d.Opis = new TextRange(opisText.Document.ContentStart, opisText.Document.ContentEnd).Text;
 
-            
+           // foreach (IstorijaBolesti i in selektovani.ZdravstveniKarton.GetIstorijaBolesti())
+             //   dgUsers.ItemsSource = i.GetDijagnoza();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

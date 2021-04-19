@@ -101,7 +101,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/ZdravoKorporacija;V1.0.0.0;component/stranice/lekarcrud/zakazipregledlekar.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/ZdravoKorporacija;component/stranice/lekarcrud/zakazipregledlekar.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Stranice\LekarCRUD\zakaziPregledLekar.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
