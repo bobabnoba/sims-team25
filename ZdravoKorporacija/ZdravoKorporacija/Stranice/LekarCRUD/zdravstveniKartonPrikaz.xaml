@@ -13,7 +13,7 @@
         <Grid Margin="10,217,549,10">
             <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="34,22,10,22" SelectionChanged="dgUsers_SelectionChanged">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Dijagnoza" Width="*" Binding="{Binding Oboljenje}" />
+                    <DataGridTextColumn Header="Oboljenje" Width="*" Binding="{Binding Oboljenje}" />
                     <!--<DataGridTextColumn Header="Pacijent">
                             <DataGridTextColumn.Binding>
                                 <MultiBinding StringFormat="{}{0} {1}">
@@ -23,7 +23,7 @@
                             </DataGridTextColumn.Binding>
                         </DataGridTextColumn>
                     <DataGridTextColumn Header="Karton pacijenta" Binding="{Binding zdravstveniKarton}" />-->
-                    <DataGridTextColumn Header="Datum Posete" Width="*" Binding="{Binding Pocetak}" />
+                    <DataGridTextColumn Header="Datum Posete" Width="*" Binding="{Binding DatumPosete}" />
                     <!--<DataGrid.RowDetailsTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Details}" Margin="10" />
@@ -31,14 +31,14 @@
                 </DataGrid.RowDetailsTemplate>-->
                 </DataGrid.Columns>
             </DataGrid>
-            <DataGrid x:Name="dgUsers_Copy" AutoGenerateColumns="False" Margin="593,-167,-499,218" SelectionChanged="dgUsers_SelectionChanged">
+            <DataGrid x:Name="istorijaBolestiGrid" AutoGenerateColumns="False" Margin="392,-167,-499,218" SelectionChanged="dgUsers_SelectionChanged">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Width="*" Header="Istorija porodicnih bolesti" Binding="{Binding Oboljenje}" />
                     <!--<DataGrid.RowDetailsTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Details}" Margin="10" />
                     </DataTemplate>
                 </DataGrid.RowDetailsTemplate>-->
+                    <DataGridTextColumn Width="*" Header="Istorija bolesti" Binding="{Binding IstorijaBolestiPacijenta}" />
                     <!--<DataGridTextColumn Header="Pacijent">
                             <DataGridTextColumn.Binding>
                                 <MultiBinding StringFormat="{}{0} {1}">
@@ -48,16 +48,17 @@
                             </DataGridTextColumn.Binding>
                         </DataGridTextColumn>
                     <DataGridTextColumn Header="Karton pacijenta" Binding="{Binding zdravstveniKarton}" />-->
+                    <DataGridTextColumn Width="*" Header="Istorija porodicnih bolesti" Binding="{Binding PorodicnaIstorijaBolesti}" />
                 </DataGrid.Columns>
             </DataGrid>
-            <DataGrid x:Name="dgUsers_Copy1" AutoGenerateColumns="False" Margin="392,-167,-295,218" SelectionChanged="dgUsers_SelectionChanged">
+            <DataGrid x:Name="terapijaGrid" AutoGenerateColumns="False" Margin="389,22,-295,22" SelectionChanged="dgUsers_SelectionChanged">
                 <DataGrid.Columns>
                     <!--<DataGrid.RowDetailsTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Details}" Margin="10" />
                     </DataTemplate>
                 </DataGrid.RowDetailsTemplate>-->
-                    <DataGridTextColumn Width="*" Header="Istorija bolesti" Binding="{Binding Oboljenje}" />
+                    <DataGridTextColumn Width="*" Header="Lek" Binding="{Binding NazivLeka}" />
                     <!--<DataGridTextColumn Header="Pacijent">
                             <DataGridTextColumn.Binding>
                                 <MultiBinding StringFormat="{}{0} {1}">
@@ -67,35 +68,17 @@
                             </DataGridTextColumn.Binding>
                         </DataGridTextColumn>
                     <DataGridTextColumn Header="Karton pacijenta" Binding="{Binding zdravstveniKarton}" />-->
+                    <DataGridTextColumn Width="*" Header="Doza" Binding="{Binding Doza}" />
                 </DataGrid.Columns>
             </DataGrid>
-            <DataGrid x:Name="dgUsers_Copy2" AutoGenerateColumns="False" Margin="389,22,-295,22" SelectionChanged="dgUsers_SelectionChanged">
+            <DataGrid x:Name="alergijeGrid" AutoGenerateColumns="False" Margin="593,22,-499,22" SelectionChanged="dgUsers_SelectionChanged">
                 <DataGrid.Columns>
                     <!--<DataGrid.RowDetailsTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Details}" Margin="10" />
                     </DataTemplate>
                 </DataGrid.RowDetailsTemplate>-->
-                    <DataGridTextColumn Width="*" Header="Terapija" Binding="{Binding Oboljenje}" />
-                    <!--<DataGridTextColumn Header="Pacijent">
-                            <DataGridTextColumn.Binding>
-                                <MultiBinding StringFormat="{}{0} {1}">
-                                    <Binding Path="Pacijent.Ime"/>
-                                    <Binding Path="Pacijent.Prezime"/>
-                                </MultiBinding>
-                            </DataGridTextColumn.Binding>
-                        </DataGridTextColumn>
-                    <DataGridTextColumn Header="Karton pacijenta" Binding="{Binding zdravstveniKarton}" />-->
-                </DataGrid.Columns>
-            </DataGrid>
-            <DataGrid x:Name="dgUsers_Copy3" AutoGenerateColumns="False" Margin="593,22,-499,22" SelectionChanged="dgUsers_SelectionChanged">
-                <DataGrid.Columns>
-                    <!--<DataGrid.RowDetailsTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Details}" Margin="10" />
-                    </DataTemplate>
-                </DataGrid.RowDetailsTemplate>-->
-                    <DataGridTextColumn  Width="*" Header="Alergije" Binding="{Binding Oboljenje}" />
+                    <DataGridTextColumn  Width="*" Header="Alergije" Binding="{Binding Alergije}" />
                     <!--<DataGridTextColumn Header="Pacijent">
                             <DataGridTextColumn.Binding>
                                 <MultiBinding StringFormat="{}{0} {1}">
@@ -127,7 +110,6 @@
         <Label Name="BrojTelefonaLabel" HorizontalAlignment="Left" Margin="126,152,0,0" VerticalAlignment="Top"/>
         <Label Name="KrvnaGrupaLabel" HorizontalAlignment="Left" Margin="126,178,0,0" VerticalAlignment="Top"/>
         <Label Content="Dijagnoze&#xA;" HorizontalAlignment="Left" Margin="44,204,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <Image HorizontalAlignment="Left" Height="39" Margin="553,169,0,0" VerticalAlignment="Top" Width="35" Source="/Stranice/LekarCRUD/edit.png"/>
         <Image HorizontalAlignment="Left" Height="39" Margin="755,169,0,0" VerticalAlignment="Top" Width="35" Source="/Stranice/LekarCRUD/edit.png"/>
         <Image HorizontalAlignment="Left" Height="39" Margin="553,367,0,0" VerticalAlignment="Top" Width="35" Source="/Stranice/LekarCRUD/edit.png"/>
         <Image HorizontalAlignment="Left" Height="39" Margin="755,367,0,0" VerticalAlignment="Top" Width="35" Source="/Stranice/LekarCRUD/edit.png"/>

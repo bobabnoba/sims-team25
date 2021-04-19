@@ -1,16 +1,7 @@
 ﻿using Model;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
@@ -20,13 +11,27 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     /// </summary>
     public partial class pregledPacijenata : Window
     {
-        private PacijentService storagePacijent = new PacijentService();
+        private PacijentService pacijentServis = new PacijentService();
         private ObservableCollection<Pacijent> pacijenti = new ObservableCollection<Pacijent>();
+        private ObservableCollection<Pacijent> pacijentiPrikaz = new ObservableCollection<Pacijent>();
+        private TerminService terminServis = new TerminService();
+        private ObservableCollection<Termin> termini = new ObservableCollection<Termin>();
         public pregledPacijenata()
         {
             InitializeComponent();
-            pacijenti = new ObservableCollection<Pacijent>(storagePacijent.PregledSvihPacijenata());
-            dgUsers.ItemsSource = pacijenti;
+            termini = new ObservableCollection<Termin>(terminServis.PregledSvihTermina());
+            pacijenti = new ObservableCollection<Pacijent>(pacijentServis.PregledSvihPacijenata());
+            foreach (Termin t in termini)
+            {
+                foreach (Pacijent p in pacijenti)
+                    if (t.zdravstveniKarton.Id.Equals(p.ZdravstveniKarton.Id))
+                    {
+                        if (!pacijentiPrikaz.Contains(p))
+                            pacijentiPrikaz.Add(p);
+                    }
+            }
+
+            dgUsers.ItemsSource = pacijentiPrikaz;
             this.DataContext = this;
         }
         private void dgUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -41,14 +46,22 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
-        {   
-          
+        {
+
         }
 
         private void prikazKartona(object sender, RoutedEventArgs e)
         {
-            zdravstveniKartonPrikaz zk = new zdravstveniKartonPrikaz((Pacijent)dgUsers.SelectedItem,pacijenti);
-            zk.Show();
+            zdravstveniKartonPrikaz zk = null;
+            if (dgUsers.SelectedItem != null)
+            {
+                zk = new zdravstveniKartonPrikaz((Pacijent)dgUsers.SelectedItem);
+                zk.Show();
+            }
+            else
+            {
+                MessageBox.Show("Niste selektovali red", "Greska");
+            }
         }
     }
 }

@@ -44,30 +44,19 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
         private void prikaziKarton(object sender, RoutedEventArgs e)
         {
-            //zdravstveniKartonPrikaz zk = new zdravstveniKartonPrikaz((Pacijent)dgUsers);
-            //zk.Show();
+            zdravstveniKartonPrikaz zk = new zdravstveniKartonPrikaz((Termin)dgUsers.SelectedItem);
+            zk.Show();
         }
 
         private void otkaziPregled(object sender, RoutedEventArgs e)
-        {
-            /*  if (dgUsers.SelectedItem == null)
-                  MessageBox.Show("Niste selektovali red", "Greska");
-              else
-              {
-                  if (dgUsers.SelectedItem != null)
-                  {
-                      MessageBoxResult result = MessageBox.Show("Da li ste sigurni da želite da otkažete ovaj termin?", "Potvrda brisanja", MessageBoxButton.YesNo);
-                      if (result == MessageBoxResult.Yes)
-                      {
-                          pac.RemoveTermin((Termin)dgUsers.SelectedItem);
-                          storagePacijent.AzurirajPacijenta(pac);
-                          storage.OtkaziTermin((Termin)dgUsers.SelectedItem);
-                          termini.Remove((Termin)dgUsers.SelectedItem);
-                      }
-                  }*/
+        { 
+            if (dgUsers.SelectedItem == null)
+                MessageBox.Show("Niste selektovali red", "Greska");
+            else
+            {
                 oktaziPregledLekar op = new oktaziPregledLekar(termini, (Termin)dgUsers.SelectedItem);
-                   // otkaziPregledLekar op = new otkaziPregledLekar(termini, (Termin)dgUsers.SelectedItem);
                 op.Show();
+            }
             
         }
 

@@ -1,17 +1,11 @@
 ﻿using Model;
 using Service;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
 {
@@ -23,17 +17,27 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private ZdravstveniKartonServis zdravstveniKartonServis = new ZdravstveniKartonServis();
         private ObservableCollection<ZdravstveniKarton> zdravstveniKartoni = new ObservableCollection<ZdravstveniKarton>();
         private DijagnozaServis dijagnozaServis = new DijagnozaServis();
-        private Pacijent p;
-        private Pacijent s;
         private ObservableCollection<Dijagnoza> dijagnoze = new ObservableCollection<Dijagnoza>();
+        private PacijentService pacijentServis = new PacijentService();
+        private ObservableCollection<Pacijent> pacijenti = new ObservableCollection<Pacijent>();
 
-        public zdravstveniKartonPrikaz(Pacijent selektovani, ObservableCollection<Pacijent> pacijenti)
+        public zdravstveniKartonPrikaz(Pacijent selektovani)
         {
-         InitializeComponent();
-            p = selektovani;
-            s = selektovani;
+            InitializeComponent();
             dijagnoze = new ObservableCollection<Dijagnoza>(dijagnozaServis.PregledSvihDijagnoza());
-            dgUsers.ItemsSource = dijagnoze;
+
+            foreach (IstorijaBolesti i in selektovani.ZdravstveniKarton.GetIstorijaBolesti())
+                dgUsers.ItemsSource = i.GetDijagnoza();
+
+
+
+
+            istorijaBolestiGrid.ItemsSource = selektovani.ZdravstveniKarton.GetIstorijaBolesti();
+            istorijaPorodicnihGrid.ItemsSource = selektovani.ZdravstveniKarton.GetIstorijaBolesti();
+            alergijeGrid.ItemsSource = selektovani.ZdravstveniKarton.Alergije;
+
+            terapijaGrid.ItemsSource = selektovani.ZdravstveniKarton.GetRecept();
+
             this.DataContext = this;
 
             ImeLabel.Content = selektovani.Ime;
@@ -41,9 +45,43 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             BrojTelefonaLabel.Content = selektovani.BrojTelefona;
             JMBGLabel.Content = selektovani.Jmbg;
             PolLabel.Content = selektovani.Pol;
-            /*try { KrvnaGrupaLabel.Content = selektovani.ZdravstveniKarton.KrvnaGrupa; }
+
+            try { KrvnaGrupaLabel.Content = selektovani.ZdravstveniKarton.KrvnaGrupa; }
             catch(NullReferenceException ex)
-            { }*/
+            { }
+        }
+
+        public zdravstveniKartonPrikaz(Termin t)
+        {
+            InitializeComponent();
+            dijagnoze = new ObservableCollection<Dijagnoza>(dijagnozaServis.PregledSvihDijagnoza());
+
+            foreach (IstorijaBolesti i in t.zdravstveniKarton.GetIstorijaBolesti())
+                dgUsers.ItemsSource = i.GetDijagnoza();
+
+            
+
+
+            istorijaBolestiGrid.ItemsSource = t.zdravstveniKarton.GetIstorijaBolesti();
+            istorijaPorodicnihGrid.ItemsSource = t.zdravstveniKarton.GetIstorijaBolesti();
+            alergijeGrid.ItemsSource = t.zdravstveniKarton.Alergije;
+
+            terapijaGrid.ItemsSource = t.zdravstveniKarton.GetRecept();
+
+            this.DataContext = this;
+            foreach (Pacijent p in pacijenti)
+            {
+                if(p.ZdravstveniKarton.Id==t.zdravstveniKarton.Id)
+                ImeLabel.Content = p.Ime;
+                PrezimeLabel.Content = p.Prezime;
+                BrojTelefonaLabel.Content = p.BrojTelefona;
+                JMBGLabel.Content = p.Jmbg;
+                PolLabel.Content = p.Pol;
+
+                try { KrvnaGrupaLabel.Content = p.ZdravstveniKarton.KrvnaGrupa; }
+                catch (NullReferenceException ex)
+                { }
+            }
         }
 
         private void dgUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)

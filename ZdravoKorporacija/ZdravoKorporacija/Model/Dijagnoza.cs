@@ -1,21 +1,19 @@
-// File:    Dijagnoza.cs
+// File:    Diagnosis.cs
 // Author:  User
 // Created: Tuesday, March 23, 2021 10:47:52 PM
-// Purpose: Definition of Class Dijagnoza
+// Purpose: Definition of Class Diagnosis
 
 using System;
+using System.Collections;
 
 namespace Model
 {
     public class Dijagnoza : Izvestaj
     {
-        public System.Collections.ArrayList terapija;
+        public String Oboljenje;
+        public new String Opis;
 
-        public Dijagnoza(string oboljenje, Termin termin, int id, string opis, string simptomi) : base(termin, id, opis, simptomi)
-        {
-            this.terapija = new System.Collections.ArrayList();
-            Oboljenje = oboljenje;
-        }
+        public System.Collections.ArrayList terapija;
 
         /// <pdGenerated>default getter</pdGenerated>
         public System.Collections.ArrayList GetTerapija()
@@ -60,8 +58,45 @@ namespace Model
             if (terapija != null)
                 terapija.Clear();
         }
+        public IstorijaBolesti istorijaBolesti;
 
-        public String Oboljenje { get; set; }
+        public Dijagnoza(string oboljenje, string opis, ArrayList terapija, IstorijaBolesti istorijaBolesti, Termin termin, int id, string simptomi) : base(termin, id, opis, simptomi)
+        {
+            Oboljenje = oboljenje;
+            Opis = opis;
+            this.terapija = terapija;
+            this.istorijaBolesti = istorijaBolesti;
+        }
+
+        public Dijagnoza()
+        {
+        }
+
+        /// <pdGenerated>default parent getter</pdGenerated>
+        public IstorijaBolesti GetIstorijaBolesti()
+        {
+            return istorijaBolesti;
+        }
+
+        /// <pdGenerated>default parent setter</pdGenerated>
+        /// <param>newIstorijaBolesti</param>
+        public void SetIstorijaBolesti(IstorijaBolesti newIstorijaBolesti)
+        {
+            if (this.istorijaBolesti != newIstorijaBolesti)
+            {
+                if (this.istorijaBolesti != null)
+                {
+                    IstorijaBolesti oldIstorijaBolesti = this.istorijaBolesti;
+                    this.istorijaBolesti = null;
+                    oldIstorijaBolesti.RemoveDijagnoza(this);
+                }
+                if (newIstorijaBolesti != null)
+                {
+                    this.istorijaBolesti = newIstorijaBolesti;
+                    this.istorijaBolesti.AddDijagnoza(this);
+                }
+            }
+        }
 
     }
 }

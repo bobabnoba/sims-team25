@@ -7,13 +7,14 @@ namespace Model
 {
     public enum KrvnaGrupaEnum
     {
-        OPoiztivna,
+        OPozitivna,
         APozitivna,
         BPozitivna,
         ABPozitivna,
         ONegativna,
         ANegativna,
         BNegativna,
-        ABNegativna
+        ABNegativna,
+        None
     }
 }

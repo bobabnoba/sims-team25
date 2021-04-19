@@ -10,6 +10,7 @@ namespace Model
     {
         public System.Collections.ArrayList izvestajOHospitalizaciji;
 
+  
         public ZdravstveniKarton(Pacijent patient, int id, StanjePacijentaEnum zdravstvenoStanje, string alergije, KrvnaGrupaEnum krvnaGrupa, string vakcine)
         {
             this.izvestajOHospitalizaciji = new System.Collections.ArrayList();
