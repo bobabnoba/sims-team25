@@ -28,8 +28,29 @@ namespace Service
             datotekaID.sacuvaj(id_map);
             return true;
         }
-      
-      public bool ObrisiZdravstveniKarton(ZdravstveniKarton zdravstveniKarton, Dictionary<int, int> id_map)
+
+        public bool KreirajZdravstveniKartonJMBG(ZdravstveniKarton ZdravstveniKarton)
+        {
+            ZdravstveniKartonRepozitorijum datoteka = new ZdravstveniKartonRepozitorijum();
+            List<ZdravstveniKarton> zdravstveniKartoni = datoteka.DobaviSve();
+
+           
+
+
+            foreach (ZdravstveniKarton pr in zdravstveniKartoni)
+            {
+                if (pr.Id.Equals(ZdravstveniKarton.Id))
+                {
+                    return false;
+                }
+            }
+            zdravstveniKartoni.Add(ZdravstveniKarton);
+            datoteka.Sacuvaj(zdravstveniKartoni);
+            
+            return true;
+        }
+
+        public bool ObrisiZdravstveniKarton(ZdravstveniKarton zdravstveniKarton, Dictionary<int, int> id_map)
       {
             ZdravstveniKartonRepozitorijum datoteka = new ZdravstveniKartonRepozitorijum();
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapZdravstveniKartoni");

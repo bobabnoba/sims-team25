@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -35,6 +36,14 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
             InitializeComponent();
             PacijentRepozitorijum dat = new PacijentRepozitorijum();
             pacijenti = new ObservableCollection<Pacijent>(dat.dobaviSve());
+            foreach (Pacijent p in pacijenti.ToList())
+            {
+                if (p.Ime.Equals("NEREGISTROVANI"))
+                {
+                    pacijenti.Remove(p);
+                }
+            }
+            
             dgUsers.ItemsSource = pacijenti;
 
             termini = new ObservableCollection<Termin>(storage.PregledSvihTermina());

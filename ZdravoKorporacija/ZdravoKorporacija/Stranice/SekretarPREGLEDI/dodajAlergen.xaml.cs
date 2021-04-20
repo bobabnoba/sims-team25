@@ -35,12 +35,21 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
         {
             InitializeComponent();
             p1 = izabrani;
-           
+
             k1 = ks.findById(izabrani.GetJmbg());
             k2 = ks.findById(izabrani.GetJmbg());
             kartoni = ks.PregledZdravstvenogKartona();
+            if (k2 != null)
+            {
+                dodaj.Text = k1.Alergije;
 
-    }
+            }
+            else
+            {
+                dodaj.Text = "PACIJENT NEMA KARTON";
+            }
+
+        }
 
      
        
@@ -54,11 +63,19 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
         {
             
             {
-                k2.dodajAlergije(dodaj.Text);
-                if (ks.AzurirajZdravstveniKarton2(k2))
+                if (k2 == null)
                 {
-                    kartoni.Remove(k1);
-                    kartoni.Add(k2);
+                    MessageBox.Show("IZABRANI PACIJENT NEMA KARTON!");
+
+                }
+                else
+                {
+                    k2.dodajAlergije(dodaj.Text);
+                    if (ks.AzurirajZdravstveniKarton2(k2))
+                    {
+                        kartoni.Remove(k1);
+                        kartoni.Add(k2);
+                    }
                 }
                 this.Close();
 

@@ -215,5 +215,93 @@
     "Username": "asdad1",
     "Password": "aasdsd2",
     "Uloga": 3
+  },
+  {
+    "termin": [
+      {
+        "izvestaj": null,
+        "zdravstveniKarton": {
+          "izvestajOHospitalizaciji": [],
+          "istorijaBolesti": [],
+          "recept": [],
+          "termin": [],
+          "patient": null,
+          "Id": 6,
+          "ZdravstvenoStanje": 3,
+          "Alergije": null,
+          "KrvnaGrupa": 8,
+          "Vakcine": null
+        },
+        "prostorija": {
+          "inventar": [],
+          "statickaOprema": null,
+          "dinamickaOprema": null,
+          "Id": 1,
+          "Naziv": "soba12",
+          "Tip": 1,
+          "Slobodna": false,
+          "Sprat": 1
+        },
+        "Lekar": {
+          "termin": [
+            {
+              "izvestaj": null,
+              "zdravstveniKarton": null,
+              "prostorija": null,
+              "Id": 1,
+              "Tip": 0,
+              "Pocetak": "0001-01-01T00:00:00",
+              "Trajanje": 0.0
+            },
+            {
+              "izvestaj": null,
+              "zdravstveniKarton": null,
+              "prostorija": null,
+              "Id": 4,
+              "Tip": 0,
+              "Pocetak": "0001-01-01T00:00:00",
+              "Trajanje": 0.0
+            }
+          ],
+          "Ime": "Veljko",
+          "Prezime": "Vukovic",
+          "Jmbg": 2334567890213,
+          "BrojTelefona": 66393345,
+          "Mejl": "vuksivuk@gmail.com",
+          "AdresaStanovanja": "Beograd",
+          "Pol": 0,
+          "Username": "veksi",
+          "Password": "vukovic",
+          "Uloga": 0
+        },
+        "Id": 4,
+        "Tip": 1,
+        "Pocetak": "2021-04-29T09:30:00",
+        "Trajanje": 0.5
+      }
+    ],
+    "ZdravstveniKarton": {
+      "izvestajOHospitalizaciji": [],
+      "istorijaBolesti": [],
+      "recept": [],
+      "termin": [],
+      "patient": null,
+      "Id": 6,
+      "ZdravstvenoStanje": 3,
+      "Alergije": null,
+      "KrvnaGrupa": 8,
+      "Vakcine": null
+    },
+    "Guest": false,
+    "Ime": "NEREGISTROVANI",
+    "Prezime": "KORISNIK",
+    "Jmbg": 0,
+    "BrojTelefona": 0,
+    "Mejl": null,
+    "AdresaStanovanja": null,
+    "Pol": 0,
+    "Username": null,
+    "Password": null,
+    "Uloga": 0
   }
 ]

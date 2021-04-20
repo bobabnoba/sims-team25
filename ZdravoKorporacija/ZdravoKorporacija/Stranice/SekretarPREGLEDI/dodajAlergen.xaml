@@ -9,7 +9,7 @@
     <Grid Margin="0,0,0,3">
         <TextBlock Text="Dodaj Alergen:" TextWrapping="Wrap" Margin="19,60,291,154" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <TextBox Name="dodaj"  TextWrapping="Wrap" Margin="0,61,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="164"/>
-        <Button Content="DODAJ" Click="Button_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Height="34" Width="71" Margin="116,168,0,0"/>
+        <Button Content="IZMENI" Click="Button_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Height="34" Width="71" Margin="116,168,0,0"/>
         <Button Content="ODUSTANI" Click="Button_Click_1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="34" Width="64" Margin="264,168,0,0"/>
 
     </Grid>

@@ -25,14 +25,14 @@
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Click="pogledaj">Pogledaj karton</Button>
+                                <Button Click="pogledaj">Pogledaj alergene</Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Click="dodajAlergen">Dodaj alergene</Button>
+                                <Button Click="dodajAlergen">Izmeni alergene</Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>

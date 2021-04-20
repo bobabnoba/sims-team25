@@ -11,7 +11,7 @@ namespace Model
         public System.Collections.ArrayList izvestajOHospitalizaciji;
 
   
-        public ZdravstveniKarton(Pacijent patient, int id, StanjePacijentaEnum zdravstvenoStanje, string alergije, KrvnaGrupaEnum krvnaGrupa, string vakcine)
+        public ZdravstveniKarton(Pacijent patient, long id, StanjePacijentaEnum zdravstvenoStanje, string alergije, KrvnaGrupaEnum krvnaGrupa, string vakcine)
         {
             this.izvestajOHospitalizaciji = new System.Collections.ArrayList();
             this.istorijaBolesti = new System.Collections.ArrayList();
@@ -266,14 +266,14 @@ namespace Model
         }
         public Pacijent patient { get; set; }
 
-        public int Id { get; set; }
+        public long Id { get; set; }
         public StanjePacijentaEnum ZdravstvenoStanje { get; set; }
         public String Alergije { get; set; }
         public KrvnaGrupaEnum KrvnaGrupa { get; set; }
         public String Vakcine { get; set; }
         public void dodajAlergije(string dodaj)
         {
-            this.Alergije += dodaj;
+            this.Alergije = dodaj;
         }
 
     }
