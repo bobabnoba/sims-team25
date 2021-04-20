@@ -1,7 +1,8 @@
 ﻿using Model;
+using Repository;
 using System.Collections.Generic;
 
-namespace ZdravoKorporacija.Model
+namespace Service
 {
     class ProstorijaService
     {

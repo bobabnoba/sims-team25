@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.Magacin"
         mc:Ignorable="d"
-        Title="Dodavanje prostorije" Height="450" Width="450" Background="CadetBlue">
+        Title="Dodavanje u magacin" Height="450" Width="450" Background="CadetBlue">
     <Grid>
         <Button Content="Potvrdi&#xD;&#xA;" HorizontalAlignment="Left" Margin="101,291,0,0" VerticalAlignment="Top" Height="26" Width="92" Click="Button_Click"/>
         <Button Content="Odustani" HorizontalAlignment="Left" Margin="279,291,0,0" VerticalAlignment="Top" Height="26" Width="96" Click="Button_Click_1"/>

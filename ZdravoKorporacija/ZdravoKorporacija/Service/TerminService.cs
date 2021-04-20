@@ -1,4 +1,5 @@
 ﻿using Model;
+using Repository;
 using System.Collections.Generic;
 
 namespace ZdravoKorporacija.Model

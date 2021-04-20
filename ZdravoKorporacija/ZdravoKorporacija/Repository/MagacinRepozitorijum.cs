@@ -7,7 +7,7 @@ using System.IO;
 using ZdravoKorporacija.Stranice.Magacin;
 using System.Collections.ObjectModel;
 
-namespace ZdravoKorporacija.Repository
+namespace Repository
 {
     public class MagacinRepozitorijum
     {
@@ -64,7 +64,7 @@ namespace ZdravoKorporacija.Repository
             {
                 magacinOprema = new ObservableCollection<Inventar>(oprema);
             }
-                return null;
+                return oprema;
             
         }
 

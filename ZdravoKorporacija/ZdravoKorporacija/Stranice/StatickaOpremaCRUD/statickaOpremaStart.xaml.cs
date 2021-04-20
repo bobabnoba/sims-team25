@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Repository;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -9,8 +10,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ZdravoKorporacija.Controller;
 
-namespace ZdravoKorporacija.Stranice.StatickaOprema
+namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
 {
     /// <summary>
     /// Interaction logic for statickaOpremaStart.xaml
@@ -20,6 +22,9 @@ namespace ZdravoKorporacija.Stranice.StatickaOprema
         public statickaOpremaStart()
         {
             InitializeComponent();
+            UpravnikController uc = new UpravnikController();
+            uc.DodajIzMagacinaStaticke();
+            dgStatickaOprema.ItemsSource = StatickaOpremaRepozitorijum.Instance.magacinStatickaOprema;
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -29,7 +34,8 @@ namespace ZdravoKorporacija.Stranice.StatickaOprema
 
         private void dodaj(object sender, RoutedEventArgs e)
         {
-
+            statickaOpremaPremestiIzMagacina statickaPremestanjeiIzMagacina = new statickaOpremaPremestiIzMagacina();
+            statickaPremestanjeiIzMagacina.Show();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

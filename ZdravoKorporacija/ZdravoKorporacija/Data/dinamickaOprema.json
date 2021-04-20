@@ -1,0 +1,128 @@
+[
+  {
+    "Kolicina": 300,
+    "Prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 1,
+      "Naziv": "soba12",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 1
+    },
+    "Id": 3,
+    "Naziv": "operacioni sto",
+    "UkupnaKolicina": 300,
+    "Proizvodjac": "helas",
+    "DatumNabavke": "0001-01-01T00:00:00"
+  },
+  {
+    "Kolicina": 300,
+    "Prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 4,
+      "Naziv": "soba31",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 3
+    },
+    "Id": 3,
+    "Naziv": "operacioni sto",
+    "UkupnaKolicina": 0,
+    "Proizvodjac": "helas",
+    "DatumNabavke": "0001-01-01T00:00:00"
+  },
+  {
+    "Kolicina": 100,
+    "Prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 4,
+      "Naziv": "soba31",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 3
+    },
+    "Id": 2,
+    "Naziv": "stolica",
+    "UkupnaKolicina": 500,
+    "Proizvodjac": "forma ideale",
+    "DatumNabavke": "0001-01-01T00:00:00"
+  },
+  {
+    "Kolicina": 100,
+    "Prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 5,
+      "Naziv": "soba33",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 3
+    },
+    "Id": 2,
+    "Naziv": "stolica",
+    "UkupnaKolicina": 400,
+    "Proizvodjac": "forma ideale",
+    "DatumNabavke": "0001-01-01T00:00:00"
+  },
+  {
+    "Kolicina": 100,
+    "Prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 4,
+      "Naziv": "soba31",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 3
+    },
+    "Id": 1,
+    "Naziv": "krevet",
+    "UkupnaKolicina": 200,
+    "Proizvodjac": "simpo",
+    "DatumNabavke": "0001-01-01T00:00:00"
+  },
+  {
+    "Kolicina": 100,
+    "Prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 5,
+      "Naziv": "soba33",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 3
+    },
+    "Id": 1,
+    "Naziv": "krevet",
+    "UkupnaKolicina": 100,
+    "Proizvodjac": "simpo",
+    "DatumNabavke": "0001-01-01T00:00:00"
+  },
+  {
+    "Kolicina": 100,
+    "Prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 0,
+      "Naziv": "soba11",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 1
+    },
+    "Id": 1,
+    "Naziv": "krevet",
+    "UkupnaKolicina": 0,
+    "Proizvodjac": "simpo",
+    "DatumNabavke": "0001-01-01T00:00:00"
+  }
+]

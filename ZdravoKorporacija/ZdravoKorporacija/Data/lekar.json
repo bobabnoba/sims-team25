@@ -46,7 +46,11 @@
         "izvestaj": null,
         "zdravstveniKarton": null,
         "prostorija": null,
+<<<<<<< HEAD
         "Id": 3,
+=======
+        "Id": 0,
+>>>>>>> oprema
         "Tip": 0,
         "Pocetak": "0001-01-01T00:00:00",
         "Trajanje": 0.0

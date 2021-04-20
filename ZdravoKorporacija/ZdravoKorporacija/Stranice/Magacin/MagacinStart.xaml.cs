@@ -1,4 +1,5 @@
 ﻿using Model;
+using Repository;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.Model;
-using ZdravoKorporacija.Repository;
+
 
 namespace ZdravoKorporacija.Stranice.Magacin
 {

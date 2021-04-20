@@ -1,16 +1,53 @@
 ﻿using Model;
+using Repository;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ZdravoKorporacija.Service
-{
+namespace Service
+{ 
     public class DinamickaOpremaService
     {
-        public bool DodajOpremu()
+        public bool DodajOpremu(Inventar inv,String dt,Prostorija pr)
         {
-            // TODO: implement
+            int kolicina = -1;
+            try 
+            { 
+                kolicina = int.Parse(dt);
+            }
+            catch (FormatException) {
+                return false;
+            }
+            if (pr == null)
+            {
+                return false;
+            }
+            
+            DinamickaOpremaRepozitorijum dtRepozitorijum = DinamickaOpremaRepozitorijum.Instance;
+            MagacinRepozitorijum magacinRepozitorijum = MagacinRepozitorijum.Instance;
+            if (kolicina <= inv.UkupnaKolicina) {
+                inv.UkupnaKolicina = inv.UkupnaKolicina - kolicina;
+
+                DinamickaOprema din = new DinamickaOprema(inv, kolicina);
+                din.Prostorija = pr;
+                dtRepozitorijum.Sacuvaj(din);
+
+
+                List<Inventar> magacin = magacinRepozitorijum.DobaviSve();
+                //List<Inventar> magacin = MagacinRepozitorijum.Instance.magacinOprema.Remove(inv);
+                foreach (Inventar inventar in magacin)
+                {
+                    if (inventar.Id.Equals(inv.Id))
+                    {
+                       MagacinRepozitorijum.Instance.magacinOprema.Remove(inventar);
+                       magacin.Add(inv);
+                       magacinRepozitorijum.Sacuvaj(inv);
+                       return true;
+                    }
+                }
+            }
             return false;
+
         }
 
         public bool ObrisiOpremu(DinamickaOprema oprema)
@@ -27,8 +64,9 @@ namespace ZdravoKorporacija.Service
 
         public List<DinamickaOprema> PregledSveOpreme()
         {
-            // TODO: implement
-            return null;
+            DinamickaOpremaRepozitorijum dor = DinamickaOpremaRepozitorijum.Instance;
+            return dor.DobaviSve();
+            
         }
 
         public DinamickaOprema PregledJedneOpreme()

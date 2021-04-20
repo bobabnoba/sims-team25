@@ -9,9 +9,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using ZdravoKorporacija.Stranice.DinamickaOprema;
+using ZdravoKorporacija.Stranice.DinamickaOpremaCRUD;
 using ZdravoKorporacija.Stranice.Magacin;
-using ZdravoKorporacija.Stranice.StatickaOprema;
+using ZdravoKorporacija.Stranice.StatickaOpremaCRUD;
 
 namespace ZdravoKorporacija.Stranice.UpravnikCRUD
 {
