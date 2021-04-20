@@ -1,9 +1,23 @@
 [
   {
-    "Id": 2,
-    "Naziv": "stolica",
-    "UkupnaKolicina": 0,
-    "Proizvodjac": "forma ideale",
+    "Id": 0,
+    "Naziv": "krevet",
+    "UkupnaKolicina": 4000,
+    "Proizvodjac": "simpo",
+    "DatumNabavke": "0001-01-01T00:00:00"
+  },
+  {
+    "Id": 5,
+    "Naziv": "Stolovi",
+    "UkupnaKolicina": 200,
+    "Proizvodjac": "jysk",
+    "DatumNabavke": "0001-01-01T00:00:00"
+  },
+  {
+    "Id": 4,
+    "Naziv": "Hanzaplast",
+    "UkupnaKolicina": 100,
+    "Proizvodjac": "Keek",
     "DatumNabavke": "0001-01-01T00:00:00"
   },
   {
@@ -14,10 +28,10 @@
     "DatumNabavke": "0001-01-01T00:00:00"
   },
   {
-    "Id": 0,
-    "Naziv": "krevet",
-    "UkupnaKolicina": 0,
-    "Proizvodjac": "simpo",
+    "Id": 2,
+    "Naziv": "stolica",
+    "UkupnaKolicina": 400,
+    "Proizvodjac": "forma ideale",
     "DatumNabavke": "0001-01-01T00:00:00"
   },
   {
@@ -25,20 +39,6 @@
     "Naziv": "krevet",
     "UkupnaKolicina": 0,
     "Proizvodjac": "simpo",
-    "DatumNabavke": "0001-01-01T00:00:00"
-  },
-  {
-    "Id": 5,
-    "Naziv": "Stolovi",
-    "UkupnaKolicina": 0,
-    "Proizvodjac": "jysk",
-    "DatumNabavke": "0001-01-01T00:00:00"
-  },
-  {
-    "Id": 4,
-    "Naziv": "Hanzaplast",
-    "UkupnaKolicina": 0,
-    "Proizvodjac": "Keek",
     "DatumNabavke": "0001-01-01T00:00:00"
   }
 ]

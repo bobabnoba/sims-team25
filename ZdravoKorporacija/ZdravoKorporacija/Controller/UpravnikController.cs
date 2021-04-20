@@ -3,7 +3,7 @@ using Service;
 using System;
 using System.Collections.Generic;
 using System.Text;
-
+using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Controller
 {
@@ -20,6 +20,24 @@ namespace ZdravoKorporacija.Controller
             MagacinService ms = new MagacinService();
             ms.PregledSveOpreme();
             return true;
+        }
+        public bool DodajIzMagacinaStaticke()
+        {
+            StatickaOpremaService sos = new StatickaOpremaService();
+            sos.PregledSveOpreme();
+            return true;
+        }
+        public bool DodajIzMagacinaDinamcike()
+        {
+            DinamickaOpremaService dos = new DinamickaOpremaService();
+            dos.PregledSveOpreme();
+            return true;
+        }
+        public List<Termin> PregledSvihTermina()
+        {
+            TerminService tos = new TerminService();
+            return tos.PregledSvihTermina();
+            
         }
 
     }

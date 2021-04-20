@@ -13,6 +13,8 @@ namespace Model
         public int Kolicina { get; set; }
 
         public Prostorija Prostorija { get; set; }
+        
+        public DinamickaOprema() { }
 
         public DinamickaOprema(int kolicina, int id, string naziv, int ukupnaKolicina, string proizvodjac, DateTime datumNabavke) :base(id, naziv, ukupnaKolicina, proizvodjac, datumNabavke)
         {

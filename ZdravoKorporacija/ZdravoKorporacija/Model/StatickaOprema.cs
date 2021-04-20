@@ -25,5 +25,6 @@ namespace Model
         {
             this.termin = termin;
         }
+
     }
 }

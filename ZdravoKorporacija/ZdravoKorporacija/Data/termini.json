@@ -1,19 +1,39 @@
 [
   {
     "izvestaj": null,
-    "zdravstveniKarton": null,
+    "zdravstveniKarton": {
+      "izvestajOHospitalizaciji": [],
+      "istorijaBolesti": [],
+      "recept": [],
+      "termin": [],
+      "patient": null,
+      "Id": 5,
+      "ZdravstvenoStanje": 3,
+      "Alergije": null,
+      "KrvnaGrupa": 8,
+      "Vakcine": null
+    },
     "prostorija": {
       "inventar": [],
       "statickaOprema": null,
       "dinamickaOprema": null,
-      "Id": 3,
-      "Naziv": "hfghfhhgrg",
+      "Id": 1,
+      "Naziv": "soba12",
       "Tip": 1,
       "Slobodna": false,
-      "Sprat": 2
+      "Sprat": 1
     },
     "Lekar": {
       "termin": [
+        {
+          "izvestaj": null,
+          "zdravstveniKarton": null,
+          "prostorija": null,
+          "Id": 0,
+          "Tip": 0,
+          "Pocetak": "0001-01-01T00:00:00",
+          "Trajanje": 0.0
+        },
         {
           "izvestaj": null,
           "zdravstveniKarton": null,
@@ -37,89 +57,7 @@
     },
     "Id": 0,
     "Tip": 0,
-    "Pocetak": "2021-05-08T17:30:00",
-    "Trajanje": 0.5
-  },
-  {
-    "izvestaj": null,
-    "zdravstveniKarton": null,
-    "prostorija": {
-      "inventar": [],
-      "statickaOprema": null,
-      "dinamickaOprema": null,
-      "Id": 0,
-      "Naziv": "ytggh",
-      "Tip": 1,
-      "Slobodna": false,
-      "Sprat": 0
-    },
-    "Lekar": {
-      "termin": [
-        {
-          "izvestaj": null,
-          "zdravstveniKarton": null,
-          "prostorija": null,
-          "Id": 1,
-          "Tip": 0,
-          "Pocetak": "0001-01-01T00:00:00",
-          "Trajanje": 0.0
-        }
-      ],
-      "Ime": "Veljko",
-      "Prezime": "Vukovic",
-      "Jmbg": 2334567890213,
-      "BrojTelefona": 66393345,
-      "Mejl": "vuksivuk@gmail.com",
-      "AdresaStanovanja": "Beograd",
-      "Pol": 0,
-      "Username": "veksi",
-      "Password": "vukovic",
-      "Uloga": 0
-    },
-    "Id": 1,
-    "Tip": 1,
-    "Pocetak": "2021-07-22T17:30:00",
-    "Trajanje": 0.5
-  },
-  {
-    "izvestaj": null,
-    "zdravstveniKarton": null,
-    "prostorija": null,
-    "Lekar": {
-      "termin": [
-        {
-          "izvestaj": null,
-          "zdravstveniKarton": null,
-          "prostorija": null,
-          "Id": 1,
-          "Tip": 0,
-          "Pocetak": "0001-01-01T00:00:00",
-          "Trajanje": 0.0
-        },
-        {
-          "izvestaj": null,
-          "zdravstveniKarton": null,
-          "prostorija": null,
-          "Id": 2,
-          "Tip": 0,
-          "Pocetak": "0001-01-01T00:00:00",
-          "Trajanje": 0.0
-        }
-      ],
-      "Ime": "Veljko",
-      "Prezime": "Vukovic",
-      "Jmbg": 2334567890213,
-      "BrojTelefona": 66393345,
-      "Mejl": "vuksivuk@gmail.com",
-      "AdresaStanovanja": "Beograd",
-      "Pol": 0,
-      "Username": "veksi",
-      "Password": "vukovic",
-      "Uloga": 0
-    },
-    "Id": 2,
-    "Tip": 0,
-    "Pocetak": "2021-04-30T12:00:00",
+    "Pocetak": "2021-04-21T12:30:00",
     "Trajanje": 0.5
   }
 ]

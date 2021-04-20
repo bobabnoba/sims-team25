@@ -10,7 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using ZdravoKorporacija.Controller;
 
 namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
 {
@@ -22,6 +22,8 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
         public statickaOpremaStart()
         {
             InitializeComponent();
+            UpravnikController uc = new UpravnikController();
+            uc.DodajIzMagacinaStaticke();
             dgStatickaOprema.ItemsSource = StatickaOpremaRepozitorijum.Instance.magacinStatickaOprema;
         }
 

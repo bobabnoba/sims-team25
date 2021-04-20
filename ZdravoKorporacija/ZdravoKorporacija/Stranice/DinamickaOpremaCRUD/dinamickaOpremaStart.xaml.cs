@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ZdravoKorporacija.Controller;
 
 namespace ZdravoKorporacija.Stranice.DinamickaOpremaCRUD
 {
@@ -19,12 +20,13 @@ namespace ZdravoKorporacija.Stranice.DinamickaOpremaCRUD
     /// </summary>
     public partial class dinamickaOpremaStart : Window
     {
-        MagacinService ms = new MagacinService();
+      
 
         public dinamickaOpremaStart()
         {
             InitializeComponent();
-            ms.PregledSveOpreme();
+            UpravnikController uc = new UpravnikController();
+            uc.DodajIzMagacinaDinamcike();
             dgDinamickaOprema.ItemsSource = DinamickaOpremaRepozitorijum.Instance.magacinDinamickaOprema;
             
         }

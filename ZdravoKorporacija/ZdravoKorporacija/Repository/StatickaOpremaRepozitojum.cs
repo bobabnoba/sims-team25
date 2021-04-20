@@ -48,21 +48,21 @@ namespace Repository
             return null;
         }
 
-        public Array DobaviSve()
+        public List<StatickaOprema> DobaviSve()
         {
             string lokacija = @"..\..\..\Data\statickaOprema.json";
-            List<Inventar> oprema = new List<Inventar>();
+            List<StatickaOprema> oprema = new List<StatickaOprema>();
             if (File.Exists(lokacija))
             {
                 string jsonText = File.ReadAllText(lokacija);
                 if (!string.IsNullOrEmpty(jsonText))
                 {
-                    oprema = JsonConvert.DeserializeObject<List<Inventar>>(jsonText);
+                    oprema = JsonConvert.DeserializeObject<List<StatickaOprema>>(jsonText);
                 }
             }
             if (oprema != null)
             {
-                magacinOprema = new ObservableCollection<Inventar>(oprema);
+                magacinStatickaOprema = new ObservableCollection<StatickaOprema>(oprema);
             }
             return oprema;
         }
