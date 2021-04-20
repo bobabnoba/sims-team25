@@ -56,7 +56,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
 
         private void zakaziPregled(object sender, RoutedEventArgs e)
         {
-            zakaziPregledLekar zp = new zakaziPregledLekar(termini, ids);
+            zakaziPregledSekretar zp = new zakaziPregledSekretar(termini, ids);
             zp.Show();
         }
 
@@ -87,8 +87,6 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
 
 
 
-            zdravstveniKartonPrikaz zk = new zdravstveniKartonPrikaz((Termin)dgUsers.SelectedItem);
-            zk.Show();
         }
 
         private void dgUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
