@@ -7,14 +7,15 @@
         mc:Ignorable="d"
         Title="zdravstveniKartonPrikaz" Height="450" Width="800" Background="CadetBlue">
     <Grid>
-        <Button Content="Dodaj dijagnozu" HorizontalAlignment="Left" Margin="256,287,0,0" VerticalAlignment="Top" Width="101" Height="35"/>
+        <!--<Button Content="Dodaj dijagnozu" HorizontalAlignment="Left" Margin="256,287,0,0" VerticalAlignment="Top" Width="101" Height="35"/>
         <Button Content="Obrisi dijagnozu" HorizontalAlignment="Left" Margin="256,367,0,0" VerticalAlignment="Top" Width="101" Height="35" RenderTransformOrigin="0.255,-0.75"/>
-        <Button Content="Izmeni dijagnozu" HorizontalAlignment="Left" Margin="256,327,0,0" VerticalAlignment="Top" Width="101" Height="35" RenderTransformOrigin="0.033,-1.977" />
+        <Button Content="Izmeni dijagnozu" HorizontalAlignment="Left" Margin="256,327,0,0" VerticalAlignment="Top" Width="101" Height="35" RenderTransformOrigin="0.033,-1.977" />-->
         <Grid Margin="10,217,549,10">
-            <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="34,22,10,22" SelectionChanged="dgUsers_SelectionChanged">
+            <!--<DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="34,22,10,22" SelectionChanged="dgUsers_SelectionChanged">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Oboljenje" Width="*" Binding="{Binding Oboljenje}" />
-                    <!--<DataGridTextColumn Header="Pacijent">
+                    -->
+            <!--<DataGridTextColumn Header="Pacijent">
                             <DataGridTextColumn.Binding>
                                 <MultiBinding StringFormat="{}{0} {1}">
                                     <Binding Path="Pacijent.Ime"/>
@@ -23,23 +24,29 @@
                             </DataGridTextColumn.Binding>
                         </DataGridTextColumn>
                     <DataGridTextColumn Header="Karton pacijenta" Binding="{Binding zdravstveniKarton}" />-->
+            <!--
                     <DataGridTextColumn Header="Datum Posete" Width="*" Binding="{Binding DatumPosete}" />
-                    <!--<DataGrid.RowDetailsTemplate>
+                    -->
+            <!--<DataGrid.RowDetailsTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Details}" Margin="10" />
                     </DataTemplate>
                 </DataGrid.RowDetailsTemplate>-->
+            <!--
                 </DataGrid.Columns>
-            </DataGrid>
-            <DataGrid x:Name="istorijaBolestiGrid" AutoGenerateColumns="False" Margin="389,-167,-295,218" SelectionChanged="dgUsers_SelectionChanged">
+            </DataGrid>-->
+            <!--<DataGrid x:Name="istorijaBolestiGrid" AutoGenerateColumns="False" Margin="389,-167,-295,218" SelectionChanged="dgUsers_SelectionChanged">
                 <DataGrid.Columns>
-                    <!--<DataGrid.RowDetailsTemplate>
+                    -->
+            <!--<DataGrid.RowDetailsTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Details}" Margin="10" />
                     </DataTemplate>
                 </DataGrid.RowDetailsTemplate>-->
+            <!--
                     <DataGridTextColumn Width="*" Header="Istorija bolesti" Binding="{Binding IstorijaBolestiPacijenta}" />
-                    <!--<DataGridTextColumn Header="Pacijent">
+                    -->
+            <!--<DataGridTextColumn Header="Pacijent">
                             <DataGridTextColumn.Binding>
                                 <MultiBinding StringFormat="{}{0} {1}">
                                     <Binding Path="Pacijent.Ime"/>
@@ -48,10 +55,11 @@
                             </DataGridTextColumn.Binding>
                         </DataGridTextColumn>
                     <DataGridTextColumn Header="Karton pacijenta" Binding="{Binding zdravstveniKarton}" />-->
+            <!--
 
                 </DataGrid.Columns>
-            </DataGrid>
-            <DataGrid x:Name="terapijaGrid" AutoGenerateColumns="False" Margin="389,22,-379,22" SelectionChanged="dgUsers_SelectionChanged">
+            </DataGrid>-->
+            <DataGrid x:Name="terapijaGrid" AutoGenerateColumns="False" Margin="364,-167,-531,218" SelectionChanged="dgUsers_SelectionChanged">
                 <DataGrid.Columns>
                     <!--<DataGrid.RowDetailsTemplate>
                     <DataTemplate>
@@ -69,10 +77,11 @@
                         </DataGridTextColumn>
                     <DataGridTextColumn Header="Karton pacijenta" Binding="{Binding zdravstveniKarton}" />-->
                     <DataGridTextColumn Width="*" Header="Doza" Binding="{Binding Doziranje}" />
+                    <DataGridTextColumn Width="*" Header="Pocetak" Binding="{Binding Pocetak}" />
                     <DataGridTextColumn Width="*" Header="Trajanje" Binding="{Binding Trajanje}" />
                 </DataGrid.Columns>
             </DataGrid>
-            <DataGrid x:Name="alergijeGrid" AutoGenerateColumns="False" Margin="625,22,-531,22" SelectionChanged="dgUsers_SelectionChanged">
+            <DataGrid x:Name="alergijeGrid" AutoGenerateColumns="False" Margin="33,10,10,34" SelectionChanged="dgUsers_SelectionChanged">
                 <DataGrid.Columns>
                     <!--<DataGrid.RowDetailsTemplate>
                     <DataTemplate>
@@ -92,8 +101,14 @@
 
                 </DataGrid.Columns>
             </DataGrid>
-            <DataGrid x:Name="istorijaPorodicnihBolesti" AutoGenerateColumns="False" Margin="625,-167,-531,218" SelectionChanged="dgUsers_SelectionChanged">
+            <DataGrid x:Name="izvestajGrid" AutoGenerateColumns="False" Margin="364,10,-531,34" SelectionChanged="dgUsers_SelectionChanged">
                 <DataGrid.Columns>
+                    <!--<DataGrid.RowDetailsTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Details}" Margin="10" />
+                    </DataTemplate>
+                </DataGrid.RowDetailsTemplate>-->
+                    <DataGridTextColumn Width="*" Header="ID" Binding="{Binding Id}" />
                     <!--<DataGridTextColumn Header="Pacijent">
                             <DataGridTextColumn.Binding>
                                 <MultiBinding StringFormat="{}{0} {1}">
@@ -103,16 +118,34 @@
                             </DataGridTextColumn.Binding>
                         </DataGridTextColumn>
                     <DataGridTextColumn Header="Karton pacijenta" Binding="{Binding zdravstveniKarton}" />-->
+                    <DataGridTextColumn Width="*" Header="Simptomi" Binding="{Binding Simptomi}" />
+                    <DataGridTextColumn Width="*" Header="Opis" Binding="{Binding Opis}" />
+                    
+                </DataGrid.Columns>
+            </DataGrid>
+            <!--<DataGrid x:Name="istorijaPorodicnihBolesti" AutoGenerateColumns="False" Margin="625,-167,-531,218" SelectionChanged="dgUsers_SelectionChanged">
+                <DataGrid.Columns>
+                    -->
+            <!--<DataGridTextColumn Header="Pacijent">
+                            <DataGridTextColumn.Binding>
+                                <MultiBinding StringFormat="{}{0} {1}">
+                                    <Binding Path="Pacijent.Ime"/>
+                                    <Binding Path="Pacijent.Prezime"/>
+                                </MultiBinding>
+                            </DataGridTextColumn.Binding>
+                        </DataGridTextColumn>
+                    <DataGridTextColumn Header="Karton pacijenta" Binding="{Binding zdravstveniKarton}" />-->
 
-                    <!--<DataGrid.RowDetailsTemplate>
+            <!--<DataGrid.RowDetailsTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Details}" Margin="10" />
                     </DataTemplate>
                 </DataGrid.RowDetailsTemplate>-->
+            <!--
                     <DataGridTextColumn Width="*" Header="Istorija porodicnih bolesti" Binding="{Binding PorodicnaIstorijaBolesti}" />
 
                 </DataGrid.Columns>
-            </DataGrid>
+            </DataGrid>-->
 
         </Grid>
 
@@ -131,13 +164,16 @@
         <Label Name="PolLabel" HorizontalAlignment="Left" Margin="126,127,0,0" VerticalAlignment="Top"/>
         <Label Name="BrojTelefonaLabel" HorizontalAlignment="Left" Margin="126,152,0,0" VerticalAlignment="Top"/>
         <Label Name="KrvnaGrupaLabel" HorizontalAlignment="Left" Margin="126,178,0,0" VerticalAlignment="Top"/>
-        <Label Content="Dijagnoze&#xA;" HorizontalAlignment="Left" Margin="44,204,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <Button Content="Izdaj recept" HorizontalAlignment="Left" Margin="256,52,0,0" VerticalAlignment="Top" Width="101" Height="35" Click="Button_Click_1" />
-        <TextBox Name="istorijaBolestiText" HorizontalAlignment="Left" Margin="400,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145"/>
-        <TextBox Name="istorijaPorBolestiText" HorizontalAlignment="Left" Margin="636,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145"/>
-        <Button Content="Dodaj bolest&#xD;&#xA;" HorizontalAlignment="Left" Margin="317,213,0,0" VerticalAlignment="Top" Width="78" Height="22" Click="Button_Click"/>
+        <!--<Label Content="Dijagnoze&#xA;" HorizontalAlignment="Left" Margin="44,204,0,0" VerticalAlignment="Top" FontSize="18"/>-->
+        <Button Content="Izdaj recept" HorizontalAlignment="Left" Margin="256,124,0,0" VerticalAlignment="Top" Width="101" Height="35" Click="Button_Click_1" />
+        <Button Content="Obrisi recept" HorizontalAlignment="Left" Margin="256,169,0,0" VerticalAlignment="Top" Width="101" Height="35" Click="Button_Click_2"  />
+        <Button Content="Dodaj anamnezu" HorizontalAlignment="Left" Margin="256,314,0,0" VerticalAlignment="Top" Width="101" Height="35" Click="Button_Click_3"  />
+        <Button Content="Izbrisi anamnezu" HorizontalAlignment="Left" Margin="256,354,0,0" VerticalAlignment="Top" Width="101" Height="35" Click="Button_Click_4"  />
+        <!--<TextBox Name="istorijaBolestiText" HorizontalAlignment="Left" Margin="400,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145"/>
+        <TextBox Name="istorijaPorBolestiText" HorizontalAlignment="Left" Margin="636,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145"/>-->
+        <!--<Button Content="Dodaj bolest&#xD;&#xA;" HorizontalAlignment="Left" Margin="317,213,0,0" VerticalAlignment="Top" Width="78" Height="22" Click="Button_Click"/>
         <Button Content="Dodaj bolest&#xA;" HorizontalAlignment="Left" Margin="553,215,0,0" VerticalAlignment="Top" Width="78" Height="22" Click="Button_Click2"/>
         <Button Content="Izbrisi &#xA;" HorizontalAlignment="Left" Margin="317,183,0,0" VerticalAlignment="Top" Width="78" Height="22" Click="Button_Click3"/>
-        <Button Content="Izbrisi &#xA;Izbrisi&#xD;&#xA;" HorizontalAlignment="Left" Margin="553,183,0,0" VerticalAlignment="Top" Width="78" Height="22" Click="Button_Click4"/>
+        <Button Content="Izbrisi &#xA;Izbrisi&#xD;&#xA;" HorizontalAlignment="Left" Margin="553,183,0,0" VerticalAlignment="Top" Width="78" Height="22" Click="Button_Click4"/>-->
     </Grid>
 </Window>

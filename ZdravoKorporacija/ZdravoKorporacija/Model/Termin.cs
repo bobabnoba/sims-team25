@@ -25,9 +25,9 @@ namespace Model
         }
 
 
-        public Termin(ZdravstveniKarton zdravstveniKarton, Prostorija prostorija, Lekar Lekar, TipTerminaEnum tip, DateTime pocetak, double trajanje)
+        public Termin(ZdravstveniKarton zdravstveniKarton, Prostorija prostorija, Lekar Lekar, TipTerminaEnum tip, DateTime pocetak, double trajanje,Izvestaj izvestaj)
         {
-            this.izvestaj = new System.Collections.ArrayList();
+            this.izvestaj = izvestaj;
             this.zdravstveniKarton = zdravstveniKarton;
             this.prostorija = prostorija;
             this.Lekar = Lekar;
@@ -36,65 +36,7 @@ namespace Model
             Trajanje = trajanje;
         }
 
-        public System.Collections.ArrayList izvestaj;
-
-        /// <pdGenerated>default getter</pdGenerated>
-        public System.Collections.ArrayList GetIzvestaj()
-        {
-            if (izvestaj == null)
-                izvestaj = new System.Collections.ArrayList();
-            return izvestaj;
-        }
-
-        /// <pdGenerated>default setter</pdGenerated>
-        public void SetIzvestaj(System.Collections.ArrayList newIzvestaj)
-        {
-            RemoveAllIzvestaj();
-            foreach (Izvestaj oIzvestaj in newIzvestaj)
-                AddIzvestaj(oIzvestaj);
-        }
-
-        /// <pdGenerated>default Add</pdGenerated>
-        public void AddIzvestaj(Izvestaj newIzvestaj)
-        {
-            if (newIzvestaj == null)
-                return;
-            if (this.izvestaj == null)
-                this.izvestaj = new System.Collections.ArrayList();
-            if (!this.izvestaj.Contains(newIzvestaj))
-            {
-                this.izvestaj.Add(newIzvestaj);
-                newIzvestaj.SetTermin(this);
-            }
-        }
-
-        /// <pdGenerated>default Remove</pdGenerated>
-        public void RemoveIzvestaj(Izvestaj oldIzvestaj)
-        {
-            if (oldIzvestaj == null)
-                return;
-            if (this.izvestaj != null)
-                if (this.izvestaj.Contains(oldIzvestaj))
-                {
-                    this.izvestaj.Remove(oldIzvestaj);
-                    oldIzvestaj.SetTermin((Termin)null);
-                }
-        }
-
-        /// <pdGenerated>default removeAll</pdGenerated>
-        public void RemoveAllIzvestaj()
-        {
-            if (izvestaj != null)
-            {
-                System.Collections.ArrayList tmpIzvestaj = new System.Collections.ArrayList();
-                foreach (Izvestaj oldIzvestaj in izvestaj)
-                    tmpIzvestaj.Add(oldIzvestaj);
-                izvestaj.Clear();
-                foreach (Izvestaj oldIzvestaj in tmpIzvestaj)
-                    oldIzvestaj.SetTermin((Termin)null);
-                tmpIzvestaj.Clear();
-            }
-        }
+        public Izvestaj izvestaj;
         public ZdravstveniKarton zdravstveniKarton;
 
         /// <pdGenerated>default parent getter</pdGenerated>

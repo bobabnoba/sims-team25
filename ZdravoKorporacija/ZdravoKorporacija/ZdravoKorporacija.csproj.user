@@ -10,6 +10,9 @@
     <Compile Update="Stranice\DinamickaOprema\dinamickaOpremaStart.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Stranice\LekarCRUD\dodajAnamnezu.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Stranice\LekarCRUD\dodajDijagnozu.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -96,6 +99,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\DinamickaOprema\dinamickaOpremaStart.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\LekarCRUD\dodajAnamnezu.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\LekarCRUD\dodajDijagnozu.xaml">

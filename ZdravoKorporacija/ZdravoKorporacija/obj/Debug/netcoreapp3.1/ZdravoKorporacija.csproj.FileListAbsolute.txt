@@ -152,3 +152,5 @@ C:\Users\Admin\Desktop\New folder (2)\sims-team25\ZdravoKorporacija\ZdravoKorpor
 C:\Users\Admin\Desktop\New folder (2)\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\ZdravoKorporacija.dll
 C:\Users\Admin\Desktop\New folder (2)\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\ZdravoKorporacija.pdb
 C:\Users\Admin\Desktop\New folder (2)\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\ZdravoKorporacija.genruntimeconfig.cache
+C:\Users\Admin\Desktop\New folder (2)\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\LekarCRUD\dodajAnamnezu.g.cs
+C:\Users\Admin\Desktop\New folder (2)\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\Stranice\LekarCRUD\dodajAnamnezu.baml

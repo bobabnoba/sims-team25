@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 C:\Users\Admin\Desktop\New folder (2)\sims-team25\ZdravoKorporacija\ZdravoKorporacija\App.xaml
-29373691002
+30-343225113
 
-9162012216
+922027660645
 193-1338408254
-MainWindow.xaml;Stranice\DinamickaOprema\dinamickaOpremaStart.xaml;Stranice\LekarCRUD\dodajDijagnozu.xaml;Stranice\LekarCRUD\istorijaBolestiPrikaz.xaml;Stranice\LekarCRUD\izdajRecept.xaml;Stranice\LekarCRUD\izmeniPregledLekar.xaml;Stranice\LekarCRUD\lekarStart.xaml;Stranice\LekarCRUD\otkaziPregledLekar.xaml;Stranice\LekarCRUD\pregledPacijenata.xaml;Stranice\LekarCRUD\zakaziPregledLekar.xaml;Stranice\LekarCRUD\zdravstveniKartonPrikaz.xaml;Stranice\login.xaml;Stranice\Magacin\MagacinDodavanje.xaml;Stranice\Magacin\MagacinStart.xaml;Stranice\PacijentCRUD\izmeniPregled.xaml;Stranice\PacijentCRUD\otkaziPregled.xaml;Stranice\PacijentCRUD\pacijentStart.xaml;Stranice\PacijentCRUD\zakaziPregled.xaml;Stranice\SekretarCRUD\izmeniNalogSekretar.xaml;Stranice\SekretarCRUD\kreirajNalogSekretar.xaml;Stranice\SekretarCRUD\obrisiNalogSekretar.xaml;Stranice\SekretarCRUD\sekretarStart.xaml;Stranice\StatickaOprema\statickaOpremaPremestiIzMagacina.xaml;Stranice\StatickaOprema\statickaOpremaStart.xaml;Stranice\UpravnikCRUD\dodajProstorijuUpravnik.xaml;Stranice\UpravnikCRUD\izbrisiProstorijuUpravnik.xaml;Stranice\UpravnikCRUD\izmeniProstorijuUpravnik.xaml;Stranice\UpravnikCRUD\upravnikPocetna.xaml;Stranice\UpravnikCRUD\upravnikStart.xaml;
+MainWindow.xaml;Stranice\DinamickaOprema\dinamickaOpremaStart.xaml;Stranice\LekarCRUD\dodajAnamnezu.xaml;Stranice\LekarCRUD\dodajDijagnozu.xaml;Stranice\LekarCRUD\istorijaBolestiPrikaz.xaml;Stranice\LekarCRUD\izdajRecept.xaml;Stranice\LekarCRUD\izmeniPregledLekar.xaml;Stranice\LekarCRUD\lekarStart.xaml;Stranice\LekarCRUD\otkaziPregledLekar.xaml;Stranice\LekarCRUD\pregledPacijenata.xaml;Stranice\LekarCRUD\zakaziPregledLekar.xaml;Stranice\LekarCRUD\zdravstveniKartonPrikaz.xaml;Stranice\login.xaml;Stranice\Magacin\MagacinDodavanje.xaml;Stranice\Magacin\MagacinStart.xaml;Stranice\PacijentCRUD\izmeniPregled.xaml;Stranice\PacijentCRUD\otkaziPregled.xaml;Stranice\PacijentCRUD\pacijentStart.xaml;Stranice\PacijentCRUD\zakaziPregled.xaml;Stranice\SekretarCRUD\izmeniNalogSekretar.xaml;Stranice\SekretarCRUD\kreirajNalogSekretar.xaml;Stranice\SekretarCRUD\obrisiNalogSekretar.xaml;Stranice\SekretarCRUD\sekretarStart.xaml;Stranice\StatickaOprema\statickaOpremaPremestiIzMagacina.xaml;Stranice\StatickaOprema\statickaOpremaStart.xaml;Stranice\UpravnikCRUD\dodajProstorijuUpravnik.xaml;Stranice\UpravnikCRUD\izbrisiProstorijuUpravnik.xaml;Stranice\UpravnikCRUD\izmeniProstorijuUpravnik.xaml;Stranice\UpravnikCRUD\upravnikPocetna.xaml;Stranice\UpravnikCRUD\upravnikStart.xaml;
 
 False
 

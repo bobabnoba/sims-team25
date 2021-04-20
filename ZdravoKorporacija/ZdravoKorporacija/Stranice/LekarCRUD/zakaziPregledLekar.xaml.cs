@@ -73,6 +73,11 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             p.Id = id;
             Pacijent pac = (Pacijent)cbPacijent.SelectedItem;
             ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
+            Izvestaj iz = new Izvestaj();
+            iz.Id = 0;
+            iz.Opis = "Temperature";
+            iz.Simptomi = "Covid";
+            p.izvestaj = iz;
             
             String d = date.Text;
             String t = null;
@@ -120,6 +125,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             {
                 p.zdravstveniKarton = new ZdravstveniKarton(null, 0, StanjePacijentaEnum.None,null,KrvnaGrupaEnum.None,null) ;
                 pac.ZdravstveniKarton = new ZdravstveniKarton(null, 0, StanjePacijentaEnum.None, null, KrvnaGrupaEnum.None, null);
+                pac.ZdravstveniKarton.AddTermin(p);
                 zdravstveniKartonServis.KreirajZdravstveniKarton(pac.ZdravstveniKarton,ids);
             }
            

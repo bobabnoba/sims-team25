@@ -15,7 +15,7 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
         private ObservableCollection<Prostorija> prostorije = new ObservableCollection<Prostorija>();
 
         Dictionary<int, int> ids = new Dictionary<int, int>();
-
+       
         public upravnikStart()
         {
             InitializeComponent();

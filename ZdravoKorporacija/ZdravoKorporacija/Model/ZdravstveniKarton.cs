@@ -19,7 +19,7 @@ namespace Model
             this.izvestajOHospitalizaciji = new System.Collections.ArrayList();
             this.istorijaBolesti = new List<IstorijaBolesti>();
             this.recept = new ObservableCollection<Recept>();
-            this.termin = new System.Collections.ArrayList();
+            this.termin = new List<Termin>();
             this.patient = patient;
             Id = id;
             ZdravstvenoStanje = zdravstvenoStanje;
@@ -208,13 +208,13 @@ namespace Model
                 tmpRecept.Clear();
             }
         }
-        public System.Collections.ArrayList termin;
+        public List<Termin> termin;
 
         /// <pdGenerated>default getter</pdGenerated>
-        public System.Collections.ArrayList GetTermin()
+        public List<Termin> GetTermin()
         {
             if (termin == null)
-                termin = new System.Collections.ArrayList();
+                termin = new List<Termin>();
             return termin;
         }
 
@@ -232,7 +232,7 @@ namespace Model
             if (newTermin == null)
                 return;
             if (this.termin == null)
-                this.termin = new System.Collections.ArrayList();
+                this.termin = new List<Termin>();
             if (!this.termin.Contains(newTermin))
             {
                 this.termin.Add(newTermin);

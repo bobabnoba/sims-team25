@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.LekarCRUD"
         mc:Ignorable="d"
-        Title="izdajRecept" Height="284" Width="450" Background="CadetBlue">
+        Title="izdajRecept" Height="328" Width="450" Background="CadetBlue">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Height="408" Width="418" Margin="0,27,0,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="20*"/>
@@ -21,10 +21,10 @@
             <ColumnDefinition Width="59*"/>
             <ColumnDefinition Width="141*"/>
         </Grid.ColumnDefinitions>
-        <Button Content="POTVRDI" HorizontalAlignment="Left" Margin="96,41,0,0" Grid.Row="2" VerticalAlignment="Top" Width="80" Grid.ColumnSpan="2" Click="Button_Click" />
-        <Button Content="ODUSTANI" HorizontalAlignment="Left" Margin="95,41,0,0" Grid.Row="2" VerticalAlignment="Top" Width="80" Grid.Column="1" Click="Button_Click_1" />
-        <TextBlock TextWrapping="Wrap" Margin="62,52,232,61" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2"><Run Text="Trajanje(u danima)"/><LineBreak/><Run/></TextBlock>
-        <TextBlock TextWrapping="Wrap" Margin="62,0,10,40" Grid.Row="1" RenderTransformOrigin="0.094,0.674" Height="18" VerticalAlignment="Bottom"><Run Text="Doza"/><LineBreak/><Run/></TextBlock>
+        <Button Content="POTVRDI" HorizontalAlignment="Left" Margin="88,14,0,0" Grid.Row="3" VerticalAlignment="Top" Width="80" Grid.ColumnSpan="2" Click="Button_Click" />
+        <Button Content="ODUSTANI" HorizontalAlignment="Left" Margin="87,14,0,0" Grid.Row="3" VerticalAlignment="Top" Width="80" Grid.Column="1" Click="Button_Click_1" />
+        <TextBlock TextWrapping="Wrap" Margin="62,25,232,20" Grid.Row="2" Grid.ColumnSpan="2"><Run Text="Trajanje(u danima)"/><LineBreak/><Run/></TextBlock>
+        <TextBlock TextWrapping="Wrap" Margin="62,0,282,40" Grid.Row="1" RenderTransformOrigin="0.094,0.674" Height="18" VerticalAlignment="Bottom" Grid.ColumnSpan="2"><Run Text="Dnevna doza"/><LineBreak/><Run/></TextBlock>
         <TextBlock TextWrapping="Wrap" Margin="62,33,282,17" Grid.ColumnSpan="2"><Run Text="Naziv leka"/></TextBlock>
         <ComboBox x:Name="lekNaziv" Grid.Column="1" Margin="68,30,68,17" >
             <ComboBox.ItemTemplate>
@@ -40,7 +40,9 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
         <TextBox Name ="Doza" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" Height="18" Margin="0,10,0,0" />
-        <TextBox Name="Trajanje" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" Height="18" Margin="0,52,0,0"  Grid.RowSpan="2"/>
+        <TextBox Name="Trajanje" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="2" Text="" TextWrapping="Wrap" VerticalAlignment="Center" Width="159" Height="18"/>
+        <TextBlock TextWrapping="Wrap" Margin="62,55,232,58" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2"><Run Text="Pocetak terapije"/></TextBlock>
+        <DatePicker Name="Date" Grid.Column="1" HorizontalAlignment="Center" Margin="0,52,0,62" Grid.Row="1" Grid.RowSpan="2" Width="159"/>
 
     </Grid>
 </Window>

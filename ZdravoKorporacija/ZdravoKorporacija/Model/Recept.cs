@@ -10,9 +10,10 @@ namespace Model
     public class Recept
     {
         public int Id { get; set; }
-        public String Doziranje{ get; set; }
-    public int Trajanje { get; set; }
+        public String Doziranje { get; set; }
+        public int Trajanje { get; set; }
         public String NazivLeka { get; set; }
+        public DateTime Pocetak { get; set; }
 
         public System.Collections.ArrayList lek;
 

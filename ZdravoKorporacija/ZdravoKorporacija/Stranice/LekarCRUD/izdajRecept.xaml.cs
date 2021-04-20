@@ -28,10 +28,16 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private ObservableCollection<Recept> recepti;
         Pacijent pac;
         Recept r = new Recept();
+        IDRepozitorijum datotekaID;
+
+        Dictionary<int, int> ids = new Dictionary<int, int>();
+        
         public izdajRecept(Pacijent selektovani)
         {
             InitializeComponent();
             this.DataContext = this;
+            datotekaID = new IDRepozitorijum("iDMapRecept");
+            ids = datotekaID.dobaviSve();
             lekovi = new ObservableCollection<Lek>(lekServis.PregledSvihLekova());
             pac = selektovani;
             lekNaziv.ItemsSource = lekovi;
@@ -44,7 +50,20 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             r.NazivLeka = l.NazivLeka;
             r.Doziranje = Doza.Text;
             r.Trajanje = Int32.Parse(Trajanje.Text);
+            r.Pocetak = Date.SelectedDate.Value.Date;
+            int id = 0;
+            for (int i = 0; i < 1000; i++)
+            {
+                if (ids[i] == 0)
+                {
+                    id = i;
+                    ids[i] = 1;
+                    break;
+                }
+            }
+            r.Id = id;
             recepti.Add(r);
+            datotekaID.sacuvaj(ids);
             pacijentServis.AzurirajPacijenta(pac);
             this.Close();
         }
