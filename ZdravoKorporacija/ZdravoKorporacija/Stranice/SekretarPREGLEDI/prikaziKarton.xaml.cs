@@ -13,7 +13,7 @@ using System.Windows.Shapes;
 using Model;
 using Repository;
 using Service;
-using ZdravoKorporacija.Repository;
+
 
 namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
 {

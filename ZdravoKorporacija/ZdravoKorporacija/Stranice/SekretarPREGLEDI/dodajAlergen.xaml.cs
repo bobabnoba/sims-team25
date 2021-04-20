@@ -15,7 +15,7 @@ using Model;
 using Repository;
 using Service;
 using ZdravoKorporacija.Model;
-using ZdravoKorporacija.Repository;
+
 
 namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
 {

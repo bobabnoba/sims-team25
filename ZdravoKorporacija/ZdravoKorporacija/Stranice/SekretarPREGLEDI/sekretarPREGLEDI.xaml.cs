@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Model;
+using Repository;
 using Service;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Stranice.LekarCRUD;
