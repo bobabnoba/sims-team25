@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Model;
@@ -16,24 +17,42 @@ namespace ZdravoKorporacija.Stranice
         private TerminService storage = new TerminService();
         private LekarRepozitorijum ljekariDat = new LekarRepozitorijum();
         private List<Lekar> ljekari;
+        private List<Lekar> dostupniLjekari;
         private Termin p;
         private ObservableCollection<Termin> pregledi;
         private Dictionary<int, int> ids = new Dictionary<int, int>();
+        private Boolean selected; // true ljekar, false vrijeme
 
 
         public zakaziPregled(ObservableCollection<Termin> termini, Dictionary<int,int> ids)
         {
             InitializeComponent();
+            this.ids = ids;
             p = new Termin();
             ljekari = ljekariDat.dobaviSve();
             ljekar.ItemsSource = ljekari;
             pregledi = termini;
-            this.ids = ids;
+            dostupniLjekari = ljekari;
+            ljekar.ItemsSource = dostupniLjekari;
 
             p.Tip = TipTerminaEnum.Pregled;
             p.Trajanje = 0.5;
             //p.Id = pregledi.Count + 1;
 
+            date.IsEnabled = false;
+            time.IsEnabled = false;
+            ljekar.IsEnabled = false;
+
+            DateTime danas = DateTime.Today;
+
+            for (DateTime tm = danas.AddHours(8); tm < danas.AddHours(22); tm = tm.AddMinutes(30))
+            {
+                time.Items.Add(tm.ToShortTimeString());
+
+            }
+
+            CalendarDateRange kalendar = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
+            date.BlackoutDates.Add(kalendar);
         }
 
         private void potvrdi(object sender, RoutedEventArgs e)
@@ -50,16 +69,18 @@ namespace ZdravoKorporacija.Stranice
             }
             p.Id = id;
 
-            ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
-            String t = null;
-            String d = date.Text;
-            if (cboItem != null)
-            {
+            p.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
 
-                t = cboItem.Content.ToString();
+            //ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
+            //String t = null;
+            //String d = date.Text;
+            //if (cboItem != null)
+            //{
 
-            }
-            p.Pocetak = DateTime.Parse(d + " " + t);
+            //    t = cboItem.Content.ToString();
+
+            //}
+            //p.Pocetak = DateTime.Parse(d + " " + t);
 
             p.Lekar = (Lekar)ljekar.SelectedItem;
             Termin tZaLjekara = new Termin();
@@ -82,11 +103,161 @@ namespace ZdravoKorporacija.Stranice
 
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void VremenskiSlotChecked(object sender, RoutedEventArgs e)
         {
-
+            selected = false;
+            date.IsEnabled = true;
+            time.IsEnabled = true;
+            ljekar.IsEnabled = false;
 
         }
 
+        private void LekarChecked(object sender, RoutedEventArgs e)
+        {
+
+            selected = true;
+            date.IsEnabled = true;
+            time.IsEnabled = false;
+            ljekar.IsEnabled = true;
+
+
+        }
+        private void time_changed(object sender, SelectionChangedEventArgs e)
+        {
+            if (selected)
+            {
+                p.Lekar = (Lekar)ljekar.SelectedItem;
+
+                foreach (Termin t in pregledi)
+                {
+                    if (t.Lekar.Jmbg.Equals(p.Lekar.Jmbg)) 
+                    {
+                        if (t.Pocetak.Date.Equals(((DateTime)date.SelectedDate).Date))  
+                        {
+                            time.Items.Remove(t.Pocetak.ToShortTimeString());
+                        }
+                    }
+                }
+                time.IsEnabled = true;
+            }
+            else
+            {
+                p.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
+
+                foreach (Termin t in pregledi)
+                {
+                    if (t.Pocetak.Equals(p.Pocetak))
+                    {
+                        foreach (Lekar l in ljekari.ToArray())
+                        {
+                            if (l.Jmbg.Equals(t.Lekar.Jmbg))
+                            {
+                                dostupniLjekari.Remove(l);  
+                            }
+                        }
+                    }
+                }
+
+                //ljekar.ItemsSource = dostupniLjekari;
+                ljekar.IsEnabled = true;
+            }
+
+        }
+
+        private void date_changed(object sender, SelectionChangedEventArgs e)
+        {
+            if (selected)
+            {
+                if (ljekar.SelectedIndex != -1)
+                {
+                    p.Lekar = (Lekar)ljekar.SelectedItem;
+
+                    foreach (Termin t in pregledi)
+                    {
+                        if (t.Lekar.Jmbg.Equals(p.Lekar.Jmbg)) 
+                        {
+                            if (t.Pocetak.Date.Equals(((DateTime)date.SelectedDate).Date)) 
+                            {
+                                time.Items.Remove(t.Pocetak.ToShortTimeString());
+                            }
+                        }
+                    }
+                    time.IsEnabled = true;
+                }
+            }
+            else
+            {
+                if (time.SelectedIndex != -1)
+                {
+                    p.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
+
+                    foreach (Termin t in pregledi)
+                    {
+                        if (t.Pocetak.Equals(p.Pocetak))
+                        {
+                            foreach (Lekar l in ljekari.ToArray())
+                            {
+                                if (l.Jmbg.Equals(t.Lekar.Jmbg))
+                                {
+                                    dostupniLjekari.Remove(l); 
+                                }
+                            }
+                        }
+                    }
+
+                    //ljekar.ItemsSource = dostupniLjekari;
+                    ljekar.IsEnabled = true;
+                }
+            }
+
+        }
+
+        private void ljekar_changed(object sender, SelectionChangedEventArgs e)
+        {
+            if (selected)
+            {
+                if (date.SelectedDate != null)
+                {
+                    p.Lekar = (Lekar)ljekar.SelectedItem;
+
+                    foreach (Termin t in pregledi)
+                    {
+                        if (t.Lekar.Jmbg.Equals(p.Lekar.Jmbg)) 
+                        {
+                            if (t.Pocetak.Date.Equals(((DateTime)date.SelectedDate).Date))  
+                            {
+                                time.Items.Remove(t.Pocetak.ToShortTimeString());
+                            }
+                        }
+                    }
+                    time.IsEnabled = true;
+                }
+            }
+            else
+            {
+                if (time.SelectedIndex != -1)
+                {
+                    p.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
+
+                    foreach (Termin t in pregledi)
+                    {
+                        if (t.Pocetak.Equals(p.Pocetak))
+                        {
+                            foreach (Lekar l in ljekari.ToArray())
+                            {
+                                if (l.Jmbg.Equals(t.Lekar.Jmbg))
+                                {
+                                    dostupniLjekari.Remove(l);  
+                                }
+                            }
+                        }
+                    }
+
+                    //ljekar.ItemsSource = dostupniLjekari;
+                    ljekar.IsEnabled = true;
+                }
+            }
+
+        }
     }
 }

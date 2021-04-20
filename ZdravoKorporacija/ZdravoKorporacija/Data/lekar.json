@@ -32,6 +32,15 @@
         "Tip": 0,
         "Pocetak": "0001-01-01T00:00:00",
         "Trajanje": 0.0
+      },
+      {
+        "izvestaj": null,
+        "zdravstveniKarton": null,
+        "prostorija": null,
+        "Id": 3,
+        "Tip": 0,
+        "Pocetak": "0001-01-01T00:00:00",
+        "Trajanje": 0.0
       }
     ],
     "Ime": "Milos",

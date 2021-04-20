@@ -1,7 +1,8 @@
 ﻿using Model;
 using System.Collections.Generic;
+using ZdravoKorporacija.Model;
 
-namespace ZdravoKorporacija.Model
+namespace Service
 {
     class PacijentService
     {

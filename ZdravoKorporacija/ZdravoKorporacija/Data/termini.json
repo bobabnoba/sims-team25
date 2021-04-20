@@ -119,7 +119,48 @@
     },
     "Id": 2,
     "Tip": 0,
-    "Pocetak": "2021-05-20T15:30:00",
+    "Pocetak": "2021-05-20T16:30:00",
+    "Trajanje": 0.5
+  },
+  {
+    "izvestaj": null,
+    "zdravstveniKarton": null,
+    "prostorija": null,
+    "Lekar": {
+      "termin": [
+        {
+          "izvestaj": null,
+          "zdravstveniKarton": null,
+          "prostorija": null,
+          "Id": 0,
+          "Tip": 0,
+          "Pocetak": "0001-01-01T00:00:00",
+          "Trajanje": 0.0
+        },
+        {
+          "izvestaj": null,
+          "zdravstveniKarton": null,
+          "prostorija": null,
+          "Id": 3,
+          "Tip": 0,
+          "Pocetak": "0001-01-01T00:00:00",
+          "Trajanje": 0.0
+        }
+      ],
+      "Ime": "Milos",
+      "Prezime": "Zivic",
+      "Jmbg": 2234567890113,
+      "BrojTelefona": 69393334,
+      "Mejl": "zivko99@gmail.com",
+      "AdresaStanovanja": "Becej",
+      "Pol": 0,
+      "Username": "milos",
+      "Password": "zivic",
+      "Uloga": 0
+    },
+    "Id": 3,
+    "Tip": 0,
+    "Pocetak": "2021-04-21T08:00:00",
     "Trajanje": 0.5
   }
 ]

@@ -38,6 +38,12 @@ namespace ZdravoKorporacija.Stranice
                     ljekar.SelectedItem = l;
                 }
             }
+            ////// **********************
+            CalendarDateRange kalendar = new CalendarDateRange(DateTime.MinValue, selektovani.Pocetak.AddDays(-3));
+            CalendarDateRange kalendar1 = new CalendarDateRange(selektovani.Pocetak.AddDays(3), DateTime.MaxValue);
+            date.BlackoutDates.Add(kalendar);
+            date.BlackoutDates.Add(kalendar1);
+
             date.SelectedDate = selektovani.Pocetak;
             time.SelectedValue = selektovani.Pocetak.ToString("HH:mm");
         }

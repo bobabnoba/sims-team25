@@ -1,6 +1,9 @@
 ﻿using Model;
+using Service;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Model;
@@ -42,8 +45,16 @@ namespace ZdravoKorporacija.Stranice
                 MessageBox.Show("Pregled nije izabran. Molimo označite pregled koji želite da izmenite.", "Greška");
             else
             {
-                izmeniPregled ip = new izmeniPregled((Termin)dgUsers.SelectedItem, termini);
-                ip.Show();
+                Termin t = (Termin)dgUsers.SelectedItem;
+                Debug.WriteLine("Danas je " + DateTime.Today.ToString());
+                if(t.Pocetak.Date <= DateTime.Today.AddDays(1).Date) {
+                    MessageBox.Show("Nije moguće izmeniti pregled koji je zakazan u predstojećih 24h", "Greška");
+                }
+                else
+                {
+                    izmeniPregled ip = new izmeniPregled((Termin)dgUsers.SelectedItem, termini);
+                    ip.Show();
+                }
             }
         }
 
