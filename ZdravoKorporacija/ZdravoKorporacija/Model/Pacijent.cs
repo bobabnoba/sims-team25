@@ -105,5 +105,10 @@ namespace Model
 
         public bool Guest { get; set; }
 
+        public long GetJmbg()
+        {
+            return this.Jmbg;
+        }
+
     }
 }

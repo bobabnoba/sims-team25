@@ -25,6 +25,10 @@ namespace Model
             Vakcine = vakcine;
         }
 
+        public ZdravstveniKarton()
+        {
+        }
+
 
         /// <pdGenerated>default getter</pdGenerated>
         public System.Collections.ArrayList GetIzvestajOHospitalizaciji()
@@ -267,6 +271,10 @@ namespace Model
         public String Alergije { get; set; }
         public KrvnaGrupaEnum KrvnaGrupa { get; set; }
         public String Vakcine { get; set; }
+        public void dodajAlergije(string dodaj)
+        {
+            this.Alergije += dodaj;
+        }
 
     }
 }

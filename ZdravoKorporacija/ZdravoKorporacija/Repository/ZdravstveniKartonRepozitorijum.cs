@@ -60,6 +60,17 @@ namespace Repository
             jWriter.Close();
             writer.Close();
         }
+        public ZdravstveniKarton findById(long id)
+        {
+            List<ZdravstveniKarton> kartoni = DobaviSve();
+            foreach (ZdravstveniKarton zk in kartoni)
+            {
+                if (zk.Id == id)
+                    return zk;
+
+            }
+            return null;
+        }
 
     }
 }

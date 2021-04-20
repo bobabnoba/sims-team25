@@ -46,8 +46,22 @@ namespace Service
             }
             return false;
         }
-      
-      public bool AzurirajZdravstveniKarton2(ZdravstveniKarton zdravstveniKarton)
+
+        public ZdravstveniKarton findById(long id)
+        {
+            ZdravstveniKartonRepozitorijum datoteka = new ZdravstveniKartonRepozitorijum();
+
+            List<ZdravstveniKarton> kartoni = datoteka.DobaviSve();
+            foreach (ZdravstveniKarton zk in kartoni)
+            {
+                if (zk.Id == id)
+                    return zk;
+
+            }
+            return null;
+        }
+
+        public bool AzurirajZdravstveniKarton2(ZdravstveniKarton zdravstveniKarton)
       {
             ZdravstveniKartonRepozitorijum datoteka = new ZdravstveniKartonRepozitorijum();
             List<ZdravstveniKarton> zdravstveniKartoni = datoteka.DobaviSve();

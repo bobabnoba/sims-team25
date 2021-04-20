@@ -9,28 +9,11 @@
       Title="Sekretar">
 
     <Grid>
-        <Button Content="Kreiraj nalog" HorizontalAlignment="Left" Margin="217,67,0,0" VerticalAlignment="Top" Width="92" Height="44" Click="kreiraj"/>
-        <Button Content="Izmeni nalog" HorizontalAlignment="Center" Margin="0,67,0,0" VerticalAlignment="Top" Width="92" Height="44" RenderTransformOrigin="0.255,-0.75" Click="izmeni"/>
-        <Button Content="Obriši nalog" HorizontalAlignment="Left" Margin="486,67,0,0" VerticalAlignment="Top" Width="92" Height="44" RenderTransformOrigin="0.033,-1.977" Click="izbrisi"/>
         <Grid Margin="10">
-            <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="0,114,0,28">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding="{Binding Jmbg}" />
-                    <DataGridTextColumn Header="Ime" Binding="{Binding Ime}"/>
-                    <DataGridTextColumn Header="Prezime" Binding="{Binding Prezime}" />
-                    <DataGridTextColumn Header="Pol" Binding="{Binding Pol}"/>
-                    <DataGridTextColumn Header="Telefon" Binding="{Binding BrojTelefona}"/>
-
-                </DataGrid.Columns>
-                <DataGrid.RowDetailsTemplate>
-                    <DataTemplate>
-
-                        <TextBlock Text="{Binding Mejl}" Margin="10" />
-
-                    </DataTemplate>
-                </DataGrid.RowDetailsTemplate>
-            </DataGrid>
+            <Button Content="NALOZI" HorizontalAlignment="Left" VerticalAlignment="Top" Height="52" Width="138" Click="Button_Click" Margin="252,0,0,0"/>
+            <Button Content="PREGLEDI" HorizontalAlignment="Left" VerticalAlignment="Top" Height="52" Width="138" Click="Button_Click_1" Margin="395,0,0,0"/>
         </Grid>
-
+        <Button Content="Button" HorizontalAlignment="Left" Margin="1078,111,0,0" VerticalAlignment="Top" Width="0"/>
+        <Frame x:Name="fr" NavigationUIVisibility="hidden" Margin="0,67,10,0" />
     </Grid>
 </Window>

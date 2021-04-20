@@ -34,7 +34,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             cbPacijent.ItemsSource = pacijenti;
             foreach(Pacijent pacijent in pacijenti)
             {
-                if(pacijent.ZdravstveniKarton.Id== selektovani.GetZdravstveniKarton().Id)
+               // if(pacijent.ZdravstveniKarton.Id== selektovani.GetZdravstveniKarton().Id)
                     cbPacijent.SelectedItem = pacijent;
             }
             pregledi = termini;
@@ -112,14 +112,14 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             {
 
                 t = cboItem.Content.ToString();
-                if (Int32.Parse(t.Substring(0, 2)) < (now.Substring(9, 8).Equals("po podne") ? Int32.Parse(now.Substring(0, 2)) + 12 : Int32.Parse(now.Substring(0, 2))))
+                /* if (Int32.Parse(t.Substring(0, 2)) < (now.Substring(9, 8).Equals("po podne") ? Int32.Parse(now.Substring(0, 2)) + 12 : Int32.Parse(now.Substring(0, 2))))
                 { MessageBox.Show("Nevalidno Vreme","Greska");
                     return;
                 }
                 else if (Int32.Parse(t.Substring(3, 2)) < Int32.Parse(now.Substring(3, 2))) 
                 { MessageBox.Show("Nevalidno Vreme", "Greska");
                     return;
-                }
+                } */
 
             }
             p.Pocetak = DateTime.Parse(d + " " + t);
