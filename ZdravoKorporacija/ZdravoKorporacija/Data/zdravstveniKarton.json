@@ -1,0 +1,50 @@
+[
+  {
+    "izvestajOHospitalizaciji": null,
+    "istorijaBolesti": null,
+    "recept": null,
+    "termin": null,
+    "patient": null,
+    "Id": 13,
+    "ZdravstvenoStanje": 1,
+    "Alergije": "polen, kikiriki, macija dlaka, bundeva",
+    "KrvnaGrupa": 2,
+    "Vakcine": "tetanus, "
+  },
+  {
+    "izvestajOHospitalizaciji": null,
+    "istorijaBolesti": null,
+    "recept": null,
+    "termin": null,
+    "patient": null,
+    "Id": 12,
+    "ZdravstvenoStanje": 1,
+    "Alergije": "polen, ,limun",
+    "KrvnaGrupa": 1,
+    "Vakcine": "tetanus, "
+  },
+  {
+    "izvestajOHospitalizaciji": null,
+    "istorijaBolesti": null,
+    "recept": null,
+    "termin": null,
+    "patient": null,
+    "Id": 12,
+    "ZdravstvenoStanje": 1,
+    "Alergije": "pseca dlaka",
+    "KrvnaGrupa": 1,
+    "Vakcine": "tetanus, "
+  },
+  {
+    "izvestajOHospitalizaciji": null,
+    "istorijaBolesti": null,
+    "recept": null,
+    "termin": null,
+    "patient": null,
+    "Id": 123,
+    "ZdravstvenoStanje": 1,
+    "Alergije": "pseca dlaka,   , dlaka,dlake, ",
+    "KrvnaGrupa": 0,
+    "Vakcine": "tetanus, "
+  }
+]
