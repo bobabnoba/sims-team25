@@ -1,8 +1,9 @@
 ﻿using Model;
+using Service;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using ZdravoKorporacija.Service;
+
 
 namespace ZdravoKorporacija.Controller
 {

@@ -1,12 +1,13 @@
 ﻿using Model;
+using Repository;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using ZdravoKorporacija.Model;
-using ZdravoKorporacija.Repository;
 
-namespace ZdravoKorporacija.Service
-{
+
+namespace Service
+{ 
     public class MagacinService
     {
         public bool DodajOpremu(int id, string naziv, int ukupnaKolicina, string proizvodjac, DateTime datumNabavke,Dictionary<int,int> id_map)
@@ -43,9 +44,8 @@ namespace ZdravoKorporacija.Service
         public List<Inventar> PregledSveOpreme()
         {
             MagacinRepozitorijum mr = MagacinRepozitorijum.Instance;
-
-            mr.DobaviSve();
-            return null;
+            return mr.DobaviSve();
+            
         }
 
     }

@@ -3,15 +3,18 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Collections;
+using Repository;
 
-namespace ZdravoKorporacija.Service
-{
+namespace Service
+{ 
         public class StatickaOpremaService
         {
-            public bool DodajOpremu()
+            public bool DodajOpremu(StatickaOprema st)
             {
-                // TODO: implement
-                return false;
+            StatickaOpremaRepozitorijum stRepozitorijum =  StatickaOpremaRepozitorijum.Instance;
+
+            stRepozitorijum.Sacuvaj(st);
+            return false;
             }
 
             public bool ObrisiOpremu(StatickaOprema oprema)
@@ -26,7 +29,7 @@ namespace ZdravoKorporacija.Service
                 return false;
             }
 
-            public List<StatckaOprema> PregledSveOpreme()
+            public List<StatickaOprema> PregledSveOpreme()
             {
                 // TODO: implement
                 return null;

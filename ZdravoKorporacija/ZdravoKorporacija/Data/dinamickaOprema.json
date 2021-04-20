@@ -1,0 +1,92 @@
+[
+  {
+    "Kolicina": 1,
+    "Prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 1,
+      "Naziv": "soba12",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 1
+    },
+    "Id": 4,
+    "Naziv": "Hanzaplast",
+    "UkupnaKolicina": 4,
+    "Proizvodjac": "Keek",
+    "DatumNabavke": "0001-01-01T00:00:00"
+  },
+  {
+    "Kolicina": 1,
+    "Prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 1,
+      "Naziv": "soba12",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 1
+    },
+    "Id": 4,
+    "Naziv": "Hanzaplast",
+    "UkupnaKolicina": 3,
+    "Proizvodjac": "Keek",
+    "DatumNabavke": "0001-01-01T00:00:00"
+  },
+  {
+    "Kolicina": 1,
+    "Prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 4,
+      "Naziv": "soba31",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 3
+    },
+    "Id": 4,
+    "Naziv": "Hanzaplast",
+    "UkupnaKolicina": 2,
+    "Proizvodjac": "Keek",
+    "DatumNabavke": "0001-01-01T00:00:00"
+  },
+  {
+    "Kolicina": 1,
+    "Prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 4,
+      "Naziv": "soba31",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 3
+    },
+    "Id": 4,
+    "Naziv": "Hanzaplast",
+    "UkupnaKolicina": 1,
+    "Proizvodjac": "Keek",
+    "DatumNabavke": "0001-01-01T00:00:00"
+  },
+  {
+    "Kolicina": 1,
+    "Prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 2,
+      "Naziv": "soba21",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 2
+    },
+    "Id": 4,
+    "Naziv": "Hanzaplast",
+    "UkupnaKolicina": 0,
+    "Proizvodjac": "Keek",
+    "DatumNabavke": "0001-01-01T00:00:00"
+  }
+]
