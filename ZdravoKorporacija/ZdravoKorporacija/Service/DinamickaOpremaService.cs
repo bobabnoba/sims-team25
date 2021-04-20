@@ -3,6 +3,7 @@ using Repository;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows;
 
 namespace Service
 { 
@@ -34,7 +35,7 @@ namespace Service
 
 
                 List<Inventar> magacin = magacinRepozitorijum.DobaviSve();
-                //List<Inventar> magacin = MagacinRepozitorijum.Instance.magacinOprema.Remove(inv);
+                //List<Inventar> magacin = MagacinsRepozitorijum.Instance.magacinOprema.Remove(inv);
                 foreach (Inventar inventar in magacin)
                 {
                     if (inventar.Id.Equals(inv.Id))
@@ -46,6 +47,7 @@ namespace Service
                     }
                 }
             }
+            MessageBox.Show("Unesite kolicinu ponovo", "Greska");
             return false;
 
         }

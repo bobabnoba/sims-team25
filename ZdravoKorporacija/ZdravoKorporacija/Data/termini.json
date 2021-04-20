@@ -57,7 +57,6 @@
     },
     "Id": 0,
     "Tip": 0,
-<<<<<<< HEAD
     "Pocetak": "2021-05-08T17:30:00",
     "Trajanje": 0.5
   },
@@ -252,9 +251,44 @@
     "Id": 3,
     "Tip": 0,
     "Pocetak": "2021-04-21T08:00:00",
-=======
-    "Pocetak": "2021-04-21T12:30:00",
->>>>>>> oprema
     "Trajanje": 0.5
+  },
+  {
+    "izvestaj": null,
+    "zdravstveniKarton": null,
+    "prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 1,
+      "Naziv": "soba12",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 1
+    },
+    "Lekar": null,
+    "Id": 5,
+    "Tip": 0,
+    "Pocetak": "2021-04-23T12:30:00",
+    "Trajanje": 0.0
+  },
+  {
+    "izvestaj": null,
+    "zdravstveniKarton": null,
+    "prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 1,
+      "Naziv": "soba12",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 1
+    },
+    "Lekar": null,
+    "Id": 6,
+    "Tip": 0,
+    "Pocetak": "2021-04-23T10:30:00",
+    "Trajanje": 0.0
   }
 ]

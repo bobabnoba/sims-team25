@@ -7,13 +7,6 @@
     "DatumNabavke": "0001-01-01T00:00:00"
   },
   {
-    "Id": 5,
-    "Naziv": "Stolovi",
-    "UkupnaKolicina": 200,
-    "Proizvodjac": "jysk",
-    "DatumNabavke": "0001-01-01T00:00:00"
-  },
-  {
     "Id": 4,
     "Naziv": "Hanzaplast",
     "UkupnaKolicina": 100,
@@ -28,17 +21,24 @@
     "DatumNabavke": "0001-01-01T00:00:00"
   },
   {
-    "Id": 2,
-    "Naziv": "stolica",
-    "UkupnaKolicina": 400,
-    "Proizvodjac": "forma ideale",
-    "DatumNabavke": "0001-01-01T00:00:00"
-  },
-  {
     "Id": 1,
     "Naziv": "krevet",
     "UkupnaKolicina": 0,
     "Proizvodjac": "simpo",
+    "DatumNabavke": "0001-01-01T00:00:00"
+  },
+  {
+    "Id": 2,
+    "Naziv": "stolica",
+    "UkupnaKolicina": 300,
+    "Proizvodjac": "forma ideale",
+    "DatumNabavke": "0001-01-01T00:00:00"
+  },
+  {
+    "Id": 5,
+    "Naziv": "Stolovi",
+    "UkupnaKolicina": 100,
+    "Proizvodjac": "jysk",
     "DatumNabavke": "0001-01-01T00:00:00"
   }
 ]

@@ -72,6 +72,9 @@
     <Compile Update="Stranice\StatickaOpremaCRUD\statickaOpremaPremestiIzMagacina.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Stranice\StatickaOpremaCRUD\statickaOpremaPremestiIzProstorije.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Stranice\StatickaOpremaCRUD\statickaOpremaStart.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -159,6 +162,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\StatickaOpremaCRUD\statickaOpremaPremestiIzMagacina.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\StatickaOpremaCRUD\statickaOpremaPremestiIzProstorije.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\StatickaOpremaCRUD\statickaOpremaStart.xaml">

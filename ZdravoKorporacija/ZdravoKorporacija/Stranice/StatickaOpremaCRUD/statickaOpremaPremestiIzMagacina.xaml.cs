@@ -67,7 +67,7 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
             CalendarDateRange kalendar = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
             timePicker.BlackoutDates.Add(kalendar);
 
-
+            sati.IsEnabled = false;
 
         }
 
@@ -96,9 +96,10 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
         }
         private void date_changed(object sender, SelectionChangedEventArgs e)
         {
-            if (cbProstorija.SelectedIndex != -1)
+            if (cbProstorija.SelectedIndex != -1 && timePicker.SelectedDate != null)
             {
                 selected = true;
+                sati.IsEnabled = true;
             }
 
             if (selected)
