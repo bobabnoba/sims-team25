@@ -25,6 +25,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private Termin s; // selektovani, za ukloniti
         private ObservableCollection<Termin> pregledi;
         String now = DateTime.Now.ToString("hh:mm:ss tt");
+        DateTime today = DateTime.Today;
         public izmeniPregledLekar(Termin selektovani, ObservableCollection<Termin> termini)
         {
             InitializeComponent();
@@ -32,11 +33,18 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             s = selektovani;
             pacijenti = pacijentiDat.dobaviSve();
             cbPacijent.ItemsSource = pacijenti;
-            foreach(Pacijent pacijent in pacijenti)
+            try
             {
-                if(pacijent.ZdravstveniKarton.Id== selektovani.GetZdravstveniKarton().Id)
-                    cbPacijent.SelectedItem = pacijent;
+                foreach (Pacijent pacijent in pacijenti)
+                {
+                    if (pacijent.ZdravstveniKarton != null)
+                    {
+                        if (pacijent.ZdravstveniKarton.Id == selektovani.GetZdravstveniKarton().Id)
+                            cbPacijent.SelectedItem = pacijent;
+                    }
+                }
             }
+            catch (NullReferenceException) { }
             pregledi = termini;
 
             lekari = lekariDat.dobaviSve();
@@ -108,19 +116,26 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
             String t = null;
             String d = date.Text;
+            int prepodne = Int32.Parse(now.Substring(0, 2));
+            int popodne = prepodne + 12;
+            
             if (cboItem != null)
             {
-
                 t = cboItem.Content.ToString();
-                if (Int32.Parse(t.Substring(0, 2)) < (now.Substring(9, 8).Equals("po podne") ? Int32.Parse(now.Substring(0, 2)) + 12 : Int32.Parse(now.Substring(0, 2))))
-                { MessageBox.Show("Nevalidno Vreme","Greska");
-                    return;
+                if (d.Equals(today.ToString("dd.M.yyyy.")))
+                {
+                    if (Int32.Parse(t.Substring(0, 2)) < (now.Substring(9, 8).Equals("po podne") ? popodne: prepodne))
+                    {
+                        MessageBox.Show("Nevalidno Vreme", "Greska");
+                        
+                        return;
+                    }
+                    else if ((Int32.Parse(t.Substring(0, 2))==prepodne || Int32.Parse(t.Substring(0, 2))==popodne) && Int32.Parse(t.Substring(3, 2)) < Int32.Parse(now.Substring(3, 2)))
+                    {
+                        MessageBox.Show("Nevalidno Vreme", "Greska");
+                        return;
+                    }
                 }
-                else if (Int32.Parse(t.Substring(3, 2)) < Int32.Parse(now.Substring(3, 2))) 
-                { MessageBox.Show("Nevalidno Vreme", "Greska");
-                    return;
-                }
-
             }
             p.Pocetak = DateTime.Parse(d + " " + t);
             if (cbTip.SelectedIndex == 0)

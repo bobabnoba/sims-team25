@@ -5,11 +5,18 @@ namespace Model
     public class IstorijaBolesti
     {
         public DateTime DatumPoseteLekaru;
-        public String PorodicnaIstorijaBolesti;
-        public String IstorijaBolestiPacijenta;
+        public String PorodicnaIstorijaBolesti { get; set; }
+        public String IstorijaBolestiPacijenta { get; set; }
+
 
         public System.Collections.ArrayList dijagnoza;
-
+        public IstorijaBolesti()
+        {
+        }
+        public IstorijaBolesti(String istorijaBolesti)
+        {
+            IstorijaBolestiPacijenta = istorijaBolesti;
+        }
         /// <pdGenerated>default getter</pdGenerated>
         public System.Collections.ArrayList GetDijagnoza()
         {

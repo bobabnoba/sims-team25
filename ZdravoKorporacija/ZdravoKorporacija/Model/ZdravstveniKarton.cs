@@ -4,6 +4,9 @@
 // Purpose: Definition of Class MedicalRecord
 
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+
 namespace Model
 {
     public class ZdravstveniKarton
@@ -14,8 +17,8 @@ namespace Model
         public ZdravstveniKarton(Pacijent patient, int id, StanjePacijentaEnum zdravstvenoStanje, string alergije, KrvnaGrupaEnum krvnaGrupa, string vakcine)
         {
             this.izvestajOHospitalizaciji = new System.Collections.ArrayList();
-            this.istorijaBolesti = new System.Collections.ArrayList();
-            this.recept = new System.Collections.ArrayList();
+            this.istorijaBolesti = new List<IstorijaBolesti>();
+            this.recept = new ObservableCollection<Recept>();
             this.termin = new System.Collections.ArrayList();
             this.patient = patient;
             Id = id;
@@ -23,6 +26,10 @@ namespace Model
             Alergije = alergije;
             KrvnaGrupa = krvnaGrupa;
             Vakcine = vakcine;
+        }
+
+        public ZdravstveniKarton()
+        {
         }
 
 
@@ -83,13 +90,13 @@ namespace Model
                 tmpIzvestajOHospitalizaciji.Clear();
             }
         }
-        public System.Collections.ArrayList istorijaBolesti;
+        public List<IstorijaBolesti> istorijaBolesti;
 
         /// <pdGenerated>default getter</pdGenerated>
-        public System.Collections.ArrayList GetIstorijaBolesti()
+        public List<IstorijaBolesti> GetIstorijaBolesti()
         {
             if (istorijaBolesti == null)
-                istorijaBolesti = new System.Collections.ArrayList();
+                istorijaBolesti = new List<IstorijaBolesti>();
             return istorijaBolesti;
         }
 
@@ -107,7 +114,7 @@ namespace Model
             if (newIstorijaBolesti == null)
                 return;
             if (this.istorijaBolesti == null)
-                this.istorijaBolesti = new System.Collections.ArrayList();
+                this.istorijaBolesti = new List<IstorijaBolesti>();
             if (!this.istorijaBolesti.Contains(newIstorijaBolesti))
             {
                 this.istorijaBolesti.Add(newIstorijaBolesti);
@@ -142,13 +149,13 @@ namespace Model
                 tmpIstorijaBolesti.Clear();
             }
         }
-        public System.Collections.ArrayList recept;
+        public ObservableCollection<Recept> recept;
 
         /// <pdGenerated>default getter</pdGenerated>
-        public System.Collections.ArrayList GetRecept()
+        public ObservableCollection<Recept> GetRecept()
         {
             if (recept == null)
-                recept = new System.Collections.ArrayList();
+                recept = new ObservableCollection<Recept>();
             return recept;
         }
 
@@ -166,7 +173,7 @@ namespace Model
             if (newRecept == null)
                 return;
             if (this.recept == null)
-                this.recept = new System.Collections.ArrayList();
+                this.recept = new ObservableCollection<Recept>();
             if (!this.recept.Contains(newRecept))
             {
                 this.recept.Add(newRecept);

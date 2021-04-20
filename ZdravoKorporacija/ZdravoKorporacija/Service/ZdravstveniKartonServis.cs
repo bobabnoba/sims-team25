@@ -47,7 +47,7 @@ namespace Service
             return false;
         }
       
-      public bool AzurirajZdravstveniKarton2(ZdravstveniKarton zdravstveniKarton)
+      public bool AzurirajZdravstveniKarton(ZdravstveniKarton zdravstveniKarton)
       {
             ZdravstveniKartonRepozitorijum datoteka = new ZdravstveniKartonRepozitorijum();
             List<ZdravstveniKarton> zdravstveniKartoni = datoteka.DobaviSve();

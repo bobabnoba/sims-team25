@@ -1,4 +1,5 @@
 ﻿using Model;
+using Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,6 +15,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     public partial class zakaziPregledLekar : Window
     {
         private TerminService storage = new TerminService();
+        private ZdravstveniKartonServis zdravstveniKartonServis = new ZdravstveniKartonServis();
         private ProstorijaService prostorijeStorage = new ProstorijaService();
         private PacijentRepozitorijum pacijentiDat = new PacijentRepozitorijum();
         private PacijentService pacijentiStorage = new PacijentService();
@@ -23,10 +25,10 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private List<Prostorija> prostorije = new List<Prostorija>();
         private Termin p;
         private ObservableCollection<Termin> pregledi;
+        String now = DateTime.Now.ToString("hh:mm:ss tt");
+        DateTime today = DateTime.Today;
 
         private Dictionary<int, int> ids = new Dictionary<int, int>();
-
-        DateTime dateTime = DateTime.Now;
 
 
 
@@ -74,11 +76,26 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             
             String d = date.Text;
             String t = null;
+            int prepodne = Int32.Parse(now.Substring(0, 2));
+            int popodne = prepodne + 12;
+
             if (cboItem != null)
             {
-
                 t = cboItem.Content.ToString();
+                if (d.Equals(today.ToString("dd.M.yyyy.")))
+                {
+                    if (Int32.Parse(t.Substring(0, 2)) < (now.Substring(9, 8).Equals("po podne") ? popodne : prepodne))
+                    {
+                        MessageBox.Show("Nevalidno Vreme", "Greska");
 
+                        return;
+                    }
+                    else if ((Int32.Parse(t.Substring(0, 2)) == prepodne || Int32.Parse(t.Substring(0, 2)) == popodne) && Int32.Parse(t.Substring(3, 2)) < Int32.Parse(now.Substring(3, 2)))
+                    {
+                        MessageBox.Show("Nevalidno Vreme", "Greska");
+                        return;
+                    }
+                }
             }
             try
             {
@@ -101,10 +118,11 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 p.zdravstveniKarton = pac.ZdravstveniKarton;
             else
             {
-                p.zdravstveniKarton = new ZdravstveniKarton(null, pacijenti.Count + 1, StanjePacijentaEnum.None,null,KrvnaGrupaEnum.None,null) ;
-                pac.ZdravstveniKarton = new ZdravstveniKarton(null, pacijenti.Count + 1, StanjePacijentaEnum.None, null, KrvnaGrupaEnum.None, null);
+                p.zdravstveniKarton = new ZdravstveniKarton(null, 0, StanjePacijentaEnum.None,null,KrvnaGrupaEnum.None,null) ;
+                pac.ZdravstveniKarton = new ZdravstveniKarton(null, 0, StanjePacijentaEnum.None, null, KrvnaGrupaEnum.None, null);
+                zdravstveniKartonServis.KreirajZdravstveniKarton(pac.ZdravstveniKarton,ids);
             }
-
+           
             Termin tZaLjekara = new Termin();
             tZaLjekara.Id = p.Id;
             p.Lekar.AddTermin(tZaLjekara);

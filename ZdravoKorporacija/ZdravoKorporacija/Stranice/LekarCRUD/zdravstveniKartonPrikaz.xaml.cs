@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using ZdravoKorporacija.Model;
 
+
 namespace ZdravoKorporacija.Stranice.LekarCRUD
 {
     /// <summary>
@@ -18,24 +19,37 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private ObservableCollection<ZdravstveniKarton> zdravstveniKartoni = new ObservableCollection<ZdravstveniKarton>();
         private DijagnozaServis dijagnozaServis = new DijagnozaServis();
         private ObservableCollection<Dijagnoza> dijagnoze = new ObservableCollection<Dijagnoza>();
+        private TerminService terminServis = new TerminService();
+        private ObservableCollection<Termin> termini = new ObservableCollection<Termin>();
         private PacijentService pacijentServis = new PacijentService();
         private ObservableCollection<Pacijent> pacijenti = new ObservableCollection<Pacijent>();
+        private ZdravstveniKarton zk = new ZdravstveniKarton();
+        private ZdravstveniKarton zkt = new ZdravstveniKarton();
+        Pacijent pac;
+        IstorijaBolesti i = new IstorijaBolesti();
+
+        int tab = 0;
 
         public zdravstveniKartonPrikaz(Pacijent selektovani)
         {
             InitializeComponent();
+            this.DataContext = this;
             dijagnoze = new ObservableCollection<Dijagnoza>(dijagnozaServis.PregledSvihDijagnoza());
-
-            foreach (IstorijaBolesti i in selektovani.ZdravstveniKarton.GetIstorijaBolesti())
+            pac = selektovani;
+            zk = selektovani.ZdravstveniKarton;
+            tab = 1;
+            /*
+            foreach (IstorijaBolesti i in zk.GetIstorijaBolesti())
                 dgUsers.ItemsSource = i.GetDijagnoza();
 
+            */
 
 
+            istorijaBolestiGrid.ItemsSource = zk.GetIstorijaBolesti();
+            istorijaPorodicnihBolesti.ItemsSource = zk.GetIstorijaBolesti();
+            alergijeGrid.ItemsSource = zk.Alergije;
 
-            istorijaBolestiGrid.ItemsSource = selektovani.ZdravstveniKarton.GetIstorijaBolesti();
-            alergijeGrid.ItemsSource = selektovani.ZdravstveniKarton.Alergije;
-
-            terapijaGrid.ItemsSource = selektovani.ZdravstveniKarton.GetRecept();
+            terapijaGrid.ItemsSource = zk.GetRecept();
 
             this.DataContext = this;
 
@@ -45,7 +59,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             JMBGLabel.Content = selektovani.Jmbg;
             PolLabel.Content = selektovani.Pol;
 
-            try { KrvnaGrupaLabel.Content = selektovani.ZdravstveniKarton.KrvnaGrupa; }
+            try { KrvnaGrupaLabel.Content = zk.KrvnaGrupa; }
             catch(NullReferenceException)
             { }
         }
@@ -54,23 +68,32 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         {
             InitializeComponent();
             dijagnoze = new ObservableCollection<Dijagnoza>(dijagnozaServis.PregledSvihDijagnoza());
-
-            foreach (IstorijaBolesti i in t.zdravstveniKarton.GetIstorijaBolesti())
+            termini = new ObservableCollection<Termin>(terminServis.PregledSvihTermina());
+            zkt = t.zdravstveniKarton;
+            tab = 2;
+            foreach (IstorijaBolesti i in zkt.GetIstorijaBolesti())
                 dgUsers.ItemsSource = i.GetDijagnoza();
-
+            foreach(Termin tt in termini)
+            {
+                if(t.Id.Equals(tt.Id))
+                {
+                    pac = t.GetZdravstveniKarton().patient;
+                }
+            }
             
 
-
-            istorijaBolestiGrid.ItemsSource = t.zdravstveniKarton.GetIstorijaBolesti();
             
-            alergijeGrid.ItemsSource = t.zdravstveniKarton.Alergije;
+            istorijaBolestiGrid.ItemsSource = zkt.GetIstorijaBolesti();
+            istorijaPorodicnihBolesti.ItemsSource = zkt.GetIstorijaBolesti();
 
-            terapijaGrid.ItemsSource = t.zdravstveniKarton.GetRecept();
+            alergijeGrid.ItemsSource = zkt.Alergije;
+
+            terapijaGrid.ItemsSource = zkt.GetRecept();
 
             this.DataContext = this;
             foreach (Pacijent p in pacijenti)
             {
-                if(p.ZdravstveniKarton.Id==t.zdravstveniKarton.Id)
+                if(p.ZdravstveniKarton.Id== zkt.Id)
                 ImeLabel.Content = p.Ime;
                 PrezimeLabel.Content = p.Prezime;
                 BrojTelefonaLabel.Content = p.BrojTelefona;
@@ -90,12 +113,83 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            String istorijaBolesti = istorijaBolestiText.Text;
+            i.IstorijaBolestiPacijenta = istorijaBolesti;
+            if (tab == 1)
+            {
+                zk.AddIstorijaBolesti(i);
+                zdravstveniKartonServis.AzurirajZdravstveniKarton(zk);
+                pacijentServis.AzurirajPacijenta(pac);
+            }
+            else 
+            {
+                zkt.AddIstorijaBolesti(i);
+                zdravstveniKartonServis.AzurirajZdravstveniKarton(zkt);
 
+            }
+            
+        }
+        private void Button_Click2(object sender, RoutedEventArgs e)
+        {
+            String istorijaPorBolesti = istorijaPorBolestiText.Text;
+            i.PorodicnaIstorijaBolesti = istorijaPorBolesti;
+            if (tab == 1)
+            {
+                zk.AddIstorijaBolesti(i);
+                zdravstveniKartonServis.AzurirajZdravstveniKarton(zk);
+                pacijentServis.AzurirajPacijenta(pac);
+            }
+            else
+            {
+                zkt.AddIstorijaBolesti(i);
+                zdravstveniKartonServis.AzurirajZdravstveniKarton(zkt);
+            }
+            
+        }
+
+        private void Button_Click3(object sender, RoutedEventArgs e)
+        {
+            IstorijaBolesti ib =(IstorijaBolesti) istorijaBolestiGrid.SelectedItem;
+            if (tab == 1)
+            {
+                zk.RemoveIstorijaBolesti(ib);
+                zdravstveniKartonServis.AzurirajZdravstveniKarton(zk);
+                pacijentServis.AzurirajPacijenta(pac);
+            }
+            else
+            {
+                zkt.RemoveIstorijaBolesti(ib);
+                zdravstveniKartonServis.AzurirajZdravstveniKarton(zkt);
+            }
+           
+        }
+
+        private void Button_Click4(object sender, RoutedEventArgs e)
+        {
+            IstorijaBolesti ib = (IstorijaBolesti)istorijaPorodicnihBolesti.SelectedItem;
+            if (tab == 1)
+            {
+                zk.RemoveIstorijaBolesti(ib);
+                zdravstveniKartonServis.AzurirajZdravstveniKarton(zk);
+                pacijentServis.AzurirajPacijenta(pac);
+            }
+            else
+            {
+                zkt.RemoveIstorijaBolesti(ib);
+                zdravstveniKartonServis.AzurirajZdravstveniKarton(zkt);
+            }
+            
         }
 
         private void KrvnaGrupaLabel_SourceUpdated(object sender, DataTransferEventArgs e)
         {
 
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            izdajRecept izdaj = new izdajRecept(pac);
+            izdaj.Show();
         }
     }
 }

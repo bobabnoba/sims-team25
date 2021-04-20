@@ -9,18 +9,20 @@ namespace Model
 {
     public class Lek
     {
-        public Lek(string id, string proiazvodjac, string sastaojci, string nusPaojave)
+        public String Id { get; set; }
+        public String Proizvodjac { get; set; }
+        public String Sastojci { get; set; }
+        public String NusPojave { get; set; }
+        public String NazivLeka { get; set; }
+
+        public Lek(String ID, String pr, String sas, String np, String nl)
         {
-            Id = id;
-            Proiazvodjac = proiazvodjac;
-            Sastaojci = sastaojci;
-            NusPaojave = nusPaojave;
+            Id = ID;
+            Proizvodjac = pr;
+            Sastojci = sas;
+            NusPojave = np;
+            NazivLeka = nl;
         }
 
-
-        public String Id { get; set; }
-        public String Proiazvodjac { get; set; }
-        public String Sastaojci { get; set; }
-        public String NusPaojave { get; set; }
     }
 }
