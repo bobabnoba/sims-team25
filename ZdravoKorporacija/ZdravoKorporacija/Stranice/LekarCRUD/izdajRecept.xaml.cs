@@ -50,7 +50,10 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             r.NazivLeka = l.NazivLeka;
             r.Doziranje = Doza.Text;
             r.Trajanje = Int32.Parse(Trajanje.Text);
-            r.Pocetak = Date.SelectedDate.Value.Date;
+            System.Diagnostics.Debug.WriteLine(Date.SelectedDate.ToString());
+            r.Pocetak = (DateTime) Date.SelectedDate;
+            System.Diagnostics.Debug.WriteLine(r.Pocetak.ToString());
+
             int id = 0;
             for (int i = 0; i < 1000; i++)
             {

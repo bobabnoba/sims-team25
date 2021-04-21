@@ -9,11 +9,15 @@
       Title="Pacijent" Background="CadetBlue">
 
     <Grid>
-        <Button Content="Zakaži pregled" HorizontalAlignment="Left" Margin="217,67,0,0" VerticalAlignment="Top" Width="92" Click="zakaziPregled" Height="44"/>
-        <Button Content="Izmeni pregled" HorizontalAlignment="Center" Margin="0,67,0,0" VerticalAlignment="Top" Width="92" Click="izmeniPregled" Height="44" RenderTransformOrigin="0.255,-0.75"/>
-        <Button Content="Otkaži pregled" HorizontalAlignment="Left" Margin="486,67,0,0" VerticalAlignment="Top" Width="92" Click="otkaziPregled" Height="44" RenderTransformOrigin="0.033,-1.977"/>
-        <Grid Margin="10">
-            <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="0,114,0,28">
+        <!--<Button Content="Zakaži pregled" HorizontalAlignment="Left" Margin="600,180,0,210" Width="92" Click="zakaziPregled"/>
+        <Button Content="Izmeni pregled" HorizontalAlignment="Center" Margin="492,260,0,0" VerticalAlignment="Top" Width="92" Click="izmeniPregled" Height="44" RenderTransformOrigin="0.255,-0.75"/>
+        <Button Content="Otkaži pregled" HorizontalAlignment="Left" Margin="600,340,0,0" VerticalAlignment="Top" Width="92" Click="otkaziPregled" Height="44" RenderTransformOrigin="0.033,-1.977"/>-->
+        <Grid Margin="10,0,10,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="110*"/>
+                <RowDefinition Height="97*"/>
+            </Grid.RowDefinitions>
+            <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="10,172,273,10" Grid.RowSpan="2">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
                     <DataGridTextColumn Header="Lekar">
@@ -32,8 +36,17 @@
                     </DataTemplate>
                 </DataGrid.RowDetailsTemplate>-->
             </DataGrid>
+            <DataGrid Name="dgObavjestenja" AutoGenerateColumns="false" Margin="10,20,22,78" SelectionChanged="DataGrid_SelectionChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Datum" Binding="{Binding Path = Pocetak}" />
+                    <DataGridTextColumn Header="Lek" Binding="{Binding Path=NazivLeka}" />
+                    <DataGridTextColumn Header="Doziranje" Binding="{Binding Path=Doziranje}" />
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
-        <TextBox HorizontalAlignment="Left" Margin="10,422,0,0" Text="ulogovani ste kao pacijent" BorderBrush="CadetBlue" Background="CadetBlue" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" TextChanged="TextBox_TextChanged"/>
+        <Button Content="Zakaži pregled" HorizontalAlignment="Left" Margin="584,190,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.227,1.856" Height="39" Width="117" Click="zakaziPregled"/>
+        <Button Content="Pomeri pregled" HorizontalAlignment="Left" Margin="584,259,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.227,1.856" Height="39" Width="117" Click="izmeniPregled"/>
+        <Button Content="Otkaži pregled" HorizontalAlignment="Left" Margin="584,328,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.227,1.856" Height="39" Width="117" Click="otkaziPregled"/>
 
     </Grid>
 </Window>

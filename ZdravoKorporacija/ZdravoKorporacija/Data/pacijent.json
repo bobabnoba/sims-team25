@@ -8,356 +8,6 @@
           "inventar": [],
           "statickaOprema": null,
           "dinamickaOprema": null,
-          "Id": 3,
-          "Naziv": "hfghfhhgrg",
-          "Tip": 1,
-          "Slobodna": false,
-          "Sprat": 2
-        },
-        "Lekar": {
-          "termin": [
-            {
-              "izvestaj": null,
-              "zdravstveniKarton": null,
-              "prostorija": null,
-              "Id": 0,
-              "Tip": 0,
-              "Pocetak": "0001-01-01T00:00:00",
-              "Trajanje": 0.0
-            }
-          ],
-          "Ime": "Milos",
-          "Prezime": "Zivic",
-          "Jmbg": 2234567890113,
-          "BrojTelefona": 69393334,
-          "Mejl": "zivko99@gmail.com",
-          "AdresaStanovanja": "Becej",
-          "Pol": 0,
-          "Username": "milos",
-          "Password": "zivic",
-          "Uloga": 0
-        },
-        "Id": 0,
-        "Tip": 0,
-        "Pocetak": "2021-05-08T17:30:00",
-        "Trajanje": 0.5
-      },
-      {
-        "izvestaj": null,
-        "zdravstveniKarton": {
-          "izvestajOHospitalizaciji": [],
-          "istorijaBolesti": [],
-          "recept": [],
-          "termin": [],
-          "patient": null,
-          "Id": 5,
-          "ZdravstvenoStanje": 3,
-          "Alergije": null,
-          "KrvnaGrupa": 8,
-          "Vakcine": null
-        },
-        "prostorija": {
-          "inventar": [],
-          "statickaOprema": null,
-          "dinamickaOprema": null,
-          "Id": 1,
-          "Naziv": "soba12",
-          "Tip": 1,
-          "Slobodna": false,
-          "Sprat": 1
-        },
-        "Lekar": {
-          "termin": [
-            {
-              "izvestaj": null,
-              "zdravstveniKarton": null,
-              "prostorija": null,
-              "Id": 1,
-              "Tip": 0,
-              "Pocetak": "0001-01-01T00:00:00",
-              "Trajanje": 0.0
-            },
-            {
-              "izvestaj": null,
-              "zdravstveniKarton": null,
-              "prostorija": null,
-              "Id": 1,
-              "Tip": 0,
-              "Pocetak": "0001-01-01T00:00:00",
-              "Trajanje": 0.0
-            }
-          ],
-          "Ime": "Veljko",
-          "Prezime": "Vukovic",
-          "Jmbg": 2334567890213,
-          "BrojTelefona": 66393345,
-          "Mejl": "vuksivuk@gmail.com",
-          "AdresaStanovanja": "Beograd",
-          "Pol": 0,
-          "Username": "veksi",
-          "Password": "vukovic",
-          "Uloga": 0
-        },
-        "Id": 1,
-        "Tip": 1,
-        "Pocetak": "2021-04-29T11:30:00",
-        "Trajanje": 0.5
-      },
-      {
-        "izvestaj": null,
-        "zdravstveniKarton": {
-          "izvestajOHospitalizaciji": [],
-          "istorijaBolesti": [],
-          "recept": [],
-          "termin": [],
-          "patient": null,
-          "Id": 5,
-          "ZdravstvenoStanje": 3,
-          "Alergije": null,
-          "KrvnaGrupa": 8,
-          "Vakcine": null
-        },
-        "prostorija": {
-          "inventar": [],
-          "statickaOprema": null,
-          "dinamickaOprema": null,
-          "Id": 0,
-          "Naziv": "soba11",
-          "Tip": 1,
-          "Slobodna": false,
-          "Sprat": 1
-        },
-        "Lekar": {
-          "termin": [
-            {
-              "izvestaj": null,
-              "zdravstveniKarton": null,
-              "prostorija": null,
-              "Id": 0,
-              "Tip": 0,
-              "Pocetak": "0001-01-01T00:00:00",
-              "Trajanje": 0.0
-            },
-            {
-              "izvestaj": null,
-              "zdravstveniKarton": null,
-              "prostorija": null,
-              "Id": 3,
-              "Tip": 0,
-              "Pocetak": "0001-01-01T00:00:00",
-              "Trajanje": 0.0
-            },
-            {
-              "izvestaj": null,
-              "zdravstveniKarton": null,
-              "prostorija": null,
-              "Id": 0,
-              "Tip": 0,
-              "Pocetak": "0001-01-01T00:00:00",
-              "Trajanje": 0.0
-            },
-            {
-              "izvestaj": null,
-              "zdravstveniKarton": null,
-              "prostorija": null,
-              "Id": 0,
-              "Tip": 0,
-              "Pocetak": "0001-01-01T00:00:00",
-              "Trajanje": 0.0
-            },
-            {
-              "izvestaj": null,
-              "zdravstveniKarton": null,
-              "prostorija": null,
-              "Id": 1,
-              "Tip": 0,
-              "Pocetak": "0001-01-01T00:00:00",
-              "Trajanje": 0.0
-            }
-          ],
-          "Ime": "Milos",
-          "Prezime": "Zivic",
-          "Jmbg": 2234567890113,
-          "BrojTelefona": 69393334,
-          "Mejl": "zivko99@gmail.com",
-          "AdresaStanovanja": "Becej",
-          "Pol": 0,
-          "Username": "milos",
-          "Password": "zivic",
-          "Uloga": 0
-        },
-        "Id": 1,
-        "Tip": 1,
-        "Pocetak": "2021-04-24T09:00:00",
-        "Trajanje": 0.5
-      },
-      {
-        "izvestaj": {
-          "termin": null,
-          "Id": 0,
-          "Opis": "Temperature",
-          "Simptomi": "Covid"
-        },
-        "zdravstveniKarton": {
-          "izvestajOHospitalizaciji": [],
-          "istorijaBolesti": [],
-          "recept": [
-            {
-              "lek": null,
-              "lekar": null,
-              "zdravstveniKarton": null,
-              "Id": 0,
-              "Doziranje": "2X",
-              "Trajanje": 12,
-              "NazivLeka": "Cardiopirin",
-              "Pocetak": "2021-04-01T00:00:00"
-            }
-          ],
-          "termin": [],
-          "patient": null,
-          "Id": 5,
-          "ZdravstvenoStanje": 3,
-          "Alergije": null,
-          "KrvnaGrupa": 8,
-          "Vakcine": null
-        },
-        "prostorija": {
-          "inventar": [],
-          "statickaOprema": null,
-          "dinamickaOprema": null,
-          "Id": 0,
-          "Naziv": "soba11",
-          "Tip": 1,
-          "Slobodna": false,
-          "Sprat": 1
-        },
-        "Lekar": {
-          "termin": [
-            {
-              "izvestaj": null,
-              "zdravstveniKarton": null,
-              "prostorija": null,
-              "Id": 1,
-              "Tip": 0,
-              "Pocetak": "0001-01-01T00:00:00",
-              "Trajanje": 0.0
-            },
-            {
-              "izvestaj": null,
-              "zdravstveniKarton": null,
-              "prostorija": null,
-              "Id": 1,
-              "Tip": 0,
-              "Pocetak": "0001-01-01T00:00:00",
-              "Trajanje": 0.0
-            },
-            {
-              "izvestaj": null,
-              "zdravstveniKarton": null,
-              "prostorija": null,
-              "Id": 0,
-              "Tip": 0,
-              "Pocetak": "0001-01-01T00:00:00",
-              "Trajanje": 0.0
-            },
-            {
-              "izvestaj": null,
-              "zdravstveniKarton": null,
-              "prostorija": null,
-              "Id": 5,
-              "Tip": 0,
-              "Pocetak": "0001-01-01T00:00:00",
-              "Trajanje": 0.0
-            },
-            {
-              "izvestaj": null,
-              "zdravstveniKarton": null,
-              "prostorija": null,
-              "Id": 6,
-              "Tip": 0,
-              "Pocetak": "0001-01-01T00:00:00",
-              "Trajanje": 0.0
-            },
-            {
-              "izvestaj": null,
-              "zdravstveniKarton": null,
-              "prostorija": null,
-              "Id": 8,
-              "Tip": 0,
-              "Pocetak": "0001-01-01T00:00:00",
-              "Trajanje": 0.0
-            },
-            {
-              "izvestaj": null,
-              "zdravstveniKarton": null,
-              "prostorija": null,
-              "Id": 9,
-              "Tip": 0,
-              "Pocetak": "0001-01-01T00:00:00",
-              "Trajanje": 0.0
-            }
-          ],
-          "Ime": "Veljko",
-          "Prezime": "Vukovic",
-          "Jmbg": 2334567890213,
-          "BrojTelefona": 66393345,
-          "Mejl": "vuksivuk@gmail.com",
-          "AdresaStanovanja": "Beograd",
-          "Pol": 0,
-          "Username": "veksi",
-          "Password": "vukovic",
-          "Uloga": 0
-        },
-        "Id": 9,
-        "Tip": 0,
-        "Pocetak": "2021-04-24T08:30:00",
-        "Trajanje": 0.5
-      }
-    ],
-    "ZdravstveniKarton": {
-      "izvestajOHospitalizaciji": [],
-      "istorijaBolesti": [],
-      "recept": [
-        {
-          "lek": null,
-          "lekar": null,
-          "zdravstveniKarton": null,
-          "Id": 0,
-          "Doziranje": "2X",
-          "Trajanje": 12,
-          "NazivLeka": "Cardiopirin",
-          "Pocetak": "2021-04-01T00:00:00"
-        }
-      ],
-      "termin": [],
-      "patient": null,
-      "Id": 5,
-      "ZdravstvenoStanje": 3,
-      "Alergije": null,
-      "KrvnaGrupa": 8,
-      "Vakcine": null
-    },
-    "Guest": false,
-    "Ime": "Dusan",
-    "Prezime": "Markovic",
-    "Jmbg": 1234567890123,
-    "BrojTelefona": 69000333,
-    "Mejl": "dusanmarkovic@gmail.com",
-    "AdresaStanovanja": "Smederevska tvrdjava",
-    "Pol": 0,
-    "Username": "dukikidu",
-    "Password": "markovic99",
-    "Uloga": 3
-  },
-  {
-    "termin": [
-      {
-        "izvestaj": null,
-        "zdravstveniKarton": null,
-        "prostorija": {
-          "inventar": [],
-          "statickaOprema": null,
-          "dinamickaOprema": null,
           "Id": 0,
           "Naziv": "ytggh",
           "Tip": 1,
@@ -813,6 +463,435 @@
     "Pol": 0,
     "Username": "pape",
     "Password": "pape99",
+    "Uloga": 3
+  },
+  {
+    "termin": [
+      {
+        "izvestaj": null,
+        "zdravstveniKarton": {
+          "izvestajOHospitalizaciji": [],
+          "istorijaBolesti": [],
+          "recept": [],
+          "termin": [],
+          "patient": null,
+          "Id": 5,
+          "ZdravstvenoStanje": 3,
+          "Alergije": null,
+          "KrvnaGrupa": 8,
+          "Vakcine": null
+        },
+        "prostorija": {
+          "inventar": [],
+          "statickaOprema": null,
+          "dinamickaOprema": null,
+          "Id": 1,
+          "Naziv": "soba12",
+          "Tip": 1,
+          "Slobodna": false,
+          "Sprat": 1
+        },
+        "Lekar": {
+          "termin": [
+            {
+              "izvestaj": null,
+              "zdravstveniKarton": null,
+              "prostorija": null,
+              "Id": 0,
+              "Tip": 0,
+              "Pocetak": "0001-01-01T00:00:00",
+              "Trajanje": 0.0
+            },
+            {
+              "izvestaj": null,
+              "zdravstveniKarton": null,
+              "prostorija": null,
+              "Id": 3,
+              "Tip": 0,
+              "Pocetak": "0001-01-01T00:00:00",
+              "Trajanje": 0.0
+            }
+          ],
+          "Ime": "Milos",
+          "Prezime": "Zivic",
+          "Jmbg": 2234567890113,
+          "BrojTelefona": 69393334,
+          "Mejl": "zivko99@gmail.com",
+          "AdresaStanovanja": "Becej",
+          "Pol": 0,
+          "Username": "milos",
+          "Password": "zivic",
+          "Uloga": 0
+        },
+        "Id": 3,
+        "Tip": 1,
+        "Pocetak": "2021-04-30T08:30:00",
+        "Trajanje": 0.5
+      },
+      {
+        "izvestaj": null,
+        "zdravstveniKarton": {
+          "izvestajOHospitalizaciji": [],
+          "istorijaBolesti": [],
+          "recept": [],
+          "termin": [],
+          "patient": null,
+          "Id": 5,
+          "ZdravstvenoStanje": 3,
+          "Alergije": null,
+          "KrvnaGrupa": 8,
+          "Vakcine": null
+        },
+        "prostorija": {
+          "inventar": [],
+          "statickaOprema": null,
+          "dinamickaOprema": null,
+          "Id": 0,
+          "Naziv": "soba11",
+          "Tip": 1,
+          "Slobodna": false,
+          "Sprat": 1
+        },
+        "Lekar": {
+          "termin": [
+            {
+              "izvestaj": null,
+              "zdravstveniKarton": null,
+              "prostorija": null,
+              "Id": 1,
+              "Tip": 0,
+              "Pocetak": "0001-01-01T00:00:00",
+              "Trajanje": 0.0
+            },
+            {
+              "izvestaj": null,
+              "zdravstveniKarton": null,
+              "prostorija": null,
+              "Id": 1,
+              "Tip": 0,
+              "Pocetak": "0001-01-01T00:00:00",
+              "Trajanje": 0.0
+            },
+            {
+              "izvestaj": null,
+              "zdravstveniKarton": null,
+              "prostorija": null,
+              "Id": 0,
+              "Tip": 0,
+              "Pocetak": "0001-01-01T00:00:00",
+              "Trajanje": 0.0
+            },
+            {
+              "izvestaj": null,
+              "zdravstveniKarton": null,
+              "prostorija": null,
+              "Id": 5,
+              "Tip": 0,
+              "Pocetak": "0001-01-01T00:00:00",
+              "Trajanje": 0.0
+            },
+            {
+              "izvestaj": null,
+              "zdravstveniKarton": null,
+              "prostorija": null,
+              "Id": 6,
+              "Tip": 0,
+              "Pocetak": "0001-01-01T00:00:00",
+              "Trajanje": 0.0
+            }
+          ],
+          "Ime": "Veljko",
+          "Prezime": "Vukovic",
+          "Jmbg": 2334567890213,
+          "BrojTelefona": 66393345,
+          "Mejl": "vuksivuk@gmail.com",
+          "AdresaStanovanja": "Beograd",
+          "Pol": 0,
+          "Username": "veksi",
+          "Password": "vukovic",
+          "Uloga": 0
+        },
+        "Id": 6,
+        "Tip": 1,
+        "Pocetak": "2021-04-23T09:00:00",
+        "Trajanje": 0.5
+      },
+      {
+        "izvestaj": null,
+        "zdravstveniKarton": {
+          "izvestajOHospitalizaciji": [],
+          "istorijaBolesti": [
+            {
+              "DatumPoseteLekaru": "0001-01-01T00:00:00",
+              "dijagnoza": null,
+              "zdravstveniKarton": null,
+              "PorodicnaIstorijaBolesti": null,
+              "IstorijaBolestiPacijenta": "Bolest"
+            },
+            {
+              "DatumPoseteLekaru": "0001-01-01T00:00:00",
+              "dijagnoza": null,
+              "zdravstveniKarton": null,
+              "PorodicnaIstorijaBolesti": null,
+              "IstorijaBolestiPacijenta": "Bolesti"
+            }
+          ],
+          "recept": [],
+          "termin": [],
+          "patient": null,
+          "Id": 5,
+          "ZdravstvenoStanje": 3,
+          "Alergije": null,
+          "KrvnaGrupa": 8,
+          "Vakcine": null
+        },
+        "prostorija": {
+          "inventar": [],
+          "statickaOprema": null,
+          "dinamickaOprema": null,
+          "Id": 0,
+          "Naziv": "soba11",
+          "Tip": 1,
+          "Slobodna": false,
+          "Sprat": 1
+        },
+        "Lekar": {
+          "termin": [
+            {
+              "izvestaj": null,
+              "zdravstveniKarton": null,
+              "prostorija": null,
+              "Id": 0,
+              "Tip": 0,
+              "Pocetak": "0001-01-01T00:00:00",
+              "Trajanje": 0.0
+            },
+            {
+              "izvestaj": null,
+              "zdravstveniKarton": null,
+              "prostorija": null,
+              "Id": 3,
+              "Tip": 0,
+              "Pocetak": "0001-01-01T00:00:00",
+              "Trajanje": 0.0
+            },
+            {
+              "izvestaj": null,
+              "zdravstveniKarton": null,
+              "prostorija": null,
+              "Id": 0,
+              "Tip": 0,
+              "Pocetak": "0001-01-01T00:00:00",
+              "Trajanje": 0.0
+            },
+            {
+              "izvestaj": null,
+              "zdravstveniKarton": null,
+              "prostorija": null,
+              "Id": 0,
+              "Tip": 0,
+              "Pocetak": "0001-01-01T00:00:00",
+              "Trajanje": 0.0
+            },
+            {
+              "izvestaj": null,
+              "zdravstveniKarton": null,
+              "prostorija": null,
+              "Id": 1,
+              "Tip": 0,
+              "Pocetak": "0001-01-01T00:00:00",
+              "Trajanje": 0.0
+            },
+            {
+              "izvestaj": null,
+              "zdravstveniKarton": null,
+              "prostorija": null,
+              "Id": 7,
+              "Tip": 0,
+              "Pocetak": "0001-01-01T00:00:00",
+              "Trajanje": 0.0
+            }
+          ],
+          "Ime": "Milos",
+          "Prezime": "Zivic",
+          "Jmbg": 2234567890113,
+          "BrojTelefona": 69393334,
+          "Mejl": "zivko99@gmail.com",
+          "AdresaStanovanja": "Becej",
+          "Pol": 0,
+          "Username": "milos",
+          "Password": "zivic",
+          "Uloga": 0
+        },
+        "Id": 7,
+        "Tip": 1,
+        "Pocetak": "2021-04-23T09:00:00",
+        "Trajanje": 0.5
+      },
+      {
+        "izvestaj": null,
+        "zdravstveniKarton": {
+          "izvestajOHospitalizaciji": [],
+          "istorijaBolesti": [
+            {
+              "DatumPoseteLekaru": "0001-01-01T00:00:00",
+              "dijagnoza": null,
+              "zdravstveniKarton": null,
+              "PorodicnaIstorijaBolesti": null,
+              "IstorijaBolestiPacijenta": "Bolest"
+            },
+            {
+              "DatumPoseteLekaru": "0001-01-01T00:00:00",
+              "dijagnoza": null,
+              "zdravstveniKarton": null,
+              "PorodicnaIstorijaBolesti": null,
+              "IstorijaBolestiPacijenta": "Bolesti"
+            },
+            {
+              "DatumPoseteLekaru": "0001-01-01T00:00:00",
+              "dijagnoza": null,
+              "zdravstveniKarton": null,
+              "PorodicnaIstorijaBolesti": null,
+              "IstorijaBolestiPacijenta": ""
+            }
+          ],
+          "recept": [],
+          "termin": [],
+          "patient": null,
+          "Id": 5,
+          "ZdravstvenoStanje": 3,
+          "Alergije": null,
+          "KrvnaGrupa": 8,
+          "Vakcine": null
+        },
+        "prostorija": {
+          "inventar": [],
+          "statickaOprema": null,
+          "dinamickaOprema": null,
+          "Id": 1,
+          "Naziv": "soba12",
+          "Tip": 1,
+          "Slobodna": false,
+          "Sprat": 1
+        },
+        "Lekar": {
+          "termin": [
+            {
+              "izvestaj": null,
+              "zdravstveniKarton": null,
+              "prostorija": null,
+              "Id": 1,
+              "Tip": 0,
+              "Pocetak": "0001-01-01T00:00:00",
+              "Trajanje": 0.0
+            },
+            {
+              "izvestaj": null,
+              "zdravstveniKarton": null,
+              "prostorija": null,
+              "Id": 4,
+              "Tip": 0,
+              "Pocetak": "0001-01-01T00:00:00",
+              "Trajanje": 0.0
+            },
+            {
+              "izvestaj": null,
+              "zdravstveniKarton": null,
+              "prostorija": null,
+              "Id": 2,
+              "Tip": 0,
+              "Pocetak": "0001-01-01T00:00:00",
+              "Trajanje": 0.0
+            },
+            {
+              "izvestaj": null,
+              "zdravstveniKarton": null,
+              "prostorija": null,
+              "Id": 22,
+              "Tip": 0,
+              "Pocetak": "0001-01-01T00:00:00",
+              "Trajanje": 0.0
+            },
+            {
+              "izvestaj": null,
+              "zdravstveniKarton": null,
+              "prostorija": null,
+              "Id": 23,
+              "Tip": 0,
+              "Pocetak": "0001-01-01T00:00:00",
+              "Trajanje": 0.0
+            },
+            {
+              "izvestaj": null,
+              "zdravstveniKarton": null,
+              "prostorija": null,
+              "Id": 12,
+              "Tip": 0,
+              "Pocetak": "0001-01-01T00:00:00",
+              "Trajanje": 0.0
+            }
+          ],
+          "Ime": "Veljko",
+          "Prezime": "Vukovic",
+          "Jmbg": 2334567890213,
+          "BrojTelefona": 66393345,
+          "Mejl": "vuksivuk@gmail.com",
+          "AdresaStanovanja": "Beograd",
+          "Pol": 0,
+          "Username": "veksi",
+          "Password": "vukovic",
+          "Uloga": 0
+        },
+        "Id": 12,
+        "Tip": 0,
+        "Pocetak": "2021-06-18T11:30:00",
+        "Trajanje": 0.5
+      }
+    ],
+    "ZdravstveniKarton": {
+      "izvestajOHospitalizaciji": [],
+      "istorijaBolesti": [
+        {
+          "DatumPoseteLekaru": "0001-01-01T00:00:00",
+          "dijagnoza": null,
+          "zdravstveniKarton": null,
+          "PorodicnaIstorijaBolesti": null,
+          "IstorijaBolestiPacijenta": "Bolest"
+        },
+        {
+          "DatumPoseteLekaru": "0001-01-01T00:00:00",
+          "dijagnoza": null,
+          "zdravstveniKarton": null,
+          "PorodicnaIstorijaBolesti": null,
+          "IstorijaBolestiPacijenta": "Bolesti"
+        },
+        {
+          "DatumPoseteLekaru": "0001-01-01T00:00:00",
+          "dijagnoza": null,
+          "zdravstveniKarton": null,
+          "PorodicnaIstorijaBolesti": null,
+          "IstorijaBolestiPacijenta": ""
+        }
+      ],
+      "recept": [],
+      "termin": [],
+      "patient": null,
+      "Id": 5,
+      "ZdravstvenoStanje": 3,
+      "Alergije": null,
+      "KrvnaGrupa": 8,
+      "Vakcine": null
+    },
+    "Guest": false,
+    "Ime": "ddaa",
+    "Prezime": "ssaaa",
+    "Jmbg": 123,
+    "BrojTelefona": 321,
+    "Mejl": "asdasd",
+    "AdresaStanovanja": "",
+    "Pol": 0,
+    "Username": "asdad1",
+    "Password": "aasdsd2",
     "Uloga": 3
   },
   {
@@ -1485,6 +1564,16 @@
           "Trajanje": 3,
           "NazivLeka": "Cardiopirin",
           "Pocetak": "0001-01-01T00:00:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 3,
+          "Doziranje": "50",
+          "Trajanje": 8,
+          "NazivLeka": "Cardiopirin",
+          "Pocetak": "2021-04-23T00:00:00"
         }
       ],
       "termin": [],
@@ -1509,6 +1598,47 @@
   },
   {
     "termin": [
+      {
+        "izvestaj": null,
+        "zdravstveniKarton": null,
+        "prostorija": {
+          "inventar": [],
+          "statickaOprema": null,
+          "dinamickaOprema": null,
+          "Id": 3,
+          "Naziv": "hfghfhhgrg",
+          "Tip": 1,
+          "Slobodna": false,
+          "Sprat": 2
+        },
+        "Lekar": {
+          "termin": [
+            {
+              "izvestaj": null,
+              "zdravstveniKarton": null,
+              "prostorija": null,
+              "Id": 0,
+              "Tip": 0,
+              "Pocetak": "0001-01-01T00:00:00",
+              "Trajanje": 0.0
+            }
+          ],
+          "Ime": "Milos",
+          "Prezime": "Zivic",
+          "Jmbg": 2234567890113,
+          "BrojTelefona": 69393334,
+          "Mejl": "zivko99@gmail.com",
+          "AdresaStanovanja": "Becej",
+          "Pol": 0,
+          "Username": "milos",
+          "Password": "zivic",
+          "Uloga": 0
+        },
+        "Id": 0,
+        "Tip": 0,
+        "Pocetak": "2021-05-08T17:30:00",
+        "Trajanje": 0.5
+      },
       {
         "izvestaj": null,
         "zdravstveniKarton": {
@@ -1539,6 +1669,67 @@
               "izvestaj": null,
               "zdravstveniKarton": null,
               "prostorija": null,
+              "Id": 1,
+              "Tip": 0,
+              "Pocetak": "0001-01-01T00:00:00",
+              "Trajanje": 0.0
+            },
+            {
+              "izvestaj": null,
+              "zdravstveniKarton": null,
+              "prostorija": null,
+              "Id": 1,
+              "Tip": 0,
+              "Pocetak": "0001-01-01T00:00:00",
+              "Trajanje": 0.0
+            }
+          ],
+          "Ime": "Veljko",
+          "Prezime": "Vukovic",
+          "Jmbg": 2334567890213,
+          "BrojTelefona": 66393345,
+          "Mejl": "vuksivuk@gmail.com",
+          "AdresaStanovanja": "Beograd",
+          "Pol": 0,
+          "Username": "veksi",
+          "Password": "vukovic",
+          "Uloga": 0
+        },
+        "Id": 1,
+        "Tip": 1,
+        "Pocetak": "2021-04-29T11:30:00",
+        "Trajanje": 0.5
+      },
+      {
+        "izvestaj": null,
+        "zdravstveniKarton": {
+          "izvestajOHospitalizaciji": [],
+          "istorijaBolesti": [],
+          "recept": [],
+          "termin": [],
+          "patient": null,
+          "Id": 5,
+          "ZdravstvenoStanje": 3,
+          "Alergije": null,
+          "KrvnaGrupa": 8,
+          "Vakcine": null
+        },
+        "prostorija": {
+          "inventar": [],
+          "statickaOprema": null,
+          "dinamickaOprema": null,
+          "Id": 0,
+          "Naziv": "soba11",
+          "Tip": 1,
+          "Slobodna": false,
+          "Sprat": 1
+        },
+        "Lekar": {
+          "termin": [
+            {
+              "izvestaj": null,
+              "zdravstveniKarton": null,
+              "prostorija": null,
               "Id": 0,
               "Tip": 0,
               "Pocetak": "0001-01-01T00:00:00",
@@ -1549,6 +1740,33 @@
               "zdravstveniKarton": null,
               "prostorija": null,
               "Id": 3,
+              "Tip": 0,
+              "Pocetak": "0001-01-01T00:00:00",
+              "Trajanje": 0.0
+            },
+            {
+              "izvestaj": null,
+              "zdravstveniKarton": null,
+              "prostorija": null,
+              "Id": 0,
+              "Tip": 0,
+              "Pocetak": "0001-01-01T00:00:00",
+              "Trajanje": 0.0
+            },
+            {
+              "izvestaj": null,
+              "zdravstveniKarton": null,
+              "prostorija": null,
+              "Id": 0,
+              "Tip": 0,
+              "Pocetak": "0001-01-01T00:00:00",
+              "Trajanje": 0.0
+            },
+            {
+              "izvestaj": null,
+              "zdravstveniKarton": null,
+              "prostorija": null,
+              "Id": 1,
               "Tip": 0,
               "Pocetak": "0001-01-01T00:00:00",
               "Trajanje": 0.0
@@ -1565,17 +1783,33 @@
           "Password": "zivic",
           "Uloga": 0
         },
-        "Id": 3,
+        "Id": 1,
         "Tip": 1,
-        "Pocetak": "2021-04-30T08:30:00",
+        "Pocetak": "2021-04-24T09:00:00",
         "Trajanje": 0.5
       },
       {
-        "izvestaj": null,
+        "izvestaj": {
+          "termin": null,
+          "Id": 0,
+          "Opis": "Temperature",
+          "Simptomi": "Covid"
+        },
         "zdravstveniKarton": {
           "izvestajOHospitalizaciji": [],
           "istorijaBolesti": [],
-          "recept": [],
+          "recept": [
+            {
+              "lek": null,
+              "lekar": null,
+              "zdravstveniKarton": null,
+              "Id": 0,
+              "Doziranje": "2X",
+              "Trajanje": 12,
+              "NazivLeka": "Cardiopirin",
+              "Pocetak": "2021-04-01T00:00:00"
+            }
+          ],
           "termin": [],
           "patient": null,
           "Id": 5,
@@ -1640,70 +1874,12 @@
               "Tip": 0,
               "Pocetak": "0001-01-01T00:00:00",
               "Trajanje": 0.0
-            }
-          ],
-          "Ime": "Veljko",
-          "Prezime": "Vukovic",
-          "Jmbg": 2334567890213,
-          "BrojTelefona": 66393345,
-          "Mejl": "vuksivuk@gmail.com",
-          "AdresaStanovanja": "Beograd",
-          "Pol": 0,
-          "Username": "veksi",
-          "Password": "vukovic",
-          "Uloga": 0
-        },
-        "Id": 6,
-        "Tip": 1,
-        "Pocetak": "2021-04-23T09:00:00",
-        "Trajanje": 0.5
-      },
-      {
-        "izvestaj": null,
-        "zdravstveniKarton": {
-          "izvestajOHospitalizaciji": [],
-          "istorijaBolesti": [
-            {
-              "DatumPoseteLekaru": "0001-01-01T00:00:00",
-              "dijagnoza": null,
-              "zdravstveniKarton": null,
-              "PorodicnaIstorijaBolesti": null,
-              "IstorijaBolestiPacijenta": "Bolest"
             },
-            {
-              "DatumPoseteLekaru": "0001-01-01T00:00:00",
-              "dijagnoza": null,
-              "zdravstveniKarton": null,
-              "PorodicnaIstorijaBolesti": null,
-              "IstorijaBolestiPacijenta": "Bolesti"
-            }
-          ],
-          "recept": [],
-          "termin": [],
-          "patient": null,
-          "Id": 5,
-          "ZdravstvenoStanje": 3,
-          "Alergije": null,
-          "KrvnaGrupa": 8,
-          "Vakcine": null
-        },
-        "prostorija": {
-          "inventar": [],
-          "statickaOprema": null,
-          "dinamickaOprema": null,
-          "Id": 0,
-          "Naziv": "soba11",
-          "Tip": 1,
-          "Slobodna": false,
-          "Sprat": 1
-        },
-        "Lekar": {
-          "termin": [
             {
               "izvestaj": null,
               "zdravstveniKarton": null,
               "prostorija": null,
-              "Id": 0,
+              "Id": 8,
               "Tip": 0,
               "Pocetak": "0001-01-01T00:00:00",
               "Trajanje": 0.0
@@ -1712,162 +1888,7 @@
               "izvestaj": null,
               "zdravstveniKarton": null,
               "prostorija": null,
-              "Id": 3,
-              "Tip": 0,
-              "Pocetak": "0001-01-01T00:00:00",
-              "Trajanje": 0.0
-            },
-            {
-              "izvestaj": null,
-              "zdravstveniKarton": null,
-              "prostorija": null,
-              "Id": 0,
-              "Tip": 0,
-              "Pocetak": "0001-01-01T00:00:00",
-              "Trajanje": 0.0
-            },
-            {
-              "izvestaj": null,
-              "zdravstveniKarton": null,
-              "prostorija": null,
-              "Id": 0,
-              "Tip": 0,
-              "Pocetak": "0001-01-01T00:00:00",
-              "Trajanje": 0.0
-            },
-            {
-              "izvestaj": null,
-              "zdravstveniKarton": null,
-              "prostorija": null,
-              "Id": 1,
-              "Tip": 0,
-              "Pocetak": "0001-01-01T00:00:00",
-              "Trajanje": 0.0
-            },
-            {
-              "izvestaj": null,
-              "zdravstveniKarton": null,
-              "prostorija": null,
-              "Id": 7,
-              "Tip": 0,
-              "Pocetak": "0001-01-01T00:00:00",
-              "Trajanje": 0.0
-            }
-          ],
-          "Ime": "Milos",
-          "Prezime": "Zivic",
-          "Jmbg": 2234567890113,
-          "BrojTelefona": 69393334,
-          "Mejl": "zivko99@gmail.com",
-          "AdresaStanovanja": "Becej",
-          "Pol": 0,
-          "Username": "milos",
-          "Password": "zivic",
-          "Uloga": 0
-        },
-        "Id": 7,
-        "Tip": 1,
-        "Pocetak": "2021-04-23T09:00:00",
-        "Trajanje": 0.5
-      },
-      {
-        "izvestaj": null,
-        "zdravstveniKarton": {
-          "izvestajOHospitalizaciji": [],
-          "istorijaBolesti": [
-            {
-              "DatumPoseteLekaru": "0001-01-01T00:00:00",
-              "dijagnoza": null,
-              "zdravstveniKarton": null,
-              "PorodicnaIstorijaBolesti": null,
-              "IstorijaBolestiPacijenta": "Bolest"
-            },
-            {
-              "DatumPoseteLekaru": "0001-01-01T00:00:00",
-              "dijagnoza": null,
-              "zdravstveniKarton": null,
-              "PorodicnaIstorijaBolesti": null,
-              "IstorijaBolestiPacijenta": "Bolesti"
-            },
-            {
-              "DatumPoseteLekaru": "0001-01-01T00:00:00",
-              "dijagnoza": null,
-              "zdravstveniKarton": null,
-              "PorodicnaIstorijaBolesti": null,
-              "IstorijaBolestiPacijenta": ""
-            }
-          ],
-          "recept": [],
-          "termin": [],
-          "patient": null,
-          "Id": 5,
-          "ZdravstvenoStanje": 3,
-          "Alergije": null,
-          "KrvnaGrupa": 8,
-          "Vakcine": null
-        },
-        "prostorija": {
-          "inventar": [],
-          "statickaOprema": null,
-          "dinamickaOprema": null,
-          "Id": 1,
-          "Naziv": "soba12",
-          "Tip": 1,
-          "Slobodna": false,
-          "Sprat": 1
-        },
-        "Lekar": {
-          "termin": [
-            {
-              "izvestaj": null,
-              "zdravstveniKarton": null,
-              "prostorija": null,
-              "Id": 1,
-              "Tip": 0,
-              "Pocetak": "0001-01-01T00:00:00",
-              "Trajanje": 0.0
-            },
-            {
-              "izvestaj": null,
-              "zdravstveniKarton": null,
-              "prostorija": null,
-              "Id": 4,
-              "Tip": 0,
-              "Pocetak": "0001-01-01T00:00:00",
-              "Trajanje": 0.0
-            },
-            {
-              "izvestaj": null,
-              "zdravstveniKarton": null,
-              "prostorija": null,
-              "Id": 2,
-              "Tip": 0,
-              "Pocetak": "0001-01-01T00:00:00",
-              "Trajanje": 0.0
-            },
-            {
-              "izvestaj": null,
-              "zdravstveniKarton": null,
-              "prostorija": null,
-              "Id": 22,
-              "Tip": 0,
-              "Pocetak": "0001-01-01T00:00:00",
-              "Trajanje": 0.0
-            },
-            {
-              "izvestaj": null,
-              "zdravstveniKarton": null,
-              "prostorija": null,
-              "Id": 23,
-              "Tip": 0,
-              "Pocetak": "0001-01-01T00:00:00",
-              "Trajanje": 0.0
-            },
-            {
-              "izvestaj": null,
-              "zdravstveniKarton": null,
-              "prostorija": null,
-              "Id": 12,
+              "Id": 9,
               "Tip": 0,
               "Pocetak": "0001-01-01T00:00:00",
               "Trajanje": 0.0
@@ -1884,38 +1905,27 @@
           "Password": "vukovic",
           "Uloga": 0
         },
-        "Id": 12,
+        "Id": 9,
         "Tip": 0,
-        "Pocetak": "2021-06-18T11:30:00",
+        "Pocetak": "2021-04-24T08:30:00",
         "Trajanje": 0.5
       }
     ],
     "ZdravstveniKarton": {
       "izvestajOHospitalizaciji": [],
-      "istorijaBolesti": [
+      "istorijaBolesti": [],
+      "recept": [
         {
-          "DatumPoseteLekaru": "0001-01-01T00:00:00",
-          "dijagnoza": null,
+          "lek": null,
+          "lekar": null,
           "zdravstveniKarton": null,
-          "PorodicnaIstorijaBolesti": null,
-          "IstorijaBolestiPacijenta": "Bolest"
-        },
-        {
-          "DatumPoseteLekaru": "0001-01-01T00:00:00",
-          "dijagnoza": null,
-          "zdravstveniKarton": null,
-          "PorodicnaIstorijaBolesti": null,
-          "IstorijaBolestiPacijenta": "Bolesti"
-        },
-        {
-          "DatumPoseteLekaru": "0001-01-01T00:00:00",
-          "dijagnoza": null,
-          "zdravstveniKarton": null,
-          "PorodicnaIstorijaBolesti": null,
-          "IstorijaBolestiPacijenta": ""
+          "Id": 0,
+          "Doziranje": "100",
+          "Trajanje": 5,
+          "NazivLeka": "Cardiopirin",
+          "Pocetak": "2021-05-08T00:00:00"
         }
       ],
-      "recept": [],
       "termin": [],
       "patient": null,
       "Id": 5,
@@ -1925,15 +1935,15 @@
       "Vakcine": null
     },
     "Guest": false,
-    "Ime": "ddaa",
-    "Prezime": "ssaaa",
-    "Jmbg": 123,
-    "BrojTelefona": 321,
-    "Mejl": "asdasd",
-    "AdresaStanovanja": "",
+    "Ime": "Dusan",
+    "Prezime": "Markovic",
+    "Jmbg": 1234567890123,
+    "BrojTelefona": 69000333,
+    "Mejl": "dusanmarkovic@gmail.com",
+    "AdresaStanovanja": "Smederevska tvrdjava",
     "Pol": 0,
-    "Username": "asdad1",
-    "Password": "aasdsd2",
+    "Username": "dukikidu",
+    "Password": "markovic99",
     "Uloga": 3
   }
 ]

@@ -24,6 +24,7 @@ namespace ZdravoKorporacija.Stranice
         private ObservableCollection<Termin> termini = new ObservableCollection<Termin>();
         private PacijentService storagePacijent = new PacijentService();
         private Pacijent pac = new Pacijent();
+        private Pacijent mnm = new Pacijent();
         private Dictionary<int, int> ids = new Dictionary<int, int>(); 
 
         public pacijentStart()
@@ -36,6 +37,8 @@ namespace ZdravoKorporacija.Stranice
             termini = new ObservableCollection<Termin>(storage.PregledSvihTermina());
             dgUsers.ItemsSource = termini;
             this.DataContext = this;
+            mnm = (storagePacijent.PregledSvihPacijenata())[0]; // za ovog pacijenta prikazujemo obavjestenja
+            dgObavjestenja.ItemsSource = mnm.ZdravstveniKarton.recept;
 
             //Pacijent p1 = new Pacijent("Dusan", "Lekic");
             //Pacijent p2 = new Pacijent("Aleksa", "Papovic");
@@ -100,11 +103,11 @@ namespace ZdravoKorporacija.Stranice
             
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
 
-     
+  
     }
 }
