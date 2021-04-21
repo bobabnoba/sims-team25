@@ -71,7 +71,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
                 else
                 {
                     k2.dodajAlergije(dodaj.Text);
-                    if (ks.AzurirajZdravstveniKarton2(k2))
+                    if (ks.AzurirajZdravstveniKarton(k2))
                     {
                         kartoni.Remove(k1);
                         kartoni.Add(k2);

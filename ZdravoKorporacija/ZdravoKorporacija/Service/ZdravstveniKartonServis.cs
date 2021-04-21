@@ -67,7 +67,7 @@ namespace Service
             }
             return false;
         }
-<<<<<<< HEAD
+
 
         public ZdravstveniKarton findById(long id)
         {
@@ -83,11 +83,10 @@ namespace Service
             return null;
         }
 
-        public bool AzurirajZdravstveniKarton2(ZdravstveniKarton zdravstveniKarton)
-=======
+
       
       public bool AzurirajZdravstveniKarton(ZdravstveniKarton zdravstveniKarton)
->>>>>>> anamneza
+
       {
             ZdravstveniKartonRepozitorijum datoteka = new ZdravstveniKartonRepozitorijum();
             List<ZdravstveniKarton> zdravstveniKartoni = datoteka.DobaviSve();

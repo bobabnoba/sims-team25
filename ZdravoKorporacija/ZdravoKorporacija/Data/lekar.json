@@ -14,9 +14,6 @@
         "izvestaj": null,
         "zdravstveniKarton": null,
         "prostorija": null,
-<<<<<<< HEAD
-        "Id": 4,
-=======
         "Id": 1,
         "Tip": 0,
         "Pocetak": "0001-01-01T00:00:00",
@@ -72,7 +69,6 @@
         "zdravstveniKarton": null,
         "prostorija": null,
         "Id": 10,
->>>>>>> anamneza
         "Tip": 0,
         "Pocetak": "0001-01-01T00:00:00",
         "Trajanje": 0.0
@@ -108,8 +104,6 @@
         "Tip": 0,
         "Pocetak": "0001-01-01T00:00:00",
         "Trajanje": 0.0
-<<<<<<< HEAD
-=======
       },
       {
         "izvestaj": null,
@@ -155,7 +149,6 @@
         "Tip": 0,
         "Pocetak": "0001-01-01T00:00:00",
         "Trajanje": 0.0
->>>>>>> anamneza
       }
     ],
     "Ime": "Milos",

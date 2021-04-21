@@ -36,10 +36,9 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             cbPacijent.ItemsSource = pacijenti;
             try
             {
-<<<<<<< HEAD
+
                // if(pacijent.ZdravstveniKarton.Id== selektovani.GetZdravstveniKarton().Id)
-                    cbPacijent.SelectedItem = pacijent;
-=======
+
                 foreach (Pacijent pacijent in pacijenti)
                 {
                     if (pacijent.ZdravstveniKarton != null)
@@ -48,7 +47,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                             cbPacijent.SelectedItem = pacijent;
                     }
                 }
->>>>>>> anamneza
+
             }
             catch (NullReferenceException) { }
             pregledi = termini;
@@ -128,7 +127,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             if (cboItem != null)
             {
                 t = cboItem.Content.ToString();
-<<<<<<< HEAD
+
                 /* if (Int32.Parse(t.Substring(0, 2)) < (now.Substring(9, 8).Equals("po podne") ? Int32.Parse(now.Substring(0, 2)) + 12 : Int32.Parse(now.Substring(0, 2))))
                 { MessageBox.Show("Nevalidno Vreme","Greska");
                     return;
@@ -138,7 +137,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                     return;
                 } */
 
-=======
+
                 if (d.Equals(today.ToString("dd.M.yyyy.")))
                 {
                     if (Int32.Parse(t.Substring(0, 2)) < (now.Substring(9, 8).Equals("po podne") ? popodne: prepodne))
@@ -153,7 +152,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                         return;
                     }
                 }
->>>>>>> anamneza
+
             }
             p.Pocetak = DateTime.Parse(d + " " + t);
             if (cbTip.SelectedIndex == 0)

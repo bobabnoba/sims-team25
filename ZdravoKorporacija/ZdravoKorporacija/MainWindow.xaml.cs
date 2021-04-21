@@ -1,9 +1,9 @@
 ﻿using Model;
-<<<<<<< HEAD
+
 using Repository;
-=======
+
 using Service;
->>>>>>> anamneza
+
 using System;
 using System.Collections.Generic;
 using System.Windows;
