@@ -77,7 +77,7 @@ namespace ZdravoKorporacija.Stranice {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/ZdravoKorporacija;component/stranice/pacijentcrud/zakazipregled.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/ZdravoKorporacija;V1.0.0.0;component/stranice/pacijentcrud/zakazipregled.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Stranice\PacijentCRUD\zakaziPregled.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\papov\Desktop\git projekat\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\
+C:\Users\Admin\Desktop\zadnji\sims-team25\ZdravoKorporacija\ZdravoKorporacija\obj\Debug\netcoreapp3.1\
 ZdravoKorporacija
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
-C:\Users\papov\Desktop\git projekat\sims-team25\ZdravoKorporacija\ZdravoKorporacija\App.xaml
+C:\Users\Admin\Desktop\zadnji\sims-team25\ZdravoKorporacija\ZdravoKorporacija\App.xaml
 181949777742
 
 60-1482829337
-1931544265846
+192-1533232326
 MainWindow.xaml;Stranice\LekarCRUD\izmeniPregledLekar.xaml;Stranice\LekarCRUD\lekarStart.xaml;Stranice\LekarCRUD\otkaziPregledLekar.xaml;Stranice\LekarCRUD\zakaziPregledLekar.xaml;Stranice\login.xaml;Stranice\PacijentCRUD\izmeniPregled.xaml;Stranice\PacijentCRUD\otkaziPregled.xaml;Stranice\PacijentCRUD\pacijentStart.xaml;Stranice\PacijentCRUD\zakaziPregled.xaml;Stranice\SekretarCRUD\izmeniNalogSekretar.xaml;Stranice\SekretarCRUD\kreirajNalogSekretar.xaml;Stranice\SekretarCRUD\obrisiNalogSekretar.xaml;Stranice\SekretarCRUD\sekretarStart.xaml;Stranice\UpravnikCRUD\dodajProstorijuUpravnik.xaml;Stranice\UpravnikCRUD\izbrisiProstorijuUpravnik.xaml;Stranice\UpravnikCRUD\izmeniProstorijuUpravnik.xaml;Stranice\UpravnikCRUD\upravnikStart.xaml;
 
 False

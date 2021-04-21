@@ -61,7 +61,7 @@ namespace ZdravoKorporacija.Stranice.SekretarCRUD {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/ZdravoKorporacija;component/stranice/sekretarcrud/sekretarstart.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/ZdravoKorporacija;V1.0.0.0;component/stranice/sekretarcrud/sekretarstart.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Stranice\SekretarCRUD\sekretarStart.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -53,7 +53,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/ZdravoKorporacija;component/stranice/pacijentcrud/otkazipregled.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/ZdravoKorporacija;V1.0.0.0;component/stranice/pacijentcrud/otkazipregled.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Stranice\PacijentCRUD\otkaziPregled.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

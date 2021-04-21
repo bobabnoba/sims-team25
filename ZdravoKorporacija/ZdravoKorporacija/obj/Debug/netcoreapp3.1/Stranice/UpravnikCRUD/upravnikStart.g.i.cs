@@ -61,7 +61,7 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/ZdravoKorporacija;component/stranice/upravnikcrud/upravnikstart.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/ZdravoKorporacija;V1.0.0.0;component/stranice/upravnikcrud/upravnikstart.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Stranice\UpravnikCRUD\upravnikStart.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
