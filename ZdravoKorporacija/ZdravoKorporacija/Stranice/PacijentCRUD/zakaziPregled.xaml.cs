@@ -214,6 +214,8 @@ namespace ZdravoKorporacija.Stranice
 
         private void ljekar_changed(object sender, SelectionChangedEventArgs e)
         {
+            time.IsEnabled = true;
+
             if (selected)
             {
                 if (date.SelectedDate != null)
