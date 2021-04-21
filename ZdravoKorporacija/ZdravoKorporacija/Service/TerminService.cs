@@ -1,4 +1,5 @@
 ﻿using Model;
+using Repository;
 using System.Collections.Generic;
 
 namespace ZdravoKorporacija.Model
@@ -7,19 +8,22 @@ namespace ZdravoKorporacija.Model
     {
 
 
-        public bool ZakaziTermin(Termin termin)
+        public bool ZakaziTermin(Termin termin, Dictionary<int, int> ids)
         {
             TerminRepozitorijum datoteka = new TerminRepozitorijum();
             List<Termin> termini = datoteka.dobaviSve();
+            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
             foreach (Termin t in termini)
             {
                 if (t.Id.Equals(termin.Id))
                 {
-                    // return false;
+                     return false;
                 }
             }
             termini.Add(termin);
             datoteka.sacuvaj(termini);
+            datotekaID.sacuvaj(ids);
+
             return true;
         }
 
@@ -40,16 +44,20 @@ namespace ZdravoKorporacija.Model
             return false;
         }
 
-        public bool OtkaziTermin(Termin termin)
+        public bool OtkaziTermin(Termin termin, Dictionary<int, int> ids)
         {
             TerminRepozitorijum datoteka = new TerminRepozitorijum();
             List<Termin> termini = datoteka.dobaviSve();
+            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
+
             foreach (Termin t in termini)
             {
                 if (t.Id.Equals(termin.Id))
                 {
                     termini.Remove(t);
                     datoteka.sacuvaj(termini);
+                    datotekaID.sacuvaj(ids);
+
                     return true;
                 }
             }

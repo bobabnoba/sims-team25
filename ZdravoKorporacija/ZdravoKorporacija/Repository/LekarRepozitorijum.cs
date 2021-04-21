@@ -17,6 +17,7 @@ namespace ZdravoKorporacija.Model
         public void sacuvaj(List<Lekar> lekari)
         {
             JsonSerializer serializer = new JsonSerializer();
+            serializer.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             serializer.Formatting = Formatting.Indented;
             StreamWriter writer = new StreamWriter(lokacija);
             JsonWriter jWriter = new JsonTextWriter(writer);

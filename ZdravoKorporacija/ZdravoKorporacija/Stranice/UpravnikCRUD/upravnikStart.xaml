@@ -9,10 +9,10 @@
       Title="Upravnik">
 
     <Grid>
-        <Button Content="Dodaj prostoriju" HorizontalAlignment="Left" Margin="217,67,0,0" VerticalAlignment="Top" Width="92" Height="44" Click="dodaj"/>
-        <Button Content="Izmeni prostoriju" HorizontalAlignment="Center" Margin="0,67,0,0" VerticalAlignment="Top" Width="92" Height="44" RenderTransformOrigin="0.255,-0.75" Click="Button_Click_1"/>
-        <Button Content="Izbriši prostoriju" HorizontalAlignment="Left" Margin="486,67,0,0" VerticalAlignment="Top" Width="92" Height="44" RenderTransformOrigin="0.033,-1.977" Click="Button_Click_2"/>
-        <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="0,114,0,28">
+        <Button Content="Dodaj prostoriju" HorizontalAlignment="Left" Margin="72,325,0,0" VerticalAlignment="Top" Width="120" Height="30" Click="dodaj"/>
+        <Button Content="Izmeni prostoriju" HorizontalAlignment="Left" Margin="234,325,0,0" VerticalAlignment="Top" Width="120" Height="30" RenderTransformOrigin="0.255,-0.75" Click="Button_Click_1"/>
+        <Button Content="Izbriši prostoriju" HorizontalAlignment="Left" Margin="391,325,0,0" VerticalAlignment="Top" Width="120" Height="30" RenderTransformOrigin="0.033,-1.977" Click="Button_Click_2"/>
+        <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="72,115,266,151">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
                 <DataGridTextColumn Header="Naziv" Binding="{Binding Naziv}" />
@@ -25,5 +25,6 @@
                 </DataTemplate>
             </DataGrid.RowDetailsTemplate>-->
         </DataGrid>
+        <Label Content="Prostorija" HorizontalAlignment="Left" Margin="72,31,0,0" VerticalAlignment="Top" FontSize="32"/>
     </Grid>
 </Window>

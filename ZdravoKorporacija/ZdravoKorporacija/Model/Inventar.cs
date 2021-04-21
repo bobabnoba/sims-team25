@@ -10,6 +10,10 @@ namespace Model
 {
     public class Inventar
     {
+
+        public Inventar() { }
+
+
         public Inventar(int id, string naziv, int ukupnaKolicina, string proizvodjac, DateTime datumNabavke)
         {
             Id = id;
@@ -18,6 +22,8 @@ namespace Model
             Proizvodjac = proizvodjac;
             DatumNabavke = datumNabavke;
         }
+
+       
 
         public int Id { get; set; }
         public String Naziv { get; set; }

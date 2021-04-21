@@ -97,7 +97,7 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
         <TextBlock Text="Tip:" TextWrapping="Wrap" Margin="53,38,20,12" Grid.Row="2"/>
-        <ComboBox Name="cbTip" Grid.Column="1" Margin="60,35,75,10" Grid.Row="2" Height="28" >
+        <ComboBox Name="cbTip" Grid.Column="1" Margin="58,35,77,10" Grid.Row="2" Height="28" >
             <ComboBoxItem>Pregled</ComboBoxItem>
             <ComboBoxItem>Operacija</ComboBoxItem>
         </ComboBox>

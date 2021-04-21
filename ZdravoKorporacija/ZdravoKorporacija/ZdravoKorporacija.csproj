@@ -7,7 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Stranice\LekarCRUD\add.png" />
+    <None Remove="Stranice\LekarCRUD\edit.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Stranice\LekarCRUD\add.png" />
+    <Resource Include="Stranice\LekarCRUD\edit.png" />
   </ItemGroup>
 
 </Project>

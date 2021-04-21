@@ -7,6 +7,24 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Stranice\DinamickaOpremaCRUD\dinamickaOpremaPremestanjeIzMagacina.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\DinamickaOpremaCRUD\dinamickaOpremaStart.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\LekarCRUD\dodajAnamnezu.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\LekarCRUD\dodajDijagnozu.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\LekarCRUD\istorijaBolestiPrikaz.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\LekarCRUD\izdajRecept.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Stranice\LekarCRUD\izmeniPregledLekar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -16,7 +34,18 @@
     <Compile Update="Stranice\LekarCRUD\otkaziPregledLekar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Stranice\LekarCRUD\pregledPacijenata.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Stranice\LekarCRUD\zakaziPregledLekar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\Magacin\MagacinDodavanje.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\Magacin\MagacinStart.xaml.cs">
+    </Compile>
+    <Compile Update="Stranice\LekarCRUD\zdravstveniKartonPrikaz.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Stranice\PacijentCRUD\izmeniPregled.xaml.cs">
@@ -46,6 +75,15 @@
     <Compile Update="Stranice\SekretarCRUD\sekretarStart.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Stranice\SekretarPREGLEDI\zakaziPregledSekretar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\StatickaOpremaCRUD\statickaOpremaPremestiIzMagacina.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\StatickaOpremaCRUD\statickaOpremaStart.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Stranice\UpravnikCRUD\dodajProstorijuUpravnik.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -55,12 +93,30 @@
     <Compile Update="Stranice\UpravnikCRUD\izmeniProstorijuUpravnik.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Stranice\UpravnikCRUD\upravnikPocetna.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Stranice\UpravnikCRUD\upravnikStart.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\DinamickaOpremaCRUD\dinamickaOpremaPremestanjeIzMagacina.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\DinamickaOpremaCRUD\dinamickaOpremaStart.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\LekarCRUD\dodajDijagnozu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\LekarCRUD\istorijaBolestiPrikaz.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\LekarCRUD\izdajRecept.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\LekarCRUD\izmeniPregledLekar.xaml">
@@ -72,7 +128,19 @@
     <Page Update="Stranice\LekarCRUD\otkaziPregledLekar.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Stranice\LekarCRUD\pregledPacijenata.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Stranice\LekarCRUD\zakaziPregledLekar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\Magacin\MagacinDodavanje.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\Magacin\MagacinStart.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\LekarCRUD\zdravstveniKartonPrikaz.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\PacijentCRUD\izmeniPregled.xaml">
@@ -102,6 +170,15 @@
     <Page Update="Stranice\SekretarCRUD\sekretarStart.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Stranice\SekretarPREGLEDI\zakaziPregledSekretar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\StatickaOpremaCRUD\statickaOpremaPremestiIzMagacina.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\StatickaOpremaCRUD\statickaOpremaStart.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Stranice\UpravnikCRUD\dodajProstorijuUpravnik.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -109,6 +186,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\UpravnikCRUD\izmeniProstorijuUpravnik.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\UpravnikCRUD\upravnikPocetna.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\UpravnikCRUD\upravnikStart.xaml">

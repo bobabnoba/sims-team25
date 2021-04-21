@@ -4,19 +4,16 @@
 // Purpose: Definition of Class Therapy
 
 using System;
+
 namespace Model
 {
     public class Terapija
     {
+        public int TipTerapije;
+        public String Doziranje;
+        public int Trajanje;
+
         public System.Collections.ArrayList recept;
-
-        public Terapija(int tipTerapije, string doziranje)
-        {
-            this.recept = new System.Collections.ArrayList(); ;
-            TipTerapije = tipTerapije;
-            Doziranje = doziranje;
-        }
-
 
         /// <pdGenerated>default getter</pdGenerated>
         public System.Collections.ArrayList GetRecept()
@@ -61,9 +58,6 @@ namespace Model
             if (recept != null)
                 recept.Clear();
         }
-
-        public int TipTerapije { get; set; }
-        public String Doziranje { get; set; }
 
     }
 }

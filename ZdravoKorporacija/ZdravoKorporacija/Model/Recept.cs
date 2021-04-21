@@ -4,21 +4,18 @@
 // Purpose: Definition of Class Prescription
 
 using System;
+
 namespace Model
 {
     public class Recept
     {
+        public int Id { get; set; }
+        public String Doziranje { get; set; }
+        public int Trajanje { get; set; }
+        public String NazivLeka { get; set; }
+        public DateTime Pocetak { get; set; }
+
         public System.Collections.ArrayList lek;
-
-        public Recept(Lekar Lekar, ZdravstveniKarton zdravstveniKarton, int id, string doziranje)
-        {
-            this.lek = new System.Collections.ArrayList(); ;
-            this.Lekar = Lekar;
-            this.zdravstveniKarton = zdravstveniKarton;
-            Id = id;
-            Doziranje = doziranje;
-        }
-
 
         /// <pdGenerated>default getter</pdGenerated>
         public System.Collections.ArrayList GetLek()
@@ -63,7 +60,7 @@ namespace Model
             if (lek != null)
                 lek.Clear();
         }
-        public Lekar Lekar;
+        public Lekar lekar;
         public ZdravstveniKarton zdravstveniKarton;
 
         /// <pdGenerated>default parent getter</pdGenerated>
@@ -91,9 +88,6 @@ namespace Model
                 }
             }
         }
-
-        public int Id { get; set; }
-        public String Doziranje { get; set; }
 
     }
 }

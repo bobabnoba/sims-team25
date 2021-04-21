@@ -1,25 +1,22 @@
-/***********************************************************************
- * Module:  IstorijaBolesti.cs
- * Author:  tukitaki
- * Purpose: Definition of the Class IstorijaBolesti
- ***********************************************************************/
-
 using System;
 
 namespace Model
 {
     public class IstorijaBolesti
     {
+        public DateTime DatumPoseteLekaru;
+        public String PorodicnaIstorijaBolesti { get; set; }
+        public String IstorijaBolestiPacijenta { get; set; }
+
+
         public System.Collections.ArrayList dijagnoza;
-
-        public IstorijaBolesti(ZdravstveniKarton zdravstveniKarton, DateTime datumPoseteLekaru, string opisPosete)
+        public IstorijaBolesti()
         {
-            this.dijagnoza = new System.Collections.ArrayList();
-            this.zdravstveniKarton = zdravstveniKarton;
-            DatumPoseteLekaru = datumPoseteLekaru;
-            OpisPosete = opisPosete;
         }
-
+        public IstorijaBolesti(String istorijaBolesti)
+        {
+            IstorijaBolestiPacijenta = istorijaBolesti;
+        }
         /// <pdGenerated>default getter</pdGenerated>
         public System.Collections.ArrayList GetDijagnoza()
         {
@@ -44,7 +41,10 @@ namespace Model
             if (this.dijagnoza == null)
                 this.dijagnoza = new System.Collections.ArrayList();
             if (!this.dijagnoza.Contains(newDijagnoza))
+            {
                 this.dijagnoza.Add(newDijagnoza);
+                newDijagnoza.SetIstorijaBolesti(this);
+            }
         }
 
         /// <pdGenerated>default Remove</pdGenerated>
@@ -54,14 +54,25 @@ namespace Model
                 return;
             if (this.dijagnoza != null)
                 if (this.dijagnoza.Contains(oldDijagnoza))
+                {
                     this.dijagnoza.Remove(oldDijagnoza);
+                    oldDijagnoza.SetIstorijaBolesti((IstorijaBolesti)null);
+                }
         }
 
         /// <pdGenerated>default removeAll</pdGenerated>
         public void RemoveAllDijagnoza()
         {
             if (dijagnoza != null)
+            {
+                System.Collections.ArrayList tmpDijagnoza = new System.Collections.ArrayList();
+                foreach (Dijagnoza oldDijagnoza in dijagnoza)
+                    tmpDijagnoza.Add(oldDijagnoza);
                 dijagnoza.Clear();
+                foreach (Dijagnoza oldDijagnoza in tmpDijagnoza)
+                    oldDijagnoza.SetIstorijaBolesti((IstorijaBolesti)null);
+                tmpDijagnoza.Clear();
+            }
         }
         public ZdravstveniKarton zdravstveniKarton;
 
@@ -90,9 +101,6 @@ namespace Model
                 }
             }
         }
-
-        public DateTime DatumPoseteLekaru { get; set; }
-        public String OpisPosete { get; set; }
 
     }
 }

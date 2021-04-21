@@ -2,10 +2,67 @@
   {
     "termin": [
       {
-        "izvestaj": [],
+        "izvestaj": null,
+        "zdravstveniKarton": null,
+        "prostorija": null,
+        "Id": 1,
         "Tip": 0,
-        "Pocetak": "2020-05-01T08:30:52",
-        "Trajanje": 90.0
+        "Pocetak": "0001-01-01T00:00:00",
+        "Trajanje": 0.0
+      },
+      {
+        "izvestaj": null,
+        "zdravstveniKarton": null,
+        "prostorija": null,
+        "Id": 4,
+        "Tip": 0,
+        "Pocetak": "0001-01-01T00:00:00",
+        "Trajanje": 0.0
+      },
+      {
+        "izvestaj": null,
+        "zdravstveniKarton": null,
+        "prostorija": null,
+        "Id": 2,
+        "Tip": 0,
+        "Pocetak": "0001-01-01T00:00:00",
+        "Trajanje": 0.0
+      },
+      {
+        "izvestaj": null,
+        "zdravstveniKarton": null,
+        "prostorija": null,
+        "Id": 22,
+        "Tip": 0,
+        "Pocetak": "0001-01-01T00:00:00",
+        "Trajanje": 0.0
+      },
+      {
+        "izvestaj": null,
+        "zdravstveniKarton": null,
+        "prostorija": null,
+        "Id": 23,
+        "Tip": 0,
+        "Pocetak": "0001-01-01T00:00:00",
+        "Trajanje": 0.0
+      },
+      {
+        "izvestaj": null,
+        "zdravstveniKarton": null,
+        "prostorija": null,
+        "Id": 12,
+        "Tip": 0,
+        "Pocetak": "0001-01-01T00:00:00",
+        "Trajanje": 0.0
+      },
+      {
+        "izvestaj": null,
+        "zdravstveniKarton": null,
+        "prostorija": null,
+        "Id": 0,
+        "Tip": 0,
+        "Pocetak": "0001-01-01T00:00:00",
+        "Trajanje": 0.0
       }
     ],
     "Ime": "Veljko",
@@ -20,7 +77,35 @@
     "Uloga": 0
   },
   {
-    "termin": null,
+    "termin": [
+      {
+        "izvestaj": null,
+        "zdravstveniKarton": null,
+        "prostorija": null,
+        "Id": 0,
+        "Tip": 0,
+        "Pocetak": "0001-01-01T00:00:00",
+        "Trajanje": 0.0
+      },
+      {
+        "izvestaj": null,
+        "zdravstveniKarton": null,
+        "prostorija": null,
+        "Id": 0,
+        "Tip": 0,
+        "Pocetak": "0001-01-01T00:00:00",
+        "Trajanje": 0.0
+      },
+      {
+        "izvestaj": null,
+        "zdravstveniKarton": null,
+        "prostorija": null,
+        "Id": 1,
+        "Tip": 0,
+        "Pocetak": "0001-01-01T00:00:00",
+        "Trajanje": 0.0
+      }
+    ],
     "Ime": "Milos",
     "Prezime": "Zivic",
     "Jmbg": 2234567890113,
