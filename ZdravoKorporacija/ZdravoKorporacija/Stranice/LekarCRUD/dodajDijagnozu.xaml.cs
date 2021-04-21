@@ -23,12 +23,14 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     {
         private ZdravstveniKartonServis kartonServis = new ZdravstveniKartonServis();
         private ZdravstveniKartonRepozitorijum kartonDat = new ZdravstveniKartonRepozitorijum();
+        ZdravstveniKarton zk;
         //private List<Lekar> ljekari;
         Dijagnoza d;
-        public dodajDijagnozu(ObservableCollection<Dijagnoza> dijagnoze)
+        public dodajDijagnozu(ObservableCollection<Dijagnoza> dijagnoze,ZdravstveniKarton zk)
         {
             InitializeComponent();
             d = new Dijagnoza();
+            this.zk = zk; 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

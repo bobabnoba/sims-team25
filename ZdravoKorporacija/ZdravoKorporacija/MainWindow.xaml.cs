@@ -1,5 +1,9 @@
 ﻿using Model;
+<<<<<<< HEAD
 using Repository;
+=======
+using Service;
+>>>>>>> anamneza
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -36,7 +40,7 @@ namespace ZdravoKorporacija
             Pacijent p1 = new Pacijent("Dusan", "Markovic", 1234567890123, 069000333, "dusanmarkovic@gmail.com", "Smederevska tvrdjava", PolEnum.Muski, "dukikidu", "markovic99", UlogaEnum.Lekar);
             ZdravstveniKarton zd1 = new ZdravstveniKarton(p1, 1, StanjePacijentaEnum.Kriticno, "pcele", KrvnaGrupaEnum.APozitivna, "nevekcinisan");
             Prostorija pr1 = new Prostorija(1, "soba za pregled", TipProstorijeEnum.Soba, true, 2);
-            dr1.AddTermin(new Termin(zd1, pr1, dr1, TipTerminaEnum.Pregled, new DateTime(2020, 5, 1, 8, 30, 52), 90));
+            //dr1.AddTermin(new Termin(zd1, pr1, dr1, TipTerminaEnum.Pregled, new DateTime(2020, 5, 1, 8, 30, 52), 90));
             Lekar dr2 = new Lekar("Milos", "Zivic", 2234567890113, 069393334, "zivko99@gmail.com", "Becej", PolEnum.Muski, "milos", "zivic", UlogaEnum.Lekar);
             lekari.Add(dr1);
             lekari.Add(dr2);
@@ -56,15 +60,15 @@ namespace ZdravoKorporacija
             Lekar dr1 = new Lekar("Veljko", "Vukovic", 2334567890213, 066393345, "vuksivuk@gmail.com", "Beograd", PolEnum.Muski, "veksi", "vukovic", UlogaEnum.Lekar);
             ZdravstveniKarton zd1 = new ZdravstveniKarton(p1, 1, StanjePacijentaEnum.Kriticno, "pcele", KrvnaGrupaEnum.APozitivna, "nevekcinisan");
             ZdravstveniKarton zd2 = new ZdravstveniKarton(p2, 2, StanjePacijentaEnum.Stabilno, "nema", KrvnaGrupaEnum.ABNegativna, "sinovac");
-            Termin tr1 = new Termin(zd1, pr1, dr1, TipTerminaEnum.Pregled, new DateTime(2020, 5, 1, 8, 30, 52), 90);
-            Termin tr2 = new Termin(zd1, pr1, dr1, TipTerminaEnum.Pregled, new DateTime(2020, 6, 6, 6, 30, 52), 90);
+            //Termin tr1 = new Termin(zd1, pr1, dr1, TipTerminaEnum.Pregled, new DateTime(2020, 5, 1, 8, 30, 52), 90);
+            //Termin tr2 = new Termin(zd1, pr1, dr1, TipTerminaEnum.Pregled, new DateTime(2020, 6, 6, 6, 30, 52), 90);
             TerminRepozitorijum terminiJSON = new TerminRepozitorijum();
             List<Termin> termini = new List<Termin>();
             ProstorijaRepozitorijum prostorijeJSON = new ProstorijaRepozitorijum();
             List<Prostorija> prostorije = new List<Prostorija>();
-            termini.Add(tr1);
-            termini.Add(tr2);
-            p1.AddTermin(tr1);
+            //termini.Add(tr1);
+            //termini.Add(tr2);
+            //p1.AddTermin(tr1);
             pacijenti.Add(p1);
             pacijenti.Add(p2);
             pacijenti.Add(p3);

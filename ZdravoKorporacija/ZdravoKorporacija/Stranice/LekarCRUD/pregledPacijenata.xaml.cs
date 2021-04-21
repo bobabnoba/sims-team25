@@ -27,7 +27,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             {
                 foreach (Termin t in termini)
                 {
-                    if (t.zdravstveniKarton != null)
+                    if (t.zdravstveniKarton!=null)
                     {
                         foreach (Pacijent p in pacijenti)
                             if (t.zdravstveniKarton.Id.Equals(p.ZdravstveniKarton.Id))

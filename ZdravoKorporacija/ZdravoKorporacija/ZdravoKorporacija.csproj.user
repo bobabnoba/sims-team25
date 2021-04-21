@@ -13,10 +13,16 @@
     <Compile Update="Stranice\DinamickaOpremaCRUD\dinamickaOpremaStart.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Stranice\LekarCRUD\dodajAnamnezu.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Stranice\LekarCRUD\dodajDijagnozu.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Stranice\LekarCRUD\istorijaBolestiPrikaz.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\LekarCRUD\izdajRecept.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Stranice\LekarCRUD\izmeniPregledLekar.xaml.cs">
@@ -105,6 +111,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\LekarCRUD\istorijaBolestiPrikaz.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\LekarCRUD\izdajRecept.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\LekarCRUD\izmeniPregledLekar.xaml">
