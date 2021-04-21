@@ -58,5 +58,25 @@
     "Tip": 1,
     "Slobodna": false,
     "Sprat": 3
+  },
+  {
+    "inventar": [],
+    "statickaOprema": null,
+    "dinamickaOprema": null,
+    "Id": 7,
+    "Naziv": "dasdd",
+    "Tip": 0,
+    "Slobodna": false,
+    "Sprat": 1
+  },
+  {
+    "inventar": [],
+    "statickaOprema": null,
+    "dinamickaOprema": null,
+    "Id": 6,
+    "Naziv": "dasdas",
+    "Tip": 1,
+    "Slobodna": false,
+    "Sprat": 1
   }
 ]
