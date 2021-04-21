@@ -15,7 +15,7 @@
         <Grid Margin="10,-35,10,55">
             <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="139,139,139,-20" SelectionChanged="dgUsers_SelectionChanged">
                 <DataGrid.Columns>
-                    
+
                     <!--<DataGridTextColumn Header="Pacijent">
                             <DataGridTextColumn.Binding>
                                 <MultiBinding StringFormat="{}{0} {1}">
