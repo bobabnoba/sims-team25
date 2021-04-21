@@ -40,18 +40,22 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             pac = selektovani;
             ids = datotekaID.dobaviSve();
             termini = terminServis.PregledSvihTermina();
-            foreach(Termin t in termini)
+            foreach (Termin t in termini)
             {
-                if(t.GetZdravstveniKarton().Id.Equals(selektovani.ZdravstveniKarton.Id))
+                if (t.zdravstveniKarton != null)
                 {
-                    if(t.izvestaj!=null)
+                    if (t.zdravstveniKarton.Id.Equals(selektovani.ZdravstveniKarton.Id))
                     {
-                        Trace.WriteLine(t.izvestaj.Simptomi);
-                        izvestaji.Add(t.izvestaj);
+                        if (t.izvestaj == null)
+                        {
+                           /* Trace.WriteLine(t.izvestaj.Simptomi);
+                            izvestaji.Add(t.izvestaj);*/
+                            termin = t;
+                        }
+
+
+                     
                     }
-                  
-                    
-                    termin = t;
                 }
             }
            
@@ -74,7 +78,10 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             }
             izvestaj.Id = id;
             izvestaji.Add(izvestaj);
-            pacijentServis.AzurirajPacijenta(pac);
+            Trace.WriteLine(izvestaji[izvestaji.Count-1].Opis);
+            Trace.WriteLine(termin.zdravstveniKarton.Id);
+            Trace.WriteLine(pac.ZdravstveniKarton.Id);
+            termin.izvestaj = izvestaj;
             terminServis.AzurirajTermin(termin);
             this.Close();
         }

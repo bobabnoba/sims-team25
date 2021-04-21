@@ -63,12 +63,13 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
             //istorijaBolestiGrid.ItemsSource = zk.GetIstorijaBolesti();
             //istorijaPorodicnihBolesti.ItemsSource = zk.GetIstorijaBolesti();
-            alergijeGrid.ItemsSource = zk.Alergije;
+            if(zk.Alergije!=null)
+            AlergijeListBox.ItemsSource = zk.Alergije.Split(",");
             recepti = zk.GetRecept();
             terapijaGrid.ItemsSource = recepti;
 
             this.DataContext = this;
-
+ 
             ImeLabel.Content = selektovani.Ime;
             PrezimeLabel.Content = selektovani.Prezime;
             BrojTelefonaLabel.Content = selektovani.BrojTelefona;
@@ -96,13 +97,13 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                     pac = t.GetZdravstveniKarton().patient;
                 }
             }
-            
 
-            
+
+
             //istorijaBolestiGrid.ItemsSource = zkt.GetIstorijaBolesti();
             //istorijaPorodicnihBolesti.ItemsSource = zkt.GetIstorijaBolesti();
-
-            alergijeGrid.ItemsSource = zkt.Alergije;
+            if (zkt.Alergije != null)
+                AlergijeListBox.ItemsSource = zkt.Alergije.Split(",");
 
             terapijaGrid.ItemsSource = zkt.GetRecept();
 

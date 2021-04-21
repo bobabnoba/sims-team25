@@ -449,7 +449,7 @@
       "patient": null,
       "Id": 5,
       "ZdravstvenoStanje": 3,
-      "Alergije": null,
+      "Alergije": "Polen,Mleko",
       "KrvnaGrupa": 8,
       "Vakcine": null
     },
@@ -1580,7 +1580,7 @@
       "patient": null,
       "Id": 5,
       "ZdravstvenoStanje": 3,
-      "Alergije": null,
+      "Alergije": "Polen",
       "KrvnaGrupa": 8,
       "Vakcine": null
     },

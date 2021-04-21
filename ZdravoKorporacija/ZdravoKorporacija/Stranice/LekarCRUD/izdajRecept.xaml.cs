@@ -39,6 +39,9 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             datotekaID = new IDRepozitorijum("iDMapRecept");
             ids = datotekaID.dobaviSve();
             lekovi = new ObservableCollection<Lek>(lekServis.PregledSvihLekova());
+
+            CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
+            Date.BlackoutDates.Add(cdr);
             pac = selektovani;
             lekNaziv.ItemsSource = lekovi;
             recepti = pac.ZdravstveniKarton.GetRecept();     
@@ -47,13 +50,18 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Lek l= (Lek)lekNaziv.SelectedItem;
-            r.NazivLeka = l.NazivLeka;
+            if (string.IsNullOrEmpty(NoviLek.Text))
+            {
+                r.NazivLeka = l.NazivLeka;
+                
+            }
+            else
+            {
+                r.NazivLeka = NoviLek.Text;
+            }
             r.Doziranje = Doza.Text;
             r.Trajanje = Int32.Parse(Trajanje.Text);
-            System.Diagnostics.Debug.WriteLine(Date.SelectedDate.ToString());
-            r.Pocetak = (DateTime) Date.SelectedDate;
-            System.Diagnostics.Debug.WriteLine(r.Pocetak.ToString());
-
+            r.Pocetak = Date.SelectedDate.Value.Date;
             int id = 0;
             for (int i = 0; i < 1000; i++)
             {
@@ -74,6 +82,14 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void NoviLek_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(NoviLek.Text))
+            {
+                lekNaziv.IsEnabled = false;
+            }
         }
     }
 }
