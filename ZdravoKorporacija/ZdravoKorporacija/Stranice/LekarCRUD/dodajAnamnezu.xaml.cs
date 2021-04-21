@@ -51,6 +51,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                            /* Trace.WriteLine(t.izvestaj.Simptomi);
                             izvestaji.Add(t.izvestaj);*/
                             termin = t;
+                            break;
                         }
 
 
