@@ -46,7 +46,7 @@ namespace Service
             return false;
         }
 
-        public bool AzurirajProstoriju(Prostorija prostorija)
+        public bool AzurirajProstoriju(Prostorija prostorija, int indeks)
         {
             ProstorijaRepozitorijum datoteka = new ProstorijaRepozitorijum();
             List<Prostorija> prostorije = datoteka.dobaviSve();
@@ -55,7 +55,7 @@ namespace Service
                 if (pr.Id.Equals(prostorija.Id))
                 {
                     prostorije.Remove(pr);
-                    prostorije.Add(prostorija);
+                    prostorije.Insert(indeks, prostorija);
                     datoteka.sacuvaj(prostorije);
                     return true;
                 }

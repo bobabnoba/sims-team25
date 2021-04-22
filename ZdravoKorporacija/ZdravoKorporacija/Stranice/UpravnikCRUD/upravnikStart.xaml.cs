@@ -55,7 +55,7 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
                 MessageBox.Show("Niste selektovali red","Greska");
             else
             {
-                izmeniProstorijuUpravnik ip = new izmeniProstorijuUpravnik(prostorije, (Prostorija)dgUsers.SelectedItem);
+                izmeniProstorijuUpravnik ip = new izmeniProstorijuUpravnik(prostorije, (Prostorija)dgUsers.SelectedItem, dgUsers.SelectedIndex);
                 ip.Show();
             }
         }

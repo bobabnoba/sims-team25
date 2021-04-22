@@ -15,12 +15,13 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
         private ProstorijaService storage = new ProstorijaService();
         private ObservableCollection<Prostorija> prostorije;
         private Prostorija prostorijaIzmenjena;
-        public izmeniProstorijuUpravnik(ObservableCollection<Prostorija> pr, Prostorija p)
+        private int indeks;
+        public izmeniProstorijuUpravnik(ObservableCollection<Prostorija> pr, Prostorija p, int selectedIndex)
         {
             InitializeComponent();
             this.prostorije = pr;
             this.prostorijaIzmenjena = p;
-
+            this.indeks = selectedIndex;
             textBoxIzmenaNaziv.Text = p.Naziv;
             if (p.Tip == TipProstorijeEnum.OperacionaSala)
             {
@@ -62,10 +63,10 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
             sprat = comboBoxIzmenaSprat.SelectedIndex;
             
             Prostorija prostorija = new Prostorija(prostorijaIzmenjena.Id, ime, tip, false, sprat);
-            if (storage.AzurirajProstoriju(prostorija))
+            if (storage.AzurirajProstoriju(prostorija,this.indeks))
             {
                 prostorije.Remove(prostorijaIzmenjena);
-                this.prostorije.Add(prostorija);
+                this.prostorije.Insert(this.indeks, prostorija);
 
             }
             this.Close();
