@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Model;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
@@ -9,6 +10,7 @@ namespace ZdravoKorporacija.Stranice
     /// </summary>
     public partial class login : Page
     {
+        
         public login()
         {
             InitializeComponent();
@@ -16,7 +18,7 @@ namespace ZdravoKorporacija.Stranice
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             // LOGF.Content = new sekretarStart();
-            LOGF.Content = new pacijentStart();
+            // LOGF.Content = new pacijentStart();
         }
 
 

@@ -27,9 +27,24 @@ namespace Service
             Termin t = new Termin();
             t.Pocetak = datum;
             t.prostorija = p;
+           
+
             
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
             Dictionary<int, int> ids = datotekaID.dobaviSve();
+            int id = 0;
+            for (int i = 0; i < 1000; i++)
+            {
+                if (ids[i] == 0)
+                {
+                    id = i;
+                    ids[i] = 1;
+                    break;
+                }
+            }
+
+            t.Id = id;
+           
             ts.ZakaziTermin(t,ids);
 
             stRepozitorijum.Sacuvaj(st);

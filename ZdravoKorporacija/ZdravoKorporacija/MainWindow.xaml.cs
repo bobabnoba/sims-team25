@@ -11,6 +11,7 @@ using System.Windows.Controls;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Stranice;
 using ZdravoKorporacija.Stranice.LekarCRUD;
+using ZdravoKorporacija.Stranice.Logovanje;
 using ZdravoKorporacija.Stranice.SekretarCRUD;
 using ZdravoKorporacija.Stranice.UpravnikCRUD;
 
@@ -23,6 +24,7 @@ namespace ZdravoKorporacija
     public partial class MainWindow : Window
     {
         public static ContentControl cc = new ContentControl();
+        UlogaEnum uloga;
         public MainWindow() 
         { 
             InitializeComponent();
@@ -96,8 +98,12 @@ namespace ZdravoKorporacija
 
         private void openUpravnikFrame(object sender, RoutedEventArgs e)
         {
-            upravnikPocetna s = new upravnikPocetna();
-            s.Show();
+            //upravnikPocetna s = new upravnikPocetna();
+            //s.Show();
+            uloga = UlogaEnum.Upravnik;
+            upavnikLogin l = new upavnikLogin(uloga);
+            l.Show();
+           
         }
         private void openLekarFrame(object sender, RoutedEventArgs e)
         {

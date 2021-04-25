@@ -35,7 +35,7 @@
             </TextBlock.RenderTransform><Run FontWeight="Bold" Text="Lozinka:"/></TextBlock>
         <PasswordBox HorizontalAlignment="Left" Margin="280,231,0,0" VerticalAlignment="Top" Height="26" Width="216"/>
         <Button Content="Potvrdi" FontWeight="Bold" HorizontalAlignment="Left" Margin="310,286,0,0" VerticalAlignment="Top" Width="158" Height="38" BorderThickness="5" Click="Button_Click" />
-        <Frame x:Name="LOGF" Height="auto" NavigationUIVisibility="Hidden" Width="auto"  Navigated="LOGF_Navigated" Margin="-2,0,10,10" />
+        <Frame x:Name="logovanje" Height="auto" NavigationUIVisibility="Hidden" Width="auto"  Navigated="LOGF_Navigated" Margin="-2,0,10,10" />
 
     </Grid>
 </Page>
