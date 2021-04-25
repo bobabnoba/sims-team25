@@ -27,6 +27,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private ObservableCollection<Lek> lekovi;
         private ObservableCollection<Recept> recepti;
         Pacijent pac;
+        Termin ter;
         Recept r = new Recept();
         IDRepozitorijum datotekaID;
 
@@ -45,6 +46,27 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             pac = selektovani;
             lekNaziv.ItemsSource = lekovi;
             recepti = pac.ZdravstveniKarton.GetRecept();     
+        }
+
+        public izdajRecept(Termin selektovani)
+        {
+            InitializeComponent();
+            this.DataContext = this;
+            datotekaID = new IDRepozitorijum("iDMapRecept");
+            ids = datotekaID.dobaviSve();
+            lekovi = new ObservableCollection<Lek>(lekServis.PregledSvihLekova());
+
+            CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
+            Date.BlackoutDates.Add(cdr);
+            ter = selektovani;
+            lekNaziv.ItemsSource = lekovi;
+            foreach(Pacijent p in new List<Pacijent>(pacijentServis.PregledSvihPacijenata()))
+            {
+                if (p.ZdravstveniKarton != null)
+                    if (p.ZdravstveniKarton.Id.Equals(ter.zdravstveniKarton.Id))
+                        pac = p;
+            }
+            recepti = pac.ZdravstveniKarton.GetRecept();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

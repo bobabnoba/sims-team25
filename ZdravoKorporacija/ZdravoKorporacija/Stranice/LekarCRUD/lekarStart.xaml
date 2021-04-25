@@ -13,7 +13,7 @@
         <Button Content="Izmeni pregled" HorizontalAlignment="Center" Margin="0,67,0,0" VerticalAlignment="Top" Width="92" Height="44" RenderTransformOrigin="0.255,-0.75" Click="izmeniPregled"/>
         <Button Content="Otkaži pregled" HorizontalAlignment="Left" Margin="486,67,0,0" VerticalAlignment="Top" Width="92" Height="44" RenderTransformOrigin="0.033,-1.977" Click="otkaziPregled"/>
         <Grid Margin="10">
-            <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="156,140,84,34" SelectionChanged="dgUsers_SelectionChanged">
+            <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="156,140,84,34" SelectionChanged="dgUsers_SelectionChanged" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
                     <!--<DataGridTextColumn Header="Pacijent">

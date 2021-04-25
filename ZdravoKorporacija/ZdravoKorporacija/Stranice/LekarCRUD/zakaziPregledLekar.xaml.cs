@@ -73,11 +73,11 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             p.Id = id;
             Pacijent pac = (Pacijent)cbPacijent.SelectedItem;
             ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
-            Izvestaj iz = new Izvestaj();
-            iz.Id = 0;
-            iz.Opis = "Temperature";
-            iz.Simptomi = "Covid";
-            p.izvestaj = iz;
+            //Izvestaj iz = new Izvestaj();
+            //iz.Id = 0;
+            //iz.Opis = "Temperature";
+            //iz.Simptomi = "Covid";
+            //p.izvestaj = iz;
             
             String d = date.Text;
             String t = null;
@@ -123,8 +123,8 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 p.zdravstveniKarton = pac.ZdravstveniKarton;
             else
             {
-                p.zdravstveniKarton = new ZdravstveniKarton(null, 0, StanjePacijentaEnum.None,null,KrvnaGrupaEnum.None,null) ;
-                pac.ZdravstveniKarton = new ZdravstveniKarton(null, 0, StanjePacijentaEnum.None, null, KrvnaGrupaEnum.None, null);
+                p.zdravstveniKarton = new ZdravstveniKarton(null, pac.Jmbg, StanjePacijentaEnum.None,null,KrvnaGrupaEnum.None,null) ;
+                pac.ZdravstveniKarton = new ZdravstveniKarton(null, pac.Jmbg, StanjePacijentaEnum.None, null, KrvnaGrupaEnum.None, null);
                 pac.ZdravstveniKarton.AddTermin(p);
                 zdravstveniKartonServis.KreirajZdravstveniKarton(pac.ZdravstveniKarton,ids);
             }
@@ -132,6 +132,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             Termin tZaLjekara = new Termin();
             tZaLjekara.Id = p.Id;
             p.Lekar.AddTermin(tZaLjekara);
+            p.zdravstveniKarton.AddTermin(tZaLjekara);
 
             if (storage.ZakaziTermin(p, ids))
             {
