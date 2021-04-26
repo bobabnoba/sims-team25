@@ -40,7 +40,7 @@ namespace Service
             if (uloga == UlogaEnum.Upravnik)
             {
                 ObservableCollection<Korisnik> lista = new ObservableCollection<Korisnik>(kr.DobaviSve());
-                Korisnik upravnik = (Korisnik)lista.First(s => s.Username.Equals(unos.Username));
+                Korisnik upravnik = (Korisnik)lista.FirstOrDefault(s => s.Username.Equals(unos.Username));
                 if (upravnik != null) {
                     return upravnik;
                 }
@@ -49,7 +49,7 @@ namespace Service
             if (uloga == UlogaEnum.Pacijent)
             {
                 ObservableCollection<Korisnik> lista = new ObservableCollection<Korisnik>(kr.DobaviSve());
-                Korisnik pacijent = (Korisnik)lista.First(s => s.Username.Equals(unos.Username));
+                Korisnik pacijent = (Korisnik)lista.FirstOrDefault(s => s.Username.Equals(unos.Username));
                 if (pacijent != null)
                 {
                     return pacijent;
@@ -59,7 +59,7 @@ namespace Service
             if (uloga == UlogaEnum.Lekar)
             {
                 ObservableCollection<Korisnik> lista = new ObservableCollection<Korisnik>(kr.DobaviSve());
-                Korisnik lekar = (Korisnik)lista.First(s => s.Username.Equals(unos.Username));
+                Korisnik lekar = (Korisnik)lista.FirstOrDefault(s => s.Username.Equals(unos.Username));
                 if (lekar != null)
                 {
                     return lekar;
@@ -69,7 +69,7 @@ namespace Service
             if (uloga == UlogaEnum.Sekretar)
             {
                 ObservableCollection<Korisnik> lista = new ObservableCollection<Korisnik>(kr.DobaviSve());
-                Korisnik sekretar = (Korisnik)lista.First(s => s.Username.Equals(unos.Username));
+                Korisnik sekretar = (Korisnik)lista.FirstOrDefault(s => s.Username.Equals(unos.Username));
                 if (sekretar != null)
                 {
                     return sekretar;

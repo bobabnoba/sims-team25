@@ -48,5 +48,16 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
             dinamickaOpremaStart s = new dinamickaOpremaStart();
             s.Show();
         }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Zaposleni(object sender, RoutedEventArgs e)
+        {
+            ZaposleniPocetna zp = new ZaposleniPocetna();
+            zp.Show();
+        }
     }
 }

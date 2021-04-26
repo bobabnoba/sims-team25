@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using ZdravoKorporacija.Stranice.UpravnikCRUD;
 
 namespace ZdravoKorporacija.Stranice.Logovanje
 {
@@ -32,6 +32,8 @@ namespace ZdravoKorporacija.Stranice.Logovanje
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ks.Uloguj(this.upravnik, textBoxIme.Text, textBoxSifra.Text);
+            upravnikPocetna uP = new upravnikPocetna();
+            uP.Show();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

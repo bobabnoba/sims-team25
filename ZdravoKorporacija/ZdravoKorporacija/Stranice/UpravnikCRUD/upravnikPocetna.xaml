@@ -12,6 +12,7 @@
         <Button Content="Statička oprema" HorizontalAlignment="Left" Margin="94,119,0,0" VerticalAlignment="Top" Width="220" Click="Button_Click_1" Height="30"/>
         <Button Content="Dinamička oprema" HorizontalAlignment="Left" Margin="383,119,0,0" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.636,-0.78" Height="30" Click="Button_Click_3"/>
         <Button Content="Magacin" HorizontalAlignment="Left" Margin="383,52,0,0" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.636,-0.78" Height="30" Click="Button_Click_2"/>
+        <Button Content="Zaposleni" HorizontalAlignment="Left" Margin="383,187,0,0" VerticalAlignment="Top" Width="220" Height="30" Click="Zaposleni"/>
 
     </Grid>
 </Window>
