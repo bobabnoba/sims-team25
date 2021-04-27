@@ -80,5 +80,12 @@ namespace Service
 
             return null;
         }
+
+       public Boolean DodajKorisnika(Korisnik registrovani)
+        {
+            kr.korisnici.Add(registrovani);
+            kr.Sacuvaj();
+            return true;
+        }
     }
 }

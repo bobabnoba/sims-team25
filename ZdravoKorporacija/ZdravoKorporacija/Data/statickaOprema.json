@@ -394,5 +394,113 @@
     "UkupnaKolicina": 100,
     "Proizvodjac": "Keek",
     "DatumNabavke": "0001-01-01T00:00:00"
+  },
+  {
+    "termin": {
+      "izvestaj": null,
+      "zdravstveniKarton": null,
+      "prostorija": null,
+      "Lekar": null,
+      "Id": 0,
+      "Tip": 0,
+      "Pocetak": "2021-04-27T10:30:00",
+      "Trajanje": 0.0
+    },
+    "Prostorija": null,
+    "Id": 4,
+    "Naziv": "Hanzaplast",
+    "UkupnaKolicina": 100,
+    "Proizvodjac": "Keek",
+    "DatumNabavke": "0001-01-01T00:00:00"
+  },
+  {
+    "termin": {
+      "izvestaj": null,
+      "zdravstveniKarton": null,
+      "prostorija": null,
+      "Lekar": null,
+      "Id": 0,
+      "Tip": 0,
+      "Pocetak": "2021-04-27T10:00:00",
+      "Trajanje": 0.0
+    },
+    "Prostorija": null,
+    "Id": 0,
+    "Naziv": "krevet",
+    "UkupnaKolicina": 4000,
+    "Proizvodjac": "simpo",
+    "DatumNabavke": "0001-01-01T00:00:00"
+  },
+  {
+    "termin": {
+      "izvestaj": null,
+      "zdravstveniKarton": null,
+      "prostorija": null,
+      "Lekar": null,
+      "Id": 0,
+      "Tip": 0,
+      "Pocetak": "2021-04-27T11:30:00",
+      "Trajanje": 0.0
+    },
+    "Prostorija": null,
+    "Id": 0,
+    "Naziv": "krevet",
+    "UkupnaKolicina": 4000,
+    "Proizvodjac": "simpo",
+    "DatumNabavke": "0001-01-01T00:00:00"
+  },
+  {
+    "termin": {
+      "izvestaj": null,
+      "zdravstveniKarton": null,
+      "prostorija": null,
+      "Lekar": null,
+      "Id": 0,
+      "Tip": 0,
+      "Pocetak": "2021-04-27T16:30:00",
+      "Trajanje": 0.0
+    },
+    "Prostorija": null,
+    "Id": 0,
+    "Naziv": "krevet",
+    "UkupnaKolicina": 4000,
+    "Proizvodjac": "simpo",
+    "DatumNabavke": "0001-01-01T00:00:00"
+  },
+  {
+    "termin": {
+      "izvestaj": null,
+      "zdravstveniKarton": null,
+      "prostorija": null,
+      "Lekar": null,
+      "Id": 0,
+      "Tip": 0,
+      "Pocetak": "2021-04-27T20:00:00",
+      "Trajanje": 0.0
+    },
+    "Prostorija": null,
+    "Id": 0,
+    "Naziv": "krevet",
+    "UkupnaKolicina": 4000,
+    "Proizvodjac": "simpo",
+    "DatumNabavke": "0001-01-01T00:00:00"
+  },
+  {
+    "termin": {
+      "izvestaj": null,
+      "zdravstveniKarton": null,
+      "prostorija": null,
+      "Lekar": null,
+      "Id": 0,
+      "Tip": 0,
+      "Pocetak": "2021-04-27T18:00:00",
+      "Trajanje": 0.0
+    },
+    "Prostorija": null,
+    "Id": 0,
+    "Naziv": "krevet",
+    "UkupnaKolicina": 4000,
+    "Proizvodjac": "simpo",
+    "DatumNabavke": "0001-01-01T00:00:00"
   }
 ]

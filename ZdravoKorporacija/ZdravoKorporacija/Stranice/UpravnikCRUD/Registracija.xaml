@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.UpravnikCRUD"
         mc:Ignorable="d"
-        Title="Registracija" Height="250" Width="300" Background="CadetBlue">
+        Title="Registracija" Height="270" Width="300" Background="CadetBlue">
     <Grid>
-        <TextBox HorizontalAlignment="Left" Margin="120,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="25"/>
-        <TextBox HorizontalAlignment="Left" Margin="120,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="25"/>
+        <TextBox x:Name="textBoxUsername" HorizontalAlignment="Left" Margin="120,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="25"/>
+        <TextBox x:Name="textBoxPassword" HorizontalAlignment="Left" Margin="120,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="25"/>
         <Label Content="Korisnicko ime" HorizontalAlignment="Left" Margin="29,68,0,0" VerticalAlignment="Top"/>
         <Label Content="Šifra" HorizontalAlignment="Left" Margin="29,123,0,0" VerticalAlignment="Top"/>
         <Label x:Name="naziv" Content="Registruj" HorizontalAlignment="Left" Margin="56,22,0,0" VerticalAlignment="Top"/>
-        <Button Content="Registruj" HorizontalAlignment="Left" Margin="48,187,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.029,0.867" Width="90" Height="25"/>
+        <Button Content="Registruj" HorizontalAlignment="Left" Margin="48,187,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.029,0.867" Width="90" Height="25" Click="Button_Click"/>
         <Button Content="Ponisti" HorizontalAlignment="Left" Margin="180,187,0,0" VerticalAlignment="Top" Width="90" Height="25"/>
 
     </Grid>
