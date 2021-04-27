@@ -26,7 +26,7 @@
         <ComboBox Name ="time" Grid.Column="1" Margin="167,24,77,18" Grid.Row="1" RenderTransformOrigin="0.507,0.18" Height="28" Width="60" SelectionChanged="time_changed">
         </ComboBox>
         <TextBlock Text="Lekar:" TextWrapping="Wrap" Margin="33,45,304,36" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="3"/>
-        <ComboBox Name ="ljekar"  Grid.Column="1" Margin="39,36,77,5" Grid.Row="2" Height="28">
+        <ComboBox Name ="ljekar"  Grid.Column="1" Margin="39,36,77,5" Grid.Row="2" Height="28" SelectionChanged="ljekar_changed">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
