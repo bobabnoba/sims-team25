@@ -12,6 +12,7 @@ using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Stranice.PacijentCRUD;
+using System.Windows.Threading;
 
 namespace ZdravoKorporacija.Stranice
 {
@@ -25,11 +26,18 @@ namespace ZdravoKorporacija.Stranice
         private PacijentService storagePacijent = new PacijentService();
         private Pacijent pac = new Pacijent();
         private Pacijent mnm = new Pacijent();
-        private Dictionary<int, int> ids = new Dictionary<int, int>(); 
+        private Dictionary<int, int> ids = new Dictionary<int, int>();
+        private Boolean prikazi;
 
         public pacijentStart()
         {
             InitializeComponent();
+
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += timer_Tick;
+            timer.Start();
+            this.prikazi = false;
 
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
             ids = datotekaID.dobaviSve();
@@ -37,13 +45,55 @@ namespace ZdravoKorporacija.Stranice
             termini = new ObservableCollection<Termin>(storage.PregledSvihTermina());
             dgUsers.ItemsSource = termini;
             this.DataContext = this;
-            mnm = (storagePacijent.PregledSvihPacijenata())[0]; // za ovog pacijenta prikazujemo obavjestenja
-            dgObavjestenja.ItemsSource = mnm.ZdravstveniKarton.recept;
+            mnm = (storagePacijent.PregledSvihPacijenata())[3]; // za ovog pacijenta prikazujemo obavjestenja
+            dgObavjestenja.ItemsSource = mnm.notifikacije;
 
             //Pacijent p1 = new Pacijent("Dusan", "Lekic");
             //Pacijent p2 = new Pacijent("Aleksa", "Papovic");
             //pacijenti.Add(p1);
             // pacijenti.Add(p2);
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            foreach (Recept r in mnm.ZdravstveniKarton.recept)
+            {
+                DateTime ter = r.Pocetak;
+
+                Debug.WriteLine("termin: " + ter.ToString() + ", sad je: " + DateTime.Now.ToString()); //*
+
+                //if (DateTime.Compare(DateTime.Now, ter.AddMinutes(-1)) == 0) // ovo i za jednake vraca 1, nikad 0 ....
+                //{
+                //    this.prikazi = true;
+                //}
+                //Debug.WriteLine("prikazi " + this.prikazi); //*
+
+                if (DateTime.Now.ToString().Equals(ter.AddMinutes(-1).ToString()))
+                {
+                    this.prikazi = true;
+                }
+
+
+                int res = DateTime.Compare(DateTime.Now, ter.AddMinutes(-1));
+
+                Debug.WriteLine("res je " + res); //*
+
+                if (this.prikazi == true && res >= 0)
+                {
+                    this.prikazi = false;
+                    Notifikacija n = new Notifikacija();
+
+                    n.Id = mnm.notifikacije.Count + 1;
+                    n.Datum = ter.AddMinutes(-30);
+                    n.Status = "Neprocitano";
+                    n.Tip = TipNotifikacije.Podsetnik;
+                    n.Sadrzaj = "Popijte lek: " + r.NazivLeka;
+
+                    mnm.notifikacije.Add(n);
+                    storagePacijent.AzurirajPacijenta(mnm);
+
+                }
+            }
         }
 
         private void izmeniPregled(object sender, RoutedEventArgs e)
