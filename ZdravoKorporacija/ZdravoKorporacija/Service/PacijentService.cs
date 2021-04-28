@@ -39,6 +39,26 @@ namespace Service
             return false;
         }
 
+        public bool ObrisiTerminPacijentu(Termin termin)
+        {
+            PacijentRepozitorijum datoteka = new PacijentRepozitorijum();
+            List<Pacijent> pacijenti = datoteka.dobaviSve();
+            foreach (Pacijent p in pacijenti)
+            {
+                if (p.ZdravstveniKarton.Id.Equals(termin.zdravstveniKarton.Id))
+                {
+                    foreach(Termin t in p.termin.ToArray())
+                    {
+                        if (t.Id.Equals(termin.Id))
+                            p.termin.Remove(t);
+                    }
+                    datoteka.sacuvaj(pacijenti);
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public bool AzurirajPacijenta(Pacijent pacijent)
         {
             System.Diagnostics.Debug.WriteLine("Azuriralo");

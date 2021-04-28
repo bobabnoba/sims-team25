@@ -111,19 +111,26 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
             //istorijaBolestiGrid.ItemsSource = zkt.GetIstorijaBolesti();
             //istorijaPorodicnihBolesti.ItemsSource = zkt.GetIstorijaBolesti();
-            foreach (Termin ter in zkt.termin)
+            foreach (Pacijent p in pacijenti)
             {
-                foreach(Termin termin in termini)
+                if (p.ZdravstveniKarton.Id.Equals(zkt.Id))
                 {
-                    if(ter.Id.Equals(termin.Id))
+                    foreach (Termin ter in p.termin)
                     {
-                        if(termin.izvestaj!=null)
-                        { 
-                         izvestaji.Add(termin.izvestaj);
+                        foreach (Termin termin in termini)
+                        {
+                            if (ter.Id.Equals(termin.Id))
+                            {
+                                if (termin.izvestaj != null)
+                                {
+                                    izvestaji.Add(termin.izvestaj);
+                                }
+                            }
                         }
                     }
                 }
             }
+            
             izvestajGrid.ItemsSource = izvestaji;
             try
             {

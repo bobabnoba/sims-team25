@@ -117,22 +117,24 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 p.Tip = TipTerminaEnum.Operacija;
             }
 
+            ZdravstveniKarton zk = new ZdravstveniKarton(null, pac.Jmbg, StanjePacijentaEnum.None, null, KrvnaGrupaEnum.None, null);
+
             p.prostorija = (Prostorija)cbProstorija.SelectedItem;
             p.Lekar = (Lekar)Lekari.SelectedItem;
             if (pac.ZdravstveniKarton != null)
                 p.zdravstveniKarton = pac.ZdravstveniKarton;
             else
             {
-                p.zdravstveniKarton = new ZdravstveniKarton(null, pac.Jmbg, StanjePacijentaEnum.None,null,KrvnaGrupaEnum.None,null) ;
-                pac.ZdravstveniKarton = new ZdravstveniKarton(null, pac.Jmbg, StanjePacijentaEnum.None, null, KrvnaGrupaEnum.None, null);
-                pac.ZdravstveniKarton.AddTermin(p);
+                p.zdravstveniKarton = zk ;
+                pac.ZdravstveniKarton = zk;
+                //pac.ZdravstveniKarton.AddTermin(p);
                 zdravstveniKartonServis.KreirajZdravstveniKarton(pac.ZdravstveniKarton,ids);
             }
            
             Termin tZaLjekara = new Termin();
             tZaLjekara.Id = p.Id;
             p.Lekar.AddTermin(tZaLjekara);
-            p.zdravstveniKarton.AddTermin(tZaLjekara);
+            //p.zdravstveniKarton.AddTermin(tZaLjekara);
 
             if (storage.ZakaziTermin(p, ids))
             {
