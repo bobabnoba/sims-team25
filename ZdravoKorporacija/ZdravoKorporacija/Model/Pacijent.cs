@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Model
 {
@@ -15,7 +16,7 @@ namespace Model
 
         public Pacijent(ZdravstveniKarton zdravstveniKarton, bool guest, string ime, string prezime, int jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password, UlogaEnum uloga) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password, uloga)
         {
-            this.termin = new System.Collections.ArrayList();
+            this.termin = new List<Termin>();
             ZdravstveniKarton = zdravstveniKarton;
             Guest = guest;
         }
@@ -43,7 +44,7 @@ namespace Model
             return null;
         }
 
-        public System.Collections.ArrayList termin;
+        public List<Termin> termin;
 
 
         public Pacijent(String Ime, String Prezime) : base(Ime, Prezime)
@@ -58,10 +59,10 @@ namespace Model
 
 
         /// <pdGenerated>default getter</pdGenerated>
-        public System.Collections.ArrayList GetTermin()
+        public List<Termin> GetTermin()
         {
             if (termin == null)
-                termin = new System.Collections.ArrayList();
+                termin = new List<Termin>();
             return termin;
         }
 
@@ -79,7 +80,7 @@ namespace Model
             if (newTermin == null)
                 return;
             if (this.termin == null)
-                this.termin = new System.Collections.ArrayList();
+                this.termin = new List<Termin>();
             if (!this.termin.Contains(newTermin))
                 this.termin.Add(newTermin);
         }

@@ -10,7 +10,7 @@
         <Button Content="Zdravstveni karton" HorizontalAlignment="Center" Margin="0,70,0,0" VerticalAlignment="Top" Width="110" Height="44" Click="prikazKartona"/>
 
         <Grid Margin="10">
-            <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="156,140,84,34" SelectionChanged="dgUsers_SelectionChanged">
+            <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="156,140,84,34" SelectionChanged="dgUsers_SelectionChanged" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <!--<DataGridTextColumn Header="ID" Binding="{Binding Id}" />-->
                     <!--<DataGridTextColumn Header="Pacijent">

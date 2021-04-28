@@ -26,6 +26,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private TerminService terminServis = new TerminService();
         private PacijentService pacijentServis = new PacijentService();
         private List<Termin> termini = new List<Termin>();
+        private List<Pacijent> pacijenti = new List<Pacijent>();
         private ObservableCollection<Izvestaj> izvestaji = new ObservableCollection<Izvestaj>();
         private Izvestaj izvestaj= new Izvestaj();
         IDRepozitorijum datotekaID;
@@ -53,19 +54,24 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                             termin = t;
                             break;
                         }
-
-
-                     
                     }
                 }
             }
            
         }
-
+        public dodajAnamnezu(Termin selektovani)
+        {
+            InitializeComponent();
+            datotekaID = new IDRepozitorijum("iDMapIzvestaj");
+            ids = datotekaID.dobaviSve();
+            termin = selektovani;
+            
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             izvestaj.Simptomi = simptomiText.Text;
             TextRange textRange = new TextRange(opisText.Document.ContentStart, opisText.Document.ContentEnd );
+            pacijenti = new List<Pacijent>(pacijentServis.PregledSvihPacijenata());
             izvestaj.Opis = textRange.Text;
             int id = 0;
             for (int i = 0; i < 1000; i++)
@@ -79,9 +85,23 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             }
             izvestaj.Id = id;
             izvestaji.Add(izvestaj);
-            Trace.WriteLine(izvestaji[izvestaji.Count-1].Opis);
+            /*Trace.WriteLine(izvestaji[izvestaji.Count-1].Opis);
             Trace.WriteLine(termin.zdravstveniKarton.Id);
-            Trace.WriteLine(pac.ZdravstveniKarton.Id);
+            Trace.WriteLine(pac.ZdravstveniKarton.Id);  */
+            Trace.WriteLine(termin.zdravstveniKarton.Id);
+            foreach(Pacijent p in pacijenti)
+            {
+                if (termin.zdravstveniKarton.Id.Equals(p.ZdravstveniKarton.Id))
+                    pac = p;
+            }
+            foreach(Termin t in pac.termin)
+            {
+                if(t.Id.Equals(termin.Id))
+                {
+                    t.izvestaj = izvestaj;
+                }
+            }
+            pacijentServis.AzurirajPacijenta(pac);
             termin.izvestaj = izvestaj;
             terminServis.AzurirajTermin(termin);
             this.Close();

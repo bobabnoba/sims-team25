@@ -4,6 +4,7 @@ using Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -27,12 +28,16 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private ObservableCollection<Lek> lekovi;
         private ObservableCollection<Recept> recepti;
         Pacijent pac;
+        Termin ter;
         Recept r = new Recept();
         IDRepozitorijum datotekaID;
 
+        String now = DateTime.Now.ToString("hh:mm:ss tt");
+        DateTime today = DateTime.Today;
+
         Dictionary<int, int> ids = new Dictionary<int, int>();
         
-        public izdajRecept(Pacijent selektovani)
+        public izdajRecept(Pacijent selektovani,ObservableCollection<Recept> recepti)
         {
             InitializeComponent();
             this.DataContext = this;
@@ -44,7 +49,30 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             Date.BlackoutDates.Add(cdr);
             pac = selektovani;
             lekNaziv.ItemsSource = lekovi;
-            recepti = pac.ZdravstveniKarton.GetRecept();     
+            recepti = pac.ZdravstveniKarton.GetRecept();
+            this.recepti = recepti;
+        }
+
+        public izdajRecept(Termin selektovani, ObservableCollection<Recept> recepti)
+        {
+            InitializeComponent();
+            this.DataContext = this;
+            datotekaID = new IDRepozitorijum("iDMapRecept");
+            ids = datotekaID.dobaviSve();
+            lekovi = new ObservableCollection<Lek>(lekServis.PregledSvihLekova());
+
+            CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
+            Date.BlackoutDates.Add(cdr);
+            ter = selektovani;
+            lekNaziv.ItemsSource = lekovi;
+            foreach(Pacijent p in new List<Pacijent>(pacijentServis.PregledSvihPacijenata()))
+            {
+                if (p.ZdravstveniKarton != null)
+                    if (p.ZdravstveniKarton.Id.Equals(ter.zdravstveniKarton.Id))
+                        pac = p;
+            }
+            recepti = pac.ZdravstveniKarton.GetRecept();
+            this.recepti = recepti;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -61,7 +89,20 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             }
             r.Doziranje = Doza.Text;
             r.Trajanje = Int32.Parse(Trajanje.Text);
-            r.Pocetak = Date.SelectedDate.Value.Date;
+            ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
+            String t = null;
+            if (cboItem != null)
+            {
+                t = cboItem.Content.ToString();
+            }
+
+            
+            try
+            {
+                r.Pocetak = DateTime.Parse(Date.Text + " " + t);
+            }
+            catch(InvalidCastException)
+            { }
             int id = 0;
             for (int i = 0; i < 1000; i++)
             {
@@ -73,7 +114,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 }
             }
             r.Id = id;
-            recepti.Add(r);
+            this.recepti.Add(r);
             datotekaID.sacuvaj(ids);
             pacijentServis.AzurirajPacijenta(pac);
             this.Close();
@@ -91,5 +132,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 lekNaziv.IsEnabled = false;
             }
         }
+
+       
     }
 }

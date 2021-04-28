@@ -1,4 +1,5 @@
 ﻿using Model;
+using Service;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -13,6 +14,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     {
         private TerminService storage = new TerminService();
         private ObservableCollection<Termin> termini;
+        private PacijentService pacijentServis = new PacijentService();
         Termin termin;
         private Dictionary<int, int> ids = new Dictionary<int, int>();
 
@@ -28,6 +30,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         {
             this.ids[this.termin.Id] = 0;
             storage.OtkaziTermin(termin, ids);
+            pacijentServis.ObrisiTerminPacijentu(termin);
             termini.Remove(termin);
             this.Close();
 

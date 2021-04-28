@@ -4,6 +4,7 @@ using Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -35,25 +36,29 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         Pacijent pac;
         IstorijaBolesti i = new IstorijaBolesti();
         Termin ter = new Termin();
+        Termin sel = new Termin();
 
-        int tab = 0;
+        public static int tab = 0;
 
         public zdravstveniKartonPrikaz(Pacijent selektovani)
         {
             InitializeComponent();
             this.DataContext = this;
             dijagnoze = new ObservableCollection<Dijagnoza>(dijagnozaServis.PregledSvihDijagnoza());
+            termini = new ObservableCollection<Termin>(terminServis.PregledSvihTermina());
+            pacijenti = new ObservableCollection<Pacijent>(pacijentServis.PregledSvihPacijenata());
             pac = selektovani;
             zk = selektovani.ZdravstveniKarton;
             tab = 1;
             datotekaID = new IDRepozitorijum("iDMapRecept");
             ids = datotekaID.dobaviSve();
-            foreach(Termin t in zk.termin)
+            foreach (Termin ter in pac.termin)
             {
-                if(t.izvestaj!=null)
-                izvestaji.Add(t.izvestaj);
+                if(ter.izvestaj!=null)
+                    izvestaji.Add(ter.izvestaj);
             }
             izvestajGrid.ItemsSource = izvestaji;
+            dodajAnamnezu.Visibility = Visibility.Hidden;
             /*
             foreach (IstorijaBolesti i in zk.GetIstorijaBolesti())
                 dgUsers.ItemsSource = i.GetDijagnoza();
@@ -65,8 +70,8 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             //istorijaPorodicnihBolesti.ItemsSource = zk.GetIstorijaBolesti();
             if(zk.Alergije!=null)
             AlergijeListBox.ItemsSource = zk.Alergije.Split(",");
-            recepti = zk.GetRecept();
-            terapijaGrid.ItemsSource = recepti;
+            this.recepti = zk.recept;
+            terapijaGrid.ItemsSource = this.recepti;
 
             this.DataContext = this;
  
@@ -86,40 +91,73 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             InitializeComponent();
             dijagnoze = new ObservableCollection<Dijagnoza>(dijagnozaServis.PregledSvihDijagnoza());
             termini = new ObservableCollection<Termin>(terminServis.PregledSvihTermina());
+            pacijenti = new ObservableCollection<Pacijent>(pacijentServis.PregledSvihPacijenata());
+            datotekaID = new IDRepozitorijum("iDMapRecept");
+            ids = datotekaID.dobaviSve();
             zkt = t.zdravstveniKarton;
             tab = 2;
+            sel = t;
             //foreach (IstorijaBolesti i in zkt.GetIstorijaBolesti())
             //    dgUsers.ItemsSource = i.GetDijagnoza();
-            foreach(Termin tt in termini)
+            /*foreach(Termin tt in termini)
             {
                 if(t.Id.Equals(tt.Id))
                 {
                     pac = t.GetZdravstveniKarton().patient;
                 }
-            }
+            }*/
 
 
 
             //istorijaBolestiGrid.ItemsSource = zkt.GetIstorijaBolesti();
             //istorijaPorodicnihBolesti.ItemsSource = zkt.GetIstorijaBolesti();
-            if (zkt.Alergije != null)
-                AlergijeListBox.ItemsSource = zkt.Alergije.Split(",");
+            foreach (Pacijent p in pacijenti)
+            {
+                if (p.ZdravstveniKarton.Id.Equals(zkt.Id))
+                {
+                    foreach (Termin ter in p.termin)
+                    {
+                        foreach (Termin termin in termini)
+                        {
+                            if (ter.Id.Equals(termin.Id))
+                            {
+                                if (termin.izvestaj != null)
+                                {
+                                    izvestaji.Add(termin.izvestaj);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+            izvestajGrid.ItemsSource = izvestaji;
+            try
+            {
+                if (zkt.Alergije != null)
+                    AlergijeListBox.ItemsSource = zkt.Alergije.Split(",");
+            }
+            catch (NullReferenceException) { }
 
-            terapijaGrid.ItemsSource = zkt.GetRecept();
+           
 
             this.DataContext = this;
             foreach (Pacijent p in pacijenti)
             {
-                if(p.ZdravstveniKarton.Id== zkt.Id)
-                ImeLabel.Content = p.Ime;
-                PrezimeLabel.Content = p.Prezime;
-                BrojTelefonaLabel.Content = p.BrojTelefona;
-                JMBGLabel.Content = p.Jmbg;
-                PolLabel.Content = p.Pol;
+                //Trace.WriteLine(p.ZdravstveniKarton.Id + zkt.Id);
+                if (p.ZdravstveniKarton.Id == zkt.Id)
+                {
+                    ImeLabel.Content = p.Ime;
+                    PrezimeLabel.Content = p.Prezime;
+                    BrojTelefonaLabel.Content = p.BrojTelefona;
+                    JMBGLabel.Content = p.Jmbg;
+                    PolLabel.Content = p.Pol;
+                    terapijaGrid.ItemsSource = p.ZdravstveniKarton.recept;
 
-                try { KrvnaGrupaLabel.Content = p.ZdravstveniKarton.KrvnaGrupa; }
-                catch (NullReferenceException)
-                { }
+                    try { KrvnaGrupaLabel.Content = p.ZdravstveniKarton.KrvnaGrupa; }
+                    catch (NullReferenceException)
+                    { }
+                }
             }
         }
 
@@ -201,14 +239,33 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
        
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            izdajRecept izdaj = new izdajRecept(pac);
+            izdajRecept izdaj = null;
+            if (tab == 1)
+            { 
+                izdaj = new izdajRecept(pac,this.recepti);
+            }
+            else if (tab == 2)
+            {
+                izdaj = new izdajRecept(sel,this.recepti); 
+            }
             izdaj.Show();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             Recept r = (Recept)terapijaGrid.SelectedItem;
-            
+            if (tab == 2)
+            {
+                foreach (Pacijent p in pacijenti)
+                {
+                    if (p.ZdravstveniKarton.Id.Equals(sel.zdravstveniKarton.Id))
+                    {
+                        p.ZdravstveniKarton.recept.Remove(r);
+                        pac = p;
+                        break;
+                    }
+                }
+            }
             int id = r.Id;
             for (int i = 0; i < 1000; i++)
             {
@@ -219,35 +276,74 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                     break;
                 }
             }
-            recepti.Remove(r);
+            this.recepti.Remove(r);
             pacijentServis.AzurirajPacijenta(pac);
             datotekaID.sacuvaj(ids);
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            dodajAnamnezu anamneza = new dodajAnamnezu(pac);
+            dodajAnamnezu anamneza=null;
+            if (tab == 1)
+                anamneza = new dodajAnamnezu(pac);
+            else if (tab == 2)
+                anamneza = new dodajAnamnezu(sel);
             anamneza.Show();
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
             Izvestaj iz = (Izvestaj)izvestajGrid.SelectedItem;
-            foreach (Termin t in termini)
+           
+            int id = iz.Id;
+            //for (int i = 0; i < 1000; i++)
+            //{
+            //    if (ids[i] == 1)
+            //    {
+            //        id = i;
+            //        ids[i] = 0;
+            //        break;
+            //    }
+            //}
+            if (tab == 1)
             {
-                if (t.GetZdravstveniKarton().Id.Equals(pac.ZdravstveniKarton.Id))
+                foreach(Termin t in pac.termin)
                 {
-                    ter = t;
+                    if (t.izvestaj != null)
+                        if (t.izvestaj.Id.Equals(iz.Id))
+                        {
+                            t.izvestaj = null;
+                            break;
+                        }
+                }
+                foreach(Termin t in termini)
+                {
+                    if (t.izvestaj != null)
+                        if (t.izvestaj.Id.Equals(iz.Id))
+                        {
+                            t.izvestaj = null;
+                            ter = t;
+                        }
                 }
             }
-            int id = iz.Id;
-            for (int i = 0; i < 1000; i++)
+            else if(tab==2)
             {
-                if (ids[i] == 1)
+                sel.izvestaj = null;
+                foreach (Pacijent p in pacijenti)
                 {
-                    id = i;
-                    ids[i] = 0;
-                    break;
+                    if (sel.zdravstveniKarton.Id.Equals(p.ZdravstveniKarton.Id))
+                        pac = p;
+                }
+                foreach (Termin t in pac.termin)
+                {
+                    if (t.izvestaj != null)
+                    {
+                        if (t.izvestaj.Id.Equals(iz.Id))
+                        {
+                            t.izvestaj = null;
+                            ter = t;
+                        }
+                    }
                 }
             }
             izvestaji.Remove(iz);
