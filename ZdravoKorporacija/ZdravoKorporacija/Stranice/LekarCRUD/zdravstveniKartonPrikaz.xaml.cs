@@ -70,8 +70,8 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             //istorijaPorodicnihBolesti.ItemsSource = zk.GetIstorijaBolesti();
             if(zk.Alergije!=null)
             AlergijeListBox.ItemsSource = zk.Alergije.Split(",");
-            recepti = zk.GetRecept();
-            terapijaGrid.ItemsSource = recepti;
+            this.recepti = zk.recept;
+            terapijaGrid.ItemsSource = this.recepti;
 
             this.DataContext = this;
  
@@ -241,11 +241,12 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         {
             izdajRecept izdaj = null;
             if (tab == 1)
-                izdaj = new izdajRecept(pac);
+            { 
+                izdaj = new izdajRecept(pac,this.recepti);
+            }
             else if (tab == 2)
             {
-                izdaj = new izdajRecept(sel);
-                
+                izdaj = new izdajRecept(sel,this.recepti); 
             }
             izdaj.Show();
         }
@@ -275,7 +276,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                     break;
                 }
             }
-            recepti.Remove(r);
+            this.recepti.Remove(r);
             pacijentServis.AzurirajPacijenta(pac);
             datotekaID.sacuvaj(ids);
         }
