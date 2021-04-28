@@ -1,0 +1,26 @@
+[
+  {
+    "prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 2,
+      "Naziv": "soba21",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 2
+    },
+    "StatickaOprema": {
+      "termin": null,
+      "Prostorija": null,
+      "Id": 4,
+      "Naziv": "Hanzaplast",
+      "UkupnaKolicina": 100,
+      "Proizvodjac": "Keek",
+      "DatumNabavke": "0001-01-01T00:00:00"
+    },
+    "Id": 6,
+    "Pocetak": "2021-04-29T11:30:00",
+    "Kraj": "2021-04-29T11:42:00"
+  }
+]

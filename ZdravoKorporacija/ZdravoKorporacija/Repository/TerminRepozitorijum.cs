@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 
 namespace ZdravoKorporacija.Model
@@ -32,25 +33,31 @@ namespace ZdravoKorporacija.Model
         string SerializeObjectByJObject(List<Termin> ter)
         {
             string s = "";
-            foreach (Termin t in ter)
-            {
-                var jo = JObject.FromObject(t);
+          
+            var joa = JArray.FromObject(ter);
+           
+            int i = 0;
 
-                jo["prostorija"]["inventar"].Parent.Remove();
-                jo["prostorija"]["statickaOprema"].Parent.Remove();
-                jo["prostorija"]["dinamickaOprema"].Parent.Remove();
-                jo["prostorija"]["Naziv"].Parent.Remove();
-                jo["prostorija"]["Tip"].Parent.Remove();
-                jo["prostorija"]["Slobodna"].Parent.Remove();
-                jo["prostorija"]["Sprat"].Parent.Remove();
+            foreach ( JObject z in joa) {
+                
+                joa[i]["prostorija"]["inventar"].Parent.Remove();
+                joa[i]["prostorija"]["statickaOprema"].Parent.Remove();
+                joa[i]["prostorija"]["dinamickaOprema"].Parent.Remove();
+                joa[i]["prostorija"]["Naziv"].Parent.Remove();
+                joa[i]["prostorija"]["Tip"].Parent.Remove();
+                joa[i]["prostorija"]["Slobodna"].Parent.Remove();
+                joa[i]["prostorija"]["Sprat"].Parent.Remove();
               
-                //jo.Remove("prostorija");
-                //jo.Add("prostorija", new JObject());
-                //jo["prostorija"].AddAnnotation("Id") ;
-                // jo["prostorija"]["Id"] = t.prostorija.Id;
-                s += jo.ToString();
+                i++;
             }
-            return s;
+         
+            //jo.Remove("prostorija");
+            //jo.Add("prostorija", new JObject());
+            //jo["prostorija"].AddAnnotation("Id") ;
+            // jo["prostorija"]["Id"] = t.prostorija.Id;
+            // s += jo.ToString();
+            //}
+            return joa.ToString();
         }
 
         public void Serijalizacija(List<Termin> termini)

@@ -644,6 +644,176 @@
     "Tip": 0,
     "Pocetak": "2021-04-27T10:00:00",
     "Trajanje": 0.0
+  },
+  {
+    "izvestaj": null,
+    "zdravstveniKarton": null,
+    "prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 1,
+      "Naziv": "soba12",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 1
+    },
+    "Lekar": null,
+    "Id": 16,
+    "Tip": 0,
+    "Pocetak": "2021-04-29T12:30:00",
+    "Trajanje": 0.0
+  },
+  {
+    "izvestaj": null,
+    "zdravstveniKarton": null,
+    "prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 2,
+      "Naziv": "soba21",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 2
+    },
+    "Lekar": null,
+    "Id": 17,
+    "Tip": 0,
+    "Pocetak": "2021-04-29T15:00:00",
+    "Trajanje": 0.0
+  },
+  {
+    "izvestaj": null,
+    "zdravstveniKarton": null,
+    "prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 2,
+      "Naziv": "soba21",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 2
+    },
+    "Lekar": null,
+    "Id": 18,
+    "Tip": 0,
+    "Pocetak": "2021-04-29T14:30:00",
+    "Trajanje": 0.0
+  },
+  {
+    "izvestaj": null,
+    "zdravstveniKarton": null,
+    "prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 2,
+      "Naziv": "soba21",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 2
+    },
+    "Lekar": null,
+    "Id": 19,
+    "Tip": 0,
+    "Pocetak": "2021-04-30T14:00:00",
+    "Trajanje": 0.0
+  },
+  {
+    "izvestaj": null,
+    "zdravstveniKarton": null,
+    "prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 0,
+      "Naziv": "soba11",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 1
+    },
+    "Lekar": null,
+    "Id": 22,
+    "Tip": 0,
+    "Pocetak": "2021-04-30T09:30:00",
+    "Trajanje": 0.0
+  },
+  {
+    "izvestaj": null,
+    "zdravstveniKarton": null,
+    "prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 1,
+      "Naziv": "soba12",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 1
+    },
+    "Lekar": null,
+    "Id": 23,
+    "Tip": 0,
+    "Pocetak": "2021-04-30T15:30:00",
+    "Trajanje": 0.0
+  },
+  {
+    "izvestaj": null,
+    "zdravstveniKarton": null,
+    "prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 1,
+      "Naziv": "soba12",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 1
+    },
+    "Lekar": null,
+    "Id": 24,
+    "Tip": 0,
+    "Pocetak": "2021-04-30T16:30:00",
+    "Trajanje": 0.0
+  },
+  {
+    "izvestaj": null,
+    "zdravstveniKarton": null,
+    "prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 1,
+      "Naziv": "soba12",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 1
+    },
+    "Lekar": null,
+    "Id": 25,
+    "Tip": 0,
+    "Pocetak": "2021-04-29T10:30:00",
+    "Trajanje": 0.0
+  },
+  {
+    "izvestaj": null,
+    "zdravstveniKarton": null,
+    "prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 2,
+      "Naziv": "soba21",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 2
+    },
+    "Lekar": null,
+    "Id": 26,
+    "Tip": 0,
+    "Pocetak": "2021-04-29T11:30:00",
+    "Trajanje": 0.0
   }
- 
 ]
