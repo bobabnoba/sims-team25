@@ -96,6 +96,7 @@ namespace Model
         public TipTerminaEnum Tip { get; set; }
         public DateTime Pocetak { get; set; }
         public double Trajanje { get; set; }
+        public bool hitno { get; set; }
 
     }
 }

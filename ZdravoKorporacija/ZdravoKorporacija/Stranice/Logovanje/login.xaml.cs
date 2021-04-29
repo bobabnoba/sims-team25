@@ -8,7 +8,7 @@ namespace ZdravoKorporacija.Stranice
     /// <summary>
     /// Interaction logic for login.xaml
     /// </summary>
-    public partial class login : Page
+    public partial class login : Window
     {
         
         public login()

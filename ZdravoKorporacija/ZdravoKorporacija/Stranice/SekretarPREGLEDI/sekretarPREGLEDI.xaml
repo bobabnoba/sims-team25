@@ -30,6 +30,7 @@
                     <DataGridTextColumn Header="Datum" Binding="{Binding Pocetak}" />
                     <DataGridTextColumn Header="Tip pregleda" Binding="{Binding Tip}" />
                     <DataGridTextColumn Header="Prostorija" Binding="{Binding prostorija.Naziv}"/>
+                    <DataGridTextColumn Header="Hitno" Binding="{Binding hitno}"/>
                 </DataGrid.Columns>
                 <!--<DataGrid.RowDetailsTemplate>
                     <DataTemplate>

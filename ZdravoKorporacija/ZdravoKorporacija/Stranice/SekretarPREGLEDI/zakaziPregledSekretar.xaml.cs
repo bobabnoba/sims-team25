@@ -152,6 +152,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
             if (cbTip.SelectedIndex == 0)
             {
                 p.Tip = TipTerminaEnum.Pregled;
+                p.hitno = false;
             }
             else if (cbTip.SelectedIndex == 1)
             {

@@ -68,7 +68,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
             {
                 foreach (Termin t in pregledi)
                 {
-                    if ((t.Pocetak == RoundUp(DateTime.Now, TimeSpan.FromMinutes(30)) || t.Pocetak == RoundUp(DateTime.Now, TimeSpan.FromMinutes(60)) || t.Pocetak == RoundUp(DateTime.Now, TimeSpan.FromMinutes(90))) && t.Tip == TipTerminaEnum.Pregled)
+                    if ((t.Pocetak == RoundUp(DateTime.Now, TimeSpan.FromMinutes(30)) || t.Pocetak == RoundUp(DateTime.Now, TimeSpan.FromMinutes(60)) || t.Pocetak == RoundUp(DateTime.Now, TimeSpan.FromMinutes(90))) && t.Tip == TipTerminaEnum.Pregled && t.hitno == false)
                     {
                         alternativniTermini.Add(t);
                     }
@@ -127,6 +127,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
                     zaUpis.prostorija = slobodneProstorije.ElementAt<Prostorija>(slobodneProstorije.Count() - 1);
 
                     zaUpis.Id = id;
+                    zaUpis.hitno = true;
                     zaUpis.Pocetak = RoundUp(DateTime.Now, TimeSpan.FromMinutes(30));
                     Pacijent pac = (Pacijent)cbPacijent.SelectedItem;
 
@@ -165,7 +166,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
             {
                 foreach (Termin t in pregledi)
                 {
-                    if ((t.Pocetak == RoundUp(DateTime.Now, TimeSpan.FromMinutes(30)) || t.Pocetak == RoundUp(DateTime.Now, TimeSpan.FromMinutes(60)) || t.Pocetak == RoundUp(DateTime.Now, TimeSpan.FromMinutes(90))) && t.Tip == TipTerminaEnum.Operacija)
+                    if ((t.Pocetak == RoundUp(DateTime.Now, TimeSpan.FromMinutes(30)) || t.Pocetak == RoundUp(DateTime.Now, TimeSpan.FromMinutes(60)) || t.Pocetak == RoundUp(DateTime.Now, TimeSpan.FromMinutes(90))) && t.Tip == TipTerminaEnum.Operacija && t.hitno == false)
                     {
                         alternativniTermini.Add(t);
                     }
