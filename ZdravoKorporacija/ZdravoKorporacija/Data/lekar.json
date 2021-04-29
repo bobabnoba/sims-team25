@@ -66,6 +66,7 @@
       },
       {
         "izvestaj": null,
+<<<<<<< HEAD
         "zdravstveniKarton": {
           "izvestajOHospitalizaciji": [],
           "istorijaBolesti": [
@@ -178,6 +179,29 @@
         "Pocetak": "0001-01-01T00:00:00",
         "Trajanje": 0.0
       },
+=======
+        "zdravstveniKarton": null,
+        "prostorija": null,
+        "Id": 0,
+        "Tip": 0,
+        "Pocetak": "0001-01-01T00:00:00",
+        "Trajanje": 0.0
+      }
+    ],
+    "Ime": "Veljko",
+    "Prezime": "Vukovic",
+    "Jmbg": 2334567890213,
+    "BrojTelefona": 66393345,
+    "Mejl": "vuksivuk@gmail.com",
+    "AdresaStanovanja": "Beograd",
+    "Pol": 0,
+    "Username": "veksi",
+    "Password": "vukovic",
+    "Uloga": 0
+  },
+  {
+    "termin": [
+>>>>>>> ispravkakt3-pacijent
       {
         "izvestaj": null,
         "zdravstveniKarton": null,

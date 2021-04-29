@@ -38,9 +38,9 @@
             </DataGrid>
             <DataGrid Name="dgObavjestenja" AutoGenerateColumns="false" Margin="10,20,22,78" SelectionChanged="DataGrid_SelectionChanged">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Datum" Binding="{Binding Path = Pocetak}" />
-                    <DataGridTextColumn Header="Lek" Binding="{Binding Path=NazivLeka}" />
-                    <DataGridTextColumn Header="Doziranje" Binding="{Binding Path=Doziranje}" />
+                    <DataGridTextColumn Header="Datum" Binding="{Binding Path = Datum}" />
+                    <DataGridTextColumn Header="Tip" Binding="{Binding Path=Tip}" />
+                    <DataGridTextColumn Header="Sadržaj" Binding="{Binding Path=Sadrzaj}" />
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

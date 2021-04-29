@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,7 +18,7 @@ namespace ZdravoKorporacija.Stranice
         private TerminService storage = new TerminService();
         private LekarRepozitorijum ljekariDat = new LekarRepozitorijum();
         private List<Lekar> ljekari;
-        private List<Lekar> dostupniLjekari;
+        private BindingList<Lekar> dostupniLjekari;
         private Termin p;
         private ObservableCollection<Termin> pregledi;
         private Dictionary<int, int> ids = new Dictionary<int, int>();
@@ -29,20 +30,36 @@ namespace ZdravoKorporacija.Stranice
             InitializeComponent();
             this.ids = ids;
             p = new Termin();
+
             ljekari = ljekariDat.dobaviSve();
-            ljekar.ItemsSource = ljekari;
             pregledi = termini;
-            dostupniLjekari = ljekari;
-            ljekar.ItemsSource = dostupniLjekari;
+            dostupniLjekari = new BindingList<Lekar>();
 
             p.Tip = TipTerminaEnum.Pregled;
             p.Trajanje = 0.5;
-            //p.Id = pregledi.Count + 1;
 
             date.IsEnabled = false;
             time.IsEnabled = false;
             ljekar.IsEnabled = false;
 
+            selektovaneVrijednosti();
+        }
+
+        private void selektovaneVrijednosti()
+        {
+
+            ljekar.SelectedItem = null;
+            time.SelectedItem = null;
+            date.SelectedDate = null;
+            if (dostupniLjekari != null)
+                dostupniLjekari.Clear();
+            foreach (Lekar lll in ljekari)
+            {
+                dostupniLjekari.Add(lll);
+            }
+            ljekar.ItemsSource = dostupniLjekari;
+
+            time.Items.Clear();
             DateTime danas = DateTime.Today;
 
             for (DateTime tm = danas.AddHours(8); tm < danas.AddHours(22); tm = tm.AddMinutes(30))
@@ -50,9 +67,9 @@ namespace ZdravoKorporacija.Stranice
                 time.Items.Add(tm.ToShortTimeString());
 
             }
-
             CalendarDateRange kalendar = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
             date.BlackoutDates.Add(kalendar);
+
         }
 
         private void potvrdi(object sender, RoutedEventArgs e)
@@ -105,6 +122,7 @@ namespace ZdravoKorporacija.Stranice
 
         private void VremenskiSlotChecked(object sender, RoutedEventArgs e)
         {
+            selektovaneVrijednosti();
             selected = false;
             date.IsEnabled = true;
             time.IsEnabled = true;
@@ -114,7 +132,7 @@ namespace ZdravoKorporacija.Stranice
 
         private void LekarChecked(object sender, RoutedEventArgs e)
         {
-
+            selektovaneVrijednosti();
             selected = true;
             date.IsEnabled = true;
             time.IsEnabled = false;
@@ -126,40 +144,45 @@ namespace ZdravoKorporacija.Stranice
         {
             if (selected)
             {
-                p.Lekar = (Lekar)ljekar.SelectedItem;
-
-                foreach (Termin t in pregledi)
+                if (ljekar.SelectedItem != null && date.SelectedDate != null)
                 {
-                    if (t.Lekar.Jmbg.Equals(p.Lekar.Jmbg)) 
-                    {
-                        if (t.Pocetak.Date.Equals(((DateTime)date.SelectedDate).Date))  
-                        {
-                            time.Items.Remove(t.Pocetak.ToShortTimeString());
-                        }
-                    }
-                }
-                time.IsEnabled = true;
-            }
-            else
-            {
-                p.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
+                    p.Lekar = (Lekar)ljekar.SelectedItem;
 
-                foreach (Termin t in pregledi)
-                {
-                    if (t.Pocetak.Equals(p.Pocetak))
+                    foreach (Termin t in pregledi)
                     {
-                        foreach (Lekar l in ljekari.ToArray())
+                        if (t.Lekar.Jmbg.Equals(p.Lekar.Jmbg))
                         {
-                            if (l.Jmbg.Equals(t.Lekar.Jmbg))
+                            if (t.Pocetak.Date.Equals(((DateTime)date.SelectedDate).Date))
                             {
-                                dostupniLjekari.Remove(l);  
+                                time.Items.Remove(t.Pocetak.ToShortTimeString());
                             }
                         }
                     }
+                    time.IsEnabled = true;
                 }
+            }
+            else
+            {
+                if (time.SelectedItem != null && date.SelectedDate != null)
+                {
+                    p.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
 
-                //ljekar.ItemsSource = dostupniLjekari;
-                ljekar.IsEnabled = true;
+                    foreach (Termin t in pregledi)
+                    {
+                        if (t.Pocetak.Equals(p.Pocetak))
+                        {
+                            foreach (Lekar l in ljekari.ToArray()) 
+                            {
+                                if (l.Jmbg.Equals(t.Lekar.Jmbg))
+                                {
+                                    dostupniLjekari.Remove(l);
+                                }
+                            }
+                        }
+                    }
+
+                    ljekar.IsEnabled = true;
+                }
             }
 
         }
@@ -168,7 +191,7 @@ namespace ZdravoKorporacija.Stranice
         {
             if (selected)
             {
-                if (ljekar.SelectedIndex != -1)
+                if (ljekar.SelectedIndex != -1 && date.SelectedDate != null)
                 {
                     p.Lekar = (Lekar)ljekar.SelectedItem;
 
@@ -187,7 +210,7 @@ namespace ZdravoKorporacija.Stranice
             }
             else
             {
-                if (time.SelectedIndex != -1)
+                if (time.SelectedIndex != -1 && date.SelectedDate != null)
                 {
                     p.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
 
@@ -205,7 +228,6 @@ namespace ZdravoKorporacija.Stranice
                         }
                     }
 
-                    //ljekar.ItemsSource = dostupniLjekari;
                     ljekar.IsEnabled = true;
                 }
             }
@@ -218,7 +240,7 @@ namespace ZdravoKorporacija.Stranice
 
             if (selected)
             {
-                if (date.SelectedDate != null)
+                if (date.SelectedDate != null && ljekar.SelectedItem != null)
                 {
                     p.Lekar = (Lekar)ljekar.SelectedItem;
 
@@ -237,7 +259,7 @@ namespace ZdravoKorporacija.Stranice
             }
             else
             {
-                if (time.SelectedIndex != -1)
+                if (time.SelectedIndex != -1 && date.SelectedDate != null)
                 {
                     p.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
 
@@ -255,7 +277,6 @@ namespace ZdravoKorporacija.Stranice
                         }
                     }
 
-                    //ljekar.ItemsSource = dostupniLjekari;
                     ljekar.IsEnabled = true;
                 }
             }
