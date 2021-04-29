@@ -1,4 +1,5 @@
 ﻿using Model;
+using Repository;
 using Service;
 using System;
 using System.Collections.Generic;
@@ -13,10 +14,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.Model;
-
-
+using ZdravoKorporacija.Service;
+using System.Linq;
 
 namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
 {
@@ -37,6 +39,11 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
         private TerminService terminStorage = new TerminService();
         private Boolean selected;
         private Termin p = new Termin();
+
+
+        private ZahtevPremestanjaService zahteviStorage = new ZahtevPremestanjaService();
+        private List<ZahtevPremestanja> listaZahteva = new List<ZahtevPremestanja>();
+        private ZahtevPremestanja z = new ZahtevPremestanja();
 
         public statickaOpremaPremestiIzMagacina()
         {
@@ -67,7 +74,12 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
             CalendarDateRange kalendar = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
             timePicker.BlackoutDates.Add(kalendar);
 
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += ProveraZahteva;
+            timer.Start();
 
+            listaZahteva = zahteviStorage.PregledSveOpreme();
 
         }
 
@@ -77,9 +89,41 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
             Inventar inv = (Inventar)cbMagacin.SelectedItem;
             Termin t = new Termin();
             StatickaOprema st = new StatickaOprema(t, inv);
-            statickaopremaStorage.DodajOpremu(st, (DateTime)timePicker.SelectedDate,(String)sati.SelectedItem,(Prostorija)cbProstorija.SelectedItem);
-        }
+            
 
+            ZahtevPremestanja zp = new ZahtevPremestanja();
+            zp.prostorija =(Prostorija) cbProstorija.SelectedItem;
+            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapZahtevPremestanja");
+            Dictionary<int, int> ids = datotekaID.dobaviSve();
+            zahteviStorage.ZakaziPremestanje((Inventar)cbMagacin.SelectedItem,zp, (DateTime)timePicker.SelectedDate, (String)sati.SelectedItem,textBoxTrajanje.Text, ids);
+
+            listaZahteva = zahteviStorage.PregledSveOpreme();
+        }
+        private Boolean x = true;
+        public void ProveraZahteva(object sender, EventArgs e)
+        {
+            
+           
+            if (listaZahteva != null) {
+                z = listaZahteva.FirstOrDefault(s =>  s.Kraj <= DateTime.Now && s.Kraj >= DateTime.Now.AddMinutes(-5));
+               if(z == null)
+                {
+                    x = false;
+                }
+                else { x = true; }
+               
+            }
+           if(z != null && x == true)
+            {
+                listaZahteva.Remove(z);
+                statickaopremaStorage.DodajOpremu(z.StatickaOprema, z.Pocetak,"10",z.prostorija);
+                MessageBox.Show("zavrsen termin");
+                ZahtevPremestanjaRepozitorijum.Instance.sacuvaj(listaZahteva);
+                x = false;
+            }
+
+
+        }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
 

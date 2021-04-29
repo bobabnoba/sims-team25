@@ -15,6 +15,9 @@ namespace Model
         public Prostorija Prostorija { get; set; }
 
         public StatickaOprema() { }
+        public StatickaOprema(Inventar inv) : base(inv.Id, inv.Naziv, inv.UkupnaKolicina, inv.Proizvodjac, inv.DatumNabavke)
+        {
+        }
 
         public StatickaOprema(Termin termin, int id, string naziv, int ukupnaKolicina, string proizvodjac, DateTime datumNabavke) : base(id, naziv, ukupnaKolicina, proizvodjac, datumNabavke)
         {
