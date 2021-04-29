@@ -2517,10 +2517,100 @@
         "Tip": 0,
         "Pocetak": "0001-01-01T00:00:00",
         "Trajanje": 0.0
+      },
+      {
+        "izvestaj": null,
+        "zdravstveniKarton": null,
+        "prostorija": null,
+        "Id": 2,
+        "Tip": 0,
+        "Pocetak": "0001-01-01T00:00:00",
+        "Trajanje": 0.0
+      },
+      {
+        "izvestaj": null,
+        "zdravstveniKarton": null,
+        "prostorija": null,
+        "Id": 4,
+        "Tip": 0,
+        "Pocetak": "0001-01-01T00:00:00",
+        "Trajanje": 0.0
+      },
+      {
+        "izvestaj": null,
+        "zdravstveniKarton": null,
+        "prostorija": null,
+        "Id": 4,
+        "Tip": 0,
+        "Pocetak": "0001-01-01T00:00:00",
+        "Trajanje": 0.0
+      },
+      {
+        "izvestaj": null,
+        "zdravstveniKarton": null,
+        "prostorija": null,
+        "Id": 4,
+        "Tip": 0,
+        "Pocetak": "0001-01-01T00:00:00",
+        "Trajanje": 0.0
+      },
+      {
+        "izvestaj": null,
+        "zdravstveniKarton": null,
+        "prostorija": null,
+        "Id": 5,
+        "Tip": 0,
+        "Pocetak": "0001-01-01T00:00:00",
+        "Trajanje": 0.0
+      },
+      {
+        "izvestaj": null,
+        "zdravstveniKarton": null,
+        "prostorija": null,
+        "Id": 999,
+        "Tip": 0,
+        "Pocetak": "0001-01-01T00:00:00",
+        "Trajanje": 0.0
+      },
+      {
+        "izvestaj": null,
+        "zdravstveniKarton": null,
+        "prostorija": null,
+        "Id": 5,
+        "Tip": 0,
+        "Pocetak": "0001-01-01T00:00:00",
+        "Trajanje": 0.0
+      },
+      {
+        "izvestaj": null,
+        "zdravstveniKarton": null,
+        "prostorija": null,
+        "Id": 4,
+        "Tip": 0,
+        "Pocetak": "0001-01-01T00:00:00",
+        "Trajanje": 0.0
+      },
+      {
+        "izvestaj": null,
+        "zdravstveniKarton": null,
+        "prostorija": null,
+        "Id": 4,
+        "Tip": 0,
+        "Pocetak": "0001-01-01T00:00:00",
+        "Trajanje": 0.0
+      },
+      {
+        "izvestaj": null,
+        "zdravstveniKarton": null,
+        "prostorija": null,
+        "Id": 5,
+        "Tip": 0,
+        "Pocetak": "0001-01-01T00:00:00",
+        "Trajanje": 0.0
       }
     ],
-    "Ime": "Veljko",
-    "Prezime": "Vukovic",
+    "Ime": "Milos",
+    "Prezime": "Dukovic",
     "Jmbg": 2334567890213,
     "BrojTelefona": 66393345,
     "Mejl": "vuksivuk@gmail.com",
@@ -2528,6 +2618,65 @@
     "Pol": 0,
     "Username": "veksi",
     "Password": "vukovic",
+    "Uloga": 0
+  },
+  {
+    "termin": [
+      {
+        "izvestaj": null,
+        "zdravstveniKarton": null,
+        "prostorija": null,
+        "Id": 4,
+        "Tip": 0,
+        "Pocetak": "0001-01-01T00:00:00",
+        "Trajanje": 0.0
+      },
+      {
+        "izvestaj": null,
+        "zdravstveniKarton": null,
+        "prostorija": null,
+        "Id": 4,
+        "Tip": 0,
+        "Pocetak": "0001-01-01T00:00:00",
+        "Trajanje": 0.0
+      },
+      {
+        "izvestaj": null,
+        "zdravstveniKarton": null,
+        "prostorija": null,
+        "Id": 4,
+        "Tip": 0,
+        "Pocetak": "0001-01-01T00:00:00",
+        "Trajanje": 0.0
+      },
+      {
+        "izvestaj": null,
+        "zdravstveniKarton": null,
+        "prostorija": null,
+        "Id": 5,
+        "Tip": 0,
+        "Pocetak": "0001-01-01T00:00:00",
+        "Trajanje": 0.0
+      },
+      {
+        "izvestaj": null,
+        "zdravstveniKarton": null,
+        "prostorija": null,
+        "Id": 4,
+        "Tip": 0,
+        "Pocetak": "0001-01-01T00:00:00",
+        "Trajanje": 0.0
+      }
+    ],
+    "Ime": "Deki",
+    "Prezime": "Sukovic",
+    "Jmbg": 2334567890213,
+    "BrojTelefona": 66393345,
+    "Mejl": "vuksivuk@gmail.com",
+    "AdresaStanovanja": "Beograd",
+    "Pol": 0,
+    "Username": "veaksi",
+    "Password": "vuakovic",
     "Uloga": 0
   }
 ]

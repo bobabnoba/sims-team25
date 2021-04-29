@@ -115,12 +115,20 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
 
             p.prostorija = (Prostorija)cbProstorija.SelectedItem;
             p.Lekar = (Lekar)Lekari.SelectedItem;
+            if (cbTip.SelectedIndex == 0)
+            {
+                p.Tip = TipTerminaEnum.Pregled;
+            }
+            else if (cbTip.SelectedIndex == 1)
+            {
+                p.Tip = TipTerminaEnum.Operacija;
+            }
             if (pac.ZdravstveniKarton != null)
                 p.zdravstveniKarton = pac.ZdravstveniKarton;
             else
             {
-                p.zdravstveniKarton = new ZdravstveniKarton(null, pacijenti.Count + 1, StanjePacijentaEnum.None, null, KrvnaGrupaEnum.None, null);
-                pac.ZdravstveniKarton = new ZdravstveniKarton(null, pacijenti.Count + 1, StanjePacijentaEnum.None, null, KrvnaGrupaEnum.None, null);
+                p.zdravstveniKarton = new ZdravstveniKarton(null, pac.GetJmbg(), StanjePacijentaEnum.None, null, KrvnaGrupaEnum.None, null);
+                pac.ZdravstveniKarton = new ZdravstveniKarton(null, pac.GetJmbg(), StanjePacijentaEnum.None, null, KrvnaGrupaEnum.None, null);
             }
 
             Termin tZaLjekara = new Termin();

@@ -9,6 +9,8 @@
       Title="Sekretar">
 
     <Grid>
+        <Button Content="HITNOOO" HorizontalAlignment="Left" Margin="117,22,0,0" VerticalAlignment="Top" Width="92" Height="44" Click="hitno"/>
+
         <Button Content="Zakaži pregled" HorizontalAlignment="Left" Margin="217,22,0,0" VerticalAlignment="Top" Width="92" Height="44" Click="zakaziPregled"/>
         <Button Content="Izmeni pregled" HorizontalAlignment="Center" Margin="0,22,0,0" VerticalAlignment="Top" Width="92" Height="44" RenderTransformOrigin="0.255,-0.75" Click="izmeniPregled"/>
         <Button Content="Otkaži pregled" HorizontalAlignment="Left" Margin="486,22,0,0" VerticalAlignment="Top" Width="92" Height="44" RenderTransformOrigin="0.033,-1.977" Click="otkaziPregled"/>

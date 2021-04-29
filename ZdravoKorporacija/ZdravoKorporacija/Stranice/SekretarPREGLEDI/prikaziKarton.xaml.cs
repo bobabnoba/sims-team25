@@ -30,8 +30,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
         {
             InitializeComponent();
             pacijent = izabrani;
-            karton = kr.findById(izabrani.GetJmbg());
-            kartoni.Add(karton);
+            karton = izabrani.ZdravstveniKarton;
             
             if (karton == null)
             {
@@ -41,6 +40,9 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
 
             } else
             {
+                kr.KreirajZdravstveniKartonJMBG(karton);
+                ZdravstveniKarton temp = kr.findById(izabrani.Jmbg);
+                kartoni.Add(temp);
                 dgKarton.ItemsSource = kartoni;
 
             }
@@ -57,6 +59,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
         {
             ZdravstveniKarton zk = new ZdravstveniKarton(pacijent, pacijent.GetJmbg(), StanjePacijentaEnum.None, "", KrvnaGrupaEnum.None, "");
             kr.KreirajZdravstveniKartonJMBG(zk);
+            pacijent.ZdravstveniKarton = zk;
             this.Close();
             
         }

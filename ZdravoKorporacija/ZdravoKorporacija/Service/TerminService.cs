@@ -1,5 +1,6 @@
 ﻿using Model;
 using Repository;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -8,7 +9,31 @@ namespace ZdravoKorporacija.Model
     class TerminService
     {
 
+        public Termin FindOpByPocetak(DateTime poc)
+        {
+            TerminRepozitorijum datoteka = new TerminRepozitorijum();
+            List<Termin> termini = datoteka.dobaviSve();
+            foreach(Termin t in termini)
+            {
+                if (t.Pocetak == poc && t.Tip == TipTerminaEnum.Operacija)
+                    return t;
+            }
 
+            return null;
+        }
+        public List<Termin> FindPrByPocetak(DateTime poc)
+        {
+            TerminRepozitorijum datoteka = new TerminRepozitorijum();
+            List<Termin> termini = datoteka.dobaviSve();
+            List<Termin> povratna = new List<Termin>();
+            foreach (Termin t in termini)
+            {
+                if (t.Pocetak == poc && t.Tip == TipTerminaEnum.Pregled)
+                    povratna.Add(t);
+            }
+
+            return povratna;
+        }
         public bool ZakaziTermin(Termin termin, Dictionary<int, int> ids)
         {
             TerminRepozitorijum datoteka = new TerminRepozitorijum();
