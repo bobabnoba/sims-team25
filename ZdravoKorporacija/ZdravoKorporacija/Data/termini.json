@@ -7680,46 +7680,5 @@
     "Tip": 0,
     "Pocetak": "2021-05-01T09:30:00",
     "Trajanje": 0.5
-<<<<<<< HEAD
-  },
-  {
-    "izvestaj": null,
-    "zdravstveniKarton": null,
-    "prostorija": {
-      "inventar": [],
-      "statickaOprema": null,
-      "dinamickaOprema": null,
-      "Id": 0,
-      "Naziv": "soba11",
-      "Tip": 1,
-      "Slobodna": false,
-      "Sprat": 1
-    },
-    "Lekar": null,
-    "Id": 0,
-    "Tip": 0,
-    "Pocetak": "2021-04-24T00:00:00",
-    "Trajanje": 0.0
-  },
-  {
-    "izvestaj": null,
-    "zdravstveniKarton": null,
-    "prostorija": {
-      "inventar": [],
-      "statickaOprema": null,
-      "dinamickaOprema": null,
-      "Id": 2,
-      "Naziv": "soba21",
-      "Tip": 1,
-      "Slobodna": false,
-      "Sprat": 2
-    },
-    "Lekar": null,
-    "Id": 13,
-    "Tip": 0,
-    "Pocetak": "2021-04-25T13:30:00",
-    "Trajanje": 0.0
-=======
->>>>>>> origin/ispravkakt3_3
-  }
+  }  
 ]
