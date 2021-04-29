@@ -19,13 +19,13 @@ namespace Service
             String s = dt.ToString();
             String date = s.Split(" ")[0];
 
-            Debug.WriteLine(date + " " + sati);
-            Debug.WriteLine("" + s);
+           // Debug.WriteLine(date + " " + sati);
+           // Debug.WriteLine("" + s);
 
-            DateTime datum = DateTime.Parse(date + " " + sati);
-            st.termin.Pocetak = datum;
+          //  DateTime datum = DateTime.Parse(date + " " + sati);
+          //  st.termin.Pocetak = datum;
             Termin t = new Termin();
-            t.Pocetak = datum;
+            t.Pocetak = dt;
             t.prostorija = p;
            
 

@@ -18,6 +18,16 @@ namespace Model
             this.Prezime = Prezime;
         }
 
+        public Korisnik(string ime, string prezime, Int64 jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, UlogaEnum uloga) : this(ime, prezime)
+        {
+            Jmbg = jmbg;
+            BrojTelefona = brojTelefona;
+            Mejl = mejl;
+            AdresaStanovanja = adresaStanovanja;
+            Pol = pol;
+            Uloga = uloga;
+        }
+
         public Korisnik(string ime, string prezime, Int64 jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password, UlogaEnum uloga) : this(ime, prezime)
         {
             Jmbg = jmbg;
@@ -29,6 +39,7 @@ namespace Model
             Password = password;
             Uloga = uloga;
         }
+
 
         public String Ime { get; set; }
         public String Prezime { get; set; }

@@ -6,6 +6,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Model
 {
@@ -105,10 +106,48 @@ namespace Model
         public ZdravstveniKarton ZdravstveniKarton { get; set; }
 
         public bool Guest { get; set; }
+       
 
         public long GetJmbg()
         {
             return this.Jmbg;
+        }
+
+        //  public ObservableCollection<Notifikacija> Notifikacije { get => notifikacije; set => notifikacije = value; }
+
+        public ObservableCollection<Notifikacija> notifikacije;
+
+        /// <pdGenerated>default getter</pdGenerated>
+        public ObservableCollection<Notifikacija> GetNotifikacije()
+        {
+            if (notifikacije == null)
+                notifikacije = new ObservableCollection<Notifikacija>();
+            return notifikacije;
+        }
+
+        /// <pdGenerated>default setter</pdGenerated>
+        public void SetNotifikacije(ObservableCollection<Notifikacija> newNotifikacije)
+        {
+            RemoveAllNotifikacije();
+            foreach (Notifikacija oNotifikacije in newNotifikacije)
+                AddNotifikacije(oNotifikacije);
+        }
+
+        /// <pdGenerated>default Add</pdGenerated>
+        public void AddNotifikacije(Notifikacija newNotifikacije)
+        {
+            if (newNotifikacije == null)
+                return;
+            if (this.notifikacije == null)
+                this.notifikacije = new ObservableCollection<Notifikacija>();
+            if (!this.notifikacije.Contains(newNotifikacije))
+                this.notifikacije.Add(newNotifikacije);
+        }
+
+        public void RemoveAllNotifikacije()
+        {
+            if (notifikacije != null)
+                notifikacije.Clear();
         }
 
     }

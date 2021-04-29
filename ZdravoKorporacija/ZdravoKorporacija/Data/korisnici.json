@@ -10,5 +10,29 @@
     "Username": "o",
     "Password": "o",
     "Uloga": 3
+  },
+  {
+    "Ime": null,
+    "Prezime": null,
+    "Jmbg": 0,
+    "BrojTelefona": 0,
+    "Mejl": null,
+    "AdresaStanovanja": null,
+    "Pol": 0,
+    "Username": "a",
+    "Password": "a",
+    "Uloga": 3
+  },
+  {
+    "Ime": "Aleksa",
+    "Prezime": "Papovic",
+    "Jmbg": 0,
+    "BrojTelefona": 0,
+    "Mejl": null,
+    "AdresaStanovanja": null,
+    "Pol": 0,
+    "Username": "pape",
+    "Password": "pape99",
+    "Uloga": 0
   }
 ]

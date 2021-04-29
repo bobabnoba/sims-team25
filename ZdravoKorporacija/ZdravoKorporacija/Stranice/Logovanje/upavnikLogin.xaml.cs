@@ -21,6 +21,7 @@ namespace ZdravoKorporacija.Stranice.Logovanje
     public partial class upavnikLogin : Window
     {
         KorisnikService ks = new KorisnikService();
+        Korisnik ulogovan;
         UlogaEnum upravnik;
         public upavnikLogin(global::Model.UlogaEnum uloga)
         {
@@ -31,14 +32,17 @@ namespace ZdravoKorporacija.Stranice.Logovanje
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ks.Uloguj(this.upravnik, textBoxIme.Text, textBoxSifra.Text);
-            upravnikPocetna uP = new upravnikPocetna();
-            uP.Show();
+            ulogovan = ks.Uloguj(this.upravnik, textBoxIme.Text, textBoxSifra.Text);
+            if (ulogovan != null)
+            {
+                upravnikPocetna uP = new upravnikPocetna();
+                uP.Show();
+            }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            ks.DodajKorisnika(textBoxIme.Text, textBoxSifra.Text,this.upravnik);
+           
         }
     }
 }
