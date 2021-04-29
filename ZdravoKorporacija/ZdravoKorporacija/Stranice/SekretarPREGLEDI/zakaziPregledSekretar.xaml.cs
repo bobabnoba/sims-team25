@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Model;
+using Repository;
 using Service;
 using ZdravoKorporacija.Model;
 
@@ -24,12 +25,14 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
         private TerminService ts = new TerminService();
 
         private ProstorijaService prostorijeStorage = new ProstorijaService();
+        private ProstorijaRepozitorijum pRep = new ProstorijaRepozitorijum();
         private PacijentRepozitorijum pacijentiDat = new PacijentRepozitorijum();
         private PacijentService pacijentiStorage = new PacijentService();
         private List<Pacijent> pacijenti = new List<Pacijent>();
         private LekarRepozitorijum lekariDat = new LekarRepozitorijum();
         private List<Lekar> lekari = new List<Lekar>();
         private List<Lekar> slobodniLekari;
+        private List<Prostorija> slobodneProstorije;
         private List<Prostorija> prostorije = new List<Prostorija>();
 
         private Termin p;
@@ -53,6 +56,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
 
             slobodniLekari = lekari;
             Lekari.ItemsSource = slobodniLekari;
+            
 
             this.ids = ids;
             DateTime danas = DateTime.Today;
@@ -72,8 +76,11 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
 
 
 
-            prostorije = prostorijeStorage.PregledSvihProstorija();
+            prostorije = pRep.dobaviSve();
             cbProstorija.ItemsSource = prostorije;
+
+            slobodneProstorije = prostorije;
+            cbProstorija.ItemsSource = slobodneProstorije;
             p.Trajanje = 0.5;
 
 
@@ -88,7 +95,34 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
             cbProstorija.IsEnabled = true;
             Lekari.IsEnabled = true;
 
+            foreach (Termin t in pregledi)
+            {
+                if (t.Pocetak.Equals(p.Pocetak))
+                {
+                    foreach (Lekar l in lekari.ToArray())
+                    {
+                        if (l.Jmbg.Equals(t.Lekar.Jmbg))
+                        {
+                            slobodniLekari.Remove(l);
+                            
+                        }
+                    }
+                }
+            }
 
+            foreach (Termin t in pregledi)
+            {
+                if (t.Pocetak.Equals(p.Pocetak))
+                {
+                    foreach (Prostorija p in prostorije.ToArray())
+                    {
+                        if (t.prostorija.Id.Equals(p.Id))
+                        {
+                            slobodneProstorije.Remove(p);
+                        }
+                    }
+                }
+            }
 
 
 
@@ -131,13 +165,14 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
                 pac.ZdravstveniKarton = new ZdravstveniKarton(null, pac.GetJmbg(), StanjePacijentaEnum.None, null, KrvnaGrupaEnum.None, null);
             }
 
-            Termin tZaLjekara = new Termin();
-            tZaLjekara.Id = p.Id;
-            p.Lekar.AddTermin(tZaLjekara);
+            Termin tZaLekara = new Termin();
+            tZaLekara.Id = p.Id;
+            p.Lekar.AddTermin(tZaLekara);
 
             if (ts.ZakaziTermin(p, ids))
             {
                 this.pregledi.Add(p);
+                lekari = lekariDat.dobaviSve();
                 lekariDat.sacuvaj(lekari);
 
             }
@@ -154,7 +189,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+          
         }
 
         private void odustani(object sender, RoutedEventArgs e)
@@ -171,21 +206,8 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
 
 
 
-                foreach (Termin t in pregledi)
-                {
-                    if (t.Pocetak.Equals(p.Pocetak))
-                    {
-                        foreach (Lekar l in lekari.ToArray())
-                        {
-                            if (l.Jmbg.Equals(t.Lekar.Jmbg))
-                            {
-                                slobodniLekari.Remove(l);
-                            }
-                        }
-                    }
-                }
-
-                Lekari.IsEnabled = true;
+         
+                
             }
         }
     }

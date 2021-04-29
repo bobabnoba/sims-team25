@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Model;
+using Repository;
 using Service;
 using ZdravoKorporacija.Model;
 
@@ -33,6 +34,10 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
         private LekarRepozitorijum lekariDat = new LekarRepozitorijum();
         private List<Lekar> lekari = new List<Lekar>();
         List<Lekar> slobodniLekari = new List<Lekar>();
+        private List<Prostorija> slobodneProstorije;
+        private List<Prostorija> prostorije = new List<Prostorija>();
+        private ProstorijaRepozitorijum pRep = new ProstorijaRepozitorijum();
+        private ObservableCollection<Termin> alternativniTermini;
 
         public zakaziHitno(ObservableCollection<Termin> termini, Dictionary<int, int> ids)
         {
@@ -43,6 +48,14 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
             this.ids = ids;
             lekari = lekariDat.dobaviSve();
             slobodniLekari = lekari;
+           
+            alternativniTermini = new ObservableCollection<Termin>();
+        
+            prostorije = pRep.dobaviSve();
+
+            slobodneProstorije = prostorije;
+            alternative.ItemsSource = alternativniTermini;
+
         }
         DateTime RoundUp(DateTime dt, TimeSpan d)
         {
@@ -51,10 +64,16 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
 
         private void potvrdi(object sender, RoutedEventArgs e)
         {
-            if(cbTip.SelectedIndex == 0)
+            if (cbTip.SelectedIndex == 0)
             {
-               
-                provera =  ts.FindPrByPocetak(RoundUp(DateTime.Now, TimeSpan.FromMinutes(30)));
+                foreach (Termin t in pregledi)
+                {
+                    if ((t.Pocetak == RoundUp(DateTime.Now, TimeSpan.FromMinutes(30)) || t.Pocetak == RoundUp(DateTime.Now, TimeSpan.FromMinutes(60)) || t.Pocetak == RoundUp(DateTime.Now, TimeSpan.FromMinutes(90))) && t.Tip == TipTerminaEnum.Pregled)
+                    {
+                        alternativniTermini.Add(t);
+                    }
+                }
+                provera = ts.FindPrByPocetak(RoundUp(DateTime.Now, TimeSpan.FromMinutes(30)));
                 foreach (Termin t in pregledi)
                 {
                     if (t.Pocetak.Equals(RoundUp(DateTime.Now, TimeSpan.FromMinutes(30))))
@@ -68,12 +87,28 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
                         }
                     }
                 }
-                if (slobodniLekari.Count() == 0)
+                foreach (Termin t in pregledi)
+                {
+                    provera = ts.FindPrByPocetak(RoundUp(DateTime.Now, TimeSpan.FromMinutes(30)));
+                    {
+                        foreach (Prostorija p in prostorije.ToArray())
+                        {
+                            if (t.prostorija.Id.Equals(p.Id))
+                            {
+                                slobodneProstorije.Remove(p);
+                            }
+                        }
+                    }
+                }
+                if (slobodniLekari.Count() == 0 || slobodneProstorije.Count() == 0)
                 {
                     MessageBox.Show("Nema slobodnih termina ATM!!!");
-                    
+                    alternative.Visibility = Visibility.Visible;
+
+
+
                 }
-                else if ( slobodniLekari.Count() != 0)
+                else if (slobodniLekari.Count() != 0 && slobodneProstorije.Count() != 0)
                 {
                     Termin zaUpis = new Termin();
                     int id = 0;
@@ -88,8 +123,9 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
                     }
 
 
-                    zaUpis.Lekar = slobodniLekari.ElementAt<Lekar>(slobodniLekari.Count()-1);
-                   
+                    zaUpis.Lekar = slobodniLekari.ElementAt<Lekar>(slobodniLekari.Count() - 1);
+                    zaUpis.prostorija = slobodneProstorije.ElementAt<Prostorija>(slobodneProstorije.Count() - 1);
+
                     zaUpis.Id = id;
                     zaUpis.Pocetak = RoundUp(DateTime.Now, TimeSpan.FromMinutes(30));
                     Pacijent pac = (Pacijent)cbPacijent.SelectedItem;
@@ -106,27 +142,119 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
                         pac.ZdravstveniKarton = new ZdravstveniKarton(null, pac.GetJmbg(), StanjePacijentaEnum.None, null, KrvnaGrupaEnum.None, null);
                     }
 
-                    Termin tZaLjekara = new Termin();
-                    tZaLjekara.Id = zaUpis.Id;
-                    zaUpis.Lekar.AddTermin(tZaLjekara);
+                    Termin tZaLekara = new Termin();
+                    tZaLekara.Id = zaUpis.Id;
+                    zaUpis.Lekar.AddTermin(tZaLekara);
 
                     if (ts.ZakaziTermin(zaUpis, ids))
                     {
                         this.pregledi.Add(zaUpis);
+                        lekari = lekariDat.dobaviSve();
                         lekariDat.sacuvaj(lekari);
 
                     }
                     pac.AddTermin(zaUpis);
                     ps.AzurirajPacijenta(pac);
-                
+
                     this.Close();
 
                 }
-                
+
             }
             else if (cbTip.SelectedIndex == 1)
             {
+                foreach (Termin t in pregledi)
+                {
+                    if ((t.Pocetak == RoundUp(DateTime.Now, TimeSpan.FromMinutes(30)) || t.Pocetak == RoundUp(DateTime.Now, TimeSpan.FromMinutes(60)) || t.Pocetak == RoundUp(DateTime.Now, TimeSpan.FromMinutes(90))) && t.Tip == TipTerminaEnum.Operacija)
+                    {
+                        alternativniTermini.Add(t);
+                    }
+                }
+                provera = ts.FindPrByPocetak(RoundUp(DateTime.Now, TimeSpan.FromMinutes(30)));
+                foreach (Termin t in pregledi)
+                {
+                    if (t.Pocetak.Equals(RoundUp(DateTime.Now, TimeSpan.FromMinutes(30))))
+                    {
+                        foreach (Lekar l in lekari.ToArray())
+                        {
+                            if (l.Jmbg.Equals(t.Lekar.Jmbg))
+                            {
+                                slobodniLekari.Remove(l);
+                            }
+                        }
+                    }
+                }
+                foreach (Termin t in pregledi)
+                {
+                    provera = ts.FindPrByPocetak(RoundUp(DateTime.Now, TimeSpan.FromMinutes(30)));
+                    {
+                        foreach (Prostorija p in prostorije.ToArray())
+                        {
+                            if (t.prostorija.Id.Equals(p.Id))
+                            {
+                                slobodneProstorije.Remove(p);
+                            }
+                        }
+                    }
+                }
+                if (slobodniLekari.Count() == 0 || slobodneProstorije.Count() == 0)
+                {
+                    MessageBox.Show("Nema slobodnih termina ATM!!!");
+                    alternative.Visibility = Visibility.Visible;
 
+
+
+                }
+                else if (slobodniLekari.Count() != 0 && slobodneProstorije.Count() != 0)
+                {
+                    Termin zaUpis = new Termin();
+                    int id = 0;
+                    for (int i = 0; i < 1000; i++)
+                    {
+                        if (ids[i] == 0)
+                        {
+                            id = i;
+                            ids[i] = 1;
+                            break;
+                        }
+                    }
+
+
+                    zaUpis.Lekar = slobodniLekari.ElementAt<Lekar>(slobodniLekari.Count() - 1);
+                    zaUpis.prostorija = slobodneProstorije.ElementAt<Prostorija>(slobodneProstorije.Count() - 1);
+
+                    zaUpis.Id = id;
+                    zaUpis.Pocetak = RoundUp(DateTime.Now, TimeSpan.FromMinutes(30));
+                    Pacijent pac = (Pacijent)cbPacijent.SelectedItem;
+
+
+
+
+                    zaUpis.Tip = TipTerminaEnum.Operacija;
+                    if (pac.ZdravstveniKarton != null)
+                        zaUpis.zdravstveniKarton = pac.ZdravstveniKarton;
+                    else
+                    {
+                        pac.ZdravstveniKarton = new ZdravstveniKarton(null, pac.GetJmbg(), StanjePacijentaEnum.None, null, KrvnaGrupaEnum.None, null);
+                        pac.ZdravstveniKarton = new ZdravstveniKarton(null, pac.GetJmbg(), StanjePacijentaEnum.None, null, KrvnaGrupaEnum.None, null);
+                    }
+
+                    Termin tZaLekara = new Termin();
+                    tZaLekara.Id = zaUpis.Id;
+                    zaUpis.Lekar.AddTermin(tZaLekara);
+
+                    if (ts.ZakaziTermin(zaUpis, ids))
+                    {
+                        this.pregledi.Add(zaUpis);
+                        lekari = lekariDat.dobaviSve();
+                        lekariDat.sacuvaj(lekari);
+
+                    }
+                    pac.AddTermin(zaUpis);
+                    ps.AzurirajPacijenta(pac);
+
+                    this.Close();
+                }
             }
         }
 
@@ -138,6 +266,27 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void zameni(object sender, RoutedEventArgs e)
+        {
+            Termin t = new Termin();
+            t = (Termin)alternative.SelectedItem;
+            foreach(Termin term in alternativniTermini)
+            {
+                if (term.Id.Equals(t.Id))
+                {
+                    
+                    Pacijent pac = (Pacijent)cbPacijent.SelectedItem;
+                    term.zdravstveniKarton = pac.ZdravstveniKarton;
+                    if (ts.AzurirajTermin(term))
+                    {
+                        this.pregledi.Remove(t);
+                        this.pregledi.Add(term);
+                    }
+                    this.Close();
+                }
+            }
         }
     }
 }
