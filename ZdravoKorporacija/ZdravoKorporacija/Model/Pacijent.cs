@@ -5,11 +5,8 @@
 
 using System;
 using System.Collections;
-<<<<<<< HEAD
 using System.Collections.Generic;
-=======
 using System.Collections.ObjectModel;
->>>>>>> ispravkakt3-pacijent
 
 namespace Model
 {
