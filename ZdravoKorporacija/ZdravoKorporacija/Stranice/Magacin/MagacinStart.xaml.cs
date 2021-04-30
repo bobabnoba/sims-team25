@@ -25,6 +25,7 @@ namespace ZdravoKorporacija.Stranice.Magacin
     {
         Dictionary<int, int> ids = new Dictionary<int, int>();
 
+        ObservableCollection<Inventar> filtrirana_oprema = new ObservableCollection<Inventar>();
 
         public MagacinStart()
         {
@@ -34,6 +35,7 @@ namespace ZdravoKorporacija.Stranice.Magacin
             UpravnikController uc = new UpravnikController();
             uc.DodajIzMagacina();
             dgMagacinOprema.ItemsSource = MagacinRepozitorijum.Instance.magacinOprema;
+           
         }
 
         private void dgMagacinOprema_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -59,7 +61,21 @@ namespace ZdravoKorporacija.Stranice.Magacin
 
         private void searchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            this.filtrirana_oprema = new ObservableCollection<Inventar>();
+            foreach (Inventar inv in MagacinRepozitorijum.Instance.magacinOprema)
+            {
+                if (inv.Naziv.Contains(searchBox.Text))
+                {
+                    filtrirana_oprema.Add(inv);
+                }
+            }
+        }
 
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            if (filtrirana_oprema != null) {
+                dgMagacinOprema.ItemsSource = this.filtrirana_oprema;
+            }
         }
     }
 }
