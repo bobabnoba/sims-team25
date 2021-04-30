@@ -4,9 +4,9 @@ using System.Text;
 
 namespace ZdravoKorporacija.DTO
 {
-    class LekDTO
+    public class LekDTO
     {
-        public String Id { get; set; }
+        public int Id { get; set; }
         public String Proizvodjac { get; set; }
         public String Sastojci { get; set; }
         public String NusPojave { get; set; }
@@ -58,7 +58,7 @@ namespace ZdravoKorporacija.DTO
                 alternativniLekovi.Clear();
         }
 
-        public LekDTO(String ID, String pr, String sas, String np, String nl)
+        public LekDTO(int ID, String pr, String sas, String np, String nl)
         {
             Id = ID;
             Proizvodjac = pr;

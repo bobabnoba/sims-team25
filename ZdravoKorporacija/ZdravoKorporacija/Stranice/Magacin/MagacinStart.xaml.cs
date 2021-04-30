@@ -56,5 +56,10 @@ namespace ZdravoKorporacija.Stranice.Magacin
         {
 
         }
+
+        private void searchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

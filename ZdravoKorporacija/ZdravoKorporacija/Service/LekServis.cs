@@ -3,6 +3,9 @@ using Model;
 using System.Collections.Generic;
 using Repository;
 using ZdravoKorporacija.Model;
+using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Repository;
+using System.Collections;
 
 namespace Service
 {
@@ -28,8 +31,8 @@ namespace Service
             datotekaID.sacuvaj(id_map);
             return true;
         }
-      
-      public bool ObrisiLek(Lek lek, Dictionary<int, int> id_map)
+
+        public bool ObrisiLek(Lek lek, Dictionary<int, int> id_map)
       {
             LekRepozitorijum datoteka = new LekRepozitorijum();
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapLek");
@@ -85,6 +88,42 @@ namespace Service
             List<Lek> lekovi = datoteka.DobaviSve();
             return lekovi;
         }
-   
-   }
+
+
+        public bool DodajZahtevLeka(ZahtevLekDTO zahtevLek, Dictionary<int, int> id_map)
+        {
+            ZahtevLekRepozitorijum datoteka = ZahtevLekRepozitorijum.Instance;
+            List<ZahtevLek> zahtevi = datoteka.dobaviSve();
+
+            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapZahtevZaLek");
+            Lek lek = new Lek(zahtevLek.Lek.Id,zahtevLek.Lek.Proizvodjac,zahtevLek.Lek.Sastojci,zahtevLek.Lek.NusPojave,zahtevLek.Lek.NazivLeka);
+            ZahtevLek zahtevZaLek = new ZahtevLek(lek,zahtevLek.NeophodnihPotvrda,zahtevLek.BrojPotvrda);
+            zahtevZaLek.Id = zahtevLek.Id;
+
+            zahtevi.Add(zahtevZaLek);
+            ZahtevLekRepozitorijum.Instance.zahteviLek.Add(zahtevZaLek);
+            datoteka.sacuvaj();
+            datotekaID.sacuvaj(id_map);
+            return true;
+        }
+
+        public List<ZahtevLek> PregledSvihZahtevaLek()
+
+        {
+            ZahtevLekRepozitorijum datoteka = ZahtevLekRepozitorijum.Instance;
+            List<ZahtevLek> zahteviLekovi = datoteka.dobaviSve();
+            return zahteviLekovi;
+        }
+
+
+
+
+
+
+
+
+
+
+
+    }
 }

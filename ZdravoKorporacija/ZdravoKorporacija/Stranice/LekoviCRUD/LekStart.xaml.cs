@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Model;
+using Service;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,9 +20,13 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
     /// </summary>
     public partial class LekStart : Window
     {
+
+        LekServis lekServis = new LekServis();
         public LekStart()
         {
             InitializeComponent();
+            dgLekovi.ItemsSource = new ObservableCollection<Lek>(lekServis.PregledSvihLekova());
+            
         }
 
         private void dodaj(object sender, RoutedEventArgs e)

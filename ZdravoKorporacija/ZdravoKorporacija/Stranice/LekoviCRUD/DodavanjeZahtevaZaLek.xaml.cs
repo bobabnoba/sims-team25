@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Repository;
+using Service;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -18,6 +20,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
     /// </summary>
     public partial class DodavanjeZahtevaZaLek : Window
     {
+        LekServis lekServis = new LekServis();
         public DodavanjeZahtevaZaLek()
         {
             InitializeComponent();
@@ -27,20 +30,49 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
                 potvrda.Add(i);
             }
             comboBoxBrojPotvrda.ItemsSource = potvrda;
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+
+           
+
+            LekDTO lek = new LekDTO(0,textBoxProizvodjac.Text,textBoxSastojci.Text,textBoxPojave.Text,textBoxNazivLeka.Text);
+
+            int neophodno = (int) comboBoxBrojPotvrda.SelectedItem;
+
+           
+
+            ZahtevLekDTO zahtevLekDTO = new ZahtevLekDTO(lek,neophodno,0);
+
+            IDRepozitorijum datoteka = new IDRepozitorijum("iDMapZahtevZaLek");
+            Dictionary<int, int> ids = datoteka.dobaviSve();
+
+            int id = 0;
+            for (int i = 0; i < 1000; i++)
+            {
+                if (ids[i] == 0)
+                {
+                    id = i;
+                    ids[i] = 1;
+                    break;
+                }
+            }
+
+            int zahtevId = id;
+
+            zahtevLekDTO.Id = zahtevId;
+
+            lekServis.DodajZahtevLeka(zahtevLekDTO, ids);
             
-
-           // LekDTO l = new LekDTO();
-           // ZahtevLekDTO zahtevLekDTO = new ZahtevLekDTO(lek);
-
 
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            LekarZahteviZaDodavanjeLekaStart lk = new LekarZahteviZaDodavanjeLekaStart();
+            lk.Show();
             this.Close();
         }
 

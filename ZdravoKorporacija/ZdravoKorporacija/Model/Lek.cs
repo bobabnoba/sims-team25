@@ -11,7 +11,7 @@ namespace Model
 {
     public class Lek
     {
-        public String Id { get; set; }
+        public int Id { get; set; }
         public String Proizvodjac { get; set; }
         public String Sastojci { get; set; }
         public String NusPojave { get; set; }
@@ -63,7 +63,7 @@ namespace Model
                 alternativniLekovi.Clear();
         }
 
-        public Lek(String ID, String pr, String sas, String np, String nl)
+        public Lek(int  ID, String pr, String sas, String np, String nl)
         {
             Id = ID;
             Proizvodjac = pr;

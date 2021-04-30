@@ -1,0 +1,33 @@
+﻿<Window x:Class="ZdravoKorporacija.Stranice.LekoviCRUD.LekarZahteviZaDodavanjeLekaStart"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.LekoviCRUD"
+        mc:Ignorable="d"
+        Title="LekarZahteviZaDodavanjeLekaStart" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="28*"/>
+            <ColumnDefinition Width="93*"/>
+            <ColumnDefinition Width="113*"/>
+            <ColumnDefinition Width="566*"/>
+        </Grid.ColumnDefinitions>
+        <Button Content="Izmeni zahtev" HorizontalAlignment="Left" Margin="10,330,0,0" VerticalAlignment="Top" Width="118" Height="25" RenderTransformOrigin="0.255,-0.75" Click="Button_Click_1" Grid.Column="3"/>
+        <Button Content="Izbriši zahtev" HorizontalAlignment="Left" Margin="177,330,0,0" VerticalAlignment="Top" Width="120" Height="25" RenderTransformOrigin="0.033,-1.977" Click="Button_Click_2" Grid.Column="3"/>
+        <DataGrid x:Name="dgZahtevi" AutoGenerateColumns="False" Margin="28,105,246,136" Grid.ColumnSpan="3" Grid.Column="1" SelectionChanged="dgZahtevi_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
+                <DataGridTextColumn Header="Naziv" Binding="{Binding Lek.NazivLeka}" />
+                <DataGridTextColumn Header="Proizvodjac" Binding="{Binding Lek.Proizvodjac}" />
+                <DataGridTextColumn Header="Ukupna Kolicina" Binding="{Binding UkupnaKolicina}" />
+
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+        <Label Content="Zahtevi za dodavanje lekova&#xA;" HorizontalAlignment="Left" Margin="46,30,0,0" VerticalAlignment="Top" FontSize="32" Grid.ColumnSpan="3" Grid.Column="1"/>
+        <Button Content="Odobri lek" HorizontalAlignment="Left" Margin="51,330,0,0" VerticalAlignment="Top" Width="120" Height="25" Click="dodaj" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Button Content="Kreiraj izveštaj" HorizontalAlignment="Left" Margin="385,291,0,0" VerticalAlignment="Top" Width="130" Height="25" RenderTransformOrigin="0.033,-1.977" Click="Button_Click_2" Grid.Column="3"/>
+    </Grid>
+</Window>

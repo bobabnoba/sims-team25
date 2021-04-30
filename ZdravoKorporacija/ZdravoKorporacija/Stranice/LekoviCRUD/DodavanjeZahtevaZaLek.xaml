@@ -14,7 +14,7 @@
         <TextBox x:Name="textBoxSastojci" HorizontalAlignment="Left" Margin="225,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" UndoLimit="103" Height="60" />
         <TextBox x:Name="textBoxPojave" HorizontalAlignment="Left" Margin="225,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="60" />
         <Label x:Name="label_Copy1" Content="Sastojci" HorizontalAlignment="Left" Margin="70,142,0,0" VerticalAlignment="Top" Height="25"/>
-        <Label x:Name="label_Copy2" Content="Nus pjave" HorizontalAlignment="Left" Margin="70,227,0,0" VerticalAlignment="Top" Height="25"/>
+        <Label x:Name="label_Copy2" Content="Nus pojave" HorizontalAlignment="Left" Margin="70,227,0,0" VerticalAlignment="Top" Height="25"/>
         <Label x:Name="label_Copy3" Content="Alternativni" HorizontalAlignment="Left" Margin="70,314,0,0" VerticalAlignment="Top" Height="31"/>
         <Button x:Name="button" Content="Dodaj alternativne" HorizontalAlignment="Left" Margin="225,314,0,0" VerticalAlignment="Top" Width="120" Height="25" Click="button_Click_2" />
         <Button Content="Potvrdi&#xD;&#xA;" HorizontalAlignment="Left" Margin="99,506,0,0" VerticalAlignment="Top" Height="26" Width="92" Click="Button_Click"/>

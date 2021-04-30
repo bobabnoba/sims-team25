@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ZdravoKorporacija.Model
 {
-    class ZahtevLek
+   public  class ZahtevLek
     {
         public int Id { get; set; }
         public Lek Lek { get; set; }
@@ -55,55 +55,12 @@ namespace ZdravoKorporacija.Model
 
         public int BrojPotvrda { get; set; }
 
-        public List<Lek> alternativniLekovi;
-        public List<Lek> GetalternativniLekovi()
-        {
-            if (alternativniLekovi == null)
-                alternativniLekovi = new List<Lek>();
-            return alternativniLekovi;
-        }
-
-        /// <pdGenerated>default setter</pdGenerated>
-        public void SetalternativniLekovi(List<Lek> newalternativniLekovi)
-        {
-            RemoveAllalternativniLekovi();
-            foreach (Lek oLek in newalternativniLekovi)
-                AddalternativniLekovi(oLek);
-        }
-
-        /// <pdGenerated>default Add</pdGenerated>
-        public void AddalternativniLekovi(Lek newLek)
-        {
-            if (newLek == null)
-                return;
-            if (this.alternativniLekovi == null)
-                this.alternativniLekovi = new List<Lek>();
-            if (!this.alternativniLekovi.Contains(newLek))
-                this.alternativniLekovi.Add(newLek);
-        }
-
-        /// <pdGenerated>default Remove</pdGenerated>
-        public void RemovealternativniLekovi(Lek oldLek)
-        {
-            if (oldLek == null)
-                return;
-            if (this.alternativniLekovi != null)
-                if (this.alternativniLekovi.Contains(oldLek))
-                    this.alternativniLekovi.Remove(oldLek);
-        }
-
-        /// <pdGenerated>default removeAll</pdGenerated>
-        public void RemoveAllalternativniLekovi()
-        {
-            if (alternativniLekovi != null)
-                alternativniLekovi.Clear();
-        }
+        
         public ZahtevLek(Lek lek,int neophodnihPotvrda,int brojTrenutnihPotvrda) {
             this.Lek = lek;
             this.NeophodnihPotvrda = neophodnihPotvrda;
             this.BrojPotvrda = brojTrenutnihPotvrda;
             this.lekari = new List<Lekar>();
-            this.alternativniLekovi = new List<Lek>();
         }
     }
 }
