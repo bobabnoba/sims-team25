@@ -1,15 +1,10 @@
-// File:    Medicine.cs
-// Author:  User
-// Created: Wednesday, March 24, 2021 12:50:18 AM
-// Purpose: Definition of Class Medicine
-
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
-namespace Model
+namespace ZdravoKorporacija.DTO
 {
-    public class Lek
+    class LekDTO
     {
         public String Id { get; set; }
         public String Proizvodjac { get; set; }
@@ -17,37 +12,37 @@ namespace Model
         public String NusPojave { get; set; }
         public String NazivLeka { get; set; }
 
-        public List<Lek> alternativniLekovi;
+        public List<LekDTO> alternativniLekovi;
 
         /// <pdGenerated>default getter</pdGenerated>
-        public List<Lek> GetalternativniLekovi()
+        public List<LekDTO> GetalternativniLekovi()
         {
             if (alternativniLekovi == null)
-                alternativniLekovi = new List<Lek>();
+                alternativniLekovi = new List<LekDTO>();
             return alternativniLekovi;
         }
 
         /// <pdGenerated>default setter</pdGenerated>
-        public void SetalternativniLekovi(List<Lek> newalternativniLekovi)
+        public void SetalternativniLekovi(List<LekDTO> newalternativniLekovi)
         {
             RemoveAllalternativniLekovi();
-            foreach (Lek oLek in newalternativniLekovi)
+            foreach (LekDTO oLek in newalternativniLekovi)
                 AddalternativniLekovi(oLek);
         }
 
         /// <pdGenerated>default Add</pdGenerated>
-        public void AddalternativniLekovi(Lek newLek)
+        public void AddalternativniLekovi(LekDTO newLek)
         {
             if (newLek == null)
                 return;
             if (this.alternativniLekovi == null)
-                this.alternativniLekovi = new List<Lek>();
+                this.alternativniLekovi = new List<LekDTO>();
             if (!this.alternativniLekovi.Contains(newLek))
                 this.alternativniLekovi.Add(newLek);
         }
 
         /// <pdGenerated>default Remove</pdGenerated>
-        public void RemovealternativniLekovi(Lek oldLek)
+        public void RemovealternativniLekovi(LekDTO oldLek)
         {
             if (oldLek == null)
                 return;
@@ -63,14 +58,14 @@ namespace Model
                 alternativniLekovi.Clear();
         }
 
-        public Lek(String ID, String pr, String sas, String np, String nl)
+        public LekDTO(String ID, String pr, String sas, String np, String nl)
         {
             Id = ID;
             Proizvodjac = pr;
             Sastojci = sas;
             NusPojave = np;
             NazivLeka = nl;
-            this.alternativniLekovi = new List<Lek>();
+            this.alternativniLekovi = new List<LekDTO>();
         }
 
     }
