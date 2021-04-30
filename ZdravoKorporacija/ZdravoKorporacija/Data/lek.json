@@ -54,5 +54,61 @@
     "Sastojci": "ipbrufen",
     "NusPojave": "nema",
     "NazivLeka": "brufen"
+  },
+  {
+    "alternativniLekovi": [],
+    "Id": 8,
+    "Proizvodjac": "d",
+    "Sastojci": "d",
+    "NusPojave": "d",
+    "NazivLeka": "d"
+  },
+  {
+    "alternativniLekovi": [],
+    "Id": 9,
+    "Proizvodjac": "galenika",
+    "Sastojci": "ipbrufen",
+    "NusPojave": "nema",
+    "NazivLeka": "brufen"
+  },
+  {
+    "alternativniLekovi": [],
+    "Id": 10,
+    "Proizvodjac": "galenika",
+    "Sastojci": "ipbrufen",
+    "NusPojave": "nema",
+    "NazivLeka": "brufen"
+  },
+  {
+    "alternativniLekovi": [],
+    "Id": 11,
+    "Proizvodjac": "n",
+    "Sastojci": "n",
+    "NusPojave": "n",
+    "NazivLeka": "hemomicyn"
+  },
+  {
+    "alternativniLekovi": [],
+    "Id": 12,
+    "Proizvodjac": "a",
+    "Sastojci": "a",
+    "NusPojave": "a",
+    "NazivLeka": "a"
+  },
+  {
+    "alternativniLekovi": [],
+    "Id": 13,
+    "Proizvodjac": "nv",
+    "Sastojci": "otrov",
+    "NusPojave": "otok",
+    "NazivLeka": "tt"
+  },
+  {
+    "alternativniLekovi": [],
+    "Id": 14,
+    "Proizvodjac": "d",
+    "Sastojci": "d",
+    "NusPojave": "d",
+    "NazivLeka": "d"
   }
 ]

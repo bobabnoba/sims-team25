@@ -13,7 +13,7 @@ namespace Service
    {
       public bool DodajLek(Lek Lek, Dictionary<int, int> id_map)
       {
-            LekRepozitorijum datoteka = new LekRepozitorijum();
+            LekRepozitorijum datoteka = LekRepozitorijum.Instance;
             List<Lek> lekovi = datoteka.DobaviSve();
 
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapLekova");
@@ -26,23 +26,25 @@ namespace Service
                     return false;
                 }
             }
-            lekovi.Add(Lek);
-            datoteka.Sacuvaj(lekovi);
+            LekRepozitorijum.Instance.lekovi.Add(Lek);
+            datoteka.Sacuvaj();
             datotekaID.sacuvaj(id_map);
+            //dodato
+            datoteka.DobaviSve();
             return true;
         }
 
         public bool ObrisiLek(Lek lek, Dictionary<int, int> id_map)
       {
-            LekRepozitorijum datoteka = new LekRepozitorijum();
+            LekRepozitorijum datoteka = LekRepozitorijum.Instance;
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapLek");
             List<Lek> lekovi = datoteka.DobaviSve();
             foreach (Lek l in lekovi)
             {
                 if (l.Id.Equals(lek.Id))
                 {
-                    lekovi.Remove(l);
-                    datoteka.Sacuvaj(lekovi);
+                    LekRepozitorijum.Instance.lekovi.Remove(l);
+                    datoteka.Sacuvaj();
                     datotekaID.sacuvaj(id_map);
                     return true;
                 }
@@ -52,16 +54,16 @@ namespace Service
       
       public bool AzurirajLek(Lek lek)
       {
-            LekRepozitorijum datoteka = new LekRepozitorijum();
+            LekRepozitorijum datoteka = LekRepozitorijum.Instance;
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapLek");
             List<Lek> lekovi = datoteka.DobaviSve();
             foreach (Lek l in lekovi)
             {
                 if (l.Id.Equals(lek.Id))
                 {
-                    lekovi.Remove(l);
-                    lekovi.Add(lek);
-                    datoteka.Sacuvaj(lekovi);
+                    LekRepozitorijum.Instance.lekovi.Remove(l);
+                    LekRepozitorijum.Instance.lekovi.Add(lek);
+                    datoteka.Sacuvaj();
                     return true;
                 }
             }
@@ -70,7 +72,7 @@ namespace Service
       
       public Lek PregledLeka(string id)
       {
-            LekRepozitorijum datoteka = new LekRepozitorijum();
+            LekRepozitorijum datoteka = LekRepozitorijum.Instance;
             List<Lek> lekovi = datoteka.DobaviSve();
             foreach (Lek l in lekovi)
             {
@@ -84,7 +86,7 @@ namespace Service
       
       public List<Lek> PregledSvihLekova()
       {
-            LekRepozitorijum datoteka = new LekRepozitorijum();
+            LekRepozitorijum datoteka = LekRepozitorijum.Instance;
             List<Lek> lekovi = datoteka.DobaviSve();
             return lekovi;
         }
@@ -100,11 +102,28 @@ namespace Service
             ZahtevLek zahtevZaLek = new ZahtevLek(lek,zahtevLek.NeophodnihPotvrda,zahtevLek.BrojPotvrda);
             zahtevZaLek.Id = zahtevLek.Id;
 
-            zahtevi.Add(zahtevZaLek);
             ZahtevLekRepozitorijum.Instance.zahteviLek.Add(zahtevZaLek);
             datoteka.sacuvaj();
             datotekaID.sacuvaj(id_map);
             return true;
+        }
+
+        public bool ObrisiZahtevZaLek(ZahtevLek zahtevLek, Dictionary<int, int> id_map)
+        {
+            ZahtevLekRepozitorijum datoteka = ZahtevLekRepozitorijum.Instance;
+            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapZahtevLek");
+            List<ZahtevLek> lekovi = datoteka.dobaviSve();
+            foreach (ZahtevLek z in lekovi)
+            {
+                if (z.Id.Equals(zahtevLek.Id))
+                {
+                    ZahtevLekRepozitorijum.Instance.zahteviLek.Remove(z);
+                    datoteka.sacuvaj();
+                    datotekaID.sacuvaj(id_map);
+                    return true;
+                }
+            }
+            return false;
         }
 
         public List<ZahtevLek> PregledSvihZahtevaLek()

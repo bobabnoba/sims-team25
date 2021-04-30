@@ -54,5 +54,19 @@
     },
     "NeophodnihPotvrda": 4,
     "BrojPotvrda": 0
+  },
+  {
+    "lekari": [],
+    "Id": 5,
+    "Lek": {
+      "alternativniLekovi": [],
+      "Id": 0,
+      "Proizvodjac": "nv",
+      "Sastojci": "otrov",
+      "NusPojave": "otok",
+      "NazivLeka": "tt"
+    },
+    "NeophodnihPotvrda": 1,
+    "BrojPotvrda": 0
   }
 ]

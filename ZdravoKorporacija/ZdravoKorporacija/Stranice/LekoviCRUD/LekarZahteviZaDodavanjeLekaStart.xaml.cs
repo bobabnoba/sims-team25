@@ -23,6 +23,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
     public partial class LekarZahteviZaDodavanjeLekaStart : Window
     {
         LekServis lekServis = new LekServis();
+
         public LekarZahteviZaDodavanjeLekaStart()
         {
             InitializeComponent();
@@ -55,8 +56,25 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
                 ZahtevLek zahtev = (ZahtevLek)dgZahtevi.SelectedItem;
                 Lek l = new Lek(id,zahtev.Lek.Proizvodjac,zahtev.Lek.Sastojci,zahtev.Lek.NusPojave,zahtev.Lek.NazivLeka);
                 
-                 lekServis.DodajLek(l,ids);
+                lekServis.DodajLek(l,ids);
+                IDRepozitorijum datotekaZahtev = new IDRepozitorijum("iDMapZahtevZaLek");
+                Dictionary<int, int> idsZahtev = datoteka.dobaviSve();
+                idsZahtev[zahtev.Id] = 0;
+                
+                lekServis.ObrisiZahtevZaLek(zahtev,idsZahtev);
              }
+        }
+
+        private void izmenaAlternativnihLekova(object sender, RoutedEventArgs e)
+        {
+            DodavanjeAlternativnihLekova dodavanjeAlternativnih = new DodavanjeAlternativnihLekova();
+            dodavanjeAlternativnih.Show();
+        }
+
+        private void lekariZaDodavanjeLeka(object sender, RoutedEventArgs e)
+        {
+            IzborLekaraZaPotvrdu izborLekara = new IzborLekaraZaPotvrdu();
+            izborLekara.Show();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

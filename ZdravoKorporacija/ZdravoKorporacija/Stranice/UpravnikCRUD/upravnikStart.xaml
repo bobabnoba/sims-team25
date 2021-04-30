@@ -18,6 +18,13 @@
                 <DataGridTextColumn Header="Naziv" Binding="{Binding Naziv}" />
                 <DataGridTextColumn Header="Sprat" Binding="{Binding Sprat}" />
                 <DataGridTextColumn Header="Tip" Binding="{Binding Tip}" />
+                <DataGridTemplateColumn Header="Renoviranje">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="..." Click="zakaziRenoviranje"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
             </DataGrid.Columns>
             <!--<DataGrid.RowDetailsTemplate>
                 <DataTemplate>

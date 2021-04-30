@@ -1,4 +1,5 @@
 ﻿using Model;
+using Repository;
 using Service;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,9 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
         public LekStart()
         {
             InitializeComponent();
-            dgLekovi.ItemsSource = new ObservableCollection<Lek>(lekServis.PregledSvihLekova());
+            // dgLekovi.ItemsSource = new ObservableCollection<Lek>(lekServis.PregledSvihLekova());
+            lekServis.PregledSvihLekova();
+            dgLekovi.ItemsSource = LekRepozitorijum.Instance.lekovi;
             
         }
 
