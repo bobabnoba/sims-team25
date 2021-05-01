@@ -34,81 +34,49 @@
   {
     "alternativniLekovi": [],
     "Id": 5,
-    "Proizvodjac": "z",
-    "Sastojci": "z",
-    "NusPojave": "z",
-    "NazivLeka": "z"
+    "Proizvodjac": "t",
+    "Sastojci": "t",
+    "NusPojave": "t",
+    "NazivLeka": "t"
   },
   {
     "alternativniLekovi": [],
     "Id": 6,
-    "Proizvodjac": "z",
-    "Sastojci": "z",
-    "NusPojave": "z",
-    "NazivLeka": "z"
+    "Proizvodjac": "y",
+    "Sastojci": "y",
+    "NusPojave": "y",
+    "NazivLeka": "y"
   },
   {
     "alternativniLekovi": [],
     "Id": 7,
-    "Proizvodjac": "galenika",
-    "Sastojci": "ipbrufen",
-    "NusPojave": "nema",
-    "NazivLeka": "brufen"
+    "Proizvodjac": "er",
+    "Sastojci": "er",
+    "NusPojave": "er",
+    "NazivLeka": "er"
   },
   {
     "alternativniLekovi": [],
     "Id": 8,
-    "Proizvodjac": "d",
-    "Sastojci": "d",
-    "NusPojave": "d",
-    "NazivLeka": "d"
+    "Proizvodjac": "lll",
+    "Sastojci": "ll",
+    "NusPojave": "ll",
+    "NazivLeka": "ll"
   },
   {
     "alternativniLekovi": [],
     "Id": 9,
-    "Proizvodjac": "galenika",
-    "Sastojci": "ipbrufen",
-    "NusPojave": "nema",
-    "NazivLeka": "brufen"
+    "Proizvodjac": "cc",
+    "Sastojci": "cc",
+    "NusPojave": "cc",
+    "NazivLeka": "cc"
   },
   {
     "alternativniLekovi": [],
     "Id": 10,
-    "Proizvodjac": "galenika",
-    "Sastojci": "ipbrufen",
-    "NusPojave": "nema",
-    "NazivLeka": "brufen"
-  },
-  {
-    "alternativniLekovi": [],
-    "Id": 11,
-    "Proizvodjac": "n",
-    "Sastojci": "n",
-    "NusPojave": "n",
-    "NazivLeka": "hemomicyn"
-  },
-  {
-    "alternativniLekovi": [],
-    "Id": 12,
-    "Proizvodjac": "a",
-    "Sastojci": "a",
-    "NusPojave": "a",
-    "NazivLeka": "a"
-  },
-  {
-    "alternativniLekovi": [],
-    "Id": 13,
-    "Proizvodjac": "nv",
-    "Sastojci": "otrov",
-    "NusPojave": "otok",
-    "NazivLeka": "tt"
-  },
-  {
-    "alternativniLekovi": [],
-    "Id": 14,
-    "Proizvodjac": "d",
-    "Sastojci": "d",
-    "NusPojave": "d",
-    "NazivLeka": "d"
+    "Proizvodjac": "qq",
+    "Sastojci": "qq",
+    "NusPojave": "qq",
+    "NazivLeka": "qq"
   }
 ]

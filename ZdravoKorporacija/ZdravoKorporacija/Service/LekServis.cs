@@ -13,33 +13,26 @@ namespace Service
    {
       public bool DodajLek(Lek Lek, Dictionary<int, int> id_map)
       {
+           
             LekRepozitorijum datoteka = LekRepozitorijum.Instance;
-            List<Lek> lekovi = datoteka.DobaviSve();
+       
 
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapLekova");
-
-
-            foreach (Lek pr in lekovi)
-            {
-                if (pr.Id.Equals(Lek.Id))
-                {
-                    return false;
-                }
-            }
             LekRepozitorijum.Instance.lekovi.Add(Lek);
             datoteka.Sacuvaj();
             datotekaID.sacuvaj(id_map);
             //dodato
             datoteka.DobaviSve();
+            
             return true;
         }
 
         public bool ObrisiLek(Lek lek, Dictionary<int, int> id_map)
       {
             LekRepozitorijum datoteka = LekRepozitorijum.Instance;
-            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapLek");
-            List<Lek> lekovi = datoteka.DobaviSve();
-            foreach (Lek l in lekovi)
+            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapLekova");
+           
+            foreach (Lek l in LekRepozitorijum.Instance.lekovi)
             {
                 if (l.Id.Equals(lek.Id))
                 {
@@ -55,9 +48,9 @@ namespace Service
       public bool AzurirajLek(Lek lek)
       {
             LekRepozitorijum datoteka = LekRepozitorijum.Instance;
-            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapLek");
-            List<Lek> lekovi = datoteka.DobaviSve();
-            foreach (Lek l in lekovi)
+            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapLekova");
+           
+            foreach (Lek l in LekRepozitorijum.Instance.lekovi)
             {
                 if (l.Id.Equals(lek.Id))
                 {
@@ -73,8 +66,8 @@ namespace Service
       public Lek PregledLeka(string id)
       {
             LekRepozitorijum datoteka = LekRepozitorijum.Instance;
-            List<Lek> lekovi = datoteka.DobaviSve();
-            foreach (Lek l in lekovi)
+           
+            foreach (Lek l in LekRepozitorijum.Instance.lekovi)
             {
                 if (l.Id.Equals(id))
                 {
@@ -111,9 +104,9 @@ namespace Service
         public bool ObrisiZahtevZaLek(ZahtevLek zahtevLek, Dictionary<int, int> id_map)
         {
             ZahtevLekRepozitorijum datoteka = ZahtevLekRepozitorijum.Instance;
-            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapZahtevLek");
-            List<ZahtevLek> lekovi = datoteka.dobaviSve();
-            foreach (ZahtevLek z in lekovi)
+            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapZahtevZaLek");
+          
+            foreach (ZahtevLek z in ZahtevLekRepozitorijum.Instance.zahteviLek)
             {
                 if (z.Id.Equals(zahtevLek.Id))
                 {

@@ -3,6 +3,7 @@ using Repository;
 using Service;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
+using ZdravoKorporacija.Repository;
 
 namespace ZdravoKorporacija.Stranice.LekoviCRUD
 {
@@ -27,7 +29,8 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
         public LekarZahteviZaDodavanjeLekaStart()
         {
             InitializeComponent();
-            dgZahtevi.ItemsSource = lekServis.PregledSvihZahtevaLek();
+            lekServis.PregledSvihZahtevaLek();
+            dgZahtevi.ItemsSource = ZahtevLekRepozitorijum.Instance.zahteviLek;
         }
 
         private void dgZahtevi_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -55,11 +58,13 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
 
                 ZahtevLek zahtev = (ZahtevLek)dgZahtevi.SelectedItem;
                 Lek l = new Lek(id,zahtev.Lek.Proizvodjac,zahtev.Lek.Sastojci,zahtev.Lek.NusPojave,zahtev.Lek.NazivLeka);
-                
+              
                 lekServis.DodajLek(l,ids);
                 IDRepozitorijum datotekaZahtev = new IDRepozitorijum("iDMapZahtevZaLek");
-                Dictionary<int, int> idsZahtev = datoteka.dobaviSve();
+                Dictionary<int, int> idsZahtev = datotekaZahtev.dobaviSve();
+                Debug.WriteLine(zahtev.Id);
                 idsZahtev[zahtev.Id] = 0;
+                
                 
                 lekServis.ObrisiZahtevZaLek(zahtev,idsZahtev);
              }
