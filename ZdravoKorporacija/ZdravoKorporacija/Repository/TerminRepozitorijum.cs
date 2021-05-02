@@ -27,7 +27,7 @@ namespace ZdravoKorporacija.Model
             serializer.Serialize(jWriter, termini);
             jWriter.Close();
             writer.Close();
-            Serijalizacija(termini);
+           // Serijalizacija(termini);
         }
 
         string SerializeObjectByJObject(List<Termin> ter)

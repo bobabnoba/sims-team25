@@ -13,6 +13,7 @@ using System.Windows.Controls;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Stranice.PacijentCRUD;
 using System.Windows.Threading;
+using System.ComponentModel;
 
 namespace ZdravoKorporacija.Stranice
 {
@@ -25,9 +26,13 @@ namespace ZdravoKorporacija.Stranice
         private ObservableCollection<Termin> termini = new ObservableCollection<Termin>();
         private PacijentService storagePacijent = new PacijentService();
         private Pacijent pac = new Pacijent();
-        private Pacijent mnm = new Pacijent();
+        private Pacijent pacijent = new Pacijent();
         private Dictionary<int, int> ids = new Dictionary<int, int>();
         private Boolean prikazi;
+        BanRepozitorijum banRepo = new BanRepozitorijum();
+
+
+        private KorisnikService korisnikServis = new KorisnikService();
 
         public pacijentStart()
         {
@@ -45,8 +50,8 @@ namespace ZdravoKorporacija.Stranice
             termini = new ObservableCollection<Termin>(storage.PregledSvihTermina());
             dgUsers.ItemsSource = termini;
             this.DataContext = this;
-            mnm = (storagePacijent.PregledSvihPacijenata())[3]; // za ovog pacijenta prikazujemo obavjestenja
-            dgObavjestenja.ItemsSource = mnm.notifikacije;
+            pacijent = (storagePacijent.PregledSvihPacijenata())[3]; // za ovog pacijenta prikazujemo obavjestenja
+            dgObavjestenja.ItemsSource = pacijent.notifikacije;
 
             //Pacijent p1 = new Pacijent("Dusan", "Lekic");
             //Pacijent p2 = new Pacijent("Aleksa", "Papovic");
@@ -56,7 +61,9 @@ namespace ZdravoKorporacija.Stranice
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            foreach (Recept r in mnm.ZdravstveniKarton.recept)
+            korisnikServis.banuj(pacijent);
+
+            foreach (Recept r in pacijent.ZdravstveniKarton.recept)
             {
                 DateTime ter = r.Pocetak;
 
@@ -83,14 +90,14 @@ namespace ZdravoKorporacija.Stranice
                     this.prikazi = false;
                     Notifikacija n = new Notifikacija();
 
-                    n.Id = mnm.notifikacije.Count + 1;
+                    n.Id = pacijent.notifikacije.Count + 1;
                     n.Datum = ter.AddMinutes(-30);
                     n.Status = "Neprocitano";
                     n.Tip = TipNotifikacije.Podsetnik;
                     n.Sadrzaj = "Popijte lek: " + r.NazivLeka;
 
-                    mnm.notifikacije.Add(n);
-                    storagePacijent.AzurirajPacijenta(mnm);
+                    pacijent.notifikacije.Add(n);
+                    storagePacijent.AzurirajPacijenta(pacijent);
 
                 }
             }
@@ -98,19 +105,28 @@ namespace ZdravoKorporacija.Stranice
 
         private void izmeniPregled(object sender, RoutedEventArgs e)
         {
+
             if (dgUsers.SelectedItem == null)
                 MessageBox.Show("Pregled nije izabran. Molimo označite pregled koji želite da izmenite.", "Greška");
             else
             {
                 Termin t = (Termin)dgUsers.SelectedItem;
                 Debug.WriteLine("Danas je " + DateTime.Today.ToString());
-                if(t.Pocetak.Date <= DateTime.Today.AddDays(1).Date) {
+                if (t.Pocetak.Date <= DateTime.Today.AddDays(1).Date)
+                {
                     MessageBox.Show("Nije moguće izmeniti pregled koji je zakazan u predstojećih 24h", "Greška");
                 }
                 else
                 {
-                    izmeniPregled ip = new izmeniPregled((Termin)dgUsers.SelectedItem, termini);
-                    ip.Show();
+                    if (pacijent.banovan)
+                    {
+                        MessageBox.Show("Trenutno nije moguce izmeniti pregled. Molimo pokusajte kasnije.", "Banovani ste");
+                    }
+                    else
+                    {
+                        izmeniPregled ip = new izmeniPregled((Termin)dgUsers.SelectedItem, termini, pacijent);
+                        ip.Show();
+                    }
                 }
             }
         }
@@ -119,38 +135,36 @@ namespace ZdravoKorporacija.Stranice
 
         private void zakaziPregled(object sender, RoutedEventArgs e)
         {
-            zakaziPregled zp = new zakaziPregled(termini, ids);
-            zp.Show();
+            if (pacijent.banovan)
+            {
+                MessageBox.Show("Trenutno nije moguce zakazati pregled. Molimo pokusajte kasnije.", "Banovani ste");
+            }
+            else
+            {
+                zakaziPregled zp = new zakaziPregled(termini, ids, pacijent);
+                zp.Show();
+            }
         }
 
         private void otkaziPregled(object sender, RoutedEventArgs e)
         {
-            /*  if (dgUsers.SelectedItem == null)
-                  MessageBox.Show("Niste selektovali red", "Greska");
-              else
-              {
-                  if (dgUsers.SelectedItem != null)
-                  {
-                      MessageBoxResult result = MessageBox.Show("Da li ste sigurni da želite da otkažete ovaj termin?", "Potvrda brisanja", MessageBoxButton.YesNo);
-                      if (result == MessageBoxResult.Yes)
-                      {
-                          pac.RemoveTermin((Termin)dgUsers.SelectedItem);
-                          storagePacijent.AzurirajPacijenta(pac);
-                          storage.OtkaziTermin((Termin)dgUsers.SelectedItem);
-                          termini.Remove((Termin)dgUsers.SelectedItem);
-                      }
-                  }
-              }*/
 
             if (dgUsers.SelectedItem == null)
                 MessageBox.Show("Pregled nije izabran. Molimo označite pregled koji želite da otkažete.", "Greška");
             else
             {
-                otkaziPregled op = new otkaziPregled(termini, (Termin)dgUsers.SelectedItem, ids);
-                op.Show();
+                if (pacijent.banovan)
+                {
+                    MessageBox.Show("Trenutno nije moguce otkazati pregled. Molimo pokusajte kasnije.", "Banovani ste");
+                }
+                else
+                {
+                    otkaziPregled op = new otkaziPregled(termini, (Termin)dgUsers.SelectedItem, ids, pacijent);
+                    op.Show();
+                }
             }
 
-            
+
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -158,6 +172,16 @@ namespace ZdravoKorporacija.Stranice
 
         }
 
-  
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            List<Ban> bb = new List<Ban>();
+            bb.Add(KorisnikService.b);
+            banRepo.sacuvaj(bb);
+          //  storagePacijent.AzurirajPacijenta(pacijent);
+            //this.Close();
+            base.OnClosing(e);
+        }
+
+
     }
 }

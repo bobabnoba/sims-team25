@@ -150,5 +150,8 @@ namespace Model
                 notifikacije.Clear();
         }
 
+        public Boolean banovan { get; set; }
+
+
     }
 }

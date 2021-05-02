@@ -1,4 +1,5 @@
 ﻿using Model;
+using Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -23,12 +24,14 @@ namespace ZdravoKorporacija.Stranice
         private Termin s;
         String datumSelekt;
         String vrijemeSelekt;
+        private Pacijent pacijent;
 
-        public izmeniPregled(Termin selektovani, ObservableCollection<Termin> termini)
+        public izmeniPregled(Termin selektovani, ObservableCollection<Termin> termini, Pacijent pacijent)
         {
 
             InitializeComponent();
             ljekari = ljekariDat.dobaviSve();
+            this.pacijent = pacijent;
             dostupniLjekari = new BindingList<Lekar>();
             azurirajDostupne();
             time.SelectedItem = selektovani.Pocetak.ToShortTimeString();
@@ -99,6 +102,7 @@ namespace ZdravoKorporacija.Stranice
             {
                 this.pregledi.Remove(s);
                 this.pregledi.Add(p);
+                KorisnikService.b.pomerenCnt++;
             }
             this.Close();
         }

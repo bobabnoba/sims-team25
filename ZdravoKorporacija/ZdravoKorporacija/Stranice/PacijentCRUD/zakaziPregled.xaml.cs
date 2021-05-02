@@ -1,4 +1,5 @@
 ﻿using Model;
+using Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -23,14 +24,15 @@ namespace ZdravoKorporacija.Stranice
         private ObservableCollection<Termin> pregledi;
         private Dictionary<int, int> ids = new Dictionary<int, int>();
         private Boolean selected; // true ljekar, false vrijeme
+        private Pacijent pacijent;
 
 
-        public zakaziPregled(ObservableCollection<Termin> termini, Dictionary<int,int> ids)
+        public zakaziPregled(ObservableCollection<Termin> termini, Dictionary<int,int> ids, Pacijent pacijent)
         {
             InitializeComponent();
             this.ids = ids;
             p = new Termin();
-
+            this.pacijent = pacijent;
             ljekari = ljekariDat.dobaviSve();
             pregledi = termini;
             dostupniLjekari = new BindingList<Lekar>();
@@ -108,6 +110,7 @@ namespace ZdravoKorporacija.Stranice
             {
                 this.pregledi.Add(p);
                 ljekariDat.sacuvaj(ljekari);
+                KorisnikService.b.zakazanCnt++;
             }
 
             this.Close();

@@ -60,7 +60,8 @@
         "Id": 2,
         "Tip": 0,
         "Pocetak": "2021-04-23T09:00:00",
-        "Trajanje": 0.5
+        "Trajanje": 0.5,
+        "hitno": false
       },
       {
         "izvestaj": null,
@@ -130,7 +131,8 @@
         "Id": 0,
         "Tip": 0,
         "Pocetak": "2021-05-01T10:00:00",
-        "Trajanje": 0.5
+        "Trajanje": 0.5,
+        "hitno": false
       },
       {
         "izvestaj": null,
@@ -209,7 +211,8 @@
         "Id": 5,
         "Tip": 1,
         "Pocetak": "2021-04-20T15:30:00",
-        "Trajanje": 0.5
+        "Trajanje": 0.5,
+        "hitno": false
       },
       {
         "izvestaj": null,
@@ -315,7 +318,8 @@
         "Id": 6,
         "Tip": 1,
         "Pocetak": "2021-04-21T09:30:00",
-        "Trajanje": 0.5
+        "Trajanje": 0.5,
+        "hitno": false
       },
       {
         "izvestaj": {
@@ -458,7 +462,8 @@
         "Id": 8,
         "Tip": 0,
         "Pocetak": "2021-04-22T08:30:00",
-        "Trajanje": 0.5
+        "Trajanje": 0.5,
+        "hitno": false
       },
       {
         "izvestaj": null,
@@ -623,7 +628,8 @@
         "Id": 11,
         "Tip": 0,
         "Pocetak": "2021-04-24T09:00:00",
-        "Trajanje": 0.5
+        "Trajanje": 0.5,
+        "hitno": false
       },
       {
         "izvestaj": null,
@@ -786,7 +792,8 @@
         "Id": 14,
         "Tip": 0,
         "Pocetak": "2021-05-01T14:00:00",
-        "Trajanje": 0.5
+        "Trajanje": 0.5,
+        "hitno": false
       }
     ],
     "notifikacije": null,
@@ -824,6 +831,7 @@
       "Vakcine": null
     },
     "Guest": false,
+    "banovan": false,
     "Ime": "Dusan",
     "Prezime": "Lekic",
     "Jmbg": 3214567890122,
@@ -896,7 +904,8 @@
         "Id": 3,
         "Tip": 1,
         "Pocetak": "2021-04-30T08:30:00",
-        "Trajanje": 0.5
+        "Trajanje": 0.5,
+        "hitno": false
       },
       {
         "izvestaj": null,
@@ -984,7 +993,8 @@
         "Id": 6,
         "Tip": 1,
         "Pocetak": "2021-04-23T09:00:00",
-        "Trajanje": 0.5
+        "Trajanje": 0.5,
+        "hitno": false
       },
       {
         "izvestaj": null,
@@ -1096,7 +1106,8 @@
         "Id": 7,
         "Tip": 1,
         "Pocetak": "2021-04-23T09:00:00",
-        "Trajanje": 0.5
+        "Trajanje": 0.5,
+        "hitno": false
       },
       {
         "izvestaj": null,
@@ -1215,7 +1226,8 @@
         "Id": 12,
         "Tip": 0,
         "Pocetak": "2021-06-18T11:30:00",
-        "Trajanje": 0.5
+        "Trajanje": 0.5,
+        "hitno": false
       }
     ],
     "notifikacije": null,
@@ -1254,6 +1266,7 @@
       "Vakcine": null
     },
     "Guest": false,
+    "banovan": false,
     "Ime": "ddaa",
     "Prezime": "ssaaa",
     "Jmbg": 123,
@@ -1306,7 +1319,8 @@
         "Id": 1,
         "Tip": 1,
         "Pocetak": "2021-07-22T17:30:00",
-        "Trajanje": 0.5
+        "Trajanje": 0.5,
+        "hitno": false
       },
       {
         "izvestaj": null,
@@ -1376,7 +1390,8 @@
         "Id": 0,
         "Tip": 1,
         "Pocetak": "2021-05-01T09:00:00",
-        "Trajanje": 0.5
+        "Trajanje": 0.5,
+        "hitno": false
       },
       {
         "izvestaj": null,
@@ -1455,7 +1470,8 @@
         "Id": 0,
         "Tip": 1,
         "Pocetak": "2021-04-24T12:00:00",
-        "Trajanje": 0.5
+        "Trajanje": 0.5,
+        "hitno": false
       },
       {
         "izvestaj": {
@@ -1606,7 +1622,8 @@
         "Id": 10,
         "Tip": 0,
         "Pocetak": "2021-04-23T09:00:00",
-        "Trajanje": 0.5
+        "Trajanje": 0.5,
+        "hitno": false
       },
       {
         "izvestaj": null,
@@ -1700,7 +1717,8 @@
               "Id": 10,
               "Tip": 0,
               "Pocetak": "2021-04-23T09:00:00",
-              "Trajanje": 0.5
+              "Trajanje": 0.5,
+              "hitno": false
             }
           ],
           "patient": null,
@@ -1827,7 +1845,8 @@
         "Id": 13,
         "Tip": 0,
         "Pocetak": "2021-05-05T09:30:00",
-        "Trajanje": 0.5
+        "Trajanje": 0.5,
+        "hitno": false
       },
       {
         "izvestaj": null,
@@ -1921,7 +1940,8 @@
               "Id": 10,
               "Tip": 0,
               "Pocetak": "2021-04-23T09:00:00",
-              "Trajanje": 0.5
+              "Trajanje": 0.5,
+              "hitno": false
             }
           ],
           "patient": null,
@@ -1994,7 +2014,8 @@
         "Id": 0,
         "Tip": 0,
         "Pocetak": "2021-05-08T08:00:00",
-        "Trajanje": 0.5
+        "Trajanje": 0.5,
+        "hitno": false
       },
       {
         "izvestaj": null,
@@ -2088,7 +2109,8 @@
               "Id": 10,
               "Tip": 0,
               "Pocetak": "2021-04-23T09:00:00",
-              "Trajanje": 0.5
+              "Trajanje": 0.5,
+              "hitno": false
             }
           ],
           "patient": null,
@@ -2233,7 +2255,8 @@
         "Id": 3,
         "Tip": 0,
         "Pocetak": "2021-05-08T10:30:00",
-        "Trajanje": 0.5
+        "Trajanje": 0.5,
+        "hitno": false
       }
     ],
     "notifikacije": null,
@@ -2327,7 +2350,8 @@
           "Id": 10,
           "Tip": 0,
           "Pocetak": "2021-04-23T09:00:00",
-          "Trajanje": 0.5
+          "Trajanje": 0.5,
+          "hitno": false
         }
       ],
       "patient": null,
@@ -2338,6 +2362,7 @@
       "Vakcine": null
     },
     "Guest": false,
+    "banovan": false,
     "Ime": "Aleksaaaaaa",
     "Prezime": "Papovic",
     "Jmbg": 2134567890213,
@@ -2390,7 +2415,8 @@
         "Id": 0,
         "Tip": 0,
         "Pocetak": "2021-05-08T17:30:00",
-        "Trajanje": 0.5
+        "Trajanje": 0.5,
+        "hitno": false
       },
       {
         "izvestaj": null,
@@ -2451,7 +2477,8 @@
         "Id": 1,
         "Tip": 1,
         "Pocetak": "2021-04-29T11:30:00",
-        "Trajanje": 0.5
+        "Trajanje": 0.5,
+        "hitno": false
       },
       {
         "izvestaj": null,
@@ -2539,7 +2566,8 @@
         "Id": 1,
         "Tip": 1,
         "Pocetak": "2021-04-24T09:00:00",
-        "Trajanje": 0.5
+        "Trajanje": 0.5,
+        "hitno": false
       },
       {
         "izvestaj": {
@@ -2661,7 +2689,8 @@
         "Id": 9,
         "Tip": 0,
         "Pocetak": "2021-04-24T08:30:00",
-        "Trajanje": 0.5
+        "Trajanje": 0.5,
+        "hitno": false
       },
       {
         "izvestaj": null,
@@ -2770,7 +2799,8 @@
         "Id": 4,
         "Tip": 0,
         "Pocetak": "2021-05-29T09:00:00",
-        "Trajanje": 0.5
+        "Trajanje": 0.5,
+        "hitno": false
       }
     ],
     "notifikacije": [
@@ -2868,6 +2898,7 @@
       "Vakcine": null
     },
     "Guest": false,
+    "banovan": false,
     "Ime": "Dusan",
     "Prezime": "Markovic",
     "Jmbg": 1234567890123,

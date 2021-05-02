@@ -6,12 +6,18 @@ using System.Text;
 using System.Linq;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using ZdravoKorporacija.Model;
 
 namespace Service
 {
     class KorisnikService
     {
         KorisnikRepozitorijum kr = KorisnikRepozitorijum.Instance;
+        private BanRepozitorijum banRepo = new BanRepozitorijum();
+        private PacijentService pacServis = new PacijentService();
+        public static Ban b;
+
+        public KorisnikService() { b = banRepo.dobaviSve()[banRepo.dobaviSve().Count - 1];  }
 
         public bool DodajKorisnika(string ime, string sifra, UlogaEnum uloga)
         {
@@ -87,5 +93,32 @@ namespace Service
             kr.Sacuvaj();
             return true;
         }
+
+    
+        public void banuj(Pacijent pacijent)
+        {
+            //List<Ban> bans = banRepo.dobaviSve();
+            //b = bans[bans.Count - 1];
+
+            if (b.otkazanCnt >= 3 || b.zakazanCnt >= 3 || b.pomerenCnt >= 3 && !pacijent.banovan)
+            {
+                pacijent.banovan = true;
+                b.trenutakBanovanja = DateTime.Now.ToString();
+
+                b.otkazanCnt = 0;
+                b.pomerenCnt = 0;
+                b.zakazanCnt = 0;
+
+            }
+
+            // DateTime.Compare(DateTime.Now, DateTime.Parse(b.trenutakBanovanja).AddMinutes(3)) >= 0
+            if (pacijent.banovan && DateTime.Compare(DateTime.Now, DateTime.Parse(b.trenutakBanovanja).AddMinutes(3)) >= 0)
+            {
+                pacijent.banovan = false;
+            }
+
+            pacServis.AzurirajPacijenta(pacijent);
+        }
+
     }
 }
