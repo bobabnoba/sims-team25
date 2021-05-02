@@ -25,12 +25,15 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
     {
         LekServis lekServis = new LekServis();
         DodavanjeAlternativnihLekova dodavanjeAlternativnih;
+        IzborLekaraZaPotvrdu izborLekaraZaPotvrdu;
         public ObservableCollection<Lek> lekici;
+        public ObservableCollection<Lekar> lekari;
 
         public DodavanjeZahtevaZaLek()
         {
             InitializeComponent();
             lekici = new ObservableCollection<Lek>();
+            lekari = new ObservableCollection<Lekar>();
             List<int> potvrda = new List<int>();
             for(int i =1; i<= 10; i++)
             {
@@ -59,11 +62,17 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
                 Debug.WriteLine(le.NazivLeka);
             }
 
+            ObservableCollection<Lekar> izabrani = izborLekaraZaPotvrdu.izabraniLekari;
+            List<Lekar> lekariIzabrani = new List<Lekar>();
+            foreach( Lekar lekarS in izabrani)
+            {
+                lekariIzabrani.Add(lekarS);
+            }
 
-            //.alternativniLekovi = alekoviDTO;
 
             ZahtevLekDTO zahtevLekDTO = new ZahtevLekDTO(lek,neophodno,0);
             zahtevLekDTO.Lek.SetalternativniLekovi(alekoviDTO);
+            zahtevLekDTO.lekari = lekariIzabrani;
             IDRepozitorijum datoteka = new IDRepozitorijum("iDMapZahtevZaLek");
             Dictionary<int, int> ids = datoteka.dobaviSve();
 
@@ -109,8 +118,8 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            IzborLekaraZaPotvrdu izborLekara = new IzborLekaraZaPotvrdu();
-            izborLekara.Show();
+            izborLekaraZaPotvrdu = new IzborLekaraZaPotvrdu(lekari);
+            izborLekaraZaPotvrdu.Show();
         }
     }
 }

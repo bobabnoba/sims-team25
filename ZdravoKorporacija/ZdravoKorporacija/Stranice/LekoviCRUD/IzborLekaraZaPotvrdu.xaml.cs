@@ -1,5 +1,9 @@
-﻿using System;
+﻿using Model;
+using Service;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,9 +21,34 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
     /// </summary>
     public partial class IzborLekaraZaPotvrdu : Window
     {
-        public IzborLekaraZaPotvrdu()
+        LekarService lekarServis = new LekarService();
+        public ObservableCollection<Lekar> sviLekari = new ObservableCollection<Lekar>();
+        public ObservableCollection<Lekar> izabraniLekari = new ObservableCollection<Lekar>();
+
+        public IzborLekaraZaPotvrdu(ObservableCollection<Lekar> lekari)
         {
             InitializeComponent();
+            izabraniLekari = lekari;
+           
+            sviLekari = new ObservableCollection<Lekar>(lekarServis.PregledSvihLekara());
+            if (izabraniLekari != null)
+            {
+                foreach (Lekar s in sviLekari.ToArray<Lekar>())
+                {
+                    foreach (Lekar i in izabraniLekari)
+                    {
+                        if (s.Jmbg == i.Jmbg)
+                        {
+                            sviLekari.Remove(s);
+                        }
+                    }
+                }
+
+            }
+
+            dgLekari.ItemsSource = sviLekari;
+
+            dgIzbraniLekari.ItemsSource = izabraniLekari;
         }
 
         private void dgLekari_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -34,7 +63,11 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-
+            foreach (Lekar selektovaniLekar in dgLekari.SelectedItems.Cast<Lekar>().ToList())
+            {
+                izabraniLekari.Add(selektovaniLekar);
+                sviLekari.Remove(selektovaniLekar);
+            }
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
@@ -45,6 +78,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
         private void potvrdi(object sender, RoutedEventArgs e)
         {
             this.Close();
+           
         }
 
         private void odustani(object sender, RoutedEventArgs e)

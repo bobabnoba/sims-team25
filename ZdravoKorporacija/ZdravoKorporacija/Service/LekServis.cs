@@ -99,6 +99,8 @@ namespace Service
                 zahtevZaLek.Lek.alternativniLekovi.Add(l);
              }
 
+            zahtevZaLek.Setlekari(zahtevLek.lekari);
+
             zahtevZaLek.Id = zahtevLek.Id;
 
             ZahtevLekRepozitorijum.Instance.zahteviLek.Add(zahtevZaLek);

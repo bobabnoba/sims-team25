@@ -144,5 +144,30 @@
     "Sastojci": "r",
     "NusPojave": "r",
     "NazivLeka": "r"
+  },
+  {
+    "alternativniLekovi": [
+      {
+        "alternativniLekovi": [],
+        "Id": 8,
+        "Proizvodjac": "ll",
+        "Sastojci": "ll",
+        "NusPojave": "ll",
+        "NazivLeka": "ll"
+      },
+      {
+        "alternativniLekovi": [],
+        "Id": 11,
+        "Proizvodjac": "ttt",
+        "Sastojci": "ttt",
+        "NusPojave": "ttt",
+        "NazivLeka": "ttt"
+      }
+    ],
+    "Id": 13,
+    "Proizvodjac": "novi",
+    "Sastojci": "novi",
+    "NusPojave": "novi",
+    "NazivLeka": "novi"
   }
 ]

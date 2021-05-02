@@ -79,7 +79,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
 
         private void lekariZaDodavanjeLeka(object sender, RoutedEventArgs e)
         {
-            IzborLekaraZaPotvrdu izborLekara = new IzborLekaraZaPotvrdu();
+            IzborLekaraZaPotvrdu izborLekara = new IzborLekaraZaPotvrdu(new ObservableCollection<Lekar>());
             izborLekara.Show();
         }
 
