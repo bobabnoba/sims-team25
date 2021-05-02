@@ -12,6 +12,7 @@ namespace Repository
     {
         private static BanRepozitorijum _instance;
         public ObservableCollection<Ban> bans;
+        public Ban ban;
 
         public static BanRepozitorijum Instance
         {
@@ -28,6 +29,7 @@ namespace Repository
         private BanRepozitorijum()
         {
             bans = new ObservableCollection<Ban>();
+            ban = new Ban();
         }
 
 
@@ -48,8 +50,26 @@ namespace Repository
             writer.Close();
         }
 
+        public Ban getBan()
+        {
+            string lokacija = @"..\..\..\Data\banInfo.json";
+            Ban b = new Ban();
+            if (File.Exists(lokacija))
+            {
+                string jsonText = File.ReadAllText(lokacija);
+                if (!string.IsNullOrEmpty(jsonText))
+                {
+                    b = JsonConvert.DeserializeObject<Ban>(jsonText);
+                }
+            }
+            if (b != null)
+            {
+                ban = b;
+            }
+            return ban;
+        }
 
-        public Ban dobaviSve()
+            public Ban dobaviSve()
         {
             string lokacija = @"..\..\..\Data\banInfo.json";
             Ban b = new Ban();

@@ -5,8 +5,6 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using ZdravoKorporacija.Model;
 
 namespace Service
 {
@@ -14,8 +12,7 @@ namespace Service
     {
         KorisnikRepozitorijum kr = KorisnikRepozitorijum.Instance;
         private PacijentService pacServis = new PacijentService();
-        private Ban X = BanRepozitorijum.Instance.dobaviSve();
-        public static Ban b = BanRepozitorijum.Instance.bans[0];
+        public static Ban b = BanRepozitorijum.Instance.getBan();
 
         public bool DodajKorisnika(string ime, string sifra, UlogaEnum uloga)
         {
