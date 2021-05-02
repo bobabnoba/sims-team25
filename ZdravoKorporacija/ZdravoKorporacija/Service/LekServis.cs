@@ -93,6 +93,12 @@ namespace Service
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapZahtevZaLek");
             Lek lek = new Lek(zahtevLek.Lek.Id,zahtevLek.Lek.Proizvodjac,zahtevLek.Lek.Sastojci,zahtevLek.Lek.NusPojave,zahtevLek.Lek.NazivLeka);
             ZahtevLek zahtevZaLek = new ZahtevLek(lek,zahtevLek.NeophodnihPotvrda,zahtevLek.BrojPotvrda);
+            
+            foreach (LekDTO lekD in zahtevLek.Lek.alternativniLekovi) {
+                Lek l = new Lek(lekD.Id,lekD.NusPojave,lekD.Sastojci,lekD.NusPojave,lekD.NazivLeka);
+                zahtevZaLek.Lek.alternativniLekovi.Add(l);
+             }
+
             zahtevZaLek.Id = zahtevLek.Id;
 
             ZahtevLekRepozitorijum.Instance.zahteviLek.Add(zahtevZaLek);

@@ -3,6 +3,7 @@ using Repository;
 using Service;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Text;
 using System.Windows;
@@ -58,7 +59,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
 
                 ZahtevLek zahtev = (ZahtevLek)dgZahtevi.SelectedItem;
                 Lek l = new Lek(id,zahtev.Lek.Proizvodjac,zahtev.Lek.Sastojci,zahtev.Lek.NusPojave,zahtev.Lek.NazivLeka);
-              
+                l.alternativniLekovi = zahtev.Lek.alternativniLekovi;
                 lekServis.DodajLek(l,ids);
                 IDRepozitorijum datotekaZahtev = new IDRepozitorijum("iDMapZahtevZaLek");
                 Dictionary<int, int> idsZahtev = datotekaZahtev.dobaviSve();
@@ -72,7 +73,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
 
         private void izmenaAlternativnihLekova(object sender, RoutedEventArgs e)
         {
-            DodavanjeAlternativnihLekova dodavanjeAlternativnih = new DodavanjeAlternativnihLekova();
+            DodavanjeAlternativnihLekova dodavanjeAlternativnih = new DodavanjeAlternativnihLekova(new ObservableCollection<Lek>());
             dodavanjeAlternativnih.Show();
         }
 

@@ -1,1 +1,119 @@
-[]
+[
+  {
+    "lekari": [],
+    "Id": 1,
+    "Lek": {
+      "alternativniLekovi": [
+        {
+          "alternativniLekovi": [],
+          "Id": 6,
+          "Proizvodjac": "y",
+          "Sastojci": "y",
+          "NusPojave": "y",
+          "NazivLeka": "y"
+        },
+        {
+          "alternativniLekovi": [],
+          "Id": 7,
+          "Proizvodjac": "er",
+          "Sastojci": "er",
+          "NusPojave": "er",
+          "NazivLeka": "er"
+        },
+        {
+          "alternativniLekovi": [],
+          "Id": 8,
+          "Proizvodjac": "ll",
+          "Sastojci": "ll",
+          "NusPojave": "ll",
+          "NazivLeka": "ll"
+        }
+      ],
+      "Id": 0,
+      "Proizvodjac": "a",
+      "Sastojci": "a",
+      "NusPojave": "a",
+      "NazivLeka": "a"
+    },
+    "NeophodnihPotvrda": 2,
+    "BrojPotvrda": 0
+  },
+  {
+    "lekari": [],
+    "Id": 0,
+    "Lek": {
+      "alternativniLekovi": [
+        {
+          "alternativniLekovi": [],
+          "Id": 6,
+          "Proizvodjac": "y",
+          "Sastojci": "y",
+          "NusPojave": "y",
+          "NazivLeka": "y"
+        },
+        {
+          "alternativniLekovi": [],
+          "Id": 7,
+          "Proizvodjac": "er",
+          "Sastojci": "er",
+          "NusPojave": "er",
+          "NazivLeka": "er"
+        },
+        {
+          "alternativniLekovi": [],
+          "Id": 8,
+          "Proizvodjac": "ll",
+          "Sastojci": "ll",
+          "NusPojave": "ll",
+          "NazivLeka": "ll"
+        }
+      ],
+      "Id": 0,
+      "Proizvodjac": "r",
+      "Sastojci": "r",
+      "NusPojave": "r",
+      "NazivLeka": "r"
+    },
+    "NeophodnihPotvrda": 3,
+    "BrojPotvrda": 0
+  },
+  {
+    "lekari": [],
+    "Id": 2,
+    "Lek": {
+      "alternativniLekovi": [
+        {
+          "alternativniLekovi": [],
+          "Id": 10,
+          "Proizvodjac": "qq",
+          "Sastojci": "qq",
+          "NusPojave": "qq",
+          "NazivLeka": "qq"
+        },
+        {
+          "alternativniLekovi": [],
+          "Id": 11,
+          "Proizvodjac": "ttt",
+          "Sastojci": "ttt",
+          "NusPojave": "ttt",
+          "NazivLeka": "ttt"
+        },
+        {
+          "alternativniLekovi": [],
+          "Id": 12,
+          "Proizvodjac": "r",
+          "Sastojci": "r",
+          "NusPojave": "r",
+          "NazivLeka": "r"
+        }
+      ],
+      "Id": 0,
+      "Proizvodjac": "ttt",
+      "Sastojci": "tt",
+      "NusPojave": "ttt",
+      "NazivLeka": "tt"
+    },
+    "NeophodnihPotvrda": 3,
+    "BrojPotvrda": 0
+  }
+]

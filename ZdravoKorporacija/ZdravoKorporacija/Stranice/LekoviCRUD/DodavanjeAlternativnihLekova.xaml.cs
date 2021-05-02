@@ -1,5 +1,9 @@
-﻿using System;
+﻿using Model;
+using Repository;
+using Service;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Linq;
 
 namespace ZdravoKorporacija.Stranice.LekoviCRUD
 {
@@ -17,13 +22,51 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
     /// </summary>
     public partial class DodavanjeAlternativnihLekova : Window
     {
-        public DodavanjeAlternativnihLekova()
+        LekServis lekServis = new LekServis();
+        public ObservableCollection<Lek> ostalilekovi = new ObservableCollection<Lek>();
+        public ObservableCollection<Lek> alternativniLekovi = new ObservableCollection<Lek>();
+        
+    
+      
+        public DodavanjeAlternativnihLekova(ObservableCollection<Lek> lekici)
         {
             InitializeComponent();
-        }
+            alternativniLekovi = lekici;
+            lekServis.PregledSvihLekova();
+            ostalilekovi = new ObservableCollection<Lek>(LekRepozitorijum.Instance.lekovi);
+            if (alternativniLekovi != null)
+            {
+                foreach (Lek o in  ostalilekovi.ToArray<Lek>())
+                {
+                    foreach (Lek l in alternativniLekovi)
+                    {
+                        if (o.Id == l.Id)
+                        {
+                            ostalilekovi.Remove(o);
+                        }
+                    }
+                }
 
+            }
+        
+            dgLekovi.ItemsSource = ostalilekovi;
+            
+            dgAlternativni.ItemsSource = alternativniLekovi;
+            
+
+        }
+        
         private void button_Click(object sender, RoutedEventArgs e)
-        { 
+        {
+            
+            foreach (Lek selektovaniLek in dgLekovi.SelectedItems.Cast<Lek>().ToList())
+            {
+               alternativniLekovi.Add(selektovaniLek);
+               ostalilekovi.Remove(selektovaniLek);
+            }
+            
+
+
         }
 
         private void dgLekovi_SelectionChanged(object sender, SelectionChangedEventArgs e)
