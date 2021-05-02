@@ -2,22 +2,41 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 
-namespace ZdravoKorporacija.Model
+namespace Repository
 {
-    class BanRepozitorijum
+    public class BanRepozitorijum
     {
-        private string lokacija;
+        private static BanRepozitorijum _instance;
+        public ObservableCollection<Ban> bans;
 
-        public BanRepozitorijum()
+        public static BanRepozitorijum Instance
         {
-            this.lokacija = @"..\..\..\Data\banInfo.json";
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new BanRepozitorijum();
+                }
+                return _instance;
+            }
         }
 
-        public void sacuvaj(List<Ban> banovi)
+        private BanRepozitorijum()
         {
+            bans = new ObservableCollection<Ban>();
+        }
+
+
+        public void sacuvaj(Ban banovi)
+        {
+            bans.Clear();
+            bans.Add(banovi);
+
+            string lokacija = @"..\..\..\Data\banInfo.json";
             JsonSerializer serializer = new JsonSerializer();
             //serializer.PreserveReferencesHandling = PreserveReferencesHandling.All;
             serializer.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
@@ -28,18 +47,25 @@ namespace ZdravoKorporacija.Model
             jWriter.Close();
             writer.Close();
         }
-        public List<Ban> dobaviSve()
+
+
+        public Ban dobaviSve()
         {
-            List<Ban> banovi = new List<Ban>();
+            string lokacija = @"..\..\..\Data\banInfo.json";
+            Ban b = new Ban();
             if (File.Exists(lokacija))
             {
                 string jsonText = File.ReadAllText(lokacija);
                 if (!string.IsNullOrEmpty(jsonText))
                 {
-                    banovi = JsonConvert.DeserializeObject<List<Ban>>(jsonText);
+                    b = JsonConvert.DeserializeObject<Ban>(jsonText);
                 }
             }
-            return banovi;
+            if(b != null)
+            {
+                bans.Add(b);
+            }
+            return b;
         }
     }
 }

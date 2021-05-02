@@ -29,7 +29,6 @@ namespace ZdravoKorporacija.Stranice
         private Pacijent pacijent = new Pacijent();
         private Dictionary<int, int> ids = new Dictionary<int, int>();
         private Boolean prikazi;
-        BanRepozitorijum banRepo = new BanRepozitorijum();
 
 
         private KorisnikService korisnikServis = new KorisnikService();
@@ -174,9 +173,7 @@ namespace ZdravoKorporacija.Stranice
 
         protected override void OnClosing(CancelEventArgs e)
         {
-            List<Ban> bb = new List<Ban>();
-            bb.Add(KorisnikService.b);
-            banRepo.sacuvaj(bb);
+            BanRepozitorijum.Instance.sacuvaj(KorisnikService.b);
           //  storagePacijent.AzurirajPacijenta(pacijent);
             //this.Close();
             base.OnClosing(e);

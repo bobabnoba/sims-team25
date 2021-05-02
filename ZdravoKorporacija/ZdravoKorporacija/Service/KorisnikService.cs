@@ -13,11 +13,9 @@ namespace Service
     class KorisnikService
     {
         KorisnikRepozitorijum kr = KorisnikRepozitorijum.Instance;
-        private BanRepozitorijum banRepo = new BanRepozitorijum();
         private PacijentService pacServis = new PacijentService();
-        public static Ban b;
-
-        public KorisnikService() { b = banRepo.dobaviSve()[banRepo.dobaviSve().Count - 1];  }
+        private Ban X = BanRepozitorijum.Instance.dobaviSve();
+        public static Ban b = BanRepozitorijum.Instance.bans[0];
 
         public bool DodajKorisnika(string ime, string sifra, UlogaEnum uloga)
         {
@@ -97,9 +95,6 @@ namespace Service
     
         public void banuj(Pacijent pacijent)
         {
-            //List<Ban> bans = banRepo.dobaviSve();
-            //b = bans[bans.Count - 1];
-
             if (b.otkazanCnt >= 3 || b.zakazanCnt >= 3 || b.pomerenCnt >= 3 && !pacijent.banovan)
             {
                 pacijent.banovan = true;
@@ -108,7 +103,6 @@ namespace Service
                 b.otkazanCnt = 0;
                 b.pomerenCnt = 0;
                 b.zakazanCnt = 0;
-
             }
 
             // DateTime.Compare(DateTime.Now, DateTime.Parse(b.trenutakBanovanja).AddMinutes(3)) >= 0
@@ -118,7 +112,9 @@ namespace Service
             }
 
             pacServis.AzurirajPacijenta(pacijent);
+
         }
+
 
     }
 }
