@@ -107,8 +107,9 @@ namespace ZdravoKorporacija
         }
         private void openLekarFrame(object sender, RoutedEventArgs e)
         {
-            lekarStart s = new lekarStart();
-            s.Show();
+            lekarLogin ll = new lekarLogin(UlogaEnum.Lekar);
+            ll.Show();
+
         }
         private void openSekretarFrame(object sender, RoutedEventArgs e)
         {

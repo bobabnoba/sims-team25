@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.LekarCRUD"
       mc:Ignorable="d" 
       Height="450" Width="800" Background="CadetBlue"
-      Title="Lekar">
+      Title="Lekar" WindowStartupLocation="CenterScreen">
 
     <Grid>
         <Button Content="Zakaži pregled" HorizontalAlignment="Left" Margin="217,67,0,0" VerticalAlignment="Top" Width="92" Height="44" Click="zakaziPregled"/>

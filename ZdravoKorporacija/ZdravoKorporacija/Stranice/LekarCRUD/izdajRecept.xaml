@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.LekarCRUD"
         mc:Ignorable="d"
-        Title="izdajRecept" Height="328" Width="450" Background="CadetBlue">
+        Title="izdajRecept" Height="328" Width="450" Background="CadetBlue" WindowStartupLocation="CenterScreen">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Height="408" Width="418" Margin="0,27,0,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="20*"/>

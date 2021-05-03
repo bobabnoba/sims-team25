@@ -40,6 +40,9 @@
     <Compile Update="Stranice\LekarCRUD\zakaziPregledLekar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Stranice\Logovanje\lekarLogin.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Stranice\Logovanje\upavnikLogin.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -114,6 +117,9 @@
     <Compile Update="Stranice\UpravnikCRUD\ZaposleniPocetna.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Stranice\Uput\izdajUput.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
@@ -147,6 +153,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\LekarCRUD\zakaziPregledLekar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\Logovanje\lekarLogin.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\Logovanje\upavnikLogin.xaml">
@@ -222,6 +231,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\UpravnikCRUD\ZaposleniPocetna.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\Uput\izdajUput.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Model;
+using System.Diagnostics;
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
 {
@@ -18,7 +19,8 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     public partial class lekarStart : Window
     {
         private TerminService storage = new TerminService();
-        private ObservableCollection<Termin> termini = new ObservableCollection<Termin>();
+        private ObservableCollection<Termin> terminiSvi = new ObservableCollection<Termin>();
+        public static ObservableCollection<Termin> termini = new ObservableCollection<Termin>();
 
         private PacijentService storagePacijent = new PacijentService();
         private Pacijent pac = new Pacijent();
@@ -27,14 +29,32 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
         private PacijentService pacijentServis = new PacijentService();
 
-        public lekarStart()
+        public lekarStart(Lekar lekar)
         {
             InitializeComponent();
 
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
             ids = datotekaID.dobaviSve();
 
-            termini = new ObservableCollection<Termin>(storage.PregledSvihTermina());
+            terminiSvi = new ObservableCollection<Termin>(storage.PregledSvihTermina());
+            foreach(Termin ter in termini)
+            {
+                Trace.WriteLine(ter.Id);
+            }
+            foreach(Termin t in terminiSvi)
+            {
+                if (t.Lekar != null)
+                {
+                    if (t.Lekar.Jmbg.Equals(lekar.Jmbg))
+                    {
+                        if (!termini.Contains(t))
+                        {
+                            Trace.WriteLine("Uso");
+                            termini.Add(t);
+                        }
+                    }
+                }
+            }
             dgUsers.ItemsSource = termini;
             this.DataContext = this;
         }

@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using ZdravoKorporacija.Model;
 using System;
 using Service;
+using ZdravoKorporacija.Stranice.Logovanje;
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
 {
@@ -17,24 +18,26 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private ObservableCollection<Pacijent> pacijenti = new ObservableCollection<Pacijent>();
         private ObservableCollection<Pacijent> pacijentiPrikaz = new ObservableCollection<Pacijent>();
         private TerminService terminServis = new TerminService();
-        private ObservableCollection<Termin> termini = new ObservableCollection<Termin>();
+        
         public pregledPacijenata()
         {
             InitializeComponent();
-            termini = new ObservableCollection<Termin>(terminServis.PregledSvihTermina());
+            
             pacijenti = new ObservableCollection<Pacijent>(pacijentServis.PregledSvihPacijenata());
             try
             {
-                foreach (Termin t in termini)
+                foreach (Termin t in lekarStart.termini)
                 {
                     if (t.zdravstveniKarton!=null)
                     {
                         foreach (Pacijent p in pacijenti)
+                        {
                             if (t.zdravstveniKarton.Id.Equals(p.ZdravstveniKarton.Id))
                             {
                                 if (!pacijentiPrikaz.Contains(p))
                                     pacijentiPrikaz.Add(p);
                             }
+                        }
                     }
                 }
                 dgUsers.ItemsSource = pacijentiPrikaz;
@@ -52,7 +55,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         }
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            lekarStart ls = new lekarStart();
+            lekarStart ls = new lekarStart(lekarLogin.lekar);
             ls.Show();
             this.Close();
         }

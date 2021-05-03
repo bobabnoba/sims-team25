@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.LekarCRUD"
         mc:Ignorable="d"
-        Title="Zakazivanje termina" Height="450" Width="450" Background="CadetBlue">
+        Title="Zakazivanje termina" Height="450" Width="450" Background="CadetBlue" WindowStartupLocation="CenterScreen">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="408" Width="417">
         <Grid.RowDefinitions>
             <RowDefinition Height="20*"/>
