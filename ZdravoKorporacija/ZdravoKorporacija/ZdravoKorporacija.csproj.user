@@ -120,6 +120,15 @@
     <Compile Update="Stranice\Uput\izdajUput.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Stranice\Uput\izmeniUput.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\Uput\Uputi.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\Uput\zakaziHitniLekar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
@@ -234,6 +243,15 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\Uput\izdajUput.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\Uput\izmeniUput.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\Uput\Uputi.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\Uput\zakaziHitniLekar.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

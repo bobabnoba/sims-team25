@@ -49,8 +49,8 @@
             <ComboBoxItem>19:00</ComboBoxItem>
             <ComboBoxItem>19:30</ComboBoxItem>
         </ComboBox>
-        <Button Name ="potvrdiButton" Content="POTVRDI" HorizontalAlignment="Left" Margin="96,34,0,0" Grid.Row="5" VerticalAlignment="Top" Width="80" Grid.ColumnSpan="2" />
-        <Button Content="ODUSTANI" HorizontalAlignment="Left" Margin="94,34,0,0" Grid.Row="5" VerticalAlignment="Top" Width="80" Grid.Column="1" />
+        <Button Name ="potvrdiButton" Content="POTVRDI" HorizontalAlignment="Left" Margin="96,34,0,0" Grid.Row="5" VerticalAlignment="Top" Width="80" Grid.ColumnSpan="2" Click="potvrdi" />
+        <Button Content="ODUSTANI" HorizontalAlignment="Left" Margin="94,34,0,0" Grid.Row="5" VerticalAlignment="Top" Width="80" Grid.Column="1" Click="odustani" />
         <TextBlock Text="Pacijent:" TextWrapping="Wrap" Margin="52,13,237,34" Grid.Row="4" Grid.ColumnSpan="2"/>
         <ComboBox Name="cbPacijent" Grid.Column="1" Margin="58,10,77,34" Grid.Row="4"  Height="28">
             <ComboBox.ItemTemplate>

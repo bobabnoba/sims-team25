@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Model;
 using System.Diagnostics;
+using ZdravoKorporacija.Stranice.Uput;
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
 {
@@ -21,6 +22,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private TerminService storage = new TerminService();
         private ObservableCollection<Termin> terminiSvi = new ObservableCollection<Termin>();
         public static ObservableCollection<Termin> termini = new ObservableCollection<Termin>();
+        public static ObservableCollection<Termin> uputi = new ObservableCollection<Termin>();
 
         private PacijentService storagePacijent = new PacijentService();
         private Pacijent pac = new Pacijent();
@@ -28,6 +30,19 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
 
         private PacijentService pacijentServis = new PacijentService();
+
+        public lekarStart()
+        {
+            InitializeComponent();
+
+            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
+            ids = datotekaID.dobaviSve();
+
+            terminiSvi = new ObservableCollection<Termin>(storage.PregledSvihTermina());
+            
+            dgUsers.ItemsSource = termini;
+            this.DataContext = this;
+        }
 
         public lekarStart(Lekar lekar)
         {
@@ -37,10 +52,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             ids = datotekaID.dobaviSve();
 
             terminiSvi = new ObservableCollection<Termin>(storage.PregledSvihTermina());
-            foreach(Termin ter in termini)
-            {
-                Trace.WriteLine(ter.Id);
-            }
+           
             foreach(Termin t in terminiSvi)
             {
                 if (t.Lekar != null)
@@ -49,8 +61,14 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                     {
                         if (!termini.Contains(t))
                         {
-                            Trace.WriteLine("Uso");
                             termini.Add(t);
+                        }
+                    }
+                    else
+                    {
+                        if (!uputi.Contains(t))
+                        {
+                            uputi.Add(t);
                         }
                     }
                 }
@@ -104,14 +122,16 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-           
+            pregledPacijenata pp = new pregledPacijenata();
+            this.Close();
+            pp.Show();
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
-            pregledPacijenata pp = new pregledPacijenata();
+            Uputi u = new Uputi();
+            u.Show();
             this.Close();
-            pp.Show();
         }
     }
 }

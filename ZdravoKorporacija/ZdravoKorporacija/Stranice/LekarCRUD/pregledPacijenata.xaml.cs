@@ -6,6 +6,7 @@ using ZdravoKorporacija.Model;
 using System;
 using Service;
 using ZdravoKorporacija.Stranice.Logovanje;
+using ZdravoKorporacija.Stranice.Uput;
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
 {
@@ -55,14 +56,16 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         }
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            lekarStart ls = new lekarStart(lekarLogin.lekar);
+            lekarStart ls = new lekarStart();
             ls.Show();
             this.Close();
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
-
+            Uputi u = new Uputi();
+            u.Show();
+            this.Close();
         }
 
         private void prikazKartona(object sender, RoutedEventArgs e)

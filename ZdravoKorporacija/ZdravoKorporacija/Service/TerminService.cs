@@ -39,13 +39,7 @@ namespace ZdravoKorporacija.Model
             TerminRepozitorijum datoteka = new TerminRepozitorijum();
             List<Termin> termini = datoteka.dobaviSve();
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
-            foreach (Termin t in termini)
-            {
-                if (t.Id.Equals(termin.Id))
-                {
-                     return false;
-                }
-            }
+            
             termini.Add(termin);
             datoteka.sacuvaj(termini);
             datotekaID.sacuvaj(ids);

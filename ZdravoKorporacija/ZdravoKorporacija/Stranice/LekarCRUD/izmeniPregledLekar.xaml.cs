@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Model;
+using ZdravoKorporacija.Stranice.Logovanje;
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
 {
@@ -54,7 +55,6 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             pregledi = termini;
 
             lekari = lekariDat.dobaviSve();
-            Lekari.ItemsSource = lekari;
             CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
             date.BlackoutDates.Add(cdr);
 
@@ -78,17 +78,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                     cbProstorija.SelectedItem = p;
                 }
             }
-            foreach (Lekar l in lekari)
-            {
-                if (selektovani.Lekar == null)
-                {
-                    break;
-                }
-                if (l.Jmbg == selektovani.Lekar.Jmbg)
-                {
-                    Lekari.SelectedItem = l;
-                }
-            }
+           
 
             foreach (Pacijent p in pacijenti)
             {
@@ -127,7 +117,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             int popodne = prepodne + 12;
 
             if (!date.SelectedDate.HasValue || time.SelectedIndex == -1 || cbTip.SelectedIndex == -1
-               || cbProstorija.SelectedIndex == -1 || cbPacijent.SelectedIndex == -1 || Lekari.SelectedIndex == -1)
+               || cbProstorija.SelectedIndex == -1 || cbPacijent.SelectedIndex == -1 )
             {
                 MessageBox.Show("Niste popunili sva polja", "Greska");
                 return;
@@ -173,7 +163,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 p.Tip = TipTerminaEnum.Operacija;
             }
 
-            p.Lekar = (Lekar)Lekari.SelectedItem;
+            p.Lekar = lekarLogin.lekar;
             p.prostorija = (Prostorija)cbProstorija.SelectedItem;
             foreach (Termin ter in termini)
             {

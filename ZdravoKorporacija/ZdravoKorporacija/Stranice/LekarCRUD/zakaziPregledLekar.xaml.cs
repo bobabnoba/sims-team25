@@ -3,9 +3,11 @@ using Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Model;
+using ZdravoKorporacija.Stranice.Logovanje;
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
 {
@@ -50,14 +52,10 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
 
             lekari = lekariDat.dobaviSve();
-            Lekari.ItemsSource = lekari;
 
             prostorije = prostorijeServis.PregledSvihProstorija();
             cbProstorija.ItemsSource = prostorije;
             p.Trajanje = 0.5;
-            //p.Id = pregledi.Count + 1;
-            
-
         }
 
         private void potvrdi(object sender, RoutedEventArgs e)
@@ -87,7 +85,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             int prepodne = Int32.Parse(now.Substring(0, 2));
             int popodne = prepodne + 12;
             if (!date.SelectedDate.HasValue || time.SelectedIndex == -1 || cbTip.SelectedIndex == -1
-                || cbProstorija.SelectedIndex == -1 || cbPacijent.SelectedIndex == -1 || Lekari.SelectedIndex == -1)
+                || cbProstorija.SelectedIndex == -1 || cbPacijent.SelectedIndex == -1)
             {
                 MessageBox.Show("Niste popunili sva polja", "Greska");
                 return;
@@ -139,7 +137,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             ZdravstveniKarton zk = new ZdravstveniKarton(null, pac.Jmbg, StanjePacijentaEnum.None, null, KrvnaGrupaEnum.None, null);
 
             p.prostorija = (Prostorija)cbProstorija.SelectedItem;
-            p.Lekar = (Lekar)Lekari.SelectedItem;
+            p.Lekar = lekarLogin.lekar;
             if (pac.ZdravstveniKarton != null)
                 p.zdravstveniKarton = pac.ZdravstveniKarton;
             else
@@ -157,6 +155,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
             if (terminServis.ZakaziTermin(p, ids))
             {
+                Trace.WriteLine("Upisao");
                 this.pregledi.Add(p);
                 lekariDat.sacuvaj(lekari);
                 //pacijentiDat.sacuvaj(pacijenti); // višakk?
