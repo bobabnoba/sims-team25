@@ -78,6 +78,12 @@
     <Compile Update="Stranice\SekretarCRUD\sekretarStart.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Stranice\sekretarObavestenja\kreirajObavestenje.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\sekretarObavestenja\sekretarObavestenja.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Stranice\SekretarPREGLEDI\zakaziHitno.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -186,6 +192,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\SekretarCRUD\sekretarStart.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\sekretarObavestenja\kreirajObavestenje.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\sekretarObavestenja\sekretarObavestenja.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\SekretarPREGLEDI\zakaziHitno.xaml">

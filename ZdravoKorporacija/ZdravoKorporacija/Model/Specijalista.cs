@@ -14,7 +14,7 @@ namespace Model
 
         }
 
-        private SpecijalizacijaEnum Specijalizacija { get; set; }
+        public SpecijalizacijaEnum Specijalizacija { get; set; }
 
     }
 }

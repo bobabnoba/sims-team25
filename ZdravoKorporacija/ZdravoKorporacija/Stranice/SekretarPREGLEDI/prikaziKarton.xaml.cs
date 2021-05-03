@@ -40,7 +40,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
 
             } else
             {
-                kr.KreirajZdravstveniKartonJMBG(karton);
+               // kr.KreirajZdravstveniKartonJMBG(karton);
                 ZdravstveniKarton temp = kr.findById(izabrani.Jmbg);
                 kartoni.Add(temp);
                 dgKarton.ItemsSource = kartoni;

@@ -24,14 +24,23 @@ namespace ZdravoKorporacija
     public partial class MainWindow : Window
     {
         public static ContentControl cc = new ContentControl();
+        public static  List<Specijalista> spec = new List<Specijalista>();
         UlogaEnum uloga;
         public MainWindow() 
         { 
             InitializeComponent();
             cc.Content = this.Content;
+            Specijalista s1 = new Specijalista("Veljko","Vukovic" );
+            s1.Specijalizacija = SpecijalizacijaEnum.Kardiohirurg;
+            spec.Add(s1);
+
+            Specijalista s2 = new Specijalista("Milos", "Zivic");
+            s2.Specijalizacija = SpecijalizacijaEnum.Neurolog;
+            spec.Add(s2);
+
         }
 
-       
+
 
 
         private void AutoColumns_Click(object sender, RoutedEventArgs e)

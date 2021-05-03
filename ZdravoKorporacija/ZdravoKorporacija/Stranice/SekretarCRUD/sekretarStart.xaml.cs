@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Model;
+using ZdravoKorporacija.Stranice.sekretarObavestenja;
 using ZdravoKorporacija.Stranice.SekretarPREGLEDI;
 
 namespace ZdravoKorporacija.Stranice.SekretarCRUD
@@ -41,6 +42,16 @@ namespace ZdravoKorporacija.Stranice.SekretarCRUD
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             fr.Content = new sekretarPREGLEDI();
+        }
+
+        private void fr_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            fr.Content = new sekretarObavestenja.sekretarObavestenja();
         }
     }
 }
