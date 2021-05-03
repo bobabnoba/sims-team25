@@ -171,14 +171,6 @@ namespace ZdravoKorporacija.Stranice
 
         }
 
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            BanRepozitorijum.Instance.sacuvaj(KorisnikService.b);
-            //  storagepacijent.azurirajpacijenta(pacijent);
-            //this.close();
-            base.OnClosing(e);
-        }
-
 
     }
 }

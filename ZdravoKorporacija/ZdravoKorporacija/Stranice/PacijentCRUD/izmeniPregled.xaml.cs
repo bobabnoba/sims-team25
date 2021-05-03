@@ -1,4 +1,5 @@
 ﻿using Model;
+using Repository;
 using Service;
 using System;
 using System.Collections.Generic;
@@ -86,6 +87,7 @@ namespace ZdravoKorporacija.Stranice
         {
             p.Lekar = (Lekar)ljekar.SelectedItem;
             p.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
+            p.zdravstveniKarton = pacijent.ZdravstveniKarton;
 
             //ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
             //String t = null;
@@ -98,11 +100,11 @@ namespace ZdravoKorporacija.Stranice
             //}
             //p.Pocetak = DateTime.Parse(d + " " + t);
 
-            if (storage.AzurirajTermin(p))
+            if (storage.AzurirajTerminPacijent(p, pacijent))
             {
                 this.pregledi.Remove(s);
                 this.pregledi.Add(p);
-                KorisnikService.b.pomerenCnt++;
+               
             }
             this.Close();
         }

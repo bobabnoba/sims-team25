@@ -1,4 +1,5 @@
 ﻿using Model;
+using Repository;
 using Service;
 using System;
 using System.Collections.Generic;
@@ -105,12 +106,13 @@ namespace ZdravoKorporacija.Stranice
             Termin tZaLjekara = new Termin();
             tZaLjekara.Id = p.Id;
             p.Lekar.AddTermin(tZaLjekara);
+            p.zdravstveniKarton = pacijent.ZdravstveniKarton;
 
-            if (storage.ZakaziTermin(p, ids))
+            if (storage.ZakaziTerminPacijent(p, ids, pacijent))
             {
                 this.pregledi.Add(p);
                 ljekariDat.sacuvaj(ljekari);
-                KorisnikService.b.zakazanCnt++;
+               
             }
 
             this.Close();

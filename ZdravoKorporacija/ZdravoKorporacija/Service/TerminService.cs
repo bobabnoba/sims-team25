@@ -109,5 +109,71 @@ namespace ZdravoKorporacija.Model
             List<Termin> termini = datoteka.dobaviSve();
             return termini;
         }
+
+
+        public bool ZakaziTerminPacijent(Termin termin, Dictionary<int, int> ids, Pacijent pacijent)
+        {
+            TerminRepozitorijum datoteka = new TerminRepozitorijum();
+            List<Termin> termini = datoteka.dobaviSve();
+            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
+            foreach (Termin t in termini)
+            {
+                if (t.Id.Equals(termin.Id))
+                {
+                    return false;
+                }
+            }
+            termini.Add(termin);
+            datoteka.sacuvaj(termini);
+            datotekaID.sacuvaj(ids);
+            Ban b = BanRepozitorijum.Instance.dobavi(pacijent.Jmbg);
+            b.zakazanCnt++;
+            BanRepozitorijum.Instance.sacuvaj(b);
+
+            return true;
+        }
+
+        public bool AzurirajTerminPacijent(Termin termin, Pacijent pacijent)
+        {
+            TerminRepozitorijum datoteka = new TerminRepozitorijum();
+            List<Termin> termini = datoteka.dobaviSve();
+            foreach (Termin t in termini)
+            {
+                if (t.Id.Equals(termin.Id))
+                {
+                    termini.Remove(t);
+                    termini.Add(termin);
+                    datoteka.sacuvaj(termini);
+                    Ban b = BanRepozitorijum.Instance.dobavi(pacijent.Jmbg);
+                    b.pomerenCnt++;
+                    BanRepozitorijum.Instance.sacuvaj(b);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool OtkaziTerminPacijent(Termin termin, Dictionary<int, int> ids, Pacijent pacijent)
+        {
+            TerminRepozitorijum datoteka = new TerminRepozitorijum();
+            List<Termin> termini = datoteka.dobaviSve();
+            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
+
+            foreach (Termin t in termini)
+            {
+                if (t.Id.Equals(termin.Id))
+                {
+                    termini.Remove(t);
+                    datoteka.sacuvaj(termini);
+                    datotekaID.sacuvaj(ids);
+                    Ban b = BanRepozitorijum.Instance.dobavi(pacijent.Jmbg);
+                    b.otkazanCnt++;
+                    BanRepozitorijum.Instance.sacuvaj(b);
+
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

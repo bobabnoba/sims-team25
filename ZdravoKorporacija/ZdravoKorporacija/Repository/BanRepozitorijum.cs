@@ -37,8 +37,6 @@ namespace Repository
         public void sacuvaj(Ban noviBan)
         {
             List<Ban> x = new List<Ban>(bans);
-            //bans.Clear();
-            //bans.Add(banovi);
             foreach(Ban b in x)
             {
                 if (b.idKorisnika.Equals(noviBan.idKorisnika))
@@ -50,17 +48,16 @@ namespace Repository
 
             string lokacija = @"..\..\..\Data\banInfo.json";
             JsonSerializer serializer = new JsonSerializer();
-            //serializer.PreserveReferencesHandling = PreserveReferencesHandling.All;
             serializer.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             serializer.Formatting = Formatting.Indented;
             StreamWriter writer = new StreamWriter(lokacija);
             JsonWriter jWriter = new JsonTextWriter(writer);
-            serializer.Serialize(jWriter, bans);  //observable prolazi?
+            serializer.Serialize(jWriter, bans); 
             jWriter.Close();
             writer.Close();
         }
 
-        public Ban getBan(long id)
+        public Ban dobavi(long id)
         {
             Ban retBan = new Ban();
             foreach(Ban b in bans)

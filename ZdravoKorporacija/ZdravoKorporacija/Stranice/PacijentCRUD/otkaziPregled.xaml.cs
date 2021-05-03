@@ -1,4 +1,5 @@
 ﻿using Model;
+using Repository;
 using Service;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -31,10 +32,10 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
         private void da(object sender, RoutedEventArgs e)
         {
             this.ids[this.termin.Id] = 0;
-            storage.OtkaziTermin(termin, ids);
+            storage.OtkaziTerminPacijent(termin, ids, pacijent);
             termini.Remove(termin);
             //termin.Lekar.RemoveTermin(termin); // provjeri je l ovo radi okej
-            KorisnikService.b.otkazanCnt++;
+            
             this.Close();
 
         }

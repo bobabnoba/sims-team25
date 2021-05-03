@@ -12,7 +12,7 @@ namespace Service
     {
         KorisnikRepozitorijum kr = KorisnikRepozitorijum.Instance;
         private PacijentService pacServis = new PacijentService();
-        public static Ban b;
+        public Ban b;
         List<Ban> nepotrebna = BanRepozitorijum.Instance.dobaviSve(); //set bans
 
         public bool DodajKorisnika(string ime, string sifra, UlogaEnum uloga)
@@ -93,9 +93,9 @@ namespace Service
 
         public void provjeriStatus(Pacijent pacijent)
         {
-            b = BanRepozitorijum.Instance.getBan(pacijent.Jmbg);
+            b = BanRepozitorijum.Instance.dobavi(pacijent.Jmbg);
         
-            if (b.otkazanCnt >= 3 || b.zakazanCnt >= 3 || b.pomerenCnt >= 3 && !pacijent.banovan)
+            if (b.otkazanCnt >= 3 || b.zakazanCnt >= 3 || b.pomerenCnt >= 3)
                 {
                     banKorisnika(pacijent);
                     b.trenutakBanovanja = DateTime.Now.ToString();
@@ -109,11 +109,10 @@ namespace Service
                 if (pacijent.banovan && DateTime.Compare(DateTime.Now, DateTime.Parse(b.trenutakBanovanja).AddMinutes(3)) >= 0)
                 {
                     unbanKorisnika(pacijent);
-                    b.trenutakBanovanja = DateTime.Now.AddMinutes(3).ToString();
                 }
 
                 pacServis.AzurirajPacijenta(pacijent);
-                BanRepozitorijum.Instance.sacuvaj(KorisnikService.b);
+                BanRepozitorijum.Instance.sacuvaj(b);
 
         }
 
