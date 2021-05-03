@@ -5,41 +5,42 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 
-namespace ZdravoKorporacija.Model
+namespace ZdravoKorporacija.Repository
 {
-    class TerminRepozitorijum
+    public class ObavestenjaRep
     {
         private string lokacija;
 
-        public TerminRepozitorijum()
+        public ObavestenjaRep()
         {
-            this.lokacija = @"..\..\..\Data\termini.json";
+            this.lokacija = @"..\..\..\Data\obavestenja.json";
         }
 
-        public void sacuvaj(List<Termin> termini)
+        public void sacuvaj(List<Notifikacija> notifikacije)
         {
             JsonSerializer serializer = new JsonSerializer();
-            //serializer.PreserveReferencesHandling = PreserveReferencesHandling.All;
             serializer.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             serializer.Formatting = Formatting.Indented;
             StreamWriter writer = new StreamWriter(lokacija);
             JsonWriter jWriter = new JsonTextWriter(writer);
-            serializer.Serialize(jWriter, termini);
+            serializer.Serialize(jWriter, notifikacije);
             jWriter.Close();
             writer.Close();
         }
-        public List<Termin> dobaviSve()
+
+        public List<Notifikacija> dobaviSve()
         {
-            List<Termin> termini = new List<Termin>();
+            List<Notifikacija> notifikacije = new List<Notifikacija>();
             if (File.Exists(lokacija))
             {
                 string jsonText = File.ReadAllText(lokacija);
                 if (!string.IsNullOrEmpty(jsonText))
                 {
-                    termini = JsonConvert.DeserializeObject<List<Termin>>(jsonText);
+                    notifikacije = JsonConvert.DeserializeObject<List<Notifikacija>>(jsonText);
                 }
             }
-            return termini;
+            return notifikacije;
         }
     }
-}
+    }
+

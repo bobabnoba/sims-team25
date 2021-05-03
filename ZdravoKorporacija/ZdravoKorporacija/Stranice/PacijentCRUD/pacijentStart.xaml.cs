@@ -13,6 +13,7 @@ using System.Windows.Controls;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Stranice.PacijentCRUD;
 using System.Windows.Threading;
+using ZdravoKorporacija.Service;
 
 namespace ZdravoKorporacija.Stranice
 {
@@ -28,6 +29,7 @@ namespace ZdravoKorporacija.Stranice
         private Pacijent mnm = new Pacijent();
         private Dictionary<int, int> ids = new Dictionary<int, int>();
         private Boolean prikazi;
+        private ObavestenjaService os = new ObavestenjaService();
 
         public pacijentStart()
         {
@@ -38,7 +40,7 @@ namespace ZdravoKorporacija.Stranice
             timer.Tick += timer_Tick;
             timer.Start();
             this.prikazi = false;
-
+            os.generisiObavestenja();
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
             ids = datotekaID.dobaviSve();
 
@@ -54,6 +56,7 @@ namespace ZdravoKorporacija.Stranice
             // pacijenti.Add(p2);
         }
 
+        
         private void timer_Tick(object sender, EventArgs e)
         {
             foreach (Recept r in mnm.ZdravstveniKarton.recept)
@@ -68,13 +71,13 @@ namespace ZdravoKorporacija.Stranice
                 //}
                 //Debug.WriteLine("prikazi " + this.prikazi); //*
 
-                if (DateTime.Now.ToString().Equals(ter.AddMinutes(-1).ToString()))
+                if (DateTime.Now.ToString().Equals(ter.AddMinutes(1).ToString()))
                 {
                     this.prikazi = true;
                 }
 
 
-                int res = DateTime.Compare(DateTime.Now, ter.AddMinutes(-1));
+                int res = DateTime.Compare(DateTime.Now, ter.AddMinutes(1));
 
                 Debug.WriteLine("res je " + res); //*
 

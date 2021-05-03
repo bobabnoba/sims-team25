@@ -38,16 +38,23 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
         private List<Prostorija> prostorije = new List<Prostorija>();
         private ProstorijaRepozitorijum pRep = new ProstorijaRepozitorijum();
         private ObservableCollection<Termin> alternativniTermini;
+        private bool kardio ;
+        private bool neuro;
+        
 
         public zakaziHitno(ObservableCollection<Termin> termini, Dictionary<int, int> ids)
         {
             InitializeComponent();
+            kardio = false;
+            neuro = false;
             pacijenti = pacijentiDat.dobaviSve();
             cbPacijent.ItemsSource = pacijenti;
             pregledi = termini;
             this.ids = ids;
             lekari = lekariDat.dobaviSve();
             slobodniLekari = lekari;
+
+
            
             alternativniTermini = new ObservableCollection<Termin>();
         
@@ -83,9 +90,40 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
                             if (l.Jmbg.Equals(t.Lekar.Jmbg))
                             {
                                 slobodniLekari.Remove(l);
+
                             }
                         }
                     }
+                  /*  if (kardio)
+                    {
+                       foreach(Lekar l1 in slobodniLekari)
+                        {
+                            foreach(Specijalista s in MainWindow.spec)
+                            {
+                                if(s.Specijalizacija.Equals(SpecijalizacijaEnum.Kardiohirurg))
+                                {
+                                    if(!l1.Ime.Equals(s.Ime) && !l1.Prezime.Equals(s.Prezime))
+                                    {
+                                        slobodniLekari.Remove(l1);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else if (neuro)
+                    {
+                        foreach (Specijalista s in MainWindow.spec)
+                        {
+                            if (s.Specijalizacija == SpecijalizacijaEnum.Neurolog)
+                            {
+                                foreach (Lekar l1 in slobodniLekari.ToList())
+                                {
+                                    if (!l1.Ime.Equals(s.Ime) && !l1.Prezime.Equals(s.Prezime))
+                                        slobodniLekari.Remove(l1);
+                                }
+                            }
+                        }
+                    }           */
                 }
                 foreach (Termin t in pregledi)
                 {
@@ -232,6 +270,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
 
 
                     zaUpis.Tip = TipTerminaEnum.Operacija;
+                    zaUpis.hitno = true;
                     if (pac.ZdravstveniKarton != null)
                         zaUpis.zdravstveniKarton = pac.ZdravstveniKarton;
                     else
@@ -288,6 +327,19 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
                     this.Close();
                 }
             }
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            kardio = true;
+            
+            
+        }
+
+        private void RadioButton_Checked_1(object sender, RoutedEventArgs e)
+        {
+            neuro = true;
+            
         }
     }
 }

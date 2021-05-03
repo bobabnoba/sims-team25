@@ -9,7 +9,7 @@ namespace Model
 {
     public class Lekar : Korisnik
     {
-
+        
         public Lekar() : base() { }
         public Lekar(String Ime, String Prezime) : base(Ime, Prezime)
         {
