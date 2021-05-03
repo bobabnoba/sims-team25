@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.LekoviCRUD
 {
@@ -118,7 +119,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            izborLekaraZaPotvrdu = new IzborLekaraZaPotvrdu(lekari);
+            izborLekaraZaPotvrdu = new IzborLekaraZaPotvrdu(lekari,new ZahtevLek());
             izborLekaraZaPotvrdu.Show();
         }
     }

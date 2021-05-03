@@ -14,6 +14,7 @@ namespace ZdravoKorporacija.Service
             ZahtevPremestanjaRepozitorijum datoteka = ZahtevPremestanjaRepozitorijum.Instance;
             List<ZahtevPremestanja> zahtevi = datoteka.dobaviSve();
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapZahtevPremestanja");
+           
 
             int id = 0;
             for (int i = 0; i < 1000; i++)

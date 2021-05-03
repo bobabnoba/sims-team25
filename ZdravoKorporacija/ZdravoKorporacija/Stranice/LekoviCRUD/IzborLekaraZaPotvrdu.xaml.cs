@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.LekoviCRUD
 {
@@ -24,12 +25,12 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
         LekarService lekarServis = new LekarService();
         public ObservableCollection<Lekar> sviLekari = new ObservableCollection<Lekar>();
         public ObservableCollection<Lekar> izabraniLekari = new ObservableCollection<Lekar>();
-
-        public IzborLekaraZaPotvrdu(ObservableCollection<Lekar> lekari)
+        ZahtevLek zl = new ZahtevLek();
+        public IzborLekaraZaPotvrdu(ObservableCollection<Lekar> lekari, ZahtevLek zahtev)
         {
             InitializeComponent();
             izabraniLekari = lekari;
-           
+            this.zl = zahtev;
             sviLekari = new ObservableCollection<Lekar>(lekarServis.PregledSvihLekara());
             if (izabraniLekari != null)
             {
@@ -63,11 +64,14 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
+            this.zl.lekari = new List<Lekar>();
             foreach (Lekar selektovaniLekar in dgLekari.SelectedItems.Cast<Lekar>().ToList())
             {
                 izabraniLekari.Add(selektovaniLekar);
+               this.zl.lekari.Add(selektovaniLekar);
                 sviLekari.Remove(selektovaniLekar);
             }
+           
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)

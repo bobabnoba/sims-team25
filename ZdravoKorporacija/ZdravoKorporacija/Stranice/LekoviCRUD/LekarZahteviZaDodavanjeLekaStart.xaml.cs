@@ -26,10 +26,14 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
     public partial class LekarZahteviZaDodavanjeLekaStart : Window
     {
         LekServis lekServis = new LekServis();
+        public ObservableCollection<Lek> lekici;
+        public ObservableCollection<Lekar> lekari;
 
         public LekarZahteviZaDodavanjeLekaStart()
         {
             InitializeComponent();
+            lekici = new ObservableCollection<Lek>();
+            lekari = new ObservableCollection<Lekar>();
             lekServis.PregledSvihZahtevaLek();
             dgZahtevi.ItemsSource = ZahtevLekRepozitorijum.Instance.zahteviLek;
         }
@@ -73,13 +77,16 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
 
         private void izmenaAlternativnihLekova(object sender, RoutedEventArgs e)
         {
-            DodavanjeAlternativnihLekova dodavanjeAlternativnih = new DodavanjeAlternativnihLekova(new ObservableCollection<Lek>());
-            dodavanjeAlternativnih.Show();
+            ZahtevLek zahtev = (ZahtevLek)dgZahtevi.SelectedItem;
+            IzmenaAlternativnihLekovaZahtev izmenaAlternativnih = new IzmenaAlternativnihLekovaZahtev(new ObservableCollection<Lek>(zahtev.Lek.alternativniLekovi),zahtev);
+            izmenaAlternativnih.Show();
         }
 
         private void lekariZaDodavanjeLeka(object sender, RoutedEventArgs e)
         {
-            IzborLekaraZaPotvrdu izborLekara = new IzborLekaraZaPotvrdu(new ObservableCollection<Lekar>());
+            ZahtevLek zahtev = (ZahtevLek) dgZahtevi.SelectedItem;
+            lekari = new ObservableCollection<Lekar>(zahtev.lekari);
+            IzborLekaraZaPotvrdu izborLekara = new IzborLekaraZaPotvrdu(lekari,zahtev);
             izborLekara.Show();
         }
 

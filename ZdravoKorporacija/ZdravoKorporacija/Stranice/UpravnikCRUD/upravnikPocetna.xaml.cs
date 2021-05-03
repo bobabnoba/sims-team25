@@ -66,5 +66,11 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
             LekStart lekStart = new LekStart();
             lekStart.Show();
         }
+
+        private void renoviraj_Click(object sender, RoutedEventArgs e)
+        {
+            RenoviranjeStart renoviranjeStart = new RenoviranjeStart();
+            renoviranjeStart.Show();
+        }
     }
 }

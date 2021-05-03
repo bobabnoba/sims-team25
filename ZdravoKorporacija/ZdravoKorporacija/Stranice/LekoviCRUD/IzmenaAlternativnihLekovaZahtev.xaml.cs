@@ -21,7 +21,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
     /// <summary>
     /// Interaction logic for DodavanjeAlternativnihLekova.xaml
     /// </summary>
-    public partial class DodavanjeAlternativnihLekova : Window
+    public partial class IzmenaAlternativnihLekovaZahtev : Window
     {
         LekServis lekServis = new LekServis();
         public ObservableCollection<Lek> ostalilekovi = new ObservableCollection<Lek>();
@@ -29,10 +29,11 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
         ZahtevLek zl = new ZahtevLek();
 
 
-        public DodavanjeAlternativnihLekova(ObservableCollection<Lek> lekici)
+        public IzmenaAlternativnihLekovaZahtev(ObservableCollection<Lek> lekici, ZahtevLek zahtev)
         {
             InitializeComponent();
             alternativniLekovi = lekici;
+            this.zl = zahtev;
             lekServis.PregledSvihLekova();
             ostalilekovi = new ObservableCollection<Lek>(LekRepozitorijum.Instance.lekovi);
             if (alternativniLekovi != null)
@@ -59,13 +60,15 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-
+            this.zl.Lek.alternativniLekovi = new List<Lek>();
             foreach (Lek selektovaniLek in dgLekovi.SelectedItems.Cast<Lek>().ToList())
             {
                 alternativniLekovi.Add(selektovaniLek);
                 ostalilekovi.Remove(selektovaniLek);
             }
-
+            foreach (Lek leki in alternativniLekovi) {
+                this.zl.Lek.alternativniLekovi.Add(leki);
+            }
 
 
         }

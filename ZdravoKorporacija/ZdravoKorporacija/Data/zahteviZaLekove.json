@@ -124,6 +124,138 @@
             "izvestaj": null,
             "zdravstveniKarton": null,
             "prostorija": null,
+            "Id": 1,
+            "Tip": 0,
+            "Pocetak": "0001-01-01T00:00:00",
+            "Trajanje": 0.0
+          },
+          {
+            "izvestaj": null,
+            "zdravstveniKarton": null,
+            "prostorija": null,
+            "Id": 4,
+            "Tip": 0,
+            "Pocetak": "0001-01-01T00:00:00",
+            "Trajanje": 0.0
+          },
+          {
+            "izvestaj": null,
+            "zdravstveniKarton": null,
+            "prostorija": null,
+            "Id": 2,
+            "Tip": 0,
+            "Pocetak": "0001-01-01T00:00:00",
+            "Trajanje": 0.0
+          },
+          {
+            "izvestaj": null,
+            "zdravstveniKarton": null,
+            "prostorija": null,
+            "Id": 22,
+            "Tip": 0,
+            "Pocetak": "0001-01-01T00:00:00",
+            "Trajanje": 0.0
+          },
+          {
+            "izvestaj": null,
+            "zdravstveniKarton": null,
+            "prostorija": null,
+            "Id": 23,
+            "Tip": 0,
+            "Pocetak": "0001-01-01T00:00:00",
+            "Trajanje": 0.0
+          },
+          {
+            "izvestaj": null,
+            "zdravstveniKarton": null,
+            "prostorija": null,
+            "Id": 12,
+            "Tip": 0,
+            "Pocetak": "0001-01-01T00:00:00",
+            "Trajanje": 0.0
+          },
+          {
+            "izvestaj": null,
+            "zdravstveniKarton": null,
+            "prostorija": null,
+            "Id": 0,
+            "Tip": 0,
+            "Pocetak": "0001-01-01T00:00:00",
+            "Trajanje": 0.0
+          },
+          {
+            "izvestaj": null,
+            "zdravstveniKarton": null,
+            "prostorija": null,
+            "Id": 0,
+            "Tip": 0,
+            "Pocetak": "0001-01-01T00:00:00",
+            "Trajanje": 0.0
+          },
+          {
+            "izvestaj": null,
+            "zdravstveniKarton": null,
+            "prostorija": null,
+            "Id": 2,
+            "Tip": 0,
+            "Pocetak": "0001-01-01T00:00:00",
+            "Trajanje": 0.0
+          },
+          {
+            "izvestaj": null,
+            "zdravstveniKarton": null,
+            "prostorija": null,
+            "Id": 13,
+            "Tip": 0,
+            "Pocetak": "0001-01-01T00:00:00",
+            "Trajanje": 0.0
+          },
+          {
+            "izvestaj": null,
+            "zdravstveniKarton": null,
+            "prostorija": null,
+            "Id": 14,
+            "Tip": 0,
+            "Pocetak": "0001-01-01T00:00:00",
+            "Trajanje": 0.0
+          },
+          {
+            "izvestaj": null,
+            "zdravstveniKarton": null,
+            "prostorija": null,
+            "Id": 3,
+            "Tip": 0,
+            "Pocetak": "0001-01-01T00:00:00",
+            "Trajanje": 0.0
+          },
+          {
+            "izvestaj": null,
+            "zdravstveniKarton": null,
+            "prostorija": null,
+            "Id": 5,
+            "Tip": 0,
+            "Pocetak": "0001-01-01T00:00:00",
+            "Trajanje": 0.0,
+            "hitno": false
+          }
+        ],
+        "Ime": "Veljko",
+        "Prezime": "Vukovic",
+        "Jmbg": 2334567890213,
+        "BrojTelefona": 66393345,
+        "Mejl": "vuksivuk@gmail.com",
+        "AdresaStanovanja": "Beograd",
+        "Pol": 0,
+        "Username": "veksi",
+        "Password": "vukovic",
+        "Uloga": 0
+      },
+      {
+        "termin": [
+          {
+            "izvestaj": null,
+            "zdravstveniKarton": null,
+            "prostorija": null,
             "Id": 0,
             "Tip": 0,
             "Pocetak": "0001-01-01T00:00:00",
@@ -180,12 +312,45 @@
     ],
     "Id": 3,
     "Lek": {
-      "alternativniLekovi": [],
+      "alternativniLekovi": [
+        {
+          "alternativniLekovi": [],
+          "Id": 1,
+          "Proizvodjac": "Nema",
+          "Sastojci": "Nempojma",
+          "NusPojave": "Nema",
+          "NazivLeka": "Cardiopirin"
+        },
+        {
+          "alternativniLekovi": [],
+          "Id": 2,
+          "Proizvodjac": "Nema",
+          "Sastojci": "Nempojma",
+          "NusPojave": "Nema",
+          "NazivLeka": "Brufen"
+        },
+        {
+          "alternativniLekovi": [],
+          "Id": 3,
+          "Proizvodjac": "Nema",
+          "Sastojci": "Nempojma",
+          "NusPojave": "Nema",
+          "NazivLeka": "Mendilex"
+        },
+        {
+          "alternativniLekovi": [],
+          "Id": 4,
+          "Proizvodjac": "Nema",
+          "Sastojci": "Nempojma",
+          "NusPojave": "Nema",
+          "NazivLeka": "Amoksicilin"
+        }
+      ],
       "Id": 0,
-      "Proizvodjac": "z",
-      "Sastojci": "z",
-      "NusPojave": "z",
-      "NazivLeka": "z"
+      "Proizvodjac": "r",
+      "Sastojci": "r",
+      "NusPojave": "r",
+      "NazivLeka": "r"
     },
     "NeophodnihPotvrda": 2,
     "BrojPotvrda": 0

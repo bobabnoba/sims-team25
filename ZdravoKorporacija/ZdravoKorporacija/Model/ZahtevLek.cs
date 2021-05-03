@@ -55,7 +55,7 @@ namespace ZdravoKorporacija.Model
 
         public int BrojPotvrda { get; set; }
 
-        
+        public ZahtevLek() { }
         public ZahtevLek(Lek lek,int neophodnihPotvrda,int brojTrenutnihPotvrda) {
             this.Lek = lek;
             this.NeophodnihPotvrda = neophodnihPotvrda;

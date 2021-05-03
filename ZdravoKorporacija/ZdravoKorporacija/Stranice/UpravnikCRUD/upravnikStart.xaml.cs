@@ -62,8 +62,8 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
 
         private void zakaziRenoviranje(object sender, RoutedEventArgs e)
         {
-            ZakaziRenoviranje zr = new ZakaziRenoviranje((Prostorija)dgUsers.SelectedItem);
-            zr.Show();
+            Renoviranje r = new Renoviranje(dgUsers.SelectedIndex);
+            r.Show();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
