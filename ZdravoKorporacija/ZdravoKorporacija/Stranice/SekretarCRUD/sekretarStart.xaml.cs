@@ -5,6 +5,8 @@ using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Stranice.SekretarPREGLEDI;
+using Repository;
+
 
 namespace ZdravoKorporacija.Stranice.SekretarCRUD
 {

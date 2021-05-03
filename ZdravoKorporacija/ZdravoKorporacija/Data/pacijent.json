@@ -2898,7 +2898,7 @@
       "Vakcine": null
     },
     "Guest": false,
-    "banovan": true,
+    "banovan": false,
     "Ime": "Dusan",
     "Prezime": "Markovic",
     "Jmbg": 1234567890123,

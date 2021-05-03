@@ -13,6 +13,7 @@ namespace Repository
         private static BanRepozitorijum _instance;
         public ObservableCollection<Ban> bans;
         public Ban ban;
+        private PacijentRepozitorijum pacRepo = new PacijentRepozitorijum();
 
         public static BanRepozitorijum Instance
         {
@@ -33,10 +34,19 @@ namespace Repository
         }
 
 
-        public void sacuvaj(Ban banovi)
+        public void sacuvaj(Ban noviBan)
         {
-            bans.Clear();
-            bans.Add(banovi);
+            List<Ban> x = new List<Ban>(bans);
+            //bans.Clear();
+            //bans.Add(banovi);
+            foreach(Ban b in x)
+            {
+                if (b.idKorisnika.Equals(noviBan.idKorisnika))
+                {
+                    bans.Remove(b);
+                    bans.Add(noviBan);
+                }
+            }
 
             string lokacija = @"..\..\..\Data\banInfo.json";
             JsonSerializer serializer = new JsonSerializer();
@@ -45,47 +55,41 @@ namespace Repository
             serializer.Formatting = Formatting.Indented;
             StreamWriter writer = new StreamWriter(lokacija);
             JsonWriter jWriter = new JsonTextWriter(writer);
-            serializer.Serialize(jWriter, banovi);
+            serializer.Serialize(jWriter, bans);  //observable prolazi?
             jWriter.Close();
             writer.Close();
         }
 
-        public Ban getBan()
+        public Ban getBan(long id)
         {
-            string lokacija = @"..\..\..\Data\banInfo.json";
-            Ban b = new Ban();
-            if (File.Exists(lokacija))
+            Ban retBan = new Ban();
+            foreach(Ban b in bans)
             {
-                string jsonText = File.ReadAllText(lokacija);
-                if (!string.IsNullOrEmpty(jsonText))
+                if (b.idKorisnika.Equals(id))
                 {
-                    b = JsonConvert.DeserializeObject<Ban>(jsonText);
+                    retBan = b;
                 }
             }
-            if (b != null)
-            {
-                ban = b;
-            }
-            return ban;
+            return retBan;
         }
 
-            public Ban dobaviSve()
+        public List<Ban> dobaviSve()
         {
             string lokacija = @"..\..\..\Data\banInfo.json";
-            Ban b = new Ban();
+            List<Ban> banovi = new List<Ban>();
             if (File.Exists(lokacija))
             {
                 string jsonText = File.ReadAllText(lokacija);
                 if (!string.IsNullOrEmpty(jsonText))
                 {
-                    b = JsonConvert.DeserializeObject<Ban>(jsonText);
+                    banovi = JsonConvert.DeserializeObject<List<Ban>>(jsonText);
                 }
             }
-            if(b != null)
+            if(banovi != null)
             {
-                bans.Add(b);
+                bans = new ObservableCollection<Ban>(banovi);
             }
-            return b;
+            return banovi;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Model;
 using System.Collections.Generic;
 using ZdravoKorporacija.Model;
+using Repository;
 
 namespace Service
 {

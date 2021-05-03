@@ -13,7 +13,7 @@ namespace Model
         public int pomerenCnt;
         public int otkazanCnt;
         public String trenutakBanovanja;
-
+        public long idKorisnika;
         public Ban() {}
     }
 }

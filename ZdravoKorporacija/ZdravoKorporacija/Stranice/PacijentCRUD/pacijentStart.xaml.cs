@@ -60,13 +60,13 @@ namespace ZdravoKorporacija.Stranice
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            korisnikServis.banuj(pacijent);
+            korisnikServis.provjeriStatus(pacijent);
 
             foreach (Recept r in pacijent.ZdravstveniKarton.recept)
             {
                 DateTime ter = r.Pocetak;
 
-                Debug.WriteLine("termin: " + ter.ToString() + ", sad je: " + DateTime.Now.ToString()); //*
+            //    Debug.WriteLine("termin: " + ter.ToString() + ", sad je: " + DateTime.Now.ToString()); //*
 
                 //if (DateTime.Compare(DateTime.Now, ter.AddMinutes(-1)) == 0) // ovo i za jednake vraca 1, nikad 0 ....
                 //{
@@ -82,7 +82,7 @@ namespace ZdravoKorporacija.Stranice
 
                 int res = DateTime.Compare(DateTime.Now, ter.AddMinutes(-1));
 
-                Debug.WriteLine("res je " + res); //*
+               // Debug.WriteLine("res je " + res); //*
 
                 if (this.prikazi == true && res >= 0)
                 {
@@ -110,7 +110,7 @@ namespace ZdravoKorporacija.Stranice
             else
             {
                 Termin t = (Termin)dgUsers.SelectedItem;
-                Debug.WriteLine("Danas je " + DateTime.Today.ToString());
+               // Debug.WriteLine("Danas je " + DateTime.Today.ToString());
                 if (t.Pocetak.Date <= DateTime.Today.AddDays(1).Date)
                 {
                     MessageBox.Show("Nije moguće izmeniti pregled koji je zakazan u predstojećih 24h", "Greška");
@@ -174,8 +174,8 @@ namespace ZdravoKorporacija.Stranice
         protected override void OnClosing(CancelEventArgs e)
         {
             BanRepozitorijum.Instance.sacuvaj(KorisnikService.b);
-          //  storagePacijent.AzurirajPacijenta(pacijent);
-            //this.Close();
+            //  storagepacijent.azurirajpacijenta(pacijent);
+            //this.close();
             base.OnClosing(e);
         }
 

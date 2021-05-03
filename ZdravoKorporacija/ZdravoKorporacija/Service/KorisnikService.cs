@@ -12,7 +12,8 @@ namespace Service
     {
         KorisnikRepozitorijum kr = KorisnikRepozitorijum.Instance;
         private PacijentService pacServis = new PacijentService();
-        public static Ban b = BanRepozitorijum.Instance.getBan();
+        public static Ban b;
+        List<Ban> nepotrebna = BanRepozitorijum.Instance.dobaviSve(); //set bans
 
         public bool DodajKorisnika(string ime, string sifra, UlogaEnum uloga)
         {
@@ -89,29 +90,42 @@ namespace Service
             return true;
         }
 
-    
-        public void banuj(Pacijent pacijent)
+
+        public void provjeriStatus(Pacijent pacijent)
         {
+            b = BanRepozitorijum.Instance.getBan(pacijent.Jmbg);
+        
             if (b.otkazanCnt >= 3 || b.zakazanCnt >= 3 || b.pomerenCnt >= 3 && !pacijent.banovan)
-            {
-                pacijent.banovan = true;
-                b.trenutakBanovanja = DateTime.Now.ToString();
+                {
+                    banKorisnika(pacijent);
+                    b.trenutakBanovanja = DateTime.Now.ToString();
 
-                b.otkazanCnt = 0;
-                b.pomerenCnt = 0;
-                b.zakazanCnt = 0;
-            }
+                    b.otkazanCnt = 0;
+                    b.pomerenCnt = 0;
+                    b.zakazanCnt = 0;
+                }
 
-            // DateTime.Compare(DateTime.Now, DateTime.Parse(b.trenutakBanovanja).AddMinutes(3)) >= 0
-            if (pacijent.banovan && DateTime.Compare(DateTime.Now, DateTime.Parse(b.trenutakBanovanja).AddMinutes(3)) >= 0)
-            {
-                pacijent.banovan = false;
-            }
+                // DateTime.Compare(DateTime.Now, DateTime.Parse(b.trenutakBanovanja).AddMinutes(3)) >= 0
+                if (pacijent.banovan && DateTime.Compare(DateTime.Now, DateTime.Parse(b.trenutakBanovanja).AddMinutes(3)) >= 0)
+                {
+                    unbanKorisnika(pacijent);
+                    b.trenutakBanovanja = DateTime.Now.AddMinutes(3).ToString();
+                }
 
-            pacServis.AzurirajPacijenta(pacijent);
+                pacServis.AzurirajPacijenta(pacijent);
+                BanRepozitorijum.Instance.sacuvaj(KorisnikService.b);
 
         }
 
+        private void unbanKorisnika(Pacijent pacijent)
+        {
+            pacijent.banovan = false;
+        }
+
+        private void banKorisnika(Pacijent pacijent)
+        {
+            pacijent.banovan = true;
+        }
 
     }
 }
