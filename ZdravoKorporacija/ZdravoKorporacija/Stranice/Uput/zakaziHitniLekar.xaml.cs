@@ -32,6 +32,8 @@ namespace ZdravoKorporacija.Stranice.Uput
         private List<Prostorija> prostorije = new List<Prostorija>();
         private ProstorijaRepozitorijum pRep = new ProstorijaRepozitorijum();
         private ObservableCollection<Termin> alternativniTermini;
+        Boolean slobodan = false;
+        DateTime slobodanPocetak;
 
         public zakaziHitniLekar(ObservableCollection<Termin> termini, Dictionary<int, int> ids)
         {
@@ -58,6 +60,31 @@ namespace ZdravoKorporacija.Stranice.Uput
 
         private void potvrdi(object sender, RoutedEventArgs e)
         {
+
+            Termin zaUpis = new Termin();
+            for (int i = 30; i < 300; i += 30)
+            {
+                foreach (Termin t in pregledi)
+                {
+                    if (t.hitno == false)
+                    {
+                        if (t.Pocetak != RoundUp(DateTime.Now, TimeSpan.FromMinutes(i)))
+                        {
+                            slobodan = true;
+                        }
+                        else
+                        {
+                            slobodan = false;
+                            break;
+                        }
+                    }
+                }
+                if (slobodan)
+                {
+                    slobodanPocetak = RoundUp(DateTime.Now, TimeSpan.FromMinutes(i));
+                    break;
+                }
+            }
             if (cbTip.SelectedIndex == 0)
             {
                 foreach (Termin t in pregledi)
@@ -67,6 +94,7 @@ namespace ZdravoKorporacija.Stranice.Uput
                         alternativniTermini.Add(t);
                     }
                 }
+               
                 provera = ts.FindPrByPocetak(RoundUp(DateTime.Now, TimeSpan.FromMinutes(30)));
                 foreach (Termin t in pregledi)
                 {
@@ -104,7 +132,6 @@ namespace ZdravoKorporacija.Stranice.Uput
                 }
                 else if (slobodniLekari.Count() != 0 && slobodneProstorije.Count() != 0)
                 {
-                    Termin zaUpis = new Termin();
                     int id = 0;
                     for (int i = 0; i < 1000; i++)
                     {
@@ -122,6 +149,7 @@ namespace ZdravoKorporacija.Stranice.Uput
 
                     zaUpis.Id = id;
                     zaUpis.hitno = true;
+                    
                     zaUpis.Pocetak = RoundUp(DateTime.Now, TimeSpan.FromMinutes(30));
                     Pacijent pac = (Pacijent)cbPacijent.SelectedItem;
 
@@ -202,7 +230,6 @@ namespace ZdravoKorporacija.Stranice.Uput
                 }
                 else if (slobodniLekari.Count() != 0 && slobodneProstorije.Count() != 0)
                 {
-                    Termin zaUpis = new Termin();
                     int id = 0;
                     for (int i = 0; i < 1000; i++)
                     {
@@ -219,6 +246,8 @@ namespace ZdravoKorporacija.Stranice.Uput
                     zaUpis.prostorija = slobodneProstorije.ElementAt<Prostorija>(slobodneProstorije.Count() - 1);
 
                     zaUpis.Id = id;
+                    zaUpis.hitno = true;
+
                     zaUpis.Pocetak = RoundUp(DateTime.Now, TimeSpan.FromMinutes(30));
                     Pacijent pac = (Pacijent)cbPacijent.SelectedItem;
 
@@ -249,6 +278,18 @@ namespace ZdravoKorporacija.Stranice.Uput
                     ps.AzurirajPacijenta(pac);
 
                     this.Close();
+                }
+            }
+            foreach (Termin term in pregledi)
+            {
+                if (term.Pocetak.Equals(zaUpis.Pocetak) && !term.Id.Equals(zaUpis.Id))
+                {
+                    
+                    term.Pocetak = slobodanPocetak;
+                    if (ts.AzurirajTermin(term))
+                    {
+                       // this.pregledi = (ObservableCollection<Termin>)(ts.PregledSvihTermina()) ;
+                    }
                 }
             }
         }

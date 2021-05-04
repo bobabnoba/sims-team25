@@ -11,15 +11,16 @@
     <Grid>
         <Button Content="Izdaj uput" HorizontalAlignment="Left" Margin="240,67,0,0" VerticalAlignment="Top" Width="92" Height="44" Click="izdajUput"/>
         <Button Content="Zakazi hitan termin" HorizontalAlignment="Left" Margin="98,67,0,0" VerticalAlignment="Top" Width="114" Height="44" Click="zakaziHitno"/>
-        <Button Content="Izmeni uput" HorizontalAlignment="Left" Margin="367,67,0,0" VerticalAlignment="Top" Width="92" Height="44" RenderTransformOrigin="0.255,-0.75" Click="izmeniPregled"/>
-        <Button Content="Otkaži uput" HorizontalAlignment="Left" Margin="486,67,0,0" VerticalAlignment="Top" Width="92" Height="44" RenderTransformOrigin="0.033,-1.977" Click="otkaziPregled"/>
+        <Button Content="Izmeni uput" HorizontalAlignment="Left" Margin="367,67,0,0" VerticalAlignment="Top" Width="92" Height="44" RenderTransformOrigin="0.255,-0.75" Click="izmeniUput"/>
+        <Button Content="Otkaži uput" HorizontalAlignment="Left" Margin="486,67,0,0" VerticalAlignment="Top" Width="92" Height="44" RenderTransformOrigin="0.033,-1.977" Click="otkaziUput"/>
         <Grid Margin="10">
-            <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="156,140,84,34" SelectionChanged="dgUsers_SelectionChanged" CanUserAddRows="False">
+            <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="156,140,84,34" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
                     <DataGridTextColumn Header="Datum" Binding="{Binding Pocetak}" />
                     <DataGridTextColumn Header="Tip pregleda" Binding="{Binding Tip}" />
                     <DataGridTextColumn Header="Prostorija" Binding="{Binding prostorija.Naziv}"/>
+                    <DataGridTextColumn Header="Hitno" Binding="{Binding hitno}"/>
                     <DataGridTemplateColumn Header="Zdravstveni Karton">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>

@@ -44,7 +44,7 @@
                 </ItemsPanelTemplate>
             </Menu.ItemsPanel>
             <MenuItem Header="_Raspored termina" Margin="-1,1,1,-39" Click="MenuItem_Click"></MenuItem>
-            <MenuItem Header="_Prikaz pacijenata" Margin="-1,43,1,-81" Click="MenuItem_Click_1"></MenuItem>
+            <MenuItem Header="_Prikaz pacijenata" Margin="-1,43,1,-81"></MenuItem>
             <MenuItem Header="_Uputi" Margin="0,85,0,-123" Click="MenuItem_Click_1"/>
 
         </Menu>

@@ -167,7 +167,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             p.prostorija = (Prostorija)cbProstorija.SelectedItem;
             foreach (Termin ter in termini)
             {
-                if (ter.Pocetak == p.Pocetak)
+                if (ter.Pocetak.Equals(p.Pocetak) && ter.prostorija.Equals(p.prostorija))
                 {
                     MessageBox.Show("Postoji termin u izabranom vremenu", "Greska");
                     return;
