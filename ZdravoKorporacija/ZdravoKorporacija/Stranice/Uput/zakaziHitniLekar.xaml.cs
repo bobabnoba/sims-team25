@@ -5,6 +5,7 @@ using Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -284,10 +285,13 @@ namespace ZdravoKorporacija.Stranice.Uput
             {
                 if (term.Pocetak.Equals(zaUpis.Pocetak) && !term.Id.Equals(zaUpis.Id))
                 {
-                    
+                    pregledi.Remove(term);
                     term.Pocetak = slobodanPocetak;
                     if (ts.AzurirajTermin(term))
                     {
+                        Trace.WriteLine("uso");
+                        pregledi.Add(term);
+                        break;
                        // this.pregledi = (ObservableCollection<Termin>)(ts.PregledSvihTermina()) ;
                     }
                 }
