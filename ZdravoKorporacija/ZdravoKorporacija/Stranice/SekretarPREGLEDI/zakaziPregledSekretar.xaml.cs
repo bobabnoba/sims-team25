@@ -34,6 +34,8 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
         private List<Lekar> slobodniLekari;
         private List<Prostorija> slobodneProstorije;
         private List<Prostorija> prostorije = new List<Prostorija>();
+        private ObservableCollection<Termin> pregledi;
+
         private int idTermina;
         private TipTerminaEnum tipTermina;
         private DateTime pocetakTermina;
@@ -42,7 +44,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
         private Prostorija prostorijaTermina;
 
         private Termin noviTermin;
-        private ObservableCollection<Termin> pregledi;
+       
 
         private Dictionary<int, int> ids = new Dictionary<int, int>();
 
