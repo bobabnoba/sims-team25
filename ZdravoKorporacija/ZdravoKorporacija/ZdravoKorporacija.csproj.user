@@ -53,8 +53,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Stranice\LekoviCRUD\LekStart.xaml.cs">
-		<SubType>Code</SubType>
-	</Compile>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Stranice\Logovanje\lekarLogin.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -67,6 +67,12 @@
     <Compile Update="Stranice\Magacin\MagacinStart.xaml.cs">
     </Compile>
     <Compile Update="Stranice\LekarCRUD\zdravstveniKartonPrikaz.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\PacijentCRUD\AnketiranjeBolnice.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\PacijentCRUD\AnketiranjeLjekara.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Stranice\PacijentCRUD\izmeniPregled.xaml.cs">
@@ -204,8 +210,8 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\LekoviCRUD\LekStart.xaml">
-		<SubType>Designer</SubType>
-	</Page>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Stranice\Logovanje\lekarLogin.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -219,6 +225,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\LekarCRUD\zdravstveniKartonPrikaz.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\PacijentCRUD\AnketiranjeBolnice.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\PacijentCRUD\AnketiranjeLjekara.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\PacijentCRUD\izmeniPregled.xaml">
