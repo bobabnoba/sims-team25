@@ -47,11 +47,17 @@ namespace ZdravoKorporacija.Stranice
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
             ids = datotekaID.dobaviSve();
 
-            termini = new ObservableCollection<Termin>(storage.PregledSvihTermina());
+            ObservableCollection<Termin> sviTermini = new ObservableCollection<Termin>(storage.PregledSvihTermina());
+            foreach(Termin t in sviTermini)
+            {
+                if (t.zdravstveniKarton != null && t.zdravstveniKarton.Id.Equals(pacijent.ZdravstveniKarton.Id))
+                {
+                    termini.Add(t);
+                }
+            }
             dgUsers.ItemsSource = termini;
             this.DataContext = this;
             this.pacijent = pacijent;
-                //(storagePacijent.PregledSvihPacijenata())[3]; // za ovog pacijenta prikazujemo obavjestenja
             dgObavjestenja.ItemsSource = pacijent.notifikacije;
 
             List<Anketa> ankete = arepo.DobaviSve();
@@ -213,6 +219,8 @@ namespace ZdravoKorporacija.Stranice
         {
                 AnketiranjeBolnice ab = new AnketiranjeBolnice(pacijent);
                 ab.Show();
+                anketaB.Visibility = Visibility.Hidden;
+
         }
     }
 }

@@ -2981,58 +2981,30 @@
     "notifikacije": [
       {
         "Id": 1,
-        "Datum": "2021-04-28T20:43:00",
-        "Tip": 0,
-        "Sadrzaj": "Popijte lek: whatever",
-        "Status": "Neprocitano"
-      },
-      {
-        "Id": 2,
         "Datum": "2021-04-28T21:41:30",
         "Tip": 0,
         "Sadrzaj": "Popijte lek: Mendilex",
         "Status": "Neprocitano"
       },
       {
-        "Id": 3,
+        "Id": 2,
         "Datum": "2021-04-28T22:56:00",
         "Tip": 0,
         "Sadrzaj": "Popijte lek: Lijek x",
         "Status": "Neprocitano"
       },
       {
-        "Id": 4,
+        "Id": 3,
         "Datum": "2021-04-28T23:31:20",
         "Tip": 0,
         "Sadrzaj": "Popijte lek: Lijek xx",
         "Status": "Neprocitano"
       },
       {
-        "Id": 5,
-        "Datum": "2021-04-29T21:37:20",
-        "Tip": 0,
-        "Sadrzaj": "Popijte lek: Lijek xx",
-        "Status": "Neprocitano"
-      },
-      {
-        "Id": 6,
-        "Datum": "2021-04-29T21:39:20",
-        "Tip": 0,
-        "Sadrzaj": "Popijte lek: Proba",
-        "Status": "Neprocitano"
-      },
-      {
-        "Id": 7,
+        "Id": 4,
         "Datum": "2021-04-29T21:42:20",
         "Tip": 0,
         "Sadrzaj": "Popijte lek: L1x",
-        "Status": "Neprocitano"
-      },
-      {
-        "Id": 8,
-        "Datum": "2021-05-04T21:13:00",
-        "Tip": 0,
-        "Sadrzaj": "Popijte lek: r",
         "Status": "Neprocitano"
       }
     ],

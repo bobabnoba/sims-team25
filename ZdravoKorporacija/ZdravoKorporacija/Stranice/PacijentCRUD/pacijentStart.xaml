@@ -40,7 +40,7 @@
                     </DataTemplate>
                 </DataGrid.RowDetailsTemplate>-->
             </DataGrid>
-            <DataGrid Name="dgObavjestenja" AutoGenerateColumns="false" Margin="10,20,273,78" SelectionChanged="DataGrid_SelectionChanged">
+            <DataGrid Name="dgObavjestenja" AutoGenerateColumns="false" Margin="10,20,273,78" SelectionChanged="DataGrid_SelectionChanged" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Datum" Binding="{Binding Path = Datum}" />
                     <DataGridTextColumn Header="Tip" Binding="{Binding Path=Tip}" />
