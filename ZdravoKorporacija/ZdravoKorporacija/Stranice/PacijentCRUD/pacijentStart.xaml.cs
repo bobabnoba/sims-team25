@@ -14,6 +14,9 @@ using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Stranice.PacijentCRUD;
 using System.Windows.Threading;
 using ZdravoKorporacija.Service;
+using System.ComponentModel;
+using System.Linq;
+
 
 namespace ZdravoKorporacija.Stranice
 {
@@ -32,9 +35,10 @@ namespace ZdravoKorporacija.Stranice
         private ObavestenjaService os = new ObavestenjaService();
 
 
+        private AnketaRepozitorijum arepo = new AnketaRepozitorijum();
         private KorisnikService korisnikServis = new KorisnikService();
 
-        public pacijentStart()
+        public pacijentStart(Pacijent pacijent)
         {
             InitializeComponent();
 
@@ -47,16 +51,28 @@ namespace ZdravoKorporacija.Stranice
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
             ids = datotekaID.dobaviSve();
 
-            termini = new ObservableCollection<Termin>(storage.PregledSvihTermina());
+            ObservableCollection<Termin> sviTermini = new ObservableCollection<Termin>(storage.PregledSvihTermina());
+            foreach(Termin t in sviTermini)
+            {
+                if (t.zdravstveniKarton != null && t.zdravstveniKarton.Id.Equals(pacijent.ZdravstveniKarton.Id))
+                {
+                    termini.Add(t);
+                }
+            }
             dgUsers.ItemsSource = termini;
             this.DataContext = this;
-            pacijent = (storagePacijent.PregledSvihPacijenata())[3]; // za ovog pacijenta prikazujemo obavjestenja
+            this.pacijent = pacijent;
             dgObavjestenja.ItemsSource = pacijent.notifikacije;
 
-            //Pacijent p1 = new Pacijent("Dusan", "Lekic");
-            //Pacijent p2 = new Pacijent("Aleksa", "Papovic");
-            //pacijenti.Add(p1);
-            // pacijenti.Add(p2);
+            List<Anketa> ankete = arepo.DobaviSve();
+
+            Anketa poslednja = (Anketa)ankete.LastOrDefault(s => s.IdAutora.Equals(pacijent.Jmbg) && s.Termin == null);
+
+            
+            if (poslednja != null && DateTime.Compare(poslednja.Datum, DateTime.Parse(DateTime.Now.AddMinutes(-9).ToString())) <= 0)
+            {
+                anketaB.Visibility = Visibility.Visible;
+            }
         }
 
         
@@ -173,6 +189,43 @@ namespace ZdravoKorporacija.Stranice
 
         }
 
+        private void anketiranjeLjekara(object sender, RoutedEventArgs e)
+        {
+            Termin sel = (Termin)dgUsers.SelectedItem;
+            if (DateTime.Compare(DateTime.Now, sel.Pocetak.AddMinutes(sel.Trajanje)) >= 0)
+            {
+                List<Anketa> ankete = arepo.DobaviSve();
+                List<Anketa> anketeSaTerminima = new List<Anketa>();
+                foreach (Anketa an in ankete)
+                {
+                    if (an.Termin != null) anketeSaTerminima.Add(an);
+                }
 
+                Anketa a = (Anketa)anketeSaTerminima.FirstOrDefault(s => s.Termin.Id.Equals(sel.Id) && s.IdAutora.Equals(pacijent.Jmbg));
+
+                if (a != null)
+                {
+                    MessageBox.Show("Već ste popunili anketu za ovaj pregled.", "Greška");
+                }
+                else
+                {
+                    AnketiranjeLjekara ak = new AnketiranjeLjekara(sel, pacijent);
+                    ak.Show();
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Nije moguće popuniti anketu za neobavljeni pregled.", "Greška");
+            }
+        }
+
+        private void popuniAnketu(object sender, RoutedEventArgs e)
+        {
+                AnketiranjeBolnice ab = new AnketiranjeBolnice(pacijent);
+                ab.Show();
+                anketaB.Visibility = Visibility.Hidden;
+
+        }
     }
 }

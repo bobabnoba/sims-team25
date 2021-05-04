@@ -58,5 +58,41 @@
     "Username": "veksi",
     "Password": "vukovic",
     "Uloga": 0
+  },
+  {
+    "Ime": "Aleksaaaaaa",
+    "Prezime": "Papovic",
+    "Jmbg": 0,
+    "BrojTelefona": 0,
+    "Mejl": null,
+    "AdresaStanovanja": null,
+    "Pol": 0,
+    "Username": "aleksa",
+    "Password": "papovic",
+    "Uloga": 0
+  },
+  {
+    "Ime": "Dusan",
+    "Prezime": "Markovic",
+    "Jmbg": 0,
+    "BrojTelefona": 0,
+    "Mejl": null,
+    "AdresaStanovanja": null,
+    "Pol": 0,
+    "Username": "dusan",
+    "Password": "markovic",
+    "Uloga": 0
+  },
+  {
+    "Ime": "Dusan",
+    "Prezime": "Lekic",
+    "Jmbg": 0,
+    "BrojTelefona": 0,
+    "Mejl": null,
+    "AdresaStanovanja": null,
+    "Pol": 0,
+    "Username": "dusan",
+    "Password": "lekic",
+    "Uloga": 0
   }
 ]

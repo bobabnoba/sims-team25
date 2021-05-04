@@ -10,13 +10,6 @@
     "zakazanCnt": 0,
     "pomerenCnt": 0,
     "otkazanCnt": 0,
-    "trenutakBanovanja": "5/3/2021 2:29:00 AM",
-    "idKorisnika": 2134567890213
-  },
-  {
-    "zakazanCnt": 0,
-    "pomerenCnt": 0,
-    "otkazanCnt": 0,
     "trenutakBanovanja": "5/3/2021 11:43:19 AM",
     "idKorisnika": 123
   },
@@ -24,7 +17,14 @@
     "zakazanCnt": 0,
     "pomerenCnt": 0,
     "otkazanCnt": 0,
-    "trenutakBanovanja": "5/3/2021 4:22:49 PM",
+    "trenutakBanovanja": "5/3/2021 2:29:00 AM",
+    "idKorisnika": 2134567890213
+  },
+  {
+    "zakazanCnt": 0,
+    "pomerenCnt": 0,
+    "otkazanCnt": 0,
+    "trenutakBanovanja": "5/4/2021 9:42:34 PM",
     "idKorisnika": 1234567890123
   }
 ]
