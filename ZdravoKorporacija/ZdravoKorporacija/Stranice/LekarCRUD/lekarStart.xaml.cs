@@ -11,6 +11,7 @@ using System.Windows.Controls;
 using ZdravoKorporacija.Model;
 using System.Diagnostics;
 using ZdravoKorporacija.Stranice.Uput;
+using ZdravoKorporacija.Stranice.LekoviCRUD;
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
 {
@@ -132,6 +133,13 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             Uputi u = new Uputi();
             u.Show();
             this.Close();
+        }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            LekarZahteviZaDodavanjeLekaStart l = new LekarZahteviZaDodavanjeLekaStart();
+            this.Close();
+            l.Show();
         }
     }
 }

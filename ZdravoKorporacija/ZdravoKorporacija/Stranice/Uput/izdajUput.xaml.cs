@@ -83,7 +83,9 @@ namespace ZdravoKorporacija.Stranice.Uput
             //Izvestaj iz = new Izvestaj();
             //iz.Id = 0;
             //iz.Opis = "Temperature";
-            //iz.Simptomi = "Covid";
+            //iz.Simptomi = "
+            //
+            //";
             //p.izvestaj = iz;
 
             String d = date.Text;

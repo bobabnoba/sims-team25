@@ -43,6 +43,7 @@
             <MenuItem Header="_Raspored termina" Margin="-1,1,1,-39" Click="MenuItem_Click_1"></MenuItem>
             <MenuItem Header="_Pregled pacijenata" Margin="-1,43,1,-81" Click="MenuItem_Click"></MenuItem>
             <MenuItem Header="_Uputi" Margin="0,85,0,-123"/>
+            <MenuItem Header="_Zahtevi za lekove&#xD;&#xA;" Margin="0,129,0,-167" Click="MenuItem_Click_2"/>
 
         </Menu>
     </Grid>

@@ -17,6 +17,9 @@ using System.Windows.Shapes;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Repository;
+using ZdravoKorporacija.Stranice.LekarCRUD;
+using ZdravoKorporacija.Stranice.Logovanje;
+using ZdravoKorporacija.Stranice.Uput;
 
 namespace ZdravoKorporacija.Stranice.LekoviCRUD
 {
@@ -28,14 +31,24 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
         LekServis lekServis = new LekServis();
         public ObservableCollection<Lek> lekici;
         public ObservableCollection<Lekar> lekari;
+        public ObservableCollection<ZahtevLek> zahteviPrikaz = new ObservableCollection<ZahtevLek>();
 
         public LekarZahteviZaDodavanjeLekaStart()
         {
             InitializeComponent();
             lekici = new ObservableCollection<Lek>();
             lekari = new ObservableCollection<Lekar>();
-            lekServis.PregledSvihZahtevaLek();
-            dgZahtevi.ItemsSource = ZahtevLekRepozitorijum.Instance.zahteviLek;
+            foreach(ZahtevLek z in lekServis.PregledSvihZahtevaLek())
+            {
+                foreach(Lekar l in z.lekari)
+                {
+                    if(l.Jmbg.Equals(lekarLogin.lekar.Jmbg))
+                    {
+                        zahteviPrikaz.Add(z);
+                    }
+                }
+            }
+            dgZahtevi.ItemsSource = zahteviPrikaz;
         }
 
         private void dgZahtevi_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -98,6 +111,26 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
 
+        }
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            lekarStart ls = new lekarStart();
+            ls.Show();
+            this.Close();
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            Uputi u = new Uputi();
+            u.Show();
+            this.Close();
+        }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            pregledPacijenata pp = new pregledPacijenata();
+            this.Close();
+            pp.Show();
         }
     }
 }

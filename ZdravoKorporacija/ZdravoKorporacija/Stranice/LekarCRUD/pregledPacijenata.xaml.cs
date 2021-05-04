@@ -7,6 +7,7 @@ using System;
 using Service;
 using ZdravoKorporacija.Stranice.Logovanje;
 using ZdravoKorporacija.Stranice.Uput;
+using ZdravoKorporacija.Stranice.LekoviCRUD;
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
 {
@@ -80,6 +81,12 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             {
                 MessageBox.Show("Niste selektovali red", "Greska");
             }
+        }
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            LekarZahteviZaDodavanjeLekaStart l = new LekarZahteviZaDodavanjeLekaStart();
+            this.Close();
+            l.Show();
         }
     }
 }

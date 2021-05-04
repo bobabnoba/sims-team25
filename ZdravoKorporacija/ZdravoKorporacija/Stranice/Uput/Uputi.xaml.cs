@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Stranice.LekarCRUD;
+using ZdravoKorporacija.Stranice.LekoviCRUD;
 
 namespace ZdravoKorporacija.Stranice.Uput
 {
@@ -82,6 +83,13 @@ namespace ZdravoKorporacija.Stranice.Uput
         {
             zakaziHitniLekar zh = new zakaziHitniLekar(lekarStart.uputi, ids);
             zh.Show();
+        }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            LekarZahteviZaDodavanjeLekaStart l = new LekarZahteviZaDodavanjeLekaStart();
+            this.Close();
+            l.Show();
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.LekoviCRUD"
         mc:Ignorable="d"
-        Title="LekarZahteviZaDodavanjeLekaStart" Height="450" Width="800">
+        Title="LekarZahteviZaDodavanjeLekaStart" Height="450" Width="800" Background="CadetBlue" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="28*"/>
@@ -13,9 +13,9 @@
             <ColumnDefinition Width="113*"/>
             <ColumnDefinition Width="566*"/>
         </Grid.ColumnDefinitions>
-        <Button Content="Izmeni zahtev" HorizontalAlignment="Left" Margin="10,330,0,0" VerticalAlignment="Top" Width="118" Height="25" RenderTransformOrigin="0.255,-0.75" Click="Button_Click_1" Grid.Column="3"/>
-        <Button Content="Izbriši zahtev" HorizontalAlignment="Left" Margin="177,330,0,0" VerticalAlignment="Top" Width="120" Height="25" RenderTransformOrigin="0.033,-1.977" Click="Button_Click_2" Grid.Column="3"/>
-        <DataGrid x:Name="dgZahtevi" AutoGenerateColumns="False" Margin="30,105,120,136" Grid.ColumnSpan="3" Grid.Column="1" SelectionChanged="dgZahtevi_SelectionChanged">
+        <Button Content="Izmeni zahtev" HorizontalAlignment="Left" Margin="97,318,0,0" VerticalAlignment="Top" Width="118" Height="25" RenderTransformOrigin="0.255,-0.75" Click="Button_Click_1" Grid.Column="3"/>
+        <Button Content="Izbriši zahtev" HorizontalAlignment="Left" Margin="264,318,0,0" VerticalAlignment="Top" Width="120" Height="25" RenderTransformOrigin="0.033,-1.977" Click="Button_Click_2" Grid.Column="3"/>
+        <DataGrid x:Name="dgZahtevi" AutoGenerateColumns="False" Margin="39,105,120,136" Grid.ColumnSpan="2" Grid.Column="2" SelectionChanged="dgZahtevi_SelectionChanged" CanUserAddRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
                 <DataGridTextColumn Header="Naziv" Binding="{Binding Lek.NazivLeka}" />
@@ -29,19 +29,24 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Lekari koji potvrdjuju zahtev">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Content="..." Click="lekariZaDodavanjeLeka"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
 
 
             </DataGrid.Columns>
 
         </DataGrid>
         <Label Content="Zahtevi za dodavanje lekova&#xA;" HorizontalAlignment="Left" Margin="46,30,0,0" VerticalAlignment="Top" FontSize="32" Grid.ColumnSpan="3" Grid.Column="1"/>
-        <Button Content="Odobri lek" HorizontalAlignment="Left" Margin="51,330,0,0" VerticalAlignment="Top" Width="120" Height="25" Click="dodaj" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Button Content="Odobri lek" HorizontalAlignment="Left" Margin="45,318,0,0" VerticalAlignment="Top" Width="120" Height="25" Click="dodaj" Grid.Column="2" Grid.ColumnSpan="2"/>
+        <Menu x:Name="Menu" Margin="0,105,90,91" HorizontalAlignment="Right" Width="116" Grid.ColumnSpan="2" Grid.Column="1">
+            <Menu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel Orientation="Vertical"/>
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
+            <MenuItem Header="_Raspored termina" Margin="-1,1,1,-39" Click="MenuItem_Click"/>
+            <MenuItem Header="_Prikaz pacijenata" Margin="-1,43,1,-81"  Click="MenuItem_Click_2"/>
+            <MenuItem Header="_Uputi" Margin="0,85,0,-123" Click="MenuItem_Click_1"/>
+            <MenuItem Header="_Zahtevi za lekove" Margin="0,127,0,-165" />
+
+        </Menu>
     </Grid>
 </Window>
