@@ -99,8 +99,6 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            LekarZahteviZaDodavanjeLekaStart lk = new LekarZahteviZaDodavanjeLekaStart();
-            lk.Show();
             this.Close();
         }
 

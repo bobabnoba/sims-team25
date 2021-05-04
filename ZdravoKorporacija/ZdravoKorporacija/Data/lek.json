@@ -1,34 +1,43 @@
 [
   {
-    "alternativniLekovi": [],
-    "Id": 1,
-    "Proizvodjac": "Nzm",
-    "Sastojci": "Nempojma",
-    "NusPojave": "Nema",
-    "NazivLeka": "Cardiopirin"
-  },
-  {
-    "alternativniLekovi": [],
-    "Id": 2,
-    "Proizvodjac": "Nzm",
-    "Sastojci": "Nempojma",
-    "NusPojave": "Nema",
-    "NazivLeka": "Brufen"
-  },
-  {
-    "alternativniLekovi": [],
-    "Id": 3,
-    "Proizvodjac": "Nzm",
-    "Sastojci": "Nempojma",
-    "NusPojave": "Nema",
-    "NazivLeka": "Mendilex"
-  },
-  {
-    "alternativniLekovi": [],
-    "Id": 4,
-    "Proizvodjac": "Nzm",
-    "Sastojci": "Nempojma",
-    "NusPojave": "Nema",
-    "NazivLeka": "Amoksicilin"
+    "alternativniLekovi": [
+      {
+        "alternativniLekovi": [],
+        "Id": 1,
+        "Proizvodjac": "Nema",
+        "Sastojci": "Nempojma",
+        "NusPojave": "Nema",
+        "NazivLeka": "Cardiopirin"
+      },
+      {
+        "alternativniLekovi": [],
+        "Id": 2,
+        "Proizvodjac": "Nema",
+        "Sastojci": "Nempojma",
+        "NusPojave": "Nema",
+        "NazivLeka": "Brufen"
+      },
+      {
+        "alternativniLekovi": [],
+        "Id": 3,
+        "Proizvodjac": "Nema",
+        "Sastojci": "Nempojma",
+        "NusPojave": "Nema",
+        "NazivLeka": "Mendilex"
+      },
+      {
+        "alternativniLekovi": [],
+        "Id": 4,
+        "Proizvodjac": "Nema",
+        "Sastojci": "Nempojma",
+        "NusPojave": "Nema",
+        "NazivLeka": "Amoksicilin"
+      }
+    ],
+    "Id": 5,
+    "Proizvodjac": "r",
+    "Sastojci": "r",
+    "NusPojave": "r",
+    "NazivLeka": "r"
   }
 ]
