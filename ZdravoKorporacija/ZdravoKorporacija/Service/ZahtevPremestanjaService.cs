@@ -32,7 +32,7 @@ namespace ZdravoKorporacija.Service
 
             zahtevPremestanja.StatickaOprema = new StatickaOprema(inventar);
             StatickaOprema stat = new StatickaOprema(inventar);
-            zahtevPremestanja.prostorija.statickaOprema = new System.Collections.ArrayList();
+            zahtevPremestanja.prostorija.statickaOprema = new List<StatickaOprema>();
             zahtevPremestanja.prostorija.statickaOprema.Add(stat);
 
             String s = dt.ToString();

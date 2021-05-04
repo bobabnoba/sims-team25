@@ -21,5 +21,26 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
         {
             InitializeComponent();
         }
+
+        private void dgZahteviRenoviranja_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void dodaj(object sender, RoutedEventArgs e)
+        {
+            Renoviranje r = new Renoviranje(-1);
+            r.Show();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

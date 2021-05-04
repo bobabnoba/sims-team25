@@ -124,7 +124,7 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
 
                 Prostorija p = z.prostorija;
                 StatickaOprema stat = new StatickaOprema((Inventar) z.StatickaOprema);
-                p.statickaOprema = new System.Collections.ArrayList();
+                p.statickaOprema = new List<StatickaOprema>();
                 p.statickaOprema.Add(stat);
 
 

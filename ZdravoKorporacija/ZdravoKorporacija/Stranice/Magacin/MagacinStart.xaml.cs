@@ -137,6 +137,7 @@ namespace ZdravoKorporacija.Stranice.Magacin
 
         private void ponisti_Click(object sender, RoutedEventArgs e)
         {
+            slValue.Value = 0;
             this.filtrirana_oprema = new ObservableCollection<Inventar>();
             dgMagacinOprema.ItemsSource = MagacinRepozitorijum.Instance.magacinOprema;
             r1.IsChecked = false;

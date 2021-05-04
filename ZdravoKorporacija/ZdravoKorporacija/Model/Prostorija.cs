@@ -6,6 +6,8 @@
 
 
 using System;
+using System.Collections.Generic;
+
 namespace Model
 {
 
@@ -17,7 +19,7 @@ namespace Model
         public Prostorija(int id, string naziv, TipProstorijeEnum tip, bool slobodna, int sprat)
         {
             this.inventar = new System.Collections.ArrayList();
-            this.statickaOprema = new System.Collections.ArrayList();
+            this.statickaOprema = new List<StatickaOprema>();
             this.dinamickaOprema = new System.Collections.ArrayList();
             Id = id;
             Naziv = naziv;
@@ -27,18 +29,18 @@ namespace Model
         }
 
 
-        public System.Collections.ArrayList statickaOprema;
+        public List<StatickaOprema> statickaOprema;
 
         /// <pdGenerated>default getter</pdGenerated>
-        public System.Collections.ArrayList GetStatickaOprema()
+        public List<StatickaOprema> GetStatickaOprema()
         {
             if (statickaOprema == null)
-                statickaOprema = new System.Collections.ArrayList();
+                statickaOprema = new List<StatickaOprema>();
             return statickaOprema;
         }
 
         /// <pdGenerated>default setter</pdGenerated>
-        public void SetStatickaOprema(System.Collections.ArrayList newStatickaOprema)
+        public void SetStatickaOprema(List<StatickaOprema> newStatickaOprema)
         {
             RemoveAllStatickaOprema();
             foreach (StatickaOprema oStatickaOprema in newStatickaOprema)
@@ -51,7 +53,7 @@ namespace Model
             if (newStatickaOprema == null)
                 return;
             if (this.statickaOprema == null)
-                this.statickaOprema = new System.Collections.ArrayList();
+                this.statickaOprema = new List<StatickaOprema>();
             if (!this.statickaOprema.Contains(newStatickaOprema))
                 this.statickaOprema.Add(newStatickaOprema);
         }

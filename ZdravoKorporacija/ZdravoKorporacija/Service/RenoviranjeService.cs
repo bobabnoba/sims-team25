@@ -2,6 +2,8 @@
 using Repository;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Service;
@@ -11,6 +13,7 @@ namespace Service
     class RenoviranjeService
     {
         ZahtevPremestanjaService zahtevP = new ZahtevPremestanjaService();
+        ZahtevIzbacivanjaService zahtevI = new ZahtevIzbacivanjaService();
         public Boolean ZakaziRenoviranje(ZahtevRenoviranjeDTO zahtevRenoviranja)
         {
             RenoviranjeRepozitorijum renoviranjeRepozitorijum = RenoviranjeRepozitorijum.Instance;
@@ -22,7 +25,7 @@ namespace Service
             // Debug.WriteLine("" + s);
 
             DateTime pocetak = DateTime.Parse(date + " " + zahtevRenoviranja.PocetakSati);
-           
+
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapRenoviranje");
             Dictionary<int, int> ids = datotekaID.dobaviSve();
 
@@ -44,12 +47,12 @@ namespace Service
             catch (Exception)
             {
             }
-            
+
             DateTime kraj = pocetak.AddMinutes(minuta);
 
-            ZahtevRenoviranja zahtev = new ZahtevRenoviranja(zahtevId,zahtevRenoviranja.Prostorija,pocetak,kraj,zahtevRenoviranja.Trajanje);
-            System.Collections.ArrayList oprema = new System.Collections.ArrayList();
-            oprema=  zahtevRenoviranja.Prostorija.statickaOprema;
+            ZahtevRenoviranja zahtev = new ZahtevRenoviranja(zahtevId, zahtevRenoviranja.Prostorija, pocetak, kraj, zahtevRenoviranja.Trajanje);
+
+            List<StatickaOprema> oprema = zahtevRenoviranja.Prostorija.statickaOprema;
 
             if (oprema != null)
             {
@@ -61,6 +64,12 @@ namespace Service
                     IDRepozitorijum datotekaIDPremestanja = new IDRepozitorijum("iDMapZahtevPremestanja");
                     Dictionary<int, int> idsP = datotekaID.dobaviSve();
 
+                    ZahtevIzbacivanja zi = new ZahtevIzbacivanja();
+                    zi.prostorija = zahtevRenoviranja.Prostorija;
+                    IDRepozitorijum datotekaIDIzbacivanja = new IDRepozitorijum("iDMapZahtevIzbacivanja");
+                    Dictionary<int, int> idsI = datotekaIDIzbacivanja.dobaviSve();
+
+                    zahtevI.ZakaziIzbacivanje(invent, zi, zahtevRenoviranja.PocetakDan, zahtevRenoviranja.PocetakSati, zahtevRenoviranja.Trajanje, idsI);
                     zahtevP.ZakaziPremestanje(invent, zp, zahtevRenoviranja.PocetakDan, zahtevRenoviranja.PocetakSati, zahtevRenoviranja.Trajanje, idsP);
                 }
             }
