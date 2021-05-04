@@ -3,18 +3,17 @@ using Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Stranice.Logovanje;
 
-namespace ZdravoKorporacija.Stranice.LekarCRUD
+namespace ZdravoKorporacija.Stranice.Uput
 {
     /// <summary>
     /// Interaction logic for izmeniPregledLekar.xaml
     /// </summary>
-    public partial class izmeniPregledLekar : Window
+    public partial class izmeniUput : Window
     {
         private TerminService terminServis = new TerminService();
         private ProstorijaService prostorijeStorage = new ProstorijaService();
@@ -29,7 +28,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private List<Termin> termini;
         String now = DateTime.Now.ToString("hh:mm:ss tt");
         DateTime today = DateTime.Today;
-        public izmeniPregledLekar(Termin selektovani, ObservableCollection<Termin> termini)
+        public izmeniUput(Termin selektovani, ObservableCollection<Termin> termini)
         {
             InitializeComponent();
             pacijenti = pacijentiServis.PregledSvihPacijenata();
@@ -39,7 +38,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             try
             {
 
-               // if(pacijent.ZdravstveniKarton.Id== selektovani.GetZdravstveniKarton().Id)
+                // if(pacijent.ZdravstveniKarton.Id== selektovani.GetZdravstveniKarton().Id)
 
                 foreach (Pacijent pacijent in pacijenti)
                 {
@@ -55,6 +54,8 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             pregledi = termini;
 
             lekari = lekariDat.dobaviSve();
+            lekari.Remove(lekarLogin.lekar);
+            Lekari.ItemsSource = lekari;
             CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
             date.BlackoutDates.Add(cdr);
 
@@ -64,7 +65,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 date.SelectedDate = selektovani.Pocetak;
                 time.SelectedValue = selektovani.Pocetak.ToString("HH:mm");
             }
-            catch(Exception) { }
+            catch (Exception) { }
             prostorije = prostorijeStorage.PregledSvihProstorija();
             cbProstorija.ItemsSource = prostorije;
             foreach (Prostorija p in prostorije)
@@ -78,13 +79,25 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                     cbProstorija.SelectedItem = p;
                 }
             }
-           
+
 
             foreach (Pacijent p in pacijenti)
             {
                 if (p.ZdravstveniKarton == selektovani.zdravstveniKarton)
                 {
                     cbPacijent.SelectedItem = p;
+                }
+            }
+
+            foreach (Lekar l in lekari)
+            {
+                if (selektovani.Lekar == null)
+                {
+                    break;
+                }
+                if (l.Jmbg == selektovani.Lekar.Jmbg)
+                {
+                    Lekari.SelectedItem = l;
                 }
             }
 
@@ -117,7 +130,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             int popodne = prepodne + 12;
 
             if (!date.SelectedDate.HasValue || time.SelectedIndex == -1 || cbTip.SelectedIndex == -1
-               || cbProstorija.SelectedIndex == -1 || cbPacijent.SelectedIndex == -1 )
+               || cbProstorija.SelectedIndex == -1 || cbPacijent.SelectedIndex == -1)
             {
                 MessageBox.Show("Niste popunili sva polja", "Greska");
                 return;
@@ -139,13 +152,13 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
                 if (d.Equals(today.ToString("dd.M.yyyy.")))
                 {
-                    if (Int32.Parse(t.Substring(0, 2)) < (now.Substring(9, 8).Equals("po podne") ? popodne: prepodne))
+                    if (Int32.Parse(t.Substring(0, 2)) < (now.Substring(9, 8).Equals("po podne") ? popodne : prepodne))
                     {
                         MessageBox.Show("Nevalidno Vreme", "Greska");
-                        
+
                         return;
                     }
-                    else if ((Int32.Parse(t.Substring(0, 2))==prepodne || Int32.Parse(t.Substring(0, 2))==popodne) && Int32.Parse(t.Substring(3, 2)) < Int32.Parse(now.Substring(3, 2)))
+                    else if ((Int32.Parse(t.Substring(0, 2)) == prepodne || Int32.Parse(t.Substring(0, 2)) == popodne) && Int32.Parse(t.Substring(3, 2)) < Int32.Parse(now.Substring(3, 2)))
                     {
                         MessageBox.Show("Nevalidno Vreme", "Greska");
                         return;

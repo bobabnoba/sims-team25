@@ -3,18 +3,17 @@ using Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Stranice.Logovanje;
 
-namespace ZdravoKorporacija.Stranice.LekarCRUD
+namespace ZdravoKorporacija.Stranice.Uput
 {
     /// <summary>
     /// Interaction logic for zakaziPregledLekar.xaml
     /// </summary>
-    public partial class zakaziPregledLekar : Window
+    public partial class izdajUput : Window
     {
         private TerminService terminServis = new TerminService();
         private LekarRepozitorijum lekariDat = new LekarRepozitorijum();
@@ -25,6 +24,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private List<Lekar> lekari = new List<Lekar>();
         private List<Termin> termini = new List<Termin>();
         private List<Prostorija> prostorije = new List<Prostorija>();
+        private List<Lekar> lekariZaPrikaz = new List<Lekar>();
 
         private Termin p;
         private ObservableCollection<Termin> pregledi;
@@ -35,7 +35,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
 
 
-        public zakaziPregledLekar(ObservableCollection<Termin> termini, Dictionary<int, int> ids)
+        public izdajUput(ObservableCollection<Termin> termini, Dictionary<int, int> ids)
         {
             InitializeComponent();
 
@@ -52,10 +52,16 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
 
             lekari = lekariDat.dobaviSve();
+            lekariZaPrikaz = lekari;
+            lekariZaPrikaz.Remove(lekarLogin.lekar);
+            Lekari.ItemsSource = lekariZaPrikaz;
 
             prostorije = prostorijeServis.PregledSvihProstorija();
             cbProstorija.ItemsSource = prostorije;
             p.Trajanje = 0.5;
+            //p.Id = pregledi.Count + 1;
+
+
         }
 
         private void potvrdi(object sender, RoutedEventArgs e)
@@ -79,13 +85,13 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             //iz.Opis = "Temperature";
             //iz.Simptomi = "Covid";
             //p.izvestaj = iz;
-            
+
             String d = date.Text;
             String t = null;
             int prepodne = Int32.Parse(now.Substring(0, 2));
             int popodne = prepodne + 12;
             if (!date.SelectedDate.HasValue || time.SelectedIndex == -1 || cbTip.SelectedIndex == -1
-                || cbProstorija.SelectedIndex == -1 || cbPacijent.SelectedIndex == -1)
+                || cbProstorija.SelectedIndex == -1 || cbPacijent.SelectedIndex == -1 || Lekari.SelectedIndex == -1)
             {
                 MessageBox.Show("Niste popunili sva polja", "Greska");
                 return;
@@ -108,16 +114,16 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                     }
                 }
             }
-            
+
             try
             {
                 p.Pocetak = DateTime.Parse(d + " " + t);
             }
-            catch(InvalidCastException)
+            catch (InvalidCastException)
             { }
             foreach (Termin ter in termini)
             {
-                if (ter.Pocetak == p.Pocetak)
+                if (ter.Pocetak.Equals(p.Pocetak) && ter.prostorija.Equals(p.prostorija))
                 {
                     MessageBox.Show("Postoji termin u izabranom vremenu", "Greska");
                     return;
@@ -132,22 +138,22 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 p.Tip = TipTerminaEnum.Operacija;
             }
 
-            
+
 
             ZdravstveniKarton zk = new ZdravstveniKarton(null, pac.Jmbg, StanjePacijentaEnum.None, null, KrvnaGrupaEnum.None, null);
 
             p.prostorija = (Prostorija)cbProstorija.SelectedItem;
-            p.Lekar = lekarLogin.lekar;
+            p.Lekar = (Lekar)Lekari.SelectedItem;
             if (pac.ZdravstveniKarton != null)
                 p.zdravstveniKarton = pac.ZdravstveniKarton;
             else
             {
-                p.zdravstveniKarton = zk ;
+                p.zdravstveniKarton = zk;
                 pac.ZdravstveniKarton = zk;
                 //pac.ZdravstveniKarton.AddTermin(p);
-                zdravstveniKartonServis.KreirajZdravstveniKarton(pac.ZdravstveniKarton,ids);
+                zdravstveniKartonServis.KreirajZdravstveniKarton(pac.ZdravstveniKarton, ids);
             }
-           
+
             Termin tZaLjekara = new Termin();
             tZaLjekara.Id = p.Id;
             p.Lekar.AddTermin(tZaLjekara);
@@ -155,7 +161,6 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
             if (terminServis.ZakaziTermin(p, ids))
             {
-                Trace.WriteLine("Upisao");
                 this.pregledi.Add(p);
                 lekariDat.sacuvaj(lekari);
                 //pacijentiDat.sacuvaj(pacijenti); // višakk?
@@ -170,15 +175,6 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             this.Close();
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
 
-
-        }
-
-        private void time_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }

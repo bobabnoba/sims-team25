@@ -27,8 +27,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private PacijentService pacijentServis = new PacijentService();
         private List<Termin> termini = new List<Termin>();
         private List<Pacijent> pacijenti = new List<Pacijent>();
-        private ObservableCollection<Izvestaj> izvestaji = new ObservableCollection<Izvestaj>();
-        private Izvestaj izvestaj= new Izvestaj();
+        private Izvestaj izvestaj = new Izvestaj();
         IDRepozitorijum datotekaID;
         Pacijent pac;
         Termin termin = new Termin();
@@ -49,15 +48,15 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                     {
                         if (t.izvestaj == null)
                         {
-                           /* Trace.WriteLine(t.izvestaj.Simptomi);
-                            izvestaji.Add(t.izvestaj);*/
+                            /* Trace.WriteLine(t.izvestaj.Simptomi);
+                             izvestaji.Add(t.izvestaj);*/
                             termin = t;
                             break;
                         }
                     }
                 }
             }
-           
+
         }
         public dodajAnamnezu(Termin selektovani)
         {
@@ -65,12 +64,12 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             datotekaID = new IDRepozitorijum("iDMapIzvestaj");
             ids = datotekaID.dobaviSve();
             termin = selektovani;
-            
+
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             izvestaj.Simptomi = simptomiText.Text;
-            TextRange textRange = new TextRange(opisText.Document.ContentStart, opisText.Document.ContentEnd );
+            TextRange textRange = new TextRange(opisText.Document.ContentStart, opisText.Document.ContentEnd);
             pacijenti = new List<Pacijent>(pacijentServis.PregledSvihPacijenata());
             izvestaj.Opis = textRange.Text;
             int id = 0;
@@ -84,19 +83,19 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 }
             }
             izvestaj.Id = id;
-            izvestaji.Add(izvestaj);
+            zdravstveniKartonPrikaz.izvestaji.Add(izvestaj);
             /*Trace.WriteLine(izvestaji[izvestaji.Count-1].Opis);
             Trace.WriteLine(termin.zdravstveniKarton.Id);
             Trace.WriteLine(pac.ZdravstveniKarton.Id);  */
-            Trace.WriteLine(termin.zdravstveniKarton.Id);
-            foreach(Pacijent p in pacijenti)
+            //Trace.WriteLine(termin.zdravstveniKarton.Id);
+            foreach (Pacijent p in pacijenti)
             {
                 if (termin.zdravstveniKarton.Id.Equals(p.ZdravstveniKarton.Id))
                     pac = p;
             }
-            foreach(Termin t in pac.termin)
+            foreach (Termin t in pac.termin)
             {
-                if(t.Id.Equals(termin.Id))
+                if (t.Id.Equals(termin.Id))
                 {
                     t.izvestaj = izvestaj;
                 }

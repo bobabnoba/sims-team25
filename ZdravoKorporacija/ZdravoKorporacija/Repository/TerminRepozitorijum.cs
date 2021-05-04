@@ -27,7 +27,11 @@ namespace ZdravoKorporacija.Model
             serializer.Serialize(jWriter, termini);
             jWriter.Close();
             writer.Close();
+<<<<<<< HEAD
            // Serijalizacija(termini);
+=======
+            //Serijalizacija(termini);
+>>>>>>> origin/izdavanjeuputa
         }
 
         string SerializeObjectByJObject(List<Termin> ter)
@@ -38,18 +42,18 @@ namespace ZdravoKorporacija.Model
            
             int i = 0;
 
-            foreach ( JObject z in joa) {
+            //foreach ( JObject z in joa) {
                 
-                joa[i]["prostorija"]["inventar"].Parent.Remove();
-                joa[i]["prostorija"]["statickaOprema"].Parent.Remove();
-                joa[i]["prostorija"]["dinamickaOprema"].Parent.Remove();
-                joa[i]["prostorija"]["Naziv"].Parent.Remove();
-                joa[i]["prostorija"]["Tip"].Parent.Remove();
-                joa[i]["prostorija"]["Slobodna"].Parent.Remove();
-                joa[i]["prostorija"]["Sprat"].Parent.Remove();
+            //    joa[i]["prostorija"]["inventar"].Parent.Remove();
+            //    joa[i]["prostorija"]["statickaOprema"].Parent.Remove();
+            //    joa[i]["prostorija"]["dinamickaOprema"].Parent.Remove();
+            //    joa[i]["prostorija"]["Naziv"].Parent.Remove();
+            //    joa[i]["prostorija"]["Tip"].Parent.Remove();
+            //    joa[i]["prostorija"]["Slobodna"].Parent.Remove();
+            //    joa[i]["prostorija"]["Sprat"].Parent.Remove();
               
-                i++;
-            }
+            //    i++;
+            //}
          
             //jo.Remove("prostorija");
             //jo.Add("prostorija", new JObject());

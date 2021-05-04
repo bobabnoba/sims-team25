@@ -40,6 +40,7 @@
     <Compile Update="Stranice\LekarCRUD\zakaziPregledLekar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+<<<<<<< HEAD
     <Compile Update="Stranice\LekoviCRUD\DodavanjeAlternativnihLekova.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -53,6 +54,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Stranice\LekoviCRUD\LekStart.xaml.cs">
+=======
+    <Compile Update="Stranice\Logovanje\lekarLogin.xaml.cs">
+>>>>>>> origin/izdavanjeuputa
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Stranice\Logovanje\upavnikLogin.xaml.cs">
@@ -138,6 +142,21 @@
     <Compile Update="Stranice\UpravnikCRUD\ZaposleniPocetna.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Stranice\Uput\izdajUput.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\Uput\izmeniUput.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\Uput\otkaziUput.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\Uput\Uputi.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\Uput\zakaziHitniLekar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
@@ -173,6 +192,7 @@
     <Page Update="Stranice\LekarCRUD\zakaziPregledLekar.xaml">
       <SubType>Designer</SubType>
     </Page>
+<<<<<<< HEAD
     <Page Update="Stranice\LekoviCRUD\DodavanjeAlternativnihLekova.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -186,6 +206,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\LekoviCRUD\LekStart.xaml">
+=======
+    <Page Update="Stranice\Logovanje\lekarLogin.xaml">
+>>>>>>> origin/izdavanjeuputa
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\Logovanje\upavnikLogin.xaml">
@@ -270,6 +293,21 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\UpravnikCRUD\ZaposleniPocetna.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\Uput\izdajUput.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\Uput\izmeniUput.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\Uput\otkaziUput.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\Uput\Uputi.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\Uput\zakaziHitniLekar.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
