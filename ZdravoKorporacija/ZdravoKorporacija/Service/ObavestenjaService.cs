@@ -7,7 +7,7 @@ using ZdravoKorporacija.Model;
 using System.Linq;
 using ZdravoKorporacija.Repository;
 using Service;
-
+using Repository;
 namespace ZdravoKorporacija.Service
 {
 
