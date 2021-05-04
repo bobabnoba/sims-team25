@@ -51,7 +51,17 @@
   },
   {
     "inventar": [],
-    "statickaOprema": null,
+    "statickaOprema": [
+      {
+        "termin": null,
+        "Prostorija": null,
+        "Id": 2,
+        "Naziv": "stolica",
+        "UkupnaKolicina": 100,
+        "Proizvodjac": "forma ideale",
+        "DatumNabavke": "0001-01-01T00:00:00"
+      }
+    ],
     "dinamickaOprema": null,
     "Id": 5,
     "Naziv": "soba33",

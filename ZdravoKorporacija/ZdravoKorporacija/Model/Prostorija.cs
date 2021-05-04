@@ -16,7 +16,9 @@ namespace Model
 
         public Prostorija(int id, string naziv, TipProstorijeEnum tip, bool slobodna, int sprat)
         {
-            this.inventar = new System.Collections.ArrayList(); ;
+            this.inventar = new System.Collections.ArrayList();
+            this.statickaOprema = new System.Collections.ArrayList();
+            this.dinamickaOprema = new System.Collections.ArrayList();
             Id = id;
             Naziv = naziv;
             Tip = tip;

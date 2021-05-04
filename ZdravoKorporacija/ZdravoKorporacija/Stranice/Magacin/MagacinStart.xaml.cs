@@ -77,5 +77,17 @@ namespace ZdravoKorporacija.Stranice.Magacin
                 dgMagacinOprema.ItemsSource = this.filtrirana_oprema;
             }
         }
+
+        private void slValue_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            this.filtrirana_oprema = new ObservableCollection<Inventar>();
+            foreach (Inventar inv in MagacinRepozitorijum.Instance.magacinOprema)
+            {
+                if (inv.UkupnaKolicina <= (int)slValue.Value)
+                {
+                    filtrirana_oprema.Add(inv);
+                }
+            }
+        }
     }
 }

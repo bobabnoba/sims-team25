@@ -4,11 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Service;
 
 namespace Service
 {
     class RenoviranjeService
     {
+        ZahtevPremestanjaService zahtevP = new ZahtevPremestanjaService();
         public Boolean ZakaziRenoviranje(ZahtevRenoviranjeDTO zahtevRenoviranja)
         {
             RenoviranjeRepozitorijum renoviranjeRepozitorijum = RenoviranjeRepozitorijum.Instance;
@@ -46,7 +48,22 @@ namespace Service
             DateTime kraj = pocetak.AddMinutes(minuta);
 
             ZahtevRenoviranja zahtev = new ZahtevRenoviranja(zahtevId,zahtevRenoviranja.Prostorija,pocetak,kraj,zahtevRenoviranja.Trajanje);
+            System.Collections.ArrayList oprema = new System.Collections.ArrayList();
+            oprema=  zahtevRenoviranja.Prostorija.statickaOprema;
 
+            if (oprema != null)
+            {
+                foreach (StatickaOprema st in oprema)
+                {
+                    Inventar invent = (Inventar)st;
+                    ZahtevPremestanja zp = new ZahtevPremestanja();
+                    zp.prostorija = zahtevRenoviranja.Prostorija;
+                    IDRepozitorijum datotekaIDPremestanja = new IDRepozitorijum("iDMapZahtevPremestanja");
+                    Dictionary<int, int> idsP = datotekaID.dobaviSve();
+
+                    zahtevP.ZakaziPremestanje(invent, zp, zahtevRenoviranja.PocetakDan, zahtevRenoviranja.PocetakSati, zahtevRenoviranja.Trajanje, idsP);
+                }
+            }
             renoviranjeRepozitorijum.zahteviRenoviranja.Add(zahtev);
             renoviranjeRepozitorijum.Sacuvaj();
             datotekaID.sacuvaj(ids);

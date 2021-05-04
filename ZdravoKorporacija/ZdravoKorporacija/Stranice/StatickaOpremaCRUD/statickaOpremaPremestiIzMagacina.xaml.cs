@@ -44,6 +44,7 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
         private ZahtevPremestanjaService zahteviStorage = new ZahtevPremestanjaService();
         private List<ZahtevPremestanja> listaZahteva = new List<ZahtevPremestanja>();
         private ZahtevPremestanja z = new ZahtevPremestanja();
+        private int indeks;
 
         public statickaOpremaPremestiIzMagacina()
         {
@@ -84,41 +85,50 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
-        {   
-            
+        {
+
             Inventar inv = (Inventar)cbMagacin.SelectedItem;
             Termin t = new Termin();
             StatickaOprema st = new StatickaOprema(t, inv);
-            
 
+            this.indeks = (int) cbProstorija.SelectedIndex;
             ZahtevPremestanja zp = new ZahtevPremestanja();
-            zp.prostorija =(Prostorija) cbProstorija.SelectedItem;
+            zp.prostorija = (Prostorija)cbProstorija.SelectedItem;
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapZahtevPremestanja");
             Dictionary<int, int> ids = datotekaID.dobaviSve();
-            zahteviStorage.ZakaziPremestanje((Inventar)cbMagacin.SelectedItem,zp, (DateTime)timePicker.SelectedDate, (String)sati.SelectedItem,textBoxTrajanje.Text, ids);
+            zahteviStorage.ZakaziPremestanje((Inventar)cbMagacin.SelectedItem, zp, (DateTime)timePicker.SelectedDate, (String)sati.SelectedItem, textBoxTrajanje.Text, ids);
 
             listaZahteva = zahteviStorage.PregledSveOpreme();
         }
         private Boolean x = true;
         public void ProveraZahteva(object sender, EventArgs e)
         {
-            
-           
-            if (listaZahteva != null) {
-                z = listaZahteva.FirstOrDefault(s =>  s.Kraj <= DateTime.Now && s.Kraj >= DateTime.Now.AddMinutes(-5));
-               if(z == null)
+
+
+            if (listaZahteva != null)
+            {
+                z = listaZahteva.FirstOrDefault(s => s.Kraj <= DateTime.Now && s.Kraj >= DateTime.Now.AddMinutes(-5));
+                if (z == null)
                 {
                     x = false;
                 }
                 else { x = true; }
-               
+
             }
-           if(z != null && x == true)
+            if (z != null && x == true)
             {
                 listaZahteva.Remove(z);
-                statickaopremaStorage.DodajOpremu(z.StatickaOprema, z.Pocetak,"10",z.prostorija);
+                statickaopremaStorage.DodajOpremu(z.StatickaOprema, z.Pocetak, "10", z.prostorija);
                 MessageBox.Show("zavrsen termin");
                 ZahtevPremestanjaRepozitorijum.Instance.sacuvaj(listaZahteva);
+
+                Prostorija p = z.prostorija;
+                StatickaOprema stat = new StatickaOprema((Inventar) z.StatickaOprema);
+                p.statickaOprema = new System.Collections.ArrayList();
+                p.statickaOprema.Add(stat);
+
+
+                prostorijeStorage.AzurirajProstoriju(p, this.indeks);
                 x = false;
             }
 
@@ -163,7 +173,7 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
 
         }
 
-       
+
 
         private void sati_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
