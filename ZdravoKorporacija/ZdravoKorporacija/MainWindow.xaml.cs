@@ -118,8 +118,8 @@ namespace ZdravoKorporacija
         }
         private void openPacijentFrame(object sender, RoutedEventArgs e)
         {
-            pacijentStart s = new pacijentStart();
-            s.Show();
+            pacijentLogin pl = new pacijentLogin(UlogaEnum.Pacijent);
+            pl.Show();
         }
     }
 }

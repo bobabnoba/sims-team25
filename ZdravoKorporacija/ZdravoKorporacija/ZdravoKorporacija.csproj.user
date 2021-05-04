@@ -58,6 +58,9 @@
     <Compile Update="Stranice\Logovanje\lekarLogin.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Stranice\Logovanje\pacijentLogin.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Stranice\Logovanje\upavnikLogin.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -213,6 +216,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\Logovanje\lekarLogin.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\Logovanje\pacijentLogin.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\Logovanje\upavnikLogin.xaml">

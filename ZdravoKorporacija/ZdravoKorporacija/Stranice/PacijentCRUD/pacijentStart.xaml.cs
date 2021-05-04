@@ -34,7 +34,7 @@ namespace ZdravoKorporacija.Stranice
         private AnketaRepozitorijum arepo = new AnketaRepozitorijum();
         private KorisnikService korisnikServis = new KorisnikService();
 
-        public pacijentStart()
+        public pacijentStart(Pacijent pacijent)
         {
             InitializeComponent();
 
@@ -50,7 +50,8 @@ namespace ZdravoKorporacija.Stranice
             termini = new ObservableCollection<Termin>(storage.PregledSvihTermina());
             dgUsers.ItemsSource = termini;
             this.DataContext = this;
-            pacijent = (storagePacijent.PregledSvihPacijenata())[3]; // za ovog pacijenta prikazujemo obavjestenja
+            this.pacijent = pacijent;
+                //(storagePacijent.PregledSvihPacijenata())[3]; // za ovog pacijenta prikazujemo obavjestenja
             dgObavjestenja.ItemsSource = pacijent.notifikacije;
 
             List<Anketa> ankete = arepo.DobaviSve();
@@ -58,7 +59,7 @@ namespace ZdravoKorporacija.Stranice
             Anketa poslednja = (Anketa)ankete.LastOrDefault(s => s.IdAutora.Equals(pacijent.Jmbg) && s.Termin == null);
 
             
-            if (DateTime.Compare(poslednja.Datum, DateTime.Parse(DateTime.Now.AddMinutes(-9).ToString())) <= 0)
+            if (poslednja != null && DateTime.Compare(poslednja.Datum, DateTime.Parse(DateTime.Now.AddMinutes(-9).ToString())) <= 0)
             {
                 anketaB.Visibility = Visibility.Visible;
             }
