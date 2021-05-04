@@ -12,6 +12,7 @@ namespace Model
     public enum TipNotifikacije
     {
         Podsetnik,
-        Obavestenje
+        Obavestenje,
+        Globalno
     }
 }

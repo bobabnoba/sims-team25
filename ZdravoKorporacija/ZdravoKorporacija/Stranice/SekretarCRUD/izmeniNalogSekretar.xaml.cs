@@ -64,11 +64,12 @@ namespace ZdravoKorporacija.Stranice.SekretarCRUD
             {
                 pol = PolEnum.Zenski;
             }
-
-            Pacijent nalog = new Pacijent(ime, prezime, jmbg, br, mejl, "", pol, username, password, UlogaEnum.Pacijent);
-            if (storage.AzurirajPacijenta(nalog))
+            
+            Pacijent novi = new Pacijent(ime, prezime, jmbg, br, mejl, "", pol, username, password, UlogaEnum.Pacijent);
+            novi.ZdravstveniKarton = p1.ZdravstveniKarton;
+            if (storage.AzurirajPacijenta(novi))
             {
-                this.pacijenti.Add(nalog);
+                this.pacijenti.Add(novi);
                 this.Close();
 
             }

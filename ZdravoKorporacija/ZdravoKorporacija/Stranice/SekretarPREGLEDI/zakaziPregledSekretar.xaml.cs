@@ -34,9 +34,17 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
         private List<Lekar> slobodniLekari;
         private List<Prostorija> slobodneProstorije;
         private List<Prostorija> prostorije = new List<Prostorija>();
-
-        private Termin p;
         private ObservableCollection<Termin> pregledi;
+
+        private int idTermina;
+        private TipTerminaEnum tipTermina;
+        private DateTime pocetakTermina;
+        private Lekar lekarTermina;
+        private ZdravstveniKarton kartonTermina;
+        private Prostorija prostorijaTermina;
+
+        private Termin noviTermin;
+       
 
         private Dictionary<int, int> ids = new Dictionary<int, int>();
 
@@ -45,44 +53,32 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
         {
             InitializeComponent();
 
-            p = new Termin();
-            pacijenti = pacijentiDat.dobaviSve();
-            cbPacijent.ItemsSource = pacijenti;
+            noviTermin = new Termin();
             pregledi = termini;
 
+            pacijenti = pacijentiDat.dobaviSve();
+            cbPacijent.ItemsSource = pacijenti;
 
             lekari = lekariDat.dobaviSve();
             Lekari.ItemsSource = lekari;
 
             slobodniLekari = lekari;
             Lekari.ItemsSource = slobodniLekari;
-            
-
-            this.ids = ids;
-            DateTime danas = DateTime.Today;
-
-            for (DateTime tm = danas.AddHours(8); tm < danas.AddHours(22); tm = tm.AddMinutes(30))
-            {
-                time.Items.Add(tm.ToShortTimeString());
-
-            }
-
-            CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
-            date.BlackoutDates.Add(cdr);
-
-
-
-
-
-
 
             prostorije = pRep.dobaviSve();
             cbProstorija.ItemsSource = prostorije;
 
             slobodneProstorije = prostorije;
             cbProstorija.ItemsSource = slobodneProstorije;
-            p.Trajanje = 0.5;
 
+            this.ids = ids;
+            DateTime danas = DateTime.Today;
+            for (DateTime tm = danas.AddHours(8); tm < danas.AddHours(22); tm = tm.AddMinutes(30))
+            {
+                time.Items.Add(tm.ToShortTimeString());
+            }
+            CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
+            date.BlackoutDates.Add(cdr);
 
             cbPacijent.IsEnabled = false;
             cbProstorija.IsEnabled = false;
@@ -95,89 +91,38 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
             cbProstorija.IsEnabled = true;
             Lekari.IsEnabled = true;
 
-            foreach (Termin t in pregledi)
-            {
-                if (t.Pocetak.Equals(p.Pocetak))
-                {
-                    foreach (Lekar l in lekari.ToArray())
-                    {
-                        if (l.Jmbg.Equals(t.Lekar.Jmbg))
-                        {
-                            slobodniLekari.Remove(l);
-                            
-                        }
-                    }
-                }
-            }
+            slobodniLekari      = ts.DobaviSlobodneLekare(lekari, pregledi, pocetakTermina);
 
-            foreach (Termin t in pregledi)
-            {
-                if (t.Pocetak.Equals(p.Pocetak))
-                {
-                    foreach (Prostorija p in prostorije.ToArray())
-                    {
-                        if (t.prostorija.Id.Equals(p.Id))
-                        {
-                            slobodneProstorije.Remove(p);
-                        }
-                    }
-                }
-            }
-
-
-
-
-
+            slobodneProstorije = ts.DobaviSlobodneProstorije(prostorije, pregledi, noviTermin);
         }
 
         private void potvrdi(object sender, RoutedEventArgs e)
         {
-            int id = 0;
-            for (int i = 0; i < 1000; i++)
-            {
-                if (ids[i] == 0)
-                {
-                    id = i;
-                    ids[i] = 1;
-                    break;
-                }
-            }
-            p.Id = id;
-            p.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
+            int id = ts.MapaTermina(ids);
             Pacijent pac = (Pacijent)cbPacijent.SelectedItem;
 
 
-            p.prostorija = (Prostorija)cbProstorija.SelectedItem;
-            p.Lekar = (Lekar)Lekari.SelectedItem;
-            if (cbTip.SelectedIndex == 0)
-            {
-                p.Tip = TipTerminaEnum.Pregled;
-                p.hitno = false;
-            }
-            else if (cbTip.SelectedIndex == 1)
-            {
-                p.Tip = TipTerminaEnum.Operacija;
-            }
-            if (pac.ZdravstveniKarton != null)
-                p.zdravstveniKarton = pac.ZdravstveniKarton;
-            else
-            {
-                p.zdravstveniKarton = new ZdravstveniKarton(null, pac.GetJmbg(), StanjePacijentaEnum.None, null, KrvnaGrupaEnum.None, null);
-                pac.ZdravstveniKarton = new ZdravstveniKarton(null, pac.GetJmbg(), StanjePacijentaEnum.None, null, KrvnaGrupaEnum.None, null);
-            }
+            idTermina = id;
+            pocetakTermina      = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
+            prostorijaTermina   = (Prostorija)cbProstorija.SelectedItem;
+            lekarTermina        = (Lekar)Lekari.SelectedItem;
+            kartonTermina       = ts.ProveriKartonKodZakazivanja(pac);
+            if (cbTip.SelectedIndex == 0)            
+                tipTermina      = TipTerminaEnum.Pregled;            
+            else if (cbTip.SelectedIndex == 1)            
+                tipTermina      = TipTerminaEnum.Operacija;
 
-            Termin tZaLekara = new Termin();
-            tZaLekara.Id = p.Id;
-            p.Lekar.AddTermin(tZaLekara);
+            noviTermin   = ts.InicijalizujTermin(idTermina, tipTermina, pocetakTermina, pac, lekarTermina, prostorijaTermina);
 
-            if (ts.ZakaziTermin(p, ids))
+            ts.InicijalizujTerminLekaru(noviTermin);
+
+            if (ts.ZakaziTermin(noviTermin, ids))
             {
-                this.pregledi.Add(p);
+                this.pregledi.Add(noviTermin);
                 lekari = lekariDat.dobaviSve();
                 lekariDat.sacuvaj(lekari);
-
             }
-            pac.AddTermin(p);
+            pac.AddTermin(noviTermin);
             pacijentiStorage.AzurirajPacijenta(pac);
             this.Close();
         }
@@ -202,13 +147,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
         {
             if (time.SelectedIndex != -1)
             {
-                p.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
-
-
-
-
-         
-                
+                pocetakTermina = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
             }
         }
     }
