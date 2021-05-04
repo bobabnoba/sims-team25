@@ -1,27 +1,31 @@
 [
   {
-    "Id": "1",
+    "alternativniLekovi": [],
+    "Id": 1,
     "Proizvodjac": "Nzm",
     "Sastojci": "Nempojma",
     "NusPojave": "Nema",
     "NazivLeka": "Cardiopirin"
   },
   {
-    "Id": "2",
+    "alternativniLekovi": [],
+    "Id": 2,
     "Proizvodjac": "Nzm",
     "Sastojci": "Nempojma",
     "NusPojave": "Nema",
     "NazivLeka": "Brufen"
   },
   {
-    "Id": "3",
+    "alternativniLekovi": [],
+    "Id": 3,
     "Proizvodjac": "Nzm",
     "Sastojci": "Nempojma",
     "NusPojave": "Nema",
     "NazivLeka": "Mendilex"
   },
   {
-    "Id": "4",
+    "alternativniLekovi": [],
+    "Id": 4,
     "Proizvodjac": "Nzm",
     "Sastojci": "Nempojma",
     "NusPojave": "Nema",

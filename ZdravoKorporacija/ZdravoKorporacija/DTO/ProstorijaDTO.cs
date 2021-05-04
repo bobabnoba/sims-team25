@@ -1,24 +1,18 @@
-/***********************************************************************
- * Module:  Prostorija.cs
- * Author:  tukitaki
- * Purpose: Definition of the Class Prostorija
- ***********************************************************************/
-
-
+﻿using Model;
 using System;
-namespace Model
-{
+using System.Collections.Generic;
+using System.Text;
 
-    public class Prostorija
+namespace ZdravoKorporacija.DTO
+{
+    class ProstorijaDTO
     {
         public System.Collections.ArrayList inventar;
 
 
-        public Prostorija(int id, string naziv, TipProstorijeEnum tip, bool slobodna, int sprat)
+        public ProstorijaDTO(int id, string naziv, TipProstorijeEnum tip, bool slobodna, int sprat)
         {
-            this.inventar = new System.Collections.ArrayList();
-            this.statickaOprema = new System.Collections.ArrayList();
-            this.dinamickaOprema = new System.Collections.ArrayList();
+            this.inventar = new System.Collections.ArrayList(); ;
             Id = id;
             Naziv = naziv;
             Tip = tip;
@@ -123,6 +117,5 @@ namespace Model
         public TipProstorijeEnum Tip { get; set; }
         public bool Slobodna { get; set; }
         public int Sprat { get; set; }
-
     }
 }

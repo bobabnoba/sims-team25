@@ -9,11 +9,12 @@ namespace ZdravoKorporacija.Service
     class ZahtevPremestanjaService
     {
 
-        public bool ZakaziPremestanje(Inventar inventar, ZahtevPremestanja zahtevPremestanja,DateTime dt, string sati,string trajanje, Dictionary<int, int> ids)
+        public bool ZakaziPremestanje(Inventar inventar, ZahtevPremestanja zahtevPremestanja, DateTime dt, string sati, string trajanje, Dictionary<int, int> ids)
         {
             ZahtevPremestanjaRepozitorijum datoteka = ZahtevPremestanjaRepozitorijum.Instance;
             List<ZahtevPremestanja> zahtevi = datoteka.dobaviSve();
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapZahtevPremestanja");
+
 
             int id = 0;
             for (int i = 0; i < 1000; i++)
@@ -30,7 +31,9 @@ namespace ZdravoKorporacija.Service
 
 
             zahtevPremestanja.StatickaOprema = new StatickaOprema(inventar);
-
+            StatickaOprema stat = new StatickaOprema(inventar);
+            zahtevPremestanja.prostorija.statickaOprema = new System.Collections.ArrayList();
+            zahtevPremestanja.prostorija.statickaOprema.Add(stat);
 
             String s = dt.ToString();
             String date = s.Split(" ")[0];

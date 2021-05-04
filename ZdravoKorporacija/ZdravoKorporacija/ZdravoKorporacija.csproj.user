@@ -40,6 +40,21 @@
     <Compile Update="Stranice\LekarCRUD\zakaziPregledLekar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Stranice\LekoviCRUD\DodavanjeAlternativnihLekova.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\LekoviCRUD\IzborLekaraZaPotvrdu.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\LekoviCRUD\IzmenaAlternativnihLekovaZahtev.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\LekoviCRUD\LekarZahteviZaDodavanjeLekaStart.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\LekoviCRUD\LekStart.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Stranice\Logovanje\upavnikLogin.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -105,10 +120,19 @@
     <Compile Update="Stranice\UpravnikCRUD\Registracija.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Stranice\UpravnikCRUD\Renoviranje.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\UpravnikCRUD\RenoviranjeStart.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Stranice\UpravnikCRUD\upravnikPocetna.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Stranice\UpravnikCRUD\upravnikStart.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\UpravnikCRUD\ZakaziRenoviranje.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Stranice\UpravnikCRUD\ZaposleniPocetna.xaml.cs">
@@ -147,6 +171,21 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\LekarCRUD\zakaziPregledLekar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\LekoviCRUD\DodavanjeAlternativnihLekova.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\LekoviCRUD\IzborLekaraZaPotvrdu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\LekoviCRUD\IzmenaAlternativnihLekovaZahtev.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\LekoviCRUD\LekarZahteviZaDodavanjeLekaStart.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\LekoviCRUD\LekStart.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\Logovanje\upavnikLogin.xaml">
@@ -215,10 +254,19 @@
     <Page Update="Stranice\UpravnikCRUD\Registracija.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Stranice\UpravnikCRUD\Renoviranje.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\UpravnikCRUD\RenoviranjeStart.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Stranice\UpravnikCRUD\upravnikPocetna.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\UpravnikCRUD\upravnikStart.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\UpravnikCRUD\ZakaziRenoviranje.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\UpravnikCRUD\ZaposleniPocetna.xaml">
