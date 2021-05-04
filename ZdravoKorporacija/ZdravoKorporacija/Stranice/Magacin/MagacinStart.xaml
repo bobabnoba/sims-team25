@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.Magacin"
         mc:Ignorable="d"
         Title="MagacinStart" Height="450" Width="800">
-    <Grid>
+    <Grid x:Name="magacin">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="28*"/>
             <ColumnDefinition Width="93*"/>
@@ -36,16 +36,14 @@
         <Label x:Name="label" Content="Pretraga magacina" Grid.Column="1" HorizontalAlignment="Left" Margin="72,84,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="143" Height="30" FontSize="15"/>
         <TextBox x:Name="searchBox" Grid.Column="3" HorizontalAlignment="Left" Margin="24,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" TextChanged="searchBox_TextChanged" Height="30"/>
         <Button x:Name="button" Content="p" Grid.Column="3" HorizontalAlignment="Center" Margin="0,84,0,0" VerticalAlignment="Top" Height="30" Width="30" Click="button_Click"/>
-        <Label x:Name="label1" Content="Filteri" Grid.Column="3" HorizontalAlignment="Left" Margin="385,83,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="r1" Content="RadioButton" Grid.Column="3" HorizontalAlignment="Left" Margin="346,153,0,0" VerticalAlignment="Top" GroupName="Group1" />
-        <RadioButton x:Name="radioButton" Content="RadioButton" Grid.Column="3" HorizontalAlignment="Left" Margin="346,182,0,0" VerticalAlignment="Top" GroupName="Group1"/>
-        <RadioButton x:Name="radioButton1" Content="RadioButton" Grid.Column="3" HorizontalAlignment="Left" Margin="450,156,0,0" VerticalAlignment="Top" GroupName="Group2"/>
-
-        <Label x:Name="label2" Content="Kolicina&#xD;&#xA;" Grid.Column="3" HorizontalAlignment="Left" Margin="340,209,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <DockPanel VerticalAlignment="Top" Margin="346,248,39,0" Grid.Column="3" Height="28">
+        <Label x:Name="label1" Content="Filteri" Grid.Column="3" HorizontalAlignment="Left" Margin="343,99,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <RadioButton x:Name="r1" Content="Naziv" Grid.Column="3" HorizontalAlignment="Left" Margin="346,150,0,0" VerticalAlignment="Top" GroupName="Group1" Checked="r1_Checked" />
+        <RadioButton x:Name="r2" Content="Proizvodjac" Grid.Column="3" HorizontalAlignment="Left" Margin="346,170,0,0" VerticalAlignment="Top" GroupName="Group1" Checked="r2_Checked"/>
+        <DockPanel VerticalAlignment="Top" Margin="329,248,18,0" Grid.Column="3" Height="28">
             <TextBox Text="{Binding ElementName=slValue, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Right" Width="40" />
-            <Slider  Maximum="5000" TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True" Name="slValue" ValueChanged="slValue_ValueChanged" />
+            <Slider  Maximum="4000" TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True" Name="slValue" ValueChanged="slValue_ValueChanged" Width="177" />
         </DockPanel>
+        <Button x:Name="ponisti" Content="Ponisti" Grid.Column="3" HorizontalAlignment="Left" Margin="438,116,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.787,-1.802" Click="ponisti_Click" Width="76" Height="25"/>
 
     </Grid>
 </Window>
