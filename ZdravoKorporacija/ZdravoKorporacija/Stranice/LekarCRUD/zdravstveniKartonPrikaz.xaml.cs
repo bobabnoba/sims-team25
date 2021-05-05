@@ -31,6 +31,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         public static ObservableCollection<Recept> recepti = new ObservableCollection<Recept>();
         public static ObservableCollection<Izvestaj> izvestaji = new ObservableCollection<Izvestaj>();
         IDRepozitorijum datotekaID;
+        private bool ne;
 
         Dictionary<int, int> ids = new Dictionary<int, int>();
         Pacijent pac;
@@ -44,6 +45,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         {
             InitializeComponent();
             this.DataContext = this;
+            ne = false;
             dijagnoze = new ObservableCollection<Dijagnoza>(dijagnozaServis.PregledSvihDijagnoza());
             termini = new ObservableCollection<Termin>(terminServis.PregledSvihTermina());
             pacijenti = new ObservableCollection<Pacijent>(pacijentServis.PregledSvihPacijenata());
@@ -54,8 +56,24 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             ids = datotekaID.dobaviSve();
             foreach (Termin ter in pac.termin)
             {
+                ne = false;
                 if (ter.izvestaj != null)
-                    izvestaji.Add(ter.izvestaj);
+                {
+                    foreach (Izvestaj iz in izvestaji)
+                    {
+                        if (iz != null)
+                        {
+                            if (iz.Id.Equals(ter.izvestaj.Id))
+                            {
+                                ne = true;
+                                break;
+                            }
+                            if (!ne)
+                                izvestaji.Add(ter.izvestaj);
+                        }
+                    }
+                }
+                    
             }
             izvestajGrid.ItemsSource = izvestaji;
             dodajAnamnezu.Visibility = Visibility.Hidden;
@@ -118,11 +136,22 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                     {
                         foreach (Termin termin in termini)
                         {
+                            ne = false;
                             if (ter.Id.Equals(termin.Id))
                             {
                                 if (termin.izvestaj != null)
                                 {
-                                    izvestaji.Add(termin.izvestaj);
+                                    foreach (Izvestaj iz in izvestaji)
+                                    {
+                                        if (iz != null)
+                                            if (iz.Id.Equals(ter.izvestaj.Id))
+                                            {
+                                                ne = true;
+                                                break;
+                                            }
+                                        if (!ne)
+                                            izvestaji.Add(ter.izvestaj);
+                                    }
                                 }
                             }
                         }
