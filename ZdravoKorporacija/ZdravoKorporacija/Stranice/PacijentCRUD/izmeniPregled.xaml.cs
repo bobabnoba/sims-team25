@@ -1,7 +1,10 @@
 ﻿using Model;
+using Repository;
+using Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Model;
@@ -15,21 +18,23 @@ namespace ZdravoKorporacija.Stranice
     {
         private TerminService storage = new TerminService();
         private LekarRepozitorijum ljekariDat = new LekarRepozitorijum();
-        private List<Lekar> ljekari = new List<Lekar>();
-        private List<Lekar> dostupniLjekari = new List<Lekar>();
+        private List<Lekar> ljekari;
+        private BindingList<Lekar> dostupniLjekari;
         private ObservableCollection<Termin> pregledi;
         private Termin p;
         private Termin s;
         String datumSelekt;
         String vrijemeSelekt;
+        private Pacijent pacijent;
 
-        public izmeniPregled(Termin selektovani, ObservableCollection<Termin> termini)
+        public izmeniPregled(Termin selektovani, ObservableCollection<Termin> termini, Pacijent pacijent)
         {
 
             InitializeComponent();
             ljekari = ljekariDat.dobaviSve();
-            dostupniLjekari.AddRange(ljekari);
-            ljekar.ItemsSource = ljekari;
+            this.pacijent = pacijent;
+            dostupniLjekari = new BindingList<Lekar>();
+            azurirajDostupne();
             time.SelectedItem = selektovani.Pocetak.ToShortTimeString();
 
             datumSelekt = selektovani.Pocetak.ToShortDateString();
@@ -63,10 +68,26 @@ namespace ZdravoKorporacija.Stranice
             //time.SelectedValue = selektovani.Pocetak.ToString("HH:mm");
         }
 
+        private void azurirajDostupne()
+        {
+            if (dostupniLjekari != null)
+            {
+                dostupniLjekari.Clear();
+            }
+
+            foreach (Lekar lll in ljekari)
+            {
+                dostupniLjekari.Add(lll);
+            }
+
+            ljekar.ItemsSource = dostupniLjekari;
+        }
+
         private void potvrdi(object sender, RoutedEventArgs e)
         {
             p.Lekar = (Lekar)ljekar.SelectedItem;
             p.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
+            p.zdravstveniKarton = pacijent.ZdravstveniKarton;
 
             //ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
             //String t = null;
@@ -79,10 +100,11 @@ namespace ZdravoKorporacija.Stranice
             //}
             //p.Pocetak = DateTime.Parse(d + " " + t);
 
-            if (storage.AzurirajTermin(p))
+            if (storage.AzurirajTerminPacijent(p, pacijent))
             {
                 this.pregledi.Remove(s);
                 this.pregledi.Add(p);
+               
             }
             this.Close();
         }
@@ -96,6 +118,8 @@ namespace ZdravoKorporacija.Stranice
 
         private void timeChanged(object sender, SelectionChangedEventArgs e)
         {
+            azurirajDostupne();
+
             p.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem);
 
             if (!(p.Pocetak.ToShortTimeString().Equals(vrijemeSelekt)))
@@ -114,7 +138,6 @@ namespace ZdravoKorporacija.Stranice
                                 if (l.Jmbg.Equals(term.Lekar.Jmbg))
                                 {
                                     dostupniLjekari.Remove(l);  
-                                    ljekar.ItemsSource = dostupniLjekari;
                                     ljekar.SelectedItem = null;
                                 }
                             }
@@ -127,6 +150,8 @@ namespace ZdravoKorporacija.Stranice
         }
         private void dateChanged(object sender, SelectionChangedEventArgs e)
         {
+            azurirajDostupne();
+
             p.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem);
 
             if (!(p.Pocetak.ToShortDateString().Equals(datumSelekt)))
@@ -146,7 +171,6 @@ namespace ZdravoKorporacija.Stranice
                                 if (l.Jmbg.Equals(term.Lekar.Jmbg))
                                 {
                                     dostupniLjekari.Remove(l);  
-                                    ljekar.ItemsSource = dostupniLjekari;
                                     ljekar.SelectedItem = null;
                                 }
                             }

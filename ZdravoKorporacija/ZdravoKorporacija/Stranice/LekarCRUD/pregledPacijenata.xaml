@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.LekarCRUD"
         mc:Ignorable="d"
-        Title="pregledPacijenata" Height="450" Width="800" Background="CadetBlue">
+        Title="pregledPacijenata" Height="450" Width="800" Background="CadetBlue" WindowStartupLocation="CenterScreen">
     <Grid>
         <Button Content="Zdravstveni karton" HorizontalAlignment="Center" Margin="0,70,0,0" VerticalAlignment="Top" Width="110" Height="44" Click="prikazKartona"/>
 
         <Grid Margin="10">
-            <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="156,140,84,34" SelectionChanged="dgUsers_SelectionChanged">
+            <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="156,140,84,34" SelectionChanged="dgUsers_SelectionChanged" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <!--<DataGridTextColumn Header="ID" Binding="{Binding Id}" />-->
                     <!--<DataGridTextColumn Header="Pacijent">
@@ -44,7 +44,9 @@
                 </ItemsPanelTemplate>
             </Menu.ItemsPanel>
             <MenuItem Header="_Raspored termina" Margin="-1,1,1,-39" Click="MenuItem_Click"></MenuItem>
-            <MenuItem Header="_Prikaz pacijenata" Margin="-1,43,1,-81" Click="MenuItem_Click_1"></MenuItem>
+            <MenuItem Header="_Prikaz pacijenata" Margin="-1,43,1,-81"></MenuItem>
+            <MenuItem Header="_Uputi" Margin="0,85,0,-123" Click="MenuItem_Click_1"/>
+            <MenuItem Header="_Zahtevi za lekove" Margin="0,127,0,-165" Click="MenuItem_Click_2" />
 
         </Menu>
     </Grid>

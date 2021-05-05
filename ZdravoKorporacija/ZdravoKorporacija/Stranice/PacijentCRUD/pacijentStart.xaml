@@ -9,15 +9,12 @@
       Title="Pacijent" Background="CadetBlue">
 
     <Grid>
-        <!--<Button Content="Zakaži pregled" HorizontalAlignment="Left" Margin="600,180,0,210" Width="92" Click="zakaziPregled"/>
-        <Button Content="Izmeni pregled" HorizontalAlignment="Center" Margin="492,260,0,0" VerticalAlignment="Top" Width="92" Click="izmeniPregled" Height="44" RenderTransformOrigin="0.255,-0.75"/>
-        <Button Content="Otkaži pregled" HorizontalAlignment="Left" Margin="600,340,0,0" VerticalAlignment="Top" Width="92" Click="otkaziPregled" Height="44" RenderTransformOrigin="0.033,-1.977"/>-->
-        <Grid Margin="10,0,10,20">
+         <Grid Margin="10,0,10,20">
             <Grid.RowDefinitions>
                 <RowDefinition Height="110*"/>
                 <RowDefinition Height="97*"/>
             </Grid.RowDefinitions>
-            <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="10,172,273,10" Grid.RowSpan="2">
+            <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="10,172,273,10" Grid.RowSpan="2" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
                     <DataGridTextColumn Header="Lekar">
@@ -29,6 +26,13 @@
                         </DataGridTextColumn.Binding>
                     </DataGridTextColumn>
                     <DataGridTextColumn Header="Datum" Binding="{Binding Pocetak}" />
+                    <DataGridTemplateColumn Header="Anketa">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="anketica" Content="Oceni lekara" Click="anketiranjeLjekara"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
                 <!--<DataGrid.RowDetailsTemplate>
                     <DataTemplate>
@@ -36,17 +40,18 @@
                     </DataTemplate>
                 </DataGrid.RowDetailsTemplate>-->
             </DataGrid>
-            <DataGrid Name="dgObavjestenja" AutoGenerateColumns="false" Margin="10,20,22,78" SelectionChanged="DataGrid_SelectionChanged">
+            <DataGrid Name="dgObavjestenja" AutoGenerateColumns="false" Margin="10,20,273,78" SelectionChanged="DataGrid_SelectionChanged" CanUserAddRows="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Datum" Binding="{Binding Path = Pocetak}" />
-                    <DataGridTextColumn Header="Lek" Binding="{Binding Path=NazivLeka}" />
-                    <DataGridTextColumn Header="Doziranje" Binding="{Binding Path=Doziranje}" />
+                    <DataGridTextColumn Header="Datum" Binding="{Binding Path = Datum}" />
+                    <DataGridTextColumn Header="Tip" Binding="{Binding Path=Tip}" />
+                    <DataGridTextColumn Header="Sadržaj" Binding="{Binding Path=Sadrzaj}" />
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
         <Button Content="Zakaži pregled" HorizontalAlignment="Left" Margin="584,190,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.227,1.856" Height="39" Width="117" Click="zakaziPregled"/>
         <Button Content="Pomeri pregled" HorizontalAlignment="Left" Margin="584,259,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.227,1.856" Height="39" Width="117" Click="izmeniPregled"/>
         <Button Content="Otkaži pregled" HorizontalAlignment="Left" Margin="584,328,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.227,1.856" Height="39" Width="117" Click="otkaziPregled"/>
+        <Button x:Name="anketaB" Content="Popuni anketu" HorizontalAlignment="Left" Margin="584,65,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.227,1.856" Height="39" Width="117" Click="popuniAnketu" Visibility="Hidden"/>
 
     </Grid>
 </Window>

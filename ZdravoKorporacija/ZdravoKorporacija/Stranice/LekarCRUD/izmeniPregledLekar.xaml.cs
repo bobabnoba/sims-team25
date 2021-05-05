@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Model;
+using ZdravoKorporacija.Stranice.Logovanje;
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
 {
@@ -15,9 +16,9 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     /// </summary>
     public partial class izmeniPregledLekar : Window
     {
-        private TerminService storage = new TerminService();
+        private TerminService terminServis = new TerminService();
         private ProstorijaService prostorijeStorage = new ProstorijaService();
-        private PacijentRepozitorijum pacijentiDat = new PacijentRepozitorijum();
+        private PacijentService pacijentiServis = new PacijentService();
         private List<Pacijent> pacijenti = new List<Pacijent>();
         private LekarRepozitorijum lekariDat = new LekarRepozitorijum();
         private List<Lekar> lekari = new List<Lekar>();
@@ -25,14 +26,15 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private Termin p;
         private Termin s; // selektovani, za ukloniti
         private ObservableCollection<Termin> pregledi;
+        private List<Termin> termini;
         String now = DateTime.Now.ToString("hh:mm:ss tt");
         DateTime today = DateTime.Today;
         public izmeniPregledLekar(Termin selektovani, ObservableCollection<Termin> termini)
         {
             InitializeComponent();
+            pacijenti = pacijentiServis.PregledSvihPacijenata();
             p = selektovani;
             s = selektovani;
-            pacijenti = pacijentiDat.dobaviSve();
             cbPacijent.ItemsSource = pacijenti;
             try
             {
@@ -53,7 +55,6 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             pregledi = termini;
 
             lekari = lekariDat.dobaviSve();
-            Lekari.ItemsSource = lekari;
             CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
             date.BlackoutDates.Add(cdr);
 
@@ -77,17 +78,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                     cbProstorija.SelectedItem = p;
                 }
             }
-            foreach (Lekar l in lekari)
-            {
-                if (selektovani.Lekar == null)
-                {
-                    break;
-                }
-                if (l.Jmbg == selektovani.Lekar.Jmbg)
-                {
-                    Lekari.SelectedItem = l;
-                }
-            }
+           
 
             foreach (Pacijent p in pacijenti)
             {
@@ -119,11 +110,19 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private void potvrdi(object sender, RoutedEventArgs e)
         {
             ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
+            termini = terminServis.PregledSvihTermina();
             String t = null;
             String d = date.Text;
             int prepodne = Int32.Parse(now.Substring(0, 2));
             int popodne = prepodne + 12;
-            
+
+            if (!date.SelectedDate.HasValue || time.SelectedIndex == -1 || cbTip.SelectedIndex == -1
+               || cbProstorija.SelectedIndex == -1 || cbPacijent.SelectedIndex == -1 )
+            {
+                MessageBox.Show("Niste popunili sva polja", "Greska");
+                return;
+            }
+
             if (cboItem != null)
             {
                 t = cboItem.Content.ToString();
@@ -164,10 +163,17 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 p.Tip = TipTerminaEnum.Operacija;
             }
 
-            p.Lekar = (Lekar)Lekari.SelectedItem;
+            p.Lekar = lekarLogin.lekar;
             p.prostorija = (Prostorija)cbProstorija.SelectedItem;
-
-            if (storage.AzurirajTermin(p))
+            foreach (Termin ter in termini)
+            {
+                if (ter.Pocetak.Equals(p.Pocetak) && ter.prostorija.Equals(p.prostorija))
+                {
+                    MessageBox.Show("Postoji termin u izabranom vremenu", "Greska");
+                    return;
+                }
+            }
+            if (terminServis.AzurirajTermin(p))
             {
                 this.pregledi.Remove(s);
                 this.pregledi.Add(p);

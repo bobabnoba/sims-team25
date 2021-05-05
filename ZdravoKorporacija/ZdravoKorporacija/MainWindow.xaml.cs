@@ -11,6 +11,7 @@ using System.Windows.Controls;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Stranice;
 using ZdravoKorporacija.Stranice.LekarCRUD;
+using ZdravoKorporacija.Stranice.Logovanje;
 using ZdravoKorporacija.Stranice.SekretarCRUD;
 using ZdravoKorporacija.Stranice.UpravnikCRUD;
 
@@ -23,13 +24,23 @@ namespace ZdravoKorporacija
     public partial class MainWindow : Window
     {
         public static ContentControl cc = new ContentControl();
+        public static  List<Specijalista> spec = new List<Specijalista>();
+        UlogaEnum uloga;
         public MainWindow() 
         { 
             InitializeComponent();
             cc.Content = this.Content;
+            Specijalista s1 = new Specijalista("Veljko","Vukovic" );
+            s1.Specijalizacija = SpecijalizacijaEnum.Kardiohirurg;
+            spec.Add(s1);
+
+            Specijalista s2 = new Specijalista("Milos", "Zivic");
+            s2.Specijalizacija = SpecijalizacijaEnum.Neurolog;
+            spec.Add(s2);
+
         }
 
-       
+
 
 
         private void AutoColumns_Click(object sender, RoutedEventArgs e)
@@ -96,13 +107,18 @@ namespace ZdravoKorporacija
 
         private void openUpravnikFrame(object sender, RoutedEventArgs e)
         {
-            upravnikPocetna s = new upravnikPocetna();
-            s.Show();
+            //upravnikPocetna s = new upravnikPocetna();
+            //s.Show();
+            uloga = UlogaEnum.Upravnik;
+            upavnikLogin l = new upavnikLogin(uloga);
+            l.Show();
+           
         }
         private void openLekarFrame(object sender, RoutedEventArgs e)
         {
-            lekarStart s = new lekarStart();
-            s.Show();
+            lekarLogin ll = new lekarLogin(UlogaEnum.Lekar);
+            ll.Show();
+
         }
         private void openSekretarFrame(object sender, RoutedEventArgs e)
         {
@@ -111,8 +127,8 @@ namespace ZdravoKorporacija
         }
         private void openPacijentFrame(object sender, RoutedEventArgs e)
         {
-            pacijentStart s = new pacijentStart();
-            s.Show();
+            pacijentLogin pl = new pacijentLogin(UlogaEnum.Pacijent);
+            pl.Show();
         }
     }
 }

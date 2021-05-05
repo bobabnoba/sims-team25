@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using ZdravoKorporacija.Model;
+
 
 namespace ZdravoKorporacija.Stranice.UpravnikCRUD
 {
@@ -58,6 +58,12 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
                 izmeniProstorijuUpravnik ip = new izmeniProstorijuUpravnik(prostorije, (Prostorija)dgUsers.SelectedItem, dgUsers.SelectedIndex);
                 ip.Show();
             }
+        }
+
+        private void zakaziRenoviranje(object sender, RoutedEventArgs e)
+        {
+            Renoviranje r = new Renoviranje(dgUsers.SelectedIndex);
+            r.Show();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

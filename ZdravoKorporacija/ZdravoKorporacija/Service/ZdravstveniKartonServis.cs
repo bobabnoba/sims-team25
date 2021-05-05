@@ -103,7 +103,7 @@ namespace Service
             return false;
         }
       
-      public ZdravstveniKarton PregledSvihZdravstvenihKartona(string id)
+      public ZdravstveniKarton PregledSvihZdravstvenihKartona(long id)
       {
             ZdravstveniKartonRepozitorijum datoteka = new ZdravstveniKartonRepozitorijum();
             List<ZdravstveniKarton> zdravstveniKartoni = datoteka.DobaviSve();

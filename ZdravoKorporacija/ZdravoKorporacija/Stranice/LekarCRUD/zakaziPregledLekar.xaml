@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.LekarCRUD"
         mc:Ignorable="d"
-        Title="Zakazivanje termina" Height="450" Width="450" Background="CadetBlue">
+        Title="Zakazivanje termina" Height="450" Width="450" Background="CadetBlue" WindowStartupLocation="CenterScreen">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="408" Width="417">
         <Grid.RowDefinitions>
             <RowDefinition Height="20*"/>
@@ -49,10 +49,10 @@
             <ComboBoxItem>19:00</ComboBoxItem>
             <ComboBoxItem>19:30</ComboBoxItem>
         </ComboBox>
-        <Button Content="POTVRDI" HorizontalAlignment="Left" Margin="72,35,0,0" Grid.Row="5" VerticalAlignment="Top" Width="80" Grid.ColumnSpan="2" Click="potvrdi"/>
-        <Button Content="ODUSTANI" HorizontalAlignment="Left" Margin="70,35,0,0" Grid.Row="5" VerticalAlignment="Top" Width="80" Grid.Column="1" Click="odustani"/>
-        <TextBlock Text="Pacijent:" TextWrapping="Wrap" Margin="52,13,237,34" Grid.Row="4" Grid.ColumnSpan="2"/>
-        <ComboBox Name="cbPacijent" Grid.Column="1" Margin="58,10,77,34" Grid.Row="4" SelectionChanged="ComboBox_SelectionChanged" Height="28">
+        <Button Name ="potvrdiButton" Content="POTVRDI" HorizontalAlignment="Left" Margin="96,34,0,0" Grid.Row="5" VerticalAlignment="Top" Width="80" Grid.ColumnSpan="2" Click="potvrdi"/>
+        <Button Content="ODUSTANI" HorizontalAlignment="Left" Margin="94,34,0,0" Grid.Row="5" VerticalAlignment="Top" Width="80" Grid.Column="1" Click="odustani"/>
+        <TextBlock Text="Pacijent:" TextWrapping="Wrap" Margin="52,3,237,44" Grid.Row="4" Grid.ColumnSpan="2"/>
+        <ComboBox Name="cbPacijent" Grid.Column="1" Margin="58,0,77,40" Grid.Row="4" SelectionChanged="ComboBox_SelectionChanged" Height="28">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
@@ -66,23 +66,8 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <TextBlock Text="Lekar:" TextWrapping="Wrap" Margin="53,44,235,63" Grid.Row="3" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
-        <ComboBox Name="Lekari"  Grid.Column="1" Margin="58,41,77,3" Grid.Row="3" Height="28">
-            <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock>
-                            <TextBlock.Text>
-                                <MultiBinding StringFormat="{}{0} {1}">
-                                    <Binding Path="Ime"/>
-                                    <Binding Path="Prezime"/>
-                                </MultiBinding>
-                            </TextBlock.Text>
-                        </TextBlock>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
-        <TextBlock TextWrapping="Wrap" Margin="52,11,241,34" Grid.Row="3" Grid.ColumnSpan="2"><Run Text="Prostorija"/><Run Text=":"/></TextBlock>
-        <ComboBox Name="cbProstorija" Grid.Column="1" Margin="58,4,77,40" Grid.Row="3" Height="28">
+        <TextBlock TextWrapping="Wrap" Margin="52,25,241,20" Grid.Row="3" Grid.ColumnSpan="2"><Run Text="Prostorija"/><Run Text=":"/></TextBlock>
+        <ComboBox Name="cbProstorija" Grid.Column="1" Margin="58,18,77,22" Grid.Row="3" Height="28">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>

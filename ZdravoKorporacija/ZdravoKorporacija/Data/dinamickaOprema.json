@@ -196,5 +196,23 @@
     "UkupnaKolicina": 0,
     "Proizvodjac": "jysk",
     "DatumNabavke": "0001-01-01T00:00:00"
+  },
+  {
+    "Kolicina": 100,
+    "Prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 5,
+      "Naziv": "soba33",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 3
+    },
+    "Id": 2,
+    "Naziv": "stolica",
+    "UkupnaKolicina": 100,
+    "Proizvodjac": "forma ideale",
+    "DatumNabavke": "0001-01-01T00:00:00"
   }
 ]

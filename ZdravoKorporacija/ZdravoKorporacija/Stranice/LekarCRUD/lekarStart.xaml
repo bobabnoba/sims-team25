@@ -6,28 +6,20 @@
       xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.LekarCRUD"
       mc:Ignorable="d" 
       Height="450" Width="800" Background="CadetBlue"
-      Title="Lekar">
+      Title="Lekar" WindowStartupLocation="CenterScreen">
 
     <Grid>
-        <Button Content="Zakaži pregled" HorizontalAlignment="Left" Margin="217,67,0,0" VerticalAlignment="Top" Width="92" Height="44" Click="zakaziPregled"/>
-        <Button Content="Izmeni pregled" HorizontalAlignment="Center" Margin="0,67,0,0" VerticalAlignment="Top" Width="92" Height="44" RenderTransformOrigin="0.255,-0.75" Click="izmeniPregled"/>
-        <Button Content="Otkaži pregled" HorizontalAlignment="Left" Margin="486,67,0,0" VerticalAlignment="Top" Width="92" Height="44" RenderTransformOrigin="0.033,-1.977" Click="otkaziPregled"/>
+        <Button Content="Zakaži termin" HorizontalAlignment="Left" Margin="217,67,0,0" VerticalAlignment="Top" Width="92" Height="44" Click="zakaziPregled"/>
+        <Button Content="Izmeni termin" HorizontalAlignment="Center" Margin="0,67,0,0" VerticalAlignment="Top" Width="92" Height="44" RenderTransformOrigin="0.255,-0.75" Click="izmeniPregled"/>
+        <Button Content="Otkaži termin" HorizontalAlignment="Left" Margin="486,67,0,0" VerticalAlignment="Top" Width="92" Height="44" RenderTransformOrigin="0.033,-1.977" Click="otkaziPregled"/>
         <Grid Margin="10">
-            <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="156,140,84,34" SelectionChanged="dgUsers_SelectionChanged">
+            <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="156,140,84,34" SelectionChanged="dgUsers_SelectionChanged" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
-                    <!--<DataGridTextColumn Header="Pacijent">
-                            <DataGridTextColumn.Binding>
-                                <MultiBinding StringFormat="{}{0} {1}">
-                                    <Binding Path="Pacijent.Ime"/>
-                                    <Binding Path="Pacijent.Prezime"/>
-                                </MultiBinding>
-                            </DataGridTextColumn.Binding>
-                        </DataGridTextColumn>
-                    <DataGridTextColumn Header="Karton pacijenta" Binding="{Binding zdravstveniKarton}" />-->
                     <DataGridTextColumn Header="Datum" Binding="{Binding Pocetak}" />
                     <DataGridTextColumn Header="Tip pregleda" Binding="{Binding Tip}" />
                     <DataGridTextColumn Header="Prostorija" Binding="{Binding prostorija.Naziv}"/>
+                    <DataGridTextColumn Header="Hitno" Binding="{Binding hitno}"/>
                     <DataGridTemplateColumn Header="Zdravstveni Karton">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -36,11 +28,6 @@
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
-                <!--<DataGrid.RowDetailsTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Details}" Margin="10" />
-                    </DataTemplate>
-                </DataGrid.RowDetailsTemplate>-->
             </DataGrid>
 
         </Grid>
@@ -52,8 +39,10 @@
                     <VirtualizingStackPanel Orientation="Vertical"/>
                 </ItemsPanelTemplate>
             </Menu.ItemsPanel>
-            <MenuItem Header="_Raspored termina" Margin="-1,1,1,-39" Click="MenuItem_Click"></MenuItem>
-            <MenuItem Header="_Pregled pacijenata" Margin="-1,43,1,-81" Click="MenuItem_Click_1"></MenuItem>
+            <MenuItem Header="_Raspored termina" Margin="-1,1,1,-39" ></MenuItem>
+            <MenuItem Header="_Pregled pacijenata" Margin="-1,43,1,-81" Click="MenuItem_Click"></MenuItem>
+            <MenuItem Header="_Uputi" Margin="0,85,0,-123" Click="MenuItem_Click_1"/>
+            <MenuItem Header="_Zahtevi za lekove" Margin="0,127,0,-165" Click="MenuItem_Click_2" />
 
         </Menu>
     </Grid>

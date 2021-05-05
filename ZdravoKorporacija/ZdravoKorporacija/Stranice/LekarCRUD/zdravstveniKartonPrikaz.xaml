@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.LekarCRUD"
         mc:Ignorable="d"
-        Title="zdravstveniKartonPrikaz" Height="450" Width="800" Background="CadetBlue">
+        d:DesignHeight="450" d:DesignWidth="800"
+        Title="zdravstveniKartonPrikaz" Height="450" Width="800" Background="CadetBlue" WindowStartupLocation="CenterScreen">
     <Grid>
         <!--<Button Content="Dodaj dijagnozu" HorizontalAlignment="Left" Margin="256,287,0,0" VerticalAlignment="Top" Width="101" Height="35"/>
         <Button Content="Obrisi dijagnozu" HorizontalAlignment="Left" Margin="256,367,0,0" VerticalAlignment="Top" Width="101" Height="35" RenderTransformOrigin="0.255,-0.75"/>
         <Button Content="Izmeni dijagnozu" HorizontalAlignment="Left" Margin="256,327,0,0" VerticalAlignment="Top" Width="101" Height="35" RenderTransformOrigin="0.033,-1.977" />-->
-        <Grid Margin="10,217,549,10">
+        <Grid >
             <!--<DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="34,22,10,22" SelectionChanged="dgUsers_SelectionChanged">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Oboljenje" Width="*" Binding="{Binding Oboljenje}" />
@@ -59,7 +60,7 @@
 
                 </DataGrid.Columns>
             </DataGrid>-->
-            <DataGrid x:Name="terapijaGrid" AutoGenerateColumns="False" Margin="364,-167,-531,218" SelectionChanged="dgUsers_SelectionChanged">
+            <DataGrid x:Name="terapijaGrid" AutoGenerateColumns="False" Margin="383,31,38,218" SelectionChanged="dgUsers_SelectionChanged" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <!--<DataGrid.RowDetailsTemplate>
                     <DataTemplate>
@@ -81,7 +82,7 @@
                     <DataGridTextColumn Width="*" Header="Trajanje" Binding="{Binding Trajanje}" />
                 </DataGrid.Columns>
             </DataGrid>
-            <DataGrid x:Name="izvestajGrid" AutoGenerateColumns="False" Margin="364,10,-531,34" SelectionChanged="dgUsers_SelectionChanged">
+            <DataGrid x:Name="izvestajGrid" AutoGenerateColumns="False" Margin="383,221,38,44" SelectionChanged="dgUsers_SelectionChanged" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <!--<DataGrid.RowDetailsTemplate>
                     <DataTemplate>
@@ -147,7 +148,7 @@
         <!--<Label Content="Dijagnoze&#xA;" HorizontalAlignment="Left" Margin="44,204,0,0" VerticalAlignment="Top" FontSize="18"/>-->
         <Button Content="Izdaj recept" HorizontalAlignment="Left" Margin="256,124,0,0" VerticalAlignment="Top" Width="101" Height="35" Click="Button_Click_1" />
         <Button Content="Obrisi recept" HorizontalAlignment="Left" Margin="256,169,0,0" VerticalAlignment="Top" Width="101" Height="35" Click="Button_Click_2"  />
-        <Button Content="Dodaj anamnezu" HorizontalAlignment="Left" Margin="256,314,0,0" VerticalAlignment="Top" Width="101" Height="35" Click="Button_Click_3"  />
+        <Button Name="dodajAnamnezu" Content="Dodaj anamnezu" HorizontalAlignment="Left" Margin="256,314,0,0" VerticalAlignment="Top" Width="101" Height="35" Click="Button_Click_3"  />
         <Button Content="Izbrisi anamnezu" HorizontalAlignment="Left" Margin="256,354,0,0" VerticalAlignment="Top" Width="101" Height="35" Click="Button_Click_4"  />
         <ListBox Name="AlergijeListBox" Margin="50,236,565,45"/>
         <Label Content="Alergije" HorizontalAlignment="Left" Margin="44,204,0,0" VerticalAlignment="Top" FontSize="16" Height="35"/>

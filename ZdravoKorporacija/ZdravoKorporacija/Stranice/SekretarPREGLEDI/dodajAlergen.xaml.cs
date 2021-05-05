@@ -77,6 +77,8 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
                         kartoni.Add(k2);
                     }
                 }
+                p1.ZdravstveniKarton = k2;
+
                 this.Close();
 
             }

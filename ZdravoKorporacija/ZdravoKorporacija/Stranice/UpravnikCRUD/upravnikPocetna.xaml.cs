@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ZdravoKorporacija.Stranice.DinamickaOpremaCRUD;
+using ZdravoKorporacija.Stranice.LekoviCRUD;
 using ZdravoKorporacija.Stranice.Magacin;
 using ZdravoKorporacija.Stranice.StatickaOpremaCRUD;
 
@@ -47,6 +48,29 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
         {
             dinamickaOpremaStart s = new dinamickaOpremaStart();
             s.Show();
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Zaposleni(object sender, RoutedEventArgs e)
+        {
+            ZaposleniPocetna zp = new ZaposleniPocetna();
+            zp.Show();
+        }
+
+        private void button_Click_5(object sender, RoutedEventArgs e)
+        {
+            LekStart lekStart = new LekStart();
+            lekStart.Show();
+        }
+
+        private void renoviraj_Click(object sender, RoutedEventArgs e)
+        {
+            RenoviranjeStart renoviranjeStart = new RenoviranjeStart();
+            renoviranjeStart.Show();
         }
     }
 }

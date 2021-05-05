@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.LekarCRUD"
         mc:Ignorable="d"
-        Title="dodajAnamnezu" Height="450" Width="450" Background="CadetBlue">
+        Title="dodajAnamnezu" Height="450" Width="450" Background="CadetBlue" WindowStartupLocation="CenterScreen">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="103,88,0,0" Text="Simptomi:" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBox Name="simptomiText" HorizontalAlignment="Left" Margin="203,88,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="163" Height="75"/>

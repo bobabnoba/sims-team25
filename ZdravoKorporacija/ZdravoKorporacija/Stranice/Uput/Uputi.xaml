@@ -1,0 +1,50 @@
+﻿<Window x:Class="ZdravoKorporacija.Stranice.Uput.Uputi"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.Uput"
+        mc:Ignorable="d"
+        Height="450" Width="800" Background="CadetBlue"
+      Title="Uputi" WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <Button Content="Izdaj uput" HorizontalAlignment="Left" Margin="240,67,0,0" VerticalAlignment="Top" Width="92" Height="44" Click="izdajUput"/>
+        <Button Content="Zakazi hitan termin" HorizontalAlignment="Left" Margin="98,67,0,0" VerticalAlignment="Top" Width="114" Height="44" Click="zakaziHitno"/>
+        <Button Content="Izmeni uput" HorizontalAlignment="Left" Margin="367,67,0,0" VerticalAlignment="Top" Width="92" Height="44" RenderTransformOrigin="0.255,-0.75" Click="izmeniUput"/>
+        <Button Content="Otkaži uput" HorizontalAlignment="Left" Margin="486,67,0,0" VerticalAlignment="Top" Width="92" Height="44" RenderTransformOrigin="0.033,-1.977" Click="otkaziUput"/>
+        <Grid Margin="10">
+            <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="156,140,84,34" CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
+                    <DataGridTextColumn Header="Datum" Binding="{Binding Pocetak}" />
+                    <DataGridTextColumn Header="Tip pregleda" Binding="{Binding Tip}" />
+                    <DataGridTextColumn Header="Prostorija" Binding="{Binding prostorija.Naziv}"/>
+                    <DataGridTextColumn Header="Hitno" Binding="{Binding hitno}"/>
+                    <DataGridTemplateColumn Header="Zdravstveni Karton">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="..." Click="prikaziKarton"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </Grid>
+
+        <TextBox HorizontalAlignment="Left" Margin="10,422,0,0" Text="ulogovani ste kao lekar" BorderBrush="CadetBlue" Background="CadetBlue" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" />
+        <Menu x:Name="Menu" Margin="0,151,644,45" HorizontalAlignment="Right" Width="116">
+            <Menu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel Orientation="Vertical"/>
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
+            <MenuItem Header="_Raspored termina" Margin="-1,1,1,-39" Click="MenuItem_Click_1"></MenuItem>
+            <MenuItem Header="_Pregled pacijenata" Margin="-1,43,1,-81" Click="MenuItem_Click"></MenuItem>
+            <MenuItem Header="_Uputi" Margin="0,85,0,-123"/>
+            <MenuItem Header="_Zahtevi za lekove&#xD;&#xA;" Margin="0,129,0,-167" Click="MenuItem_Click_2"/>
+
+        </Menu>
+    </Grid>
+</Window>

@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using Model;
 using Newtonsoft.Json;
@@ -13,12 +14,29 @@ namespace Repository
 {
    public class LekRepozitorijum
    {
-        private string lokacija;
-
-        public LekRepozitorijum()
+        private static LekRepozitorijum _instance;
+        public ObservableCollection<Lek> lekovi;
+        public string lokacija = @"..\..\..\Data\lek.json";
+        public static LekRepozitorijum Instance
         {
-            this.lokacija = @"..\..\..\Data\lek.json";
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new LekRepozitorijum();
+
+                }
+                return _instance;
+            }
         }
+
+        private LekRepozitorijum()
+        {
+            lekovi = new ObservableCollection<Lek>();
+        }
+
+     
+        
         public bool Kreiraj()
       {
          // TODO: implement
@@ -39,19 +57,24 @@ namespace Repository
       
       public List<Lek> DobaviSve()
       {
-            List<Lek> lekovi = new List<Lek>();
+            
+            List<Lek> ucitaniLekovi = new List<Lek>();
             if (File.Exists(lokacija))
             {
                 string jsonText = File.ReadAllText(lokacija);
                 if (!string.IsNullOrEmpty(jsonText))
                 {
-                    lekovi = JsonConvert.DeserializeObject<List<Lek>>(jsonText);
+                ucitaniLekovi = JsonConvert.DeserializeObject<List<Lek>>(jsonText);
+                }
+                if(ucitaniLekovi != null)
+                {
+                    lekovi = new ObservableCollection<Lek>(ucitaniLekovi);
                 }
             }
-            return lekovi;
+            return ucitaniLekovi;
         }
       
-      public void Sacuvaj(List<Lek> lekovi)
+      public void Sacuvaj()
       {
             JsonSerializer serializer = new JsonSerializer();
             serializer.Formatting = Formatting.Indented;
