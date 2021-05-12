@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 
@@ -10,6 +11,21 @@ namespace ZdravoKorporacija.Model
     class TerminRepozitorijum
     {
         private string lokacija;
+
+        private static TerminRepozitorijum _instance;
+
+        public static TerminRepozitorijum Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new TerminRepozitorijum();
+
+                }
+                return _instance;
+            }
+        }
 
         public TerminRepozitorijum()
         {

@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using Model;
 using Newtonsoft.Json;
+using ZdravoKorporacija.DTO;
 
 namespace Repository
 {
@@ -16,6 +17,7 @@ namespace Repository
    {
         private static LekRepozitorijum _instance;
         public ObservableCollection<Lek> lekovi;
+        public ObservableCollection<LekDTO> lekoviDTO;
         public string lokacija = @"..\..\..\Data\lek.json";
         public static LekRepozitorijum Instance
         {
@@ -56,23 +58,28 @@ namespace Repository
       }
       
       public List<Lek> DobaviSve()
-      {
-            
+      { 
             List<Lek> ucitaniLekovi = new List<Lek>();
+            List<LekDTO> ucitani = new List<LekDTO>();
             if (File.Exists(lokacija))
             {
                 string jsonText = File.ReadAllText(lokacija);
                 if (!string.IsNullOrEmpty(jsonText))
                 {
                 ucitaniLekovi = JsonConvert.DeserializeObject<List<Lek>>(jsonText);
+                ucitani= JsonConvert.DeserializeObject<List<LekDTO>>(jsonText);
                 }
                 if(ucitaniLekovi != null)
                 {
                     lekovi = new ObservableCollection<Lek>(ucitaniLekovi);
                 }
+                if (ucitani != null)
+                {
+                    lekoviDTO = new ObservableCollection<LekDTO>(ucitani);
+                }
             }
             return ucitaniLekovi;
-        }
+      }
       
       public void Sacuvaj()
       {

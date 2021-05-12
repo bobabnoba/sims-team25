@@ -9,6 +9,21 @@ namespace Repository
     class IDRepozitorijum
     {
 
+        private static IDRepozitorijum _instance;
+
+        public static IDRepozitorijum Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new IDRepozitorijum();
+
+                }
+                return _instance;
+            }
+        }
+
         private string lokacija;
         public IDRepozitorijum(string nazivID)
         {

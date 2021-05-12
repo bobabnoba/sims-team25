@@ -21,7 +21,6 @@ namespace Repository
                 if (_instance == null)
                 {
                     _instance = new ZahtevPremestanjaRepozitorijum();
-
                 }
                 return _instance;
             }
