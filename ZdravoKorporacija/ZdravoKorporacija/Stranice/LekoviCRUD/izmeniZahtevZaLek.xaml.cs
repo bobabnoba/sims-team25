@@ -27,7 +27,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
         LekServis lekServis = new LekServis();
         DodavanjeAlternativnihLekova dodavanjeAlternativnih;
         IzborLekaraZaPotvrdu izborLekaraZaPotvrdu;
-        public ObservableCollection<Lek> lekici;
+        public ObservableCollection<LekDTO> lekici;
         public ObservableCollection<Lekar> lekari;
         public ZahtevLek zl;
 
@@ -35,7 +35,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
         {
             InitializeComponent();
             zl = zahtevLek;
-            lekici = new ObservableCollection<Lek>();
+            lekici = new ObservableCollection<LekDTO>();
             lekari = new ObservableCollection<Lekar>();
             List<int> potvrda = new List<int>();
             for (int i = 1; i <= 10; i++)
@@ -53,7 +53,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            ObservableCollection<Lek> alterantivni = dodavanjeAlternativnih.alternativniLekovi;
+            ObservableCollection<LekDTO> alterantivni = dodavanjeAlternativnih.alternativniLekovi;
 
 
             LekDTO lek = new LekDTO(0, textBoxProizvodjac.Text, textBoxSastojci.Text, textBoxPojave.Text, textBoxNazivLeka.Text);
@@ -62,12 +62,6 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
 
             List<LekDTO> alekoviDTO = new List<LekDTO>();
 
-            foreach (Lek lekD in alterantivni)
-            {
-                LekDTO le = new LekDTO(lekD.Id, lekD.Proizvodjac, lekD.Sastojci, lekD.NusPojave, lekD.NazivLeka);
-                alekoviDTO.Add(le);
-                Debug.WriteLine(le.NazivLeka);
-            }
 
             ObservableCollection<Lekar> izabrani = izborLekaraZaPotvrdu.izabraniLekari;
             List<Lekar> lekariIzabrani = new List<Lekar>();

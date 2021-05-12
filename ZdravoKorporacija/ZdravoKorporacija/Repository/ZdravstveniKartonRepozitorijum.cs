@@ -6,6 +6,7 @@
 using Model;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 
 namespace Repository
@@ -13,6 +14,21 @@ namespace Repository
     public class ZdravstveniKartonRepozitorijum
     {
         private string lokacija;
+
+        private static ZdravstveniKartonRepozitorijum _instance;
+
+        public static ZdravstveniKartonRepozitorijum Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new ZdravstveniKartonRepozitorijum();
+
+                }
+                return _instance;
+            }
+        }
 
         public ZdravstveniKartonRepozitorijum()
         {
