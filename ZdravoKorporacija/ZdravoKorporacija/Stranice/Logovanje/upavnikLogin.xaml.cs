@@ -35,14 +35,21 @@ namespace ZdravoKorporacija.Stranice.Logovanje
             ulogovan = ks.Uloguj(this.upravnik, textBoxIme.Text, textBoxSifra.Text);
             if (ulogovan != null)
             {
-                upravnikPocetna uP = new upravnikPocetna();
-                uP.Show();
+                this.Close();
+                test2 t2 = new test2(ulogovan);
+                t2.Show();
+
             }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
            
+        }
+
+        private void odustani_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

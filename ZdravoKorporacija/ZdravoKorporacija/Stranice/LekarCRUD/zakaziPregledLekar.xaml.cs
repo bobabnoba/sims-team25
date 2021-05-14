@@ -24,7 +24,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private List<Pacijent> pacijenti = new List<Pacijent>();
         private List<Lekar> lekari = new List<Lekar>();
         private List<Termin> termini = new List<Termin>();
-        private List<Prostorija> prostorije = new List<Prostorija>();
+        private ObservableCollection<Prostorija> prostorije = new ObservableCollection<Prostorija>();
 
         private Termin p;
         private ObservableCollection<Termin> pregledi;

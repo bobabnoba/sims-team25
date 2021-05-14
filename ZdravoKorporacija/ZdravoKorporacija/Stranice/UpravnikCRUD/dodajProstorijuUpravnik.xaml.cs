@@ -87,9 +87,10 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
 
          
             Prostorija prostorija = new Prostorija(id, ime, tip, false, sprat);
+
             if (storage.DodajProstoriju(prostorija,id_map))
             {
-                this.prostorije.Add(prostorija);
+                //this.prostorije.Add(prostorija);
                 this.Close();
             }
            

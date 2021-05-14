@@ -1,6 +1,7 @@
 ﻿using Model;
 using Repository;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Service
 {
@@ -8,37 +9,29 @@ namespace Service
     {
         public bool DodajProstoriju(Prostorija prostorija, Dictionary<int, int> id_map)
         {
-            ProstorijaRepozitorijum datoteka = new ProstorijaRepozitorijum();
-            List<Prostorija> prostorije = datoteka.dobaviSve();
+            ProstorijaRepozitorijum datoteka = ProstorijaRepozitorijum.Instance;
+           
 
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapProstorija");
-       
-
-            foreach (Prostorija pr in prostorije)
-            {
-                if (pr.Id.Equals(prostorija.Id))
-                {
-                    return false;
-                }
-            }
-            prostorije.Add(prostorija);
-            datoteka.sacuvaj(prostorije);
+            ProstorijaRepozitorijum.Instance.prostorije.Add(prostorija);
+            datoteka.sacuvaj();
             datotekaID.sacuvaj(id_map);
+           
             return true;
 
         }
 
         public bool ObrisiProstoriju(Prostorija prostorija, Dictionary<int, int> id_map)
         {
-            ProstorijaRepozitorijum datoteka = new ProstorijaRepozitorijum();
+            ProstorijaRepozitorijum datoteka = ProstorijaRepozitorijum.Instance;
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapProstorija");
-            List<Prostorija> prostorije = datoteka.dobaviSve();
-            foreach (Prostorija pr in prostorije)
+          
+            foreach (Prostorija pr in ProstorijaRepozitorijum.Instance.prostorije)
             {
                 if (pr.Id.Equals(prostorija.Id))
                 {
-                    prostorije.Remove(pr);
-                    datoteka.sacuvaj(prostorije);
+                    ProstorijaRepozitorijum.Instance.prostorije.Remove(pr);
+                    datoteka.sacuvaj();
                     datotekaID.sacuvaj(id_map);
                     return true;
                 }
@@ -48,15 +41,15 @@ namespace Service
 
         public bool AzurirajProstoriju(Prostorija prostorija, int indeks)
         {
-            ProstorijaRepozitorijum datoteka = new ProstorijaRepozitorijum();
-            List<Prostorija> prostorije = datoteka.dobaviSve();
-            foreach (Prostorija pr in prostorije)
+            ProstorijaRepozitorijum datoteka = ProstorijaRepozitorijum.Instance;
+          
+            foreach (Prostorija pr in ProstorijaRepozitorijum.Instance.prostorije)
             {
                 if (pr.Id.Equals(prostorija.Id))
                 {
-                    prostorije.Remove(pr);
-                    prostorije.Insert(indeks, prostorija);
-                    datoteka.sacuvaj(prostorije);
+                    ProstorijaRepozitorijum.Instance.prostorije.Remove(pr);
+                    ProstorijaRepozitorijum.Instance.prostorije.Insert(indeks, prostorija);
+                    datoteka.sacuvaj();
                     return true;
                 }
             }
@@ -65,9 +58,9 @@ namespace Service
 
         public Prostorija PregledProstorije(string id)
         {
-            ProstorijaRepozitorijum datoteka = new ProstorijaRepozitorijum();
-            List<Prostorija> prostorije = datoteka.dobaviSve();
-            foreach (Prostorija pr in prostorije)
+            ProstorijaRepozitorijum datoteka = ProstorijaRepozitorijum.Instance;
+          
+            foreach (Prostorija pr in ProstorijaRepozitorijum.Instance.prostorije)
             {
                 if (pr.Id.Equals(id))
                 {
@@ -77,10 +70,10 @@ namespace Service
             return null;
         }
 
-        public List<Prostorija> PregledSvihProstorija()
+        public ObservableCollection<Prostorija> PregledSvihProstorija()
         {
-            ProstorijaRepozitorijum datoteka = new ProstorijaRepozitorijum();
-            List<Prostorija> prostorije = datoteka.dobaviSve();
+            ProstorijaRepozitorijum datoteka = ProstorijaRepozitorijum.Instance;
+            ObservableCollection<Prostorija> prostorije = datoteka.dobaviSve();
             return prostorije;
         }
 

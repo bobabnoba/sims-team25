@@ -23,7 +23,7 @@ namespace ZdravoKorporacija.Stranice.Magacin
     /// <summary>
     /// Interaction logic for MagacinStart.xaml
     /// </summary>
-    public partial class MagacinStart : Window
+    public partial class MagacinStart : Page
     {
         Dictionary<int, int> ids = new Dictionary<int, int>();
 

@@ -17,7 +17,7 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
     /// <summary>
     /// Interaction logic for statickaOpremaStart.xaml
     /// </summary>
-    public partial class statickaOpremaStart : Window
+    public partial class statickaOpremaStart : Page
     {
         public statickaOpremaStart()
         {

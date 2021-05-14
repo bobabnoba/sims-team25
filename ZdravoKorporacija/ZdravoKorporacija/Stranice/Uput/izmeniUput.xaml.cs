@@ -21,7 +21,7 @@ namespace ZdravoKorporacija.Stranice.Uput
         private List<Pacijent> pacijenti = new List<Pacijent>();
         private LekarRepozitorijum lekariDat = new LekarRepozitorijum();
         private List<Lekar> lekari = new List<Lekar>();
-        private List<Prostorija> prostorije = new List<Prostorija>();
+        private ObservableCollection<Prostorija> prostorije = new ObservableCollection<Prostorija>();
         private Termin p;
         private Termin s; // selektovani, za ukloniti
         private ObservableCollection<Termin> pregledi;

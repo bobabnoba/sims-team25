@@ -640,5 +640,65 @@
     "Pocetak": "2021-05-04T10:30:00",
     "Trajanje": 0.5,
     "hitno": false
+  },
+  {
+    "izvestaj": null,
+    "zdravstveniKarton": null,
+    "prostorija": {
+      "inventar": [],
+      "statickaOprema": [
+        {
+          "termin": null,
+          "Prostorija": null,
+          "Id": 1,
+          "Naziv": "krevet",
+          "UkupnaKolicina": 0,
+          "Proizvodjac": "simpo",
+          "DatumNabavke": "0001-01-01T00:00:00"
+        }
+      ],
+      "dinamickaOprema": null,
+      "Id": 3,
+      "Naziv": "soba22",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 2
+    },
+    "Lekar": null,
+    "Id": 4,
+    "Tip": 0,
+    "Pocetak": "2021-05-13T12:00:00",
+    "Trajanje": 0.0,
+    "hitno": false
+  },
+  {
+    "izvestaj": null,
+    "zdravstveniKarton": null,
+    "prostorija": {
+      "inventar": [],
+      "statickaOprema": [
+        {
+          "termin": null,
+          "Prostorija": null,
+          "Id": 3,
+          "Naziv": "operacioni sto",
+          "UkupnaKolicina": 0,
+          "Proizvodjac": "helas",
+          "DatumNabavke": "0001-01-01T00:00:00"
+        }
+      ],
+      "dinamickaOprema": null,
+      "Id": 4,
+      "Naziv": "soba31",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 3
+    },
+    "Lekar": null,
+    "Id": 5,
+    "Tip": 0,
+    "Pocetak": "2021-05-14T21:30:00",
+    "Trajanje": 0.0,
+    "hitno": false
   }
 ]

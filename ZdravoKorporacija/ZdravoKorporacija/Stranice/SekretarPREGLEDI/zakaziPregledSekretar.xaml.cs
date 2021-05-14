@@ -25,15 +25,15 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
         private TerminService ts = new TerminService();
 
         private ProstorijaService prostorijeStorage = new ProstorijaService();
-        private ProstorijaRepozitorijum pRep = new ProstorijaRepozitorijum();
+        private ProstorijaRepozitorijum pRep = ProstorijaRepozitorijum.Instance;
         private PacijentRepozitorijum pacijentiDat = new PacijentRepozitorijum();
         private PacijentService pacijentiStorage = new PacijentService();
         private List<Pacijent> pacijenti = new List<Pacijent>();
         private LekarRepozitorijum lekariDat = new LekarRepozitorijum();
         private List<Lekar> lekari = new List<Lekar>();
         private List<Lekar> slobodniLekari;
-        private List<Prostorija> slobodneProstorije;
-        private List<Prostorija> prostorije = new List<Prostorija>();
+        private ObservableCollection<Prostorija> slobodneProstorije;
+        private ObservableCollection<Prostorija> prostorije = new ObservableCollection<Prostorija>();
         private ObservableCollection<Termin> pregledi;
 
         private int idTermina;

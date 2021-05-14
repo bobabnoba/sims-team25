@@ -19,6 +19,7 @@ using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Service;
 using System.Linq;
+using Controller;
 
 namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
 {
@@ -28,10 +29,10 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
     public partial class statickaOpremaPremestiIzMagacina : Window
     {
 
-        private ProstorijaService prostorijeStorage = new ProstorijaService();
+        private ProstorijaController prostorijeStorage = new ProstorijaController();
         private StatickaOpremaService statickaopremaStorage = new StatickaOpremaService();
         private MagacinService magacineStorage = new MagacinService();
-        private List<Prostorija> prostorije = new List<Prostorija>();
+        private ObservableCollection<Prostorija> prostorije = new ObservableCollection<Prostorija>();
         private List<Inventar> magacin = new List<Inventar>();
         private List<StatickaOprema> statickaMagacin = new List<StatickaOprema>();
 
@@ -58,12 +59,10 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
             cbProstorija.ItemsSource = prostorije;
 
             pregledi = new ObservableCollection<Termin>(uc.PregledSvihTermina());
-            //cbTermini.ItemsSource = uc.PregledSvihTermina();
             List<Termin> lista = new List<Termin>();
             lista = terminStorage.PregledSvihTermina();
             pregledi = new ObservableCollection<Termin>(terminStorage.PregledSvihTermina());
             Debug.WriteLine(lista[0].ToString());
-            //cbTermini.ItemsSource = pregledi;
             DateTime danas = DateTime.Today;
 
             for (DateTime tm = danas.AddHours(8); tm < danas.AddHours(22); tm = tm.AddMinutes(30))
@@ -91,7 +90,7 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
             Termin t = new Termin();
             StatickaOprema st = new StatickaOprema(t, inv);
 
-            this.indeks = (int) cbProstorija.SelectedIndex;
+            this.indeks = (int)cbProstorija.SelectedIndex;
             ZahtevPremestanja zp = new ZahtevPremestanja();
             zp.prostorija = (Prostorija)cbProstorija.SelectedItem;
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapZahtevPremestanja");
@@ -123,7 +122,7 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
                 ZahtevPremestanjaRepozitorijum.Instance.sacuvaj(listaZahteva);
 
                 Prostorija p = z.prostorija;
-                StatickaOprema stat = new StatickaOprema((Inventar) z.StatickaOprema);
+                StatickaOprema stat = new StatickaOprema((Inventar)z.StatickaOprema);
                 p.statickaOprema = new List<StatickaOprema>();
                 p.statickaOprema.Add(stat);
 
@@ -150,33 +149,18 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
         }
         private void date_changed(object sender, SelectionChangedEventArgs e)
         {
-            if (cbProstorija.SelectedIndex != -1)
-            {
-                selected = true;
-            }
-
-            if (selected)
-            {
-                p.prostorija = (Prostorija)cbProstorija.SelectedItem;
-                foreach (Termin t in pregledi)
-                {
-                    if (t.prostorija.Id.Equals(p.prostorija.Id))
-                    {
-                        if (t.Pocetak.Date.Equals(((DateTime)timePicker.SelectedDate).Date))
-                        {
-                            sati.Items.Remove(t.Pocetak.ToShortTimeString());
-                        }
-                    }
-                }
-                sati.IsEnabled = true;
-            }
-
+            ProveraTermina();
         }
 
 
 
         private void sati_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            ProveraTermina();
+        }
+
+
+        public void ProveraTermina() {
             if (cbProstorija.SelectedIndex != -1)
             {
                 selected = true;
@@ -185,19 +169,34 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
             if (selected)
             {
                 p.prostorija = (Prostorija)cbProstorija.SelectedItem;
-                foreach (Termin t in pregledi)
+                foreach (ZahtevPremestanja za in this.listaZahteva)
                 {
-                    if (t.prostorija.Id.Equals(p.prostorija.Id))
+                    foreach (Termin t in pregledi)
                     {
-                        if (t.Pocetak.Date.Equals(((DateTime)timePicker.SelectedDate).Date))
+                        if (t.prostorija != null && t.prostorija.Id.Equals(p.prostorija.Id))
                         {
-                            sati.Items.Remove(t.Pocetak.ToShortTimeString());
+                            if (t.Pocetak.Date.Equals(((DateTime)timePicker.SelectedDate).Date))
+                            {
+                                sati.Items.Remove(t.Pocetak.ToShortTimeString());
+                            }
+                        }
+                        if (za.prostorija.Id.Equals(p.prostorija.Id))
+                        {
+                            Debug.WriteLine("Postoji prostorija u zahtevima");
+                            DateTime pocetak = za.Pocetak;
+
+                            for (; pocetak < za.Kraj;)
+                            {
+
+                                Debug.WriteLine(pocetak.ToShortTimeString());
+                                sati.Items.Remove(pocetak.ToShortTimeString());
+                                pocetak = pocetak.AddMinutes(30);
+                            }
                         }
                     }
                 }
                 sati.IsEnabled = true;
             }
-
         }
     }
 }

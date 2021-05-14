@@ -31,7 +31,7 @@ namespace Service
       {
             LekRepozitorijum datoteka = LekRepozitorijum.Instance;
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapLekova");
-           
+
             foreach (Lek l in LekRepozitorijum.Instance.lekovi)
             {
                 if (l.Id.Equals(lek.Id))

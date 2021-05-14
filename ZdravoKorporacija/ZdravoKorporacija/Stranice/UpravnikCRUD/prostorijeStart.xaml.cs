@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using Repository;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,25 +12,20 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
     /// <summary>
     /// Interaction logic for upravnikStart.xaml
     /// </summary>
-    public partial class upravnikStart : Window
+    public partial class prostorijeStart : Page
     {
         private ObservableCollection<Prostorija> prostorije = new ObservableCollection<Prostorija>();
 
         Dictionary<int, int> ids = new Dictionary<int, int>();
        
-        public upravnikStart()
+        public prostorijeStart()
         {
             InitializeComponent();
-            ProstorijaRepozitorijum datoteka = new ProstorijaRepozitorijum();
-            prostorije = new ObservableCollection<Prostorija>(datoteka.dobaviSve());
+            ProstorijaController prostorijaController = new ProstorijaController();
+            prostorije   = prostorijaController.PregledSvihProstorija();
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapProstorija");
             ids = datotekaID.dobaviSve();
             dgUsers.ItemsSource = prostorije;
-            // inicijalizacija
-            //for(int i = 0; i < 1000; i++)
-            //{
-            //ids[i] =0;
-            //}
         }
 
         private void dodaj(object sender, RoutedEventArgs e)

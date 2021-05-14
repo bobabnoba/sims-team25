@@ -13,13 +13,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ZdravoKorporacija.Stranice.UpravnikCRUD;
 
 namespace ZdravoKorporacija.Stranice.LekoviCRUD
 {
     /// <summary>
     /// Interaction logic for LekStart.xaml
     /// </summary>
-    public partial class LekStart : Window
+    public partial class LekStart : Page
     {
 
         LekServis lekServis = new LekServis();
@@ -51,6 +52,11 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
         private void dgLekovi_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void pregledNeodobrenihLekova_Click(object sender, RoutedEventArgs e)
+        {
+            test2.f.Content = new NeodobreniZahteviZaLek();
         }
     }
 }

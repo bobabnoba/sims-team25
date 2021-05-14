@@ -70,7 +70,7 @@ namespace Controller
             return ts.DobaviSlobodneLekare(lekari, pregledi, pocetakTermina);
         }
 
-        public List<Prostorija> DobaviSlobodneProstorije(List<Prostorija> prostorije, ObservableCollection<Termin> pregledi, Termin termin)
+        public ObservableCollection<Prostorija> DobaviSlobodneProstorije(ObservableCollection<Prostorija> prostorije, ObservableCollection<Termin> pregledi, Termin termin)
         {
             return ts.DobaviSlobodneProstorije(prostorije,pregledi,termin);
         }

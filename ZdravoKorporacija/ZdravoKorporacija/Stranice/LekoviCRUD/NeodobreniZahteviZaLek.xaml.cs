@@ -8,29 +8,29 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ZdravoKorporacija.Stranice.UpravnikCRUD
+namespace ZdravoKorporacija.Stranice.LekoviCRUD
 {
     /// <summary>
-    /// Interaction logic for RenoviranjeStart.xaml
+    /// Interaction logic for NeodobreniZahteviZaLek.xaml
     /// </summary>
-    public partial class RenoviranjeStart : Page
+    public partial class NeodobreniZahteviZaLek : Page
     {
-        public RenoviranjeStart()
+        public NeodobreniZahteviZaLek()
         {
             InitializeComponent();
         }
 
-        private void dgZahteviRenoviranja_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void dodaj(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void dodaj(object sender, RoutedEventArgs e)
+        private void dgUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Renoviranje r = new Renoviranje(-1);
-            r.Show();
+
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -42,5 +42,11 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
         {
 
         }
+
+        private void  izmenaAlternativnihLekova(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }

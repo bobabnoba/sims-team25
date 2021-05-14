@@ -11,8 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
-
+using System.Collections.ObjectModel;
 
 namespace ZdravoKorporacija.Stranice.DinamickaOpremaCRUD
 {
@@ -25,7 +24,7 @@ namespace ZdravoKorporacija.Stranice.DinamickaOpremaCRUD
         private ProstorijaService prostorijeStorage = new ProstorijaService();
         private DinamickaOpremaService dinamickaopremaStorage = new DinamickaOpremaService();
         private MagacinService magacineStorage = new MagacinService();
-        private List<Prostorija> prostorije = new List<Prostorija>();
+        private ObservableCollection<Prostorija> prostorije = new ObservableCollection<Prostorija>();
         private List<Inventar> magacin = new List<Inventar>();
         private List<DinamickaOprema> dinamickaMagacin = new List<DinamickaOprema>();
         public dinamickaOpremaPremestanjeIzMagacina()

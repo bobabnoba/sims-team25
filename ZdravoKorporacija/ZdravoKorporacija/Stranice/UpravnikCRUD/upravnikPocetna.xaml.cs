@@ -19,35 +19,33 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
     /// <summary>
     /// Interaction logic for upravnikPocetna.xaml
     /// </summary>
-    public partial class upravnikPocetna : Window
+    public partial class upravnikPocetna : Page
     {
         public upravnikPocetna()
         {
             InitializeComponent();
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            upravnikStart s = new upravnikStart();
-            s.Show();
+            test2.f.Content = new prostorijeStart();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            statickaOpremaStart s = new statickaOpremaStart();
-            s.Show();
+            test2.f.Content = new statickaOpremaStart();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            MagacinStart s = new MagacinStart();
-            s.Show();
+            test2.f.Content = new MagacinStart();
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            dinamickaOpremaStart s = new dinamickaOpremaStart();
-            s.Show();
+            test2.f.Content = new dinamickaOpremaStart();
+
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
@@ -57,20 +55,22 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
 
         private void Zaposleni(object sender, RoutedEventArgs e)
         {
-            ZaposleniPocetna zp = new ZaposleniPocetna();
-            zp.Show();
+            test2.f.Content = new ZaposleniPocetna();
         }
 
         private void button_Click_5(object sender, RoutedEventArgs e)
         {
-            LekStart lekStart = new LekStart();
-            lekStart.Show();
+            test2.f.Content = new LekStart();
         }
 
         private void renoviraj_Click(object sender, RoutedEventArgs e)
         {
-            RenoviranjeStart renoviranjeStart = new RenoviranjeStart();
-            renoviranjeStart.Show();
+            test2.f.Content = new RenoviranjeStart();
+        }
+
+        private void profil(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

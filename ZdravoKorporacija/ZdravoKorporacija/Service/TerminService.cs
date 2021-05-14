@@ -157,15 +157,15 @@ namespace ZdravoKorporacija.Model
             return slobodniLekari;
         }
 
-        public List<Prostorija> DobaviSlobodneProstorije(List<Prostorija> prostorije, ObservableCollection<Termin> pregledi, Termin termin)
+        public ObservableCollection<Prostorija> DobaviSlobodneProstorije(ObservableCollection<Prostorija> prostorije, ObservableCollection<Termin> pregledi, Termin termin)
         {
-            List<Prostorija> slobodneProstorije = prostorije;
+            ObservableCollection<Prostorija> slobodneProstorije = prostorije;
 
             foreach (Termin t in pregledi)
             {
                 if (t.Pocetak.Equals(termin.Pocetak))
                 {
-                    foreach (Prostorija p in prostorije.ToArray())
+                    foreach (Prostorija p in prostorije)
                     {
                         if (t.prostorija.Id.Equals(p.Id))
                         {

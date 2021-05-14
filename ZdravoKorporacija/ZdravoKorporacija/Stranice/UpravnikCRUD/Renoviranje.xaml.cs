@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ZdravoKorporacija.DTO;
 using System.Linq;
+using System.Collections.ObjectModel;
 
 namespace ZdravoKorporacija.Stranice.UpravnikCRUD
 {
@@ -22,7 +23,7 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
     public partial class Renoviranje : Window
     {
         private ProstorijaService prostorijeStorage = new ProstorijaService();
-        private List<Prostorija> prostorije = new List<Prostorija>();
+        private ObservableCollection<Prostorija> prostorije = new ObservableCollection<Prostorija>();
         RenoviranjeService rs = new RenoviranjeService();
         public Renoviranje(int index)
         {

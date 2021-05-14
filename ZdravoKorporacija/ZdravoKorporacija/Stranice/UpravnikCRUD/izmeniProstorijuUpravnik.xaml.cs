@@ -65,9 +65,6 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
             Prostorija prostorija = new Prostorija(prostorijaIzmenjena.Id, ime, tip, false, sprat);
             if (storage.AzurirajProstoriju(prostorija,this.indeks))
             {
-                prostorije.Remove(prostorijaIzmenjena);
-                this.prostorije.Insert(this.indeks, prostorija);
-
             }
             this.Close();
         }

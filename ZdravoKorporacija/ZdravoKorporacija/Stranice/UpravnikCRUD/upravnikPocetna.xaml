@@ -1,20 +1,49 @@
-﻿<Window x:Class="ZdravoKorporacija.Stranice.UpravnikCRUD.upravnikPocetna"
+﻿<Page x:Class="ZdravoKorporacija.Stranice.UpravnikCRUD.upravnikPocetna"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.UpravnikCRUD"
         mc:Ignorable="d"
-        Title="Upravnik Pocetna" Height="450" Width="800"
-        Background="CadetBlue">
+        Title="Upravnik Pocetna" Height="Auto" Width="Auto"
+        >
     <Grid>
-        <Button Content="Prostorije" HorizontalAlignment="Left" Margin="94,52,0,0" VerticalAlignment="Top" Width="220" Click="Button_Click" Height="30"/>
-        <Button Content="Statička oprema" HorizontalAlignment="Left" Margin="94,119,0,0" VerticalAlignment="Top" Width="220" Click="Button_Click_1" Height="30"/>
-        <Button Content="Dinamička oprema" HorizontalAlignment="Left" Margin="383,119,0,0" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.636,-0.78" Height="30" Click="Button_Click_3"/>
-        <Button Content="Magacin" HorizontalAlignment="Left" Margin="383,52,0,0" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.636,-0.78" Height="30" Click="Button_Click_2"/>
-        <Button Content="Zaposleni" HorizontalAlignment="Left" Margin="383,187,0,0" VerticalAlignment="Top" Width="220" Height="30" Click="Zaposleni"/>
-        <Button x:Name="button" Content="Lekovi" HorizontalAlignment="Left" Margin="94,187,0,0" VerticalAlignment="Top" Width="220" Height="30" Click="button_Click_5"/>
-        <Button x:Name="renoviraj" Content="Renoviranje" HorizontalAlignment="Left" Margin="383,247,0,0" VerticalAlignment="Top" Width="220" Height="30" Click="renoviraj_Click"/>
+        <Grid.RowDefinitions>
+
+
+            <RowDefinition Height="45*"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="100*"/>
+
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition Width="94*"/>
+            <ColumnDefinition Width="216*"/>
+            <ColumnDefinition Width="76*"/>
+            <ColumnDefinition Width="216*"/>
+            <ColumnDefinition Width="109*"/>
+            <ColumnDefinition Width="86*"/>
+
+        </Grid.ColumnDefinitions>
+        <Button Content="Prostorije" Grid.Row="3"  Grid.Column="1" Click="Button_Click" />
+        <Button Content="Statička oprema"   Grid.Row="5" Grid.Column="3" Click="Button_Click_1" />
+        <Button Content="Dinamička oprema"  Grid.Row="5" Grid.Column="1" Click="Button_Click_3" />
+
+        <Button Content="Zaposleni"  Grid.Row="7" Grid.Column="1" Click="Zaposleni" />
+        <Button Content="Profil"  Grid.Row="7" Grid.Column="3" Click="profil" />
+        <Button x:Name="button" Content="Lekovi"   Grid.Row="3" Grid.Column="3" Click="button_Click_5" />
+        <Button x:Name="renoviraj" Content="Renoviranje"  Grid.Row="9" Grid.Column="1" Click="renoviraj_Click"  />
+        <Button Content="Magacin"  Grid.Row="9" Grid.Column="3"  Click="Button_Click_2" />
 
     </Grid>
-</Window>
+</Page>
