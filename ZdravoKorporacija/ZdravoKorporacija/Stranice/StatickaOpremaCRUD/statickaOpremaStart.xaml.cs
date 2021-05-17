@@ -1,6 +1,8 @@
-﻿using Repository;
+﻿using Model;
+using Repository;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,12 +21,12 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
     /// </summary>
     public partial class statickaOpremaStart : Page
     {
+
+        private UpravnikController uc = new UpravnikController();
         public statickaOpremaStart()
         {
             InitializeComponent();
-            UpravnikController uc = new UpravnikController();
-            uc.DodajIzMagacinaStaticke();
-            dgStatickaOprema.ItemsSource = StatickaOpremaRepozitorijum.Instance.magacinStatickaOprema;
+            dgStatickaOprema.ItemsSource = this.uc.PregledMagacinaStaticke();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)

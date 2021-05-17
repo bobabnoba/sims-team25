@@ -32,7 +32,7 @@ namespace Repository
             this.lokacija = @"..\..\..\Data\zahteviPremestanje.json";
         }
 
-        public void sacuvaj(List<ZahtevPremestanja> zahtevi)
+        public void sacuvaj()
         {
             JsonSerializer serializer = new JsonSerializer();
             //serializer.PreserveReferencesHandling = PreserveReferencesHandling.All;

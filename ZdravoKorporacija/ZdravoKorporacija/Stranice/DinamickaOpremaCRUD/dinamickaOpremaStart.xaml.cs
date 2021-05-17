@@ -20,14 +20,12 @@ namespace ZdravoKorporacija.Stranice.DinamickaOpremaCRUD
     /// </summary>
     public partial class dinamickaOpremaStart : Page
     {
-      
 
+        UpravnikController uc = new UpravnikController();
         public dinamickaOpremaStart()
         {
             InitializeComponent();
-            UpravnikController uc = new UpravnikController();
-            uc.DodajIzMagacinaDinamcike();
-            dgDinamickaOprema.ItemsSource = DinamickaOpremaRepozitorijum.Instance.magacinDinamickaOprema;
+            dgDinamickaOprema.ItemsSource = uc.PregledMagacinaDinamcike();
             
         }
 

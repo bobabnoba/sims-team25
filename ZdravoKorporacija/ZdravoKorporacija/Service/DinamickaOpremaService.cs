@@ -2,6 +2,7 @@
 using Repository;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace Service
@@ -62,7 +63,7 @@ namespace Service
             return false;
         }
 
-        public List<DinamickaOprema> PregledSveOpreme()
+        public ObservableCollection<DinamickaOprema> PregledSveOpreme()
         {
             DinamickaOpremaRepozitorijum dor = DinamickaOpremaRepozitorijum.Instance;
             return dor.DobaviSve();

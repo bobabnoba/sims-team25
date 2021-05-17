@@ -1,17 +1,17 @@
 [
   {
     "inventar": [],
-    "statickaOprema": null,
-    "dinamickaOprema": null,
-    "Id": 0,
-    "Naziv": "soba11",
-    "Tip": 1,
-    "Slobodna": false,
-    "Sprat": 1
-  },
-  {
-    "inventar": [],
-    "statickaOprema": null,
+    "statickaOprema": [
+      {
+        "termin": null,
+        "Prostorija": null,
+        "Id": 6,
+        "Naziv": "infuzija",
+        "UkupnaKolicina": 100,
+        "Proizvodjac": "galenika",
+        "DatumNabavke": "0001-01-01T00:00:00"
+      }
+    ],
     "dinamickaOprema": null,
     "Id": 1,
     "Naziv": "soba12",
@@ -21,7 +21,37 @@
   },
   {
     "inventar": [],
-    "statickaOprema": null,
+    "statickaOprema": [
+      {
+        "termin": null,
+        "Prostorija": null,
+        "Id": 4,
+        "Naziv": "Hanzaplast",
+        "UkupnaKolicina": 100,
+        "Proizvodjac": "Keek",
+        "DatumNabavke": "0001-01-01T00:00:00"
+      }
+    ],
+    "dinamickaOprema": null,
+    "Id": 0,
+    "Naziv": "soba11",
+    "Tip": 1,
+    "Slobodna": false,
+    "Sprat": 1
+  },
+  {
+    "inventar": [],
+    "statickaOprema": [
+      {
+        "termin": null,
+        "Prostorija": null,
+        "Id": 7,
+        "Naziv": "dfdsf",
+        "UkupnaKolicina": 200,
+        "Proizvodjac": "ds",
+        "DatumNabavke": "0001-01-01T00:00:00"
+      }
+    ],
     "dinamickaOprema": null,
     "Id": 2,
     "Naziv": "soba21",
@@ -91,7 +121,17 @@
   },
   {
     "inventar": [],
-    "statickaOprema": [],
+    "statickaOprema": [
+      {
+        "termin": null,
+        "Prostorija": null,
+        "Id": 0,
+        "Naziv": "krevet",
+        "UkupnaKolicina": 4000,
+        "Proizvodjac": "simpo",
+        "DatumNabavke": "0001-01-01T00:00:00"
+      }
+    ],
     "dinamickaOprema": [],
     "Id": 6,
     "Naziv": "soba35",

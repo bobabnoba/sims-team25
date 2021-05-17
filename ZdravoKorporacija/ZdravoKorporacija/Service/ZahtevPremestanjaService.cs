@@ -12,7 +12,6 @@ namespace ZdravoKorporacija.Service
         public bool ZakaziPremestanje(Inventar inventar, ZahtevPremestanja zahtevPremestanja, DateTime dt, string sati, string trajanje, Dictionary<int, int> ids)
         {
             ZahtevPremestanjaRepozitorijum datoteka = ZahtevPremestanjaRepozitorijum.Instance;
-            List<ZahtevPremestanja> zahtevi = datoteka.dobaviSve();
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapZahtevPremestanja");
 
 
@@ -47,8 +46,8 @@ namespace ZdravoKorporacija.Service
             }
             zahtevPremestanja.Kraj = zahtevPremestanja.Pocetak.AddMinutes(minuta);
 
-            zahtevi.Add(zahtevPremestanja);
-            datoteka.sacuvaj(zahtevi);
+            ZahtevPremestanjaRepozitorijum.Instance.zahtevi.Add(zahtevPremestanja);
+            datoteka.sacuvaj();
             datotekaID.sacuvaj(ids);
 
             return true;

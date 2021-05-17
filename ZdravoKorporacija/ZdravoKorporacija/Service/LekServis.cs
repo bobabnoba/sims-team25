@@ -2,7 +2,6 @@ using System;
 using Model;
 using System.Collections.Generic;
 using Repository;
-using ZdravoKorporacija.Model;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Repository;
 using System.Collections;

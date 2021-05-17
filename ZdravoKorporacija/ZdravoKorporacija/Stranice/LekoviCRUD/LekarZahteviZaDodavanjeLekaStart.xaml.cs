@@ -1,22 +1,13 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using Repository;
 using Service;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.Model;
-using ZdravoKorporacija.Repository;
 using ZdravoKorporacija.Stranice.LekarCRUD;
 using ZdravoKorporacija.Stranice.Logovanje;
 using ZdravoKorporacija.Stranice.Uput;
@@ -38,11 +29,11 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
             InitializeComponent();
             lekici = new ObservableCollection<Lek>();
             lekari = new ObservableCollection<Lekar>();
-            foreach(ZahtevLek z in lekServis.PregledSvihZahtevaLek())
+            foreach (ZahtevLek z in lekServis.PregledSvihZahtevaLek())
             {
-                foreach(Lekar l in z.lekari)
+                foreach (Lekar l in z.lekari)
                 {
-                    if(l.Jmbg.Equals(lekarLogin.lekar.Jmbg))
+                    if (l.Jmbg.Equals(lekarLogin.lekar.Jmbg))
                     {
                         zahteviPrikaz.Add(z);
                     }
@@ -58,7 +49,8 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
 
         private void dodaj(object sender, RoutedEventArgs e)
         {
-            if (dgZahtevi.SelectedItem != null) {
+            if (dgZahtevi.SelectedItem != null)
+            {
                 IDRepozitorijum datoteka = new IDRepozitorijum("iDMapLekova");
                 Dictionary<int, int> ids = datoteka.dobaviSve();
 
@@ -75,31 +67,31 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
 
 
                 ZahtevLek zahtev = (ZahtevLek)dgZahtevi.SelectedItem;
-                Lek l = new Lek(id,zahtev.Lek.Proizvodjac,zahtev.Lek.Sastojci,zahtev.Lek.NusPojave,zahtev.Lek.NazivLeka);
+                Lek l = new Lek(id, zahtev.Lek.Proizvodjac, zahtev.Lek.Sastojci, zahtev.Lek.NusPojave, zahtev.Lek.NazivLeka);
                 l.alternativniLekovi = zahtev.Lek.alternativniLekovi;
-                lekServis.DodajLek(l,ids);
+                lekServis.DodajLek(l, ids);
                 IDRepozitorijum datotekaZahtev = new IDRepozitorijum("iDMapZahtevZaLek");
                 Dictionary<int, int> idsZahtev = datotekaZahtev.dobaviSve();
                 Debug.WriteLine(zahtev.Id);
                 idsZahtev[zahtev.Id] = 0;
 
                 zahtev.BrojPotvrda++;
-                lekServis.ObrisiZahtevZaLek(zahtev,idsZahtev);
-             }
+                lekServis.ObrisiZahtevZaLek(zahtev, idsZahtev);
+            }
         }
 
         private void izmenaAlternativnihLekova(object sender, RoutedEventArgs e)
         {
             ZahtevLek zahtev = (ZahtevLek)dgZahtevi.SelectedItem;
-            IzmenaAlternativnihLekovaZahtev izmenaAlternativnih = new IzmenaAlternativnihLekovaZahtev(new ObservableCollection<Lek>(zahtev.Lek.alternativniLekovi),zahtev);
+            IzmenaAlternativnihLekovaZahtev izmenaAlternativnih = new IzmenaAlternativnihLekovaZahtev(new ObservableCollection<Lek>(zahtev.Lek.alternativniLekovi), zahtev);
             izmenaAlternativnih.Show();
         }
 
         private void lekariZaDodavanjeLeka(object sender, RoutedEventArgs e)
         {
-            ZahtevLek zahtev = (ZahtevLek) dgZahtevi.SelectedItem;
+            ZahtevLek zahtev = (ZahtevLek)dgZahtevi.SelectedItem;
             lekari = new ObservableCollection<Lekar>(zahtev.lekari);
-            IzborLekaraZaPotvrdu izborLekara = new IzborLekaraZaPotvrdu(lekari,zahtev);
+            IzborLekaraZaPotvrdu izborLekara = new IzborLekaraZaPotvrdu(lekari, zahtev);
             izborLekara.Show();
         }
 
@@ -111,7 +103,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            IDRepozitorijum datoteka = new IDRepozitorijum("iDMapLekova");
+            IDRepozitorijum datoteka = new IDRepozitorijum("iDMapZahtevZaLek");
             Dictionary<int, int> ids = datoteka.dobaviSve();
             obrisiZahtevZaLek oz = new obrisiZahtevZaLek(zahteviPrikaz, (ZahtevLek)dgZahtevi.SelectedItem, ids);
             oz.Show();

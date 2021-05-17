@@ -6,6 +6,7 @@ using System.Collections;
 using Repository;
 using System.Diagnostics;
 using ZdravoKorporacija.Model;
+using System.Collections.ObjectModel;
 
 namespace Service
 { 
@@ -19,11 +20,6 @@ namespace Service
             String s = dt.ToString();
             String date = s.Split(" ")[0];
 
-           // Debug.WriteLine(date + " " + sati);
-           // Debug.WriteLine("" + s);
-
-          //  DateTime datum = DateTime.Parse(date + " " + sati);
-          //  st.termin.Pocetak = datum;
             Termin t = new Termin();
             t.Pocetak = dt;
             t.prostorija = p;
@@ -46,8 +42,8 @@ namespace Service
             t.Id = id;
            
             ts.ZakaziTermin(t,ids);
-
-            stRepozitorijum.Sacuvaj(st);
+            StatickaOpremaRepozitorijum.Instance.magacinStatickaOprema.Add(st);
+            stRepozitorijum.Sacuvaj();
             return false;
             }
 
@@ -63,7 +59,7 @@ namespace Service
                 return false;
             }
 
-            public List<StatickaOprema> PregledSveOpreme()
+            public ObservableCollection<StatickaOprema> PregledSveOpreme()
             {
             StatickaOpremaRepozitorijum sor = StatickaOpremaRepozitorijum.Instance;
             return sor.DobaviSve();

@@ -2,6 +2,7 @@
 using Service;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using ZdravoKorporacija.Model;
 
@@ -21,17 +22,16 @@ namespace ZdravoKorporacija.Controller
             ms.PregledSveOpreme();
             return true;
         }
-        public bool DodajIzMagacinaStaticke()
+        public ObservableCollection<StatickaOprema> PregledMagacinaStaticke()
         {
             StatickaOpremaService sos = new StatickaOpremaService();
-            sos.PregledSveOpreme();
-            return true;
+            return  sos.PregledSveOpreme();
+           
         }
-        public bool DodajIzMagacinaDinamcike()
+        public ObservableCollection<DinamickaOprema> PregledMagacinaDinamcike()
         {
             DinamickaOpremaService dos = new DinamickaOpremaService();
-            dos.PregledSveOpreme();
-            return true;
+            return dos.PregledSveOpreme();
         }
         public List<Termin> PregledSvihTermina()
         {

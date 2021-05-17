@@ -5,15 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.Model;
@@ -34,7 +27,6 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
         private MagacinService magacineStorage = new MagacinService();
         private ObservableCollection<Prostorija> prostorije = new ObservableCollection<Prostorija>();
         private List<Inventar> magacin = new List<Inventar>();
-        private List<StatickaOprema> statickaMagacin = new List<StatickaOprema>();
 
         private ObservableCollection<Termin> pregledi;
         private TerminService terminStorage = new TerminService();
@@ -79,7 +71,7 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
             timer.Tick += ProveraZahteva;
             timer.Start();
 
-            listaZahteva = zahteviStorage.PregledSveOpreme();
+            this.listaZahteva = zahteviStorage.PregledSveOpreme();
 
         }
 
@@ -97,16 +89,16 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
             Dictionary<int, int> ids = datotekaID.dobaviSve();
             zahteviStorage.ZakaziPremestanje((Inventar)cbMagacin.SelectedItem, zp, (DateTime)timePicker.SelectedDate, (String)sati.SelectedItem, textBoxTrajanje.Text, ids);
 
-            listaZahteva = zahteviStorage.PregledSveOpreme();
+           zahteviStorage.PregledSveOpreme();
         }
         private Boolean x = true;
         public void ProveraZahteva(object sender, EventArgs e)
         {
 
 
-            if (listaZahteva != null)
+            if (ZahtevPremestanjaRepozitorijum.Instance.zahtevi != null)
             {
-                z = listaZahteva.FirstOrDefault(s => s.Kraj <= DateTime.Now && s.Kraj >= DateTime.Now.AddMinutes(-5));
+                z = ZahtevPremestanjaRepozitorijum.Instance.zahtevi.FirstOrDefault(s => s.Kraj <= DateTime.Now && s.Kraj >= DateTime.Now.AddMinutes(-5));
                 if (z == null)
                 {
                     x = false;
@@ -116,10 +108,10 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
             }
             if (z != null && x == true)
             {
-                listaZahteva.Remove(z);
+                ZahtevPremestanjaRepozitorijum.Instance.zahtevi.Remove(z);
                 statickaopremaStorage.DodajOpremu(z.StatickaOprema, z.Pocetak, "10", z.prostorija);
                 MessageBox.Show("zavrsen termin");
-                ZahtevPremestanjaRepozitorijum.Instance.sacuvaj(listaZahteva);
+                ZahtevPremestanjaRepozitorijum.Instance.sacuvaj();
 
                 Prostorija p = z.prostorija;
                 StatickaOprema stat = new StatickaOprema((Inventar)z.StatickaOprema);
@@ -169,29 +161,29 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
             if (selected)
             {
                 p.prostorija = (Prostorija)cbProstorija.SelectedItem;
+                foreach (Termin t in pregledi)
+                {
+                    if (t.prostorija != null && t.prostorija.Id.Equals(p.prostorija.Id))
+                    {
+                        if (t.Pocetak.Date.Equals(((DateTime)timePicker.SelectedDate).Date))
+                        {
+                            sati.Items.Remove(t.Pocetak.ToShortTimeString());
+                        }
+                    }
+                }
                 foreach (ZahtevPremestanja za in this.listaZahteva)
                 {
-                    foreach (Termin t in pregledi)
+                    if (za.prostorija.Id.Equals(p.prostorija.Id))
                     {
-                        if (t.prostorija != null && t.prostorija.Id.Equals(p.prostorija.Id))
-                        {
-                            if (t.Pocetak.Date.Equals(((DateTime)timePicker.SelectedDate).Date))
-                            {
-                                sati.Items.Remove(t.Pocetak.ToShortTimeString());
-                            }
-                        }
-                        if (za.prostorija.Id.Equals(p.prostorija.Id))
-                        {
-                            Debug.WriteLine("Postoji prostorija u zahtevima");
-                            DateTime pocetak = za.Pocetak;
+                        Debug.WriteLine("Postoji prostorija u zahtevima");
+                        DateTime pocetak = za.Pocetak;
 
-                            for (; pocetak < za.Kraj;)
-                            {
+                        for (; pocetak < za.Kraj;)
+                        {
 
-                                Debug.WriteLine(pocetak.ToShortTimeString());
-                                sati.Items.Remove(pocetak.ToShortTimeString());
-                                pocetak = pocetak.AddMinutes(30);
-                            }
+                            Debug.WriteLine(pocetak.ToShortTimeString());
+                            sati.Items.Remove(pocetak.ToShortTimeString());
+                            pocetak = pocetak.AddMinutes(30);
                         }
                     }
                 }

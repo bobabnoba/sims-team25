@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using Service;
 using System;
 using System.Collections.Generic;
@@ -38,6 +39,8 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
         {
             this.ids[this.zahtev.Id] = 0;
             lekServis.ObrisiZahtevZaLek(zahtev, ids);
+            NeodobreniLekController neodobreniLekoviController = new NeodobreniLekController();
+            neodobreniLekoviController.DodajNeodobreniLek(this.zahtev);
             zahteviPrikaz.Remove(zahtev);
             this.Close();
 

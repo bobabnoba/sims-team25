@@ -90,5 +90,14 @@
     "UkupnaKolicina": 0,
     "Proizvodjac": "helas",
     "DatumNabavke": "0001-01-01T00:00:00"
+  },
+  {
+    "termin": null,
+    "Prostorija": null,
+    "Id": 4,
+    "Naziv": "Hanzaplast",
+    "UkupnaKolicina": 100,
+    "Proizvodjac": "Keek",
+    "DatumNabavke": "0001-01-01T00:00:00"
   }
 ]
