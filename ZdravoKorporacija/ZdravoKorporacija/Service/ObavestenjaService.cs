@@ -37,6 +37,7 @@ namespace ZdravoKorporacija.Service
                 }
                 foreach (Termin t in termini)
                 {
+                    if(t != null)
                     if (t.zdravstveniKarton != null)
                         if (p.Jmbg == t.zdravstveniKarton.Id)
                         {

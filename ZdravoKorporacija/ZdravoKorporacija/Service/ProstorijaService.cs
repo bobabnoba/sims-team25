@@ -1,6 +1,9 @@
-﻿using Model;
+﻿using Microsoft.VisualBasic.CompilerServices;
+using Model;
 using Repository;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
+using ZdravoKorporacija.DTO;
 
 namespace Service
 {
@@ -12,7 +15,7 @@ namespace Service
             List<Prostorija> prostorije = datoteka.dobaviSve();
 
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapProstorija");
-       
+
 
             foreach (Prostorija pr in prostorije)
             {
@@ -84,6 +87,42 @@ namespace Service
             return prostorije;
         }
 
+        public List<Prostorija> PregledSvihProstorija2Model(List<ProstorijaDTO> dtos)
+        {
+            List<Prostorija> modeli = new List<Prostorija>();
+            foreach (ProstorijaDTO pdto in dtos)
+            {
+                modeli.Add(DTO2Model(pdto));
+            }
+            return modeli;
+        }
+    
+        public List<ProstorijaDTO> PregledSvihProstorijaDTO(List<Prostorija> modeli)
+        {
+            modeli = PregledSvihProstorija();
+            List<ProstorijaDTO> dtos = new List<ProstorijaDTO>();
+            foreach(Prostorija model in modeli)
+            {
+                dtos.Add(Model2DTO(model));
+            }
+            return dtos;
+        }
+
+        public Prostorija DTO2Model(ProstorijaDTO dto)
+        {
+            if(dto != null)
+                foreach(Prostorija p in PregledSvihProstorija())
+                {
+                    if (dto.Id.Equals(p.Id))
+                        return p;
+                }
+            return null;
+        }
+        public ProstorijaDTO Model2DTO(Prostorija model)
+        {
+            ProstorijaDTO dto = new ProstorijaDTO(model.Id, model.Naziv, model.Tip, model.Slobodna, model.Sprat);
+            return dto;
+        }
 
     }
 }

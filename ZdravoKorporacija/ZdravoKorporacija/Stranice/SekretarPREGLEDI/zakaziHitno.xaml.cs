@@ -131,6 +131,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
                     {
                         foreach (Prostorija p in prostorije.ToArray())
                         {
+                            if(t.prostorija != null)
                             if (t.prostorija.Id.Equals(p.Id))
                             {
                                 slobodneProstorije.Remove(p);

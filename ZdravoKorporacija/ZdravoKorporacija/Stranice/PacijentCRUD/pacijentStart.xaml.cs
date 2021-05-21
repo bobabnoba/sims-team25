@@ -54,6 +54,7 @@ namespace ZdravoKorporacija.Stranice
             ObservableCollection<Termin> sviTermini = new ObservableCollection<Termin>(storage.PregledSvihTermina());
             foreach(Termin t in sviTermini)
             {
+                if(t!=null)
                 if (t.zdravstveniKarton != null && t.zdravstveniKarton.Id.Equals(pacijent.ZdravstveniKarton.Id))
                 {
                     termini.Add(t);

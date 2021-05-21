@@ -8,6 +8,8 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using ZdravoKorporacija.Controller;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice
@@ -17,29 +19,31 @@ namespace ZdravoKorporacija.Stranice
     /// </summary>
     public partial class zakaziPregled : Window
     {
-        private TerminService storage = new TerminService();
-        private LekarRepozitorijum ljekariDat = new LekarRepozitorijum();
-        private List<Lekar> ljekari;
-        private BindingList<Lekar> dostupniLjekari;
-        private Termin p;
+      
+      
         private ObservableCollection<Termin> pregledi;
         private Dictionary<int, int> ids = new Dictionary<int, int>();
         private Boolean selected; // true ljekar, false vrijeme
         private Pacijent pacijent;
+        private TerminController tc = new TerminController();
+        private List<LekarDTO> lekari = new List<LekarDTO>();
+        private List<LekarDTO> slobodniLekari;
+        private List<ProstorijaDTO> slobodneProstorije;
+        private TerminDTO noviTermin = new TerminDTO();
+        private PacijentService pacijentServis = new PacijentService();
 
 
         public zakaziPregled(ObservableCollection<Termin> termini, Dictionary<int,int> ids, Pacijent pacijent)
         {
             InitializeComponent();
-            this.ids = ids;
-            p = new Termin();
-            this.pacijent = pacijent;
-            ljekari = ljekariDat.dobaviSve();
+            this.ids = ids;           
+            this.pacijent = pacijent;            
             pregledi = termini;
-            dostupniLjekari = new BindingList<Lekar>();
+            lekari = tc.PregledSvihLekaraDTO(tc.PregledSvihLekara());
+            slobodniLekari = lekari;           
 
-            p.Tip = TipTerminaEnum.Pregled;
-            p.Trajanje = 0.5;
+            noviTermin.Tip = TipTerminaEnum.Pregled;
+            noviTermin.Trajanje = 0.5;
 
             date.IsEnabled = false;
             time.IsEnabled = false;
@@ -54,13 +58,8 @@ namespace ZdravoKorporacija.Stranice
             ljekar.SelectedItem = null;
             time.SelectedItem = null;
             date.SelectedDate = null;
-            if (dostupniLjekari != null)
-                dostupniLjekari.Clear();
-            foreach (Lekar lll in ljekari)
-            {
-                dostupniLjekari.Add(lll);
-            }
-            ljekar.ItemsSource = dostupniLjekari;
+            slobodniLekari = lekari;
+            ljekar.ItemsSource = slobodniLekari;
 
             time.Items.Clear();
             DateTime danas = DateTime.Today;
@@ -77,44 +76,25 @@ namespace ZdravoKorporacija.Stranice
 
         private void potvrdi(object sender, RoutedEventArgs e)
         {
-            int id = 0;
-            for (int i = 0; i < 1000; i++)
+            int id = tc.MapaTermina(ids);   
+
+          
+
+            noviTermin.Id = id;
+            noviTermin.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
+            noviTermin.Lekar = (LekarDTO)ljekar.SelectedItem;
+            noviTermin.zdravstveniKarton = pacijent.ZdravstveniKarton;
+
+            if (tc.ZakaziTermin(tc.TerminDTO2Model(noviTermin), ids))
             {
-                if (ids[i] == 0)
-                {
-                    id = i;
-                    ids[i] = 1;
-                    break;
-                }
-            }
-            p.Id = id;
+                this.pregledi.Add(tc.TerminDTO2Model(noviTermin));
+                lekari = tc.PregledSvihLekaraDTO(tc.PregledSvihLekara());
+                tc.AzurirajLekare(tc.PregledSvihLekaraModel(lekari));
 
-            p.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
-
-            //ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
-            //String t = null;
-            //String d = date.Text;
-            //if (cboItem != null)
-            //{
-
-            //    t = cboItem.Content.ToString();
-
-            //}
-            //p.Pocetak = DateTime.Parse(d + " " + t);
-
-            p.Lekar = (Lekar)ljekar.SelectedItem;
-            Termin tZaLjekara = new Termin();
-            tZaLjekara.Id = p.Id;
-            p.Lekar.AddTermin(tZaLjekara);
-            p.zdravstveniKarton = pacijent.ZdravstveniKarton;
-
-            if (storage.ZakaziTerminPacijent(p, ids, pacijent))
-            {
-                this.pregledi.Add(p);
-                ljekariDat.sacuvaj(ljekari);
-               
             }
 
+            pacijent.AddTermin(tc.TerminDTO2Model(noviTermin));
+            pacijentServis.AzurirajPacijenta(pacijent);
             this.Close();
 
         }
@@ -151,11 +131,12 @@ namespace ZdravoKorporacija.Stranice
             {
                 if (ljekar.SelectedItem != null && date.SelectedDate != null)
                 {
-                    p.Lekar = (Lekar)ljekar.SelectedItem;
+                    noviTermin.Lekar = (LekarDTO)ljekar.SelectedItem;
 
                     foreach (Termin t in pregledi)
                     {
-                        if (t.Lekar.Jmbg.Equals(p.Lekar.Jmbg))
+                        
+                        if (t.Lekar.Jmbg.Equals(noviTermin.Lekar.Jmbg))
                         {
                             if (t.Pocetak.Date.Equals(((DateTime)date.SelectedDate).Date))
                             {
@@ -170,23 +151,11 @@ namespace ZdravoKorporacija.Stranice
             {
                 if (time.SelectedItem != null && date.SelectedDate != null)
                 {
-                    p.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
+                    noviTermin.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
 
-                    foreach (Termin t in pregledi)
-                    {
-                        if (t.Pocetak.Equals(p.Pocetak))
-                        {
-                            foreach (Lekar l in ljekari.ToArray()) 
-                            {
-                                if (l.Jmbg.Equals(t.Lekar.Jmbg))
-                                {
-                                    dostupniLjekari.Remove(l);
-                                }
-                            }
-                        }
-                    }
+                    slobodniLekari = tc.PregledSvihLekaraDTO(tc.DobaviSlobodneLekare(tc.PregledSvihLekaraModel(lekari), pregledi, noviTermin.Pocetak));
 
-                    ljekar.IsEnabled = true;
+                    slobodni();
                 }
             }
 
@@ -198,11 +167,11 @@ namespace ZdravoKorporacija.Stranice
             {
                 if (ljekar.SelectedIndex != -1 && date.SelectedDate != null)
                 {
-                    p.Lekar = (Lekar)ljekar.SelectedItem;
+                    noviTermin.Lekar = (LekarDTO)ljekar.SelectedItem;
 
                     foreach (Termin t in pregledi)
                     {
-                        if (t.Lekar.Jmbg.Equals(p.Lekar.Jmbg)) 
+                        if (t.Lekar.Jmbg.Equals(noviTermin.Lekar.Jmbg)) 
                         {
                             if (t.Pocetak.Date.Equals(((DateTime)date.SelectedDate).Date)) 
                             {
@@ -217,28 +186,21 @@ namespace ZdravoKorporacija.Stranice
             {
                 if (time.SelectedIndex != -1 && date.SelectedDate != null)
                 {
-                    p.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
+                    noviTermin.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
 
-                    foreach (Termin t in pregledi)
-                    {
-                        if (t.Pocetak.Equals(p.Pocetak))
-                        {
-                            foreach (Lekar l in ljekari.ToArray())
-                            {
-                                if (l.Jmbg.Equals(t.Lekar.Jmbg))
-                                {
-                                    dostupniLjekari.Remove(l); 
-                                }
-                            }
-                        }
-                    }
+                    slobodniLekari = tc.PregledSvihLekaraDTO(tc.DobaviSlobodneLekare(tc.PregledSvihLekaraModel(lekari), pregledi, noviTermin.Pocetak));
 
-                    ljekar.IsEnabled = true;
+
+                    slobodni();
                 }
             }
 
         }
-
+        private void slobodni()
+        {
+            ljekar.IsEnabled = true;
+            
+        }
         private void ljekar_changed(object sender, SelectionChangedEventArgs e)
         {
             time.IsEnabled = true;
@@ -247,13 +209,13 @@ namespace ZdravoKorporacija.Stranice
             {
                 if (date.SelectedDate != null && ljekar.SelectedItem != null)
                 {
-                    p.Lekar = (Lekar)ljekar.SelectedItem;
+                    noviTermin.Lekar = (LekarDTO)ljekar.SelectedItem;
 
                     foreach (Termin t in pregledi)
                     {
-                        if (t.Lekar.Jmbg.Equals(p.Lekar.Jmbg)) 
+                        if (t.Lekar.Jmbg.Equals((int)noviTermin.Lekar.Jmbg))
                         {
-                            if (t.Pocetak.Date.Equals(((DateTime)date.SelectedDate).Date))  
+                            if (t.Pocetak.Date.Equals(((DateTime)date.SelectedDate).Date))
                             {
                                 time.Items.Remove(t.Pocetak.ToShortTimeString());
                             }
@@ -266,23 +228,12 @@ namespace ZdravoKorporacija.Stranice
             {
                 if (time.SelectedIndex != -1 && date.SelectedDate != null)
                 {
-                    p.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
+                    noviTermin.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
 
-                    foreach (Termin t in pregledi)
-                    {
-                        if (t.Pocetak.Equals(p.Pocetak))
-                        {
-                            foreach (Lekar l in ljekari.ToArray())
-                            {
-                                if (l.Jmbg.Equals(t.Lekar.Jmbg))
-                                {
-                                    dostupniLjekari.Remove(l);  
-                                }
-                            }
-                        }
-                    }
 
-                    ljekar.IsEnabled = true;
+                    slobodniLekari = tc.PregledSvihLekaraDTO(tc.DobaviSlobodneLekare(tc.PregledSvihLekaraModel(lekari), pregledi, noviTermin.Pocetak));
+
+                    slobodni();
                 }
             }
 

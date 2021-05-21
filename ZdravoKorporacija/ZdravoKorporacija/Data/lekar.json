@@ -198,6 +198,16 @@
         "Pocetak": "0001-01-01T00:00:00",
         "Trajanje": 0.0,
         "hitno": false
+      },
+      {
+        "izvestaj": null,
+        "zdravstveniKarton": null,
+        "prostorija": null,
+        "Id": 4,
+        "Tip": 0,
+        "Pocetak": "0001-01-01T00:00:00",
+        "Trajanje": 0.0,
+        "hitno": false
       }
     ],
     "Ime": "Veljko",

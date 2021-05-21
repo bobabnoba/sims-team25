@@ -2,8 +2,11 @@
 using Repository;
 using Service;
 using System.Collections.ObjectModel;
+using System.Net.Http.Headers;
 using System.Windows;
 using System.Windows.Controls;
+using ZdravoKorporacija.Controller;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.SekretarCRUD
@@ -17,6 +20,7 @@ namespace ZdravoKorporacija.Stranice.SekretarCRUD
         private PacijentService storage = new PacijentService();
         private PacijentRepozitorijum pacijentiDat = new PacijentRepozitorijum();
         private Pacijent nalog = new Pacijent();
+        private NaloziController nc = new NaloziController();
         private ObservableCollection<Pacijent> pacijenti;
 
         public kreirajNalogSekretar(ObservableCollection<Pacijent> nalozi)
@@ -42,7 +46,7 @@ namespace ZdravoKorporacija.Stranice.SekretarCRUD
 
             string ime = tbime.Text;
             string prezime = tbprezime.Text;
-            int jmbg = int.Parse(tbjmbg.Text);
+            long jmbg = long.Parse(tbjmbg.Text);
             int br = int.Parse(tbbroj.Text);
             string mejl = tbmejl.Text;
             string username = tbuser.Text;
@@ -57,11 +61,11 @@ namespace ZdravoKorporacija.Stranice.SekretarCRUD
                 pol = PolEnum.Zenski;
             }
 
-            Pacijent nalog = new Pacijent(ime, prezime, jmbg, br, mejl, "", pol, username, password, UlogaEnum.Pacijent);
+            PacijentDTO nalog = new PacijentDTO(new ZdravstveniKartonDTO(jmbg), false, ime, prezime, (int)jmbg, br, mejl, "", pol, username, password, UlogaEnum.Pacijent) ;
 
-            if (storage.KreirajNalogPacijentu(nalog))
+            if (nc.KreirajNalogPacijentu(nc.DTO2ModelNapravi(nalog)))
             {
-                this.pacijenti.Add(nalog);
+                this.pacijenti.Add(nc.DTO2ModelNapravi(nalog));
                 this.Close();
             }
 

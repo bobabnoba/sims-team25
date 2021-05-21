@@ -1,15 +1,21 @@
 ﻿using Model;
 using Repository;
+using Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Net.Http.Headers;
+using System.Runtime.CompilerServices;
+using ZdravoKorporacija.DTO;
 
 namespace ZdravoKorporacija.Model
 {
-    class TerminService
-    {
 
+    public class TerminService
+    {
+        private LekarService lekarServis = new LekarService();
+        private ProstorijaService prostorijaServis = new ProstorijaService();
         public Termin FindOpByPocetak(DateTime poc)
         {
             TerminRepozitorijum datoteka = new TerminRepozitorijum();
@@ -34,6 +40,14 @@ namespace ZdravoKorporacija.Model
             }
 
             return povratna;
+        }
+        
+        public void DodajTermin(TerminDTO dto)
+        {
+            TerminRepozitorijum datoteka = new TerminRepozitorijum();
+            List<Termin> termini = datoteka.dobaviSve();
+            termini.Add(DTO2Model(dto));
+            
         }
         public bool ZakaziTermin(Termin termin, Dictionary<int, int> ids)
         {
@@ -105,7 +119,26 @@ namespace ZdravoKorporacija.Model
             return termini;
         }
 
-      
+        public List<Termin> PregledSvihTermina2Model(List<TerminDTO> dtos)
+        {
+            List<Termin> modeli = new List<Termin>();
+            foreach(TerminDTO tdto in dtos)
+            {
+                modeli.Add(DTO2Model(tdto));
+            }
+            return modeli;
+        }
+        public List<TerminDTO> PregledSvihTermina2DTO(List<Termin> modeli)
+        {
+            List<TerminDTO> dtos = new List<TerminDTO>();
+            modeli = PregledSvihTermina();
+            foreach(Termin model in modeli)
+            {
+                dtos.Add(Model2DTO(model));
+            }
+            return dtos;
+        }
+
 
         public Termin InicijalizujTermin(int id, TipTerminaEnum tip,  DateTime pocetak, Pacijent pacijent, Lekar lekar, Prostorija prostorija)
         {
@@ -248,7 +281,7 @@ namespace ZdravoKorporacija.Model
             List<Termin> termini = datoteka.dobaviSve();
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
 
-            foreach (Termin t in termini)
+            foreach (Termin t in termini) 
             {
                 if (t.Id.Equals(termin.Id))
                 {
@@ -264,7 +297,28 @@ namespace ZdravoKorporacija.Model
             }
             return false;
         }
+        
+        public Termin DTO2Model(TerminDTO dto)
+        {
+            Termin model = new Termin(dto.Id,  lekarServis.DTO2Model( dto.Lekar ), dto.Tip, dto.Pocetak, dto.Trajanje);
+            model.prostorija = prostorijaServis.DTO2Model(dto.prostorija);
+            model.zdravstveniKarton = dto.zdravstveniKarton;
+            
+            return model;
         }
+        public void DodajTermin(Termin t)
+        {
+            TerminRepozitorijum tr = new TerminRepozitorijum();
+            List<Termin> termini = tr.dobaviSve();
+            termini.Add(t);
+        }
+        public TerminDTO Model2DTO(Termin model)
+        {
+            TerminDTO dto = new TerminDTO(model.zdravstveniKarton, prostorijaServis.Model2DTO( model.prostorija), lekarServis.Model2DTO(model.Lekar), model.Tip, model.Pocetak, 0.5, model.izvestaj);
+            return dto;
+        }
+    }
+    
 
     }
 
