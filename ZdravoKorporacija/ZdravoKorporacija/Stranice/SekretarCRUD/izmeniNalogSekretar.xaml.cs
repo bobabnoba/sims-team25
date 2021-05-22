@@ -3,6 +3,8 @@ using Repository;
 using Service;
 using System.Collections.ObjectModel;
 using System.Windows;
+using ZdravoKorporacija.Controller;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.SekretarCRUD
@@ -15,17 +17,15 @@ namespace ZdravoKorporacija.Stranice.SekretarCRUD
 
     public partial class izmeniNalogSekretar : Window
     {
-        private PacijentService storage = new PacijentService();
-        private PacijentRepozitorijum dat = new PacijentRepozitorijum();
-        private ObservableCollection<Pacijent> pacijenti;
-        private Pacijent p1;
+       
+        private PacijentDTO p1;
+        private TerminController tc = new TerminController();
 
-        public izmeniNalogSekretar(Pacijent izabrani, ObservableCollection<Pacijent> nalozi)
+        public izmeniNalogSekretar(PacijentDTO izabrani)
         {
             InitializeComponent();
             p1 = izabrani;
 
-            pacijenti = nalozi;
             tbime.Text = izabrani.Ime;
             tbprezime.Text = izabrani.Prezime;
             tbjmbg.Text = izabrani.Jmbg.ToString();
@@ -47,7 +47,7 @@ namespace ZdravoKorporacija.Stranice.SekretarCRUD
 
         private void potvrdi(object sender, RoutedEventArgs e)
         {
-            this.pacijenti.Remove(p1);
+            tc.PregledSvihPacijenata().Remove(tc.PacijentDTO2Model(p1));
             string ime = tbime.Text;
             string prezime = tbprezime.Text;
             long jmbg = long.Parse(tbjmbg.Text);
@@ -65,11 +65,10 @@ namespace ZdravoKorporacija.Stranice.SekretarCRUD
                 pol = PolEnum.Zenski;
             }
             
-            Pacijent novi = new Pacijent(ime, prezime, jmbg, br, mejl, "", pol, username, password, UlogaEnum.Pacijent);
-            novi.ZdravstveniKarton = p1.ZdravstveniKarton;
-            if (storage.AzurirajPacijenta(novi))
+            PacijentDTO novi = new PacijentDTO(p1.ZdravstveniKarton,p1.Guest,ime, prezime, jmbg, br, mejl, "", pol, username, password, UlogaEnum.Pacijent);
+            if (tc.AzurirajPacijenta(tc.DTO2ModelNapravi(novi)))
             {
-                this.pacijenti.Add(novi);
+                tc.PregledSvihPacijenata().Add(tc.PacijentDTO2Model(novi));
                 this.Close();
 
             }

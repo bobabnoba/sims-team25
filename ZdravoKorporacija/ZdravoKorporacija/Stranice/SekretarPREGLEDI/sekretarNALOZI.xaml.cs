@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using Model;
 using Repository;
 using Service;
+using ZdravoKorporacija.Controller;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Stranice.SekretarCRUD;
 
@@ -26,18 +28,16 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
     public partial class sekretarNALOZI : Page
 
     {
-        private TerminService storage = new TerminService();
-        private ObservableCollection<Termin> termini = new ObservableCollection<Termin>();
-        private PacijentService storagePacijent = new PacijentService();
 
-        private ObservableCollection<Pacijent> pacijenti = new ObservableCollection<Pacijent>();
+        private List<PacijentDTO> pacijenti = new List<PacijentDTO>();
+        private TerminController controller = new TerminController();
         public sekretarNALOZI()
         {
             
             InitializeComponent();
             PacijentRepozitorijum dat = new PacijentRepozitorijum();
-            pacijenti = new ObservableCollection<Pacijent>(dat.dobaviSve());
-            foreach (Pacijent p in pacijenti.ToList())
+            pacijenti = controller.PregledSvihPacijenata2DTO(controller.PregledSvihPacijenata());
+            foreach (PacijentDTO p in pacijenti.ToList())
             {
                 if (p.Ime.Equals("NEREGISTROVANI"))
                 {
@@ -47,14 +47,13 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
             
             dgUsers.ItemsSource = pacijenti;
 
-            termini = new ObservableCollection<Termin>(storage.PregledSvihTermina());
 
             this.DataContext = this;
         }
 
         private void kreiraj(object sender, RoutedEventArgs e)
         {
-            kreirajNalogSekretar kn = new kreirajNalogSekretar(pacijenti);
+            kreirajNalogSekretar kn = new kreirajNalogSekretar();
             kn.Show();
         }
         private void izmeni(object sender, RoutedEventArgs e)
@@ -63,7 +62,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
                 MessageBox.Show("Niste selektovali red", "Greska");
             else
             {
-                izmeniNalogSekretar izn = new izmeniNalogSekretar((Pacijent)dgUsers.SelectedItem, pacijenti);
+                izmeniNalogSekretar izn = new izmeniNalogSekretar((PacijentDTO)dgUsers.SelectedItem);
                 izn.Show();
             }
         }
@@ -73,19 +72,19 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
                 MessageBox.Show("Niste selektovali red", "Greska");
             else
             {
-                obrisiNalogSekretar on = new obrisiNalogSekretar((Pacijent)dgUsers.SelectedItem, pacijenti);
+                obrisiNalogSekretar on = new obrisiNalogSekretar((PacijentDTO)dgUsers.SelectedItem);
                 on.Show();
             }
         }
         private void dodajAlergen(object sender, RoutedEventArgs e)
         {
-            dodajAlergen da = new dodajAlergen((Pacijent)dgUsers.SelectedItem);
+            dodajAlergen da = new dodajAlergen(controller.PacijentDTO2Model((PacijentDTO)dgUsers.SelectedItem));
             da.Show();
         }
 
         private void pogledaj(object sender, RoutedEventArgs e)
         {
-            prikaziKarton pk = new prikaziKarton((Pacijent)dgUsers.SelectedItem);
+            prikaziKarton pk = new prikaziKarton(controller.PacijentDTO2Model((PacijentDTO)dgUsers.SelectedItem));
             pk.Show();
         }
     }

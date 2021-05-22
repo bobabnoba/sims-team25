@@ -17,16 +17,13 @@ namespace ZdravoKorporacija.Stranice.SekretarCRUD
     public partial class kreirajNalogSekretar : Window
     {
 
-        private PacijentService storage = new PacijentService();
-        private PacijentRepozitorijum pacijentiDat = new PacijentRepozitorijum();
-        private Pacijent nalog = new Pacijent();
+        private TerminController tc = new TerminController();
         private NaloziController nc = new NaloziController();
-        private ObservableCollection<Pacijent> pacijenti;
+        
 
-        public kreirajNalogSekretar(ObservableCollection<Pacijent> nalozi)
+        public kreirajNalogSekretar()
         {
             InitializeComponent();
-            pacijenti = nalozi;
 
 
         }
@@ -65,7 +62,7 @@ namespace ZdravoKorporacija.Stranice.SekretarCRUD
 
             if (nc.KreirajNalogPacijentu(nc.DTO2ModelNapravi(nalog)))
             {
-                this.pacijenti.Add(nc.DTO2ModelNapravi(nalog));
+                tc.PregledSvihPacijenata().Add(nc.DTO2ModelNapravi(nalog));
                 this.Close();
             }
 

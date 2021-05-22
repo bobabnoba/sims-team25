@@ -28,7 +28,8 @@ namespace ZdravoKorporacija.DTO
         }
         public ZdravstveniKartonDTO(long id)
         {
-            this.patient = tc.NadjiPacijentaPoJMBG(id);
+            this.Id = id;
+           /* this.patient = tc.NadjiPacijentaPoJMBG(id);
             this.izvestajOHospitalizaciji = new System.Collections.ArrayList();
             this.istorijaBolesti = new List<IstorijaBolesti>();
             this.recept = new ObservableCollection<Recept>();
@@ -40,7 +41,7 @@ namespace ZdravoKorporacija.DTO
             ZdravstveniKartonServis zs = new ZdravstveniKartonServis();
             ZdravstveniKarton zk = new ZdravstveniKarton();
             zk.Id = id;
-            zs.KreirajZdravstveniKartonJMBG(zk);
+            zs.KreirajZdravstveniKartonJMBG(zk);    */
         }
 
         public ZdravstveniKartonDTO()

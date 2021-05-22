@@ -210,6 +210,7 @@
         "hitno": false
       }
     ],
+    "Specijalizacija": 0,
     "Ime": "Veljko",
     "Prezime": "Vukovic",
     "Jmbg": 2334567890213,
@@ -419,6 +420,7 @@
         "hitno": false
       }
     ],
+    "Specijalizacija": 0,
     "Ime": "Milos",
     "Prezime": "Zivic",
     "Jmbg": 2234567890113,

@@ -26,5 +26,9 @@ namespace ZdravoKorporacija.Controller
         {
             return pacijentServis.DTO2ModelNapravi(dto);
         }
+        public bool AzurirajPacijenta(Pacijent pacijent)
+        {
+           return pacijentServis.AzurirajPacijenta(pacijent);
+        }
     }
 }

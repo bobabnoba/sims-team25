@@ -1,4 +1,5 @@
 ﻿using Model;
+using Repository;
 using Service;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,8 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using ZdravoKorporacija.Controller;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Stranice.Logovanje;
 
@@ -16,18 +19,19 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     /// </summary>
     public partial class zakaziPregledLekar : Window
     {
-        private TerminService terminServis = new TerminService();
-        private LekarRepozitorijum lekariDat = new LekarRepozitorijum();
-        private ProstorijaService prostorijeServis = new ProstorijaService();
-        private ZdravstveniKartonServis zdravstveniKartonServis = new ZdravstveniKartonServis();
-        private PacijentService pacijentiServis = new PacijentService();
-        private List<Pacijent> pacijenti = new List<Pacijent>();
-        private List<Lekar> lekari = new List<Lekar>();
-        private List<Termin> termini = new List<Termin>();
-        private List<Prostorija> prostorije = new List<Prostorija>();
-
-        private Termin p;
+        private List<LekarDTO> lekari = new List<LekarDTO>();
+        private List<ProstorijaDTO> slobodneProstorije;
+        private List<ProstorijaDTO> prostorije = new List<ProstorijaDTO>();
         private ObservableCollection<Termin> pregledi;
+
+        private int idTermina;
+        private TipTerminaEnum tipTermina;
+        private DateTime pocetakTermina;
+        private LekarDTO lekarTermina;
+        private ProstorijaDTO prostorijaTermina;
+
+        private TerminDTO noviTermin;
+        private TerminController tc = new TerminController();
         String now = DateTime.Now.ToString("hh:mm:ss tt");
         DateTime today = DateTime.Today;
 
@@ -39,131 +43,61 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         {
             InitializeComponent();
 
-            p = new Termin();
-            pacijenti = pacijentiServis.PregledSvihPacijenata();
-            cbPacijent.ItemsSource = pacijenti;
+            noviTermin = new TerminDTO();
             pregledi = termini;
 
+            
+            cbPacijent.ItemsSource = tc.PregledSvihPacijenata();
+
+            lekari = tc.PregledSvihLekaraDTO(tc.PregledSvihLekara());
+
+         
+
+            prostorije = tc.PregledSvihProstorijaDTO(tc.PregledSvihProstorija());
+            cbProstorija.ItemsSource = prostorije;
+
+            slobodneProstorije = prostorije;
+            cbProstorija.ItemsSource = slobodneProstorije;
+
             this.ids = ids;
-
-
+            DateTime danas = DateTime.Today;
+            for (DateTime tm = danas.AddHours(8); tm < danas.AddHours(22); tm = tm.AddMinutes(30))
+            {
+                time.Items.Add(tm.ToShortTimeString());
+            }
             CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
             date.BlackoutDates.Add(cdr);
-
-
-            lekari = lekariDat.dobaviSve();
-
-            prostorije = prostorijeServis.PregledSvihProstorija();
-            cbProstorija.ItemsSource = prostorije;
-            p.Trajanje = 0.5;
         }
 
         private void potvrdi(object sender, RoutedEventArgs e)
         {
-            termini = terminServis.PregledSvihTermina();
-            int id = 0;
-            for (int i = 0; i < 1000; i++)
-            {
-                if (ids[i] == 0)
-                {
-                    id = i;
-                    ids[i] = 1;
-                    break;
-                }
-            }
-            p.Id = id;
+            int id = tc.MapaTermina(ids);
             Pacijent pac = (Pacijent)cbPacijent.SelectedItem;
-            ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
-            //Izvestaj iz = new Izvestaj();
-            //iz.Id = 0;
-            //iz.Opis = "Temperature";
-            //iz.Simptomi = "
-            //
-            //";
-            //p.izvestaj = iz;
-            
-            String d = date.Text;
-            String t = null;
-            int prepodne = Int32.Parse(now.Substring(0, 2));
-            int popodne = prepodne + 12;
-            if (!date.SelectedDate.HasValue || time.SelectedIndex == -1 || cbTip.SelectedIndex == -1
-                || cbProstorija.SelectedIndex == -1 || cbPacijent.SelectedIndex == -1)
-            {
-                MessageBox.Show("Niste popunili sva polja", "Greska");
-                return;
-            }
-            if (cboItem != null)
-            {
-                t = cboItem.Content.ToString();
-                if (d.Equals(today.ToString("dd.M.yyyy.")))
-                {
-                    if (Int32.Parse(t.Substring(0, 2)) < (now.Substring(9, 8).Equals("po podne") ? popodne : prepodne))
-                    {
-                        MessageBox.Show("Nevalidno Vreme", "Greska");
 
-                        return;
-                    }
-                    else if ((Int32.Parse(t.Substring(0, 2)) == prepodne || Int32.Parse(t.Substring(0, 2)) == popodne) && Int32.Parse(t.Substring(3, 2)) < Int32.Parse(now.Substring(3, 2)))
-                    {
-                        MessageBox.Show("Nevalidno Vreme", "Greska");
-                        return;
-                    }
-                }
-            }
+
+            idTermina = id;
+            pocetakTermina = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
+            prostorijaTermina = (ProstorijaDTO)cbProstorija.SelectedItem;
             
-            try
-            {
-                p.Pocetak = DateTime.Parse(d + " " + t);
-            }
-            catch(InvalidCastException)
-            { }
-            foreach (Termin ter in termini)
-            {
-                if (ter.Pocetak == p.Pocetak)
-                {
-                    MessageBox.Show("Postoji termin u izabranom vremenu", "Greska");
-                    return;
-                }
-            }
+
             if (cbTip.SelectedIndex == 0)
-            {
-                p.Tip = TipTerminaEnum.Pregled;
-            }
+                tipTermina = TipTerminaEnum.Pregled;
             else if (cbTip.SelectedIndex == 1)
+                tipTermina = TipTerminaEnum.Operacija;
+
+            noviTermin = new TerminDTO(tc.NadjiKartonID(pac.Jmbg), prostorijaTermina, tc.Model2DTO(lekarLogin.lekar), tipTermina, pocetakTermina, 0.5, null);
+            noviTermin.Id = idTermina;
+
+            if (tc.ZakaziTermin(tc.TerminDTO2Model(noviTermin), ids))
             {
-                p.Tip = TipTerminaEnum.Operacija;
+                tc.DodajTermin(tc.TerminDTO2Model(noviTermin));
+                lekari = tc.PregledSvihLekaraDTO(tc.PregledSvihLekara());
+                tc.AzurirajLekare(tc.PregledSvihLekaraModel(lekari));
             }
 
-            
 
-            ZdravstveniKarton zk = new ZdravstveniKarton(null, pac.Jmbg, StanjePacijentaEnum.None, null, KrvnaGrupaEnum.None, null);
-
-            p.prostorija = (Prostorija)cbProstorija.SelectedItem;
-            p.Lekar = lekarLogin.lekar;
-            if (pac.ZdravstveniKarton != null)
-                p.zdravstveniKarton = pac.ZdravstveniKarton;
-            else
-            {
-                p.zdravstveniKarton = zk ;
-                pac.ZdravstveniKarton = zk;
-                //pac.ZdravstveniKarton.AddTermin(p);
-                zdravstveniKartonServis.KreirajZdravstveniKarton(pac.ZdravstveniKarton,ids);
-            }
-           
-            Termin tZaLjekara = new Termin();
-            tZaLjekara.Id = p.Id;
-            p.Lekar.AddTermin(tZaLjekara);
-            //p.zdravstveniKarton.AddTermin(tZaLjekara);
-
-            if (terminServis.ZakaziTermin(p, ids))
-            {
-                Trace.WriteLine("Upisao");
-                this.pregledi.Add(p);
-                lekariDat.sacuvaj(lekari);
-                //pacijentiDat.sacuvaj(pacijenti); // višakk?
-            }
-            pac.AddTermin(p);
-            pacijentiServis.AzurirajPacijenta(pac);
+            tc.DodajTermin(pac, tc.TerminDTO2Model(noviTermin));
+            tc.AzurirajPacijenta(pac);
             this.Close();
         }
 

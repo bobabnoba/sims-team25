@@ -30,7 +30,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
         {
             InitializeComponent();
             pacijent = izabrani;
-            karton = izabrani.ZdravstveniKarton;
+            karton = kr.findById(izabrani.Jmbg);
             
             if (karton == null)
             {

@@ -42,6 +42,22 @@ namespace ZdravoKorporacija.Controller
         {
             return lekarServis.PregledSvihLekaraDTO(modeli);
         }
+        public LekarDTO Model2DTO(Lekar model)
+        {
+            return lekarServis.Model2DTO(model);
+        }
+        public TerminDTO Model2DTO(Termin model)
+        {
+            return terminServis.Model2DTO(model);
+        }
+        public bool AzurirajTerminPacijent(Termin termin, Pacijent pacijent)
+        {
+            return terminServis.AzurirajTerminPacijent(termin, pacijent);
+        }
+        public bool ObrisiNalogPacijentu(Pacijent pacijent)
+        {
+            return pacijentServis.ObrisiNalogPacijentu(pacijent);
+        }
         public Lekar LekarDTO2Model(LekarDTO dto)
         {
             return lekarServis.DTO2Model(dto);
@@ -118,6 +134,14 @@ namespace ZdravoKorporacija.Controller
         public void DodajTermin(Termin t)
         {
             terminServis.DodajTermin(t);
+        }
+        public Pacijent DTO2ModelNapravi(PacijentDTO dto)
+        {
+            return pacijentServis.DTO2ModelNapravi(dto);
+        }
+        public List<Termin> PregledSvihTermina()
+        {
+            return terminServis.PregledSvihTermina();
         }
     }
 

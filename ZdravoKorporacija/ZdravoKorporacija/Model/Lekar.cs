@@ -80,6 +80,7 @@ namespace Model
                 tmpTermin.Clear();
             }
         }
+        public SpecijalizacijaEnum Specijalizacija { get; set; }
 
     }
 }

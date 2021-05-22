@@ -85,6 +85,7 @@ namespace Service
             {
                 foreach(Notifikacija n in p.notifikacije.ToList())
                 {
+                    if(n!=null)
                     if (n.Sadrzaj.Equals(not))
                     {
                         p.notifikacije.Remove(n);
@@ -161,12 +162,13 @@ namespace Service
             PacijentDTO dto = new PacijentDTO(kartonDTO, model.Guest, model.Ime, model.Prezime, (int)model.Jmbg, model.BrojTelefona, model.Mejl, model.AdresaStanovanja, model.Pol, model.Username, model.Password, model.Uloga);
             return dto;
         }
+     
         public Pacijent DTO2Model(PacijentDTO dto)
         {
             
                 foreach(Pacijent p in PregledSvihPacijenata())
                 {
-                    if (p.Jmbg.Equals(dto.Jmbg))
+                    if (p.Password.Equals(dto.Password))
                         return p;
                 }
             return null;

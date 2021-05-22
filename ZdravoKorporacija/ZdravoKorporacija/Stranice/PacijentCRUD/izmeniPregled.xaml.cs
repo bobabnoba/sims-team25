@@ -104,7 +104,7 @@ namespace ZdravoKorporacija.Stranice
             {
                 this.pregledi.Remove(s);
                 this.pregledi.Add(p);
-               
+
             }
             this.Close();
         }
@@ -137,7 +137,7 @@ namespace ZdravoKorporacija.Stranice
                             {
                                 if (l.Jmbg.Equals(term.Lekar.Jmbg))
                                 {
-                                    dostupniLjekari.Remove(l);  
+                                    dostupniLjekari.Remove(l);
                                     ljekar.SelectedItem = null;
                                 }
                             }
@@ -162,7 +162,7 @@ namespace ZdravoKorporacija.Stranice
 
                     foreach (Termin term in pregledi)
                     {
-                    
+
 
                         if (term.Pocetak.ToString().Equals(p.Pocetak.ToString()))
                         {
@@ -170,7 +170,7 @@ namespace ZdravoKorporacija.Stranice
                             {
                                 if (l.Jmbg.Equals(term.Lekar.Jmbg))
                                 {
-                                    dostupniLjekari.Remove(l);  
+                                    dostupniLjekari.Remove(l);
                                     ljekar.SelectedItem = null;
                                 }
                             }

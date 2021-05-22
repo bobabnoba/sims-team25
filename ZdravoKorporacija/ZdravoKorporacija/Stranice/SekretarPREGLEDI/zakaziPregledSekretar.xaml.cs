@@ -25,8 +25,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
     public partial class zakaziPregledSekretar : Window
     {
 
-        private PacijentRepozitorijum ps = new PacijentRepozitorijum();
-        private List<Pacijent> pacijenti = new List<Pacijent>();
+        
         private List<LekarDTO> lekari = new List<LekarDTO>();
         private List<LekarDTO> slobodniLekari;
         private List<ProstorijaDTO> slobodneProstorije;
@@ -52,8 +51,8 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
             noviTermin = new TerminDTO();
             pregledi = termini;
 
-            pacijenti = ps.dobaviSve();
-            cbPacijent.ItemsSource = pacijenti;
+            
+            cbPacijent.ItemsSource = tc.PregledSvihPacijenata();
 
             lekari = tc.PregledSvihLekaraDTO(tc.PregledSvihLekara());
 

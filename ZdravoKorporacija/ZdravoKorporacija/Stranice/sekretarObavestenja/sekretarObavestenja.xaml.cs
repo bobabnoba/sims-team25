@@ -11,6 +11,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Model;
+using ZdravoKorporacija.Controller;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Service;
 
 namespace ZdravoKorporacija.Stranice.sekretarObavestenja
@@ -20,18 +22,18 @@ namespace ZdravoKorporacija.Stranice.sekretarObavestenja
     /// </summary>
     public partial class sekretarObavestenja : Page
     {
-        private ObavestenjaService os = new ObavestenjaService();
-        private List<Notifikacija> obavestenja;
+        private ObavestenjaController controller = new ObavestenjaController();
+        private List<NotifikacijaDTO> obavestenja;
         public sekretarObavestenja()
         {
             InitializeComponent();
-            obavestenja = os.pregled();
+            obavestenja = controller.PregledSvihObavestenja2DTO(controller.PregledSvihObavestenja());
             globalna.ItemsSource = obavestenja;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            kreirajObavestenje ko = new kreirajObavestenje(obavestenja);
+            kreirajObavestenje ko = new kreirajObavestenje();
             ko.Show();
         }
 
@@ -42,10 +44,10 @@ namespace ZdravoKorporacija.Stranice.sekretarObavestenja
 
         private void Button_Click2(object sender, RoutedEventArgs e)
         {
-            Notifikacija n = new Notifikacija();
-            n = (Notifikacija)globalna.SelectedItem;
-            os.obrisiObavestenje(n.Sadrzaj);
-            globalna.ItemsSource = os.pregled(); 
+            NotifikacijaDTO n = new NotifikacijaDTO();
+            n = (NotifikacijaDTO)globalna.SelectedItem;
+            controller.obrisiObavestenje(n.Sadrzaj);
+            globalna.ItemsSource = controller.pregled(); 
         }
     }
 }

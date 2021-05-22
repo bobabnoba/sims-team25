@@ -85,7 +85,18 @@ namespace Service
         }
 
 
-      
+      public void DodajAlergen(ZdravstveniKartonDTO k1DTO, ZdravstveniKartonDTO k2DTO, string alergija, Pacijent pacijent)
+        {
+            ZdravstveniKarton k1 = DTO2Model(k1DTO);
+            ZdravstveniKarton k2 = DTO2Model(k2DTO);
+            k2.dodajAlergije(alergija);
+            if (AzurirajZdravstveniKarton(k2))
+            {
+                PregledSvihZdravstvenihKartona().Remove(k1);
+                PregledSvihZdravstvenihKartona().Add(k2);
+            }
+            pacijent.ZdravstveniKarton = k2;
+        }
       public bool AzurirajZdravstveniKarton(ZdravstveniKarton zdravstveniKarton)
 
       {
@@ -104,7 +115,7 @@ namespace Service
             return false;
         }
       
-      public ZdravstveniKarton PregledSvihZdravstvenihKartona(long id)
+      public ZdravstveniKarton PregledZdravstvenogKartona(long id)
       {
             ZdravstveniKartonRepozitorijum datoteka = new ZdravstveniKartonRepozitorijum();
             List<ZdravstveniKarton> zdravstveniKartoni = datoteka.DobaviSve();
@@ -118,7 +129,7 @@ namespace Service
             return null;
         }
       
-      public List<ZdravstveniKarton> PregledZdravstvenogKartona()
+      public List<ZdravstveniKarton> PregledSvihZdravstvenihKartona()
       {
             ZdravstveniKartonRepozitorijum datoteka = new ZdravstveniKartonRepozitorijum();
             List<ZdravstveniKarton> zdravstveniKartoni = datoteka.DobaviSve();
@@ -132,5 +143,9 @@ namespace Service
             return dto;
         }
    
+        public ZdravstveniKarton DTO2Model(ZdravstveniKartonDTO dto)
+        {
+            return findById(dto.Id);
+        }
    }
 }
