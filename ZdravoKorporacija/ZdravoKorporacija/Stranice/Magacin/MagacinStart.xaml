@@ -52,7 +52,7 @@
         <Button Content="Dodaj opremu"  Grid.Row="11" Grid.Column="1"  Click="dodaj"  />
         <Button Content="Izmeni opremu"  Grid.Row="11" Grid.Column="3"  Click="Button_Click_1"  />
         <Button Content="Izbriši opremu"   Grid.Row="11" Grid.Column="5" Grid.ColumnSpan="3" Click="Button_Click_2"  />
-        <Button Content="Kreiraj izveštaj" Grid.Row="10" Grid.Column="9" Grid.ColumnSpan="3"  Click="Button_Click_2"  />
+        <Button Content="Kreiraj izveštaj" Grid.Row="10" Grid.Column="9" Grid.ColumnSpan="3"  Click="Button_Click_3"  />
 
         <Label x:Name="label" Content="Pretraga magacina"  Foreground="White" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" FontSize="15" />
         <TextBox x:Name="searchBox"  Grid.Column="2" Grid.ColumnSpan="5" Grid.Row="2" TextWrapping="Wrap" TextChanged="searchBox_TextChanged"   />

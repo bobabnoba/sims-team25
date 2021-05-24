@@ -9,14 +9,14 @@ using ZdravoKorporacija.DTO;
 
 namespace Model
 {
-    public class StatickaOprema : Inventar
+    public class StatickaOprema : InventarDTO
     {
         public Termin termin { get; set; }
 
         public Prostorija Prostorija { get; set; }
 
         public StatickaOprema() { }
-        public StatickaOprema(Inventar inv) : base(inv.Id, inv.Naziv, inv.UkupnaKolicina, inv.Proizvodjac, inv.DatumNabavke)
+        public StatickaOprema(InventarDTO inv) : base(inv.Id, inv.Naziv, inv.UkupnaKolicina, inv.Proizvodjac, inv.DatumNabavke)
         {
         }
 
@@ -25,7 +25,7 @@ namespace Model
             this.termin = termin;
         }
 
-        public StatickaOprema(Termin termin, Inventar inv) : base(inv.Id, inv.Naziv, inv.UkupnaKolicina, inv.Proizvodjac, inv.DatumNabavke)
+        public StatickaOprema(Termin termin, InventarDTO inv) : base(inv.Id, inv.Naziv, inv.UkupnaKolicina, inv.Proizvodjac, inv.DatumNabavke)
         {
             this.termin = termin;
         }

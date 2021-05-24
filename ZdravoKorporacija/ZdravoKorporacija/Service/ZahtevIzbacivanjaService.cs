@@ -3,13 +3,14 @@ using Repository;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Repository;
 
 namespace Service
 {
     class ZahtevIzbacivanjaService
     {
-        public bool ZakaziIzbacivanje(Inventar inventar, ZahtevIzbacivanja zahtevIzabacivanja, DateTime dt, string sati, string trajanje, Dictionary<int, int> ids)
+        public bool ZakaziIzbacivanje(InventarDTO inventar, ZahtevIzbacivanja zahtevIzabacivanja, DateTime dt, string sati, string trajanje, Dictionary<int, int> ids)
         {
             ZahtevIzbacivanjaRepozitorijum datoteka = ZahtevIzbacivanjaRepozitorijum.Instance;
             List<ZahtevIzbacivanja> zahtevi = datoteka.dobaviSve();

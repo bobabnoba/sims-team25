@@ -1,15 +1,16 @@
 ﻿using Service;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using ZdravoKorporacija.DTO;
 
-namespace ZdravoKorporacija.Controller
+namespace Controller
 {
     class MagacinController
     {
         MagacinService magacinService = new MagacinService();
-        public List<InventarDTO> PregledSveOpremeDTO()
+        public ObservableCollection<InventarDTO> PregledSveOpremeDTO()
         {
             return magacinService.PregledSveOpremeDTO();
         }

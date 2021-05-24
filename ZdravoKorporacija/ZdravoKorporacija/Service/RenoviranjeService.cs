@@ -58,7 +58,7 @@ namespace Service
             {
                 foreach (StatickaOprema st in oprema)
                 {
-                    Inventar inventar = (Inventar)st;
+                    InventarDTO inventar = (InventarDTO)st;
                     ZahtevPremestanjaDTO zp = new ZahtevPremestanjaDTO();
                     zp.prostorija = new ProstorijaDTO(zahtevRenoviranja.Prostorija);
                     IDRepozitorijum datotekaIDPremestanja = new IDRepozitorijum("iDMapZahtevPremestanja");

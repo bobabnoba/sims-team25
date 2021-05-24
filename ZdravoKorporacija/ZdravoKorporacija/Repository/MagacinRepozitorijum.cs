@@ -14,7 +14,7 @@ namespace Repository
     {
         private static MagacinRepozitorijum _instance;
         public  ObservableCollection<Inventar> magacinOprema;
-        public ObservableCollection<InventarDTO> magacinOpremaDTO;
+      
         public static MagacinRepozitorijum Instance
         {
             get
@@ -30,28 +30,9 @@ namespace Repository
 
         private MagacinRepozitorijum() {
             magacinOprema = new ObservableCollection<Inventar>();
-            magacinOpremaDTO = new ObservableCollection<InventarDTO>();
         }
 
-        public bool Kreiraj()
-        {
-            // TODO: implement
-            return false;
-        }
-
-        public bool Obrisi(int id)
-        {
-            // TODO: implement
-            return false;
-        }
-
-        public Inventar Dobavi()
-        {
-            // TODO: implement
-            return null;
-        }
-
-        public List<Inventar> DobaviSve()
+        public ObservableCollection<Inventar> DobaviSve()
         {
             string lokacija = @"..\..\..\Data\inventar.json";
             List<Inventar> oprema = new List<Inventar>();
@@ -67,7 +48,7 @@ namespace Repository
             {
                 magacinOprema = new ObservableCollection<Inventar>(oprema);
             }
-                return oprema;
+                return magacinOprema;
             
         }
 
@@ -86,27 +67,5 @@ namespace Repository
             writer.Close();
             return 1;
         }
-
-        public List<InventarDTO> DobaviSveDTO()
-        {
-            string lokacija = @"..\..\..\Data\inventar.json";
-            List<InventarDTO> oprema = new List<InventarDTO>();
-            if (File.Exists(lokacija))
-            {
-                string jsonText = File.ReadAllText(lokacija);
-                if (!string.IsNullOrEmpty(jsonText))
-                {
-                    oprema = JsonConvert.DeserializeObject<List<InventarDTO>>(jsonText);
-                }
-            }
-            if (oprema != null)
-            {
-                magacinOpremaDTO = new ObservableCollection<InventarDTO>(oprema);
-            }
-            return oprema;
-
-        }
-
-
     }
 }

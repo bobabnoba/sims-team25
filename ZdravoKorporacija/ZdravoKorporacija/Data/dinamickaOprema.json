@@ -214,5 +214,59 @@
     "UkupnaKolicina": 100,
     "Proizvodjac": "forma ideale",
     "DatumNabavke": "0001-01-01T00:00:00"
+  },
+  {
+    "Kolicina": 20,
+    "Prostorija": {
+      "inventar": [],
+      "statickaOprema": [],
+      "dinamickaOprema": [],
+      "Id": 3,
+      "Naziv": "soba22",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 2
+    },
+    "Id": 2,
+    "Naziv": "stolica",
+    "UkupnaKolicina": 80,
+    "Proizvodjac": "forma ideale",
+    "DatumNabavke": "0001-01-01T00:00:00"
+  },
+  {
+    "Kolicina": 60,
+    "Prostorija": {
+      "inventar": [],
+      "statickaOprema": [],
+      "dinamickaOprema": [],
+      "Id": 2,
+      "Naziv": "soba21",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 2
+    },
+    "Id": 2,
+    "Naziv": "stolica",
+    "UkupnaKolicina": 40,
+    "Proizvodjac": "forma ideale",
+    "DatumNabavke": "0001-01-01T00:00:00"
+  },
+  {
+    "Kolicina": 50,
+    "Prostorija": {
+      "inventar": [],
+      "statickaOprema": [],
+      "dinamickaOprema": [],
+      "Id": 5,
+      "Naziv": "soba33",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 3
+    },
+    "Id": 2,
+    "Naziv": "stolica",
+    "UkupnaKolicina": 50,
+    "Proizvodjac": "forma ideale",
+    "DatumNabavke": "0001-01-01T00:00:00"
   }
 ]

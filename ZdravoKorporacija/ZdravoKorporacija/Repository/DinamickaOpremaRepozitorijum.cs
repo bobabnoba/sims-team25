@@ -69,10 +69,8 @@ namespace Repository
             return magacinDinamickaOprema;
         }
 
-        public int Sacuvaj(DinamickaOprema din)
-        {
-            magacinDinamickaOprema.Add(din);
-
+        public int Sacuvaj()
+        { 
             string lokacija = @"..\..\..\Data\dinamickaOprema.json";
             JsonSerializer serializer = new JsonSerializer();
             serializer.Formatting = Formatting.Indented;

@@ -22,7 +22,7 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
     /// </summary>
     public partial class statickaOpremaPremestiIzMagacina : Window
     {
-        private UpravnikController uc = new UpravnikController();
+        private UpravnikController upravnikKontroler = new UpravnikController();
         private StatickaOpremaService statickaopremaStorage = new StatickaOpremaService();
         private ZahtevPremestanjaService zahteviStorage = new ZahtevPremestanjaService();
         private ProstorijaController prostorijeController = new ProstorijaController();
@@ -38,37 +38,31 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
         private int indeks;
         private Boolean imaZahtev = true;
 
+
+        DatePicker izborDatuma;
+        ComboBox comboBoxSati;
+
         public statickaOpremaPremestiIzMagacina()
         {
             InitializeComponent();
-            this.uc.DodajIzMagacina();
-            this.listaZahteva = zahteviStorage.PregledSveOpreme();
+            upravnikKontroler.DodajIzMagacina();
+            listaZahteva = zahteviStorage.PregledSveOpreme();
             cbMagacin.ItemsSource = magacineController.PregledSveOpremeDTO();
             cbProstorija.ItemsSource = prostorijeController.PregledSvihProstorijaDTO();
-            pregledi = new ObservableCollection<Termin>(this.uc.PregledSvihTermina());
+            pregledi = new ObservableCollection<Termin>(upravnikKontroler.PregledSvihTermina());
 
-           
-            DateTime danas = DateTime.Today;
 
-            for (DateTime tm = danas.AddHours(8); tm < danas.AddHours(22); tm = tm.AddMinutes(30))
-            {
-                sati.Items.Add(tm.ToShortTimeString());
+            comboBoxSati = sati;
+            izborDatuma = timePicker;
 
-            }
-
-            CalendarDateRange kalendar = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
-            timePicker.BlackoutDates.Add(kalendar);
-
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(1);
-            timer.Tick += ProveraZahteva;
-            timer.Start();
+            kalendarInicijalizacija();
+            timer();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            InventarDTO inventar = (InventarDTO)cbMagacin.SelectedItem;
+            DTO.InventarDTO inventar = (DTO.InventarDTO)cbMagacin.SelectedItem;
             TerminDTO termin = new TerminDTO();
             StatickaOpremaDTO staticka = new StatickaOpremaDTO(termin, inventar);
             ZahtevPremestanjaDTO zahtevPremestanjaDTO = new ZahtevPremestanjaDTO();
@@ -103,11 +97,11 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
                 MessageBox.Show("zavrsen termin");
                 ZahtevPremestanjaRepozitorijum.Instance.sacuvaj();
 
-                ProstorijaDTO p = new ProstorijaDTO();
-                 //z.prostorija;
-                StatickaOprema stat = new StatickaOprema((Inventar)z.StatickaOprema);
-                //p.statickaOprema = new List<StatickaOprema>();
-                //p.statickaOprema.Add(stat);
+                
+                Prostorija p = z.prostorija;
+                StatickaOprema stat = new StatickaOprema((InventarDTO)z.StatickaOprema);
+                p.statickaOprema = new List<StatickaOprema>();
+                p.statickaOprema.Add(stat);
 
 
                 prostorijeController.AzurirajProstoriju(p, this.indeks);
@@ -116,6 +110,9 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
 
 
         }
+
+
+
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
@@ -182,5 +179,28 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
                 sati.IsEnabled = true;
             }
         }
+
+        public void timer() {
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += ProveraZahteva;
+            timer.Start();
+        }
+
+        public void kalendarInicijalizacija()
+        {
+            DateTime danas = DateTime.Today;
+
+            for (DateTime tm = danas.AddHours(8); tm < danas.AddHours(22); tm = tm.AddMinutes(30))
+            {
+               comboBoxSati.Items.Add(tm.ToShortTimeString());
+
+            }
+
+            CalendarDateRange kalendar = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
+            izborDatuma.BlackoutDates.Add(kalendar);
+        }
+
+
     }
 }

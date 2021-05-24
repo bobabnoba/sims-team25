@@ -4,23 +4,28 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Controller
 {
     public class UpravnikController
     {
-        public Inventar DodajUMagacin(int id, string naziv, int ukupnaKolicina, string proizvodjac, DateTime datumNabavke,Dictionary<int,int> id_map)
+        MagacinService magacinServis = new MagacinService();
+        DinamickaOpremaService dinamickaOpremaServis = new DinamickaOpremaService();
+        public bool DodajUMagacin(InventarDTO opremaDTO)
         {
-            MagacinService ms = new MagacinService();
-            ms.DodajOpremu(id, naziv, ukupnaKolicina, proizvodjac, datumNabavke,id_map);
-            return null;
+         return  magacinServis.DodajOpremu(opremaDTO);
         }
         public bool DodajIzMagacina()
         {
-            MagacinService ms = new MagacinService();
-            ms.PregledSveOpreme();
+            magacinServis.PregledSveOpreme();
             return true;
+        }
+
+        public ObservableCollection<InventarDTO> DodajIzMagacinaDTO()
+        {
+            return magacinServis.PregledSveOpremeDTO();
         }
         public ObservableCollection<StatickaOprema> PregledMagacinaStaticke()
         {
@@ -30,8 +35,12 @@ namespace ZdravoKorporacija.Controller
         }
         public ObservableCollection<DinamickaOprema> PregledMagacinaDinamcike()
         {
-            DinamickaOpremaService dos = new DinamickaOpremaService();
-            return dos.PregledSveOpreme();
+            return dinamickaOpremaServis.PregledSveOpreme();
+        }
+
+        public ObservableCollection<DinamickaOpremaDTO> PregledMagacinaDinamcikeDTO()
+        {
+            return dinamickaOpremaServis.PregledSveOpremeDTO();
         }
         public List<Termin> PregledSvihTermina()
         {

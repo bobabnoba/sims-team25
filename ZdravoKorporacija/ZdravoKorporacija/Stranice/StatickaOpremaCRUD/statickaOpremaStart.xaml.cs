@@ -22,16 +22,11 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
     public partial class statickaOpremaStart : Page
     {
 
-        private UpravnikController uc = new UpravnikController();
+        private UpravnikController upravnikKontroler = new UpravnikController();
         public statickaOpremaStart()
         {
             InitializeComponent();
-            dgStatickaOprema.ItemsSource = this.uc.PregledMagacinaStaticke();
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-
+            dgStatickaOprema.ItemsSource = upravnikKontroler.PregledMagacinaStaticke();
         }
 
         private void dodaj(object sender, RoutedEventArgs e)
@@ -41,6 +36,11 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
         {
 
         }
