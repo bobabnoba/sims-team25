@@ -22,7 +22,16 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
 
         private void dodaj(object sender, RoutedEventArgs e)
         {
+            if (dgNeodobreniLek.SelectedItem != null)
+            {
 
+                posaljiZahtevZaLek posaljiZahtev = new posaljiZahtevZaLek(neodobreniZahtevi,(ZahtevLekDTO)dgNeodobreniLek.SelectedItem);
+                posaljiZahtev.Show();
+            }
+            else
+            {
+                MessageBox.Show("Gre[ka", "Morate selektovati zahtev koji želite ponovo da prosledite");
+            }
         }
 
         private void dgUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -45,7 +54,15 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-
+            if (dgNeodobreniLek.SelectedItem != null)
+            {
+            obrisiNeodobreniLek obrisiNeodobreniZahtevLek = new obrisiNeodobreniLek(neodobreniZahtevi,(ZahtevLekDTO) dgNeodobreniLek.SelectedItem);
+            obrisiNeodobreniZahtevLek.Show();
+            }
+            else
+            {
+                MessageBox.Show("Morate selektovati zahtev da bi ste izmenili", "Greška");
+            }
         }
 
         private void  izmenaAlternativnihLekova(object sender, RoutedEventArgs e)

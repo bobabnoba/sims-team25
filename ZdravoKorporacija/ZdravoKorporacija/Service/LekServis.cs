@@ -84,12 +84,15 @@ namespace Service
         }
 
 
-        public bool DodajZahtevLeka(ZahtevLekDTO zahtevLek, Dictionary<int, int> id_map)
+        public bool DodajZahtevLeka(ZahtevLekDTO zahtevLek)
         {
             ZahtevLekRepozitorijum datoteka = ZahtevLekRepozitorijum.Instance;
-            List<ZahtevLek> zahtevi = datoteka.dobaviSve();
-
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapZahtevZaLek");
+            datoteka.dobaviSve();
+            Dictionary<int, int> id_map = datotekaID.dobaviSve();
+            int id = nadjiSlobodanID(id_map);
+            id_map[id] = 1;
+
             Lek lek = new Lek(zahtevLek.Lek.Id,zahtevLek.Lek.Proizvodjac,zahtevLek.Lek.Sastojci,zahtevLek.Lek.NusPojave,zahtevLek.Lek.NazivLeka);
             ZahtevLek zahtevZaLek = new ZahtevLek(lek,zahtevLek.NeophodnihPotvrda,zahtevLek.BrojPotvrda);
             
@@ -112,7 +115,11 @@ namespace Service
         {
             ZahtevLekRepozitorijum datoteka = ZahtevLekRepozitorijum.Instance;
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapZahtevZaLek");
-          
+            datoteka.dobaviSve();
+            id_map = datotekaID.dobaviSve();
+            id_map[zahtevLek.Id] = 0;
+
+
             foreach (ZahtevLek z in ZahtevLekRepozitorijum.Instance.zahteviLek)
             {
                 if (z.Id.Equals(zahtevLek.Id))
@@ -136,7 +143,20 @@ namespace Service
 
 
 
-
+        private int nadjiSlobodanID(Dictionary<int, int> id_map)
+        {
+            int id = 0;
+            for (int i = 0; i < 1000; i++)
+            {
+                if (id_map[i] == 0)
+                {
+                    id = i;
+                    id_map[i] = 1;
+                    return id;
+                }
+            }
+            return id;
+        }
 
 
 

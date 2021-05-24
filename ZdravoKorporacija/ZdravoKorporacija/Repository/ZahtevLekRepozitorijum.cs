@@ -35,9 +35,8 @@ namespace ZdravoKorporacija.Repository
 
        
 
-        public int sacuvaj()
+        public void sacuvaj()
         {
-            
             string lokacija = @"..\..\..\Data\zahteviZaLekove.json";
             JsonSerializer serializer = new JsonSerializer();
             serializer.Formatting = Formatting.Indented;
@@ -46,7 +45,6 @@ namespace ZdravoKorporacija.Repository
             serializer.Serialize(jWriter,zahteviLek);
             jWriter.Close();
             writer.Close();
-            return 1;
         }
         public List<ZahtevLek> dobaviSve()
         {

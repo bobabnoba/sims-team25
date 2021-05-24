@@ -66,6 +66,7 @@ namespace ZdravoKorporacija.DTO
 
         public ZahtevLekDTO(ZahtevLek zahtevLek)
         {
+            this.Id = zahtevLek.Id;
             this.Lek = new LekDTO(zahtevLek.Lek);
             this.NeophodnihPotvrda = zahtevLek.NeophodnihPotvrda;
             this.BrojPotvrda = zahtevLek.BrojPotvrda;

@@ -66,6 +66,7 @@ namespace Model
 
         public ZahtevLek(ZahtevLekDTO zahtevLekDTO)
         {
+            this.Id = zahtevLekDTO.Id;
             this.Lek = new Lek(zahtevLekDTO.Lek);
             this.NeophodnihPotvrda = zahtevLekDTO.NeophodnihPotvrda;
             this.BrojPotvrda = zahtevLekDTO.BrojPotvrda;

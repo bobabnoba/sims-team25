@@ -1,16 +1,1 @@
-[
-  {
-    "lekari": [],
-    "Id": 1,
-    "Lek": {
-      "alternativniLekovi": [],
-      "Id": 0,
-      "Proizvodjac": "qq",
-      "Sastojci": "qq",
-      "NusPojave": "qq",
-      "NazivLeka": "qq"
-    },
-    "NeophodnihPotvrda": 2,
-    "BrojPotvrda": 0
-  }
-]
+[]

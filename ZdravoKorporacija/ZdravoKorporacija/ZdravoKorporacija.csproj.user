@@ -61,6 +61,12 @@
     <Compile Update="Stranice\LekoviCRUD\NeodobreniZahteviZaLek.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Stranice\LekoviCRUD\obrisiNeodobreniLek.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\LekoviCRUD\posaljiZahtevZaLek.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Stranice\Logovanje\lekarLogin.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -231,6 +237,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\LekoviCRUD\NeodobreniZahteviZaLek.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\LekoviCRUD\obrisiNeodobreniLek.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\LekoviCRUD\posaljiZahtevZaLek.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\Logovanje\lekarLogin.xaml">

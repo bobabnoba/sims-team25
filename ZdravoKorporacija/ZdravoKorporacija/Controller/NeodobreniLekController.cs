@@ -15,6 +15,8 @@ namespace Controller
         {
             LekDTO lek = new LekDTO(zahtevLek.Lek.Id, zahtevLek.Lek.Proizvodjac, zahtevLek.Lek.Sastojci, zahtevLek.Lek.NusPojave, zahtevLek.Lek.NazivLeka);
             ZahtevLekDTO zahtevZaNeodobreniLek = new ZahtevLekDTO(lek, zahtevLek.NeophodnihPotvrda, zahtevLek.BrojPotvrda);
+            zahtevZaNeodobreniLek.lekari = zahtevLek.lekari;
+        
             return this.neodobreniLekService.DodajNeodobreniZahtevLeka(zahtevZaNeodobreniLek);
         }
 
@@ -26,6 +28,11 @@ namespace Controller
         public ObservableCollection<ZahtevLekDTO> PregledNeodobrenihLekovaDTO()
         {
             return this.neodobreniLekService.PregledNeodobrenihLekovaDTO();
+        }
+
+        public bool obrisiNeodobreniLek(ZahtevLekDTO zahtev)
+        {
+            return this.neodobreniLekService.obrisiNeodobreniLek(zahtev);
         }
     }
 }

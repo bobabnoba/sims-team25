@@ -3,6 +3,7 @@ using Repository;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Text;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Repository;
@@ -40,6 +41,29 @@ namespace Service
             return true;
         }
 
+        public bool obrisiNeodobreniLek(ZahtevLekDTO selektovaniZahtevDTO)
+        {
+            ZahtevLek selektovaniZahtevLek = new ZahtevLek(selektovaniZahtevDTO);
+            NeodobreniLekRepository datoteka = NeodobreniLekRepository.Instance;
+            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapNeodobreniLek");
+            Dictionary<int, int> id_map = datotekaID.dobaviSve();
+            id_map[selektovaniZahtevLek.Id] = 0;
+
+            foreach (ZahtevLek zahtev in NeodobreniLekRepository.Instance.neodobreniLekovi)
+            {
+                Debug.WriteLine("zahtev" + zahtev.Id);
+                Debug.WriteLine("selektovani" + selektovaniZahtevLek.Id);
+                if (zahtev.Id == selektovaniZahtevLek.Id)
+                {
+                    NeodobreniLekRepository.Instance.neodobreniLekovi.Remove(zahtev);
+                    datoteka.sacuvaj();
+                    datotekaID.sacuvaj(id_map);
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public ObservableCollection<ZahtevLek> PregledNeodobrenihLekova()
         {
             return this.datoteka.dobaviSve();
@@ -71,6 +95,8 @@ namespace Service
 
             foreach (ZahtevLek zahtevNeodobreniLek in NeodobreniLekRepository.Instance.neodobreniLekovi)
             {
+                Debug.WriteLine("neodobreni" + zahtevNeodobreniLek.Id);
+                Debug.WriteLine("zahtev" + zahtevLek.Id);
                 if (zahtevNeodobreniLek.Id.Equals(zahtevLek.Id))
                 {
                     NeodobreniLekRepository.Instance.neodobreniLekovi.RemoveAt(indeks);

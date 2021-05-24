@@ -93,7 +93,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
             zahtevLekDTO.Id = zahtevId;
 
             lekServis.ObrisiZahtevZaLek(zl,ids);
-            lekServis.DodajZahtevLeka(zahtevLekDTO, ids);
+            lekServis.DodajZahtevLeka(zahtevLekDTO);
             this.Close();
 
         }

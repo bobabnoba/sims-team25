@@ -35,8 +35,8 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
         public IzmenaZahtevaZaLek(int selektovaniIndex, ZahtevLekDTO selektovaniZahtevLekDTO, ObservableCollection<ZahtevLekDTO> neodobreniZahtevi)
         {
             InitializeComponent();
-            lekici = new ObservableCollection<LekDTO>();
-            lekari = new ObservableCollection<Lekar>();
+            lekici = new ObservableCollection<LekDTO>(selektovaniZahtevLekDTO.Lek.alternativniLekovi);
+            lekari = new ObservableCollection<Lekar>(selektovaniZahtevLekDTO.lekari);
             List<int> potvrda = new List<int>();
             for (int i = 1; i <= 10; i++)
             {
@@ -48,6 +48,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
             textBoxNazivLeka.Text = selektovaniZahtevLekDTO.Lek.NazivLeka;
             indeksZahteva = selektovaniIndex;
 
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -57,19 +58,27 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
                 alterantivni = new ObservableCollection<LekDTO>();
             }
             else {
-                alterantivni = dodavanjeAlternativnih.alternativniLekovi;
+                alterantivni = new ObservableCollection<LekDTO>(selektovaniZahtev.Lek.alternativniLekovi);
             }
             LekDTO lek = new LekDTO(0, textBoxProizvodjac.Text, textBoxSastojci.Text, textBoxPojave.Text, textBoxNazivLeka.Text);
-
-            int neophodno = (int)comboBoxBrojPotvrda.SelectedItem;
-
+            int neophodno;
+            if (comboBoxBrojPotvrda.SelectedItem == null) {
+                MessageBox.Show("Greška","Morate selektovati broj potvrda");
+                return ;
+            }
+            else { 
+            neophodno = (int)comboBoxBrojPotvrda.SelectedItem;
+            }
             List<LekDTO> alekoviDTO = new List<LekDTO>();
 
             ObservableCollection<Lekar> izabrani = new ObservableCollection<Lekar>();
 
             if (izborLekaraZaPotvrdu != null)
             {
-               izabrani = izborLekaraZaPotvrdu.izabraniLekari;
+                izabrani = izborLekaraZaPotvrdu.izabraniLekari;
+            }
+            else {
+               izabrani = new ObservableCollection<Lekar>(selektovaniZahtev.lekari);
             }
             
             
@@ -86,30 +95,12 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
             IDRepozitorijum datoteka = new IDRepozitorijum("iDMapZahtevZaLek");
             Dictionary<int, int> ids = datoteka.dobaviSve();
 
-            int id = 0;
-            for (int i = 0; i < 1000; i++)
-            {
-                if (ids[i] == 0)
-                {
-                    id = i;
-                    ids[i] = 1;
-                    break;
-                }
-            }
-
-            int zahtevId = id;
-
-            zahtevLekDTO.Id = zahtevId;
-
-            
+            zahtevLekDTO.Id = selektovaniZahtev.Id;
 
             if (neodobreniLekController.AzurirajZahtev(indeksZahteva, zahtevLekDTO)) {
                 zahteviLekNeodobreni.RemoveAt(indeksZahteva);
                 zahteviLekNeodobreni.Insert(indeksZahteva, zahtevLekDTO);
             }
-
-            //this.selektovaniZahtev = zahtevLekDTO;
-            //lekServis.DodajZahtevLeka(zahtevLekDTO, ids);
 
 
         }

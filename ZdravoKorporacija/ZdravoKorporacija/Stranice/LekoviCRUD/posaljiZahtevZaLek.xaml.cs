@@ -13,36 +13,32 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using ZdravoKorporacija.Model;
-using ZdravoKorporacija.Stranice.Logovanje;
+using ZdravoKorporacija.DTO;
 
 namespace ZdravoKorporacija.Stranice.LekoviCRUD
 {
     /// <summary>
-    /// Interaction logic for obrisiZahtevZaLek.xaml
+    /// Interaction logic for posaljiZahtevZaLek.xaml
     /// </summary>
-    public partial class obrisiZahtevZaLek : Window
+    public partial class posaljiZahtevZaLek : Window
     {
         LekServis lekServis = new LekServis();
-        private ObservableCollection<ZahtevLek> zahteviPrikaz;
-        private ZahtevLek zahtev;
-        private Dictionary<int, int> ids = new Dictionary<int, int>();
+        private ObservableCollection<ZahtevLekDTO> zahteviPrikaz;
+        private ZahtevLekDTO zahtev;
 
-        public obrisiZahtevZaLek(ObservableCollection<ZahtevLek> zahteviPrikaz, ZahtevLek zahtevLek, Dictionary<int, int> ids)
+        public posaljiZahtevZaLek(ObservableCollection<ZahtevLekDTO> zahteviPrikaz, ZahtevLekDTO zahtevLek)
         {
             InitializeComponent();
             this.zahteviPrikaz = zahteviPrikaz;
             this.zahtev = zahtevLek;
-            this.ids = ids;
         }
         private void da(object sender, RoutedEventArgs e)
         {
-            if(lekServis.ObrisiZahtevZaLek(zahtev, ids))
-            {
+            lekServis.DodajZahtevLeka(zahtev);
+            NeodobreniLekController neodobreniLekoviController = new NeodobreniLekController();
+            if (neodobreniLekoviController.obrisiNeodobreniLek(this.zahtev)){
                 zahteviPrikaz.Remove(zahtev);
             }
-            NeodobreniLekController neodobreniLekoviController = new NeodobreniLekController();
-            neodobreniLekoviController.DodajNeodobreniLek(this.zahtev);
             this.Close();
 
         }
