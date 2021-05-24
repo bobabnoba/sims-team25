@@ -30,10 +30,12 @@ namespace Service
         }
         public LekarDTO Model2DTO(Lekar model)
         {
-
-            LekarDTO dto = new LekarDTO(model.Ime, model.Prezime, model.Jmbg, model.BrojTelefona, model.Mejl, model.AdresaStanovanja, model.Pol, model.Username, model.Password, model.Uloga);
+            LekarDTO dto = new LekarDTO();
+            if (model != null) 
+                dto = new LekarDTO(model.Ime, model.Prezime, model.Jmbg, model.BrojTelefona, model.Mejl, model.AdresaStanovanja, model.Pol, model.Username, model.Password, model.Uloga);
+            
             return dto;
-        }
+           }
         public List<Lekar> PregledSvihLekaraModel(List<LekarDTO> dtos)
         {
             List<Lekar> modeli = new List<Lekar>();
@@ -46,16 +48,20 @@ namespace Service
 
         public List<LekarDTO> PregledSvihLekaraDTO(List<Lekar> modeli)
         {
+            if (modeli == null)
+                modeli = PregledSvihLekara();
             List<LekarDTO> dtos = new List<LekarDTO>();
             foreach(Lekar l in modeli)
             {
+                if(l!=null)
                 dtos.Add(Model2DTO(l));
             }
             return dtos;
         }
-        public void AzurirajLekare(List<Lekar> lekari)
+        public void AzurirajLekare()
         {
             LekarRepozitorijum datoteka = new LekarRepozitorijum();
+            List<Lekar> lekari = datoteka.dobaviSve();
             datoteka.sacuvaj(lekari);
         }
       

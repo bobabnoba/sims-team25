@@ -89,7 +89,7 @@ namespace ZdravoKorporacija.Stranice
             {
                 this.pregledi.Add(tc.TerminDTO2Model(noviTermin));
                 lekari = tc.PregledSvihLekaraDTO(tc.PregledSvihLekara());
-                tc.AzurirajLekare(tc.PregledSvihLekaraModel(lekari));
+                tc.AzurirajLekare();
 
             }
 

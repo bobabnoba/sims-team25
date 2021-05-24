@@ -42,6 +42,10 @@ namespace ZdravoKorporacija.Controller
         {
             return lekarServis.PregledSvihLekaraDTO(modeli);
         }
+        public ProstorijaDTO Model2DTO(Prostorija model)
+        {
+            return prostorijaServis.Model2DTO(model);
+        }
         public LekarDTO Model2DTO(Lekar model)
         {
             return lekarServis.Model2DTO(model);
@@ -95,9 +99,9 @@ namespace ZdravoKorporacija.Controller
         {
             return terminServis.DTO2Model(dto);
         }
-        public void AzurirajLekare(List<Lekar> lekari)
+        public void AzurirajLekare()
         {
-            lekarServis.AzurirajLekare(lekari);
+            lekarServis.AzurirajLekare();
         }
         public List<TerminDTO> PregledSvihTermina2DTO(List<Termin> modeli)
         {
@@ -107,9 +111,9 @@ namespace ZdravoKorporacija.Controller
         {
             return terminServis.PregledSvihTermina2Model(dtos);
         }
-        public List<PacijentDTO> PregledSvihPacijenata2DTO(List<Pacijent> modeli)
+        public List<PacijentDTO> PregledSvihPacijenata2DTO()
         {
-            return pacijentServis.PregledSvihPacijenata2DTO(modeli);
+            return pacijentServis.PregledSvihPacijenata2DTO();
         }
         public List<Pacijent> PregledSvihPacijenata2Model(List<PacijentDTO> dtos)
         {
@@ -142,6 +146,26 @@ namespace ZdravoKorporacija.Controller
         public List<Termin> PregledSvihTermina()
         {
             return terminServis.PregledSvihTermina();
+        }
+        public bool ZakaziTerminPacijent(Termin termin, Dictionary<int, int> ids, Pacijent pacijent)
+        {
+            return terminServis.ZakaziTerminPacijent(termin, ids, pacijent);
+        }
+        public List<Lekar> DobaviSlobodneLekareHITNO()
+        {
+            return terminServis.DobaviSlobodneLekareHITNO();
+        }
+        public List<Prostorija> DobaviSlobodneProstorijeHITNO()
+        {
+            return terminServis.DobaviSlobodneProstorijeHITNO();
+        }
+        public List<Termin> NadjiAlternativneOperacije()
+        {
+            return terminServis.NadjiAlternativneOperacije();
+        }
+        public List<Termin> NadjiAlternativnePreglede()
+        {
+            return terminServis.NadjiAlternativnePreglede();
         }
     }
 

@@ -36,7 +36,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
             
             InitializeComponent();
             PacijentRepozitorijum dat = new PacijentRepozitorijum();
-            pacijenti = controller.PregledSvihPacijenata2DTO(controller.PregledSvihPacijenata());
+            pacijenti = controller.PregledSvihPacijenata2DTO();
             foreach (PacijentDTO p in pacijenti.ToList())
             {
                 if (p.Ime.Equals("NEREGISTROVANI"))

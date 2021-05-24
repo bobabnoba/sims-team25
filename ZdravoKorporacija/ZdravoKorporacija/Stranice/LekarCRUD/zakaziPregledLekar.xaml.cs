@@ -92,7 +92,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             {
                 tc.DodajTermin(tc.TerminDTO2Model(noviTermin));
                 lekari = tc.PregledSvihLekaraDTO(tc.PregledSvihLekara());
-                tc.AzurirajLekare(tc.PregledSvihLekaraModel(lekari));
+                tc.AzurirajLekare();
             }
 
 

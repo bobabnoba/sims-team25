@@ -104,7 +104,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
 
         private void hitno(object sender, RoutedEventArgs e)
         {
-            zakaziHitno zh = new zakaziHitno(termini, ids);
+            zakaziHitno zh = new zakaziHitno(ids);
             zh.Show();
         }
     }

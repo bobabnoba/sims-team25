@@ -134,18 +134,21 @@ namespace Service
         public List<Pacijent> PregledSvihPacijenata()
         {
             PacijentRepozitorijum datoteka = new PacijentRepozitorijum();
+            
             List<Pacijent> pacijenti = datoteka.dobaviSve();
             return pacijenti;
         }
         public List<Pacijent> PregledSvihPacijenata2Model(List<PacijentDTO> dtos)
         {
+
             List<Pacijent> modeli = new List<Pacijent>();
             foreach (PacijentDTO pdto in dtos)
                 modeli.Add(DTO2Model(pdto));
             return modeli;
         }
-        public List<PacijentDTO> PregledSvihPacijenata2DTO(List<Pacijent> modeli)
+        public List<PacijentDTO> PregledSvihPacijenata2DTO( )
         {
+            List<Pacijent> modeli = new List<Pacijent>();
             modeli = PregledSvihPacijenata();
             List<PacijentDTO> dtos = new List<PacijentDTO>();
             foreach(Pacijent model in modeli)
@@ -159,7 +162,7 @@ namespace Service
         {
             ZdravstveniKartonServis zks = new ZdravstveniKartonServis();
             ZdravstveniKartonDTO kartonDTO = zks.Model2DTO(model.ZdravstveniKarton);
-            PacijentDTO dto = new PacijentDTO(kartonDTO, model.Guest, model.Ime, model.Prezime, (int)model.Jmbg, model.BrojTelefona, model.Mejl, model.AdresaStanovanja, model.Pol, model.Username, model.Password, model.Uloga);
+            PacijentDTO dto = new PacijentDTO(kartonDTO, model.Guest, model.Ime, model.Prezime, model.Jmbg, model.BrojTelefona, model.Mejl, model.AdresaStanovanja, model.Pol, model.Username, model.Password, model.Uloga);
             return dto;
         }
      

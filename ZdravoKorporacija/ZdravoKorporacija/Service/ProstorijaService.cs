@@ -99,7 +99,8 @@ namespace Service
     
         public List<ProstorijaDTO> PregledSvihProstorijaDTO(List<Prostorija> modeli)
         {
-            modeli = PregledSvihProstorija();
+            if (modeli == null) 
+             modeli = PregledSvihProstorija();
             List<ProstorijaDTO> dtos = new List<ProstorijaDTO>();
             foreach(Prostorija model in modeli)
             {

@@ -109,12 +109,14 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
 
             noviTermin = new TerminDTO(tc.NadjiKartonID(pac.Jmbg), prostorijaTermina, lekarTermina, tipTermina, pocetakTermina, 0.5, null);
             noviTermin.Id = idTermina;
-            
+
+            TerminDTO zaLekara = new TerminDTO();
+            zaLekara.Id = noviTermin.Id;
+
             if (tc.ZakaziTermin(tc.TerminDTO2Model(noviTermin), ids))
             {
                 tc.DodajTermin(tc.TerminDTO2Model(noviTermin));
-                lekari = tc.PregledSvihLekaraDTO( tc.PregledSvihLekara());
-                tc.AzurirajLekare(tc.PregledSvihLekaraModel(lekari));
+                tc.AzurirajLekare();
             }
             
             
