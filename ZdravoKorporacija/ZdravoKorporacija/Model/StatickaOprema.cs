@@ -5,6 +5,7 @@
  ***********************************************************************/
 
 using System;
+using ZdravoKorporacija.DTO;
 
 namespace Model
 {
@@ -27,6 +28,10 @@ namespace Model
         public StatickaOprema(Termin termin, Inventar inv) : base(inv.Id, inv.Naziv, inv.UkupnaKolicina, inv.Proizvodjac, inv.DatumNabavke)
         {
             this.termin = termin;
+        }
+
+        public StatickaOprema(StatickaOpremaDTO statickaOpremaDTO) {
+            this.termin = new Termin(statickaOpremaDTO.termin);
         }
 
     }

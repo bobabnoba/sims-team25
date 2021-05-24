@@ -3,35 +3,26 @@ using Repository;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using ZdravoKorporacija.DTO;
 
 namespace ZdravoKorporacija.Service
 {
     class ZahtevPremestanjaService
     {
 
-        public bool ZakaziPremestanje(Inventar inventar, ZahtevPremestanja zahtevPremestanja, DateTime dt, string sati, string trajanje, Dictionary<int, int> ids)
+        public bool ZakaziPremestanje(InventarDTO inventar, ZahtevPremestanjaDTO zahtevPremestanja, DateTime dt, string sati, string trajanje)
         {
             ZahtevPremestanjaRepozitorijum datoteka = ZahtevPremestanjaRepozitorijum.Instance;
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapZahtevPremestanja");
+            Dictionary<int, int> ids = datotekaID.dobaviSve();
 
-
-            int id = 0;
-            for (int i = 0; i < 1000; i++)
-            {
-                if (ids[i] == 0)
-                {
-                    id = i;
-                    ids[i] = 1;
-                    break;
-                }
-            }
+            int id = nadjiSlobodanID(ids);
+            ids[id] = 1;
 
             zahtevPremestanja.Id = id;
-
-
-            zahtevPremestanja.StatickaOprema = new StatickaOprema(inventar);
-            StatickaOprema stat = new StatickaOprema(inventar);
-            zahtevPremestanja.prostorija.statickaOprema = new List<StatickaOprema>();
+            zahtevPremestanja.StatickaOprema = new StatickaOpremaDTO(inventar);
+            StatickaOpremaDTO stat = new StatickaOpremaDTO(inventar);
+            zahtevPremestanja.prostorija.statickaOprema = new System.Collections.ArrayList();
             zahtevPremestanja.prostorija.statickaOprema.Add(stat);
 
             String s = dt.ToString();
@@ -46,7 +37,9 @@ namespace ZdravoKorporacija.Service
             }
             zahtevPremestanja.Kraj = zahtevPremestanja.Pocetak.AddMinutes(minuta);
 
-            ZahtevPremestanjaRepozitorijum.Instance.zahtevi.Add(zahtevPremestanja);
+            ZahtevPremestanja zahtev = new ZahtevPremestanja(zahtevPremestanja);
+
+            ZahtevPremestanjaRepozitorijum.Instance.zahtevi.Add(zahtev);
             datoteka.sacuvaj();
             datotekaID.sacuvaj(ids);
 
@@ -57,6 +50,21 @@ namespace ZdravoKorporacija.Service
         {
             ZahtevPremestanjaRepozitorijum zpr = ZahtevPremestanjaRepozitorijum.Instance;
             return zpr.dobaviSve();
+        }
+
+        private int nadjiSlobodanID(Dictionary<int, int> id_map)
+        {
+            int id = 0;
+            for (int i = 0; i < 1000; i++)
+            {
+                if (id_map[i] == 0)
+                {
+                    id = i;
+                    id_map[i] = 1;
+                    return id;
+                }
+            }
+            return id;
         }
     }
 }

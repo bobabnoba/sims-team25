@@ -3,6 +3,7 @@ using Service;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 
 
@@ -14,10 +15,10 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
     public partial class izbrisiProstorijuUpravnik : Window
     {
         private ProstorijaService storage = new ProstorijaService();
-        private ObservableCollection<Prostorija> prostorije;
-        private Prostorija prostorijaZaBrisanje;
+        private ObservableCollection<ProstorijaDTO> prostorije;
+        private ProstorijaDTO prostorijaZaBrisanje;
         Dictionary<int, int> id_map = new Dictionary<int, int>();
-        public izbrisiProstorijuUpravnik(ObservableCollection<Prostorija> pr, Prostorija p, Dictionary<int, int> ids)
+        public izbrisiProstorijuUpravnik(ObservableCollection<ProstorijaDTO> pr, ProstorijaDTO p, Dictionary<int, int> ids)
         {
             InitializeComponent();
             this.prostorije = pr;

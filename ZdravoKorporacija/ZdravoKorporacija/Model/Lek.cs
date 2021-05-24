@@ -6,6 +6,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ZdravoKorporacija.DTO;
 
 namespace Model
 {
@@ -62,7 +63,7 @@ namespace Model
             if (alternativniLekovi != null)
                 alternativniLekovi.Clear();
         }
-
+        public Lek() { }
         public Lek(int  ID, String pr, String sas, String np, String nl)
         {
             Id = ID;
@@ -71,6 +72,33 @@ namespace Model
             NusPojave = np;
             NazivLeka = nl;
             this.alternativniLekovi = new List<Lek>();
+        }
+        public Lek(LekDTO lekDTO)
+        {
+            Id = lekDTO.Id;
+            Proizvodjac = lekDTO.Proizvodjac;
+            Sastojci = lekDTO.Sastojci;
+            NusPojave = lekDTO.NusPojave;
+            NazivLeka = lekDTO.NazivLeka;
+            this.alternativniLekovi = konvertujListuEntitetaUListuDTO(lekDTO.alternativniLekovi);
+
+        }
+        public List<Lek> konvertujListuEntitetaUListuDTO(List<LekDTO> lekovi)
+        {
+            if (lekovi != null)
+            {
+                List<Lek> lekoviDTO = new List<Lek>();
+                foreach (LekDTO lekDTO in lekovi)
+                {
+                    lekoviDTO.Add(new Lek(lekDTO));
+                }
+
+                return lekoviDTO;
+            }
+            else
+            {
+                return new List<Lek>();
+            }
         }
 
     }

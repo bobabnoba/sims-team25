@@ -22,5 +22,10 @@ namespace Controller
         {
             return this.neodobreniLekService.PregledNeodobrenihLekova();
         }
+
+        public ObservableCollection<ZahtevLekDTO> PregledNeodobrenihLekovaDTO()
+        {
+            return this.neodobreniLekService.PregledNeodobrenihLekovaDTO();
+        }
     }
 }

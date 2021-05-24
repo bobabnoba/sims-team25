@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using ZdravoKorporacija.DTO;
 
 namespace Controller
 {
@@ -15,7 +16,13 @@ namespace Controller
             return prostorijaService.PregledSvihProstorija();    
         }
 
-       public void AzurirajProstoriju(Prostorija p, int indeks)
+        public ObservableCollection<ProstorijaDTO> PregledSvihProstorijaDTO()
+        {
+            return prostorijaService.PregledSvihProstorijaDTO();
+        }
+
+
+        public void AzurirajProstoriju(ProstorijaDTO p, int indeks)
         {
             prostorijaService.AzurirajProstoriju(p, indeks);
         }

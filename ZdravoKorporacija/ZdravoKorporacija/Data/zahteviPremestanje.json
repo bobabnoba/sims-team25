@@ -2,18 +2,8 @@
   {
     "prostorija": {
       "inventar": [],
-      "statickaOprema": [
-        {
-          "termin": null,
-          "Prostorija": null,
-          "Id": 0,
-          "Naziv": "krevet",
-          "UkupnaKolicina": 4000,
-          "Proizvodjac": "simpo",
-          "DatumNabavke": "0001-01-01T00:00:00"
-        }
-      ],
-      "dinamickaOprema": null,
+      "statickaOprema": [],
+      "dinamickaOprema": [],
       "Id": 0,
       "Naziv": "soba11",
       "Tip": 1,
@@ -21,16 +11,84 @@
       "Sprat": 1
     },
     "StatickaOprema": {
-      "termin": null,
+      "termin": {
+        "izvestaj": null,
+        "zdravstveniKarton": null,
+        "prostorija": null,
+        "Lekar": {
+          "termin": null,
+          "Ime": null,
+          "Prezime": null,
+          "Jmbg": 0,
+          "BrojTelefona": 0,
+          "Mejl": null,
+          "AdresaStanovanja": null,
+          "Pol": 0,
+          "Username": null,
+          "Password": null,
+          "Uloga": 0
+        },
+        "Id": 0,
+        "Tip": 0,
+        "Pocetak": "0001-01-01T00:00:00",
+        "Trajanje": 0.5,
+        "hitno": false
+      },
       "Prostorija": null,
       "Id": 0,
-      "Naziv": "krevet",
-      "UkupnaKolicina": 4000,
-      "Proizvodjac": "simpo",
+      "Naziv": null,
+      "UkupnaKolicina": 0,
+      "Proizvodjac": null,
       "DatumNabavke": "0001-01-01T00:00:00"
     },
-    "Id": 3,
-    "Pocetak": "2021-05-16T12:30:00",
-    "Kraj": "2021-05-16T13:30:00"
+    "Id": 1,
+    "Pocetak": "2021-05-23T10:30:00",
+    "Kraj": "2021-05-23T11:00:00"
+  },
+  {
+    "prostorija": {
+      "inventar": [],
+      "statickaOprema": [],
+      "dinamickaOprema": [],
+      "Id": 0,
+      "Naziv": "soba11",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 1
+    },
+    "StatickaOprema": {
+      "termin": {
+        "izvestaj": null,
+        "zdravstveniKarton": null,
+        "prostorija": null,
+        "Lekar": {
+          "termin": null,
+          "Ime": null,
+          "Prezime": null,
+          "Jmbg": 0,
+          "BrojTelefona": 0,
+          "Mejl": null,
+          "AdresaStanovanja": null,
+          "Pol": 0,
+          "Username": null,
+          "Password": null,
+          "Uloga": 0
+        },
+        "Id": 0,
+        "Tip": 0,
+        "Pocetak": "0001-01-01T00:00:00",
+        "Trajanje": 0.5,
+        "hitno": false
+      },
+      "Prostorija": null,
+      "Id": 0,
+      "Naziv": null,
+      "UkupnaKolicina": 0,
+      "Proizvodjac": null,
+      "DatumNabavke": "0001-01-01T00:00:00"
+    },
+    "Id": 2,
+    "Pocetak": "2021-05-23T14:30:00",
+    "Kraj": "2021-05-23T17:30:00"
   }
 ]

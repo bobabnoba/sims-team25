@@ -1,29 +1,22 @@
-// File:    Doctor.cs
-// Author:  User
-// Created: Tuesday, March 23, 2021 10:47:16 PM
-// Purpose: Definition of Class Doctor
-
+﻿using Model;
 using System;
-using ZdravoKorporacija.DTO;
+using System.Collections.Generic;
+using System.Text;
 
-namespace Model
+namespace ZdravoKorporacija.DTO
 {
-    public class Lekar : Korisnik
+    public class LekarDTO:Korisnik
     {
-        
-        public Lekar() : base() { }
-        public Lekar(String Ime, String Prezime) : base(Ime, Prezime)
+        public LekarDTO() : base() { }
+        public LekarDTO(String Ime, String Prezime) : base(Ime, Prezime)
         {
 
         }
 
-        public Lekar(string ime, string prezime, Int64 jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password, UlogaEnum uloga) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password, uloga)
+        public LekarDTO(string ime, string prezime, Int64 jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password, UlogaEnum uloga) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password, uloga)
         {
         }
 
-        public Lekar(LekarDTO lekarDTO) { 
-        
-        }
 
         public System.Collections.ArrayList termin;
 
@@ -39,12 +32,12 @@ namespace Model
         public void SetTermin(System.Collections.ArrayList newTermin)
         {
             RemoveAllTermin();
-            foreach (Termin oTermin in newTermin)
+            foreach (TerminDTO oTermin in newTermin)
                 AddTermin(oTermin);
         }
 
         /// <pdGenerated>default Add</pdGenerated>
-        public void AddTermin(Termin newTermin)
+        public void AddTermin(TerminDTO newTermin)
         {
             if (newTermin == null)
                 return;
@@ -58,7 +51,7 @@ namespace Model
         }
 
         /// <pdGenerated>default Remove</pdGenerated>
-        public void RemoveTermin(Termin oldTermin)
+        public void RemoveTermin(TerminDTO oldTermin)
         {
             if (oldTermin == null)
                 return;
@@ -66,7 +59,7 @@ namespace Model
                 if (this.termin.Contains(oldTermin))
                 {
                     this.termin.Remove(oldTermin);
-                    oldTermin.SetLekar((Lekar)null);
+                    oldTermin.SetLekar((LekarDTO)null);
                 }
         }
 
@@ -76,11 +69,11 @@ namespace Model
             if (termin != null)
             {
                 System.Collections.ArrayList tmpTermin = new System.Collections.ArrayList();
-                foreach (Termin oldTermin in termin)
+                foreach (TerminDTO oldTermin in termin)
                     tmpTermin.Add(oldTermin);
                 termin.Clear();
-                foreach (Termin oldTermin in tmpTermin)
-                    oldTermin.SetLekar((Lekar)null);
+                foreach (TerminDTO oldTermin in tmpTermin)
+                    oldTermin.SetLekar((LekarDTO)null);
                 tmpTermin.Clear();
             }
         }

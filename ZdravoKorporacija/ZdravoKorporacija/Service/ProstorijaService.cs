@@ -2,35 +2,37 @@
 using Repository;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using ZdravoKorporacija.DTO;
 
 namespace Service
 {
     class ProstorijaService
     {
-        public bool DodajProstoriju(Prostorija prostorija, Dictionary<int, int> id_map)
+        ProstorijaRepozitorijum datoteka = ProstorijaRepozitorijum.Instance;
+        public bool DodajProstoriju(ProstorijaDTO prostorijaDTO, Dictionary<int, int> id_map)
         {
-            ProstorijaRepozitorijum datoteka = ProstorijaRepozitorijum.Instance;
-           
-
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapProstorija");
+
+            Prostorija prostorija = new Prostorija(prostorijaDTO);
             ProstorijaRepozitorijum.Instance.prostorije.Add(prostorija);
+            
             datoteka.sacuvaj();
             datotekaID.sacuvaj(id_map);
-           
             return true;
 
         }
 
-        public bool ObrisiProstoriju(Prostorija prostorija, Dictionary<int, int> id_map)
+        public bool ObrisiProstoriju(ProstorijaDTO obrisanaProstorijaDTO, Dictionary<int, int> id_map)
         {
-            ProstorijaRepozitorijum datoteka = ProstorijaRepozitorijum.Instance;
+            Prostorija obrisanaProstorija = new Prostorija(obrisanaProstorijaDTO);
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapProstorija");
           
-            foreach (Prostorija pr in ProstorijaRepozitorijum.Instance.prostorije)
+            foreach (Prostorija prostorija in ProstorijaRepozitorijum.Instance.prostorije)
             {
-                if (pr.Id.Equals(prostorija.Id))
+                if (prostorija.Id == obrisanaProstorija.Id)
                 {
-                    ProstorijaRepozitorijum.Instance.prostorije.Remove(pr);
+                    ProstorijaRepozitorijum.Instance.prostorije.Remove(prostorija);
                     datoteka.sacuvaj();
                     datotekaID.sacuvaj(id_map);
                     return true;
@@ -39,16 +41,15 @@ namespace Service
             return false;
         }
 
-        public bool AzurirajProstoriju(Prostorija prostorija, int indeks)
+        public bool AzurirajProstoriju(ProstorijaDTO novaProstorijaDTO, int indeks)
         {
-            ProstorijaRepozitorijum datoteka = ProstorijaRepozitorijum.Instance;
-          
-            foreach (Prostorija pr in ProstorijaRepozitorijum.Instance.prostorije)
+            Prostorija novaProstorija = new Prostorija(novaProstorijaDTO);
+            foreach (Prostorija prostorija in ProstorijaRepozitorijum.Instance.prostorije)
             {
-                if (pr.Id.Equals(prostorija.Id))
+                if (prostorija.Id == novaProstorija.Id)
                 {
-                    ProstorijaRepozitorijum.Instance.prostorije.Remove(pr);
-                    ProstorijaRepozitorijum.Instance.prostorije.Insert(indeks, prostorija);
+                    ProstorijaRepozitorijum.Instance.prostorije.Remove(prostorija);
+                    ProstorijaRepozitorijum.Instance.prostorije.Insert(indeks, novaProstorija);
                     datoteka.sacuvaj();
                     return true;
                 }
@@ -58,8 +59,6 @@ namespace Service
 
         public Prostorija PregledProstorije(string id)
         {
-            ProstorijaRepozitorijum datoteka = ProstorijaRepozitorijum.Instance;
-          
             foreach (Prostorija pr in ProstorijaRepozitorijum.Instance.prostorije)
             {
                 if (pr.Id.Equals(id))
@@ -72,11 +71,25 @@ namespace Service
 
         public ObservableCollection<Prostorija> PregledSvihProstorija()
         {
-            ProstorijaRepozitorijum datoteka = ProstorijaRepozitorijum.Instance;
-            ObservableCollection<Prostorija> prostorije = datoteka.dobaviSve();
-            return prostorije;
+            return datoteka.dobaviSve();  
         }
 
+        public ObservableCollection<ProstorijaDTO> PregledSvihProstorijaDTO()
+        {
+            ObservableCollection<Prostorija> prostorije = datoteka.dobaviSve();
+            ObservableCollection<ProstorijaDTO> prostorijeDTO = new ObservableCollection<ProstorijaDTO>();
+            foreach(Prostorija prostorija in prostorije)
+            {
+                prostorijeDTO.Add(konvertujEntitetUDTO(prostorija));
+            }
+            return prostorijeDTO;
+            
+        }
 
+        public ProstorijaDTO konvertujEntitetUDTO(Prostorija prostorija) {
+            return new ProstorijaDTO(prostorija);
+        }
+
+        
     }
 }

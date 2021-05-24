@@ -49,6 +49,9 @@
     <Compile Update="Stranice\LekoviCRUD\IzmenaAlternativnihLekovaZahtev.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Stranice\LekoviCRUD\IzmenaZahtevaZaLek.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Stranice\LekoviCRUD\LekarZahteviZaDodavanjeLekaStart.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -216,6 +219,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\LekoviCRUD\IzmenaAlternativnihLekovaZahtev.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\LekoviCRUD\IzmenaZahtevaZaLek.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\LekoviCRUD\LekarZahteviZaDodavanjeLekaStart.xaml">

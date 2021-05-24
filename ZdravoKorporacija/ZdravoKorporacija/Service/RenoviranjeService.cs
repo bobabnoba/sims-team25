@@ -58,9 +58,9 @@ namespace Service
             {
                 foreach (StatickaOprema st in oprema)
                 {
-                    Inventar invent = (Inventar)st;
-                    ZahtevPremestanja zp = new ZahtevPremestanja();
-                    zp.prostorija = zahtevRenoviranja.Prostorija;
+                    Inventar inventar = (Inventar)st;
+                    ZahtevPremestanjaDTO zp = new ZahtevPremestanjaDTO();
+                    zp.prostorija = new ProstorijaDTO(zahtevRenoviranja.Prostorija);
                     IDRepozitorijum datotekaIDPremestanja = new IDRepozitorijum("iDMapZahtevPremestanja");
                     Dictionary<int, int> idsP = datotekaID.dobaviSve();
 
@@ -69,8 +69,8 @@ namespace Service
                     IDRepozitorijum datotekaIDIzbacivanja = new IDRepozitorijum("iDMapZahtevIzbacivanja");
                     Dictionary<int, int> idsI = datotekaIDIzbacivanja.dobaviSve();
 
-                    zahtevI.ZakaziIzbacivanje(invent, zi, zahtevRenoviranja.PocetakDan, zahtevRenoviranja.PocetakSati, zahtevRenoviranja.Trajanje, idsI);
-                    zahtevP.ZakaziPremestanje(invent, zp, zahtevRenoviranja.PocetakDan, zahtevRenoviranja.PocetakSati, zahtevRenoviranja.Trajanje, idsP);
+                //    zahtevI.ZakaziIzbacivanje(inventar, zi, zahtevRenoviranja.PocetakDan, zahtevRenoviranja.PocetakSati, zahtevRenoviranja.Trajanje, idsI);
+                //    zahtevP.ZakaziPremestanje(inventar, zp, zahtevRenoviranja.PocetakDan, zahtevRenoviranja.PocetakSati, zahtevRenoviranja.Trajanje);
                 }
             }
             renoviranjeRepozitorijum.zahteviRenoviranja.Add(zahtev);

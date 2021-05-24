@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.UpravnikCRUD
@@ -14,9 +15,9 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
     public partial class dodajProstorijuUpravnik : Window
     {
         private ProstorijaService storage = new ProstorijaService();
-        private ObservableCollection<Prostorija> prostorije;
+        private ObservableCollection<ProstorijaDTO> prostorije;
         Dictionary<int, int> id_map = new Dictionary<int, int>();
-        public dodajProstorijuUpravnik(ObservableCollection<Prostorija> pr, Dictionary<int, int> ids)
+        public dodajProstorijuUpravnik(ObservableCollection<ProstorijaDTO> pr, Dictionary<int, int> ids)
         {
             InitializeComponent();
             this.prostorije = pr;
@@ -86,11 +87,11 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
             }
 
          
-            Prostorija prostorija = new Prostorija(id, ime, tip, false, sprat);
+            ProstorijaDTO prostorija = new ProstorijaDTO(id, ime, tip, false, sprat);
 
             if (storage.DodajProstoriju(prostorija,id_map))
             {
-                //this.prostorije.Add(prostorija);
+                prostorije.Add(prostorija);
                 this.Close();
             }
            

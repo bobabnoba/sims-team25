@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using System.IO;
 using ZdravoKorporacija.Stranice.Magacin;
 using System.Collections.ObjectModel;
+using ZdravoKorporacija.DTO;
 
 namespace Repository
 {
@@ -13,6 +14,7 @@ namespace Repository
     {
         private static MagacinRepozitorijum _instance;
         public  ObservableCollection<Inventar> magacinOprema;
+        public ObservableCollection<InventarDTO> magacinOpremaDTO;
         public static MagacinRepozitorijum Instance
         {
             get
@@ -28,6 +30,7 @@ namespace Repository
 
         private MagacinRepozitorijum() {
             magacinOprema = new ObservableCollection<Inventar>();
+            magacinOpremaDTO = new ObservableCollection<InventarDTO>();
         }
 
         public bool Kreiraj()
@@ -83,7 +86,27 @@ namespace Repository
             writer.Close();
             return 1;
         }
-           
+
+        public List<InventarDTO> DobaviSveDTO()
+        {
+            string lokacija = @"..\..\..\Data\inventar.json";
+            List<InventarDTO> oprema = new List<InventarDTO>();
+            if (File.Exists(lokacija))
+            {
+                string jsonText = File.ReadAllText(lokacija);
+                if (!string.IsNullOrEmpty(jsonText))
+                {
+                    oprema = JsonConvert.DeserializeObject<List<InventarDTO>>(jsonText);
+                }
+            }
+            if (oprema != null)
+            {
+                magacinOpremaDTO = new ObservableCollection<InventarDTO>(oprema);
+            }
+            return oprema;
+
+        }
+
 
     }
 }

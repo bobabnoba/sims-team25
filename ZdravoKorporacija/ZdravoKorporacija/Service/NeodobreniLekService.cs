@@ -44,6 +44,43 @@ namespace Service
         {
             return this.datoteka.dobaviSve();
         }
+        
+        public ObservableCollection<ZahtevLekDTO> PregledNeodobrenihLekovaDTO()
+        {
+            ObservableCollection<ZahtevLek> zahteviLek = datoteka.dobaviSve();
+            ObservableCollection<ZahtevLekDTO> zahteviLekDTO = new ObservableCollection<ZahtevLekDTO>();
+            foreach (ZahtevLek zahtev in zahteviLek)
+            {
+              zahteviLekDTO.Add(konvertujEntitetUDTO(zahtev));
+            }
+            return  zahteviLekDTO;
+
+        }
+
+        public ZahtevLekDTO konvertujEntitetUDTO(ZahtevLek zahtevLek)
+        {
+            return new ZahtevLekDTO(zahtevLek);
+        }
+
+        public bool AzurirajZahtev(int indeks,ZahtevLekDTO zahtevLekDTO)
+        {
+            ZahtevLek zahtevLek = new ZahtevLek(zahtevLekDTO);
+
+            NeodobreniLekRepository datoteka = NeodobreniLekRepository.Instance;
+            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapNeodobreniLek");
+
+            foreach (ZahtevLek zahtevNeodobreniLek in NeodobreniLekRepository.Instance.neodobreniLekovi)
+            {
+                if (zahtevNeodobreniLek.Id.Equals(zahtevLek.Id))
+                {
+                    NeodobreniLekRepository.Instance.neodobreniLekovi.RemoveAt(indeks);
+                    NeodobreniLekRepository.Instance.neodobreniLekovi.Insert(indeks,zahtevLek);
+                    datoteka.sacuvaj();
+                    return true;
+                }
+            }
+            return false;
+        }
 
         private int nadjiSlobodanID(Dictionary<int, int> id_map)
         {

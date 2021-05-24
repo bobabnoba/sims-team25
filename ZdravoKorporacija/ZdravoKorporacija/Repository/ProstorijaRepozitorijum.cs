@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using ZdravoKorporacija.DTO;
 
 namespace Repository
 {
@@ -10,6 +11,7 @@ namespace Repository
     {
         private static ProstorijaRepozitorijum _instance;
         public ObservableCollection<Prostorija> prostorije;
+        public ObservableCollection<ProstorijaDTO> prostorijeDTO;
         public static ProstorijaRepozitorijum Instance
         {
             get
@@ -57,6 +59,7 @@ namespace Repository
             }
             return prostorije;
         }
+
 
     }
 }

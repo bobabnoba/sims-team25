@@ -3,6 +3,7 @@ using Repository;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 
 
@@ -46,6 +47,13 @@ namespace Service
             MagacinRepozitorijum mr = MagacinRepozitorijum.Instance;
             return mr.DobaviSve();
             
+        }
+
+        public List<InventarDTO> PregledSveOpremeDTO()
+        {
+            MagacinRepozitorijum mr = MagacinRepozitorijum.Instance;
+            return mr.DobaviSveDTO();
+
         }
 
     }

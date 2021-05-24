@@ -1,7 +1,8 @@
 ﻿using Controller;
-using Repository;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using ZdravoKorporacija.DTO;
 
 namespace ZdravoKorporacija.Stranice.LekoviCRUD
 {
@@ -10,11 +11,13 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
     /// </summary>
     public partial class NeodobreniZahteviZaLek : Page
     {
+        ObservableCollection<ZahtevLekDTO> neodobreniZahtevi;
         public NeodobreniZahteviZaLek()
         {
             InitializeComponent();
             NeodobreniLekController neodobreniLekController = new NeodobreniLekController();
-            dgNeodobreniLek.ItemsSource = neodobreniLekController.PregledNeodobrenihLekova();
+            neodobreniZahtevi = neodobreniLekController.PregledNeodobrenihLekovaDTO();
+            dgNeodobreniLek.ItemsSource = neodobreniZahtevi;
         }
 
         private void dodaj(object sender, RoutedEventArgs e)
@@ -29,7 +32,15 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
+            if (dgNeodobreniLek.SelectedItem != null)
+            {
+                IzmenaZahtevaZaLek izmenaZahtevaZaLek = new IzmenaZahtevaZaLek((int)dgNeodobreniLek.SelectedIndex, (ZahtevLekDTO)dgNeodobreniLek.SelectedItem,neodobreniZahtevi);
+                izmenaZahtevaZaLek.Show();
+            }
+            else
+            {
+                MessageBox.Show("Morate selektovati zahtev da bi ste izmenili","Greška");
+            }
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)

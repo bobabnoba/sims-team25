@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using ZdravoKorporacija.DTO;
 
 namespace Model
 {
@@ -62,5 +63,15 @@ namespace Model
             this.BrojPotvrda = brojTrenutnihPotvrda;
             this.lekari = new List<Lekar>();
         }
+
+        public ZahtevLek(ZahtevLekDTO zahtevLekDTO)
+        {
+            this.Lek = new Lek(zahtevLekDTO.Lek);
+            this.NeophodnihPotvrda = zahtevLekDTO.NeophodnihPotvrda;
+            this.BrojPotvrda = zahtevLekDTO.BrojPotvrda;
+            this.lekari = zahtevLekDTO.lekari;
+        }
+
+
     }
 }

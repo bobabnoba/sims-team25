@@ -7,6 +7,7 @@
 
 using System;
 using System.Collections.Generic;
+using ZdravoKorporacija.DTO;
 
 namespace Model
 {
@@ -15,7 +16,7 @@ namespace Model
     {
         public System.Collections.ArrayList inventar;
 
-
+        public Prostorija() { }
         public Prostorija(int id, string naziv, TipProstorijeEnum tip, bool slobodna, int sprat)
         {
             this.inventar = new System.Collections.ArrayList();
@@ -28,6 +29,17 @@ namespace Model
             Sprat = sprat;
         }
 
+        public Prostorija(ProstorijaDTO prostorijaDTO)
+        {
+            this.inventar = new System.Collections.ArrayList();
+            this.statickaOprema = new List<StatickaOprema>();
+            this.dinamickaOprema = new System.Collections.ArrayList();
+            Id = prostorijaDTO.Id;
+            Naziv = prostorijaDTO.Naziv;
+            Tip = prostorijaDTO.Tip;
+            Slobodna = prostorijaDTO.Slobodna;
+            Sprat = prostorijaDTO.Sprat;
+        }
 
         public List<StatickaOprema> statickaOprema;
 

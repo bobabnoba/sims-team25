@@ -63,5 +63,14 @@ namespace ZdravoKorporacija.DTO
             this.lekari = new List<Lekar>();
             this.Lek.alternativniLekovi = new List<LekDTO>();
         }
+
+        public ZahtevLekDTO(ZahtevLek zahtevLek)
+        {
+            this.Lek = new LekDTO(zahtevLek.Lek);
+            this.NeophodnihPotvrda = zahtevLek.NeophodnihPotvrda;
+            this.BrojPotvrda = zahtevLek.BrojPotvrda;
+            this.lekari = zahtevLek.lekari;
+        }
+
     }
 }
