@@ -19,15 +19,12 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     /// </summary>
     public partial class zakaziPregledLekar : Window
     {
-        private List<LekarDTO> lekari = new List<LekarDTO>();
         private List<ProstorijaDTO> slobodneProstorije;
         private List<ProstorijaDTO> prostorije = new List<ProstorijaDTO>();
-        private ObservableCollection<Termin> pregledi;
 
         private int idTermina;
         private TipTerminaEnum tipTermina;
         private DateTime pocetakTermina;
-        private LekarDTO lekarTermina;
         private ProstorijaDTO prostorijaTermina;
 
         private TerminDTO noviTermin;
@@ -39,17 +36,16 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
 
 
-        public zakaziPregledLekar(ObservableCollection<Termin> termini, Dictionary<int, int> ids)
+        public zakaziPregledLekar( Dictionary<int, int> ids)
         {
             InitializeComponent();
 
             noviTermin = new TerminDTO();
-            pregledi = termini;
+            
 
             
-            cbPacijent.ItemsSource = tc.PregledSvihPacijenata();
+            cbPacijent.ItemsSource = tc.PregledSvihPacijenata2DTO();
 
-            lekari = tc.PregledSvihLekaraDTO(tc.PregledSvihLekara());
 
          
 
@@ -72,11 +68,14 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private void potvrdi(object sender, RoutedEventArgs e)
         {
             int id = tc.MapaTermina(ids);
-            Pacijent pac = (Pacijent)cbPacijent.SelectedItem;
+            PacijentDTO pac = (PacijentDTO)cbPacijent.SelectedItem;
 
 
             idTermina = id;
-            pocetakTermina = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
+            ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
+
+            String t = cboItem.Content.ToString();
+            pocetakTermina = DateTime.Parse(date.Text + " " + t);
             prostorijaTermina = (ProstorijaDTO)cbProstorija.SelectedItem;
             
 
@@ -85,19 +84,18 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             else if (cbTip.SelectedIndex == 1)
                 tipTermina = TipTerminaEnum.Operacija;
 
-            noviTermin = new TerminDTO(tc.NadjiKartonID(pac.Jmbg), prostorijaTermina, tc.Model2DTO(lekarLogin.lekar), tipTermina, pocetakTermina, 0.5, null);
+            noviTermin = new TerminDTO(tc.NadjiKartonID(pac.Jmbg), prostorijaTermina, tc.NadjiLekaraPoJMBG(lekarLogin.jmbg), tipTermina, pocetakTermina, 0.5, null);
             noviTermin.Id = idTermina;
 
             if (tc.ZakaziTermin(tc.TerminDTO2Model(noviTermin), ids))
             {
                 tc.DodajTermin(tc.TerminDTO2Model(noviTermin));
-                lekari = tc.PregledSvihLekaraDTO(tc.PregledSvihLekara());
                 tc.AzurirajLekare();
             }
 
 
-            tc.DodajTermin(pac, tc.TerminDTO2Model(noviTermin));
-            tc.AzurirajPacijenta(pac);
+            tc.DodajTermin(tc.PacijentDTO2Model(pac), tc.TerminDTO2Model(noviTermin));
+            tc.AzurirajPacijenta(tc.PacijentDTO2Model(pac));
             this.Close();
         }
 

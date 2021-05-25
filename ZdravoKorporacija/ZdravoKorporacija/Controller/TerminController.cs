@@ -17,9 +17,17 @@ namespace ZdravoKorporacija.Controller
         private PacijentService pacijentServis = new PacijentService();
         private ZdravstveniKartonServis kartonServis = new ZdravstveniKartonServis();
 
+        public bool ObrisiLekara(Lekar lekar)
+        {
+            return lekarServis.ObrisiLekara(lekar);
+        }
         public ZdravstveniKarton NadjiKartonID(long id)
         {
             return kartonServis.findById(id);
+        }
+        public LekarDTO NadjiLekaraPoJMBG(long lekar)
+        {
+            return Model2DTO( lekarServis.NadjiLekaraPoJMBG(lekar));
         }
         public Pacijent NadjiPacijentaPoJMBG(long jmbg)
         {
@@ -28,6 +36,14 @@ namespace ZdravoKorporacija.Controller
         public bool AzurirajPacijenta(Pacijent pacijent)
         {
             return pacijentServis.AzurirajPacijenta(pacijent);
+        }
+        public PacijentDTO NadjiPacijentaPoJMBGDTO(long jmbg)
+        {
+            return pacijentServis.NadjiPacijentaPoJMBGDTO(jmbg);
+        }
+        public bool AzurirajTerminPacijent(Termin termin, Pacijent pacijent)
+        {
+            return terminServis.AzurirajTerminPacijent(termin, pacijent);
         }
 
         public List<Lekar> PregledSvihLekara()
@@ -42,6 +58,14 @@ namespace ZdravoKorporacija.Controller
         {
             return lekarServis.PregledSvihLekaraDTO(modeli);
         }
+        public bool AzurirajTermin(Termin termin)
+        {
+            return terminServis.AzurirajTermin(termin);
+        }
+        public Termin DTO2ModelNadji(TerminDTO dto)
+        {
+            return terminServis.DTO2ModelNadji(dto);
+        }
         public ProstorijaDTO Model2DTO(Prostorija model)
         {
             return prostorijaServis.Model2DTO(model);
@@ -54,11 +78,7 @@ namespace ZdravoKorporacija.Controller
         {
             return terminServis.Model2DTO(model);
         }
-        public bool AzurirajTerminPacijent(Termin termin, Pacijent pacijent)
-        {
-            return terminServis.AzurirajTerminPacijent(termin, pacijent);
-        }
-
+        
         internal bool AzurirajLekara(Lekar lekar)
         {
             return lekarServis.AzurirajLekara( lekar);
@@ -85,13 +105,21 @@ namespace ZdravoKorporacija.Controller
         {
             return prostorijaServis.PregledSvihProstorija2Model(dtos);
         }
-        public List<Prostorija> DobaviSlobodneProstorije(List<Prostorija> prostorije, ObservableCollection<Termin> pregledi, Termin termin)
+        public List<Prostorija> DobaviSlobodneProstorije(  Termin termin)
         {
-           return terminServis.DobaviSlobodneProstorije(prostorije, pregledi, termin);
+           return terminServis.DobaviSlobodneProstorije( termin);
         }
-        public List<Lekar> DobaviSlobodneLekare(List<Lekar> lekari, ObservableCollection<Termin> pregledi, DateTime pocetakTermina)
+        public bool OtkaziTermin(Termin termin, Dictionary<int, int> ids)
         {
-            return terminServis.DobaviSlobodneLekare(lekari, pregledi, pocetakTermina);
+            return terminServis.OtkaziTermin(termin, ids);
+        }
+        public bool ObrisiTerminPacijentu(Termin termin)
+        {
+            return pacijentServis.ObrisiTerminPacijentu(termin);
+        }
+        public List<Lekar> DobaviSlobodneLekare( DateTime pocetakTermina, SpecijalizacijaEnum specijalizacija)
+        {
+            return terminServis.DobaviSlobodneLekare( pocetakTermina, specijalizacija);
         }
         public int MapaTermina(Dictionary<int, int> ids)
         {
@@ -157,9 +185,9 @@ namespace ZdravoKorporacija.Controller
         {
             return terminServis.ZakaziTerminPacijent(termin, ids, pacijent);
         }
-        public List<Lekar> DobaviSlobodneLekareHITNO()
+        public List<Lekar> DobaviSlobodneLekareHITNO(SpecijalizacijaEnum specijalizacija)
         {
-            return terminServis.DobaviSlobodneLekareHITNO();
+            return terminServis.DobaviSlobodneLekareHITNO(specijalizacija);
         }
         public List<Prostorija> DobaviSlobodneProstorijeHITNO()
         {

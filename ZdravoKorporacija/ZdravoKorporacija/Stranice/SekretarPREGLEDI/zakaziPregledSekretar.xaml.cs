@@ -30,7 +30,6 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
         private List<LekarDTO> slobodniLekari;
         private List<ProstorijaDTO> slobodneProstorije;
         private List<ProstorijaDTO> prostorije = new List<ProstorijaDTO>();
-        private ObservableCollection<Termin> pregledi;
 
         private int idTermina;
         private TipTerminaEnum tipTermina;
@@ -44,15 +43,15 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
         private Dictionary<int, int> ids = new Dictionary<int, int>();
 
         DateTime dateTime = DateTime.Now;
-        public zakaziPregledSekretar(ObservableCollection<Termin> termini, Dictionary<int, int> ids)
+        public zakaziPregledSekretar( Dictionary<int, int> ids)
         {
             InitializeComponent();
 
             noviTermin = new TerminDTO();
-            pregledi = termini;
+           
 
             
-            cbPacijent.ItemsSource = tc.PregledSvihPacijenata();
+            cbPacijent.ItemsSource = tc.PregledSvihPacijenata2DTO();
 
             lekari = tc.PregledSvihLekaraDTO(tc.PregledSvihLekara());
 
@@ -85,16 +84,16 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
             cbProstorija.IsEnabled = true;
             Lekari.IsEnabled = true;
 
-            slobodniLekari      = tc.PregledSvihLekaraDTO( tc.DobaviSlobodneLekare(tc.PregledSvihLekaraModel( lekari), pregledi, pocetakTermina));
+            slobodniLekari      = tc.PregledSvihLekaraDTO( tc.DobaviSlobodneLekare( pocetakTermina, SpecijalizacijaEnum.OpstaPraksa));
             Lekari.ItemsSource = slobodniLekari;
-            slobodneProstorije  = tc.PregledSvihProstorijaDTO( tc.DobaviSlobodneProstorije(tc.PregledSvihProstorija2Model( prostorije), pregledi, tc.TerminDTO2Model(noviTermin)));
+            slobodneProstorije  = tc.PregledSvihProstorijaDTO( tc.DobaviSlobodneProstorije( tc.TerminDTO2Model(noviTermin)));
             cbProstorija.ItemsSource = slobodneProstorije;
         }
 
         private void potvrdi(object sender, RoutedEventArgs e)
         {
             int id = tc.MapaTermina(ids);
-            Pacijent pac = (Pacijent)cbPacijent.SelectedItem;
+            PacijentDTO pac = (PacijentDTO)cbPacijent.SelectedItem;
 
 
             idTermina = id;
@@ -120,8 +119,8 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
             }
             
             
-            tc.DodajTermin(pac,tc.TerminDTO2Model(noviTermin));
-            tc.AzurirajPacijenta(pac);
+            tc.DodajTermin(tc.PacijentDTO2Model(pac),tc.TerminDTO2Model(noviTermin));
+            tc.AzurirajPacijenta(tc.PacijentDTO2Model(pac));
             this.Close();
         }
 

@@ -14,6 +14,8 @@ using System.Windows.Shapes;
 using Model;
 using Repository;
 using Service;
+using ZdravoKorporacija.Controller;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Stranice.LekarCRUD;
 using ZdravoKorporacija.Stranice.SekretarCRUD;
@@ -26,10 +28,10 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
     public partial class sekretarPREGLEDI : Page
     {
         private TerminService storage = new TerminService();
-        private ObservableCollection<Termin> termini = new ObservableCollection<Termin>();
         private PacijentService storagePacijent = new PacijentService();
         private Pacijent pac = new Pacijent();
         private Dictionary<int, int> ids = new Dictionary<int, int>();
+        private TerminController controller = new TerminController();
         public sekretarPREGLEDI()
         {
             InitializeComponent();
@@ -37,8 +39,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
             ids = datotekaID.dobaviSve();
 
-            termini = new ObservableCollection<Termin>(storage.PregledSvihTermina());
-            dgUsers.ItemsSource = termini;
+            dgUsers.ItemsSource = controller.PregledSvihTermina2DTO(null);
             this.DataContext = this;
         }
 
@@ -48,7 +49,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
                 MessageBox.Show("Niste selektovali red", "Greska");
             else
             {
-                izmeniPregledLekar ip = new izmeniPregledLekar((Termin)dgUsers.SelectedItem, termini);
+                izmeniPregledLekar ip = new izmeniPregledLekar((TerminDTO)dgUsers.SelectedItem );
                 ip.Show();
             }
         }
@@ -57,7 +58,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
 
         private void zakaziPregled(object sender, RoutedEventArgs e)
         {
-            zakaziPregledSekretar zp = new zakaziPregledSekretar(termini, ids);
+            zakaziPregledSekretar zp = new zakaziPregledSekretar( ids);
             zp.Show();
         }
 
@@ -82,7 +83,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
                 MessageBox.Show("Pregled nije izabran. Molimo označite pregled koji želite da otkažete.", "Greška");
             else
             {
-                oktaziPregledLekar op = new oktaziPregledLekar(termini, (Termin)dgUsers.SelectedItem, ids);
+                oktaziPregledLekar op = new oktaziPregledLekar( (TerminDTO)dgUsers.SelectedItem, ids);
                 op.Show();
             }
 

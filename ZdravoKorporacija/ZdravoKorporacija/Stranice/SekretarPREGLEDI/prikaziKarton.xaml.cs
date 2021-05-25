@@ -40,14 +40,12 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
 
             } else
             {
-               // kr.KreirajZdravstveniKartonJMBG(karton);
                 ZdravstveniKarton temp = kr.findById(izabrani.Jmbg);
                 kartoni.Add(temp);
                 dgKarton.ItemsSource = kartoni;
 
             }
 
-            // alergije.Text = izabrani.zdravstveniKarton.getAlergije();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -58,8 +56,8 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
         private void nemaButt_Click(object sender, RoutedEventArgs e)
         {
             ZdravstveniKarton zk = new ZdravstveniKarton(pacijent, pacijent.GetJmbg(), StanjePacijentaEnum.None, "", KrvnaGrupaEnum.None, "");
-            kr.KreirajZdravstveniKartonJMBG(zk);
-            pacijent.ZdravstveniKarton = zk;
+            if(kr.KreirajZdravstveniKartonJMBG(zk))
+                pacijent.ZdravstveniKarton = zk;
             this.Close();
             
         }

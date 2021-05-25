@@ -2727,6 +2727,7 @@
               }
             ],
             "Specijalizacija": 0,
+            "radniDani": null,
             "Ime": "Veljko",
             "Prezime": "Vukovic",
             "Jmbg": 2334567890213,
@@ -2860,5 +2861,61 @@
     "Alergije": "drogica, loЛ,",
     "KrvnaGrupa": 8,
     "Vakcine": null
+  },
+  {
+    "izvestajOHospitalizaciji": [],
+    "istorijaBolesti": [],
+    "recept": [],
+    "termin": [],
+    "patient": {
+      "termin": null,
+      "notifikacije": null,
+      "ZdravstveniKarton": null,
+      "Guest": false,
+      "banovan": false,
+      "Ime": "xD",
+      "Prezime": "Dx",
+      "Jmbg": 56,
+      "BrojTelefona": 783,
+      "Mejl": "as",
+      "AdresaStanovanja": "",
+      "Pol": 0,
+      "Username": "gas2",
+      "Password": "va2",
+      "Uloga": 3
+    },
+    "Id": 56,
+    "ZdravstvenoStanje": 3,
+    "Alergije": "",
+    "KrvnaGrupa": 8,
+    "Vakcine": ""
+  },
+  {
+    "izvestajOHospitalizaciji": [],
+    "istorijaBolesti": [],
+    "recept": [],
+    "termin": [],
+    "patient": {
+      "termin": null,
+      "notifikacije": null,
+      "ZdravstveniKarton": null,
+      "Guest": false,
+      "banovan": false,
+      "Ime": "Milica",
+      "Prezime": "M",
+      "Jmbg": 6732,
+      "BrojTelefona": 4565687,
+      "Mejl": "mm",
+      "AdresaStanovanja": "",
+      "Pol": 1,
+      "Username": "mm",
+      "Password": "mm",
+      "Uloga": 3
+    },
+    "Id": 6732,
+    "ZdravstvenoStanje": 3,
+    "Alergije": "",
+    "KrvnaGrupa": 8,
+    "Vakcine": ""
   }
 ]

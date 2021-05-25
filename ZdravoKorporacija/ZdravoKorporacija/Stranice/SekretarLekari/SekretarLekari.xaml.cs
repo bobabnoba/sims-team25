@@ -41,6 +41,8 @@ namespace ZdravoKorporacija.Stranice.SekretarLekari
 
         private void izbrisi(object sender, RoutedEventArgs e)
         {
+            if (controllerPrikaz.ObrisiLekara(controllerPrikaz.LekarDTO2Model((LekarDTO)dgUsers.SelectedItem)))
+                controllerPrikaz.PregledSvihLekara().Remove(controllerPrikaz.LekarDTO2Model((LekarDTO)dgUsers.SelectedItem));
 
         }
 

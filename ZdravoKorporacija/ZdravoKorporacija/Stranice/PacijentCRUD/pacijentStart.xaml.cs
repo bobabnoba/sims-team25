@@ -16,7 +16,7 @@ using System.Windows.Threading;
 using ZdravoKorporacija.Service;
 using System.ComponentModel;
 using System.Linq;
-
+using ZdravoKorporacija.Controller;
 
 namespace ZdravoKorporacija.Stranice
 {
@@ -33,7 +33,7 @@ namespace ZdravoKorporacija.Stranice
         private Dictionary<int, int> ids = new Dictionary<int, int>();
         private Boolean prikazi;
         private ObavestenjaService os = new ObavestenjaService();
-
+        private TerminController controller = new TerminController();
 
         private AnketaRepozitorijum arepo = new AnketaRepozitorijum();
         private KorisnikService korisnikServis = new KorisnikService();
@@ -159,7 +159,7 @@ namespace ZdravoKorporacija.Stranice
             }
             else
             {
-                zakaziPregled zp = new zakaziPregled(termini, ids, pacijent);
+                zakaziPregled zp = new zakaziPregled( ids, pacijent.Jmbg);
                 zp.Show();
             }
         }
@@ -177,7 +177,7 @@ namespace ZdravoKorporacija.Stranice
                 }
                 else
                 {
-                    otkaziPregled op = new otkaziPregled(termini, (Termin)dgUsers.SelectedItem, ids, pacijent);
+                    LekarCRUD.oktaziPregledLekar op = new LekarCRUD.oktaziPregledLekar(controller.Model2DTO((Termin)dgUsers.SelectedItem), ids);
                     op.Show();
                 }
             }

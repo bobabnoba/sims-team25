@@ -139,8 +139,14 @@ namespace Service
        public ZdravstveniKartonDTO Model2DTO(ZdravstveniKarton model)
         {
             ZdravstveniKartonDTO dto = new ZdravstveniKartonDTO();
-            dto.Id = model.Id;
-            return dto;
+
+            if (model != null)
+            {
+                dto.Id = model.Id;
+                return dto;
+            }
+            else
+                return null;
         }
    
         public ZdravstveniKarton DTO2Model(ZdravstveniKartonDTO dto)

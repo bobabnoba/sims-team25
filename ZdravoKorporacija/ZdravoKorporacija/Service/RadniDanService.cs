@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using DTO;
 using Model;
@@ -17,7 +18,7 @@ namespace Service
             
             foreach(RadniDan rd in datoteka.dobaviSve())
             {
-                if(rd.dan == dan && rd.lekar == lekar)
+                if(rd.dan.Date.CompareTo( dan.Date ) == 0 && rd.lekar == lekar)
                 {
                     return rd;
                 }
@@ -38,7 +39,7 @@ namespace Service
 
         public void InicijalizujRadneDane()
         {
-            List<RadniDan> sviDani = new List<RadniDan>();
+            List<RadniDan> sviDani = PregledSvihRadnihDana();
             foreach(Lekar l in lekarServis.PregledSvihLekara())
             {
                 List<RadniDan> dani = new List<RadniDan>();
@@ -47,12 +48,18 @@ namespace Service
                     if (rd.lekar.Equals(l.Jmbg))
                         dani.Add(rd);
                 }
-                if(dani == null)
+                if(dani.Count() == 0)
                 {
                     for (DateTime date = DateTime.Now.Date; date <= DateTime.Now.AddDays(150); date = date.AddDays(1))
                     {
+                        
                         //l.radniDani.Add(new RadniDan(date, l.Jmbg, false, true));
-                        sviDani.Add(new RadniDan(date.Date, l.Jmbg, false,true));
+                        dani.Add(new RadniDan(date.Date, l.Jmbg, false,true));
+                        
+                    }
+                    foreach(RadniDan dan in dani)
+                    {
+                        sviDani.Add(dan);
                         datoteka.sacuvaj(sviDani);
                     }
                 }

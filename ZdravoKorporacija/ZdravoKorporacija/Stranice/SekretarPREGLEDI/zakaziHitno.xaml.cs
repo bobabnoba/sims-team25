@@ -37,6 +37,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
         private bool neuro;
         private TerminController controller = new TerminController();
         private TerminDTO noviTermin;
+        SpecijalizacijaEnum specijalizacija;
 
 
         private TipTerminaEnum tipTermina;
@@ -56,7 +57,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
             lekari = controller.PregledSvihLekaraDTO(null);
             slobodniLekari = lekari;
 
-
+            specijalizacija = SpecijalizacijaEnum.OpstaPraksa;
 
 
 
@@ -73,6 +74,11 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
 
         private void potvrdi(object sender, RoutedEventArgs e)
         {
+            if (kardio == true)
+                specijalizacija = SpecijalizacijaEnum.Kardiohirurg;
+            else if (neuro == true)
+                specijalizacija = SpecijalizacijaEnum.Neurolog;
+
             if (cbTip.SelectedIndex == 0)
             {
                 alternativniTermini = controller.PregledSvihTermina2DTO( controller.NadjiAlternativnePreglede());
@@ -93,7 +99,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
 
         private void Dodaj()
         {
-            slobodniLekari = controller.PregledSvihLekaraDTO(controller.DobaviSlobodneLekareHITNO());
+            slobodniLekari = controller.PregledSvihLekaraDTO(controller.DobaviSlobodneLekareHITNO(specijalizacija));
 
             slobodneProstorije = controller.PregledSvihProstorijaDTO(controller.DobaviSlobodneProstorijeHITNO());
 
@@ -168,13 +174,14 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
             kardio = true;
-            
+            neuroKB.IsChecked = false;
             
         }
 
         private void RadioButton_Checked_1(object sender, RoutedEventArgs e)
         {
             neuro = true;
+            kardioRB.IsChecked = false;
             
         }
     }

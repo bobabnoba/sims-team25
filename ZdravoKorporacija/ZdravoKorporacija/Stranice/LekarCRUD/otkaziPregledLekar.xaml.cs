@@ -3,6 +3,8 @@ using Service;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
+using ZdravoKorporacija.Controller;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
@@ -13,15 +15,16 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     public partial class oktaziPregledLekar : Window
     {
         private TerminService storage = new TerminService();
-        private ObservableCollection<Termin> termini;
+        private List<TerminDTO> termini;
         private PacijentService pacijentServis = new PacijentService();
-        Termin termin;
+        TerminDTO termin;
         private Dictionary<int, int> ids = new Dictionary<int, int>();
+        private TerminController controller = new TerminController();
 
-        public oktaziPregledLekar(ObservableCollection<Termin> ts, Termin t, Dictionary<int, int> ids)
+        public oktaziPregledLekar( TerminDTO t, Dictionary<int, int> ids)
         {
             InitializeComponent();
-            termini = ts;
+            termini = controller.PregledSvihTermina2DTO(null);
             termin = t;
             this.ids = ids;
         }
@@ -29,9 +32,12 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private void da(object sender, RoutedEventArgs e)
         {
             this.ids[this.termin.Id] = 0;
-            storage.OtkaziTermin(termin, ids);
-            pacijentServis.ObrisiTerminPacijentu(termin);
+            controller.ObrisiTerminPacijentu(controller.DTO2ModelNadji(termin));
+
+            controller.OtkaziTermin(controller.DTO2ModelNadji(termin), ids);
+            
             termini.Remove(termin);
+            
             this.Close();
 
         }

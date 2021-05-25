@@ -17,6 +17,21 @@ namespace Service
             List<Lekar> lekovi = datoteka.dobaviSve();
             return lekovi;
         }
+        public bool ObrisiLekara(Lekar lekar)
+        {
+            LekarRepozitorijum datoteka = new LekarRepozitorijum();
+            List<Lekar> lekari= datoteka.dobaviSve();
+            foreach (Lekar l in lekari)
+            {
+                if (l.Jmbg.Equals(lekar.Jmbg))
+                {
+                    lekari.Remove(l);
+                    datoteka.sacuvaj(lekari);
+                    return true;
+                }
+            }
+            return false;
+        }
 
         public Lekar DTO2Model(LekarDTO dto)
         {
@@ -106,7 +121,15 @@ namespace Service
             return model;
 
         }
-
+        public Lekar NadjiLekaraPoJMBG(long lekar)
+        {
+            foreach(Lekar l in PregledSvihLekara())
+            {
+                if (l.Jmbg.Equals(lekar))
+                    return l;
+            }
+            return null;
+        }
     }
 
 }

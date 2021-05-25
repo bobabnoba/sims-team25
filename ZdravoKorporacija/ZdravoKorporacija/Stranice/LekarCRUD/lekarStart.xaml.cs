@@ -12,6 +12,7 @@ using ZdravoKorporacija.Model;
 using System.Diagnostics;
 using ZdravoKorporacija.Stranice.Uput;
 using ZdravoKorporacija.Stranice.LekoviCRUD;
+using ZdravoKorporacija.DTO;
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
 {
@@ -84,7 +85,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 MessageBox.Show("Pregled nije izabran. Molimo označite pregled koji želite da izmenite.", "Greška");
             else
             {
-                izmeniPregledLekar ip = new izmeniPregledLekar((Termin)dgUsers.SelectedItem, termini);
+                izmeniPregledLekar ip = new izmeniPregledLekar((TerminDTO)dgUsers.SelectedItem);
                 ip.Show();
             }
         }
@@ -93,7 +94,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
         private void zakaziPregled(object sender, RoutedEventArgs e)
         {
-            zakaziPregledLekar zp = new zakaziPregledLekar(termini, ids);
+            zakaziPregledLekar zp = new zakaziPregledLekar( ids);
             zp.Show();
         }
 
@@ -109,7 +110,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 MessageBox.Show("Niste selektovali red", "Greska");
             else
             {
-                oktaziPregledLekar op = new oktaziPregledLekar(termini, (Termin)dgUsers.SelectedItem,ids);
+                oktaziPregledLekar op = new oktaziPregledLekar( (TerminDTO)dgUsers.SelectedItem,ids);
                 op.Show();
             }
             

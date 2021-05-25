@@ -16,6 +16,7 @@ namespace ZdravoKorporacija.Stranice.Logovanje
         KorisnikService ks = new KorisnikService();
         Korisnik ulogovan;
         public static Lekar lekar = new Lekar();
+        public static long jmbg;
         UlogaEnum uloga;
         public lekarLogin(UlogaEnum uloga)
         {
@@ -34,6 +35,7 @@ namespace ZdravoKorporacija.Stranice.Logovanje
                     {
                         lekarStart ls = new lekarStart(l);
                         lekar = l;
+                        jmbg = l.Jmbg;
                         ls.Show();
                         this.Close();
                         return;

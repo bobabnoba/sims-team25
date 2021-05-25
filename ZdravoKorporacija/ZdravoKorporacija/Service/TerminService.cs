@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
 using System.Windows;
+using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
 
 namespace ZdravoKorporacija.Model
@@ -19,6 +20,7 @@ namespace ZdravoKorporacija.Model
 
         private LekarService lekarServis = new LekarService();
         private ProstorijaService prostorijaServis = new ProstorijaService();
+        private RadniDanService daniServis = new RadniDanService();
         public Termin FindOpByPocetak(DateTime poc)
         {
             TerminRepozitorijum datoteka = new TerminRepozitorijum();
@@ -81,6 +83,7 @@ namespace ZdravoKorporacija.Model
             }
             return false;
         }
+        
 
         public bool OtkaziTermin(Termin termin, Dictionary<int, int> ids)
         {
@@ -134,7 +137,8 @@ namespace ZdravoKorporacija.Model
         public List<TerminDTO> PregledSvihTermina2DTO(List<Termin> modeli)
         {
             List<TerminDTO> dtos = new List<TerminDTO>();
-
+            if (modeli == null)
+                modeli = PregledSvihTermina();
             foreach(Termin model in modeli)
             {
                 if(model != null)
@@ -173,36 +177,31 @@ namespace ZdravoKorporacija.Model
             return id;
         }
         
-        public List<Lekar> DobaviSlobodneLekare(List<Lekar> lekari, ObservableCollection<Termin> pregledi, DateTime pocetakTermina)
+       
+
+        public List<Lekar> ProveriDaLiJeNaOdmoru( DateTime pocetakTermina)
         {
-            List<Lekar> slobodniLekari = lekari;
-
-            foreach (Termin t in pregledi)
+            List<Lekar> slobodniLekari = lekarServis.PregledSvihLekara();
+            foreach (RadniDan rd in daniServis.PregledSvihRadnihDana())
             {
-                if (t.Pocetak.Equals(pocetakTermina))
+                if (rd.dan.Date.Equals(pocetakTermina.Date) && rd.odmor == true)
                 {
-                    foreach (Lekar l in lekari.ToArray())
-                    {
-                        if (l.Jmbg.Equals(t.Lekar.Jmbg))
-                        {
-                            slobodniLekari.Remove(l);
-
-                        }
-                    }
+                    slobodniLekari.Remove(lekarServis.NadjiLekaraPoJMBG((long)rd.lekar));
                 }
             }
             return slobodniLekari;
         }
 
-        public List<Prostorija> DobaviSlobodneProstorije(List<Prostorija> prostorije, ObservableCollection<Termin> pregledi, Termin termin)
-        {
-            List<Prostorija> slobodneProstorije = prostorije;
 
-            foreach (Termin t in pregledi)
+        public List<Prostorija> DobaviSlobodneProstorije( Termin termin)
+        {
+            List<Prostorija> slobodneProstorije = prostorijaServis.PregledSvihProstorija();
+
+            foreach (Termin t in PregledSvihTermina().ToArray())
             {
                 if (t.Pocetak.Equals(termin.Pocetak))
                 {
-                    foreach (Prostorija p in prostorije.ToArray())
+                    foreach (Prostorija p in prostorijaServis.PregledSvihProstorija().ToArray())
                     {
                         if (t.prostorija.Id.Equals(p.Id))
                         {
@@ -312,6 +311,15 @@ namespace ZdravoKorporacija.Model
             
             return model;
         }
+        public Termin DTO2ModelNadji(TerminDTO dto)
+        {
+            foreach(Termin t in PregledSvihTermina())
+            {
+                if (dto.Id.Equals(t.Id))
+                    return t;
+            }
+            return null;
+        }
         public void DodajTermin(Termin t)
         {
             TerminRepozitorijum tr = new TerminRepozitorijum();
@@ -348,7 +356,7 @@ namespace ZdravoKorporacija.Model
             }
             return alternative;
         }
-        public List<Lekar> DobaviSlobodneLekareHITNO()
+        public List<Lekar> DobaviSlobodneLekareHITNO(SpecijalizacijaEnum specijalizacija)
         {
             List<Lekar> slobodniLekari = new List<Lekar>();
             List<Lekar> lekari = lekarServis.PregledSvihLekara();
@@ -356,6 +364,7 @@ namespace ZdravoKorporacija.Model
 
             foreach (Termin t in PregledSvihTermina())
             {
+               string  dateString = DateTime.Now.ToString();
                 if (t.Pocetak.Equals(RoundUp(DateTime.Now, TimeSpan.FromMinutes(30))))
                 {
                     foreach (Lekar l in lekari.ToArray())
@@ -365,10 +374,76 @@ namespace ZdravoKorporacija.Model
                             slobodniLekari.Remove(l);
 
                         }
+                        
                     }
-                }
+                } else 
+                    foreach(Lekar l in lekari.ToArray())
+                    {
+                         if (l.Specijalizacija != specijalizacija)
+                        {
+
+                            slobodniLekari.Remove(l);
+                        }
+                        else if (daniServis.NadjiDanZaLekara(DateTime.Now, (double)l.Jmbg).odmor == true)
+                        {
+                            slobodniLekari.Remove(l);
+                        }
+                        else if (daniServis.NadjiDanZaLekara(DateTime.Now, (double)l.Jmbg).prvaSmena == true && dateString.Contains('P'))
+                        {
+                            slobodniLekari.Remove(l);
+                        }
+                        else if (daniServis.NadjiDanZaLekara(DateTime.Now, (double)l.Jmbg).prvaSmena == false && dateString.Contains('A'))
+                        {
+                            slobodniLekari.Remove(l);
+                        }
+                    }
 
             }         
+            return slobodniLekari;
+        }
+        public List<Lekar> DobaviSlobodneLekare(DateTime pocetakTermina, SpecijalizacijaEnum specijalizacija)
+        {
+            List<Lekar> slobodniLekari = new List<Lekar>();
+            List<Lekar> lekari = lekarServis.PregledSvihLekara();
+            slobodniLekari = lekari;
+            string dateString = pocetakTermina.ToString();
+            foreach (Termin t in PregledSvihTermina())
+            {
+                if (t.Pocetak.Equals(pocetakTermina))
+                {
+                    foreach (Lekar l in lekari.ToArray())
+                    {
+                        if (l.Jmbg.Equals(t.Lekar.Jmbg))
+                        {
+                            slobodniLekari.Remove(l);
+
+                        }
+
+                    }
+                }
+                else
+                    foreach (Lekar l in lekari.ToArray())
+                    {
+                        if (l.Specijalizacija != specijalizacija)
+                        {
+
+                            slobodniLekari.Remove(l);
+                        }
+                        else if (daniServis.NadjiDanZaLekara(DateTime.Now, (double)l.Jmbg).odmor == true)
+                        {
+                            slobodniLekari.Remove(l);
+                        }
+                        else if (daniServis.NadjiDanZaLekara(DateTime.Now, (double)l.Jmbg).prvaSmena == true && dateString.Contains('P'))
+                        {
+                            slobodniLekari.Remove(l);
+                        }
+                        else if (daniServis.NadjiDanZaLekara(DateTime.Now, (double)l.Jmbg).prvaSmena == false && dateString.Contains('A'))
+                        {
+                            slobodniLekari.Remove(l);
+                        }
+                    }
+
+            }
             return slobodniLekari;
         }
         public List<Prostorija> DobaviSlobodneProstorijeHITNO()

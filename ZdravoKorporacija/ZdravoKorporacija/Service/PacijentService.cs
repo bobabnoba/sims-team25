@@ -25,7 +25,20 @@ namespace Service
             }
             return null;
         }
-        
+        public PacijentDTO NadjiPacijentaPoJMBGDTO(long jmbg)
+        {
+            PacijentRepozitorijum datoteka = new PacijentRepozitorijum();
+            List<Pacijent> pacijenti = datoteka.dobaviSve();
+            foreach (Pacijent p in pacijenti)
+            {
+                if (p.Jmbg.Equals(jmbg))
+                {
+                    return Model2DTO( p);
+                }
+            }
+            return null;
+        }
+
         public bool KreirajNalogPacijentu(Pacijent pacijent)
         {
             PacijentRepozitorijum datoteka = new PacijentRepozitorijum();
@@ -64,8 +77,14 @@ namespace Service
             List<Pacijent> pacijenti = datoteka.dobaviSve();
             foreach (Pacijent p in pacijenti)
             {
+                if (p.ZdravstveniKarton == null)
+                    break;
+                if (termin.zdravstveniKarton == null)
+                    break;
                 if (p.ZdravstveniKarton.Id.Equals(termin.zdravstveniKarton.Id))
                 {
+                    if (p.termin == null)
+                        p.termin = new List<Termin>();
                     foreach(Termin t in p.termin.ToArray())
                     {
                         if (t.Id.Equals(termin.Id))
@@ -101,7 +120,6 @@ namespace Service
 
         public bool AzurirajPacijenta(Pacijent pacijent)
         {
-            System.Diagnostics.Debug.WriteLine("Azuriralo");
             PacijentRepozitorijum datoteka = new PacijentRepozitorijum();
             List<Pacijent> pacijenti = datoteka.dobaviSve();
             if(pacijent != null)
@@ -180,7 +198,7 @@ namespace Service
         public void DodajTermin(Pacijent p, Termin t)
         {
             ZdravstveniKarton zk;
-            if (p.ZdravstveniKarton.Id != p.Jmbg)
+            if  (p.ZdravstveniKarton == null  )
             {
                 zk = new ZdravstveniKarton(p, p.Jmbg, StanjePacijentaEnum.None, "", KrvnaGrupaEnum.None, "");
                 p.ZdravstveniKarton = zk;

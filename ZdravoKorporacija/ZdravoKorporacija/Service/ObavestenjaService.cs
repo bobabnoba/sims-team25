@@ -48,7 +48,7 @@ namespace ZdravoKorporacija.Service
             return dtos;
         }
 
-        public void generisiObavestenja() // generise obavestenja o zakazanim terminima
+        public void generisiObavestenja() 
         {
 
             termini = datotekaTer.dobaviSve();
@@ -68,27 +68,26 @@ namespace ZdravoKorporacija.Service
                 foreach (Termin t in termini)
                 {
                     if(t != null)
-                    if (t.zdravstveniKarton != null)
-                        if (p.Jmbg == t.zdravstveniKarton.Id)
+                        if (p.Jmbg.Equals( t.zdravstveniKarton.Id))
                         {
 
                             Notifikacija obavestenje = new Notifikacija();
-                            if (p.notifikacije is null)
+                            if (p.notifikacije == null)
                             {
+                                p.notifikacije = new ObservableCollection<Notifikacija>();
                                 obavestenje.Id = 1;
                             }
                             else
-
                                 obavestenje.Id = (p.notifikacije.Count) + 1;
+
                             obavestenje.Datum = DateTime.Now;
                             obavestenje.Status = "Neprocitano";
                             obavestenje.Tip = TipNotifikacije.Obavestenje;
                             obavestenje.Sadrzaj = "Zakazan termin: " + t.Tip.ToString() + ", vreme: " + t.Pocetak.ToString();
 
-                            if (p.notifikacije != null)
-                            {
-                                p.notifikacije.Add(obavestenje);
-                            }
+                            
+                            p.notifikacije.Add(obavestenje);
+                            
                             datotekaPac.sacuvaj(pacijenti);
                         }
                 }
