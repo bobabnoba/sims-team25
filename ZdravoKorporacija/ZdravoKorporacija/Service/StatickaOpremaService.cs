@@ -14,8 +14,8 @@ namespace Service
     public class StatickaOpremaService
         {
         StatickaOpremaRepozitorijum statickaRepozitorijum = StatickaOpremaRepozitorijum.Instance;
-        TerminService ts = new TerminService();
-        public bool DodajOpremu(StatickaOpremaDTO statickaOpremaDTO,DateTime dt,String sati,ProstorijaDTO p)
+        TerminService terminServis = new TerminService();
+        public bool DodajOpremu(StatickaOpremaDTO statickaOpremaDTO,TerminDTO terminDTO,String sati)
             {  
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
             Dictionary<int, int> ids = datotekaID.dobaviSve();
@@ -23,16 +23,16 @@ namespace Service
             ids[slobodanId] = 1;
 
 
-            String s = dt.ToString();
+            String s = terminDTO.Pocetak.ToString();
             String date = s.Split(" ")[0];
 
-            TerminDTO t = new TerminDTO();
-            t.Id = slobodanId;
-            t.Pocetak = dt;
-            t.prostorija = p;
+            TerminDTO termin = new TerminDTO();
+            termin.Id = slobodanId;
+            termin.prostorija = terminDTO.prostorija;
+            termin.Pocetak = terminDTO.Pocetak;
 
-           
-            ts.ZakaziTerminDTO(t,ids);
+
+            terminServis.ZakaziTerminDTO(termin,ids);
             StatickaOprema statickaOprema = new StatickaOprema(statickaOpremaDTO);
 
             StatickaOpremaRepozitorijum.Instance.magacinStatickaOprema.Add(statickaOprema);

@@ -83,6 +83,14 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
             biranjeProstorija.Show();
         }
 
-     
+        private void radioButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void radioButton1_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

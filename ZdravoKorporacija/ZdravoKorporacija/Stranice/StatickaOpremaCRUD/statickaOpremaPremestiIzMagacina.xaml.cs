@@ -32,7 +32,6 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
         private Boolean selected;
 
         private ObservableCollection<ZahtevPremestanjaDTO> listaZahteva = new ObservableCollection<ZahtevPremestanjaDTO>();
-        private ZahtevPremestanjaDTO z = new ZahtevPremestanjaDTO();
         private int indeks;
         private Boolean imaZahtev = true;
 
@@ -68,7 +67,8 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
             this.indeks = (int)cbProstorija.SelectedIndex;
            
             zahtevPremestanjaDTO.prostorija = (ProstorijaDTO)cbProstorija.SelectedItem;
-            zahteviController.ZakaziPremestanje((InventarDTO)cbMagacin.SelectedItem, zahtevPremestanjaDTO, (DateTime)timePicker.SelectedDate, (String)sati.SelectedItem, textBoxTrajanje.Text);
+            zahtevPremestanjaDTO.Pocetak = (DateTime)timePicker.SelectedDate;
+            zahteviController.ZakaziPremestanje((InventarDTO)cbMagacin.SelectedItem, zahtevPremestanjaDTO, (String)sati.SelectedItem, textBoxTrajanje.Text);
         }
        
      
@@ -147,26 +147,27 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
 
         public void ProveraZahteva(object sender, EventArgs e)
         {
-
+            ZahtevPremestanjaDTO premastanjeZahtevDTO = new ZahtevPremestanjaDTO();
 
             if (zahteviController.PregledSveOpremeDTO() != null)
             {
-                z = zahteviController.PregledSveOpremeDTO().FirstOrDefault(s => s.Kraj <= DateTime.Now && s.Kraj >= DateTime.Now.AddMinutes(-5));
-                if (z == null)
+                premastanjeZahtevDTO = zahteviController.PregledSveOpremeDTO().FirstOrDefault(s => s.Kraj <= DateTime.Now && s.Kraj >= DateTime.Now.AddMinutes(-5));
+                if (premastanjeZahtevDTO == null)
                 {
                     imaZahtev = false;
                 }
                 else { imaZahtev = true; }
 
             }
-            if (z != null && imaZahtev == true)
+            if (premastanjeZahtevDTO != null && imaZahtev == true)
             {
 
-                zahteviController.ObrisiZahtevPremestanja(z);
-                statickaopremaStorage.DodajOpremu(z.StatickaOprema, z.Pocetak, "10", z.prostorija);
+                zahteviController.ObrisiZahtevPremestanja(premastanjeZahtevDTO);
+                TerminDTO terminDTO = new TerminDTO(premastanjeZahtevDTO.prostorija, premastanjeZahtevDTO.Pocetak);
+                statickaopremaStorage.DodajOpremu(premastanjeZahtevDTO.StatickaOprema,terminDTO,"10");
                 MessageBox.Show("zavrsen termin");
-                ProstorijaDTO p = z.prostorija;
-                StatickaOpremaDTO stat = new StatickaOpremaDTO((InventarDTO)z.StatickaOprema);
+                ProstorijaDTO p = premastanjeZahtevDTO.prostorija;
+                StatickaOpremaDTO stat = new StatickaOpremaDTO((InventarDTO)premastanjeZahtevDTO.StatickaOprema);
                 p.statickaOprema = new System.Collections.ArrayList();
                 p.statickaOprema.Add(stat);
                 prostorijeController.AzurirajProstoriju(p, this.indeks);

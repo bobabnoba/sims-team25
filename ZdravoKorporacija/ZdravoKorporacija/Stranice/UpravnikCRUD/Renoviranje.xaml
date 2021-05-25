@@ -31,9 +31,9 @@
         <Button Width="100" Content="POTVRDI" HorizontalAlignment="Left" Margin="86,374,0,0" VerticalAlignment="Top" Click="potvrdi"/>
         <Button Width="100" Content="ODUSTANI" HorizontalAlignment="Left" Margin="266,374,0,0" VerticalAlignment="Top" Click="odustani"/>
         <Label x:Name="label1_Copy1" Content="Izaberite prostorije" HorizontalAlignment="Left" Margin="70,262,0,0" VerticalAlignment="Top" Height="26"/>
-        <Label x:Name="label1_Copy1" Content="Izaberite prostorije" HorizontalAlignment="Left" Margin="70,262,0,0" VerticalAlignment="Top" Height="26"/>
         <Label x:Name="label1_Copy2" Content="Akcija" HorizontalAlignment="Left" Margin="70,221,0,0" VerticalAlignment="Top" Width="46"/>
-        <RadioButton x:Name="r2" Content="Proizvodjac"  HorizontalAlignment="Left" Margin="194,266,0,0" VerticalAlignment="Top" Height="22" Width="190" Foreground="White" Grid.Row="6" Grid.Column="9" GroupName="Group1" Checked="r2_Checked" Grid.ColumnSpan="3"/>
         <Button x:Name="buttonProstorije" Content="Prostorije" HorizontalAlignment="Left" Margin="194,266,0,0" VerticalAlignment="Top" Height="22" Width="190" Click="button_Click_1"/>
+        <RadioButton x:Name="radioButton" Content="Spajanje" HorizontalAlignment="Left" Margin="194,221,0,0" VerticalAlignment="Top" Checked="radioButton_Checked"/>
+        <RadioButton x:Name="radioButton1" Content="Razdvajanje" HorizontalAlignment="Left" Margin="296,221,0,0" VerticalAlignment="Top" Checked="radioButton1_Checked"/>
     </Grid>
 </Window>

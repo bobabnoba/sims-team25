@@ -21,9 +21,6 @@ namespace Service
             String s = zahtevRenoviranjaDTO.PocetakDan.ToString();
             String date = s.Split(" ")[0];
 
-            // Debug.WriteLine(date + " " + sati);
-            // Debug.WriteLine("" + s);
-
             DateTime pocetak = DateTime.Parse(date + " " + zahtevRenoviranjaDTO.PocetakSati);
 
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapRenoviranje");
@@ -53,9 +50,10 @@ namespace Service
                     zp.prostorija = new ProstorijaDTO(zahtev.Prostorija);
                     ZahtevIzbacivanja zi = new ZahtevIzbacivanja();
                     zi.prostorija = zahtev.Prostorija;
-              
+                    zp.Pocetak = zahtevRenoviranjaDTO.PocetakDan;
+                    
                     zahtevI.ZakaziIzbacivanje(inventar, zi, zahtevRenoviranjaDTO.PocetakDan, zahtevRenoviranjaDTO.PocetakSati, zahtevRenoviranjaDTO.Trajanje);
-                    zahtevP.ZakaziPremestanje(inventar, zp, zahtevRenoviranjaDTO.PocetakDan, zahtevRenoviranjaDTO.PocetakSati, zahtevRenoviranjaDTO.Trajanje);
+                    zahtevP.ZakaziPremestanje(inventar, zp, zahtevRenoviranjaDTO.PocetakSati, zahtevRenoviranjaDTO.Trajanje);
                 }
             }
 

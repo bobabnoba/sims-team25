@@ -20,9 +20,9 @@ namespace Controller
             return zahteviPremestanjaService.ObrisiZahtevPremestanja(zahtevPremestanjaDTO);
         }
 
-        public bool ZakaziPremestanje(InventarDTO selectedItem1, ZahtevPremestanjaDTO zahtevPremestanjaDTO, DateTime selectedDate, string selectedItem2, string text)
+        public bool ZakaziPremestanje(InventarDTO selectedItem1, ZahtevPremestanjaDTO zahtevPremestanjaDTO, string selectedItem2, string text)
         {
-            return zahteviPremestanjaService.ZakaziPremestanje(selectedItem1,zahtevPremestanjaDTO,selectedDate,selectedItem2,text);
+            return zahteviPremestanjaService.ZakaziPremestanje(selectedItem1,zahtevPremestanjaDTO,selectedItem2,text);
         }
     }
 }

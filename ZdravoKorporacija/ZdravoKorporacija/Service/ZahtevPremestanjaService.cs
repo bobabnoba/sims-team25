@@ -11,7 +11,7 @@ namespace Service
     class ZahtevPremestanjaService
     {
         ZahtevPremestanjaRepozitorijum datoteka = ZahtevPremestanjaRepozitorijum.Instance;
-        public bool ZakaziPremestanje(InventarDTO inventarDTO, ZahtevPremestanjaDTO zahtevPremestanjaDTO, DateTime dt, string sati, string trajanje)
+        public bool ZakaziPremestanje(InventarDTO inventarDTO, ZahtevPremestanjaDTO zahtevPremestanjaDTO, string sati, string trajanje)
         {
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapZahtevPremestanja");
             Dictionary<int, int> ids = datotekaID.dobaviSve();
@@ -28,7 +28,7 @@ namespace Service
             zahtevPremestanja.prostorija.statickaOprema = new List<StatickaOprema>();
             zahtevPremestanja.prostorija.statickaOprema.Add(stat);
 
-            String s = dt.ToString();
+            String s = zahtevPremestanjaDTO.Pocetak.ToString();
             String date = s.Split(" ")[0];
 
             DateTime datum = DateTime.Parse(date + " " + sati);

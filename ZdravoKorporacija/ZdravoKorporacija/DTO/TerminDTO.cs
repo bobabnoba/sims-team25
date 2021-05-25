@@ -33,6 +33,12 @@ namespace ZdravoKorporacija.DTO
             Trajanje = trajanje;
         }
 
+        public TerminDTO(ProstorijaDTO prostorija, DateTime pocetak)
+        {
+            this.prostorija = prostorija;
+            Pocetak = pocetak;
+        }
+
         public TerminDTO(Termin termin)
         {
             this.izvestaj = termin.izvestaj;
