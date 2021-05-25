@@ -11,6 +11,7 @@ namespace Repository
         private string lokacija;
 
         public PacijentRepozitorijum()
+
         {
             this.lokacija = @"..\..\..\Data\pacijent.json";
         }

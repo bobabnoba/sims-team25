@@ -245,16 +245,37 @@
     <Page Update="Stranice\PacijentCRUD\AnketiranjeLjekara.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Stranice\PacijentCRUD\Izmeni.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Stranice\PacijentCRUD\izmeniPregled.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\Logovanje\login.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Stranice\PacijentCRUD\Login.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\PacijentCRUD\Obavestenja.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Stranice\PacijentCRUD\otkaziPregled.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\PacijentCRUD\pacijentStart.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\PacijentCRUD\pocetna.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\PacijentCRUD\pocetna2.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\PacijentCRUD\Pregledi.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\PacijentCRUD\Zakazi.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\PacijentCRUD\zakaziPregled.xaml">

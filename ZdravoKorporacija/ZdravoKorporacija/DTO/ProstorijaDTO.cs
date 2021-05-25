@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ZdravoKorporacija.DTO
 {
-    class ProstorijaDTO
+    public class ProstorijaDTO
     {
         public System.Collections.ArrayList inventar;
 
@@ -18,6 +18,10 @@ namespace ZdravoKorporacija.DTO
             Tip = tip;
             Slobodna = slobodna;
             Sprat = sprat;
+        }
+
+        public ProstorijaDTO()
+        {
         }
 
 

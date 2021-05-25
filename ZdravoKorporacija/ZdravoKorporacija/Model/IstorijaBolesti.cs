@@ -1,4 +1,5 @@
 using System;
+using ZdravoKorporacija.DTO;
 
 namespace Model
 {
@@ -58,6 +59,11 @@ namespace Model
                     this.dijagnoza.Remove(oldDijagnoza);
                     oldDijagnoza.SetIstorijaBolesti((IstorijaBolesti)null);
                 }
+        }
+
+        internal void SetZdravstveniKarton(ZdravstveniKartonDTO zdravstveniKartonDTO)
+        {
+            throw new NotImplementedException();
         }
 
         /// <pdGenerated>default removeAll</pdGenerated>

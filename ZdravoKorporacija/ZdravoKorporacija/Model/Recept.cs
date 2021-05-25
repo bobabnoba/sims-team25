@@ -9,6 +9,21 @@ namespace Model
 {
     public class Recept
     {
+        public Recept()
+        {
+
+        }
+        public Recept(Lekar lekar, ZdravstveniKarton zdravstveniKarton, int id, string doziranje, int trajanje, string nazivLeka, DateTime pocetak)
+        {
+            this.lekar = lekar;
+            this.zdravstveniKarton = zdravstveniKarton;
+            Id = id;
+            Doziranje = doziranje;
+            Trajanje = trajanje;
+            NazivLeka = nazivLeka;
+            Pocetak = pocetak;
+        }
+
         public int Id { get; set; }
         public String Doziranje { get; set; }
         public int Trajanje { get; set; }
@@ -88,6 +103,8 @@ namespace Model
                 }
             }
         }
+
+
 
     }
 }

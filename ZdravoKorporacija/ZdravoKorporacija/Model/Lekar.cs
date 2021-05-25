@@ -4,6 +4,7 @@
 // Purpose: Definition of Class Doctor
 
 using System;
+using ZdravoKorporacija.DTO;
 
 namespace Model
 {
@@ -16,10 +17,23 @@ namespace Model
 
         }
 
+      
+
         public Lekar(string ime, string prezime, Int64 jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password, UlogaEnum uloga) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password, uloga)
         {
         }
 
+        public Lekar(LekarDTO lDTO)
+        {
+            this.Ime = lDTO.Ime;
+            this.Prezime = lDTO.Prezime;
+            this.Jmbg = lDTO.Jmbg;
+        }
+
+        public Lekar(string Ime, string Prezime, Int64 jmbg) : base(Ime, Prezime)
+        {
+            this.Jmbg = jmbg;
+        }
 
         public System.Collections.ArrayList termin;
 

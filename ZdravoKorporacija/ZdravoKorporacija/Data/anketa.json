@@ -293,5 +293,54 @@
     "Ocena": 9,
     "Komentar": "Zadovoljan sam uslugama bolnice.\r\n",
     "Termin": null
+  },
+  {
+    "Id": 6,
+    "IdAutora": 1234567890123,
+    "Datum": "2021-05-25T02:44:42",
+    "Tip": 0,
+    "Ocena": 10,
+    "Komentar": "is it oveeer yet\r\n",
+    "Termin": null
+  },
+  {
+    "Id": 7,
+    "IdAutora": 1234567890123,
+    "Datum": "2021-05-25T03:12:44",
+    "Tip": 1,
+    "Ocena": 9,
+    "Komentar": "sve pet\r\n",
+    "Termin": {
+      "izvestaj": null,
+      "zdravstveniKarton": null,
+      "prostorija": null,
+      "Lekar": {
+        "termin": null,
+        "Ime": "Veljko",
+        "Prezime": "Vukovic",
+        "Jmbg": 2334567890213,
+        "BrojTelefona": 0,
+        "Mejl": null,
+        "AdresaStanovanja": null,
+        "Pol": 0,
+        "Username": null,
+        "Password": null,
+        "Uloga": 0
+      },
+      "Id": 4,
+      "Tip": 0,
+      "Pocetak": "2021-07-02T08:00:00",
+      "Trajanje": 0.5,
+      "hitno": false
+    }
+  },
+  {
+    "Id": 8,
+    "IdAutora": 1234567890123,
+    "Datum": "2021-05-25T03:25:23",
+    "Tip": 0,
+    "Ocena": 9,
+    "Komentar": "asdf\r\n",
+    "Termin": null
   }
 ]

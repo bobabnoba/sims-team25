@@ -28,6 +28,9 @@ namespace Model
             Sprat = sprat;
         }
 
+        public Prostorija()
+        {
+        }
 
         public List<StatickaOprema> statickaOprema;
 

@@ -209,8 +209,8 @@ namespace ZdravoKorporacija.Stranice
                 }
                 else
                 {
-                    AnketiranjeLjekara ak = new AnketiranjeLjekara(sel, pacijent);
-                    ak.Show();
+                    //AnketiranjeLjekara ak = new AnketiranjeLjekara(sel, pacijent);
+                    //ak.Show();
                 }
 
             }
@@ -222,9 +222,9 @@ namespace ZdravoKorporacija.Stranice
 
         private void popuniAnketu(object sender, RoutedEventArgs e)
         {
-                AnketiranjeBolnice ab = new AnketiranjeBolnice(pacijent);
-                ab.Show();
-                anketaB.Visibility = Visibility.Hidden;
+                //AnketiranjeBolnice ab = new AnketiranjeBolnice(pacijent);
+                //ab.Show();
+                //anketaB.Visibility = Visibility.Hidden;
 
         }
     }
