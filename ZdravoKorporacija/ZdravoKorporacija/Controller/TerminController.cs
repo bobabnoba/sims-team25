@@ -29,6 +29,9 @@ namespace ZdravoKorporacija.Controller
         public IEnumerable<TerminDTO> dobaviListuDTOtermina(PacijentDTO pacijentDTO)
             => servis.PregledSvihTerminaPacijenta(pacijentKontroler.konvertujDTOuEntitet(pacijentDTO)).Select(entitet 
                                                                             => terminKonverter.KonvertujEntitetUDTO(entitet)).ToList();
+        public IEnumerable<TerminDTO> dobaviListuDTOProslihtermina(PacijentDTO pacijentDTO)
+            => servis.PregledIstorijeTerminaPacijenta(pacijentKontroler.konvertujDTOuEntitet(pacijentDTO)).Select(entitet 
+                                                                            => terminKonverter.KonvertujEntitetUDTO(entitet)).ToList();
 
         public Boolean zakaziPregled(TerminDTO terminDTO, PacijentDTO pacijentDTO)
         {

@@ -53,6 +53,15 @@ namespace ZdravoKorporacija.Controller
             servis.AzurirajPacijenta(pacijent);
         }
 
+        public PacijentPodaciDTO konvertujUPodaciDTO(PacijentDTO pacijentDTO)
+        {
+            Pacijent pacijent = servis.PregledSvihPacijenata().FirstOrDefault(p =>
+                p.Username.Equals(pacijentDTO.korisnickoIme) && p.Password.Equals(pacijentDTO.lozinka));
+
+            return new PacijentPodaciDTO(pacijent.Ime, pacijent.Prezime, pacijent.Jmbg, pacijent.BrojTelefona,
+                pacijent.Mejl, pacijent.AdresaStanovanja, pacijent.Pol);
+        }
+
     }
 
 

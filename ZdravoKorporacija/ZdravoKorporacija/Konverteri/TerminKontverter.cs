@@ -19,9 +19,12 @@ namespace ZdravoKorporacija.Konverteri
         public Termin KonvertujDTOuEntitet(TerminDTO dto)
         { 
             LekarKonverter lekarKonverter = new LekarKonverter();
+            IzvestajKonverter izvestajKonverter = new IzvestajKonverter();
+            ZdravstveniKartonKonverter zdravstveniKartonKonverter = new ZdravstveniKartonKonverter();
+
             if (dto != null)
                 return new Termin(dto.Id, lekarKonverter.KonvertujDTOuEntitet(dto.Lekar), dto.Tip, dto.Pocetak,
-                    dto.Trajanje);
+                    dto.Trajanje, zdravstveniKartonKonverter.KonvertujDTOuEntitet(dto.zdravstveniKarton),izvestajKonverter.KonvertujDTOuEntitet(dto.Izvestaj));
             else return null;
         }
 
@@ -33,11 +36,12 @@ namespace ZdravoKorporacija.Konverteri
             ProstorijaKonverter prostorijaKonverter = new ProstorijaKonverter();
             ZdravstveniKartonKonverter zdravstveniKartonKonverter = new ZdravstveniKartonKonverter();
             LekarKonverter lekarKonverter = new LekarKonverter();
+            IzvestajKonverter izvestajKonverter = new IzvestajKonverter();
             if (entitet != null)
                 return new TerminDTO(entitet.Id, entitet.Tip, entitet.Pocetak, entitet.Trajanje,
                     prostorijaKonverter.KonvertujEntitetUDTO(entitet.prostorija),
                     lekarKonverter.KonvertujEntitetUDTO(entitet.Lekar),
-                    zdravstveniKartonKonverter.KonvertujEntitetUDTO(entitet.zdravstveniKarton));
+                    zdravstveniKartonKonverter.KonvertujEntitetUDTO(entitet.zdravstveniKarton), izvestajKonverter.KonvertujEntitetUDTO(entitet.izvestaj));
             else return null;
 
         }

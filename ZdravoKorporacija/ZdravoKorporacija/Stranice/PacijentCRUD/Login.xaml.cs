@@ -22,13 +22,9 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
     /// </summary>
     public partial class Login : Window
     {
-        private KorisnikService ks = new KorisnikService();
-        private PacijentService pacijentService = new PacijentService();
         private KorisnikController korisnikController = new KorisnikController();
-
-        private Korisnik ulogovan;
-        private PacijentRepozitorijum pacRepo = new PacijentRepozitorijum();
         private UlogaEnum uloga;
+
         public Login(UlogaEnum uloga)
         {
             InitializeComponent();
@@ -38,7 +34,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             PacijentDTO ulogovani =
-                korisnikController.ulogovaniPacijent(UlogaEnum.Pacijent, imeText.Text, lozinkaText.Password);
+                korisnikController.ulogovaniPacijent(uloga, imeText.Text, lozinkaText.Password);
             if (ulogovani != null)
             {
                 pocetna2 pocetna = new pocetna2(ulogovani);

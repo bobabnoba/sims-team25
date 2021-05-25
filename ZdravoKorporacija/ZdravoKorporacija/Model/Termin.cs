@@ -12,16 +12,16 @@ namespace Model
 
         public Termin() { }
 
-        public Termin(int id, Lekar lekar, TipTerminaEnum tip, DateTime pocetak, double trajanje)
+        public Termin(int id, Lekar lekar, TipTerminaEnum tip, DateTime pocetak, double trajanje, ZdravstveniKarton zdravstveniKarton, Izvestaj izvestaj)
         {
             this.Id = id;
             this.Lekar = lekar;
             this.Tip = tip;
             this.Pocetak = pocetak;
             this.Trajanje = 0.5;
-            this.zdravstveniKarton = null;
+            this.zdravstveniKarton = zdravstveniKarton;
             this.prostorija = null;
-            this.izvestaj = null;
+            this.izvestaj = izvestaj;
         }
 
 

@@ -1227,5 +1227,95 @@
     "Pocetak": "2021-06-03T11:30:00",
     "Trajanje": 0.5,
     "hitno": false
+  },
+  {
+    "izvestaj": {
+      "termin": null,
+      "Id": 0,
+      "Opis": "Simptomi ukazuju na umor i prehladu. Preporucuje se odmor i konzumacija vitamina u vecoj dozi.\r\n",
+      "Simptomi": "Pacijent ima temperaturu 37.2 i oseca malaksalost."
+    },
+    "zdravstveniKarton": {
+      "izvestajOHospitalizaciji": [],
+      "istorijaBolesti": [],
+      "recept": [
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 3,
+          "Doziranje": "1",
+          "Trajanje": 1,
+          "NazivLeka": "Lijek x",
+          "Pocetak": "2021-04-26T23:26:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 1,
+          "Doziranje": "2",
+          "Trajanje": 2,
+          "NazivLeka": "Proba",
+          "Pocetak": "2021-04-29T22:09:20"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 10,
+          "Doziranje": "1",
+          "Trajanje": 1,
+          "NazivLeka": "L1x",
+          "Pocetak": "2021-04-29T22:12:20"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 11,
+          "Doziranje": "d",
+          "Trajanje": 20,
+          "NazivLeka": "d",
+          "Pocetak": "2021-05-01T11:00:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 12,
+          "Doziranje": "1",
+          "Trajanje": 1,
+          "NazivLeka": "r",
+          "Pocetak": "2021-05-25T00:52:00"
+        }
+      ],
+      "termin": [],
+      "patient": null,
+      "Id": 1234567890123,
+      "ZdravstvenoStanje": 3,
+      "Alergije": null,
+      "KrvnaGrupa": 8,
+      "Vakcine": null
+    },
+    "prostorija": null,
+    "Lekar": {
+      "termin": null,
+      "Ime": "Milos",
+      "Prezime": "Zivic",
+      "Jmbg": 2234567890113,
+      "BrojTelefona": 0,
+      "Mejl": null,
+      "AdresaStanovanja": null,
+      "Pol": 0,
+      "Username": null,
+      "Password": null,
+      "Uloga": 0
+    },
+    "Id": 9,
+    "Tip": 0,
+    "Pocetak": "2021-05-25T14:30:00",
+    "Trajanje": 30.0,
+    "hitno": false
   }
 ]

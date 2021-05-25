@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\output-onlinepngtools.png" />
     <None Remove="Stranice\LekarCRUD\add.png" />
     <None Remove="Stranice\LekarCRUD\edit.png" />
   </ItemGroup>
@@ -17,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\output-onlinepngtools.png" />
     <Resource Include="Stranice\LekarCRUD\add.png" />
     <Resource Include="Stranice\LekarCRUD\edit.png" />
   </ItemGroup>

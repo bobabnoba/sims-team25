@@ -37,7 +37,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
             anketaController = new AnketaController();
 
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Interval = TimeSpan.FromMinutes(1);
             timer.Tick += timer_Tick;
             timer.Start();
 
@@ -131,24 +131,31 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
          }
 
 
-        private void IstorijaTerminaClick(object sender, RoutedEventArgs e)
-        {
-            //termini.Clear();
-            //ObservableCollection<Termin> sviTermini = new ObservableCollection<Termin>(storage.PregledSvihTermina());
-            //foreach (Termin t in sviTermini)
-            //{
-            //    if (t.zdravstveniKarton != null && t.zdravstveniKarton.Id.Equals(pacijent.ZdravstveniKarton.Id) && t.Pocetak < DateTime.Parse(DateTime.Now.ToString()))
-            //    {
-            //        termini.Add(t);
-            //    }
-            //}
-            //zakaziBtn.Visibility = Visibility.Hidden;
-            //otkaziBtn.Visibility = Visibility.Hidden;
-            //izmeniBtn.Visibility = Visibility.Hidden;
-            //istorijaBtn.Visibility = Visibility.Hidden;
 
+        private void AnamnezaBtn_OnClick(object sender, RoutedEventArgs e)
+        {
+            AnamnezaProzor anamneza = new AnamnezaProzor((TerminDTO) dgTermini.SelectedItem, pacijentDTO);
+            anamneza.Show();
         }
 
-        
+
+        private void IstorijaTerminaClick(object sender, RoutedEventArgs e)
+        {
+            terminiDTO.Clear();
+            List<TerminDTO> sviTermini = (List<TerminDTO>)terminKontroler.dobaviListuDTOProslihtermina(pacijentDTO);
+            foreach (TerminDTO t in sviTermini)
+            {
+                if (t.Pocetak < DateTime.Now)
+                {
+                    terminiDTO.Add(t);
+                }
+            }
+            oceniTerminBtn.Visibility = Visibility.Hidden;
+            zakaziBtn.Visibility = Visibility.Hidden;
+            otkaziBtn.Visibility = Visibility.Hidden;
+            izmeniBtn.Visibility = Visibility.Hidden;
+            istorijaBtn.Visibility = Visibility.Hidden;
+
+        }
     }
 }

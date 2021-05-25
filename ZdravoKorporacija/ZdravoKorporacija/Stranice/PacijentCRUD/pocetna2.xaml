@@ -13,12 +13,20 @@
 
     <Grid>
         <!--veliki grid-->
-        <Grid Background="Gray">
+        <Grid>
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" SpreadMethod="Reflect" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#FFDA9797" Offset="1"/>
+                    <GradientStop Color="#FF100B0B" Offset="0"/>
+                    <GradientStop Color="#FF201616" Offset="0.081"/>
+                </LinearGradientBrush>
+            </Grid.Background>
             <!--panel za meni-->
             <Grid x:Name="menu"
                   HorizontalAlignment="Left"
                   Width="240"
-                  Background="GhostWhite">
+                  Background="#FFDDDDDD">
                 <StackPanel x:Name="stack_menu">
                     <!--* grid za logo *-->
                     <Grid>
@@ -28,13 +36,9 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="240"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Row="0" Grid.Column="0"
-                                    Text="L O G O "
-                                    Foreground="Black"
-                                    FontSize="20"
-                                    Background="Transparent"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"/>
+                        <Button Background="Transparent" BorderBrush="Transparent">
+                            <Image Source="/Images/output-onlinepngtools.png" Stretch="None"/>
+                        </Button>
 
                     </Grid>
 
@@ -57,7 +61,7 @@
                         <Button x:Name="pocetnaBtn" Content="Početna" FontSize="25" Grid.Row="0" Grid.Column="0" BorderBrush="Gray" BorderThickness="0,0,0,0" Click="pocetnaBtn_Click" />
                         <Button x:Name="obavjestenjaBtn" Content="Obaveštenja" FontSize="25" Grid.Row="1" Grid.Column="0" BorderBrush="Gray" BorderThickness="0,0,0,0" Click="obavjestenjaBtn_Click" />
                         <Button x:Name="preglediBtn" Content="Moji pregledi" FontSize="25" Grid.Row="2" Grid.Column="0" BorderBrush="Gray" BorderThickness="0,0,0,0" Click="preglediBtn_Click" />
-                        <Button x:Name= "kartonBtn" Content="Zdravstveni karton" FontSize="25" Grid.Row="3" Grid.Column="0" BorderBrush="Gray" BorderThickness="0,0,0,0" />
+                        <Button x:Name= "kartonBtn" Content="Zdravstveni karton" FontSize="25" Grid.Row="3" Grid.Column="0" BorderBrush="Gray" BorderThickness="0,0,0,0" Click="kartonBtn_Click" />
                         <Button x:Name="terapijaBtn" Content="Terapija" FontSize="25" Grid.Row="4" Grid.Column="0" BorderBrush="Gray" BorderThickness="0,0,0,0" />
                         <Button x:Name="profilBtn" Content="Profil" FontSize="25" Grid.Row="5" Grid.Column="0" BorderBrush="Gray" BorderThickness="0,0,0,0" />
                         <Button x:Name="pomocBtn" Content="Pomoć" FontSize="25" Grid.Row="6" Grid.Column="0" BorderBrush="Gray" BorderThickness="0,0,0,0" />
@@ -77,12 +81,10 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="500*"/>
                 </Grid.ColumnDefinitions>
-                <Line Stroke="Black" StrokeThickness="1" X1="500" Margin="-10,0,10,480" Grid.Row="1" HorizontalAlignment="Right"></Line>
-                <TextBlock x:Name="IPpacijenta" Text="Dušan Marković" FontSize="33" TextAlignment="Right" HorizontalAlignment="Right" Grid.Row="0" Height="60" Margin="0,47,167,13" TextWrapping="Wrap" Width="362"/>
+                <Line Stroke="#FF845B5B" StrokeThickness="1" X1="500" Margin="-10,0,10,480" Grid.Row="1" HorizontalAlignment="Right"></Line>
+                <TextBlock x:Name="IPpacijenta" Text="Dušan Marković" FontSize="30" TextAlignment="Right" HorizontalAlignment="Right" Grid.Row="0" Height="60" Margin="0,47,167,13" TextWrapping="Wrap" Width="362" Foreground="#FFBB5555"/>
                 <Image Height="100" Margin="386,10,19,10"/>
-                <Frame Grid.Row="1" Grid.Column="0" x:Name="Main" NavigationUIVisibility="Hidden">
-
-                </Frame>
+                <Frame Grid.Row="1" Grid.Column="0" x:Name="Main" NavigationUIVisibility="Hidden"/>
                 <Button x:Name="oceniBolnicuBtn" Content="Oceni nas" FontSize="20" Margin="861,513,52,31" Grid.Row="1" Click="oceniBolnicuBtn_Click" Visibility="Hidden" />
             </Grid>
 

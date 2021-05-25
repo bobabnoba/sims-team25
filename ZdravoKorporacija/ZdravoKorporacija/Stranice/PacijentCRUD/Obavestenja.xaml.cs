@@ -1,5 +1,6 @@
 ﻿using Model;
 using System;
+using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Threading;
 using ZdravoKorporacija.Controller;
@@ -13,10 +14,11 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
     public partial class Obavestenja : Page
     {
         private PacijentDTO pacijent;
-        private Boolean prikazi;
+        private Boolean prikaziNotifikaciju;
+        private Boolean prikaziBelesku;
         private PacijentController pacijentController = new PacijentController();
-
-
+        private BeleskaController beleskaController = new BeleskaController();
+        private List<BeleskaDTO> beleske = new List<BeleskaDTO>();
 
         public Obavestenja(PacijentDTO pacijent)
         {
@@ -27,8 +29,9 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
             timer.Start();
-            this.prikazi = false;
-
+            this.prikaziNotifikaciju = false;
+            this.prikaziBelesku = false;
+            beleske = beleskaController.dobaviBeleskaDTOs();
 
             dgObavjestenja.ItemsSource = this.pacijent.notifikacije;
         }
@@ -50,15 +53,15 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
                 if (DateTime.Now.ToString().Equals(ter.AddMinutes(-1).ToString())) // upravo otkucalo da je prikažem, >= ispunjeno za sve pa ih sve ispisuje
                 {
                    // System.Diagnostics.Debug.WriteLine("'prikazi = true! '");
-                    this.prikazi = true;
+                    this.prikaziNotifikaciju = true;
                 }
                 int res = DateTime.Compare(DateTime.Now, ter.AddMinutes(-1));
                // System.Diagnostics.Debug.WriteLine("res je " + res);
 
 
-                if (this.prikazi == true && res >= 0)
+                if (this.prikaziNotifikaciju == true && res >= 0)
                 {
-                    this.prikazi = false;
+                    this.prikaziNotifikaciju = false;
                     NotifikacijaDTO n = new NotifikacijaDTO();
 
                     n.Id = pacijent.notifikacije.Count + 1;
@@ -70,6 +73,30 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
                     pacijent.notifikacije.Add(n);
                     pacijentController.dodajNotifikaciju(pacijent);
 
+                }
+            }
+
+            foreach (BeleskaDTO beleska in beleske)
+            {
+                // TODO: provjera autora 
+                DateTime ter = beleska.Datum;
+                if (DateTime.Now.ToString().Equals(ter.AddMinutes(-1).ToString()))
+                {
+                    // System.Diagnostics.Debug.WriteLine("'prikazi = true! '");
+                    this.prikaziBelesku = true;
+                }
+
+                int res = DateTime.Compare(DateTime.Now, ter.AddMinutes(-1));
+                // System.Diagnostics.Debug.WriteLine("res je " + res);
+
+
+                if (this.prikaziBelesku == true && res >= 0)
+                {
+                    this.prikaziBelesku = false;
+
+                    pacijent.notifikacije.Add(new NotifikacijaDTO(pacijent.notifikacije.Count + 1, beleska.Datum,
+                        TipNotifikacije.Podsetnik, beleska.Sadrzaj, "Neprocitano"));
+                    pacijentController.dodajNotifikaciju(pacijent);
                 }
             }
         }

@@ -29,7 +29,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
         {
             AnketaDTO poslednja = anketaController.dobaviPosljednjuAnketuBolnice(pacijentDTO);
 
-            if (poslednja != null && DateTime.Compare(poslednja.Datum, DateTime.Parse(DateTime.Now.AddMinutes(-9).ToString())) <= 0)
+            if (poslednja != null && DateTime.Compare(poslednja.Datum, DateTime.Parse(DateTime.Now.AddDays(-30).ToString())) <= 0)
             {
                 oceniBolnicuBtn.Visibility = Visibility.Visible;
             }
@@ -60,6 +60,11 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
             AnketiranjeBolnice ab = new AnketiranjeBolnice(pacijentDTO);
             ab.Show();
             oceniBolnicuBtn.Visibility = Visibility.Hidden;
+        }
+
+        private void kartonBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new ZKPacijent(pacijentDTO);
         }
     }
 }

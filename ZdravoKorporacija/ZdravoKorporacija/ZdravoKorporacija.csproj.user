@@ -72,10 +72,16 @@
     <Compile Update="Stranice\LekarCRUD\zdravstveniKartonPrikaz.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Stranice\PacijentCRUD\AnamnezaProzor.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Stranice\PacijentCRUD\AnketiranjeBolnice.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Stranice\PacijentCRUD\AnketiranjeLjekara.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\PacijentCRUD\BeleskeStranica.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Stranice\PacijentCRUD\izmeniPregled.xaml.cs">
@@ -91,6 +97,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Stranice\PacijentCRUD\zakaziPregled.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\PacijentCRUD\ZKPacijent.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Stranice\SekretarCRUD\izmeniNalogSekretar.xaml.cs">
@@ -239,10 +248,16 @@
     <Page Update="Stranice\LekarCRUD\zdravstveniKartonPrikaz.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Stranice\PacijentCRUD\AnamnezaProzor.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Stranice\PacijentCRUD\AnketiranjeBolnice.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\PacijentCRUD\AnketiranjeLjekara.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\PacijentCRUD\BeleskeStranica.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\PacijentCRUD\Izmeni.xaml">
@@ -279,6 +294,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\PacijentCRUD\zakaziPregled.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\PacijentCRUD\ZKPacijent.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\SekretarCRUD\izmeniNalogSekretar.xaml">

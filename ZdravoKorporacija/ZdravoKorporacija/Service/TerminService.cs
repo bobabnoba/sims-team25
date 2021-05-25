@@ -133,8 +133,25 @@ namespace ZdravoKorporacija.Model
 
         }
 
+        public List<Termin> PregledIstorijeTerminaPacijenta(Pacijent p)
+        {
+            TerminRepozitorijum datoteka = new TerminRepozitorijum();
+            List<Termin> sviTermini = datoteka.dobaviSve();
+            List<Termin> termini = new List<Termin>();
+            foreach (Termin termin in sviTermini)
+            {
+                if (termin.zdravstveniKarton != null && termin.zdravstveniKarton.Id.Equals(p.ZdravstveniKarton.Id) && termin.Pocetak < DateTime.Parse(DateTime.Now.ToString()))
+                {
+                    termini.Add(termin);
+                }
+            }
 
-            public Termin InicijalizujTermin(int id, TipTerminaEnum tip,  DateTime pocetak, Pacijent pacijent, Lekar lekar, Prostorija prostorija)
+            return termini;
+
+        }
+
+
+        public Termin InicijalizujTermin(int id, TipTerminaEnum tip,  DateTime pocetak, Pacijent pacijent, Lekar lekar, Prostorija prostorija)
         {
             Termin noviTermin = new Termin();
             noviTermin.Id = id;

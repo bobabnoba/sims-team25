@@ -41,7 +41,7 @@
         <DataGrid x:Name="dgTermini" Margin="26,0,22,40" AutoGenerateColumns="False"  CanUserAddRows="False" VerticalScrollBarVisibility="Visible" FontStretch="Normal" CanUserReorderColumns="False" MinColumnWidth="26" SelectionMode="Single" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="5" Grid.Column="0" Grid.Row="1" GridLinesVisibility="Horizontal" MinRowHeight="20" >
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Datum i vreme" Binding="{Binding Pocetak, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="50*"/>
+                <DataGridTextColumn Header="Datum i vreme" Binding="{Binding Pocetak, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="40*"/>
                 <DataGridTextColumn Header="Trajanje" Binding="{Binding Trajanje,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="20*"/>
                 <DataGridTextColumn Header="Lekar" Width="50*">
                     <DataGridTextColumn.Binding>
@@ -52,6 +52,13 @@
                     </DataGridTextColumn.Binding>
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Tip" Binding="{Binding Tip, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="27*"/>
+                <DataGridTemplateColumn Header="Anamneza" Width="30*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="anamnezaBtn" Content="Pogledaj anamnezu" Click="AnamnezaBtn_OnClick"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="zakaziBtn"  Content="Zakaži pregled"  FontSize="18" Margin="10,0,14,47" Grid.Column="1" Grid.Row="1" Click="ZakaziPregledClick"/>

@@ -21,13 +21,9 @@
             <RowDefinition Height="503*"/>
             <RowDefinition Height="99*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="0"
-                                    Text="L O G O "
-                                    Foreground="Black"
-                                    FontSize="20"
-                                    Background="Transparent"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"/>
+        <Button Background="Transparent" BorderBrush="Transparent">
+            <Image Source="/Images/output-onlinepngtools.png" Stretch="None"/>
+        </Button>
         <Rectangle Stroke="Black" StrokeThickness="3" Grid.Column="0" Grid.ColumnSpan="3" Margin="166,111,171,46" Grid.RowSpan="3"/>
         <!--<Label Content=" Prijavi se" FontSize="75" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1"/>
         <Label Content="Korisničko ime:" FontSize="22" Grid.Row="2" Grid.Column="1"HorizontalAlignment="Left"/>
@@ -56,9 +52,9 @@
             </Grid.RowDefinitions>
             <Label Content=" Prijavi se" FontSize="74" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1" Margin="0,0,0,30" Grid.RowSpan="2" Width="318" />
             <Label Content="Korisničko ime:" FontSize="22" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="0,30,0,51" Grid.RowSpan="3" Width="156"/>
-            <TextBox Name="imeText" FontSize="22" Grid.Row="3" Grid.Column="1" BorderBrush="Black" Margin="0,0,0,50" Grid.RowSpan="2"/>
+            <TextBox Name="imeText" TextAlignment="Justify" FontSize="22" Grid.Row="3" Grid.Column="1" BorderBrush="Black" Margin="0,0,0,50" Grid.RowSpan="2"/>
             <Label Content="Lozinka:" FontSize="22" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Width="88"/>
-            <PasswordBox Name="lozinkaText" FontSize="22" Grid.Row="4" Grid.Column="1" BorderBrush="Black" Margin="0,50,0,30" Grid.RowSpan="3" />
+            <PasswordBox Name="lozinkaText" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" FontSize="22" Grid.Row="4" Grid.Column="1" BorderBrush="Black" Margin="0,50,0,30" Grid.RowSpan="3" />
             <Button Content="Potvrdi" Grid.Row="6" FontSize="22" Click="Button_Click" Grid.Column="1" Margin="0,29,0,30" Grid.RowSpan="3" HorizontalAlignment="Center" Width="120"/>
             <Label Content="Zaboravili ste lozinku?" Grid.Row="8" Grid.Column="1" FontSize="16" HorizontalAlignment="Center" Margin="0,30,0,0" Grid.RowSpan="2" Width="166"/>
 
