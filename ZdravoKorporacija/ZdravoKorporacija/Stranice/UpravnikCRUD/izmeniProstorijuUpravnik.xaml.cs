@@ -18,18 +18,19 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
         private ObservableCollection<ProstorijaDTO> prostorije;
         private ProstorijaDTO prostorijaIzmenjena;
         private int indeks;
-        public izmeniProstorijuUpravnik(ObservableCollection<ProstorijaDTO> pr, ProstorijaDTO p, int selectedIndex)
+        public izmeniProstorijuUpravnik(ObservableCollection<ProstorijaDTO> prostorijeDTO, ProstorijaDTO prostorijaDTO, int selectedIndex)
         {
             InitializeComponent();
-            this.prostorije = pr;
-            this.prostorijaIzmenjena = p;
+            this.prostorije = prostorijeDTO;
+            this.prostorijaIzmenjena = prostorijaDTO;
             this.indeks = selectedIndex;
-            textBoxIzmenaNaziv.Text = p.Naziv;
-            if (p.Tip == TipProstorijeEnum.OperacionaSala)
+
+            textBoxIzmenaNaziv.Text = prostorijaDTO.Naziv;
+            if (prostorijaDTO.Tip == TipProstorijeEnum.OperacionaSala)
             {
                 comboBoxIzmenaTip.SelectedIndex = 0;
             }
-            else if (p.Tip == TipProstorijeEnum.Soba)
+            else if (prostorijaDTO.Tip == TipProstorijeEnum.Soba)
             {
                 comboBoxIzmenaTip.SelectedIndex = 1;
             }
@@ -38,7 +39,7 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
                 comboBoxIzmenaTip.SelectedIndex = 2;
             }
 
-            comboBoxIzmenaSprat.SelectedIndex = p.Sprat;
+            comboBoxIzmenaSprat.SelectedIndex = prostorijaDTO.Sprat;
 
           
 

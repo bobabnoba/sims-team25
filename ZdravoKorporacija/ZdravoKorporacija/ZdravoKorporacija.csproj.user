@@ -135,6 +135,9 @@
     <Compile Update="Stranice\StatickaOpremaCRUD\statickaOpremaStart.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Stranice\UpravnikCRUD\BiranjeProstorija.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Stranice\UpravnikCRUD\dodajProstorijuUpravnik.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -309,6 +312,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\StatickaOpremaCRUD\statickaOpremaStart.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\UpravnikCRUD\BiranjeProstorija.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\UpravnikCRUD\dodajProstorijuUpravnik.xaml">

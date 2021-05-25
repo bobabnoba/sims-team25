@@ -25,7 +25,39 @@ namespace ZdravoKorporacija.DTO
                 Vakcine = vakcine;
             }
 
-            public ZdravstveniKartonDTO()
+        public ZdravstveniKartonDTO(ZdravstveniKarton zdravstveniKarton)
+        {
+            this.izvestajOHospitalizaciji = zdravstveniKarton.izvestajOHospitalizaciji;
+            this.istorijaBolesti = new List<IstorijaBolestiDTO>();
+            this.recept = new ObservableCollection<ReceptDTO>();
+            this.termin = konvertujListuEntitetaUListuDTO( zdravstveniKarton.termin);
+            this.patient = zdravstveniKarton.patient;
+            Id = zdravstveniKarton.Id;
+            ZdravstvenoStanje = zdravstveniKarton.ZdravstvenoStanje;
+            Alergije = zdravstveniKarton.Alergije;
+            KrvnaGrupa = zdravstveniKarton.KrvnaGrupa;
+            Vakcine = zdravstveniKarton.Vakcine;
+        }
+
+        public List<TerminDTO> konvertujListuEntitetaUListuDTO(List<Termin> termini)
+        {
+            if (termini != null)
+            {
+                List<TerminDTO> terminiDTO = new List<TerminDTO>();
+                foreach (Termin termin in termini)
+                {
+                    terminiDTO.Add(new TerminDTO(termin));
+                }
+
+                return terminiDTO;
+            }
+            else
+            {
+                return new List<TerminDTO>();
+            }
+        }
+
+        public ZdravstveniKartonDTO()
             {
             }
             public List<IstorijaBolestiDTO> istorijaBolesti;

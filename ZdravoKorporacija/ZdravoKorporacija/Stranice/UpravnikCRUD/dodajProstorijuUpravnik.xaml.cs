@@ -17,10 +17,10 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
     {
         private ProstorijaController prostorijaKontroler = new ProstorijaController();
         private ObservableCollection<ProstorijaDTO> prostorije;
-        public dodajProstorijuUpravnik(ObservableCollection<ProstorijaDTO> pr)
+        public dodajProstorijuUpravnik(ObservableCollection<ProstorijaDTO> prostorijeDTO)
         {
             InitializeComponent();
-            this.prostorije = pr;
+            this.prostorije = prostorijeDTO;
         }
         private void odustani(object sender, RoutedEventArgs e)
         {

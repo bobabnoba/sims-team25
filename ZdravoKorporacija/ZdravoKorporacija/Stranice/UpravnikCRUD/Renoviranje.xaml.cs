@@ -26,12 +26,15 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
         private ObservableCollection<ProstorijaDTO> prostorije = new ObservableCollection<ProstorijaDTO>();
         private ProstorijaController prostorijeKontroler = new ProstorijaController();
         RenoviranjeController renoviranjeKontroler = new RenoviranjeController();
+
+        public ObservableCollection<ProstorijaDTO> izabraneProstorije;
         ComboBox satiCombobox;
 
 
         public Renoviranje(int index)
         {
             InitializeComponent();
+            izabraneProstorije = new ObservableCollection<ProstorijaDTO>();
             prostorije = prostorijeKontroler.PregledSvihProstorijaDTO();
             cbProstorija.ItemsSource = prostorije;
             cbProstorija.SelectedIndex = index ;
@@ -58,7 +61,7 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
         private void potvrdi(object sender, RoutedEventArgs e)
         {
             ZahtevRenoviranjeDTO zahtevRenoviranje = new ZahtevRenoviranjeDTO(0,(ProstorijaDTO) cbProstorija.SelectedItem, (DateTime)timePicker.SelectedDate, (String)sati.SelectedItem, textBoxTrajanje.Text);
-
+            zahtevRenoviranje.prostorije = izabraneProstorije.ToList<ProstorijaDTO>();
             renoviranjeKontroler.ZakaziRenoviranje(zahtevRenoviranje);
         }
 
@@ -74,5 +77,12 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
         {
 
         }
+        private void button_Click_1(object sender, RoutedEventArgs e)
+        {
+            BiranjeProstorija biranjeProstorija = new BiranjeProstorija(izabraneProstorije);
+            biranjeProstorija.Show();
+        }
+
+     
     }
 }

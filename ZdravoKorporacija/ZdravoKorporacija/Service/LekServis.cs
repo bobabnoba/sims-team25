@@ -111,12 +111,13 @@ namespace Service
             return true;
         }
 
-        public bool ObrisiZahtevZaLek(ZahtevLek zahtevLek, Dictionary<int, int> id_map)
+        public bool ObrisiZahtevZaLek(ZahtevLek zahtevLek)
         {
             ZahtevLekRepozitorijum datoteka = ZahtevLekRepozitorijum.Instance;
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapZahtevZaLek");
             datoteka.dobaviSve();
-            id_map = datotekaID.dobaviSve();
+            
+            Dictionary<int, int> id_map = datotekaID.dobaviSve();
             id_map[zahtevLek.Id] = 0;
 
 

@@ -17,6 +17,20 @@ namespace ZdravoKorporacija.DTO
         {
         }
 
+        public LekarDTO(Lekar lekar) {
+            this.Ime = lekar.Ime;
+            this.Prezime = lekar.Prezime;
+            this.Jmbg = lekar.Jmbg;
+            this.BrojTelefona = lekar.BrojTelefona;
+            this.Mejl = lekar.Mejl;
+            this.AdresaStanovanja = lekar.AdresaStanovanja;
+            this.Pol = lekar.Pol;
+            this.Username = lekar.Username;
+            this.Password = lekar.Password;
+            this.Uloga = lekar.Uloga;
+
+        }
+
 
         public System.Collections.ArrayList termin;
 

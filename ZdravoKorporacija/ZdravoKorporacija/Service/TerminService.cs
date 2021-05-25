@@ -10,7 +10,7 @@ namespace ZdravoKorporacija.Model
 {
     class TerminService
     {
-
+        TerminRepozitorijum datoteka = new TerminRepozitorijum();
         public Termin FindOpByPocetak(DateTime poc)
         {
             TerminRepozitorijum datoteka = new TerminRepozitorijum();
@@ -115,12 +115,27 @@ namespace ZdravoKorporacija.Model
         }
         public List<Termin> PregledSvihTermina()
         {
-            TerminRepozitorijum datoteka = new TerminRepozitorijum();
             List<Termin> termini = datoteka.dobaviSve();
             return termini;
         }
+        public ObservableCollection<TerminDTO> PregledSvihTerminaDTO()
+        {
+            ObservableCollection<Termin> termini = new ObservableCollection<Termin>(datoteka.dobaviSve());
+            ObservableCollection<TerminDTO> terminiDTO = new ObservableCollection<TerminDTO>();
+            foreach (Termin termin in termini)
+            {
+                terminiDTO.Add(konvertujEntitetUDTO(termin));
+            }
+            return terminiDTO;
 
-      
+        }
+
+        public TerminDTO konvertujEntitetUDTO(Termin termin)
+        {
+            return new TerminDTO(termin);
+        }
+
+
 
         public Termin InicijalizujTermin(int id, TipTerminaEnum tip,  DateTime pocetak, Pacijent pacijent, Lekar lekar, Prostorija prostorija)
         {

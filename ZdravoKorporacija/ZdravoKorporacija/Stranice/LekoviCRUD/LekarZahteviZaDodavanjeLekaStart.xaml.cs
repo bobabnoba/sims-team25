@@ -70,13 +70,9 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
                 Lek l = new Lek(id, zahtev.Lek.Proizvodjac, zahtev.Lek.Sastojci, zahtev.Lek.NusPojave, zahtev.Lek.NazivLeka);
                 l.alternativniLekovi = zahtev.Lek.alternativniLekovi;
                 lekServis.DodajLek(l, ids);
-                IDRepozitorijum datotekaZahtev = new IDRepozitorijum("iDMapZahtevZaLek");
-                Dictionary<int, int> idsZahtev = datotekaZahtev.dobaviSve();
                 Debug.WriteLine(zahtev.Id);
-                idsZahtev[zahtev.Id] = 0;
-
                 zahtev.BrojPotvrda++;
-                lekServis.ObrisiZahtevZaLek(zahtev, idsZahtev);
+                lekServis.ObrisiZahtevZaLek(zahtev);
             }
         }
 
@@ -103,9 +99,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            IDRepozitorijum datoteka = new IDRepozitorijum("iDMapZahtevZaLek");
-            Dictionary<int, int> ids = datoteka.dobaviSve();
-            obrisiZahtevZaLek oz = new obrisiZahtevZaLek(zahteviPrikaz, (ZahtevLek)dgZahtevi.SelectedItem, ids);
+            obrisiZahtevZaLek oz = new obrisiZahtevZaLek(zahteviPrikaz, (ZahtevLek)dgZahtevi.SelectedItem);
             oz.Show();
         }
         private void MenuItem_Click(object sender, RoutedEventArgs e)

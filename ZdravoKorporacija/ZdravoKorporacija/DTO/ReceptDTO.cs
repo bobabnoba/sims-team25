@@ -14,6 +14,8 @@ namespace ZdravoKorporacija.DTO
 
         public System.Collections.ArrayList lek;
 
+
+        public ReceptDTO() { }
         /// <pdGenerated>default getter</pdGenerated>
         public System.Collections.ArrayList GetLek()
         {

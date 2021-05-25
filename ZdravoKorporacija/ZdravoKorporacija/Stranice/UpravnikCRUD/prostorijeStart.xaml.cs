@@ -15,13 +15,11 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
     public partial class prostorijeStart : Page
     {
         private ObservableCollection<ProstorijaDTO> prostorije = new ObservableCollection<ProstorijaDTO>();
+        ProstorijaController prostorijaController = new ProstorijaController();
 
-        Dictionary<int, int> ids = new Dictionary<int, int>();
-       
         public prostorijeStart()
         {
             InitializeComponent();
-            ProstorijaController prostorijaController = new ProstorijaController();
             prostorije   = prostorijaController.PregledSvihProstorijaDTO();
             dgUsers.ItemsSource = prostorije;
         }

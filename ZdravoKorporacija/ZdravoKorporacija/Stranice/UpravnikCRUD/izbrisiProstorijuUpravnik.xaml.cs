@@ -18,17 +18,19 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
         private ProstorijaController prostorijaKontroler = new ProstorijaController();
         private ObservableCollection<ProstorijaDTO> prostorije;
         private ProstorijaDTO prostorijaZaBrisanje;
-        public izbrisiProstorijuUpravnik(ObservableCollection<ProstorijaDTO> pr, ProstorijaDTO p)
+        public izbrisiProstorijuUpravnik(ObservableCollection<ProstorijaDTO> prostorijeDTO, ProstorijaDTO prostorijaDTO)
         {
             InitializeComponent();
-            this.prostorije = pr;
-            this.prostorijaZaBrisanje = p;
+            this.prostorije = prostorijeDTO;
+            this.prostorijaZaBrisanje = prostorijaDTO;
         }
 
         private void da(object sender, RoutedEventArgs e)
         {
-            prostorijaKontroler.ObrisiProstoriju(this.prostorijaZaBrisanje);
-            prostorije.Remove(this.prostorijaZaBrisanje);
+            if (prostorijaKontroler.ObrisiProstoriju(this.prostorijaZaBrisanje))
+            {
+                prostorije.Remove(this.prostorijaZaBrisanje);
+            }
             this.Close();
         }
 

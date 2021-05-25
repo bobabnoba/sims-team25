@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 using System.Text;
 using ZdravoKorporacija.DTO;
 
-namespace ZdravoKorporacija.Service
+namespace Service
 {
     class ZahtevPremestanjaService
     {

@@ -97,7 +97,11 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-
+            foreach (LekDTO selektovaniLek in dgAlternativni.SelectedItems.Cast<LekDTO>().ToList())
+            {
+                alternativniLekovi.Remove(selektovaniLek);
+                ostalilekovi.Add(selektovaniLek);
+            }
         }
     }
 }
