@@ -105,6 +105,24 @@
     <Compile Update="Stranice\SekretarCRUD\sekretarStart.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Stranice\SekretarLekari\dodajLekara.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\SekretarLekari\izmeniLekara.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\SekretarLekari\radniDani.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\SekretarLekari\SekretarLekari.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\SekretarLekari\slobodniDani.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\SekretarLekari\smeneLekara.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Stranice\sekretarObavestenja\kreirajObavestenje.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -270,6 +288,24 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\SekretarCRUD\sekretarStart.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\SekretarLekari\dodajLekara.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\SekretarLekari\izmeniLekara.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\SekretarLekari\radniDani.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\SekretarLekari\SekretarLekari.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\SekretarLekari\slobodniDani.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\SekretarLekari\smeneLekara.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\sekretarObavestenja\kreirajObavestenje.xaml">

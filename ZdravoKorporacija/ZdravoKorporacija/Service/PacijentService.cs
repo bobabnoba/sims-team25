@@ -25,6 +25,7 @@ namespace Service
             }
             return null;
         }
+        
         public bool KreirajNalogPacijentu(Pacijent pacijent)
         {
             PacijentRepozitorijum datoteka = new PacijentRepozitorijum();

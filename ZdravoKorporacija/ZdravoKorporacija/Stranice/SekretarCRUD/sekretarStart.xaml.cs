@@ -7,7 +7,7 @@ using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Stranice.sekretarObavestenja;
 using ZdravoKorporacija.Stranice.SekretarPREGLEDI;
 using Repository;
-
+using ZdravoKorporacija.Stranice.SekretarLekari;
 
 namespace ZdravoKorporacija.Stranice.SekretarCRUD
 {
@@ -54,6 +54,11 @@ namespace ZdravoKorporacija.Stranice.SekretarCRUD
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             fr.Content = new sekretarObavestenja.sekretarObavestenja();
+        }
+
+        private void lekari(object sender, RoutedEventArgs e)
+        {
+            fr.Content = new SekretarLekari.SekretarLekari();
         }
     }
 }

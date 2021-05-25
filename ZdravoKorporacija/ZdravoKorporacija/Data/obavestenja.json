@@ -1,44 +1,9 @@
 [
   {
     "Id": 10000,
-    "Datum": "2021-05-24T04:24:09.7997504+02:00",
+    "Datum": "2021-05-25T00:13:08.4858668+02:00",
     "Tip": 2,
-    "Sadrzaj": "Voli",
-    "Status": null
-  },
-  {
-    "Id": 9999,
-    "Datum": "2021-05-24T04:24:10.1987627+02:00",
-    "Tip": 2,
-    "Sadrzaj": "Voli",
-    "Status": null
-  },
-  {
-    "Id": 9998,
-    "Datum": "2021-05-24T04:24:10.3950844+02:00",
-    "Tip": 2,
-    "Sadrzaj": "Voli",
-    "Status": null
-  },
-  {
-    "Id": 9997,
-    "Datum": "2021-05-24T04:24:10.6087882+02:00",
-    "Tip": 2,
-    "Sadrzaj": "Voli",
-    "Status": null
-  },
-  {
-    "Id": 9996,
-    "Datum": "2021-05-24T04:24:10.7929504+02:00",
-    "Tip": 2,
-    "Sadrzaj": "Voli",
-    "Status": null
-  },
-  {
-    "Id": 9995,
-    "Datum": "2021-05-24T04:24:10.9871173+02:00",
-    "Tip": 2,
-    "Sadrzaj": "Voli",
+    "Sadrzaj": "xD",
     "Status": null
   }
 ]

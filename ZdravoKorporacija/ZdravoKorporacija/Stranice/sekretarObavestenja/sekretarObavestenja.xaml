@@ -17,7 +17,6 @@
             </DataGrid.Columns>
         </DataGrid>
         <Button Content="OBRISI OBAVESTENJE" HorizontalAlignment="Left" Height="41" Margin="430,53,0,0" VerticalAlignment="Top" Width="128" Click="Button_Click2"/>
-        <Button Content="IZMENI OBAVESTENJE" HorizontalAlignment="Left" Height="41" Margin="288,53,0,0" VerticalAlignment="Top" Width="126" Click="Button_Click"/>
 
     </Grid>
 </Page>

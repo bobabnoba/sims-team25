@@ -13,6 +13,8 @@ namespace Model
         Stomatolog,
         Kardiohirurg,
         Otorinolaringolog,
-        Neurolog
+        Neurolog,
+        OpstaPraksa
+
     }
 }

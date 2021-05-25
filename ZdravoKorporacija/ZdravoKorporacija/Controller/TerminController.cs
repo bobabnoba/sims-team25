@@ -58,6 +58,12 @@ namespace ZdravoKorporacija.Controller
         {
             return terminServis.AzurirajTerminPacijent(termin, pacijent);
         }
+
+        internal bool AzurirajLekara(Lekar lekar)
+        {
+            return lekarServis.AzurirajLekara( lekar);
+        }
+
         public bool ObrisiNalogPacijentu(Pacijent pacijent)
         {
             return pacijentServis.ObrisiNalogPacijentu(pacijent);
@@ -166,6 +172,10 @@ namespace ZdravoKorporacija.Controller
         public List<Termin> NadjiAlternativnePreglede()
         {
             return terminServis.NadjiAlternativnePreglede();
+        }
+        public Lekar DTO2ModelNapravi(LekarDTO dto)
+        {
+            return lekarServis.DTO2ModelNapravi(dto);
         }
     }
 

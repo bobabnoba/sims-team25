@@ -18,6 +18,7 @@ namespace ZdravoKorporacija.DTO
         {
         }
         public SpecijalizacijaEnum Specijalizacija { get; set; }
+        public List<RadniDan> radniDani { get; set; }
     }
 }
 

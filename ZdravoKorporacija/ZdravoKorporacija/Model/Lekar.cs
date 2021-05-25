@@ -4,6 +4,8 @@
 // Purpose: Definition of Class Doctor
 
 using System;
+using System.Collections.Generic;
+using System.Windows.Documents;
 
 namespace Model
 {
@@ -81,6 +83,7 @@ namespace Model
             }
         }
         public SpecijalizacijaEnum Specijalizacija { get; set; }
+        public List<RadniDan> radniDani { get; set; }
 
     }
 }
