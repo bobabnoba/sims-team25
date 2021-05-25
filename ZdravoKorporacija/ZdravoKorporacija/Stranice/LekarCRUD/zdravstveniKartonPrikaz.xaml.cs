@@ -1,13 +1,16 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using Repository;
 using Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 
@@ -19,70 +22,51 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     /// </summary>
     public partial class zdravstveniKartonPrikaz : Window
     {
-        private TerminService terminServis = new TerminService();
+        private TerminController terminController = TerminController.Instance;
+        private ReceptController receptController = ReceptController.Instance;
+        private PacijentController pacijentController = PacijentController.Instance;
+        private IzvestajController izvestajController = IzvestajController.Instance;
         private ObservableCollection<TerminDTO> termini = new ObservableCollection<TerminDTO>();
-        private PacijentService pacijentServis = PacijentService.Instance;
-        private ReceptServis receptServis = ReceptServis.Instance;
-        private IzvestajService izvestajService = IzvestajService.Instance;
         private List<PacijentDTO> pacijenti = new List<PacijentDTO>();
         private ZdravstveniKartonDTO zk = new ZdravstveniKartonDTO();
         private ZdravstveniKartonDTO zkt = new ZdravstveniKartonDTO();
-        ObservableCollection<ReceptDTO> recepti = new ObservableCollection<ReceptDTO>();
-        ObservableCollection<IzvestajDTO> izvestaji = new ObservableCollection<IzvestajDTO>();
 
-
-        IDRepozitorijum datotekaID;
-        IDRepozitorijum iz_datotekaID;
-
-        Dictionary<int, int> ids = new Dictionary<int, int>();
-        Dictionary<int, int> iz_ids = new Dictionary<int, int>();
+        public static ObservableCollection<ReceptDTO> recepti = new ObservableCollection<ReceptDTO>();
+        public static ObservableCollection<IzvestajDTO> izvestaji = new ObservableCollection<IzvestajDTO>();
         PacijentDTO pac;
-       TerminDTO sel = new TerminDTO();
+        TerminDTO sel = new TerminDTO();
 
         public static int tab = 0;
 
         public zdravstveniKartonPrikaz(PacijentDTO selektovani)
         {
             InitializeComponent();
-            
+            ObservableCollection<ReceptDTO> recepti = new ObservableCollection<ReceptDTO>();
+        ObservableCollection<IzvestajDTO> izvestaji = new ObservableCollection<IzvestajDTO>();
             this.DataContext = this;
-            pacijenti = pacijentServis.PregledSvihPacijenata2();
+            pacijenti = pacijentController.PregledSvihPacijenata2();
             pac = selektovani;
             zk = selektovani.ZdravstveniKarton;
             tab = 1;
-            datotekaID = new IDRepozitorijum("iDMapRecept");
-            ids = datotekaID.dobaviSve();
-            iz_datotekaID = new IDRepozitorijum("iDMapIzvestaj");
-            iz_ids = iz_datotekaID.dobaviSve();
-            
-            foreach(IzvestajDTO iz in izvestajService.PregledSvihIzvestaja())
-            {
-                foreach(TerminDTO ter in pac.termin)
+           
+                foreach (IzvestajDTO iz in izvestajController.PregledSvihIzvestaja())
                 {
-                    if(ter.izvestaj.Id.Equals(iz.Id))
+                    foreach (TerminDTO ter in pac.termin)
                     {
-                        izvestaji.Add(iz);
-                        break;
+                        if (ter.izvestaj.Id.Equals(iz.Id) && !izvestaji.Contains(iz))
+                        {
+                            izvestaji.Add(iz);
+                            break;
+                        }
                     }
                 }
-            }
+            
             izvestajGrid.ItemsSource = izvestaji;
             dodajAnamnezu.Visibility = Visibility.Hidden;
             
-            if (zk.Alergije != null)
-                AlergijeListBox.ItemsSource = zk.Alergije.Split(",");
+                    
             
-            foreach(ReceptDTO r in receptServis.PregledSvihRecepata())
-            {
-                foreach(ReceptDTO rec in pac.ZdravstveniKarton.recept)
-                {
-                    if(r.Id.Equals(rec.Id))
-                    {
-                        recepti.Add(r);
-                    }
-                }
-            }
-            terapijaGrid.ItemsSource = recepti;
+            terapijaGrid.ItemsSource = pac.ZdravstveniKarton.recept;
 
             this.DataContext = this;
 
@@ -100,24 +84,22 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         public zdravstveniKartonPrikaz(TerminDTO t)
         {
             InitializeComponent();
-            
-            pacijenti = pacijentServis.PregledSvihPacijenata2();
-            datotekaID = new IDRepozitorijum("iDMapRecept");
-            ids = datotekaID.dobaviSve();
-            iz_datotekaID = new IDRepozitorijum("iDMapIzvestaj");
-            iz_ids = iz_datotekaID.dobaviSve();
+            ObservableCollection<ReceptDTO> recepti = new ObservableCollection<ReceptDTO>();
+             ObservableCollection<IzvestajDTO> izvestaji = new ObservableCollection<IzvestajDTO>();    
+             pacijenti = pacijentController.PregledSvihPacijenata2();      
+         
             zkt = t.zdravstveniKarton;
             tab = 2;
             sel = t;
             
-            foreach(PacijentDTO pacijent in pacijentServis.PregledSvihPacijenata2())
+            foreach(PacijentDTO pacijent in pacijentController.PregledSvihPacijenata2())
             {
                 if(pacijent.ZdravstveniKarton.Id.Equals(zkt.Id))
                 {
                     pac = pacijent;
                 }
             }
-            foreach (IzvestajDTO iz in izvestajService.PregledSvihIzvestaja())
+            foreach (IzvestajDTO iz in izvestajController.PregledSvihIzvestaja())
             {
                 foreach (TerminDTO ter in pac.termin)
                 {
@@ -183,42 +165,20 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             ReceptDTO r = (ReceptDTO)terapijaGrid.SelectedItem;
-                
-            int id = r.Id;
-            for (int i = 0; i < 1000; i++)
-            {
-                if (ids[i] == 1)
-                {
-                    id = i;
-                    ids[i] = 0;
-                    break;
-                }
-            }
-           
-            pacijentServis.ObrisiRecept(pac, r,ids);
+
+            pacijentController.ObrisiRecept(pac, r);
             recepti.Remove(r);
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            dodajAnamnezu anamneza = new dodajAnamnezu(sel,iz_ids);
+            dodajAnamnezu anamneza = new dodajAnamnezu(sel);
             anamneza.Show();
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
             IzvestajDTO iz = (IzvestajDTO)izvestajGrid.SelectedItem;
-
-            int id = iz.Id;
-            for (int i = 0; i < 1000; i++)
-            {
-                if (iz_ids[i] == 1)
-                {
-                    id = i;
-                    iz_ids[i] = 0;
-                    break;
-                }
-            }
 
             if (tab == 1)
             {
@@ -240,8 +200,8 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 }
             }
             
-            terminServis.ObrisiAnamnezu(iz,sel,iz_ids);
-            //izvestaji.Remove(iz);
+            terminController.ObrisiAnamnezu(iz,sel);
+            izvestaji.Remove(iz);
         }
     }
 }

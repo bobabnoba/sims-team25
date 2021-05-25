@@ -80,13 +80,7 @@ namespace ZdravoKorporacija.Stranice.Uput
             p.Id = id;
             Pacijent pac = (Pacijent)cbPacijent.SelectedItem;
             ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
-            //Izvestaj iz = new Izvestaj();
-            //iz.Id = 0;
-            //iz.Opis = "Temperature";
-            //iz.Simptomi = "
-            //
-            //";
-            //p.izvestaj = iz;
+            
 
             String d = date.Text;
             String t = null;

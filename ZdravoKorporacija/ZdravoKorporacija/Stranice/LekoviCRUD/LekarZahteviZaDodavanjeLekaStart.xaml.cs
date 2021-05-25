@@ -144,5 +144,10 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
             this.Close();
             pp.Show();
         }
+
+        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

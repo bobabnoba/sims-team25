@@ -25,7 +25,7 @@ namespace Model
 
         public Izvestaj(IzvestajDTO izvestaj)
         {
-            this.termin = new Termin(izvestaj.termin);
+            this.termin = null;
             Id = izvestaj.Id;
             Opis = izvestaj.Opis;
             Simptomi = izvestaj.Simptomi;

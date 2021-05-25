@@ -5,6 +5,7 @@ using ZdravoKorporacija.Model;
 using Repository;
 using ZdravoKorporacija.DTO;
 using System.Diagnostics;
+using ZdravoKorporacija.Service;
 
 namespace Service
 {
@@ -26,14 +27,15 @@ namespace Service
         }
 
         PacijentRepozitorijum pr = PacijentRepozitorijum.Instance;
-        ReceptRepozitorijum rr = ReceptRepozitorijum.Instance;
         ReceptServis rs = ReceptServis.Instance;
         IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapRecept");
- 
+        Dictionary<int, int> ids = new Dictionary<int, int>();
 
-        public bool IzdajRecept(PacijentDTO pacijent, ReceptDTO recept, Dictionary<int, int> ids)
-        { 
-            rs.DodajRecept(recept,ids);
+
+        public bool IzdajRecept(PacijentDTO pacijent, ReceptDTO recept)
+        {
+            ids = datotekaID.dobaviSve();
+            rs.DodajRecept(recept);
             Pacijent p = new Pacijent(pacijent);
             datotekaID.sacuvaj(ids);
             p.ZdravstveniKarton.recept.Add(new Recept(recept));
@@ -41,7 +43,7 @@ namespace Service
             return true;
         }
 
-        public bool ObrisiRecept(PacijentDTO pacijent, ReceptDTO recept, Dictionary<int, int> ids)
+        public bool ObrisiRecept(PacijentDTO pacijent, ReceptDTO recept)
         {
             Pacijent p = new Pacijent(pacijent);
             foreach(Recept rec in p.ZdravstveniKarton.recept.ToArray())
@@ -50,7 +52,7 @@ namespace Service
                 p.ZdravstveniKarton.recept.Remove(rec);
             }
             AzurirajPacijenta(p);
-            rs.ObrisiRecept(recept,ids);
+            rs.ObrisiRecept(recept);
             datotekaID.sacuvaj(ids);
             return true;
         }

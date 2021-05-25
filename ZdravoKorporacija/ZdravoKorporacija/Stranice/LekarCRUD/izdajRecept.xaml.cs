@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 
@@ -24,26 +25,20 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     /// </summary>
     public partial class izdajRecept : Window
     {
-        private PacijentService pacijentServis = PacijentService.Instance;
-        private ReceptServis receptServis = ReceptServis.Instance;
+        private PacijentController pacijentController = PacijentController.Instance;
         private LekServis lekServis = new LekServis();
         private ObservableCollection<Lek> lekovi;
         PacijentDTO pac;
         TerminDTO ter;
         ReceptDTO r = new ReceptDTO();
-        IDRepozitorijum datotekaID;
 
         String now = DateTime.Now.ToString("hh:mm:ss tt");
         DateTime today = DateTime.Today;
-
-        Dictionary<int, int> ids = new Dictionary<int, int>();
 
         public izdajRecept(PacijentDTO selektovani)
         {
             InitializeComponent();
             this.DataContext = this;
-            datotekaID = new IDRepozitorijum("iDMapRecept");
-            ids = datotekaID.dobaviSve();
             lekovi = new ObservableCollection<Lek>(lekServis.PregledSvihLekova());
 
             CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
@@ -57,15 +52,14 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         {
             InitializeComponent();
             this.DataContext = this;
-            datotekaID = new IDRepozitorijum("iDMapRecept");
-            ids = datotekaID.dobaviSve();
+      
             lekovi = new ObservableCollection<Lek>(lekServis.PregledSvihLekova());
 
             CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
             Date.BlackoutDates.Add(cdr);
             ter = selektovani;
             lekNaziv.ItemsSource = lekovi;
-            foreach (PacijentDTO p in pacijentServis.PregledSvihPacijenata2())
+            foreach (PacijentDTO p in pacijentController.PregledSvihPacijenata2())
             {
                 if (p.ZdravstveniKarton != null)
                     if (p.ZdravstveniKarton.Id.Equals(ter.zdravstveniKarton.Id))
@@ -101,20 +95,9 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             catch (InvalidCastException)
             { }
 
-            int id = 0;
-            for (int i = 0; i < 1000; i++)
-            {
-                if (ids[i] == 0)
-                {
-                    id = i;
-                    ids[i] = 1;
-                    break;
-                }
-            }
-            r.Id = id;
 
-            pacijentServis.IzdajRecept(pac, r, ids);
-
+            pacijentController.IzdajRecept(pac, r);
+            zdravstveniKartonPrikaz.recepti.Add(r);
             this.Close();
         }
 

@@ -26,8 +26,6 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         public static ObservableCollection<Termin> termini = new ObservableCollection<Termin>();
         public static ObservableCollection<Termin> uputi = new ObservableCollection<Termin>();
         public static ObservableCollection<TerminDTO> terminiDTO = new ObservableCollection<TerminDTO>();
-        private PacijentService storagePacijent = new PacijentService();
-        private Pacijent pac = new Pacijent();
         private Dictionary<int, int> ids = new Dictionary<int, int>();
 
 
@@ -114,8 +112,6 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 oktaziPregledLekar op = new oktaziPregledLekar(termini, (Termin)dgUsers.SelectedItem,ids);
                 op.Show();
             }
-            
-
         }
 
         private void dgUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -142,6 +138,11 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             LekarZahteviZaDodavanjeLekaStart l = new LekarZahteviZaDodavanjeLekaStart();
             this.Close();
             l.Show();
+        }
+
+        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

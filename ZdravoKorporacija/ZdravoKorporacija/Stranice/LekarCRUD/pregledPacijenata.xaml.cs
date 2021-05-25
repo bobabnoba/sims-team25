@@ -10,6 +10,7 @@ using ZdravoKorporacija.Stranice.Uput;
 using ZdravoKorporacija.Stranice.LekoviCRUD;
 using ZdravoKorporacija.DTO;
 using System.Diagnostics;
+using ZdravoKorporacija.Stranice.StacionarnoLecenje;
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
 {
@@ -89,6 +90,33 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             LekarZahteviZaDodavanjeLekaStart l = new LekarZahteviZaDodavanjeLekaStart();
             this.Close();
             l.Show();
+        }
+
+        private void stacionarnoLecenje(object sender, RoutedEventArgs e)
+        {
+            stacionarnoStart ss = null;
+            if (dgUsers.SelectedItem != null)
+            {
+                ss = new stacionarnoStart((PacijentDTO)dgUsers.SelectedItem);
+                ss.Show();
+            }
+            else
+            {
+                MessageBox.Show("Niste selektovali red", "Greska");
+            }
+        }
+        private void uputiZaStacionarno(object sender, RoutedEventArgs e)
+        {
+            uputiZaStacionarno ss = null;
+            if (dgUsers.SelectedItem != null)
+            {
+                ss = new uputiZaStacionarno((PacijentDTO)dgUsers.SelectedItem);
+                ss.Show();
+            }
+            else
+            {
+                MessageBox.Show("Niste selektovali red", "Greska");
+            }
         }
     }
 }

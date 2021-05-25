@@ -3,16 +3,6 @@
     "lek": null,
     "lekar": null,
     "zdravstveniKarton": null,
-    "Id": 13,
-    "Doziranje": "2",
-    "Trajanje": 1,
-    "NazivLeka": "z",
-    "Pocetak": "2021-05-30T08:00:00"
-  },
-  {
-    "lek": null,
-    "lekar": null,
-    "zdravstveniKarton": null,
     "Id": 0,
     "Doziranje": "22",
     "Trajanje": 3,
@@ -102,5 +92,26 @@
     "Trajanje": 2,
     "NazivLeka": "dad",
     "Pocetak": "2021-05-29T08:30:00"
+  },
+  {
+    "lek": null,
+    "lekar": null,
+    "zdravstveniKarton": {
+      "izvestajOHospitalizaciji": null,
+      "istorijaBolesti": null,
+      "recept": null,
+      "termin": null,
+      "patient": null,
+      "Id": 0,
+      "ZdravstvenoStanje": 0,
+      "Alergije": null,
+      "KrvnaGrupa": 0,
+      "Vakcine": null
+    },
+    "Id": 5,
+    "Doziranje": "2",
+    "Trajanje": 4,
+    "NazivLeka": "dd",
+    "Pocetak": "2021-05-29T09:00:00"
   }
 ]

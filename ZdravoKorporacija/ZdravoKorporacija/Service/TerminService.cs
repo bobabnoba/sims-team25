@@ -14,6 +14,9 @@ namespace ZdravoKorporacija.Model
         TerminRepozitorijum tr = TerminRepozitorijum.Instance;
         IzvestajService iz = IzvestajService.Instance;
         PacijentService pacijentServis = PacijentService.Instance;
+        IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapIzvestaj");
+        Dictionary<int, int> id_map = new Dictionary<int, int>();
+
 
         private static TerminService _instance;
 
@@ -29,10 +32,22 @@ namespace ZdravoKorporacija.Model
             }
         }
 
-        public bool IzdajAnamnezu(IzvestajDTO izvestaj,TerminDTO termin, Dictionary<int, int> ids)
+        public bool IzdajAnamnezu(IzvestajDTO izvestaj,TerminDTO termin)
         {
             List < PacijentDTO > pacijenti = new List<PacijentDTO>(pacijentServis.PregledSvihPacijenata2());
-            
+            id_map = datotekaID.dobaviSve();
+
+            int id = 0;
+            for (int i = 0; i < 1000; i++)
+            {
+                if (id_map[i] == 0)
+                {
+                    id = i;
+                    id_map[i] = 1;
+                    break;
+                }
+            }
+            izvestaj.Id = id;
             foreach (PacijentDTO p in pacijenti)
             {
                 if (termin.zdravstveniKarton.Id.Equals(p.ZdravstveniKarton.Id))
@@ -41,6 +56,7 @@ namespace ZdravoKorporacija.Model
                     {
                         if (t.Id.Equals(termin.Id))
                         {
+
                             t.izvestaj = izvestaj;
                         }
                     }
@@ -49,13 +65,13 @@ namespace ZdravoKorporacija.Model
                 }
                     
             }
-            iz.DodajIzvestaj(izvestaj,ids);
+            iz.DodajIzvestaj(izvestaj,id_map);
             termin.izvestaj = izvestaj;
             AzurirajTermin(termin);
             return true;
         }
 
-        public bool ObrisiAnamnezu(IzvestajDTO izvestaj, TerminDTO termin, Dictionary<int, int> ids)
+        public bool ObrisiAnamnezu(IzvestajDTO izvestaj, TerminDTO termin)
         {
             List<PacijentDTO> pacijenti = new List<PacijentDTO>(pacijentServis.PregledSvihPacijenata2());
             PacijentDTO pac = new PacijentDTO();
@@ -68,25 +84,19 @@ namespace ZdravoKorporacija.Model
                         if (t.Id.Equals(termin.Id))
                         {
                             t.izvestaj = null;
+                            id_map = datotekaID.dobaviSve();
+                            id_map[izvestaj.Id] = 0;
+                            datotekaID.sacuvaj(id_map);
                             break;
                         }
                     }
-                    pac = p;
                 }
             }
-            foreach (TerminDTO t in pac.termin)
-            {
-                if (t.izvestaj != null)
-                    if (t.izvestaj.Id.Equals(izvestaj.Id))
-                    {
-                        t.izvestaj = null;
-                        break;
-                    }
-            }
+            
             termin.izvestaj = null;
             AzurirajTermin(termin);
             pacijentServis.AzurirajPacijenta(pac);
-            iz.DodajIzvestaj(izvestaj, ids);
+            iz.ObrisiIzvestaj(izvestaj,id_map);
             return true;
         }
         public Termin FindOpByPocetak(DateTime poc)
@@ -201,7 +211,21 @@ namespace ZdravoKorporacija.Model
             return termini;
         }
 
-      
+        public List<TerminDTO> PregledSvihTermina2()
+        {
+            List<Termin> termini = tr.dobaviSve();
+            List<TerminDTO> terminiDTO = new List<TerminDTO>();
+            foreach (Termin termin in termini)
+            {
+                terminiDTO.Add(convertToDTO(termin));
+            }
+            return terminiDTO;
+        }
+
+        public TerminDTO convertToDTO(Termin pacijent)
+        {
+            return new TerminDTO(pacijent);
+        }
 
         public Termin InicijalizujTermin(int id, TipTerminaEnum tip,  DateTime pocetak, Pacijent pacijent, Lekar lekar, Prostorija prostorija)
         {

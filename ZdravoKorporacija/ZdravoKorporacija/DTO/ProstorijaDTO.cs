@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ZdravoKorporacija.DTO
 {
-    class ProstorijaDTO
+    public class ProstorijaDTO
     {
         public System.Collections.ArrayList inventar;
 
@@ -20,14 +20,27 @@ namespace ZdravoKorporacija.DTO
             Sprat = sprat;
         }
 
+        public ProstorijaDTO(Prostorija prostorija)
+        {
+            this.inventar = prostorija.inventar;
+            this.statickaOprema = prostorija.statickaOprema;
+            this.dinamickaOprema = prostorija.dinamickaOprema;
+            Id = prostorija.Id;
+            Naziv = prostorija.Naziv;
+            Tip = prostorija.Tip;
+            Slobodna = prostorija.Slobodna;
+            Sprat = prostorija.Sprat;
+        }
 
-        public System.Collections.ArrayList statickaOprema;
+
+
+        public List<StatickaOprema> statickaOprema;
 
         /// <pdGenerated>default getter</pdGenerated>
-        public System.Collections.ArrayList GetStatickaOprema()
+        public List<StatickaOprema> GetStatickaOprema()
         {
             if (statickaOprema == null)
-                statickaOprema = new System.Collections.ArrayList();
+                statickaOprema = new List<StatickaOprema>();
             return statickaOprema;
         }
 
@@ -45,7 +58,7 @@ namespace ZdravoKorporacija.DTO
             if (newStatickaOprema == null)
                 return;
             if (this.statickaOprema == null)
-                this.statickaOprema = new System.Collections.ArrayList();
+                this.statickaOprema = new List<StatickaOprema>();
             if (!this.statickaOprema.Contains(newStatickaOprema))
                 this.statickaOprema.Add(newStatickaOprema);
         }

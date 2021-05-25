@@ -15,14 +15,26 @@ namespace Controller
     public class TerminController
     {
         TerminService ts = TerminService.Instance;
+        private static TerminController _instance;
 
-        public bool IzdajAnemnezu(IzvestajDTO izvestaj, TerminDTO termin, Dictionary<int, int> ids)
+        public static TerminController Instance
         {
-            return ts.IzdajAnamnezu(izvestaj, termin, ids);
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new TerminController();
+                }
+                return _instance;
+            }
         }
-        public bool ObrisiAnamnezu(IzvestajDTO izvestaj, TerminDTO termin, Dictionary<int, int> ids)
+        public bool IzdajAnamnezu(IzvestajDTO izvestaj, TerminDTO termin)
         {
-            return ts.ObrisiAnamnezu(izvestaj, termin, ids);
+            return ts.IzdajAnamnezu(izvestaj, termin);
+        }
+        public bool ObrisiAnamnezu(IzvestajDTO izvestaj, TerminDTO termin)
+        {
+            return ts.ObrisiAnamnezu(izvestaj, termin);
         }
         public Termin FindOpByPocetak(DateTime poc)
         {
@@ -58,6 +70,11 @@ namespace Controller
         public List<Termin> PregledSvihTermina()
         {
             return ts.PregledSvihTermina();
+        }
+
+        public List<TerminDTO> PregledSvihTermina2()
+        {
+            return ts.PregledSvihTermina2();
         }
 
         public Termin NadjiTermin(DateTime datum, Prostorija prostorija)

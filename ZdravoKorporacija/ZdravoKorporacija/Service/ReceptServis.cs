@@ -12,6 +12,8 @@ namespace Service
    {
       ReceptRepozitorijum rr = ReceptRepozitorijum.Instance;
       public static ObservableCollection<Recept> recepti =  ReceptRepozitorijum.Instance.DobaviSve();
+        IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapRecept");
+        Dictionary<int, int> id_map = new Dictionary<int, int>();
 
         private static ReceptServis _instance;
 
@@ -26,11 +28,20 @@ namespace Service
                 return _instance;
             }
         }
-        public bool DodajRecept(ReceptDTO recept, Dictionary<int, int> id_map)
-      {
-
-            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapRecept");
-
+        public bool DodajRecept(ReceptDTO recept)
+        {
+           id_map= datotekaID.dobaviSve();
+            int id = 0;
+            for (int i = 0; i < 1000; i++)
+            {
+                if (id_map[i] == 0)
+                {
+                    id = i;
+                    id_map[i] = 1;
+                    break;
+                }
+            }
+            recept.Id = id; 
 
             foreach (Recept r in rr.DobaviSve())
             {
@@ -46,18 +57,19 @@ namespace Service
             return true;
         }
       
-      public bool ObrisiRecept(ReceptDTO recept, Dictionary<int, int> id_map)
+      public bool ObrisiRecept(ReceptDTO recept)
       {
-            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapRecept");
             foreach (Recept r in rr.DobaviSve())
             {
                 if (r.Id.Equals(recept.Id))
                 {
                     recepti.Remove(r);
                     rr.Sacuvaj(recepti);
+                    id_map = datotekaID.dobaviSve();
+                    id_map[recept.Id] = 0;
+                    datotekaID.sacuvaj(id_map);
                 }
             }
-            datotekaID.sacuvaj(id_map);
             return true ;
         }
       

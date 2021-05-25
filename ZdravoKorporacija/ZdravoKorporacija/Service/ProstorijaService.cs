@@ -1,6 +1,7 @@
 ﻿using Model;
 using Repository;
 using System.Collections.Generic;
+using ZdravoKorporacija.DTO;
 
 namespace Service
 {
@@ -84,6 +85,21 @@ namespace Service
             return prostorije;
         }
 
+        public List<ProstorijaDTO> PregledSvihProstorija2()
+        {
+            ProstorijaRepozitorijum datoteka = new ProstorijaRepozitorijum();
+            List<Prostorija> prostorije = datoteka.dobaviSve();
+            List<ProstorijaDTO> prostorijeDTO = new List<ProstorijaDTO>();
+            foreach (Prostorija Prostorija in prostorije)
+            {
+                prostorijeDTO.Add(convertToDTO(Prostorija));
+            }
+            return prostorijeDTO;
+        }
 
+        public ProstorijaDTO convertToDTO(Prostorija Prostorija)
+        {
+            return new ProstorijaDTO(Prostorija);
+        }
     }
 }

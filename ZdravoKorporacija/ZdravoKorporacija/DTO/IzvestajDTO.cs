@@ -22,8 +22,7 @@ namespace ZdravoKorporacija.DTO
         {
             if (izvestaj != null)
             {
-                if(izvestaj.termin!=null)
-                this.termin = new TerminDTO(izvestaj.termin);
+                this.termin = null;
                 Id = izvestaj.Id;
                 Opis = izvestaj.Opis;
                 Simptomi = izvestaj.Simptomi;

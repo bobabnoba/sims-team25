@@ -12,7 +12,10 @@ namespace Service
    public class IzvestajService
    {
         IzvestajRepozitorijum ir = IzvestajRepozitorijum.Instance;
+        IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapIzvestaj");
+        ObservableCollection<Izvestaj> izvestaji = IzvestajRepozitorijum.Instance.DobaviSve();
         private static IzvestajService _instance;
+        Dictionary<int, int> id_map = new Dictionary<int, int>();
 
         public static IzvestajService Instance
         {
@@ -28,11 +31,6 @@ namespace Service
 
         public bool DodajIzvestaj(IzvestajDTO izvestaj, Dictionary<int, int> id_map)
       {
-
-            ObservableCollection<Izvestaj> izvestaji = ir.DobaviSve();
-
-            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapIzvestaj");
-
 
             foreach (Izvestaj iz in izvestaji)
             {
@@ -50,14 +48,12 @@ namespace Service
       
       public bool ObrisiIzvestaj(IzvestajDTO izvestaj, Dictionary<int, int> id_map)
       {
-            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapIzvestaj");
-            ObservableCollection<Izvestaj> izvestaji = ir.DobaviSve();
             foreach (Izvestaj iz in izvestaji)
             {
                 if (iz.Id.Equals(izvestaj.Id))
                 {
                     izvestaji.Remove(iz);
-                    datotekaID.sacuvaj(id_map);
+                    ir.Sacuvaj(izvestaji);
                     return true;
                 }
             }
