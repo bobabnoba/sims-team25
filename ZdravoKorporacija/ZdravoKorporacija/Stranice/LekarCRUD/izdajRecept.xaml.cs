@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
@@ -23,12 +24,13 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     /// </summary>
     public partial class izdajRecept : Window
     {
-        private PacijentService pacijentServis = new PacijentService();
+        private PacijentService pacijentServis = PacijentService.Instance;
+        private ReceptServis receptServis = ReceptServis.Instance;
         private LekServis lekServis = new LekServis();
         private ObservableCollection<Lek> lekovi;
-        Pacijent pac;
-        Termin ter;
-        Recept r = new Recept();
+        PacijentDTO pac;
+        TerminDTO ter;
+        ReceptDTO r = new ReceptDTO();
         IDRepozitorijum datotekaID;
 
         String now = DateTime.Now.ToString("hh:mm:ss tt");
@@ -36,7 +38,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
         Dictionary<int, int> ids = new Dictionary<int, int>();
 
-        public izdajRecept(Pacijent selektovani)
+        public izdajRecept(PacijentDTO selektovani)
         {
             InitializeComponent();
             this.DataContext = this;
@@ -51,7 +53,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
         }
 
-        public izdajRecept(Termin selektovani)
+        public izdajRecept(TerminDTO selektovani)
         {
             InitializeComponent();
             this.DataContext = this;
@@ -63,22 +65,20 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             Date.BlackoutDates.Add(cdr);
             ter = selektovani;
             lekNaziv.ItemsSource = lekovi;
-            foreach (Pacijent p in new List<Pacijent>(pacijentServis.PregledSvihPacijenata()))
+            foreach (PacijentDTO p in pacijentServis.PregledSvihPacijenata2())
             {
                 if (p.ZdravstveniKarton != null)
                     if (p.ZdravstveniKarton.Id.Equals(ter.zdravstveniKarton.Id))
                         pac = p;
             }
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Lek l = (Lek)lekNaziv.SelectedItem;
+            LekDTO l = (LekDTO)lekNaziv.SelectedItem;
             if (string.IsNullOrEmpty(NoviLek.Text))
             {
                 r.NazivLeka = l.NazivLeka;
-
             }
             else
             {
@@ -100,6 +100,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             }
             catch (InvalidCastException)
             { }
+
             int id = 0;
             for (int i = 0; i < 1000; i++)
             {
@@ -111,10 +112,9 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 }
             }
             r.Id = id;
-            zdravstveniKartonPrikaz.recepti.Add(r);
-            datotekaID.sacuvaj(ids);
-            pac.ZdravstveniKarton.recept = zdravstveniKartonPrikaz.recepti;
-            pacijentServis.AzurirajPacijenta(pac);
+
+            pacijentServis.IzdajRecept(pac, r, ids);
+
             this.Close();
         }
 

@@ -1,0 +1,106 @@
+[
+  {
+    "lek": null,
+    "lekar": null,
+    "zdravstveniKarton": null,
+    "Id": 13,
+    "Doziranje": "2",
+    "Trajanje": 1,
+    "NazivLeka": "z",
+    "Pocetak": "2021-05-30T08:00:00"
+  },
+  {
+    "lek": null,
+    "lekar": null,
+    "zdravstveniKarton": null,
+    "Id": 0,
+    "Doziranje": "22",
+    "Trajanje": 3,
+    "NazivLeka": "3",
+    "Pocetak": "2021-05-30T08:30:00"
+  },
+  {
+    "lek": null,
+    "lekar": null,
+    "zdravstveniKarton": {
+      "izvestajOHospitalizaciji": null,
+      "istorijaBolesti": null,
+      "recept": null,
+      "termin": null,
+      "patient": null,
+      "Id": 0,
+      "ZdravstvenoStanje": 0,
+      "Alergije": null,
+      "KrvnaGrupa": 0,
+      "Vakcine": null
+    },
+    "Id": 1,
+    "Doziranje": "33",
+    "Trajanje": 4,
+    "NazivLeka": "zz",
+    "Pocetak": "2021-05-29T08:30:00"
+  },
+  {
+    "lek": null,
+    "lekar": null,
+    "zdravstveniKarton": {
+      "izvestajOHospitalizaciji": null,
+      "istorijaBolesti": null,
+      "recept": null,
+      "termin": null,
+      "patient": null,
+      "Id": 0,
+      "ZdravstvenoStanje": 0,
+      "Alergije": null,
+      "KrvnaGrupa": 0,
+      "Vakcine": null
+    },
+    "Id": 2,
+    "Doziranje": "2",
+    "Trajanje": 3,
+    "NazivLeka": "z",
+    "Pocetak": "2021-05-30T09:00:00"
+  },
+  {
+    "lek": null,
+    "lekar": null,
+    "zdravstveniKarton": {
+      "izvestajOHospitalizaciji": null,
+      "istorijaBolesti": null,
+      "recept": null,
+      "termin": null,
+      "patient": null,
+      "Id": 0,
+      "ZdravstvenoStanje": 0,
+      "Alergije": null,
+      "KrvnaGrupa": 0,
+      "Vakcine": null
+    },
+    "Id": 3,
+    "Doziranje": "3",
+    "Trajanje": 4,
+    "NazivLeka": "2",
+    "Pocetak": "2021-05-30T09:00:00"
+  },
+  {
+    "lek": null,
+    "lekar": null,
+    "zdravstveniKarton": {
+      "izvestajOHospitalizaciji": null,
+      "istorijaBolesti": null,
+      "recept": null,
+      "termin": null,
+      "patient": null,
+      "Id": 0,
+      "ZdravstvenoStanje": 0,
+      "Alergije": null,
+      "KrvnaGrupa": 0,
+      "Vakcine": null
+    },
+    "Id": 4,
+    "Doziranje": "44",
+    "Trajanje": 2,
+    "NazivLeka": "dad",
+    "Pocetak": "2021-05-29T08:30:00"
+  }
+]

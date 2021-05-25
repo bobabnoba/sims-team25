@@ -1,6 +1,7 @@
 ﻿using Model;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 
 namespace Repository
@@ -9,6 +10,20 @@ namespace Repository
     {
 
         private string lokacija;
+
+        private static PacijentRepozitorijum _instance;
+        public ObservableCollection<Pacijent> pacijenti;
+        public static PacijentRepozitorijum Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new PacijentRepozitorijum();
+                }
+                return _instance;
+            }
+        }
 
         public PacijentRepozitorijum()
         {
@@ -26,6 +41,7 @@ namespace Repository
             jWriter.Close();
             writer.Close();
         }
+
         public List<Pacijent> dobaviSve()
         {
             List<Pacijent> pacijenti = new List<Pacijent>();
@@ -36,6 +52,24 @@ namespace Repository
                 {
                     pacijenti = JsonConvert.DeserializeObject<List<Pacijent>>(jsonText);
                 }
+            }
+            return pacijenti;
+        }
+
+        public List<Pacijent> dobaviSve2()
+        {
+            List<Pacijent> pacijenti = new List<Pacijent>();
+            if (File.Exists(lokacija))
+            {
+                string jsonText = File.ReadAllText(lokacija);
+                if (!string.IsNullOrEmpty(jsonText))
+                {
+                    pacijenti = JsonConvert.DeserializeObject<List<Pacijent>>(jsonText);
+                }
+            }
+            if (pacijenti != null)
+            {
+                this.pacijenti = new ObservableCollection<Pacijent>(pacijenti);
             }
             return pacijenti;
         }

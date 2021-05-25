@@ -15,5 +15,10 @@ namespace Service
             return lekovi;
         }
 
+        public void izdajRecept()
+        {
+
+        }
+
     }
 }

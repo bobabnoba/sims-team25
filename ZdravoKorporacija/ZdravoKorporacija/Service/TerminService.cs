@@ -1,15 +1,94 @@
 ﻿using Model;
 using Repository;
+using Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using ZdravoKorporacija.DTO;
 
 namespace ZdravoKorporacija.Model
 {
     class TerminService
     {
+        TerminRepozitorijum tr = TerminRepozitorijum.Instance;
+        IzvestajService iz = IzvestajService.Instance;
+        PacijentService pacijentServis = PacijentService.Instance;
 
+        private static TerminService _instance;
+
+        public static TerminService Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new TerminService();
+                }
+                return _instance;
+            }
+        }
+
+        public bool IzdajAnamnezu(IzvestajDTO izvestaj,TerminDTO termin, Dictionary<int, int> ids)
+        {
+            List < PacijentDTO > pacijenti = new List<PacijentDTO>(pacijentServis.PregledSvihPacijenata2());
+            
+            foreach (PacijentDTO p in pacijenti)
+            {
+                if (termin.zdravstveniKarton.Id.Equals(p.ZdravstveniKarton.Id))
+                {
+                    foreach (TerminDTO t in p.termin)
+                    {
+                        if (t.Id.Equals(termin.Id))
+                        {
+                            t.izvestaj = izvestaj;
+                        }
+                    }
+                    pacijentServis.AzurirajPacijenta(p);
+                    break;
+                }
+                    
+            }
+            iz.DodajIzvestaj(izvestaj,ids);
+            termin.izvestaj = izvestaj;
+            AzurirajTermin(termin);
+            return true;
+        }
+
+        public bool ObrisiAnamnezu(IzvestajDTO izvestaj, TerminDTO termin, Dictionary<int, int> ids)
+        {
+            List<PacijentDTO> pacijenti = new List<PacijentDTO>(pacijentServis.PregledSvihPacijenata2());
+            PacijentDTO pac = new PacijentDTO();
+            foreach (PacijentDTO p in pacijenti)
+            {
+                if (termin.zdravstveniKarton.Id.Equals(p.ZdravstveniKarton.Id))
+                {
+                    foreach (TerminDTO t in p.termin)
+                    {
+                        if (t.Id.Equals(termin.Id))
+                        {
+                            t.izvestaj = null;
+                            break;
+                        }
+                    }
+                    pac = p;
+                }
+            }
+            foreach (TerminDTO t in pac.termin)
+            {
+                if (t.izvestaj != null)
+                    if (t.izvestaj.Id.Equals(izvestaj.Id))
+                    {
+                        t.izvestaj = null;
+                        break;
+                    }
+            }
+            termin.izvestaj = null;
+            AzurirajTermin(termin);
+            pacijentServis.AzurirajPacijenta(pac);
+            iz.DodajIzvestaj(izvestaj, ids);
+            return true;
+        }
         public Termin FindOpByPocetak(DateTime poc)
         {
             TerminRepozitorijum datoteka = new TerminRepozitorijum();
@@ -48,6 +127,7 @@ namespace ZdravoKorporacija.Model
             return true;
         }
 
+
         public bool AzurirajTermin(Termin termin)
         {
             TerminRepozitorijum datoteka = new TerminRepozitorijum();
@@ -59,6 +139,22 @@ namespace ZdravoKorporacija.Model
                     termini.Remove(t);
                     termini.Add(termin);
                     datoteka.sacuvaj(termini);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool AzurirajTermin(TerminDTO termin)
+        {
+            List<Termin> termini = tr.dobaviSve();
+            foreach (Termin t in termini)
+            {
+                if (t.Id.Equals(termin.Id))
+                {
+                    termini.Remove(t);
+                    termini.Add(new Termin(termin));
+                    tr.sacuvaj(termini);
                     return true;
                 }
             }

@@ -1,26 +1,22 @@
-// File:    MedicalRecord.cs
-// Author:  User
-// Created: Tuesday, March 23, 2021 10:47:51 PM
-// Purpose: Definition of Class MedicalRecord
-
+﻿using Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using ZdravoKorporacija.DTO;
+using System.Text;
 
-namespace Model
+namespace ZdravoKorporacija.DTO
 {
-    public class ZdravstveniKarton
+    public class ZdravstveniKartonDTO
     {
         public System.Collections.ArrayList izvestajOHospitalizaciji;
 
-  
-        public ZdravstveniKarton(Pacijent patient, long id, StanjePacijentaEnum zdravstvenoStanje, string alergije, KrvnaGrupaEnum krvnaGrupa, string vakcine)
+
+        public ZdravstveniKartonDTO(Pacijent patient, long id, StanjePacijentaEnum zdravstvenoStanje, string alergije, KrvnaGrupaEnum krvnaGrupa, string vakcine)
         {
             this.izvestajOHospitalizaciji = new System.Collections.ArrayList();
             this.istorijaBolesti = new List<IstorijaBolesti>();
-            this.recept = new ObservableCollection<Recept>();
-            this.termin = new List<Termin>();
+            this.recept = new ObservableCollection<ReceptDTO>();
+            this.termin = new List<TerminDTO>();
             this.patient = patient;
             Id = id;
             ZdravstvenoStanje = zdravstvenoStanje;
@@ -29,18 +25,18 @@ namespace Model
             Vakcine = vakcine;
         }
 
-        public ZdravstveniKarton()
+        public ZdravstveniKartonDTO()
         {
         }
 
-        public ZdravstveniKarton(ZdravstveniKartonDTO zk)
+        public ZdravstveniKartonDTO(ZdravstveniKarton zk)
         {
             if (zk != null)
             {
                 izvestajOHospitalizaciji = zk.izvestajOHospitalizaciji;
                 istorijaBolesti = zk.istorijaBolesti;
-                recept = receptDTOToRecept(zk.recept);
-                termin = terminDTOToTermin(zk.termin);
+                recept = receptToReceptDTO(zk.recept);
+                termin = terminToTerminDTO(zk.termin);
                 patient = patient;
                 Id = zk.Id;
                 ZdravstvenoStanje = zk.ZdravstvenoStanje;
@@ -50,71 +46,50 @@ namespace Model
             }
         }
 
-        public ObservableCollection<Recept> receptDTOToRecept(ObservableCollection<ReceptDTO> receptiDTO)
+        public ObservableCollection<ReceptDTO> receptToReceptDTO(ObservableCollection<Recept> recepti)
         {
-            if (receptiDTO != null)
+            if (recepti != null)
             {
-                ObservableCollection<Recept> recepti = new ObservableCollection<Recept>();
-                foreach (ReceptDTO recept in receptiDTO)
+                ObservableCollection<ReceptDTO> receptiDTO = new ObservableCollection<ReceptDTO>();
+                foreach (Recept lek in recepti)
                 {
-                    recepti.Add(new Recept(recept));
+                    receptiDTO.Add(new ReceptDTO(lek));
                 }
 
-                return recepti;
+                return receptiDTO;
             }
             else
             {
-                return new ObservableCollection<Recept>();
+                return new ObservableCollection<ReceptDTO>();
             }
         }
 
-        public List<Termin> terminDTOToTermin(List<TerminDTO> terminiDTO)
+        public List<TerminDTO> terminToTerminDTO(List<Termin> termini)
         {
-            if (terminiDTO != null)
+            if (termini != null)
             {
-                List<Termin> termini = new List<Termin>();
-                foreach (TerminDTO termin in terminiDTO)
+                List<TerminDTO> terminiDTO = new List<TerminDTO>();
+                foreach (Termin lek in termini)
                 {
-                    termini.Add(new Termin(termin));
+                    terminiDTO.Add(new TerminDTO(lek));
                 }
 
-                return termini;
+                return terminiDTO;
             }
             else
             {
-                return new List<Termin>();
+                return new List<TerminDTO>();
             }
         }
 
-        /// <pdGenerated>default getter</pdGenerated>
-        public System.Collections.ArrayList GetIzvestajOHospitalizaciji()
+            /// <pdGenerated>default getter</pdGenerated>
+            public System.Collections.ArrayList GetIzvestajOHospitalizaciji()
         {
             if (izvestajOHospitalizaciji == null)
                 izvestajOHospitalizaciji = new System.Collections.ArrayList();
             return izvestajOHospitalizaciji;
         }
 
-        /// <pdGenerated>default setter</pdGenerated>
-        public void SetIzvestajOHospitalizaciji(System.Collections.ArrayList newIzvestajOHospitalizaciji)
-        {
-            RemoveAllIzvestajOHospitalizaciji();
-            foreach (IzvestajOHospitalizaciji oIzvestajOHospitalizaciji in newIzvestajOHospitalizaciji)
-                AddIzvestajOHospitalizaciji(oIzvestajOHospitalizaciji);
-        }
-
-        /// <pdGenerated>default Add</pdGenerated>
-        public void AddIzvestajOHospitalizaciji(IzvestajOHospitalizaciji newIzvestajOHospitalizaciji)
-        {
-            if (newIzvestajOHospitalizaciji == null)
-                return;
-            if (this.izvestajOHospitalizaciji == null)
-                this.izvestajOHospitalizaciji = new System.Collections.ArrayList();
-            if (!this.izvestajOHospitalizaciji.Contains(newIzvestajOHospitalizaciji))
-            {
-                this.izvestajOHospitalizaciji.Add(newIzvestajOHospitalizaciji);
-                newIzvestajOHospitalizaciji.SetZdravstveniKarton(this);
-            }
-        }
 
         /// <pdGenerated>default Remove</pdGenerated>
         public void RemoveIzvestajOHospitalizaciji(IzvestajOHospitalizaciji oldIzvestajOHospitalizaciji)
@@ -153,28 +128,6 @@ namespace Model
             return istorijaBolesti;
         }
 
-        /// <pdGenerated>default setter</pdGenerated>
-        public void SetIstorijaBolesti(System.Collections.ArrayList newIstorijaBolesti)
-        {
-            RemoveAllIstorijaBolesti();
-            foreach (IstorijaBolesti oIstorijaBolesti in newIstorijaBolesti)
-                AddIstorijaBolesti(oIstorijaBolesti);
-        }
-
-        /// <pdGenerated>default Add</pdGenerated>
-        public void AddIstorijaBolesti(IstorijaBolesti newIstorijaBolesti)
-        {
-            if (newIstorijaBolesti == null)
-                return;
-            if (this.istorijaBolesti == null)
-                this.istorijaBolesti = new List<IstorijaBolesti>();
-            if (!this.istorijaBolesti.Contains(newIstorijaBolesti))
-            {
-                this.istorijaBolesti.Add(newIstorijaBolesti);
-                newIstorijaBolesti.SetZdravstveniKarton(this);
-            }
-        }
-
         /// <pdGenerated>default Remove</pdGenerated>
         public void RemoveIstorijaBolesti(IstorijaBolesti oldIstorijaBolesti)
         {
@@ -202,31 +155,31 @@ namespace Model
                 tmpIstorijaBolesti.Clear();
             }
         }
-        public ObservableCollection<Recept> recept;
+        public ObservableCollection<ReceptDTO> recept;
 
         /// <pdGenerated>default getter</pdGenerated>
-        public ObservableCollection<Recept> GetRecept()
+        public ObservableCollection<ReceptDTO> GetRecept()
         {
             if (recept == null)
-                recept = new ObservableCollection<Recept>();
+                recept = new ObservableCollection<ReceptDTO>();
             return recept;
         }
 
         /// <pdGenerated>default setter</pdGenerated>
-        public void SetRecept(System.Collections.ArrayList newRecept)
+        public void SetRecept(ObservableCollection<ReceptDTO> newRecept)
         {
             RemoveAllRecept();
-            foreach (Recept oRecept in newRecept)
+            foreach (ReceptDTO oRecept in newRecept)
                 AddRecept(oRecept);
         }
 
         /// <pdGenerated>default Add</pdGenerated>
-        public void AddRecept(Recept newRecept)
+        public void AddRecept(ReceptDTO newRecept)
         {
             if (newRecept == null)
                 return;
             if (this.recept == null)
-                this.recept = new ObservableCollection<Recept>();
+                this.recept = new ObservableCollection<ReceptDTO>();
             if (!this.recept.Contains(newRecept))
             {
                 this.recept.Add(newRecept);
@@ -235,7 +188,7 @@ namespace Model
         }
 
         /// <pdGenerated>default Remove</pdGenerated>
-        public void RemoveRecept(Recept oldRecept)
+        public void RemoveRecept(ReceptDTO oldRecept)
         {
             if (oldRecept == null)
                 return;
@@ -243,9 +196,10 @@ namespace Model
                 if (this.recept.Contains(oldRecept))
                 {
                     this.recept.Remove(oldRecept);
-                    oldRecept.SetZdravstveniKarton((ZdravstveniKarton)null);
+                    oldRecept.SetZdravstveniKarton((ZdravstveniKartonDTO)null);
                 }
         }
+
 
         /// <pdGenerated>default removeAll</pdGenerated>
         public void RemoveAllRecept()
@@ -253,7 +207,7 @@ namespace Model
             if (recept != null)
             {
                 System.Collections.ArrayList tmpRecept = new System.Collections.ArrayList();
-                foreach (Recept oldRecept in recept)
+                foreach (ReceptDTO oldRecept in recept)
                     tmpRecept.Add(oldRecept);
                 recept.Clear();
                 foreach (Recept oldRecept in tmpRecept)
@@ -261,13 +215,13 @@ namespace Model
                 tmpRecept.Clear();
             }
         }
-        public List<Termin> termin;
+        public List<TerminDTO> termin;
 
         /// <pdGenerated>default getter</pdGenerated>
-        public List<Termin> GetTermin()
+        public List<TerminDTO> GetTermin()
         {
             if (termin == null)
-                termin = new List<Termin>();
+                termin = new List<TerminDTO>();
             return termin;
         }
 
@@ -275,17 +229,17 @@ namespace Model
         public void SetTermin(System.Collections.ArrayList newTermin)
         {
             RemoveAllTermin();
-            foreach (Termin oTermin in newTermin)
+            foreach (TerminDTO oTermin in newTermin)
                 AddTermin(oTermin);
         }
 
         /// <pdGenerated>default Add</pdGenerated>
-        public void AddTermin(Termin newTermin)
+        public void AddTermin(TerminDTO newTermin)
         {
             if (newTermin == null)
                 return;
             if (this.termin == null)
-                this.termin = new List<Termin>();
+                this.termin = new List<TerminDTO>();
             if (!this.termin.Contains(newTermin))
             {
                 this.termin.Add(newTermin);
@@ -294,7 +248,7 @@ namespace Model
         }
 
         /// <pdGenerated>default Remove</pdGenerated>
-        public void RemoveTermin(Termin oldTermin)
+        public void RemoveTermin(TerminDTO oldTermin)
         {
             if (oldTermin == null)
                 return;
@@ -302,7 +256,7 @@ namespace Model
                 if (this.termin.Contains(oldTermin))
                 {
                     this.termin.Remove(oldTermin);
-                    oldTermin.SetZdravstveniKarton((ZdravstveniKarton)null);
+                    oldTermin.SetZdravstveniKarton((ZdravstveniKartonDTO)null);
                 }
         }
 
@@ -312,7 +266,7 @@ namespace Model
             if (termin != null)
             {
                 System.Collections.ArrayList tmpTermin = new System.Collections.ArrayList();
-                foreach (Termin oldTermin in termin)
+                foreach (TerminDTO oldTermin in termin)
                     tmpTermin.Add(oldTermin);
                 termin.Clear();
                 foreach (Termin oldTermin in tmpTermin)
@@ -331,6 +285,5 @@ namespace Model
         {
             this.Alergije = dodaj;
         }
-
     }
 }

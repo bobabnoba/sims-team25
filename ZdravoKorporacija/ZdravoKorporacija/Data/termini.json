@@ -350,59 +350,51 @@
         {
           "lek": null,
           "lekar": null,
-          "zdravstveniKarton": null,
-          "Id": 3,
-          "Doziranje": "1",
-          "Trajanje": 1,
-          "NazivLeka": "Lijek x",
-          "Pocetak": "2021-04-26T23:26:00"
-        },
-        {
-          "lek": null,
-          "lekar": null,
-          "zdravstveniKarton": null,
-          "Id": 1,
+          "zdravstveniKarton": {
+            "izvestajOHospitalizaciji": null,
+            "istorijaBolesti": null,
+            "recept": null,
+            "termin": null,
+            "patient": null,
+            "Id": 0,
+            "ZdravstvenoStanje": 0,
+            "Alergije": null,
+            "KrvnaGrupa": 0,
+            "Vakcine": null
+          },
+          "Id": 0,
           "Doziranje": "2",
-          "Trajanje": 2,
-          "NazivLeka": "Proba",
-          "Pocetak": "2021-04-29T22:09:20"
+          "Trajanje": 3,
+          "NazivLeka": "Cardiopirin",
+          "Pocetak": "0001-01-01T00:00:00"
         },
         {
           "lek": null,
           "lekar": null,
-          "zdravstveniKarton": null,
-          "Id": 10,
-          "Doziranje": "1",
-          "Trajanje": 1,
-          "NazivLeka": "L1x",
-          "Pocetak": "2021-04-29T22:12:20"
-        },
-        {
-          "lek": null,
-          "lekar": null,
-          "zdravstveniKarton": null,
-          "Id": 11,
-          "Doziranje": "d",
-          "Trajanje": 20,
-          "NazivLeka": "d",
-          "Pocetak": "2021-05-01T11:00:00"
-        },
-        {
-          "lek": null,
-          "lekar": null,
-          "zdravstveniKarton": null,
-          "Id": 12,
-          "Doziranje": "1",
-          "Trajanje": 1,
-          "NazivLeka": "r",
-          "Pocetak": "2021-05-04T21:43:00"
+          "zdravstveniKarton": {
+            "izvestajOHospitalizaciji": null,
+            "istorijaBolesti": null,
+            "recept": null,
+            "termin": null,
+            "patient": null,
+            "Id": 0,
+            "ZdravstvenoStanje": 0,
+            "Alergije": null,
+            "KrvnaGrupa": 0,
+            "Vakcine": null
+          },
+          "Id": 3,
+          "Doziranje": "50",
+          "Trajanje": 8,
+          "NazivLeka": "Cardiopirin",
+          "Pocetak": "2021-04-23T00:00:00"
         }
       ],
       "termin": [],
       "patient": null,
-      "Id": 1234567890123,
+      "Id": 3214567890122,
       "ZdravstvenoStanje": 3,
-      "Alergije": null,
+      "Alergije": "Polen",
       "KrvnaGrupa": 8,
       "Vakcine": null
     },
@@ -410,11 +402,11 @@
       "inventar": [],
       "statickaOprema": null,
       "dinamickaOprema": null,
-      "Id": 2,
-      "Naziv": "soba21",
+      "Id": 0,
+      "Naziv": "soba11",
       "Tip": 1,
       "Slobodna": false,
-      "Sprat": 2
+      "Sprat": 1
     },
     "Lekar": {
       "termin": [
@@ -637,7 +629,7 @@
     },
     "Id": 1,
     "Tip": 0,
-    "Pocetak": "2021-05-04T10:30:00",
+    "Pocetak": "2021-05-27T09:00:00",
     "Trajanje": 0.5,
     "hitno": false
   }

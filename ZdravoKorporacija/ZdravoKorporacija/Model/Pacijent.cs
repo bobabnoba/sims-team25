@@ -7,6 +7,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using ZdravoKorporacija.DTO;
 
 namespace Model
 {
@@ -57,7 +58,42 @@ namespace Model
         {
         }
 
+        public Pacijent(PacijentDTO pacijent)
+        {
+            this.Ime = pacijent.Ime;
+            this.Prezime = pacijent.Prezime;
+            Jmbg = pacijent.Jmbg;
+            BrojTelefona = pacijent.BrojTelefona;
+            Mejl = pacijent.Mejl;
+            AdresaStanovanja = pacijent.AdresaStanovanja;
+            Pol = pacijent.Pol;
+            Username = pacijent.Username;
+            Password = pacijent.Password;
+            Uloga = pacijent.Uloga;
+            this.termin = terminDTOToTermin(pacijent.termin);
+            ZdravstveniKarton = new ZdravstveniKarton(pacijent.ZdravstveniKarton);
+            Guest = pacijent.Guest;
+            this.notifikacije = pacijent.notifikacije;
+            this.banovan = pacijent.banovan;
+        }
 
+        public List<Termin> terminDTOToTermin(List<TerminDTO> terminiDTO)
+        {
+            if (terminiDTO != null)
+            {
+                List<Termin> termini = new List<Termin>();
+                foreach (TerminDTO termin in terminiDTO)
+                {
+                    termini.Add(new Termin(termin));
+                }
+
+                return termini;
+            }
+            else
+            {
+                return new List<Termin>();
+            }
+        }
 
         /// <pdGenerated>default getter</pdGenerated>
         public List<Termin> GetTermin()
@@ -116,6 +152,7 @@ namespace Model
         //  public ObservableCollection<Notifikacija> Notifikacije { get => notifikacije; set => notifikacije = value; }
 
         public ObservableCollection<Notifikacija> notifikacije;
+
 
         /// <pdGenerated>default getter</pdGenerated>
         public ObservableCollection<Notifikacija> GetNotifikacije()

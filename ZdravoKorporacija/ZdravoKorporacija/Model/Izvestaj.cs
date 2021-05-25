@@ -4,6 +4,8 @@
 // Purpose: Definition of Class Report
 
 using System;
+using System.Collections.Generic;
+using ZdravoKorporacija.DTO;
 
 namespace Model
 {
@@ -21,7 +23,13 @@ namespace Model
             Simptomi = simptomi;
         }
 
-     
+        public Izvestaj(IzvestajDTO izvestaj)
+        {
+            this.termin = new Termin(izvestaj.termin);
+            Id = izvestaj.Id;
+            Opis = izvestaj.Opis;
+            Simptomi = izvestaj.Simptomi;
+        }
 
         public int Id { get; set; }
         public String Opis { get; set; }

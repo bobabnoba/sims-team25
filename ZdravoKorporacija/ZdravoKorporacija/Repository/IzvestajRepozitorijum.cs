@@ -6,6 +6,7 @@
 using Model;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 
 namespace Repository
@@ -13,6 +14,21 @@ namespace Repository
     public class IzvestajRepozitorijum
     {
         private string lokacija;
+
+        private static IzvestajRepozitorijum _instance;
+        public ObservableCollection<Izvestaj> izvestaji;
+
+        public static IzvestajRepozitorijum Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new IzvestajRepozitorijum();
+                }
+                return _instance;
+            }
+        }
 
         public IzvestajRepozitorijum()
         {
@@ -24,10 +40,18 @@ namespace Repository
             return false;
         }
 
-        public bool Obrisi(int id)
+        public bool Obrisi(Izvestaj izvestaj)
         {
-            // TODO: implement
-            return false;
+            izvestaji.Remove(izvestaj);
+
+            JsonSerializer serializer = new JsonSerializer();
+            serializer.Formatting = Formatting.Indented;
+            StreamWriter writer = new StreamWriter(lokacija);
+            JsonWriter jWriter = new JsonTextWriter(writer);
+            serializer.Serialize(jWriter, izvestaji);
+            jWriter.Close();
+            writer.Close();
+            return true;
         }
 
         public Recept Dobavi()
@@ -36,23 +60,26 @@ namespace Repository
             return null;
         }
 
-        public List<Izvestaj> DobaviSve()
+        public ObservableCollection<Izvestaj> DobaviSve()
         {
-            List<Izvestaj> izvestaji = new List<Izvestaj>();
+            ObservableCollection<Izvestaj> izvestaji = new ObservableCollection<Izvestaj>();
             if (File.Exists(lokacija))
             {
                 string jsonText = File.ReadAllText(lokacija);
                 if (!string.IsNullOrEmpty(jsonText))
                 {
-                    izvestaji = JsonConvert.DeserializeObject<List<Izvestaj>>(jsonText);
+                    izvestaji = JsonConvert.DeserializeObject<ObservableCollection<Izvestaj>>(jsonText);
                 }
+            }
+            if (izvestaji != null)
+            {
+                this.izvestaji = new ObservableCollection<Izvestaj>(izvestaji);
             }
             return izvestaji;
         }
 
-        public void Sacuvaj(List<Izvestaj> izvestaji)
+        public void Sacuvaj(ObservableCollection<Izvestaj> izvestaji)
         {
-
             JsonSerializer serializer = new JsonSerializer();
             serializer.Formatting = Formatting.Indented;
             StreamWriter writer = new StreamWriter(lokacija);

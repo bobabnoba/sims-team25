@@ -1,15 +1,11 @@
-// File:    Prescription.cs
-// Author:  User
-// Created: Tuesday, March 23, 2021 11:45:18 PM
-// Purpose: Definition of Class Prescription
-
+﻿using Model;
 using System;
-using System.Collections;
-using ZdravoKorporacija.DTO;
+using System.Collections.Generic;
+using System.Text;
 
-namespace Model
+namespace ZdravoKorporacija.DTO
 {
-    public class Recept
+    public class ReceptDTO
     {
         public int Id { get; set; }
         public String Doziranje { get; set; }
@@ -17,37 +13,39 @@ namespace Model
         public String NazivLeka { get; set; }
         public DateTime Pocetak { get; set; }
 
-        public System.Collections.ArrayList lek;
+        public List<LekDTO> lek;
+        public ReceptDTO()
+        { }
 
         /// <pdGenerated>default getter</pdGenerated>
-        public System.Collections.ArrayList GetLek()
+        public List<LekDTO> GetLek()
         {
             if (lek == null)
-                lek = new System.Collections.ArrayList();
+                lek = new List<LekDTO>();
             return lek;
         }
 
         /// <pdGenerated>default setter</pdGenerated>
-        public void SetLek(System.Collections.ArrayList newLek)
+        public void SetLek(List<LekDTO> newLek)
         {
             RemoveAllLek();
-            foreach (Lek oLek in newLek)
+            foreach (LekDTO oLek in newLek)
                 AddLek(oLek);
         }
 
         /// <pdGenerated>default Add</pdGenerated>
-        public void AddLek(Lek newLek)
+        public void AddLek(LekDTO newLek)
         {
             if (newLek == null)
                 return;
             if (this.lek == null)
-                this.lek = new System.Collections.ArrayList();
+                this.lek = new List<LekDTO>();
             if (!this.lek.Contains(newLek))
                 this.lek.Add(newLek);
         }
 
         /// <pdGenerated>default Remove</pdGenerated>
-        public void RemoveLek(Lek oldLek)
+        public void RemoveLek(LekDTO oldLek)
         {
             if (oldLek == null)
                 return;
@@ -63,55 +61,43 @@ namespace Model
                 lek.Clear();
         }
         public Lekar lekar;
-        public ZdravstveniKarton zdravstveniKarton;
+        public ZdravstveniKartonDTO zdravstveniKarton;
 
-        public Recept(int id, string doziranje, int trajanje, string nazivLeka, DateTime pocetak)
+        public ReceptDTO(int id, string doziranje, int trajanje, string nazivLeka, DateTime pocetak,  Lekar lekar)
         {
             Id = id;
             Doziranje = doziranje;
             Trajanje = trajanje;
             NazivLeka = nazivLeka;
             Pocetak = pocetak;
+            this.lekar = lekar;        
         }
 
-        public Recept(ReceptDTO recept)
+        public ReceptDTO(Recept recept)
         {
             Id = recept.Id;
             Doziranje = recept.Doziranje;
             Trajanje = recept.Trajanje;
             NazivLeka = recept.NazivLeka;
             Pocetak = recept.Pocetak;
-            //lek = new LekDTO(recept.lek);
-            lekar = recept.lekar;
-            zdravstveniKarton = new ZdravstveniKarton(recept.zdravstveniKarton);
-        }
-
-        public Recept()
-        {
-        }
-
-        public Recept(int id, string doziranje, int trajanje, string nazivLeka, DateTime pocetak, ArrayList lek, Lekar lekar, ZdravstveniKarton zdravstveniKarton) : this(id, doziranje, trajanje, nazivLeka, pocetak)
-        {
-            this.lek = lek;
-            this.lekar = lekar;
-            this.zdravstveniKarton = zdravstveniKarton;
+            this.lekar = recept.lekar;
         }
 
         /// <pdGenerated>default parent getter</pdGenerated>
-        public ZdravstveniKarton GetZdravstveniKarton()
+        public ZdravstveniKartonDTO GetZdravstveniKarton()
         {
             return zdravstveniKarton;
         }
 
         /// <pdGenerated>default parent setter</pdGenerated>
         /// <param>newZdravstveniKarton</param>
-        public void SetZdravstveniKarton(ZdravstveniKarton newZdravstveniKarton)
+        public void SetZdravstveniKarton(ZdravstveniKartonDTO newZdravstveniKarton)
         {
             if (this.zdravstveniKarton != newZdravstveniKarton)
             {
                 if (this.zdravstveniKarton != null)
                 {
-                    ZdravstveniKarton oldZdravstveniKarton = this.zdravstveniKarton;
+                    ZdravstveniKartonDTO oldZdravstveniKarton = this.zdravstveniKarton;
                     this.zdravstveniKarton = null;
                     oldZdravstveniKarton.RemoveRecept(this);
                 }
@@ -123,5 +109,7 @@ namespace Model
             }
         }
 
+
+        
     }
 }

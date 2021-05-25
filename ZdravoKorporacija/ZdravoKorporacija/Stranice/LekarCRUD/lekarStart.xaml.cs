@@ -12,6 +12,7 @@ using ZdravoKorporacija.Model;
 using System.Diagnostics;
 using ZdravoKorporacija.Stranice.Uput;
 using ZdravoKorporacija.Stranice.LekoviCRUD;
+using ZdravoKorporacija.DTO;
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
 {
@@ -24,7 +25,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private ObservableCollection<Termin> terminiSvi = new ObservableCollection<Termin>();
         public static ObservableCollection<Termin> termini = new ObservableCollection<Termin>();
         public static ObservableCollection<Termin> uputi = new ObservableCollection<Termin>();
-
+        public static ObservableCollection<TerminDTO> terminiDTO = new ObservableCollection<TerminDTO>();
         private PacijentService storagePacijent = new PacijentService();
         private Pacijent pac = new Pacijent();
         private Dictionary<int, int> ids = new Dictionary<int, int>();
@@ -74,7 +75,8 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                     }
                 }
             }
-            dgUsers.ItemsSource = termini;
+            terminiDTO.Add(new TerminDTO(termini[0]));
+            dgUsers.ItemsSource = terminiDTO;
             this.DataContext = this;
         }
 
@@ -99,7 +101,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
         private void prikaziKarton(object sender, RoutedEventArgs e)
         {
-            zdravstveniKartonPrikaz zk = new zdravstveniKartonPrikaz((Termin)dgUsers.SelectedItem);
+            zdravstveniKartonPrikaz zk = new zdravstveniKartonPrikaz((TerminDTO)dgUsers.SelectedItem);
             zk.Show();
         }
 

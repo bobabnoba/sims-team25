@@ -109,7 +109,24 @@ namespace Service
             return true;
         }
 
-        public bool ObrisiZahtevZaLek(ZahtevLek zahtevLek, Dictionary<int, int> id_map)
+        public bool AzurirajZahtevLeka(ZahtevLek zahtevLek)
+        {
+            ZahtevLekRepozitorijum datoteka = ZahtevLekRepozitorijum.Instance;
+
+            foreach (ZahtevLek zl in ZahtevLekRepozitorijum.Instance.zahteviLek)
+            {
+                if (zl.Id.Equals(zahtevLek.Id))
+                {
+                    ZahtevLekRepozitorijum.Instance.zahteviLek.Remove(zl);
+                    ZahtevLekRepozitorijum.Instance.zahteviLek.Add(zahtevLek);
+                    datoteka.sacuvaj();
+                    return true;
+                }
+            }
+            return false;
+        }
+
+            public bool ObrisiZahtevZaLek(ZahtevLek zahtevLek, Dictionary<int, int> id_map)
         {
             ZahtevLekRepozitorijum datoteka = ZahtevLekRepozitorijum.Instance;
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapZahtevZaLek");

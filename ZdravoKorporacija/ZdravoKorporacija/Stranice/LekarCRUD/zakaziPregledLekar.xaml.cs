@@ -74,14 +74,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             p.Id = id;
             Pacijent pac = (Pacijent)cbPacijent.SelectedItem;
             ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
-            //Izvestaj iz = new Izvestaj();
-            //iz.Id = 0;
-            //iz.Opis = "Temperature";
-            //iz.Simptomi = "
-            //
-            //";
-            //p.izvestaj = iz;
-            
+          
             String d = date.Text;
             String t = null;
             int prepodne = Int32.Parse(now.Substring(0, 2));
@@ -157,7 +150,6 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
             if (terminServis.ZakaziTermin(p, ids))
             {
-                Trace.WriteLine("Upisao");
                 this.pregledi.Add(p);
                 lekariDat.sacuvaj(lekari);
                 //pacijentiDat.sacuvaj(pacijenti); // višakk?

@@ -84,7 +84,15 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
                 idsZahtev[zahtev.Id] = 0;
 
                 zahtev.BrojPotvrda++;
-                lekServis.ObrisiZahtevZaLek(zahtev,idsZahtev);
+                foreach(Lekar lekar in zahtev.lekari.ToArray())
+                {
+                    if (lekar.Jmbg.Equals(lekarLogin.lekar.Jmbg))
+                        zahtev.lekari.Remove(lekar);
+                }
+                zahteviPrikaz.Remove(zahtev);
+                lekServis.AzurirajZahtevLeka(zahtev);
+                if (zahtev.BrojPotvrda.Equals(zahtev.NeophodnihPotvrda))
+                    lekServis.ObrisiZahtevZaLek(zahtev,idsZahtev);
              }
         }
 

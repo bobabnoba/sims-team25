@@ -7,13 +7,23 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 
 namespace Controller
 {
     public class TerminController
     {
-        TerminService ts = new TerminService();
+        TerminService ts = TerminService.Instance;
+
+        public bool IzdajAnemnezu(IzvestajDTO izvestaj, TerminDTO termin, Dictionary<int, int> ids)
+        {
+            return ts.IzdajAnamnezu(izvestaj, termin, ids);
+        }
+        public bool ObrisiAnamnezu(IzvestajDTO izvestaj, TerminDTO termin, Dictionary<int, int> ids)
+        {
+            return ts.ObrisiAnamnezu(izvestaj, termin, ids);
+        }
         public Termin FindOpByPocetak(DateTime poc)
         {
             return ts.FindOpByPocetak(poc);

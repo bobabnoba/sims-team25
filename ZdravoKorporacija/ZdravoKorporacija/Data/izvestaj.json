@@ -1,0 +1,34 @@
+[
+  {
+    "termin": {
+      "izvestaj": null,
+      "zdravstveniKarton": null,
+      "prostorija": null,
+      "Lekar": null,
+      "Id": 0,
+      "Tip": 0,
+      "Pocetak": "0001-01-01T00:00:00",
+      "Trajanje": 0.0,
+      "hitno": false
+    },
+    "Id": 0,
+    "Opis": "zzz\r\n",
+    "Simptomi": "zz"
+  },
+  {
+    "termin": {
+      "izvestaj": null,
+      "zdravstveniKarton": null,
+      "prostorija": null,
+      "Lekar": null,
+      "Id": 0,
+      "Tip": 0,
+      "Pocetak": "0001-01-01T00:00:00",
+      "Trajanje": 0.0,
+      "hitno": false
+    },
+    "Id": 1,
+    "Opis": "ddd\r\n",
+    "Simptomi": "dd"
+  }
+]

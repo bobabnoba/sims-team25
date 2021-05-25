@@ -4,6 +4,7 @@ using Service;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Stranice.LekarCRUD;
 using ZdravoKorporacija.Stranice.LekoviCRUD;
@@ -50,7 +51,7 @@ namespace ZdravoKorporacija.Stranice.Uput
 
         private void prikaziKarton(object sender, RoutedEventArgs e)
         {
-            zdravstveniKartonPrikaz zk = new zdravstveniKartonPrikaz((Termin)dgUsers.SelectedItem);
+            zdravstveniKartonPrikaz zk = new zdravstveniKartonPrikaz((TerminDTO)dgUsers.SelectedItem);
             zk.Show();
         }
 
