@@ -24,14 +24,11 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
             ProstorijaController prostorijaController = new ProstorijaController();
             prostorije   = prostorijaController.PregledSvihProstorijaDTO();
             dgUsers.ItemsSource = prostorije;
-
-            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapProstorija");
-            ids = datotekaID.dobaviSve();
         }
 
         private void dodaj(object sender, RoutedEventArgs e)
         {
-            dodajProstorijuUpravnik dp = new dodajProstorijuUpravnik(prostorije, ids);
+            dodajProstorijuUpravnik dp = new dodajProstorijuUpravnik(prostorije);
             dp.Show();
         }
 
@@ -41,7 +38,7 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
                 MessageBox.Show("Niste selektovali red", "Greska");
             else
             {
-                izbrisiProstorijuUpravnik ip = new izbrisiProstorijuUpravnik(prostorije, (ProstorijaDTO)dgUsers.SelectedItem, ids);
+                izbrisiProstorijuUpravnik ip = new izbrisiProstorijuUpravnik(prostorije, (ProstorijaDTO)dgUsers.SelectedItem);
                 ip.Show();
             }
         }

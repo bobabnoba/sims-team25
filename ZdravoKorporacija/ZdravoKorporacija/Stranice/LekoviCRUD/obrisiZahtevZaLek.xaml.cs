@@ -4,6 +4,7 @@ using Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -41,6 +42,9 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
             {
                 zahteviPrikaz.Remove(zahtev);
             }
+            this.zahtev.Komentar = textBoxKomentar.Text;
+            Debug.WriteLine("komentar");
+            Debug.WriteLine(this.zahtev.Komentar);
             NeodobreniLekController neodobreniLekoviController = new NeodobreniLekController();
             neodobreniLekoviController.DodajNeodobreniLek(this.zahtev);
             this.Close();

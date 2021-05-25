@@ -10,26 +10,19 @@ namespace Service
 {
     class ZahtevIzbacivanjaService
     {
-        public bool ZakaziIzbacivanje(InventarDTO inventar, ZahtevIzbacivanja zahtevIzabacivanja, DateTime dt, string sati, string trajanje, Dictionary<int, int> ids)
+        public bool ZakaziIzbacivanje(InventarDTO inventarDTO, ZahtevIzbacivanja zahtevIzabacivanja, DateTime dt, string sati, string trajanje)
         {
             ZahtevIzbacivanjaRepozitorijum datoteka = ZahtevIzbacivanjaRepozitorijum.Instance;
             List<ZahtevIzbacivanja> zahtevi = datoteka.dobaviSve();
-            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapZahtevIzbacivanja");
+            IDRepozitorijum datotekaIDIzbacivanja = new IDRepozitorijum("iDMapZahtevIzbacivanja");
+            Dictionary<int, int> id_map = datotekaIDIzbacivanja.dobaviSve();
 
-
-            int id = 0;
-            for (int i = 0; i < 1000; i++)
-            {
-                if (ids[i] == 0)
-                {
-                    id = i;
-                    ids[i] = 1;
-                    break;
-                }
-            }
+            int id = nadjiSlobodanID(id_map);
+            id_map[id] = 1;
+            
 
             zahtevIzabacivanja.Id = id;
-
+            Inventar inventar = new Inventar(inventarDTO);
 
             zahtevIzabacivanja.StatickaOprema = new StatickaOprema(inventar);
             StatickaOprema stat = new StatickaOprema(inventar);
@@ -50,7 +43,7 @@ namespace Service
 
             zahtevi.Add(zahtevIzabacivanja);
             datoteka.sacuvaj(zahtevi);
-            datotekaID.sacuvaj(ids);
+            datotekaIDIzbacivanja.sacuvaj(id_map);
 
             return true;
         }
@@ -61,6 +54,21 @@ namespace Service
         {
           ZahtevIzbacivanjaRepozitorijum zpr = ZahtevIzbacivanjaRepozitorijum.Instance;
             return zpr.dobaviSve();
+        }
+
+        private int nadjiSlobodanID(Dictionary<int, int> id_map)
+        {
+            int id = 0;
+            for (int i = 0; i < 1000; i++)
+            {
+                if (id_map[i] == 0)
+                {
+                    id = i;
+                    id_map[i] = 1;
+                    return id;
+                }
+            }
+            return id;
         }
     }
 }

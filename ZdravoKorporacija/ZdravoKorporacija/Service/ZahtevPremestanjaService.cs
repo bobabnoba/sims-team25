@@ -2,6 +2,7 @@
 using Repository;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using ZdravoKorporacija.DTO;
 
@@ -9,20 +10,22 @@ namespace ZdravoKorporacija.Service
 {
     class ZahtevPremestanjaService
     {
-
-        public bool ZakaziPremestanje(InventarDTO inventar, ZahtevPremestanjaDTO zahtevPremestanja, DateTime dt, string sati, string trajanje)
+        ZahtevPremestanjaRepozitorijum datoteka = ZahtevPremestanjaRepozitorijum.Instance;
+        public bool ZakaziPremestanje(InventarDTO inventarDTO, ZahtevPremestanjaDTO zahtevPremestanjaDTO, DateTime dt, string sati, string trajanje)
         {
-            ZahtevPremestanjaRepozitorijum datoteka = ZahtevPremestanjaRepozitorijum.Instance;
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapZahtevPremestanja");
             Dictionary<int, int> ids = datotekaID.dobaviSve();
 
             int id = nadjiSlobodanID(ids);
             ids[id] = 1;
 
+            ZahtevPremestanja zahtevPremestanja = new ZahtevPremestanja(zahtevPremestanjaDTO);
+            Inventar inventar = new Inventar(inventarDTO);
+
             zahtevPremestanja.Id = id;
-            zahtevPremestanja.StatickaOprema = new StatickaOpremaDTO(inventar);
-            StatickaOpremaDTO stat = new StatickaOpremaDTO(inventar);
-            zahtevPremestanja.prostorija.statickaOprema = new System.Collections.ArrayList();
+            zahtevPremestanja.StatickaOprema = new StatickaOprema(inventar);
+            StatickaOprema stat = new StatickaOprema(inventar);
+            zahtevPremestanja.prostorija.statickaOprema = new List<StatickaOprema>();
             zahtevPremestanja.prostorija.statickaOprema.Add(stat);
 
             String s = dt.ToString();
@@ -37,19 +40,34 @@ namespace ZdravoKorporacija.Service
             }
             zahtevPremestanja.Kraj = zahtevPremestanja.Pocetak.AddMinutes(minuta);
 
-            ZahtevPremestanja zahtev = new ZahtevPremestanja(zahtevPremestanja);
-
-            ZahtevPremestanjaRepozitorijum.Instance.zahtevi.Add(zahtev);
+            ZahtevPremestanjaRepozitorijum.Instance.zahtevi.Add(zahtevPremestanja);
             datoteka.sacuvaj();
             datotekaID.sacuvaj(ids);
 
             return true;
         }
 
-        public List<ZahtevPremestanja> PregledSveOpreme()
+        public ObservableCollection<ZahtevPremestanja> PregledSveOpreme()
         {
             ZahtevPremestanjaRepozitorijum zpr = ZahtevPremestanjaRepozitorijum.Instance;
             return zpr.dobaviSve();
+        }
+
+        public ObservableCollection<ZahtevPremestanjaDTO> PregledSveOpremeDTO()
+        {
+            ObservableCollection<ZahtevPremestanja> zahteviLek = datoteka.dobaviSve();
+            ObservableCollection<ZahtevPremestanjaDTO> zahteviLekDTO = new ObservableCollection<ZahtevPremestanjaDTO>();
+            foreach (ZahtevPremestanja zahtev in zahteviLek)
+            {
+                zahteviLekDTO.Add(konvertujEntitetUDTO(zahtev));
+            }
+            return zahteviLekDTO;
+
+        }
+
+        public ZahtevPremestanjaDTO konvertujEntitetUDTO(ZahtevPremestanja zahtevPremestanja)
+        {
+            return new ZahtevPremestanjaDTO(zahtevPremestanja);
         }
 
         private int nadjiSlobodanID(Dictionary<int, int> id_map)
@@ -65,6 +83,28 @@ namespace ZdravoKorporacija.Service
                 }
             }
             return id;
+        }
+
+        public bool ObrisiZahtevPremestanja(ZahtevPremestanjaDTO zahtevPremestanjaDTO)
+        {
+            ZahtevPremestanja zahtevPremestanja = new ZahtevPremestanja(zahtevPremestanjaDTO);
+            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapZahtevPremestanja");
+            Dictionary<int, int> id_map = datotekaID.dobaviSve();
+            id_map[zahtevPremestanja.Id] = 0;
+
+
+
+            foreach (ZahtevPremestanja zahtev in datoteka.dobaviSve())
+            {
+                if (zahtev.Id == zahtevPremestanja.Id)
+                {
+                    ZahtevPremestanjaRepozitorijum.Instance.zahtevi.Remove(zahtev);
+                    datoteka.sacuvaj();
+                    datotekaID.sacuvaj(id_map);
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

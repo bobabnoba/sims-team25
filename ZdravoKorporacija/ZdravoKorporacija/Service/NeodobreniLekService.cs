@@ -24,7 +24,7 @@ namespace Service
 
 
             Lek lek = new Lek(zahtevLek.Lek.Id, zahtevLek.Lek.Proizvodjac, zahtevLek.Lek.Sastojci, zahtevLek.Lek.NusPojave, zahtevLek.Lek.NazivLeka);
-            ZahtevLek zahtevZaNeodobreniLek = new ZahtevLek(lek, zahtevLek.NeophodnihPotvrda, zahtevLek.BrojPotvrda);
+            ZahtevLek zahtevZaNeodobreniLek = new ZahtevLek(lek, zahtevLek.NeophodnihPotvrda, zahtevLek.BrojPotvrda,zahtevLek.Komentar);
 
             foreach (LekDTO lekD in zahtevLek.Lek.alternativniLekovi)
             {
@@ -51,8 +51,6 @@ namespace Service
 
             foreach (ZahtevLek zahtev in NeodobreniLekRepository.Instance.neodobreniLekovi)
             {
-                Debug.WriteLine("zahtev" + zahtev.Id);
-                Debug.WriteLine("selektovani" + selektovaniZahtevLek.Id);
                 if (zahtev.Id == selektovaniZahtevLek.Id)
                 {
                     NeodobreniLekRepository.Instance.neodobreniLekovi.Remove(zahtev);
@@ -95,8 +93,6 @@ namespace Service
 
             foreach (ZahtevLek zahtevNeodobreniLek in NeodobreniLekRepository.Instance.neodobreniLekovi)
             {
-                Debug.WriteLine("neodobreni" + zahtevNeodobreniLek.Id);
-                Debug.WriteLine("zahtev" + zahtevLek.Id);
                 if (zahtevNeodobreniLek.Id.Equals(zahtevLek.Id))
                 {
                     NeodobreniLekRepository.Instance.neodobreniLekovi.RemoveAt(indeks);

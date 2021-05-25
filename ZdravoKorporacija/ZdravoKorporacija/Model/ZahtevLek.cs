@@ -12,6 +12,8 @@ namespace Model
         public Lek Lek { get; set; }
 
         public List<Lekar> lekari;
+
+        public String Komentar { get; set; }
         public List<Lekar> Getlekari()
         {
             if (lekari == null)
@@ -64,6 +66,14 @@ namespace Model
             this.lekari = new List<Lekar>();
         }
 
+        public ZahtevLek(Lek lek, int neophodnihPotvrda, int brojTrenutnihPotvrda,String komentar)
+        {
+            this.Lek = lek;
+            this.NeophodnihPotvrda = neophodnihPotvrda;
+            this.BrojPotvrda = brojTrenutnihPotvrda;
+            this.lekari = new List<Lekar>();
+            this.Komentar = komentar;
+        }
         public ZahtevLek(ZahtevLekDTO zahtevLekDTO)
         {
             this.Id = zahtevLekDTO.Id;
@@ -71,6 +81,7 @@ namespace Model
             this.NeophodnihPotvrda = zahtevLekDTO.NeophodnihPotvrda;
             this.BrojPotvrda = zahtevLekDTO.BrojPotvrda;
             this.lekari = zahtevLekDTO.lekari;
+            this.Komentar = zahtevLekDTO.Komentar;
         }
 
 

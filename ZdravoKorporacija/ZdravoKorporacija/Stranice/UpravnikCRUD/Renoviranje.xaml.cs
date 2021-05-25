@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using ZdravoKorporacija.DTO;
 using System.Linq;
 using System.Collections.ObjectModel;
+using Controller;
 
 namespace ZdravoKorporacija.Stranice.UpravnikCRUD
 {
@@ -22,21 +23,29 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
     /// </summary>
     public partial class Renoviranje : Window
     {
-        private ProstorijaService prostorijeStorage = new ProstorijaService();
-        private ObservableCollection<Prostorija> prostorije = new ObservableCollection<Prostorija>();
-        RenoviranjeService rs = new RenoviranjeService();
+        private ObservableCollection<ProstorijaDTO> prostorije = new ObservableCollection<ProstorijaDTO>();
+        private ProstorijaController prostorijeKontroler = new ProstorijaController();
+        RenoviranjeController renoviranjeKontroler = new RenoviranjeController();
+        ComboBox satiCombobox;
+
+
         public Renoviranje(int index)
         {
             InitializeComponent();
-            prostorije = prostorijeStorage.PregledSvihProstorija();
+            prostorije = prostorijeKontroler.PregledSvihProstorijaDTO();
             cbProstorija.ItemsSource = prostorije;
             cbProstorija.SelectedIndex = index ;
+            satiCombobox = sati;
+            kalendarInit();
+        }
 
+        public void kalendarInit()
+        {
             DateTime danas = DateTime.Today;
 
             for (DateTime tm = danas.AddHours(8); tm < danas.AddHours(22); tm = tm.AddMinutes(30))
             {
-                sati.Items.Add(tm.ToShortTimeString());
+                satiCombobox.Items.Add(tm.ToShortTimeString());
 
             }
         }
@@ -48,9 +57,9 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
 
         private void potvrdi(object sender, RoutedEventArgs e)
         {
-            ZahtevRenoviranjeDTO zahtevRenoviranje = new ZahtevRenoviranjeDTO(0,(Prostorija) cbProstorija.SelectedItem, (DateTime)timePicker.SelectedDate, (String)sati.SelectedItem, textBoxTrajanje.Text);
+            ZahtevRenoviranjeDTO zahtevRenoviranje = new ZahtevRenoviranjeDTO(0,(ProstorijaDTO) cbProstorija.SelectedItem, (DateTime)timePicker.SelectedDate, (String)sati.SelectedItem, textBoxTrajanje.Text);
 
-            rs.ZakaziRenoviranje(zahtevRenoviranje);
+            renoviranjeKontroler.ZakaziRenoviranje(zahtevRenoviranje);
         }
 
         private void odustani(object sender, RoutedEventArgs e)
@@ -61,7 +70,6 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
         { 
         
         }
-
             private void sati_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 

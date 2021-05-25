@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using Service;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,22 +15,19 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
     /// </summary>
     public partial class izbrisiProstorijuUpravnik : Window
     {
-        private ProstorijaService storage = new ProstorijaService();
+        private ProstorijaController prostorijaKontroler = new ProstorijaController();
         private ObservableCollection<ProstorijaDTO> prostorije;
         private ProstorijaDTO prostorijaZaBrisanje;
-        Dictionary<int, int> id_map = new Dictionary<int, int>();
-        public izbrisiProstorijuUpravnik(ObservableCollection<ProstorijaDTO> pr, ProstorijaDTO p, Dictionary<int, int> ids)
+        public izbrisiProstorijuUpravnik(ObservableCollection<ProstorijaDTO> pr, ProstorijaDTO p)
         {
             InitializeComponent();
             this.prostorije = pr;
             this.prostorijaZaBrisanje = p;
-            this.id_map = ids;
         }
 
         private void da(object sender, RoutedEventArgs e)
         {
-            this.id_map[this.prostorijaZaBrisanje.Id] = 0;
-            storage.ObrisiProstoriju(this.prostorijaZaBrisanje, this.id_map);
+            prostorijaKontroler.ObrisiProstoriju(this.prostorijaZaBrisanje);
             prostorije.Remove(this.prostorijaZaBrisanje);
             this.Close();
         }

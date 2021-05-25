@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using ZdravoKorporacija.DTO;
 
 namespace ZdravoKorporacija.Model
 {
@@ -41,6 +42,20 @@ namespace ZdravoKorporacija.Model
             List<Termin> termini = datoteka.dobaviSve();
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
             
+            termini.Add(termin);
+            datoteka.sacuvaj(termini);
+            datotekaID.sacuvaj(ids);
+
+            return true;
+        }
+
+        public bool ZakaziTerminDTO(TerminDTO terminDTO, Dictionary<int, int> ids)
+        {
+            Termin termin = new Termin(terminDTO); 
+            TerminRepozitorijum datoteka = new TerminRepozitorijum();
+            List<Termin> termini = datoteka.dobaviSve();
+            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
+
             termini.Add(termin);
             datoteka.sacuvaj(termini);
             datotekaID.sacuvaj(ids);

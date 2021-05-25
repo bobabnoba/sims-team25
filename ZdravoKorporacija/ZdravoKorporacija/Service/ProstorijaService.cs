@@ -10,9 +10,13 @@ namespace Service
     class ProstorijaService
     {
         ProstorijaRepozitorijum datoteka = ProstorijaRepozitorijum.Instance;
-        public bool DodajProstoriju(ProstorijaDTO prostorijaDTO, Dictionary<int, int> id_map)
+        public bool DodajProstoriju(ProstorijaDTO prostorijaDTO)
         {
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapProstorija");
+            Dictionary<int,int> id_map = datotekaID.dobaviSve();
+            int id = nadjiSlobodanID(id_map);
+            id_map[id] = 1;
+            prostorijaDTO.Id = id;
 
             Prostorija prostorija = new Prostorija(prostorijaDTO);
             ProstorijaRepozitorijum.Instance.prostorije.Add(prostorija);
@@ -23,11 +27,15 @@ namespace Service
 
         }
 
-        public bool ObrisiProstoriju(ProstorijaDTO obrisanaProstorijaDTO, Dictionary<int, int> id_map)
+        public bool ObrisiProstoriju(ProstorijaDTO obrisanaProstorijaDTO)
         {
             Prostorija obrisanaProstorija = new Prostorija(obrisanaProstorijaDTO);
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapProstorija");
-          
+            Dictionary<int, int> id_map = datotekaID.dobaviSve();
+            id_map[obrisanaProstorija.Id] = 0;
+
+
+
             foreach (Prostorija prostorija in ProstorijaRepozitorijum.Instance.prostorije)
             {
                 if (prostorija.Id == obrisanaProstorija.Id)
@@ -90,6 +98,21 @@ namespace Service
             return new ProstorijaDTO(prostorija);
         }
 
-        
+        private int nadjiSlobodanID(Dictionary<int, int> id_map)
+        {
+            int id = 0;
+            for (int i = 0; i < 1000; i++)
+            {
+                if (id_map[i] == 0)
+                {
+                    id = i;
+                    id_map[i] = 1;
+                    return id;
+                }
+            }
+            return id;
+        }
+
+
     }
 }

@@ -22,7 +22,7 @@ namespace ZdravoKorporacija.DTO
         }
 
 
-        public TerminDTO(ZdravstveniKartonDTO zdravstveniKarton, Prostorija prostorija, LekarDTO Lekar, TipTerminaEnum tip, DateTime pocetak, double trajanje, Izvestaj izvestaj)
+        public TerminDTO(ZdravstveniKartonDTO zdravstveniKarton, ProstorijaDTO prostorija, LekarDTO Lekar, TipTerminaEnum tip, DateTime pocetak, double trajanje, Izvestaj izvestaj)
         {
             this.izvestaj = izvestaj;
             this.zdravstveniKarton = zdravstveniKarton;
@@ -61,7 +61,7 @@ namespace ZdravoKorporacija.DTO
                 }
             }
         }
-        public Prostorija prostorija { get; set; }
+        public ProstorijaDTO prostorija { get; set; }
         public LekarDTO Lekar { get; set; }
 
         /// <pdGenerated>default parent getter</pdGenerated>

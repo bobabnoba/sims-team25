@@ -21,18 +21,8 @@
   },
   {
     "inventar": [],
-    "statickaOprema": [
-      {
-        "termin": null,
-        "Prostorija": null,
-        "Id": 4,
-        "Naziv": "Hanzaplast",
-        "UkupnaKolicina": 100,
-        "Proizvodjac": "Keek",
-        "DatumNabavke": "0001-01-01T00:00:00"
-      }
-    ],
-    "dinamickaOprema": null,
+    "statickaOprema": [],
+    "dinamickaOprema": [],
     "Id": 0,
     "Naziv": "soba11",
     "Tip": 1,

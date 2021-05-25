@@ -10,7 +10,10 @@ namespace ZdravoKorporacija.DTO
         public int Id { get; set; }
         public LekDTO Lek { get; set; }
 
+        public String Komentar { get; set; }
+
         public List<Lekar> lekari;
+
         public List<Lekar> Getlekari()
         {
             if (lekari == null)
@@ -64,6 +67,16 @@ namespace ZdravoKorporacija.DTO
             this.Lek.alternativniLekovi = new List<LekDTO>();
         }
 
+        public ZahtevLekDTO(LekDTO lek, int neophodnihPotvrda, int brojTrenutnihPotvrda,String komentar)
+        {
+            this.Lek = lek;
+            this.NeophodnihPotvrda = neophodnihPotvrda;
+            this.BrojPotvrda = brojTrenutnihPotvrda;
+            this.lekari = new List<Lekar>();
+            this.Lek.alternativniLekovi = new List<LekDTO>();
+            this.Komentar = komentar;
+        }
+
         public ZahtevLekDTO(ZahtevLek zahtevLek)
         {
             this.Id = zahtevLek.Id;
@@ -71,6 +84,7 @@ namespace ZdravoKorporacija.DTO
             this.NeophodnihPotvrda = zahtevLek.NeophodnihPotvrda;
             this.BrojPotvrda = zahtevLek.BrojPotvrda;
             this.lekari = zahtevLek.lekari;
+            this.Komentar = zahtevLek.Komentar;
         }
 
     }

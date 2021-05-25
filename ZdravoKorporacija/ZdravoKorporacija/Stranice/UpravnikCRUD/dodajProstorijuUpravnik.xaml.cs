@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using Service;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,14 +15,12 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
     /// </summary>
     public partial class dodajProstorijuUpravnik : Window
     {
-        private ProstorijaService storage = new ProstorijaService();
+        private ProstorijaController prostorijaKontroler = new ProstorijaController();
         private ObservableCollection<ProstorijaDTO> prostorije;
-        Dictionary<int, int> id_map = new Dictionary<int, int>();
-        public dodajProstorijuUpravnik(ObservableCollection<ProstorijaDTO> pr, Dictionary<int, int> ids)
+        public dodajProstorijuUpravnik(ObservableCollection<ProstorijaDTO> pr)
         {
             InitializeComponent();
             this.prostorije = pr;
-            this.id_map = ids;
         }
         private void odustani(object sender, RoutedEventArgs e)
         {
@@ -40,15 +39,6 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
 
         private void potvrdi(object sender, RoutedEventArgs e)
         {
-            int id = 0;
-            for (int i =0; i< 1000; i++)
-            {
-                if (id_map[i] == 0) {
-                    id = i;
-                    id_map[i] = 1;
-                    break;
-                }
-            }
             string ime = textboxNaziv.Text;
 
             if (ime.Trim() == "") {
@@ -87,9 +77,9 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
             }
 
          
-            ProstorijaDTO prostorija = new ProstorijaDTO(id, ime, tip, false, sprat);
+            ProstorijaDTO prostorija = new ProstorijaDTO(0, ime, tip, false, sprat);
 
-            if (storage.DodajProstoriju(prostorija,id_map))
+            if (prostorijaKontroler.DodajProstoriju(prostorija))
             {
                 prostorije.Add(prostorija);
                 this.Close();

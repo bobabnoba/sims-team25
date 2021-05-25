@@ -46,7 +46,7 @@ namespace Repository
         }
 
 
-        public List<ZahtevPremestanja> dobaviSve()
+        public ObservableCollection<ZahtevPremestanja> dobaviSve()
         {
             List<ZahtevPremestanja> premestani = new List<ZahtevPremestanja>();
             if (File.Exists(lokacija))
@@ -61,7 +61,7 @@ namespace Repository
             {
                 this.zahtevi = new ObservableCollection<ZahtevPremestanja>(premestani);
             }
-            return premestani;
+            return this.zahtevi;
         }
 
     }

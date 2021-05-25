@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using Service;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -13,7 +14,7 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
     /// </summary>
     public partial class izmeniProstorijuUpravnik : Window
     {
-        private ProstorijaService storage = new ProstorijaService();
+        private ProstorijaController prostorijaKontroler = new ProstorijaController();
         private ObservableCollection<ProstorijaDTO> prostorije;
         private ProstorijaDTO prostorijaIzmenjena;
         private int indeks;
@@ -64,8 +65,8 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
             sprat = comboBoxIzmenaSprat.SelectedIndex;
             
             ProstorijaDTO prostorijaDTO = new ProstorijaDTO(prostorijaIzmenjena.Id, ime, tip, false, sprat);
-           
-            if (storage.AzurirajProstoriju(prostorijaDTO,this.indeks))
+
+            if (prostorijaKontroler.AzurirajProstoriju(prostorijaDTO, this.indeks))
             {
                 prostorije.RemoveAt(indeks);
                 prostorije.Insert(indeks,prostorijaDTO);

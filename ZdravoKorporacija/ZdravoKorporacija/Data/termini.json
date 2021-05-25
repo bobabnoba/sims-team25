@@ -910,5 +910,28 @@
     "Pocetak": "2021-05-16T20:30:00",
     "Trajanje": 0.0,
     "hitno": false
+  },
+  {
+    "izvestaj": null,
+    "zdravstveniKarton": null,
+    "prostorija": null,
+    "Lekar": {
+      "termin": null,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": 0,
+      "BrojTelefona": 0,
+      "Mejl": null,
+      "AdresaStanovanja": null,
+      "Pol": 0,
+      "Username": null,
+      "Password": null,
+      "Uloga": 0
+    },
+    "Id": 16,
+    "Tip": 0,
+    "Pocetak": "2021-05-25T14:30:00",
+    "Trajanje": 0.5,
+    "hitno": false
   }
 ]

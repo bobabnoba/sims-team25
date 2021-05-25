@@ -13,6 +13,7 @@ namespace ZdravoKorporacija.Controller
     {
         MagacinService magacinServis = new MagacinService();
         DinamickaOpremaService dinamickaOpremaServis = new DinamickaOpremaService();
+        StatickaOpremaService statickaOpremaServis = new StatickaOpremaService();
         public bool DodajUMagacin(InventarDTO opremaDTO)
         {
          return  magacinServis.DodajOpremu(opremaDTO);
@@ -29,10 +30,15 @@ namespace ZdravoKorporacija.Controller
         }
         public ObservableCollection<StatickaOprema> PregledMagacinaStaticke()
         {
-            StatickaOpremaService sos = new StatickaOpremaService();
-            return  sos.PregledSveOpreme();
-           
+            return statickaOpremaServis.PregledSveOpreme();   
         }
+
+        public ObservableCollection<StatickaOpremaDTO> PregledMagacinaStatickeDTO()
+        {
+            return statickaOpremaServis.PregledSveOpremeDTO();
+        }
+
+
         public ObservableCollection<DinamickaOprema> PregledMagacinaDinamcike()
         {
             return dinamickaOpremaServis.PregledSveOpreme();

@@ -8,10 +8,21 @@ using ZdravoKorporacija.DTO;
 
 namespace Controller
 {
-    class ProstorijaController
+    public class ProstorijaController
     {
         ProstorijaService prostorijaService = new ProstorijaService();
-        public ObservableCollection<Prostorija> PregledSvihProstorija()
+
+        public bool DodajProstoriju(ProstorijaDTO prostorijaDTO)
+        {
+            return prostorijaService.DodajProstoriju(prostorijaDTO);
+        }
+
+        public bool AzurirajProstoriju(ProstorijaDTO novaProstorijaDTO, int indeks)
+        {
+            return prostorijaService.AzurirajProstoriju(novaProstorijaDTO,indeks);
+        }
+
+            public ObservableCollection<Prostorija> PregledSvihProstorija()
         {
             return prostorijaService.PregledSvihProstorija();    
         }
@@ -21,10 +32,9 @@ namespace Controller
             return prostorijaService.PregledSvihProstorijaDTO();
         }
 
-
-        public void AzurirajProstoriju(ProstorijaDTO p, int indeks)
+       public bool ObrisiProstoriju(ProstorijaDTO prostorijaZaBrisanje)
         {
-            prostorijaService.AzurirajProstoriju(p, indeks);
+            return prostorijaService.ObrisiProstoriju(prostorijaZaBrisanje);
         }
     }
 }

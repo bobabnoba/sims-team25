@@ -7,14 +7,15 @@ using Repository;
 using System.Diagnostics;
 using ZdravoKorporacija.Model;
 using System.Collections.ObjectModel;
+using ZdravoKorporacija.DTO;
 
 namespace Service
 {
     public class StatickaOpremaService
         {
-        StatickaOpremaRepozitorijum stRepozitorijum = StatickaOpremaRepozitorijum.Instance;
+        StatickaOpremaRepozitorijum statickaRepozitorijum = StatickaOpremaRepozitorijum.Instance;
         TerminService ts = new TerminService();
-        public bool DodajOpremu(StatickaOprema st,DateTime dt,String sati,Prostorija p)
+        public bool DodajOpremu(StatickaOpremaDTO statickaOpremaDTO,DateTime dt,String sati,ProstorijaDTO p)
             {  
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
             Dictionary<int, int> ids = datotekaID.dobaviSve();
@@ -25,15 +26,17 @@ namespace Service
             String s = dt.ToString();
             String date = s.Split(" ")[0];
 
-            Termin t = new Termin();
+            TerminDTO t = new TerminDTO();
             t.Id = slobodanId;
             t.Pocetak = dt;
             t.prostorija = p;
 
            
-            ts.ZakaziTermin(t,ids);
-            StatickaOpremaRepozitorijum.Instance.magacinStatickaOprema.Add(st);
-            stRepozitorijum.Sacuvaj();
+            ts.ZakaziTerminDTO(t,ids);
+            StatickaOprema statickaOprema = new StatickaOprema(statickaOpremaDTO);
+
+            StatickaOpremaRepozitorijum.Instance.magacinStatickaOprema.Add(statickaOprema);
+            statickaRepozitorijum.Sacuvaj();
             return true;
             }
 
@@ -66,11 +69,27 @@ namespace Service
 
             public ObservableCollection<StatickaOprema> PregledSveOpreme()
             {
-            StatickaOpremaRepozitorijum sor = StatickaOpremaRepozitorijum.Instance;
-            return sor.DobaviSve();
+            return statickaRepozitorijum.DobaviSve();
+            }
+
+            public ObservableCollection<StatickaOpremaDTO> PregledSveOpremeDTO()
+             {
+            ObservableCollection<StatickaOprema> statickaOprema = statickaRepozitorijum.DobaviSve();
+            ObservableCollection<StatickaOpremaDTO> statickaOpremaDTO = new ObservableCollection<StatickaOpremaDTO>();
+            foreach (StatickaOprema oprema in statickaOprema)
+            {
+                statickaOpremaDTO.Add(konvertujEntitetUDTO(oprema));
+            }
+            return statickaOpremaDTO;
+
         }
 
-            public StatickaOprema PregledJedneOpreme()
+        public StatickaOpremaDTO konvertujEntitetUDTO(StatickaOprema zahtevLek)
+        {
+            return new StatickaOpremaDTO(zahtevLek);
+        }
+
+        public StatickaOprema PregledJedneOpreme()
             {
                 // TODO: implement
                 return null;

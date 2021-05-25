@@ -27,14 +27,13 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
         private ZahtevPremestanjaService zahteviStorage = new ZahtevPremestanjaService();
         private ProstorijaController prostorijeController = new ProstorijaController();
         private MagacinController magacineController = new MagacinController();
-        private TerminService terminStorage = new TerminService();
 
         private ObservableCollection<Termin> pregledi;
         private Termin p = new Termin();
         private Boolean selected;
 
-        private List<ZahtevPremestanja> listaZahteva = new List<ZahtevPremestanja>();
-        private ZahtevPremestanja z = new ZahtevPremestanja();
+        private ObservableCollection<ZahtevPremestanjaDTO> listaZahteva = new ObservableCollection<ZahtevPremestanjaDTO>();
+        private ZahtevPremestanjaDTO z = new ZahtevPremestanjaDTO();
         private int indeks;
         private Boolean imaZahtev = true;
 
@@ -45,8 +44,8 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
         public statickaOpremaPremestiIzMagacina()
         {
             InitializeComponent();
-            upravnikKontroler.DodajIzMagacina();
-            listaZahteva = zahteviStorage.PregledSveOpreme();
+            upravnikKontroler.DodajIzMagacinaDTO();
+            listaZahteva = zahteviStorage.PregledSveOpremeDTO();
             cbMagacin.ItemsSource = magacineController.PregledSveOpremeDTO();
             cbProstorija.ItemsSource = prostorijeController.PregledSvihProstorijaDTO();
             pregledi = new ObservableCollection<Termin>(upravnikKontroler.PregledSvihTermina());
@@ -62,7 +61,7 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            DTO.InventarDTO inventar = (DTO.InventarDTO)cbMagacin.SelectedItem;
+            InventarDTO inventar = (InventarDTO)cbMagacin.SelectedItem;
             TerminDTO termin = new TerminDTO();
             StatickaOpremaDTO staticka = new StatickaOpremaDTO(termin, inventar);
             ZahtevPremestanjaDTO zahtevPremestanjaDTO = new ZahtevPremestanjaDTO();
@@ -70,49 +69,10 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
             this.indeks = (int)cbProstorija.SelectedIndex;
            
             zahtevPremestanjaDTO.prostorija = (ProstorijaDTO)cbProstorija.SelectedItem;
-          
             zahteviStorage.ZakaziPremestanje((InventarDTO)cbMagacin.SelectedItem, zahtevPremestanjaDTO, (DateTime)timePicker.SelectedDate, (String)sati.SelectedItem, textBoxTrajanje.Text);
-
-           zahteviStorage.PregledSveOpreme();
         }
        
-        public void ProveraZahteva(object sender, EventArgs e)
-        {
-
-
-            if (ZahtevPremestanjaRepozitorijum.Instance.zahtevi != null)
-            {
-                z = ZahtevPremestanjaRepozitorijum.Instance.zahtevi.FirstOrDefault(s => s.Kraj <= DateTime.Now && s.Kraj >= DateTime.Now.AddMinutes(-5));
-                if (z == null)
-                {
-                    imaZahtev = false;
-                }
-                else { imaZahtev = true; }
-
-            }
-            if (z != null && imaZahtev == true)
-            {
-                ZahtevPremestanjaRepozitorijum.Instance.zahtevi.Remove(z);
-                statickaopremaStorage.DodajOpremu(z.StatickaOprema, z.Pocetak, "10", z.prostorija);
-                MessageBox.Show("zavrsen termin");
-                ZahtevPremestanjaRepozitorijum.Instance.sacuvaj();
-
-                
-                Prostorija p = z.prostorija;
-                StatickaOprema stat = new StatickaOprema((InventarDTO)z.StatickaOprema);
-                p.statickaOprema = new List<StatickaOprema>();
-                p.statickaOprema.Add(stat);
-
-
-                prostorijeController.AzurirajProstoriju(p, this.indeks);
-                imaZahtev = false;
-            }
-
-
-        }
-
-
-
+     
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
@@ -160,7 +120,7 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
                         }
                     }
                 }
-                foreach (ZahtevPremestanja za in this.listaZahteva)
+                foreach (ZahtevPremestanjaDTO za in this.listaZahteva)
                 {
                     if (za.prostorija.Id.Equals(p.prostorija.Id))
                     {
@@ -187,6 +147,40 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
             timer.Start();
         }
 
+        public void ProveraZahteva(object sender, EventArgs e)
+        {
+
+
+            if (zahteviStorage.PregledSveOpremeDTO() != null)
+            {
+                z = zahteviStorage.PregledSveOpremeDTO().FirstOrDefault(s => s.Kraj <= DateTime.Now && s.Kraj >= DateTime.Now.AddMinutes(-5));
+                if (z == null)
+                {
+                    imaZahtev = false;
+                }
+                else { imaZahtev = true; }
+
+            }
+            if (z != null && imaZahtev == true)
+            {
+
+                zahteviStorage.ObrisiZahtevPremestanja(z);
+                statickaopremaStorage.DodajOpremu(z.StatickaOprema, z.Pocetak, "10", z.prostorija);
+                MessageBox.Show("zavrsen termin");
+                ProstorijaDTO p = z.prostorija;
+                StatickaOpremaDTO stat = new StatickaOpremaDTO((InventarDTO)z.StatickaOprema);
+                p.statickaOprema = new System.Collections.ArrayList();
+                p.statickaOprema.Add(stat);
+                prostorijeController.AzurirajProstoriju(p, this.indeks);
+                imaZahtev = false;
+            }
+
+
+        }
+
+
+
+
         public void kalendarInicijalizacija()
         {
             DateTime danas = DateTime.Today;
@@ -200,6 +194,7 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
             CalendarDateRange kalendar = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
             izborDatuma.BlackoutDates.Add(kalendar);
         }
+
 
 
     }

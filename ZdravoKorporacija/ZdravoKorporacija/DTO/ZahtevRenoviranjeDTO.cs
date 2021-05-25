@@ -5,17 +5,17 @@ using System.Text;
 
 namespace ZdravoKorporacija.DTO
 {
-    class ZahtevRenoviranjeDTO
+    public class ZahtevRenoviranjeDTO
     {
         public int Id { get; set; }
-        public Prostorija Prostorija { get; set; }
+        public ProstorijaDTO Prostorija { get; set; }
         
         public DateTime PocetakDan { get; set; }
 
         public String PocetakSati { get; set; }
         public String Trajanje { get; set; }
 
-        public ZahtevRenoviranjeDTO(int id, Prostorija prostorija, DateTime pocetakD,String pocetakS, String trajanje)
+        public ZahtevRenoviranjeDTO(int id, ProstorijaDTO prostorija, DateTime pocetakD,String pocetakS, String trajanje)
         {
             Id = id;
             Prostorija = prostorija;

@@ -26,7 +26,7 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
         public statickaOpremaStart()
         {
             InitializeComponent();
-            dgStatickaOprema.ItemsSource = upravnikKontroler.PregledMagacinaStaticke();
+            dgStatickaOprema.ItemsSource = upravnikKontroler.PregledMagacinaStatickeDTO();
         }
 
         private void dodaj(object sender, RoutedEventArgs e)

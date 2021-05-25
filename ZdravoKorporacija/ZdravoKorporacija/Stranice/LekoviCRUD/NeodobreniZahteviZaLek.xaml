@@ -46,9 +46,9 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Razlog vracanja" Binding="{Binding Komentar}" />
 
-
-                </DataGrid.Columns>
+            </DataGrid.Columns>
 
             </DataGrid>
             <Label Content="Neodobreni zahtevi za lek" FontSize="32" Grid.Column="1"  Grid.Row="1"  Grid.ColumnSpan="5" Foreground="White" />
