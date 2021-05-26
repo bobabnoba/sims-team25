@@ -46,16 +46,23 @@ namespace Model
             Trajanje = trajanje;
         }
 
-        public Termin(TerminDTO terminDTO) {
-            this.Id = terminDTO.Id;
-            this.Lekar = new Lekar(terminDTO.Lekar);
-            this.Tip = terminDTO.Tip;
-            this.Pocetak = terminDTO.Pocetak;
-            this.Trajanje = 0.5;
-            this.zdravstveniKarton = null;
-            this.prostorija = null;
-            this.izvestaj = null;
+        public Termin(TerminDTO termin)
+        {
+            if(termin!=null)
+            { 
+                if(termin.izvestaj!=null)
+            this.izvestaj = new Izvestaj(termin.izvestaj);
+            this.zdravstveniKarton = new ZdravstveniKarton(termin.zdravstveniKarton);
+            this.prostorija = new Prostorija(termin.prostorija);
+            Lekar = new Lekar(termin.Lekar);
+            Id = termin.Id;
+            Tip = termin.Tip;
+            Pocetak = termin.Pocetak;
+            Trajanje = termin.Trajanje;
+            this.hitno = termin.hitno;
+            }
         }
+
         public Izvestaj izvestaj;
         public ZdravstveniKarton zdravstveniKarton;
 

@@ -7,7 +7,7 @@ using ZdravoKorporacija.DTO;
 
 namespace Repository
 {
-    class ProstorijaRepozitorijum
+    public class ProstorijaRepozitorijum
     {
         private static ProstorijaRepozitorijum _instance;
         public ObservableCollection<Prostorija> prostorije;
@@ -25,7 +25,7 @@ namespace Repository
             }
         }
 
-        private ProstorijaRepozitorijum()
+        public ProstorijaRepozitorijum()
         {
            prostorije = new ObservableCollection<Prostorija>();
         }

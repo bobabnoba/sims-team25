@@ -154,6 +154,21 @@ namespace Service
             ProstorijaDTO dto = new ProstorijaDTO(model.Id, model.Naziv, model.Tip, model.Slobodna, model.Sprat);
             return dto;
         }
+        public List<ProstorijaDTO> PregledSvihProstorija2()
+        {
+            ProstorijaRepozitorijum datoteka = new ProstorijaRepozitorijum();
+            ObservableCollection<Prostorija> prostorije = datoteka.dobaviSve();
+            List<ProstorijaDTO> prostorijeDTO = new List<ProstorijaDTO>();
+            foreach (Prostorija Prostorija in prostorije)
+            {
+                prostorijeDTO.Add(convertToDTO(Prostorija));
+            }
+            return prostorijeDTO;
+        }
 
+        public ProstorijaDTO convertToDTO(Prostorija Prostorija)
+        {
+            return new ProstorijaDTO(Prostorija);
+        }
     }
 }

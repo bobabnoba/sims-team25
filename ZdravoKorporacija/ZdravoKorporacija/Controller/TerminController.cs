@@ -242,7 +242,90 @@ namespace ZdravoKorporacija.Controller
             Pacijent p = pacijentServis.pronadjiEntitetZaDTO(pacijentDTO);
             return terminServis.AzurirajTerminPacijent(t, p);
         }
-    }
-} 
-        
 
+       TerminService ts = TerminService.Instance;
+        private static TerminController _instance;
+
+        public static TerminController Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new TerminController();
+                }
+                return _instance;
+            }
+        }
+
+        public bool izdajUput(PacijentDTO pac, TerminDTO termin)
+        {
+            return ts.izdajUput(pac,termin);
+        }
+        public bool IzdajAnamnezu(IzvestajDTO izvestaj, TerminDTO termin)
+        {
+            return ts.IzdajAnamnezu(izvestaj, termin);
+        }
+        public bool ObrisiAnamnezu(IzvestajDTO izvestaj, TerminDTO termin)
+        {
+            return ts.ObrisiAnamnezu(izvestaj, termin);
+        }
+        public Termin FindOpByPocetak(DateTime poc)
+        {
+            return ts.FindOpByPocetak(poc);
+        }
+        public List<Termin> FindPrByPocetak(DateTime poc)
+        {
+            return ts.FindPrByPocetak(poc);
+        }
+
+        public bool ZakaziTermin(TerminDTO termin, Dictionary<int, int> id_map)
+        {
+            ts.ZakaziTermin(termin, id_map);
+            return true;
+        }
+
+        public Termin PregledTermina(int id)
+        {
+            return ts.PregledTermina(id);
+        }
+
+
+        public List<TerminDTO> PregledSvihTermina2()
+        {
+            return ts.PregledSvihTermina2();
+        }
+
+        public Termin NadjiTermin(DateTime datum, Prostorija prostorija)
+        {
+            return null;
+        }
+
+        public Termin InicijalizujTermin(int id, TipTerminaEnum tip, DateTime pocetak, Pacijent pacijent, Lekar lekar, Prostorija prostorija)
+        {
+            return ts.InicijalizujTermin(id, tip, pocetak, pacijent, lekar, prostorija);
+        }
+
+        //public List<Lekar> DobaviSlobodneLekare(List<Lekar> lekari, ObservableCollection<Termin> pregledi, DateTime pocetakTermina)
+        //{
+        //    return ts.DobaviSlobodneLekare(lekari, pregledi, pocetakTermina);
+        //}
+
+        //public List<Prostorija> DobaviSlobodneProstorije(List<Prostorija> prostorije, ObservableCollection<Termin> pregledi, Termin termin)
+        //{
+        //    return ts.DobaviSlobodneProstorije(prostorije,pregledi,termin);
+        //}
+
+        public void InicijalizujTerminLekaru(Termin t)
+        {
+            ts.InicijalizujTerminLekaru(t);
+        }
+
+        public ZdravstveniKarton ProveriKartonKodZakazivanja(Pacijent pacijent)
+        {
+            return ts.ProveriKartonKodZakazivanja(pacijent);
+        }
+
+
+    }
+}

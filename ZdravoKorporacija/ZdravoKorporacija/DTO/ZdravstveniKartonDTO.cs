@@ -28,6 +28,8 @@ namespace ZdravoKorporacija.DTO
 
         public ZdravstveniKartonDTO(ZdravstveniKarton zdravstveniKarton)
         {
+            if (zdravstveniKarton != null)
+            { 
             this.izvestajOHospitalizaciji = zdravstveniKarton.izvestajOHospitalizaciji;
             this.istorijaBolesti = new List<IstorijaBolestiDTO>();
             this.recept = new List<ReceptDTO>();
@@ -38,6 +40,7 @@ namespace ZdravoKorporacija.DTO
             Alergije = zdravstveniKarton.Alergije;
             KrvnaGrupa = zdravstveniKarton.KrvnaGrupa;
             Vakcine = zdravstveniKarton.Vakcine;
+            }
         }
 
         public ZdravstveniKartonDTO(){}

@@ -1,92 +1,89 @@
-// File:    Doctor.cs
-// Author:  User
-// Created: Tuesday, March 23, 2021 10:47:16 PM
-// Purpose: Definition of Class Doctor
-
-
-using Model;
+﻿using Model;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 
-namespace Repository
+
+using ZdravoKorporacija.Model;
+
+namespace ZdravoKorporacija.Repository
 {
-    class ReceptRepozitorijum
+    class StacionarnoLecenjeRepozitorijum
     {
         private string lokacija;
 
-        private static ReceptRepozitorijum _instance;
-        public ObservableCollection<Recept> recepti;
+        private static StacionarnoLecenjeRepozitorijum _instance;
+        public ObservableCollection<StacionarnoLecenje> StacionarnaLecenja;
 
-        public static ReceptRepozitorijum Instance
+        public static StacionarnoLecenjeRepozitorijum Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new ReceptRepozitorijum();
+                    _instance = new StacionarnoLecenjeRepozitorijum();
                 }
                 return _instance;
             }
         }
-        public ReceptRepozitorijum()
-            {
-            lokacija = @"..\..\..\Data\recept.json";
-            }
+        public StacionarnoLecenjeRepozitorijum()
+        {
+            lokacija = @"..\..\..\Data\StacionarnoLecenje.json";
+        }
 
-       
+
         public bool Kreiraj()
         {
             // TODO: implement
             return false;
         }
 
-        public bool Obrisi(Recept recept)
+        public bool Obrisi(StacionarnoLecenje StacionarnoLecenje)
         {
-            recepti.Remove(recept);
+            StacionarnaLecenja.Remove(StacionarnoLecenje);
 
             JsonSerializer serializer = new JsonSerializer();
             serializer.Formatting = Formatting.Indented;
             StreamWriter writer = new StreamWriter(lokacija);
             JsonWriter jWriter = new JsonTextWriter(writer);
-            serializer.Serialize(jWriter, recepti);
+            serializer.Serialize(jWriter, StacionarnaLecenja);
             jWriter.Close();
             writer.Close();
             return true;
         }
 
-        public Recept Dobavi()
+        public StacionarnoLecenje Dobavi()
         {
             // TODO: implement
             return null;
         }
 
-        public ObservableCollection<Recept> DobaviSve()
+        public ObservableCollection<StacionarnoLecenje> DobaviSve()
         {
-            ObservableCollection<Recept> recepti = new ObservableCollection<Recept>();
+            ObservableCollection<StacionarnoLecenje> StacionarnaLecenja = new ObservableCollection<StacionarnoLecenje>();
             if (File.Exists(lokacija))
             {
                 string jsonText = File.ReadAllText(lokacija);
                 if (!string.IsNullOrEmpty(jsonText))
                 {
-                    recepti = JsonConvert.DeserializeObject<ObservableCollection<Recept>>(jsonText);
+                    StacionarnaLecenja = JsonConvert.DeserializeObject<ObservableCollection<StacionarnoLecenje>>(jsonText);
                 }
             }
-            if (recepti != null)
+            if (StacionarnaLecenja != null)
             {
-                this.recepti = new ObservableCollection<Recept>(recepti);
+                this.StacionarnaLecenja = new ObservableCollection<StacionarnoLecenje>(StacionarnaLecenja);
             }
-            return recepti;
+            return StacionarnaLecenja;
         }
 
-        public void Sacuvaj(ObservableCollection<Recept> recepti)
+        public void Sacuvaj(ObservableCollection<StacionarnoLecenje> StacionarnaLecenja)
         {
             JsonSerializer serializer = new JsonSerializer();
             serializer.Formatting = Formatting.Indented;
             StreamWriter writer = new StreamWriter(lokacija);
             JsonWriter jWriter = new JsonTextWriter(writer);
-            serializer.Serialize(jWriter, recepti);
+            serializer.Serialize(jWriter, StacionarnaLecenja);
             jWriter.Close();
             writer.Close();
         }

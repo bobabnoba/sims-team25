@@ -8,6 +8,9 @@ using Service;
 using ZdravoKorporacija.Stranice.Logovanje;
 using ZdravoKorporacija.Stranice.Uput;
 using ZdravoKorporacija.Stranice.LekoviCRUD;
+using ZdravoKorporacija.DTO;
+using System.Diagnostics;
+using ZdravoKorporacija.Stranice.StacionarnoLecenje;
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
 {
@@ -16,28 +19,28 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     /// </summary>
     public partial class pregledPacijenata : Window
     {
-        private PacijentService pacijentServis = new PacijentService();
-        private ObservableCollection<Pacijent> pacijenti = new ObservableCollection<Pacijent>();
-        private ObservableCollection<Pacijent> pacijentiPrikaz = new ObservableCollection<Pacijent>();
-        private TerminService terminServis = new TerminService();
+        private PacijentService pacijentServis = PacijentService.Instance;
+        private ObservableCollection<PacijentDTO> pacijenti = new ObservableCollection<PacijentDTO>();
+        private ObservableCollection<PacijentDTO> pacijentiPrikaz = new ObservableCollection<PacijentDTO>();
         
         public pregledPacijenata()
         {
             InitializeComponent();
             
-            pacijenti = new ObservableCollection<Pacijent>(pacijentServis.PregledSvihPacijenata());
             try
             {
-                foreach (Termin t in lekarStart.termini)
+                foreach (TerminDTO t in lekarStart.termini)
                 {
                     if (t.zdravstveniKarton!=null)
                     {
-                        foreach (Pacijent p in pacijenti)
+                        foreach (PacijentDTO p in pacijentServis.PregledSvihPacijenata2())
                         {
                             if (t.zdravstveniKarton.Id.Equals(p.ZdravstveniKarton.Id))
                             {
                                 if (!pacijentiPrikaz.Contains(p))
+                                {
                                     pacijentiPrikaz.Add(p);
+                                }
                             }
                         }
                     }
@@ -57,7 +60,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         }
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            lekarStart ls = new lekarStart();
+            lekarStart ls = new lekarStart(lekarLogin.lekar);
             ls.Show();
             this.Close();
         }
@@ -74,7 +77,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             zdravstveniKartonPrikaz zk = null;
             if (dgUsers.SelectedItem != null)
             {
-                zk = new zdravstveniKartonPrikaz((Pacijent)dgUsers.SelectedItem);
+                zk = new zdravstveniKartonPrikaz((PacijentDTO)dgUsers.SelectedItem);
                 zk.Show();
             }
             else
@@ -87,6 +90,33 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             LekarZahteviZaDodavanjeLekaStart l = new LekarZahteviZaDodavanjeLekaStart();
             this.Close();
             l.Show();
+        }
+
+        private void stacionarnoLecenje(object sender, RoutedEventArgs e)
+        {
+            stacionarnoStart ss = null;
+            if (dgUsers.SelectedItem != null)
+            {
+                ss = new stacionarnoStart((PacijentDTO)dgUsers.SelectedItem);
+                ss.Show();
+            }
+            else
+            {
+                MessageBox.Show("Niste selektovali red", "Greska");
+            }
+        }
+        private void uputiZaStacionarno(object sender, RoutedEventArgs e)
+        {
+            uputiZaStacionarno ss = null;
+            if (dgUsers.SelectedItem != null)
+            {
+                ss = new uputiZaStacionarno((PacijentDTO)dgUsers.SelectedItem);
+                ss.Show();
+            }
+            else
+            {
+                MessageBox.Show("Niste selektovali red", "Greska");
+            }
         }
     }
 }

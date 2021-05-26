@@ -5,6 +5,8 @@ using ZdravoKorporacija.Model;
 using Repository;
 using ZdravoKorporacija.DTO;
 using System;
+using System.Diagnostics;
+using ZdravoKorporacija.Service;
 
 namespace Service
 {
@@ -39,7 +41,51 @@ namespace Service
             return null;
         }
 
-        public bool KreirajNalogPacijentu(Pacijent pacijent)
+        private static PacijentService _instance;
+
+        public static PacijentService Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new PacijentService();
+                }
+                return _instance;
+            }
+        }
+
+        PacijentRepozitorijum pr = PacijentRepozitorijum.Instance;
+        ReceptServis rs = ReceptServis.Instance;
+        IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapRecept");
+        Dictionary<int, int> ids = new Dictionary<int, int>();
+
+        public bool IzdajRecept(PacijentDTO pacijent, ReceptDTO recept)
+        {
+            ids = datotekaID.dobaviSve();
+            rs.DodajRecept(recept);
+            Pacijent p = new Pacijent(pacijent);
+            datotekaID.sacuvaj(ids);
+            p.ZdravstveniKarton.recept.Add(new Recept(recept));
+            AzurirajPacijenta(p);
+            return true;
+        }
+
+        public bool ObrisiRecept(PacijentDTO pacijent, ReceptDTO recept)
+        {
+            Pacijent p = new Pacijent(pacijent);
+            foreach(Recept rec in p.ZdravstveniKarton.recept.ToArray())
+            {
+            if (recept.Id.Equals(rec.Id))
+                p.ZdravstveniKarton.recept.Remove(rec);
+            }
+            AzurirajPacijenta(p);
+            rs.ObrisiRecept(recept);
+            datotekaID.sacuvaj(ids);
+            return true;
+        }
+
+            public bool KreirajNalogPacijentu(Pacijent pacijent)
         {
             PacijentRepozitorijum datoteka = new PacijentRepozitorijum();
             List<Pacijent> pacijenti = datoteka.dobaviSve();
@@ -136,6 +182,22 @@ namespace Service
             return false;
         }
 
+        public bool AzurirajPacijenta(PacijentDTO pacijent)
+        {
+            List<Pacijent> pacijenti = pr.dobaviSve2();
+            foreach (Pacijent p in pacijenti)
+            {
+                if (p.Jmbg.Equals(pacijent.Jmbg))
+                {
+                    pacijenti.Remove(p);
+                    pacijenti.Add(new Pacijent(pacijent));
+                    pr.sacuvaj(pacijenti);
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public Pacijent PregledPacijenta(long jmbg)
         {
             PacijentRepozitorijum datoteka = new PacijentRepozitorijum();
@@ -148,6 +210,17 @@ namespace Service
                 }
             }
             return null;
+        }
+
+        public List<PacijentDTO> PregledSvihPacijenata2()
+        {
+            List<Pacijent> pacijenti = pr.dobaviSve2();
+            List < PacijentDTO > pacijentiDTO = new List<PacijentDTO>();
+            foreach (Pacijent pacijent in pacijenti)
+            {
+                pacijentiDTO.Add(convertToDTO(pacijent));
+            }
+            return pacijentiDTO;
         }
 
         public List<Pacijent> PregledSvihPacijenata()
@@ -270,6 +343,13 @@ namespace Service
         {
             return pacRepo.dobaviSve()
                 .FirstOrDefault(p => p.Username.Equals(dto.korisnickoIme) && p.Password.Equals(dto.lozinka));
+
+        }
+
+        public PacijentDTO convertToDTO(Pacijent pacijent)
+        {
+            return new PacijentDTO(pacijent);
+
         }
 
     }

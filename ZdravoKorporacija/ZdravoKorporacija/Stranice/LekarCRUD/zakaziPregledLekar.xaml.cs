@@ -88,6 +88,34 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             String t = cboItem.Content.ToString();
             pocetakTermina = DateTime.Parse(date.Text + " " + t);
             prostorijaTermina = (ProstorijaDTO)cbProstorija.SelectedItem;
+          
+            String d = date.Text;
+            int prepodne = Int32.Parse(now.Substring(0, 2));
+            int popodne = prepodne + 12;
+            if (!date.SelectedDate.HasValue || time.SelectedIndex == -1 || cbTip.SelectedIndex == -1
+                || cbProstorija.SelectedIndex == -1 || cbPacijent.SelectedIndex == -1)
+            {
+                MessageBox.Show("Niste popunili sva polja", "Greska");
+                return;
+            }
+            if (cboItem != null)
+            {
+                t = cboItem.Content.ToString();
+                if (d.Equals(today.ToString("dd.M.yyyy.")))
+                {
+                    if (Int32.Parse(t.Substring(0, 2)) < (now.Substring(9, 8).Equals("po podne") ? popodne : prepodne))
+                    {
+                        MessageBox.Show("Nevalidno Vreme", "Greska");
+
+                        return;
+                    }
+                    else if ((Int32.Parse(t.Substring(0, 2)) == prepodne || Int32.Parse(t.Substring(0, 2)) == popodne) && Int32.Parse(t.Substring(3, 2)) < Int32.Parse(now.Substring(3, 2)))
+                    {
+                        MessageBox.Show("Nevalidno Vreme", "Greska");
+                        return;
+                    }
+                }
+            }
             
 
             if (cbTip.SelectedIndex == 0)
@@ -105,8 +133,19 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             }
 
 
+
             tc.DodajTermin(tc.PacijentDTO2Model(pac), tc.TerminDTO2Model(noviTermin));
             tc.AzurirajPacijenta(tc.PacijentDTO2Model(pac));
+
+            if (terminServis.ZakaziTermin(p, ids))
+            {
+                this.pregledi.Add(p);
+                lekariDat.sacuvaj(lekari);
+                //pacijentiDat.sacuvaj(pacijenti); // višakk?
+            }
+            pac.AddTermin(new TerminDTO(p));
+            pacijentiServis.AzurirajPacijenta(pac);
+
             this.Close();
         }
 

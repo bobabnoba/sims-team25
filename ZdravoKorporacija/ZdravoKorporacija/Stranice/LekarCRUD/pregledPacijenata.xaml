@@ -8,6 +8,7 @@
         Title="pregledPacijenata" Height="450" Width="800" Background="CadetBlue" WindowStartupLocation="CenterScreen">
     <Grid>
         <Button Content="Zdravstveni karton" HorizontalAlignment="Center" Margin="0,70,0,0" VerticalAlignment="Top" Width="110" Height="44" Click="prikazKartona"/>
+        <Button Content="Uputi na stacionarno lecenje" HorizontalAlignment="Left" Margin="164,70,0,0" VerticalAlignment="Top" Width="159" Height="44" Click="stacionarnoLecenje"/>
 
         <Grid Margin="10">
             <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="156,140,84,34" SelectionChanged="dgUsers_SelectionChanged" CanUserAddRows="False">
@@ -26,6 +27,13 @@
                     <DataGridTextColumn Header="Prezime" Binding="{Binding Prezime}" />
                     <DataGridTextColumn Header="JMBG" Binding="{Binding Jmbg}" />
                     <DataGridTextColumn Header="Pol" Binding="{Binding Pol}" />
+                    <DataGridTemplateColumn Header="Uputi za stacionarno">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="..." Click="uputiZaStacionarno"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
                 <!--<DataGrid.RowDetailsTemplate>
                     <DataTemplate>

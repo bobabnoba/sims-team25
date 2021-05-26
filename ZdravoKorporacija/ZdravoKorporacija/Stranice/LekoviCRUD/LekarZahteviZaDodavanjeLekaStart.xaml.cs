@@ -72,8 +72,16 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
                 lekServis.DodajLek(l, ids);
                 Debug.WriteLine(zahtev.Id);
                 zahtev.BrojPotvrda++;
-                lekServis.ObrisiZahtevZaLek(zahtev);
-            }
+                foreach(Lekar lekar in zahtev.lekari.ToArray())
+                {
+                    if (lekar.Jmbg.Equals(lekarLogin.lekar.Jmbg))
+                        zahtev.lekari.Remove(lekar);
+                }
+                zahteviPrikaz.Remove(zahtev);
+                lekServis.AzurirajZahtevLeka(zahtev);
+                if (zahtev.BrojPotvrda.Equals(zahtev.NeophodnihPotvrda))
+                    lekServis.ObrisiZahtevZaLek(zahtev);
+             }
         }
 
         private void izmenaAlternativnihLekova(object sender, RoutedEventArgs e)
@@ -104,7 +112,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
         }
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            lekarStart ls = new lekarStart();
+            lekarStart ls = new lekarStart(lekarLogin.lekar);
             ls.Show();
             this.Close();
         }
@@ -121,6 +129,11 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
             pregledPacijenata pp = new pregledPacijenata();
             this.Close();
             pp.Show();
+        }
+
+        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

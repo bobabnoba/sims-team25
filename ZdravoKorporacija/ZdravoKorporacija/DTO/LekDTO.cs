@@ -13,6 +13,8 @@ namespace ZdravoKorporacija.DTO
         public String NusPojave { get; set; }
         public String NazivLeka { get; set; }
 
+        public String Alergeni { get; set; }
+
         public List<LekDTO> alternativniLekovi;
 
         /// <pdGenerated>default getter</pdGenerated>
@@ -79,15 +81,30 @@ namespace ZdravoKorporacija.DTO
         }
         public List<LekDTO> konvertujListuEntitetaUListuDTO(List<Lek> lekovi)
         {
-            if (lekovi != null) {
-                List<LekDTO> lekoviDTO = new List<LekDTO>();
+            List<LekDTO> lekoviDTO = new List<LekDTO>();
+            if (lekovi != null)
+            {
+                
                 foreach (Lek lek in lekovi)
                 {
                     lekoviDTO.Add(new LekDTO(lek));
                 }
+               
+            }
+            return lekoviDTO;
+        }
+        public List<LekDTO> LekToLekDTO(List<Lek> Lekovi)
+        {
+            if (Lekovi != null)
+            {
+                List<LekDTO> LekoviDTO = new List<LekDTO>();
+                foreach (Lek Lek in Lekovi)
+                {
+                    LekoviDTO.Add(new LekDTO(Lek));
+                }
 
-                return lekoviDTO;
-                    }
+                return LekoviDTO;
+            }
             else
             {
                 return new List<LekDTO>();

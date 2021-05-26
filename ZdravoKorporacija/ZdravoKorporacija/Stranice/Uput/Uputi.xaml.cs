@@ -4,9 +4,11 @@ using Service;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Stranice.LekarCRUD;
 using ZdravoKorporacija.Stranice.LekoviCRUD;
+using ZdravoKorporacija.Stranice.Logovanje;
 
 namespace ZdravoKorporacija.Stranice.Uput
 {
@@ -37,8 +39,8 @@ namespace ZdravoKorporacija.Stranice.Uput
                 MessageBox.Show("Pregled nije izabran. Molimo označite pregled koji želite da izmenite.", "Greška");
             else
             {
-                izmeniUput iu = new izmeniUput((Termin)dgUsers.SelectedItem, lekarStart.uputi);
-                iu.Show();
+                //izmeniUput iu = new izmeniUput((Termin)dgUsers.SelectedItem, lekarStart.uputi);
+                //iu.Show();
             }
         }
 
@@ -50,7 +52,7 @@ namespace ZdravoKorporacija.Stranice.Uput
 
         private void prikaziKarton(object sender, RoutedEventArgs e)
         {
-            zdravstveniKartonPrikaz zk = new zdravstveniKartonPrikaz((Termin)dgUsers.SelectedItem);
+            zdravstveniKartonPrikaz zk = new zdravstveniKartonPrikaz((TerminDTO)dgUsers.SelectedItem);
             zk.Show();
         }
 
@@ -60,8 +62,8 @@ namespace ZdravoKorporacija.Stranice.Uput
                 MessageBox.Show("Niste selektovali red", "Greska");
             else
             {
-                otkaziUput ou = new otkaziUput(lekarStart.uputi, (Termin)dgUsers.SelectedItem, ids);
-                ou.Show();
+                //otkaziUput ou = new otkaziUput(lekarStart.uputi, (Termin)dgUsers.SelectedItem, ids);
+                //ou.Show();
             }
         }
 
@@ -74,15 +76,15 @@ namespace ZdravoKorporacija.Stranice.Uput
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
-            lekarStart ls = new lekarStart();
+            lekarStart ls = new lekarStart(lekarLogin.lekar);
             ls.Show();
             this.Close();
         }
 
         private void zakaziHitno(object sender, RoutedEventArgs e)
         {
-            zakaziHitniLekar zh = new zakaziHitniLekar(lekarStart.uputi, ids);
-            zh.Show();
+            //zakaziHitniLekar zh = new zakaziHitniLekar(lekarStart.uputi, ids);
+            //zh.Show();
         }
 
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
@@ -90,6 +92,11 @@ namespace ZdravoKorporacija.Stranice.Uput
             LekarZahteviZaDodavanjeLekaStart l = new LekarZahteviZaDodavanjeLekaStart();
             this.Close();
             l.Show();
+        }
+
+        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

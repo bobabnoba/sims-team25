@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -12,31 +13,20 @@ namespace ZdravoKorporacija.DTO
         public String NazivLeka { get; set; }
         public DateTime Pocetak { get; set; }
 
-        public System.Collections.ArrayList lek;
+        public List<LekDTO> lek;
+        public ReceptDTO()
+        { }
 
-
-        public ReceptDTO() { }
         /// <pdGenerated>default getter</pdGenerated>
-        /// 
-        public ReceptDTO(int id, string doziranje, int trajanje, string nazivLeka, DateTime pocetak, LekarDTO lekar, ZdravstveniKartonDTO zdravstveniKarton)
-        {
-            Id = id;
-            Doziranje = doziranje;
-            Trajanje = trajanje;
-            NazivLeka = nazivLeka;
-            Pocetak = pocetak;
-            Lekar = lekar;
-            this.zdravstveniKarton = zdravstveniKarton;
-        }
-        public System.Collections.ArrayList GetLek()
+        public List<LekDTO> GetLek()
         {
             if (lek == null)
-                lek = new System.Collections.ArrayList();
+                lek = new List<LekDTO>();
             return lek;
         }
 
         /// <pdGenerated>default setter</pdGenerated>
-        public void SetLek(System.Collections.ArrayList newLek)
+        public void SetLek(List<LekDTO> newLek)
         {
             RemoveAllLek();
             foreach (LekDTO oLek in newLek)
@@ -49,7 +39,7 @@ namespace ZdravoKorporacija.DTO
             if (newLek == null)
                 return;
             if (this.lek == null)
-                this.lek = new System.Collections.ArrayList();
+                this.lek = new List<LekDTO>();
             if (!this.lek.Contains(newLek))
                 this.lek.Add(newLek);
         }
@@ -72,6 +62,37 @@ namespace ZdravoKorporacija.DTO
         }
         public LekarDTO Lekar;
         public ZdravstveniKartonDTO zdravstveniKarton;
+
+        public ReceptDTO(int id, string doziranje, int trajanje, string nazivLeka, DateTime pocetak,  LekarDTO lekar)
+        {
+            Id = id;
+            Doziranje = doziranje;
+            Trajanje = trajanje;
+            NazivLeka = nazivLeka;
+            Pocetak = pocetak;
+            this.Lekar = lekar;        
+        }
+
+        public ReceptDTO(int id, string doziranje, int trajanje, string nazivLeka, DateTime pocetak, LekarDTO lekar, ZdravstveniKartonDTO zdravstveniKarton)
+        {
+            Id = id;
+            Doziranje = doziranje;
+            Trajanje = trajanje;
+            NazivLeka = nazivLeka;
+            Pocetak = pocetak;
+            Lekar = lekar;
+            this.zdravstveniKarton = zdravstveniKarton;
+        }
+
+        public ReceptDTO(Recept recept)
+        {
+            Id = recept.Id;
+            Doziranje = recept.Doziranje;
+            Trajanje = recept.Trajanje;
+            NazivLeka = recept.NazivLeka;
+            Pocetak = recept.Pocetak;
+            this.Lekar = new LekarDTO(recept.lekar);
+        }
 
         /// <pdGenerated>default parent getter</pdGenerated>
         public ZdravstveniKartonDTO GetZdravstveniKarton()

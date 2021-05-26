@@ -29,6 +29,126 @@ namespace ZdravoKorporacija.Model
         private RadniDanService daniServis = new RadniDanService();
 
        
+        TerminRepozitorijum tr = TerminRepozitorijum.Instance;
+        IzvestajService iz = IzvestajService.Instance;
+        PacijentService pacijentServis = PacijentService.Instance;
+        ZdravstveniKartonServis zdravstveniKartonServis = new ZdravstveniKartonServis();
+        LekarRepozitorijum lekariDat = LekarRepozitorijum.Instance;
+        List<Lekar> lekari = LekarRepozitorijum.Instance.dobaviSve();
+        IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapIzvestaj");
+        Dictionary<int, int> id_map = new Dictionary<int, int>();
+
+        IDRepozitorijum uputDat = new IDRepozitorijum("iDMapTermin");
+        Dictionary<int, int> id_uput = new Dictionary<int, int>();
+
+
+        private static TerminService _instance;
+
+        public static TerminService Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new TerminService();
+                }
+                return _instance;
+            }
+        }
+
+
+        public bool izdajUput(PacijentDTO pac, TerminDTO termin)
+        {
+            id_uput = uputDat.dobaviSve();
+            
+            int id = 0;
+            for (int i = 0; i < 1000; i++)
+            {
+                if (id_uput[i] == 0)
+                {
+                    id = i;
+                    id_uput[i] = 1;
+                    break;
+                }
+            }
+            termin.Id = id;
+            if (ZakaziTermin(termin, id_uput))
+            {
+                lekariDat.sacuvaj(lekari);
+            }
+            pac.AddTermin(termin);
+            pacijentServis.AzurirajPacijenta(pac);
+          
+            return true;
+        }
+
+        public bool IzdajAnamnezu(IzvestajDTO izvestaj,TerminDTO termin)
+        {
+            List < PacijentDTO > pacijenti = new List<PacijentDTO>(pacijentServis.PregledSvihPacijenata2());
+            id_map = datotekaID.dobaviSve();
+
+            int id = 0;
+            for (int i = 0; i < 1000; i++)
+            {
+                if (id_map[i] == 0)
+                {
+                    id = i;
+                    id_map[i] = 1;
+                    break;
+                }
+            }
+            izvestaj.Id = id;
+            foreach (PacijentDTO p in pacijenti)
+            {
+                if (termin.zdravstveniKarton.Id.Equals(p.ZdravstveniKarton.Id))
+                {
+                    foreach (TerminDTO t in p.termin)
+                    {
+                        if (t.Id.Equals(termin.Id))
+                        {
+
+                            t.izvestaj = izvestaj;
+                        }
+                    }
+                    pacijentServis.AzurirajPacijenta(p);
+                    break;
+                }
+                    
+            }
+            iz.DodajIzvestaj(izvestaj,id_map);
+            termin.izvestaj = izvestaj;
+            AzurirajTermin(termin);
+            return true;
+        }
+
+        public bool ObrisiAnamnezu(IzvestajDTO izvestaj, TerminDTO termin)
+        {
+            List<PacijentDTO> pacijenti = new List<PacijentDTO>(pacijentServis.PregledSvihPacijenata2());
+            PacijentDTO pac = new PacijentDTO();
+            foreach (PacijentDTO p in pacijenti)
+            {
+                if (termin.zdravstveniKarton.Id.Equals(p.ZdravstveniKarton.Id))
+                {
+                    foreach (TerminDTO t in p.termin)
+                    {
+                        if (t.Id.Equals(termin.Id))
+                        {
+                            t.izvestaj = null;
+                            id_map = datotekaID.dobaviSve();
+                            id_map[izvestaj.Id] = 0;
+                            datotekaID.sacuvaj(id_map);
+                            break;
+                        }
+                    }
+                }
+            }
+            
+            termin.izvestaj = null;
+            AzurirajTermin(termin);
+            pacijentServis.AzurirajPacijenta(pac);
+            iz.ObrisiIzvestaj(izvestaj,id_map);
+            return true;
+        }
         public Termin FindOpByPocetak(DateTime poc)
         {
            terminRepozitorijum  = new TerminRepozitorijum();
@@ -91,6 +211,20 @@ namespace ZdravoKorporacija.Model
             return true;
         }
 
+        public bool ZakaziTermin(TerminDTO termin, Dictionary<int, int> ids)
+        {
+            TerminRepozitorijum datoteka = new TerminRepozitorijum();
+            List<Termin> termini = datoteka.dobaviSve();
+            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
+
+            termini.Add(new Termin(termin));
+            datoteka.sacuvaj(termini);
+            datotekaID.sacuvaj(ids);
+
+            return true;
+        }
+
+
         public bool AzurirajTermin(Termin termin)
         {
            terminRepozitorijum  = new TerminRepozitorijum();
@@ -109,6 +243,21 @@ namespace ZdravoKorporacija.Model
             return false;
         }
 
+        public bool AzurirajTermin(TerminDTO termin)
+        {
+            List<Termin> termini = tr.dobaviSve();
+            foreach (Termin t in termini)
+            {
+                if (t.Id.Equals(termin.Id))
+                {
+                    termini.Remove(t);
+                    termini.Add(new Termin(termin));
+                    tr.sacuvaj(termini);
+                    return true;
+                }
+            }
+            return false;
+        }
 
         public bool OtkaziTermin(Termin termin, Dictionary<int, int> ids)
         {
@@ -226,9 +375,22 @@ namespace ZdravoKorporacija.Model
                     termini.Add(termin);
                 }
             }
-
             return termini;
+        }
+        public List<TerminDTO> PregledSvihTermina2()
+        {
+            List<Termin> termini = tr.dobaviSve();
+            List<TerminDTO> terminiDTO = new List<TerminDTO>();
+            foreach (Termin termin in termini)
+            {
+                terminiDTO.Add(convertToDTO(termin));
+            }
+            return terminiDTO;
+        }
 
+        public TerminDTO convertToDTO(Termin pacijent)
+        {
+            return new TerminDTO(pacijent);
         }
 
 

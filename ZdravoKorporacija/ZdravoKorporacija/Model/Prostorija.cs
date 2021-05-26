@@ -29,16 +29,19 @@ namespace Model
             Sprat = sprat;
         }
 
-        public Prostorija(ProstorijaDTO prostorijaDTO)
+        public Prostorija(ProstorijaDTO prostorija)
         {
-            this.inventar = new System.Collections.ArrayList();
-            this.statickaOprema = new List<StatickaOprema>();
-            this.dinamickaOprema = new System.Collections.ArrayList();
-            Id = prostorijaDTO.Id;
-            Naziv = prostorijaDTO.Naziv;
-            Tip = prostorijaDTO.Tip;
-            Slobodna = prostorijaDTO.Slobodna;
-            Sprat = prostorijaDTO.Sprat;
+            if(prostorija!=null)
+            { 
+            this.inventar = prostorija.inventar;
+            //this.statickaOprema = prostorija.statickaOprema;
+            this.dinamickaOprema = prostorija.dinamickaOprema;
+            Id = prostorija.Id;
+            Naziv = prostorija.Naziv;
+            Tip = prostorija.Tip;
+            Slobodna = prostorija.Slobodna;
+            Sprat = prostorija.Sprat;
+            }
         }
 
         public List<StatickaOprema> statickaOprema;

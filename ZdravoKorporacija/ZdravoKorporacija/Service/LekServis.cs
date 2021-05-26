@@ -5,12 +5,14 @@ using Repository;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Repository;
 using System.Collections;
+using System.Collections.ObjectModel;
 
 namespace Service
 {
    public class LekServis
    {
-      public bool DodajLek(Lek Lek, Dictionary<int, int> id_map)
+        LekRepozitorijum datoteka = LekRepozitorijum.Instance;
+        public bool DodajLek(Lek Lek, Dictionary<int, int> id_map)
       {
            
             LekRepozitorijum datoteka = LekRepozitorijum.Instance;
@@ -83,6 +85,18 @@ namespace Service
             return lekovi;
         }
 
+        public List<LekDTO> PregledSvihLekova2()
+        {
+            List<Lek> lekovi = datoteka.DobaviSve();
+            List<LekDTO> lekDTOs = new List<LekDTO>();
+            foreach (Lek l in lekovi)
+            {
+                lekDTOs.Add(new LekDTO(l));
+            }
+            return lekDTOs;
+       
+        }
+
 
         public bool DodajZahtevLeka(ZahtevLekDTO zahtevLek)
         {
@@ -111,7 +125,24 @@ namespace Service
             return true;
         }
 
-        public bool ObrisiZahtevZaLek(ZahtevLek zahtevLek)
+        public bool AzurirajZahtevLeka(ZahtevLek zahtevLek)
+        {
+            ZahtevLekRepozitorijum datoteka = ZahtevLekRepozitorijum.Instance;
+
+            foreach (ZahtevLek zl in ZahtevLekRepozitorijum.Instance.zahteviLek)
+            {
+                if (zl.Id.Equals(zahtevLek.Id))
+                {
+                    ZahtevLekRepozitorijum.Instance.zahteviLek.Remove(zl);
+                    ZahtevLekRepozitorijum.Instance.zahteviLek.Add(zahtevLek);
+                    datoteka.sacuvaj();
+                    return true;
+                }
+            }
+            return false;
+        }
+
+            public bool ObrisiZahtevZaLek(ZahtevLek zahtevLek)
         {
             ZahtevLekRepozitorijum datoteka = ZahtevLekRepozitorijum.Instance;
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapZahtevZaLek");

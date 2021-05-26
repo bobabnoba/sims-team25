@@ -16,6 +16,19 @@ namespace ZdravoKorporacija.Controller
         private PacijentService servis;
         private PacijentKonverter pacijentKonverter = new PacijentKonverter();
         private NotifikacijaKonverter notifikacijaKonverter = new NotifikacijaKonverter();
+        private static PacijentController _instance;
+        PacijentService pacijentServis = PacijentService.Instance;
+        public static PacijentController Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new PacijentController();
+                }
+                return _instance;
+            }
+        }
 
         public PacijentController()
         {
@@ -62,7 +75,22 @@ namespace ZdravoKorporacija.Controller
                 pacijent.Mejl, pacijent.AdresaStanovanja, pacijent.Pol);
         }
 
+
+        public bool IzdajRecept(PacijentDTO pacijent, ReceptDTO recept)
+        {
+            return pacijentServis.IzdajRecept(pacijent, recept);
+        }
+        public bool ObrisiRecept(PacijentDTO pacijent, ReceptDTO recept)
+        {
+            return pacijentServis.ObrisiRecept(pacijent, recept);
+        }
+        public List<PacijentDTO> PregledSvihPacijenata2()
+        {
+            return pacijentServis.PregledSvihPacijenata2();
+        }
+        public bool AzurirajPacijenta(PacijentDTO pacijent)
+        {
+            return pacijentServis.AzurirajPacijenta(pacijent);
+        }
     }
-
-
 }

@@ -7,7 +7,18 @@ namespace ZdravoKorporacija.DTO
 {
     public class IzvestajDTO
     {
-        public IzvestajDTO() {}
+        public TerminDTO termin;
+
+        public IzvestajDTO() { }
+
+        public IzvestajDTO(TerminDTO termin, int id, string opis, string simptomi)
+        {
+            this.termin = termin;
+            Id = id;
+            Opis = opis;
+            Simptomi = simptomi;
+        }
+
         public IzvestajDTO(int id, string opis, string simptomi, TerminDTO termin)
         {
             Id = id;
@@ -18,10 +29,13 @@ namespace ZdravoKorporacija.DTO
 
         public IzvestajDTO(Izvestaj izvestaj)
         {
-            Id = izvestaj.Id;
-            Opis = izvestaj.Opis;
-            Simptomi = izvestaj.Simptomi;
-            Termin = new TerminDTO(izvestaj.termin);
+            if (izvestaj != null)
+            {
+                this.termin = null;
+                Id = izvestaj.Id;
+                Opis = izvestaj.Opis;
+                Simptomi = izvestaj.Simptomi;
+            }
         }
 
         public int Id { get; set; }

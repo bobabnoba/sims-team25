@@ -12,10 +12,13 @@ namespace ZdravoKorporacija.DTO
 
         public LekarDTO(Lekar lekarEntitet)
         {
+            if(lekarEntitet!=null)
+            { 
             this.Jmbg = lekarEntitet.Jmbg;
             this.Ime = lekarEntitet.Ime;
             this.Prezime = lekarEntitet.Prezime;
-            //this.termini = new ArrayList(lekarEntitet.termin);
+                //this.termini = new ArrayList(lekarEntitet.termin);
+            }
         }
 
         public LekarDTO(String Ime, String Prezime) : base(Ime, Prezime)

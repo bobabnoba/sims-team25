@@ -32,9 +32,14 @@ namespace Controller
             return prostorijaService.PregledSvihProstorijaDTO();
         }
 
-       public bool ObrisiProstoriju(ProstorijaDTO prostorijaZaBrisanje)
+        public bool ObrisiProstoriju(ProstorijaDTO prostorijaZaBrisanje)
         {
             return prostorijaService.ObrisiProstoriju(prostorijaZaBrisanje);
+        }
+
+        public List<ProstorijaDTO> PregledSvihProstorija2()
+        {
+            return prostorijaService.PregledSvihProstorija2();
         }
     }
 }

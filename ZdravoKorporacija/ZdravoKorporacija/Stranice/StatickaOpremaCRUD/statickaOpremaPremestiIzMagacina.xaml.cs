@@ -168,7 +168,7 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
                 MessageBox.Show("zavrsen termin");
                 ProstorijaDTO p = premastanjeZahtevDTO.prostorija;
                 StatickaOpremaDTO stat = new StatickaOpremaDTO((InventarDTO)premastanjeZahtevDTO.StatickaOprema);
-                p.statickaOprema = new System.Collections.ArrayList();
+                p.statickaOprema = new List<StatickaOpremaDTO>();
                 p.statickaOprema.Add(stat);
                 prostorijeController.AzurirajProstoriju(p, this.indeks);
                 imaZahtev = false;
