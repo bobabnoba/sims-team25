@@ -5,10 +5,11 @@
  ***********************************************************************/
 
 using System;
+using ZdravoKorporacija.DTO;
 
 namespace Model
 {
-   public class DinamickaOprema : Inventar
+   public class DinamickaOprema : InventarDTO
    {
         public int Kolicina { get; set; }
 
@@ -21,9 +22,22 @@ namespace Model
             Kolicina = kolicina;
         }
 
-        public DinamickaOprema(Inventar inv,int kolicina) : base(inv.Id, inv.Naziv, inv.UkupnaKolicina, inv.Proizvodjac, inv.DatumNabavke)
+        public DinamickaOprema(InventarDTO inv,int kolicina) : base(inv.Id, inv.Naziv, inv.UkupnaKolicina, inv.Proizvodjac, inv.DatumNabavke)
         {
             Kolicina = kolicina;
         }
+
+        public DinamickaOprema(DinamickaOpremaDTO dinamickaOpremaDTO,InventarDTO inventarDTO){
+            Kolicina = dinamickaOpremaDTO.Kolicina;
+            Prostorija = new Prostorija(dinamickaOpremaDTO.Prostorija);
+            Inventar oprema = new Inventar(inventarDTO);
+            this.Id = oprema.Id;
+            this.Naziv = oprema.Naziv;
+            this.UkupnaKolicina = oprema.UkupnaKolicina;
+            this.Proizvodjac = oprema.Proizvodjac;
+            this.DatumNabavke = oprema.DatumNabavke;
+        }
+
+
     }
 }

@@ -4,6 +4,8 @@
 // Purpose: Definition of Class Appointment
 
 using System;
+using ZdravoKorporacija.DTO;
+
 namespace Model
 {
 
@@ -18,7 +20,7 @@ namespace Model
             this.Lekar = lekar;
             this.Tip = tip;
             this.Pocetak = pocetak;
-            this.Trajanje = 0.5;
+            this.Trajanje = 30;
             this.zdravstveniKarton = zdravstveniKarton;
             this.prostorija = null;
             this.izvestaj = izvestaj;
@@ -44,6 +46,16 @@ namespace Model
             Trajanje = trajanje;
         }
 
+        public Termin(TerminDTO terminDTO) {
+            this.Id = terminDTO.Id;
+            this.Lekar = new Lekar(terminDTO.Lekar);
+            this.Tip = terminDTO.Tip;
+            this.Pocetak = terminDTO.Pocetak;
+            this.Trajanje = 0.5;
+            this.zdravstveniKarton = null;
+            this.prostorija = null;
+            this.izvestaj = null;
+        }
         public Izvestaj izvestaj;
         public ZdravstveniKarton zdravstveniKarton;
 

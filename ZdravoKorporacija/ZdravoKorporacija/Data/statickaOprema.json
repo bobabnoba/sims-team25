@@ -72,5 +72,63 @@
     "UkupnaKolicina": 100,
     "Proizvodjac": "forma ideale",
     "DatumNabavke": "0001-01-01T00:00:00"
+  },
+  {
+    "termin": null,
+    "Prostorija": null,
+    "Id": 1,
+    "Naziv": "krevet",
+    "UkupnaKolicina": 0,
+    "Proizvodjac": "simpo",
+    "DatumNabavke": "0001-01-01T00:00:00"
+  },
+  {
+    "termin": null,
+    "Prostorija": null,
+    "Id": 3,
+    "Naziv": "operacioni sto",
+    "UkupnaKolicina": 0,
+    "Proizvodjac": "helas",
+    "DatumNabavke": "0001-01-01T00:00:00"
+  },
+  {
+    "termin": null,
+    "Prostorija": null,
+    "Id": 4,
+    "Naziv": "Hanzaplast",
+    "UkupnaKolicina": 100,
+    "Proizvodjac": "Keek",
+    "DatumNabavke": "0001-01-01T00:00:00"
+  },
+  {
+    "termin": {
+      "izvestaj": null,
+      "zdravstveniKarton": null,
+      "prostorija": null,
+      "Lekar": {
+        "termin": null,
+        "Ime": null,
+        "Prezime": null,
+        "Jmbg": 0,
+        "BrojTelefona": 0,
+        "Mejl": null,
+        "AdresaStanovanja": null,
+        "Pol": 0,
+        "Username": null,
+        "Password": null,
+        "Uloga": 0
+      },
+      "Id": 0,
+      "Tip": 0,
+      "Pocetak": "0001-01-01T00:00:00",
+      "Trajanje": 0.5,
+      "hitno": false
+    },
+    "Prostorija": null,
+    "Id": 0,
+    "Naziv": null,
+    "UkupnaKolicina": 0,
+    "Proizvodjac": null,
+    "DatumNabavke": "0001-01-01T00:00:00"
   }
 ]

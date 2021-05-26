@@ -5,6 +5,7 @@
  ***********************************************************************/
 
 using System;
+using ZdravoKorporacija.DTO;
 
 namespace Model
 {
@@ -21,6 +22,15 @@ namespace Model
             UkupnaKolicina = ukupnaKolicina;
             Proizvodjac = proizvodjac;
             DatumNabavke = datumNabavke;
+        }
+
+        public Inventar(InventarDTO inventarDTO) {
+            Id = inventarDTO.Id;
+            Naziv = inventarDTO.Naziv;
+            UkupnaKolicina = inventarDTO.UkupnaKolicina;
+            Proizvodjac = inventarDTO.Proizvodjac;
+            DatumNabavke = inventarDTO.DatumNabavke;
+
         }
 
        

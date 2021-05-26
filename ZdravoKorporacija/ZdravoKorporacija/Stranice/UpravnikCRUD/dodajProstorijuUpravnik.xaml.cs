@@ -1,9 +1,11 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using Service;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.UpravnikCRUD
@@ -13,14 +15,12 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
     /// </summary>
     public partial class dodajProstorijuUpravnik : Window
     {
-        private ProstorijaService storage = new ProstorijaService();
-        private ObservableCollection<Prostorija> prostorije;
-        Dictionary<int, int> id_map = new Dictionary<int, int>();
-        public dodajProstorijuUpravnik(ObservableCollection<Prostorija> pr, Dictionary<int, int> ids)
+        private ProstorijaController prostorijaKontroler = new ProstorijaController();
+        private ObservableCollection<ProstorijaDTO> prostorije;
+        public dodajProstorijuUpravnik(ObservableCollection<ProstorijaDTO> prostorijeDTO)
         {
             InitializeComponent();
-            this.prostorije = pr;
-            this.id_map = ids;
+            this.prostorije = prostorijeDTO;
         }
         private void odustani(object sender, RoutedEventArgs e)
         {
@@ -39,15 +39,6 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
 
         private void potvrdi(object sender, RoutedEventArgs e)
         {
-            int id = 0;
-            for (int i =0; i< 1000; i++)
-            {
-                if (id_map[i] == 0) {
-                    id = i;
-                    id_map[i] = 1;
-                    break;
-                }
-            }
             string ime = textboxNaziv.Text;
 
             if (ime.Trim() == "") {
@@ -86,10 +77,11 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
             }
 
          
-            Prostorija prostorija = new Prostorija(id, ime, tip, false, sprat);
-            if (storage.DodajProstoriju(prostorija,id_map))
+            ProstorijaDTO prostorija = new ProstorijaDTO(0, ime, tip, false, sprat);
+
+            if (prostorijaKontroler.DodajProstoriju(prostorija))
             {
-                this.prostorije.Add(prostorija);
+                prostorije.Add(prostorija);
                 this.Close();
             }
            

@@ -1,8 +1,10 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using Service;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.UpravnikCRUD
@@ -12,22 +14,23 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
     /// </summary>
     public partial class izmeniProstorijuUpravnik : Window
     {
-        private ProstorijaService storage = new ProstorijaService();
-        private ObservableCollection<Prostorija> prostorije;
-        private Prostorija prostorijaIzmenjena;
+        private ProstorijaController prostorijaKontroler = new ProstorijaController();
+        private ObservableCollection<ProstorijaDTO> prostorije;
+        private ProstorijaDTO prostorijaIzmenjena;
         private int indeks;
-        public izmeniProstorijuUpravnik(ObservableCollection<Prostorija> pr, Prostorija p, int selectedIndex)
+        public izmeniProstorijuUpravnik(ObservableCollection<ProstorijaDTO> prostorijeDTO, ProstorijaDTO prostorijaDTO, int selectedIndex)
         {
             InitializeComponent();
-            this.prostorije = pr;
-            this.prostorijaIzmenjena = p;
+            this.prostorije = prostorijeDTO;
+            this.prostorijaIzmenjena = prostorijaDTO;
             this.indeks = selectedIndex;
-            textBoxIzmenaNaziv.Text = p.Naziv;
-            if (p.Tip == TipProstorijeEnum.OperacionaSala)
+
+            textBoxIzmenaNaziv.Text = prostorijaDTO.Naziv;
+            if (prostorijaDTO.Tip == TipProstorijeEnum.OperacionaSala)
             {
                 comboBoxIzmenaTip.SelectedIndex = 0;
             }
-            else if (p.Tip == TipProstorijeEnum.Soba)
+            else if (prostorijaDTO.Tip == TipProstorijeEnum.Soba)
             {
                 comboBoxIzmenaTip.SelectedIndex = 1;
             }
@@ -36,7 +39,7 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
                 comboBoxIzmenaTip.SelectedIndex = 2;
             }
 
-            comboBoxIzmenaSprat.SelectedIndex = p.Sprat;
+            comboBoxIzmenaSprat.SelectedIndex = prostorijaDTO.Sprat;
 
           
 
@@ -62,12 +65,12 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
             }
             sprat = comboBoxIzmenaSprat.SelectedIndex;
             
-            Prostorija prostorija = new Prostorija(prostorijaIzmenjena.Id, ime, tip, false, sprat);
-            if (storage.AzurirajProstoriju(prostorija,this.indeks))
-            {
-                prostorije.Remove(prostorijaIzmenjena);
-                this.prostorije.Insert(this.indeks, prostorija);
+            ProstorijaDTO prostorijaDTO = new ProstorijaDTO(prostorijaIzmenjena.Id, ime, tip, false, sprat);
 
+            if (prostorijaKontroler.AzurirajProstoriju(prostorijaDTO, this.indeks))
+            {
+                prostorije.RemoveAt(indeks);
+                prostorije.Insert(indeks,prostorijaDTO);
             }
             this.Close();
         }

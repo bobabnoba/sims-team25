@@ -50,7 +50,7 @@ namespace Repository
             return null;
         }
 
-        public List<DinamickaOprema> DobaviSve()
+        public ObservableCollection<DinamickaOprema> DobaviSve()
         {
             string lokacija = @"..\..\..\Data\dinamickaOprema.json";
             List<DinamickaOprema> oprema = new List<DinamickaOprema>();
@@ -66,13 +66,11 @@ namespace Repository
             {
                 magacinDinamickaOprema = new ObservableCollection<DinamickaOprema>(oprema);
             }
-            return oprema;
+            return magacinDinamickaOprema;
         }
 
-        public int Sacuvaj(DinamickaOprema din)
-        {
-            magacinDinamickaOprema.Add(din);
-
+        public int Sacuvaj()
+        { 
             string lokacija = @"..\..\..\Data\dinamickaOprema.json";
             JsonSerializer serializer = new JsonSerializer();
             serializer.Formatting = Formatting.Indented;

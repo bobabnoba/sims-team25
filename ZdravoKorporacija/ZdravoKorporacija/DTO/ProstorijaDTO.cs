@@ -9,6 +9,7 @@ namespace ZdravoKorporacija.DTO
     {
         public System.Collections.ArrayList inventar;
 
+        public ProstorijaDTO() { }
 
         public ProstorijaDTO(int id, string naziv, TipProstorijeEnum tip, bool slobodna, int sprat)
         {
@@ -20,8 +21,19 @@ namespace ZdravoKorporacija.DTO
             Sprat = sprat;
         }
 
+<<<<<<< HEAD
         public ProstorijaDTO()
         {
+=======
+        public ProstorijaDTO(Prostorija prostorija)
+        {
+            this.inventar = new System.Collections.ArrayList();
+            Id = prostorija.Id;
+            Naziv = prostorija.Naziv;
+            Tip = prostorija.Tip;
+            Slobodna = prostorija.Slobodna;
+            Sprat = prostorija.Sprat;
+>>>>>>> izmenalek
         }
 
 

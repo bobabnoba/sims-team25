@@ -2,8 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using ZdravoKorporacija.DTO;
 
-namespace ZdravoKorporacija.Model
+namespace Model
 {
    public  class ZahtevLek
     {
@@ -11,6 +12,8 @@ namespace ZdravoKorporacija.Model
         public Lek Lek { get; set; }
 
         public List<Lekar> lekari;
+
+        public String Komentar { get; set; }
         public List<Lekar> Getlekari()
         {
             if (lekari == null)
@@ -62,5 +65,25 @@ namespace ZdravoKorporacija.Model
             this.BrojPotvrda = brojTrenutnihPotvrda;
             this.lekari = new List<Lekar>();
         }
+
+        public ZahtevLek(Lek lek, int neophodnihPotvrda, int brojTrenutnihPotvrda,String komentar)
+        {
+            this.Lek = lek;
+            this.NeophodnihPotvrda = neophodnihPotvrda;
+            this.BrojPotvrda = brojTrenutnihPotvrda;
+            this.lekari = new List<Lekar>();
+            this.Komentar = komentar;
+        }
+        public ZahtevLek(ZahtevLekDTO zahtevLekDTO)
+        {
+            this.Id = zahtevLekDTO.Id;
+            this.Lek = new Lek(zahtevLekDTO.Lek);
+            this.NeophodnihPotvrda = zahtevLekDTO.NeophodnihPotvrda;
+            this.BrojPotvrda = zahtevLekDTO.BrojPotvrda;
+            this.lekari = zahtevLekDTO.lekari;
+            this.Komentar = zahtevLekDTO.Komentar;
+        }
+
+
     }
 }

@@ -9,6 +9,21 @@ namespace ZdravoKorporacija.Model
     {
         private string lokacija;
 
+        private static LekarRepozitorijum _instance;
+
+        public static LekarRepozitorijum Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new LekarRepozitorijum();
+
+                }
+                return _instance;
+            }
+        }
+
         public LekarRepozitorijum()
         {
             this.lokacija = @"..\..\..\Data\lekar.json";

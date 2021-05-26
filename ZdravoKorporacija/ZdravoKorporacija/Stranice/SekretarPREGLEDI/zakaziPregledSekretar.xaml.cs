@@ -24,12 +24,28 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
     /// </summary>
     public partial class zakaziPregledSekretar : Window
     {
+<<<<<<< HEAD
 
         
         private List<LekarDTO> lekari = new List<LekarDTO>();
         private List<LekarDTO> slobodniLekari;
         private List<ProstorijaDTO> slobodneProstorije;
         private List<ProstorijaDTO> prostorije = new List<ProstorijaDTO>();
+=======
+        private TerminService ts = new TerminService();
+
+        private ProstorijaService prostorijeStorage = new ProstorijaService();
+        private ProstorijaRepozitorijum pRep = ProstorijaRepozitorijum.Instance;
+        private PacijentRepozitorijum pacijentiDat = new PacijentRepozitorijum();
+        private PacijentService pacijentiStorage = new PacijentService();
+        private List<Pacijent> pacijenti = new List<Pacijent>();
+        private LekarRepozitorijum lekariDat = new LekarRepozitorijum();
+        private List<Lekar> lekari = new List<Lekar>();
+        private List<Lekar> slobodniLekari;
+        private ObservableCollection<Prostorija> slobodneProstorije;
+        private ObservableCollection<Prostorija> prostorije = new ObservableCollection<Prostorija>();
+        private ObservableCollection<Termin> pregledi;
+>>>>>>> izmenalek
 
         private int idTermina;
         private TipTerminaEnum tipTermina;

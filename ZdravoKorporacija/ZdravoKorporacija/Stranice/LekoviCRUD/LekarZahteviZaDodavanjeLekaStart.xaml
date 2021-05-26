@@ -14,7 +14,7 @@
             <ColumnDefinition Width="566*"/>
         </Grid.ColumnDefinitions>
         <Button Content="Izmeni zahtev" HorizontalAlignment="Left" Margin="97,318,0,0" VerticalAlignment="Top" Width="118" Height="25" RenderTransformOrigin="0.255,-0.75" Click="Button_Click_1" Grid.Column="3"/>
-        <Button Content="Izbriši zahtev" HorizontalAlignment="Left" Margin="264,318,0,0" VerticalAlignment="Top" Width="120" Height="25" RenderTransformOrigin="0.033,-1.977" Click="Button_Click_2" Grid.Column="3"/>
+        <Button Content="Vrati zahtev" HorizontalAlignment="Left" Margin="264,318,0,0" VerticalAlignment="Top" Width="120" Height="25" RenderTransformOrigin="0.033,-1.977" Click="Button_Click_2" Grid.Column="3"/>
         <DataGrid x:Name="dgZahtevi" AutoGenerateColumns="False" Margin="39,105,120,136" Grid.ColumnSpan="2" Grid.Column="2" SelectionChanged="dgZahtevi_SelectionChanged" CanUserAddRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" />

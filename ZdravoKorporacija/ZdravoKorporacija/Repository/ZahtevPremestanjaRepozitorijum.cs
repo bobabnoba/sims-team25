@@ -21,7 +21,6 @@ namespace Repository
                 if (_instance == null)
                 {
                     _instance = new ZahtevPremestanjaRepozitorijum();
-
                 }
                 return _instance;
             }
@@ -33,7 +32,7 @@ namespace Repository
             this.lokacija = @"..\..\..\Data\zahteviPremestanje.json";
         }
 
-        public void sacuvaj(List<ZahtevPremestanja> zahtevi)
+        public void sacuvaj()
         {
             JsonSerializer serializer = new JsonSerializer();
             //serializer.PreserveReferencesHandling = PreserveReferencesHandling.All;
@@ -47,7 +46,7 @@ namespace Repository
         }
 
 
-        public List<ZahtevPremestanja> dobaviSve()
+        public ObservableCollection<ZahtevPremestanja> dobaviSve()
         {
             List<ZahtevPremestanja> premestani = new List<ZahtevPremestanja>();
             if (File.Exists(lokacija))
@@ -62,7 +61,7 @@ namespace Repository
             {
                 this.zahtevi = new ObservableCollection<ZahtevPremestanja>(premestani);
             }
-            return premestani;
+            return this.zahtevi;
         }
 
     }

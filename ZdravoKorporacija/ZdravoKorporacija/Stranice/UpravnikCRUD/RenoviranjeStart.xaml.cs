@@ -15,7 +15,7 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
     /// <summary>
     /// Interaction logic for RenoviranjeStart.xaml
     /// </summary>
-    public partial class RenoviranjeStart : Window
+    public partial class RenoviranjeStart : Page
     {
         public RenoviranjeStart()
         {

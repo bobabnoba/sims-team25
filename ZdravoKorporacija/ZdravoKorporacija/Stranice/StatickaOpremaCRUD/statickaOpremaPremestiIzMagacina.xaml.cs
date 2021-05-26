@@ -5,20 +5,15 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Service;
 using System.Linq;
+using Controller;
+using ZdravoKorporacija.DTO;
 
 namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
 {
@@ -27,113 +22,56 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
     /// </summary>
     public partial class statickaOpremaPremestiIzMagacina : Window
     {
-
-        private ProstorijaService prostorijeStorage = new ProstorijaService();
+        private UpravnikController upravnikKontroler = new UpravnikController();
         private StatickaOpremaService statickaopremaStorage = new StatickaOpremaService();
-        private MagacinService magacineStorage = new MagacinService();
-        private List<Prostorija> prostorije = new List<Prostorija>();
-        private List<Inventar> magacin = new List<Inventar>();
-        private List<StatickaOprema> statickaMagacin = new List<StatickaOprema>();
+        private ZahtevPremestanjaController zahteviController = new ZahtevPremestanjaController();
+        private ProstorijaController prostorijeController = new ProstorijaController();
+        private MagacinController magacineController = new MagacinController();
 
-        private ObservableCollection<Termin> pregledi;
-        private TerminService terminStorage = new TerminService();
+        private ObservableCollection<TerminDTO> pregledi;
         private Boolean selected;
-        private Termin p = new Termin();
 
-
-        private ZahtevPremestanjaService zahteviStorage = new ZahtevPremestanjaService();
-        private List<ZahtevPremestanja> listaZahteva = new List<ZahtevPremestanja>();
-        private ZahtevPremestanja z = new ZahtevPremestanja();
+        private ObservableCollection<ZahtevPremestanjaDTO> listaZahteva = new ObservableCollection<ZahtevPremestanjaDTO>();
         private int indeks;
+        private Boolean imaZahtev = true;
+
+
+        DatePicker izborDatuma;
+        ComboBox comboBoxSati;
 
         public statickaOpremaPremestiIzMagacina()
         {
             InitializeComponent();
-            UpravnikController uc = new UpravnikController();
-            uc.DodajIzMagacina();
+            upravnikKontroler.DodajIzMagacinaDTO();
+            listaZahteva = zahteviController.PregledSveOpremeDTO();
+            cbMagacin.ItemsSource = magacineController.PregledSveOpremeDTO();
+            cbProstorija.ItemsSource = prostorijeController.PregledSvihProstorijaDTO();
+            pregledi = new ObservableCollection<TerminDTO>(upravnikKontroler.PregledSvihTerminaDTO());
 
-            magacin = magacineStorage.PregledSveOpreme();
-            cbMagacin.ItemsSource = magacin;
-            prostorije = prostorijeStorage.PregledSvihProstorija();
-            cbProstorija.ItemsSource = prostorije;
 
-            pregledi = new ObservableCollection<Termin>(uc.PregledSvihTermina());
-            //cbTermini.ItemsSource = uc.PregledSvihTermina();
-            List<Termin> lista = new List<Termin>();
-            lista = terminStorage.PregledSvihTermina();
-            pregledi = new ObservableCollection<Termin>(terminStorage.PregledSvihTermina());
-            Debug.WriteLine(lista[0].ToString());
-            //cbTermini.ItemsSource = pregledi;
-            DateTime danas = DateTime.Today;
+            comboBoxSati = sati;
+            izborDatuma = timePicker;
 
-            for (DateTime tm = danas.AddHours(8); tm < danas.AddHours(22); tm = tm.AddMinutes(30))
-            {
-                sati.Items.Add(tm.ToShortTimeString());
-
-            }
-
-            CalendarDateRange kalendar = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
-            timePicker.BlackoutDates.Add(kalendar);
-
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(1);
-            timer.Tick += ProveraZahteva;
-            timer.Start();
-
-            listaZahteva = zahteviStorage.PregledSveOpreme();
-
+            kalendarInicijalizacija();
+            timer();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            Inventar inv = (Inventar)cbMagacin.SelectedItem;
-            Termin t = new Termin();
-            StatickaOprema st = new StatickaOprema(t, inv);
-
-            this.indeks = (int) cbProstorija.SelectedIndex;
-            ZahtevPremestanja zp = new ZahtevPremestanja();
-            zp.prostorija = (Prostorija)cbProstorija.SelectedItem;
-            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapZahtevPremestanja");
-            Dictionary<int, int> ids = datotekaID.dobaviSve();
-            zahteviStorage.ZakaziPremestanje((Inventar)cbMagacin.SelectedItem, zp, (DateTime)timePicker.SelectedDate, (String)sati.SelectedItem, textBoxTrajanje.Text, ids);
-
-            listaZahteva = zahteviStorage.PregledSveOpreme();
+            InventarDTO inventar = (InventarDTO)cbMagacin.SelectedItem;
+            TerminDTO termin = new TerminDTO();
+            StatickaOpremaDTO staticka = new StatickaOpremaDTO(termin, inventar);
+            ZahtevPremestanjaDTO zahtevPremestanjaDTO = new ZahtevPremestanjaDTO();
+            zahtevPremestanjaDTO.StatickaOprema = staticka;
+            this.indeks = (int)cbProstorija.SelectedIndex;
+           
+            zahtevPremestanjaDTO.prostorija = (ProstorijaDTO)cbProstorija.SelectedItem;
+            zahtevPremestanjaDTO.Pocetak = (DateTime)timePicker.SelectedDate;
+            zahteviController.ZakaziPremestanje((InventarDTO)cbMagacin.SelectedItem, zahtevPremestanjaDTO, (String)sati.SelectedItem, textBoxTrajanje.Text);
         }
-        private Boolean x = true;
-        public void ProveraZahteva(object sender, EventArgs e)
-        {
-
-
-            if (listaZahteva != null)
-            {
-                z = listaZahteva.FirstOrDefault(s => s.Kraj <= DateTime.Now && s.Kraj >= DateTime.Now.AddMinutes(-5));
-                if (z == null)
-                {
-                    x = false;
-                }
-                else { x = true; }
-
-            }
-            if (z != null && x == true)
-            {
-                listaZahteva.Remove(z);
-                statickaopremaStorage.DodajOpremu(z.StatickaOprema, z.Pocetak, "10", z.prostorija);
-                MessageBox.Show("zavrsen termin");
-                ZahtevPremestanjaRepozitorijum.Instance.sacuvaj(listaZahteva);
-
-                Prostorija p = z.prostorija;
-                StatickaOprema stat = new StatickaOprema((Inventar) z.StatickaOprema);
-                p.statickaOprema = new List<StatickaOprema>();
-                p.statickaOprema.Add(stat);
-
-
-                prostorijeStorage.AzurirajProstoriju(p, this.indeks);
-                x = false;
-            }
-
-
-        }
+       
+     
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
@@ -150,33 +88,18 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
         }
         private void date_changed(object sender, SelectionChangedEventArgs e)
         {
-            if (cbProstorija.SelectedIndex != -1)
-            {
-                selected = true;
-            }
-
-            if (selected)
-            {
-                p.prostorija = (Prostorija)cbProstorija.SelectedItem;
-                foreach (Termin t in pregledi)
-                {
-                    if (t.prostorija.Id.Equals(p.prostorija.Id))
-                    {
-                        if (t.Pocetak.Date.Equals(((DateTime)timePicker.SelectedDate).Date))
-                        {
-                            sati.Items.Remove(t.Pocetak.ToShortTimeString());
-                        }
-                    }
-                }
-                sati.IsEnabled = true;
-            }
-
+            ProveraTermina();
         }
 
 
 
         private void sati_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            ProveraTermina();
+        }
+
+
+        public void ProveraTermina() {
             if (cbProstorija.SelectedIndex != -1)
             {
                 selected = true;
@@ -184,20 +107,94 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
 
             if (selected)
             {
-                p.prostorija = (Prostorija)cbProstorija.SelectedItem;
-                foreach (Termin t in pregledi)
+               ProstorijaDTO prost = (ProstorijaDTO)cbProstorija.SelectedItem;
+               
+                foreach (TerminDTO terminDTO in pregledi)
                 {
-                    if (t.prostorija.Id.Equals(p.prostorija.Id))
+                    if (terminDTO.prostorija != null && terminDTO.prostorija.Id.Equals(prost.Id))
                     {
-                        if (t.Pocetak.Date.Equals(((DateTime)timePicker.SelectedDate).Date))
+                        if (terminDTO.Pocetak.Date.Equals(((DateTime)timePicker.SelectedDate).Date))
                         {
-                            sati.Items.Remove(t.Pocetak.ToShortTimeString());
+                            sati.Items.Remove(terminDTO.Pocetak.ToShortTimeString());
+                        }
+                    }
+                }
+                foreach (ZahtevPremestanjaDTO za in this.listaZahteva)
+                {
+                    if (za.prostorija.Id.Equals(prost.Id))
+                    {
+                        DateTime pocetak = za.Pocetak;
+
+                        for (; pocetak < za.Kraj;)
+                        {
+
+                            Debug.WriteLine(pocetak.ToShortTimeString());
+                            sati.Items.Remove(pocetak.ToShortTimeString());
+                            pocetak = pocetak.AddMinutes(30);
                         }
                     }
                 }
                 sati.IsEnabled = true;
             }
+        }
+
+        public void timer() {
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += ProveraZahteva;
+            timer.Start();
+        }
+
+        public void ProveraZahteva(object sender, EventArgs e)
+        {
+            ZahtevPremestanjaDTO premastanjeZahtevDTO = new ZahtevPremestanjaDTO();
+
+            if (zahteviController.PregledSveOpremeDTO() != null)
+            {
+                premastanjeZahtevDTO = zahteviController.PregledSveOpremeDTO().FirstOrDefault(s => s.Kraj <= DateTime.Now && s.Kraj >= DateTime.Now.AddMinutes(-5));
+                if (premastanjeZahtevDTO == null)
+                {
+                    imaZahtev = false;
+                }
+                else { imaZahtev = true; }
+
+            }
+            if (premastanjeZahtevDTO != null && imaZahtev == true)
+            {
+
+                zahteviController.ObrisiZahtevPremestanja(premastanjeZahtevDTO);
+                TerminDTO terminDTO = new TerminDTO(premastanjeZahtevDTO.prostorija, premastanjeZahtevDTO.Pocetak);
+                statickaopremaStorage.DodajOpremu(premastanjeZahtevDTO.StatickaOprema,terminDTO,"10");
+                MessageBox.Show("zavrsen termin");
+                ProstorijaDTO p = premastanjeZahtevDTO.prostorija;
+                StatickaOpremaDTO stat = new StatickaOpremaDTO((InventarDTO)premastanjeZahtevDTO.StatickaOprema);
+                p.statickaOprema = new System.Collections.ArrayList();
+                p.statickaOprema.Add(stat);
+                prostorijeController.AzurirajProstoriju(p, this.indeks);
+                imaZahtev = false;
+            }
+
 
         }
+
+
+
+
+        public void kalendarInicijalizacija()
+        {
+            DateTime danas = DateTime.Today;
+
+            for (DateTime tm = danas.AddHours(8); tm < danas.AddHours(22); tm = tm.AddMinutes(30))
+            {
+               comboBoxSati.Items.Add(tm.ToShortTimeString());
+
+            }
+
+            CalendarDateRange kalendar = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
+            izborDatuma.BlackoutDates.Add(kalendar);
+        }
+
+
+
     }
 }

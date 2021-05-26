@@ -103,7 +103,16 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-
+            this.zl.Lek.alternativniLekovi = new List<Lek>();
+            foreach (Lek selektovaniLek in dgAlternativni.SelectedItems.Cast<Lek>().ToList())
+            {
+                alternativniLekovi.Remove(selektovaniLek);
+                ostalilekovi.Add(selektovaniLek);
+            }
+            foreach (Lek leki in alternativniLekovi)
+            {
+                this.zl.Lek.alternativniLekovi.Add(leki);
+            }
         }
     }
 }

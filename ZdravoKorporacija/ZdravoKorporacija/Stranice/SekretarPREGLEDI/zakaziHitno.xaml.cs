@@ -29,11 +29,23 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
         private TerminService ts = new TerminService();
         private List<PacijentDTO> pacijenti = new List<PacijentDTO>();
         private Dictionary<int, int> ids = new Dictionary<int, int>();
+<<<<<<< HEAD
         private List<LekarDTO> lekari = new List<LekarDTO>();
         List<LekarDTO> slobodniLekari = new List<LekarDTO>();
         private List<ProstorijaDTO> slobodneProstorije;
         private List<ProstorijaDTO> prostorije = new List<ProstorijaDTO>();
         private List<TerminDTO> alternativniTermini = new List<TerminDTO>();
+=======
+        private ObservableCollection<Termin> pregledi;
+        private PacijentService ps = new PacijentService();
+        private LekarRepozitorijum lekariDat = new LekarRepozitorijum();
+        private List<Lekar> lekari = new List<Lekar>();
+        List<Lekar> slobodniLekari = new List<Lekar>();
+        private ObservableCollection<Prostorija> slobodneProstorije;
+        private ObservableCollection<Prostorija> prostorije = new ObservableCollection<Prostorija>();
+        private ProstorijaRepozitorijum pRep = ProstorijaRepozitorijum.Instance;
+        private ObservableCollection<Termin> alternativniTermini;
+>>>>>>> izmenalek
         private bool kardio ;
         private bool neuro;
         private TerminController controller = new TerminController();

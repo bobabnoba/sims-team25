@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace Service
 {
@@ -43,8 +44,25 @@ namespace Service
             {
                 ObservableCollection<Korisnik> lista = new ObservableCollection<Korisnik>(kr.DobaviSve());
                 Korisnik upravnik = (Korisnik)lista.FirstOrDefault(s => s.Username.Equals(unos.Username));
-                if (upravnik != null) {
-                    return upravnik;
+                if (upravnik != null)
+                {
+                    Korisnik ulogovani = (Korisnik)lista.FirstOrDefault(s => (s.Username.Equals(unos.Username) && s.Password.Equals(unos.Password)));
+                    if (ulogovani != null)
+                    {
+                        return ulogovani;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Pogrešna šifra", "Greška");
+                        return null;
+                    }
+
+
+                }
+                else
+                {
+                    MessageBox.Show("Pogrešno korisničko ime", "Greška");
+                    return null;
                 }
             }
 

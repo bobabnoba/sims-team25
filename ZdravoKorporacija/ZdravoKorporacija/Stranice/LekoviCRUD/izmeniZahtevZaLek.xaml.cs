@@ -27,7 +27,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
         LekServis lekServis = new LekServis();
         DodavanjeAlternativnihLekova dodavanjeAlternativnih;
         IzborLekaraZaPotvrdu izborLekaraZaPotvrdu;
-        public ObservableCollection<Lek> lekici;
+        public ObservableCollection<LekDTO> lekici;
         public ObservableCollection<Lekar> lekari;
         public ZahtevLek zl;
 
@@ -35,7 +35,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
         {
             InitializeComponent();
             zl = zahtevLek;
-            lekici = new ObservableCollection<Lek>();
+            lekici = new ObservableCollection<LekDTO>();
             lekari = new ObservableCollection<Lekar>();
             List<int> potvrda = new List<int>();
             for (int i = 1; i <= 10; i++)
@@ -53,21 +53,12 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            ObservableCollection<Lek> alterantivni = dodavanjeAlternativnih.alternativniLekovi;
-
-
+            ObservableCollection<LekDTO> alterantivni = dodavanjeAlternativnih.alternativniLekovi;
             LekDTO lek = new LekDTO(0, textBoxProizvodjac.Text, textBoxSastojci.Text, textBoxPojave.Text, textBoxNazivLeka.Text);
 
             int neophodno = (int)comboBoxBrojPotvrda.SelectedItem;
 
             List<LekDTO> alekoviDTO = new List<LekDTO>();
-
-            foreach (Lek lekD in alterantivni)
-            {
-                LekDTO le = new LekDTO(lekD.Id, lekD.Proizvodjac, lekD.Sastojci, lekD.NusPojave, lekD.NazivLeka);
-                alekoviDTO.Add(le);
-                Debug.WriteLine(le.NazivLeka);
-            }
 
             ObservableCollection<Lekar> izabrani = izborLekaraZaPotvrdu.izabraniLekari;
             List<Lekar> lekariIzabrani = new List<Lekar>();
@@ -82,24 +73,8 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
             zahtevLekDTO.lekari = lekariIzabrani;
             IDRepozitorijum datoteka = new IDRepozitorijum("iDMapZahtevZaLek");
             Dictionary<int, int> ids = datoteka.dobaviSve();
-
-            int id = 0;
-            for (int i = 0; i < 1000; i++)
-            {
-                if (ids[i] == 0)
-                {
-                    id = i;
-                    ids[i] = 1;
-                    break;
-                }
-            }
-
-            int zahtevId = id;
-
-            zahtevLekDTO.Id = zahtevId;
-
-            lekServis.ObrisiZahtevZaLek(zl,ids);
-            lekServis.DodajZahtevLeka(zahtevLekDTO, ids);
+            lekServis.ObrisiZahtevZaLek(zl);
+            lekServis.DodajZahtevLeka(zahtevLekDTO);
             this.Close();
 
         }

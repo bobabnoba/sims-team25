@@ -2,6 +2,7 @@
 using Service;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,28 +13,29 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ZdravoKorporacija.Controller;
+using ZdravoKorporacija.DTO;
 
 namespace ZdravoKorporacija.Stranice.DinamickaOpremaCRUD
 {
     /// <summary>
     /// Interaction logic for dinamickaOpremaStart.xaml
     /// </summary>
-    public partial class dinamickaOpremaStart : Window
+    public partial class dinamickaOpremaStart : Page
     {
-      
 
+        UpravnikController upravnikKontroler = new UpravnikController();
+        ObservableCollection<DinamickaOpremaDTO> dinamickaOpremaDTO;
         public dinamickaOpremaStart()
         {
             InitializeComponent();
-            UpravnikController uc = new UpravnikController();
-            uc.DodajIzMagacinaDinamcike();
-            dgDinamickaOprema.ItemsSource = DinamickaOpremaRepozitorijum.Instance.magacinDinamickaOprema;
+            dinamickaOpremaDTO = upravnikKontroler.PregledMagacinaDinamcikeDTO();
+            dgDinamickaOprema.ItemsSource = dinamickaOpremaDTO;
             
         }
 
         private void dodaj(object sender, RoutedEventArgs e)
         {
-            dinamickaOpremaPremestanjeIzMagacina dpm = new dinamickaOpremaPremestanjeIzMagacina();
+            dinamickaOpremaPremestanjeIzMagacina dpm = new dinamickaOpremaPremestanjeIzMagacina(dinamickaOpremaDTO);
             dpm.Show();
         }
 

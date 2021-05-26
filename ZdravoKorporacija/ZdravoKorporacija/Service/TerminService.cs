@@ -6,6 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Konverteri;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
+using ZdravoKorporacija.DTO;
 
 namespace ZdravoKorporacija.Model
 {
@@ -25,10 +28,11 @@ namespace ZdravoKorporacija.Model
         private ProstorijaService prostorijaServis = new ProstorijaService();
         private RadniDanService daniServis = new RadniDanService();
 
+       
         public Termin FindOpByPocetak(DateTime poc)
         {
-            TerminRepozitorijum datoteka = new TerminRepozitorijum();
-            List<Termin> termini = datoteka.dobaviSve();
+           terminRepozitorijum  = new TerminRepozitorijum();
+            List<Termin> termini = terminRepozitorijum .dobaviSve();
             foreach (Termin t in termini)
             {
                 if (t.Pocetak == poc && t.Tip == TipTerminaEnum.Operacija)
@@ -40,8 +44,8 @@ namespace ZdravoKorporacija.Model
 
         public List<Termin> FindPrByPocetak(DateTime poc)
         {
-            TerminRepozitorijum datoteka = new TerminRepozitorijum();
-            List<Termin> termini = datoteka.dobaviSve();
+            terminRepozitorijum  = new TerminRepozitorijum();
+            List<Termin> termini = terminRepozitorijum .dobaviSve();
             List<Termin> povratna = new List<Termin>();
             foreach (Termin t in termini)
             {
@@ -54,20 +58,34 @@ namespace ZdravoKorporacija.Model
 
         public void DodajTermin(TerminDTO dto)
         {
-            TerminRepozitorijum datoteka = new TerminRepozitorijum();
-            List<Termin> termini = datoteka.dobaviSve();
+            terminRepozitorijum  = new TerminRepozitorijum();
+            List<Termin> termini =terminRepozitorijum .dobaviSve();
             termini.Add(DTO2Model(dto));
 
         }
 
         public bool ZakaziTermin(Termin termin, Dictionary<int, int> ids)
         {
-            TerminRepozitorijum datoteka = new TerminRepozitorijum();
-            List<Termin> termini = datoteka.dobaviSve();
+            terminRepozitorijum  = new TerminRepozitorijum();
+            List<Termin> termini = terminRepozitorijum .dobaviSve();
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
 
             termini.Add(termin);
-            datoteka.sacuvaj(termini);
+            terminRepozitorijum .sacuvaj(termini);
+            datotekaID.sacuvaj(ids);
+
+            return true;
+        }
+
+        public bool ZakaziTerminDTO(TerminDTO terminDTO, Dictionary<int, int> ids)
+        {
+            Termin termin = new Termin(terminDTO); 
+            terminRepozitorijum  = new TerminRepozitorijum();
+            List<Termin> termini = terminRepozitorijum .dobaviSve();
+            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
+
+            termini.Add(termin);
+           terminRepozitorijum .sacuvaj(termini);
             datotekaID.sacuvaj(ids);
 
             return true;
@@ -75,15 +93,15 @@ namespace ZdravoKorporacija.Model
 
         public bool AzurirajTermin(Termin termin)
         {
-            TerminRepozitorijum datoteka = new TerminRepozitorijum();
-            List<Termin> termini = datoteka.dobaviSve();
+           terminRepozitorijum  = new TerminRepozitorijum();
+            List<Termin> termini = terminRepozitorijum .dobaviSve();
             foreach (Termin t in termini)
             {
                 if (t.Id.Equals(termin.Id))
                 {
                     termini.Remove(t);
                     termini.Add(termin);
-                    datoteka.sacuvaj(termini);
+                    terminRepozitorijum .sacuvaj(termini);
                     return true;
                 }
             }
@@ -94,8 +112,8 @@ namespace ZdravoKorporacija.Model
 
         public bool OtkaziTermin(Termin termin, Dictionary<int, int> ids)
         {
-            TerminRepozitorijum datoteka = new TerminRepozitorijum();
-            List<Termin> termini = datoteka.dobaviSve();
+           terminRepozitorijum  = new TerminRepozitorijum();
+            List<Termin> termini = terminRepozitorijum .dobaviSve();
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
 
             foreach (Termin t in termini)
@@ -103,7 +121,7 @@ namespace ZdravoKorporacija.Model
                 if (t.Id.Equals(termin.Id))
                 {
                     termini.Remove(t);
-                    datoteka.sacuvaj(termini);
+                    terminRepozitorijum .sacuvaj(termini);
                     datotekaID.sacuvaj(ids);
 
                     return true;
@@ -115,8 +133,8 @@ namespace ZdravoKorporacija.Model
 
         public Termin PregledTermina(int id)
         {
-            TerminRepozitorijum datoteka = new TerminRepozitorijum();
-            List<Termin> termini = datoteka.dobaviSve();
+           terminRepozitorijum  = new TerminRepozitorijum();
+            List<Termin> termini = terminRepozitorijum.dobaviSve();
             foreach (Termin t in termini)
             {
                 if (t.Id.Equals(id))
@@ -130,11 +148,28 @@ namespace ZdravoKorporacija.Model
 
         public List<Termin> PregledSvihTermina()
         {
-            TerminRepozitorijum datoteka = new TerminRepozitorijum();
-            List<Termin> termini = datoteka.dobaviSve();
+            List<Termin> termini = terminRepozitorijum.dobaviSve();
             return termini;
         }
+        public ObservableCollection<TerminDTO> PregledSvihTerminaDTO()
+        {
+            ObservableCollection<Termin> termini = new ObservableCollection<Termin>(terminRepozitorijum.dobaviSve());
+            ObservableCollection<TerminDTO> terminiDTO = new ObservableCollection<TerminDTO>();
+            foreach (Termin termin in termini)
+            {
+                terminiDTO.Add(konvertujEntitetUDTO(termin));
+            }
+            return terminiDTO;
 
+        }
+
+        public TerminDTO konvertujEntitetUDTO(Termin termin)
+        {
+            return new TerminDTO(termin);
+        }
+
+
+<<<<<<< HEAD
         public List<Termin> PregledSvihTermina2Model(List<TerminDTO> dtos)
         {
             List<Termin> modeli = new List<Termin>();
@@ -196,6 +231,8 @@ namespace ZdravoKorporacija.Model
 
         }
 
+=======
+>>>>>>> izmenalek
 
         public Termin InicijalizujTermin(int id, TipTerminaEnum tip, DateTime pocetak, Pacijent pacijent, Lekar lekar,
             Prostorija prostorija)
@@ -244,16 +281,26 @@ namespace ZdravoKorporacija.Model
             return slobodniLekari;
         }
 
+<<<<<<< HEAD
 
         public List<Prostorija> DobaviSlobodneProstorije(Termin termin)
         {
             List<Prostorija> slobodneProstorije = prostorijaServis.PregledSvihProstorija();
+=======
+        public ObservableCollection<Prostorija> DobaviSlobodneProstorije(ObservableCollection<Prostorija> prostorije, ObservableCollection<Termin> pregledi, Termin termin)
+        {
+            ObservableCollection<Prostorija> slobodneProstorije = prostorije;
+>>>>>>> izmenalek
 
             foreach (Termin t in PregledSvihTermina().ToArray())
             {
                 if (t.Pocetak.Equals(termin.Pocetak))
                 {
+<<<<<<< HEAD
                     foreach (Prostorija p in prostorijaServis.PregledSvihProstorija().ToArray())
+=======
+                    foreach (Prostorija p in prostorije)
+>>>>>>> izmenalek
                     {
                         if (t.prostorija.Id.Equals(p.Id))
                         {

@@ -2,6 +2,10 @@
 using AutoMapper;
 using Model;
 using ZdravoKorporacija.Controller;
+﻿using Model;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace ZdravoKorporacija.DTO
 {
@@ -31,6 +35,9 @@ namespace ZdravoKorporacija.DTO
             else this.Izvestaj = new IzvestajDTO();
         }
         public TerminDTO(int id, LekarDTO lekar, TipTerminaEnum tip, DateTime pocetak, double trajanje, ProstorijaDTO prostorija)
+        public TerminDTO() { }
+
+        public TerminDTO(int id, LekarDTO lekar, TipTerminaEnum tip, DateTime pocetak, double trajanje)
         {
             this.Id = id;
             this.Lekar = lekar;
@@ -38,34 +45,101 @@ namespace ZdravoKorporacija.DTO
             this.Pocetak = pocetak;
             this.Trajanje = 0.5;
             this.zdravstveniKarton = null;
-            this.prostorija = prostorija;
-            this.Izvestaj = null;
+            this.prostorija = null;
+            this.izvestaj = null;
         }
 
-        public TerminDTO(ZdravstveniKarton zdravstveniKarton1, ProstorijaDTO prostorijaDTO, LekarDTO lekarDTO, TipTerminaEnum tip, DateTime pocetak, double v, Izvestaj izvestaj)
+
+        public TerminDTO(ZdravstveniKartonDTO zdravstveniKarton, ProstorijaDTO prostorija, LekarDTO Lekar, TipTerminaEnum tip, DateTime pocetak, double trajanje, Izvestaj izvestaj)
         {
-            this.zdravstveniKarton1 = zdravstveniKarton1;
-            this.prostorijaDTO = prostorijaDTO;
-            this.lekarDTO = lekarDTO;
+            this.izvestaj = izvestaj;
+            this.zdravstveniKarton = zdravstveniKarton;
+            this.prostorija = prostorija;
+            this.Lekar = Lekar;
             Tip = tip;
             Pocetak = pocetak;
-            this.v = v;
-            this.izvestaj = izvestaj;
+            Trajanje = trajanje;
         }
 
+        public TerminDTO(ProstorijaDTO prostorija, DateTime pocetak)
+        {
+            this.prostorija = prostorija;
+            Pocetak = pocetak;
+        }
+
+        public TerminDTO(Termin termin)
+        {
+            this.izvestaj = termin.izvestaj;
+            this.zdravstveniKarton = new ZdravstveniKartonDTO( termin.zdravstveniKarton);
+            this.prostorija = new ProstorijaDTO(termin.prostorija);
+            this.Lekar = new LekarDTO(termin.Lekar);
+            Tip = termin.Tip;
+            Pocetak = termin.Pocetak;
+            Trajanje = termin.Trajanje;
+        }
+
+
+        public Izvestaj izvestaj;
+        public ZdravstveniKartonDTO zdravstveniKarton;
+
+        /// <pdGenerated>default parent getter</pdGenerated>
+        public ZdravstveniKartonDTO GetZdravstveniKarton()
+        {
+            return zdravstveniKarton;
+        }
+
+        /// <pdGenerated>default parent setter</pdGenerated>
+        /// <param>newZdravstveniKarton</param>
+        public void SetZdravstveniKarton(ZdravstveniKartonDTO newZdravstveniKarton)
+        {
+            if (this.zdravstveniKarton != newZdravstveniKarton)
+            {
+                if (this.zdravstveniKarton != null)
+                {
+                    ZdravstveniKartonDTO oldZdravstveniKarton = this.zdravstveniKarton;
+                    this.zdravstveniKarton = null;
+                    oldZdravstveniKarton.RemoveTermin(this);
+                }
+                if (newZdravstveniKarton != null)
+                {
+                    this.zdravstveniKarton = newZdravstveniKarton;
+                    this.zdravstveniKarton.AddTermin(this);
+                }
+            }
+        }
+        public ProstorijaDTO prostorija { get; set; }
+        public LekarDTO Lekar { get; set; }
+
+        /// <pdGenerated>default parent getter</pdGenerated>
+        public LekarDTO GetLekar()
+        {
+            return Lekar;
+        }
+
+        /// <pdGenerated>default parent setter</pdGenerated>
+        /// <param>newLekar</param>
+        public void SetLekar(LekarDTO newLekar)
+        {
+            if (this.Lekar != newLekar)
+            {
+                if (this.Lekar != null)
+                {
+                    LekarDTO oldLekar = this.Lekar;
+                    this.Lekar = null;
+                    oldLekar.RemoveTermin(this);
+                }
+                if (newLekar != null)
+                {
+                    this.Lekar = newLekar;
+                    this.Lekar.AddTermin(this);
+                }
+            }
+        }
         public int Id { get; set; }
-    public TipTerminaEnum Tip { get; set; }
-    public DateTime Pocetak { get; set; }
-    public double Trajanje { get; set; }
-    public ProstorijaDTO prostorija { get; set; }
-    public LekarDTO Lekar { get; set; }
-    public ZdravstveniKartonDTO zdravstveniKarton { get; set; }
-
-    public IzvestajDTO Izvestaj { get; set; }
-
+        public TipTerminaEnum Tip { get; set; }
+        public DateTime Pocetak { get; set; }
+        public double Trajanje { get; set; }
         public bool hitno { get; set; }
+
     }
-    
-
-
 }

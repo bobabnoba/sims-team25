@@ -29,9 +29,9 @@ namespace ZdravoKorporacija.Stranice.Uput
         private LekarRepozitorijum lekariDat = new LekarRepozitorijum();
         private List<Lekar> lekari = new List<Lekar>();
         List<Lekar> slobodniLekari = new List<Lekar>();
-        private List<Prostorija> slobodneProstorije;
-        private List<Prostorija> prostorije = new List<Prostorija>();
-        private ProstorijaRepozitorijum pRep = new ProstorijaRepozitorijum();
+        private ObservableCollection<Prostorija> slobodneProstorije;
+        private ObservableCollection<Prostorija> prostorije = new ObservableCollection<Prostorija>();
+        private ProstorijaRepozitorijum pRep = ProstorijaRepozitorijum.Instance;
         private ObservableCollection<Termin> alternativniTermini;
         Boolean slobodan = false;
         DateTime slobodanPocetak;
