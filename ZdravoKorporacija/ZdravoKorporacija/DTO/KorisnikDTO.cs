@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using Model;
 
 namespace ZdravoKorporacija.DTO
 {
@@ -12,6 +12,10 @@ namespace ZdravoKorporacija.DTO
         {
             this.Ime = Ime;
             this.Prezime = Prezime;
+        }
+
+        public KorisnikDTO(string Ime, string Prezime, long jmbg) : this(Ime, Prezime)
+        {
         }
 
         public KorisnikDTO(string ime, string prezime, Int64 jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, UlogaEnum uloga) : this(ime, prezime)

@@ -40,7 +40,6 @@ namespace Model
             Uloga = uloga;
         }
 
-
         public String Ime { get; set; }
         public String Prezime { get; set; }
         public Int64 Jmbg { get; set; }

@@ -12,6 +12,7 @@ using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Stranice;
 using ZdravoKorporacija.Stranice.LekarCRUD;
 using ZdravoKorporacija.Stranice.Logovanje;
+using ZdravoKorporacija.Stranice.PacijentCRUD;
 using ZdravoKorporacija.Stranice.SekretarCRUD;
 using ZdravoKorporacija.Stranice.UpravnikCRUD;
 
@@ -127,7 +128,7 @@ namespace ZdravoKorporacija
         }
         private void openPacijentFrame(object sender, RoutedEventArgs e)
         {
-            pacijentLogin pl = new pacijentLogin(UlogaEnum.Pacijent);
+            Login pl = new Login(UlogaEnum.Pacijent);
             pl.Show();
         }
     }

@@ -6,11 +6,14 @@ using Repository;
 using ZdravoKorporacija.DTO;
 using System;
 using System.Windows.Navigation;
+using System;
+using ZdravoKorporacija.DTO;
 
 namespace Service
 {
    public class PacijentService
     {
+        private PacijentRepozitorijum pacRepo = new PacijentRepozitorijum();
         private ZdravstveniKartonServis zks = new ZdravstveniKartonServis();
         public Pacijent NadjiPacijentaPoJMBG(long jmbg)
         {
@@ -157,6 +160,7 @@ namespace Service
             List<Pacijent> pacijenti = datoteka.dobaviSve();
             return pacijenti;
         }
+<<<<<<< HEAD
         public List<Pacijent> PregledSvihPacijenata2Model(List<PacijentDTO> dtos)
         {
 
@@ -236,5 +240,44 @@ namespace Service
         
 
         }
+=======
+        
+       public Pacijent dobaviUlogovanog(string imeTextText, string lozinkaTextPassword)
+       {
+           return (Pacijent) pacRepo.dobaviSve()
+               .FirstOrDefault(p => p.Username.Equals(imeTextText) && p.Password.Equals(lozinkaTextPassword));
+       }
+
+       public void provjeriStatus(Pacijent pacijent)
+       {
+           Ban b = BanRepozitorijum.Instance.dobavi(pacijent.Jmbg);
+
+           if (b.otkazanCnt >= 3 || b.zakazanCnt >= 3 || b.pomerenCnt >= 3)
+           {
+               pacijent.banovan = true;
+               b.trenutakBanovanja = DateTime.Now.ToString();
+
+               b.otkazanCnt = 0;
+               b.pomerenCnt = 0;
+               b.zakazanCnt = 0;
+           }
+
+           // DateTime.Compare(DateTime.Now, DateTime.Parse(b.trenutakBanovanja).AddMinutes(3)) >= 0
+           if (pacijent.banovan && DateTime.Compare(DateTime.Now, DateTime.Parse(b.trenutakBanovanja).AddMinutes(3)) >= 0)
+           {
+               pacijent.banovan = false;
+           }
+
+           this.AzurirajPacijenta(pacijent);
+           BanRepozitorijum.Instance.sacuvaj(b);
+
+       }
+
+       public Pacijent pronadjiEntitetZaDTO(PacijentDTO dto)
+       {
+           return pacRepo.dobaviSve()
+               .FirstOrDefault(p => p.Username.Equals(dto.korisnickoIme) && p.Password.Equals(dto.lozinka));
+       }
+>>>>>>> cleancode-pacijent
     }
 

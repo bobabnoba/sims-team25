@@ -10,10 +10,23 @@ using System.Collections.ObjectModel;
 
 namespace Model
 {
-
     public class Pacijent : Korisnik
     {
         public Pacijent() : base() { }
+
+        public Pacijent(String username, String password)
+        {
+            this.Username = username;
+            this.Password = password;
+        }
+
+        public Pacijent(String username, String password, ZdravstveniKarton zk, Int64 jmbg)
+        {
+            this.Username = username;
+            this.Password = password;
+            this.ZdravstveniKarton = zk;
+            this.Jmbg = jmbg;
+        }
 
         public Pacijent(ZdravstveniKarton zdravstveniKarton, bool guest, string ime, string prezime, int jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password, UlogaEnum uloga) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password, uloga)
         {
@@ -22,42 +35,11 @@ namespace Model
             Guest = guest;
         }
 
-        public Pregled ZakaziPregled()
-        {
-            // TODO: implement
-            return null;
-        }
-
-        public void AzurirajPregled(Termin pregled)
-        {
-            // TODO: implement
-        }
-
-        public bool OtkaziPregled(Termin pregled)
-        {
-            // TODO: implement
-            return false;
-        }
-
-        public ArrayList UvidUPreglede()
-        {
-            // TODO: implement
-            return null;
-        }
-
         public List<Termin> termin;
-
-
-        public Pacijent(String Ime, String Prezime) : base(Ime, Prezime)
-        {
-
-        }
 
         public Pacijent(string ime, string prezime, Int64 jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password, UlogaEnum uloga) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password, uloga)
         {
         }
-
-
 
         /// <pdGenerated>default getter</pdGenerated>
         public List<Termin> GetTermin()

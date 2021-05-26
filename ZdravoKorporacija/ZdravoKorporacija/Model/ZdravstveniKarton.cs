@@ -13,6 +13,7 @@ namespace Model
     {
         public System.Collections.ArrayList izvestajOHospitalizaciji;
 
+        public ZdravstveniKarton(){}
   
         public ZdravstveniKarton(Pacijent patient, long id, StanjePacijentaEnum zdravstvenoStanje, string alergije, KrvnaGrupaEnum krvnaGrupa, string vakcine)
         {
@@ -27,9 +28,15 @@ namespace Model
             KrvnaGrupa = krvnaGrupa;
             Vakcine = vakcine;
         }
+        //public ZdravstveniKartonDTO(List<Recept> recept, List<IstorijaBolesti> istorijaBolesti, PacijentDTO pacijent, long id)
 
-        public ZdravstveniKarton()
+        public ZdravstveniKarton(List<Recept> recept, Pacijent pacijent, long id)
         {
+            this.Id = id;
+            this.patient = pacijent;
+            //this.istorijaBolesti = istorijaBolesti;
+            this.recept = new ObservableCollection<Recept>();
+            if(recept != null) this.recept = new ObservableCollection<Recept>(recept);
         }
 
 

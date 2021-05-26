@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DTO
+namespace ZdravoKorporacija.DTO
 {
     class RadniDanDTO
     {

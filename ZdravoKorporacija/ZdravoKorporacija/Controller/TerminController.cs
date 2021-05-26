@@ -5,6 +5,13 @@ using System.Text;
 using Model;
 using Service;
 using ZdravoKorporacija.DTO;
+﻿using Model;
+using Service;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Konverteri;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Controller
@@ -208,3 +215,47 @@ namespace ZdravoKorporacija.Controller
     }
 
 }
+    
+        private PacijentController pacijentKontroler = new PacijentController();
+        private TerminKonverter terminKonverter = new TerminKonverter();
+        private PacijentKonverter pacijentKonverter = new PacijentKonverter();
+
+       
+        
+        public IEnumerable<TerminDTO> dobaviListuDTOtermina(PacijentDTO pacijentDTO)
+            => terminServis.PregledSvihTerminaPacijenta(pacijentKontroler.konvertujDTOuEntitet(pacijentDTO)).Select(entitet 
+                                                                            => terminKonverter.KonvertujEntitetUDTO(entitet)).ToList();
+        public IEnumerable<TerminDTO> dobaviListuDTOProslihtermina(PacijentDTO pacijentDTO)
+            => terminServis.PregledIstorijeTerminaPacijenta(pacijentKontroler.konvertujDTOuEntitet(pacijentDTO)).Select(entitet 
+                                                                            => terminKonverter.KonvertujEntitetUDTO(entitet)).ToList();
+
+        public Boolean zakaziPregled(TerminDTO terminDTO, PacijentDTO pacijentDTO)
+        {
+            Termin t = terminKonverter.KonvertujDTOuEntitet(terminDTO);
+            Pacijent p = pacijentServis.pronadjiEntitetZaDTO(pacijentDTO);
+
+            return terminServis.zakaziPregled(t, p);
+        }
+
+        public void otkaziPregled(TerminDTO terminDTO, PacijentDTO pacijentDTO)
+        {
+            Termin t = terminKonverter.KonvertujDTOuEntitet(terminDTO);
+            Pacijent p = pacijentServis.pronadjiEntitetZaDTO(pacijentDTO);
+
+            terminServis.OtkaziTerminPacijent(t, p);
+        }
+
+        public bool pomeriPregled(TerminDTO noviTermindDTO, PacijentDTO pacijentDTO)
+        {
+            Termin t = terminKonverter.KonvertujDTOuEntitet(noviTermindDTO);
+            Pacijent p = pacijentServis.pronadjiEntitetZaDTO(pacijentDTO);
+            return terminServis.AzurirajTerminPacijent(t, p);
+        }
+
+      
+
+    }
+
+
+}
+

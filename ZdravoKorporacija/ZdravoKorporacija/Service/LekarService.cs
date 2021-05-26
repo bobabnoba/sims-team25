@@ -14,8 +14,8 @@ namespace Service
         public List<Lekar> PregledSvihLekara()
         {
             LekarRepozitorijum datoteka = new LekarRepozitorijum();
-            List<Lekar> lekovi = datoteka.dobaviSve();
-            return lekovi;
+            List<Lekar> lekari = datoteka.dobaviSve();
+            return lekari;
         }
         public bool ObrisiLekara(Lekar lekar)
         {

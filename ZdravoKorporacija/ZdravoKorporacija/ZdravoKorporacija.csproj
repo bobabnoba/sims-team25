@@ -7,15 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\output-onlinepngtools.png" />
     <None Remove="Stranice\LekarCRUD\add.png" />
     <None Remove="Stranice\LekarCRUD\edit.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\output-onlinepngtools.png" />
     <Resource Include="Stranice\LekarCRUD\add.png" />
     <Resource Include="Stranice\LekarCRUD\edit.png" />
   </ItemGroup>

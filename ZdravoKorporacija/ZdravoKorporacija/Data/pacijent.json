@@ -252,7 +252,7 @@
             }
           ],
           "patient": null,
-          "Id": 5,
+          "Id": 3214567890122,
           "ZdravstvenoStanje": 3,
           "Alergije": "Polen,Mleko",
           "KrvnaGrupa": 8,
@@ -262,8 +262,8 @@
           "inventar": [],
           "statickaOprema": null,
           "dinamickaOprema": null,
-          "Id": 1,
-          "Naziv": "soba12",
+          "Id": 0,
+          "Naziv": "soba11",
           "Tip": 1,
           "Slobodna": false,
           "Sprat": 1
@@ -337,7 +337,7 @@
               "izvestaj": null,
               "zdravstveniKarton": null,
               "prostorija": null,
-              "Id": 0,
+              "Id": 2,
               "Tip": 0,
               "Pocetak": "0001-01-01T00:00:00",
               "Trajanje": 0.0
@@ -515,8 +515,7 @@
               "Pocetak": "2021-05-01T00:00:00"
             },
             {
-              "lek": null,
-              "lekar": null,
+              "izvestaj": null,
               "zdravstveniKarton": null,
               "Id": 1,
               "Doziranje": "3",
@@ -750,7 +749,12 @@
         "hitno": false
       },
       {
-        "izvestaj": null,
+        "izvestaj": {
+          "termin": null,
+          "Id": 0,
+          "Opis": "Simptomi ukazuju na umor i prehladu. Preporucuje se odmor i konzumacija vitamina u vecoj dozi.\r\n",
+          "Simptomi": "Pacijent ima temperaturu 37.2 i oseca malaksalost."
+        },
         "zdravstveniKarton": {
           "izvestajOHospitalizaciji": [],
           "istorijaBolesti": [],
@@ -1186,6 +1190,62 @@
         "Datum": "2021-05-25T23:23:42.4724221+02:00",
         "Tip": 1,
         "Sadrzaj": "Zakazan termin: Operacija, vreme: 5/29/2021 8:00:00 AM",
+        "Status": "Neprocitano"
+      },
+      {
+        "Id": 5,
+        "Datum": "2021-05-23T15:18:19.1732549+02:00",
+        "Tip": 1,
+        "Sadrzaj": "Zakazan termin: Pregled, vreme: 5/4/2021 10:30:00 AM",
+        "Status": "Neprocitano"
+      },
+      {
+        "Id": 6,
+        "Datum": "2021-05-23T15:18:19.2455027+02:00",
+        "Tip": 1,
+        "Sadrzaj": "Zakazan termin: Pregled, vreme: 7/2/2021 8:00:00 AM",
+        "Status": "Neprocitano"
+      },
+      {
+        "Id": 7,
+        "Datum": "2021-05-25T00:22:00",
+        "Tip": 0,
+        "Sadrzaj": "Popijte lek: r",
+        "Status": "Neprocitano"
+      },
+      {
+        "Id": 8,
+        "Datum": "2021-05-26T00:38:00",
+        "Tip": 0,
+        "Sadrzaj": "Popij vitamine!!!!",
+        "Status": "Neprocitano"
+      },
+      {
+        "Id": 9,
+        "Datum": "2021-05-26T00:44:00",
+        "Tip": 0,
+        "Sadrzaj": "Lezi da spavas u 12.",
+        "Status": "Neprocitano"
+      },
+      {
+        "Id": 10,
+        "Datum": "2021-05-26T03:11:00",
+        "Tip": 0,
+        "Sadrzaj": "Popij vitamine!",
+        "Status": "Neprocitano"
+      },
+      {
+        "Id": 11,
+        "Datum": "2021-05-26T03:11:00",
+        "Tip": 0,
+        "Sadrzaj": "Popij vitamine!",
+        "Status": "Neprocitano"
+      },
+      {
+        "Id": 12,
+        "Datum": "2021-05-26T03:13:00",
+        "Tip": 0,
+        "Sadrzaj": "nmp",
         "Status": "Neprocitano"
       }
     ],
