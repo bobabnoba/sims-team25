@@ -17,6 +17,8 @@ namespace Model
         public String NusPojave { get; set; }
         public String NazivLeka { get; set; }
 
+        public String Alergeni { get; set; }
+
         public List<Lek> alternativniLekovi;
 
         /// <pdGenerated>default getter</pdGenerated>

@@ -27,11 +27,15 @@ namespace ZdravoKorporacija.Controller
         }
         public bool ObrisiRecept(PacijentDTO pacijent, ReceptDTO recept)
         {
-           return pacijentServis.ObrisiRecept(pacijent, recept);
+            return pacijentServis.ObrisiRecept(pacijent, recept);
         }
         public List<PacijentDTO> PregledSvihPacijenata2()
         {
             return pacijentServis.PregledSvihPacijenata2();
+        }
+        public bool AzurirajPacijenta(PacijentDTO pacijent)
+        {
+            return pacijentServis.AzurirajPacijenta(pacijent);
         }
     }
 }

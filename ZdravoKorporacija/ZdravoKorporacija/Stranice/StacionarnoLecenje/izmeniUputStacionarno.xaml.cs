@@ -51,7 +51,18 @@ namespace ZdravoKorporacija.Stranice.StacionarnoLecenje
             date.SelectedDate = stacionarno.Pocetak;
             time.SelectedValue = stacionarno.Pocetak.ToString("HH:mm");
             trajanjeText.Text = stacionarno.Trajanje;
-                cbProstorija.SelectedItem = stacionarno.Prostorija;
+            foreach (ProstorijaDTO p in prostorijeController.PregledSvihProstorija2())
+            {
+                if (stacionarno.Prostorija == null)
+                {
+                    break;
+                }
+                if (p.Id == stacionarno.Prostorija.Id)
+                {
+                    cbProstorija.SelectedItem = p;
+                }
+            }
+            cbProstorija.SelectedItem = stacionarno.Prostorija.Naziv;
             }
 
             private void potvrdi(object sender, RoutedEventArgs e)
@@ -103,10 +114,10 @@ namespace ZdravoKorporacija.Stranice.StacionarnoLecenje
                         return;
                     }
                 }
-
-                sl.AzurirajStacionarnoLecenje(stacionarnoLecenje);
-            //uputiZaStacionarno.uputi.Remove(stacionarno);
-            //uputiZaStacionarno.uputi.Add(stacionarnoLecenje);
+            uputiZaStacionarno.uputi.Remove(stacionarno);
+            sl.AzurirajStacionarnoLecenje(stacionarnoLecenje);
+               
+                
 
                 this.Close();
             }

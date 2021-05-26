@@ -14,5 +14,14 @@
     "Sastojci": "z",
     "NusPojave": "zz",
     "NazivLeka": "z"
+  },
+  {
+    "alternativniLekovi": [],
+    "Id": 0,
+    "Proizvodjac": "da",
+    "Sastojci": "z",
+    "NusPojave": "zz",
+    "NazivLeka": "daadad",
+    "Alergeni" :  "Polen"
   }
 ]

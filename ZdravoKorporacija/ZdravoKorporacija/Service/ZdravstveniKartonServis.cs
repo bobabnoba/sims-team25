@@ -3,6 +3,7 @@ using Model;
 using System.Collections.Generic;
 using Repository;
 using ZdravoKorporacija.Model;
+using ZdravoKorporacija.DTO;
 
 namespace Service
 {
@@ -28,6 +29,28 @@ namespace Service
             datotekaID.sacuvaj(id_map);
             return true;
         }
+
+        public bool KreirajZdravstveniKarton(ZdravstveniKartonDTO ZdravstveniKarton, Dictionary<int, int> id_map)
+        {
+            ZdravstveniKartonRepozitorijum datoteka = new ZdravstveniKartonRepozitorijum();
+            List<ZdravstveniKarton> zdravstveniKartoni = datoteka.DobaviSve();
+
+            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapZdravstveniKarton");
+
+
+            foreach (ZdravstveniKarton pr in zdravstveniKartoni)
+            {
+                if (pr.Id.Equals(ZdravstveniKarton.Id))
+                {
+                    return false;
+                }
+            }
+            zdravstveniKartoni.Add(new ZdravstveniKarton(ZdravstveniKarton));
+            datoteka.Sacuvaj(zdravstveniKartoni);
+            datotekaID.sacuvaj(id_map);
+            return true;
+        }
+
 
         public bool KreirajZdravstveniKartonJMBG(ZdravstveniKarton ZdravstveniKarton)
         {

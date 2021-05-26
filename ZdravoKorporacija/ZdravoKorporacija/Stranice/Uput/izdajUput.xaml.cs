@@ -1,10 +1,13 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using ZdravoKorporacija.Controller;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Stranice.Logovanje;
 
@@ -15,32 +18,30 @@ namespace ZdravoKorporacija.Stranice.Uput
     /// </summary>
     public partial class izdajUput : Window
     {
-        private TerminService terminServis = new TerminService();
+        private TerminController terminController = TerminController.Instance;
         private LekarRepozitorijum lekariDat = new LekarRepozitorijum();
-        private ProstorijaService prostorijeServis = new ProstorijaService();
+        private ProstorijaController prostorijeController = new ProstorijaController();
         private ZdravstveniKartonServis zdravstveniKartonServis = new ZdravstveniKartonServis();
-        private PacijentService pacijentiServis = new PacijentService();
-        private List<Pacijent> pacijenti = new List<Pacijent>();
+        private PacijentController pacijentiController =  PacijentController.Instance;
+        private List<PacijentDTO> pacijenti = new List<PacijentDTO>();
         private List<Lekar> lekari = new List<Lekar>();
-        private List<Termin> termini = new List<Termin>();
-        private List<Prostorija> prostorije = new List<Prostorija>();
+        private List<TerminDTO> termini = new List<TerminDTO>();
+        private List<ProstorijaDTO> prostorije = new List<ProstorijaDTO>();
         private List<Lekar> lekariZaPrikaz = new List<Lekar>();
 
-        private Termin p;
-        private ObservableCollection<Termin> pregledi;
+        private TerminDTO p;
+        private ObservableCollection<TerminDTO> pregledi;
         String now = DateTime.Now.ToString("hh:mm:ss tt");
         DateTime today = DateTime.Today;
 
         private Dictionary<int, int> ids = new Dictionary<int, int>();
 
-
-
-        public izdajUput(ObservableCollection<Termin> termini, Dictionary<int, int> ids)
+        public izdajUput(ObservableCollection<TerminDTO> termini, Dictionary<int, int> ids)
         {
             InitializeComponent();
 
-            p = new Termin();
-            pacijenti = pacijentiServis.PregledSvihPacijenata();
+            p = new TerminDTO();
+            pacijenti = pacijentiController.PregledSvihPacijenata2();
             cbPacijent.ItemsSource = pacijenti;
             pregledi = termini;
 
@@ -56,17 +57,14 @@ namespace ZdravoKorporacija.Stranice.Uput
             lekariZaPrikaz.Remove(lekarLogin.lekar);
             Lekari.ItemsSource = lekariZaPrikaz;
 
-            prostorije = prostorijeServis.PregledSvihProstorija();
+            prostorije = prostorijeController.PregledSvihProstorija2();
             cbProstorija.ItemsSource = prostorije;
             p.Trajanje = 0.5;
-            //p.Id = pregledi.Count + 1;
-
-
         }
 
         private void potvrdi(object sender, RoutedEventArgs e)
         {
-            termini = terminServis.PregledSvihTermina();
+            termini = terminController.PregledSvihTermina2();
             int id = 0;
             for (int i = 0; i < 1000; i++)
             {
@@ -78,7 +76,7 @@ namespace ZdravoKorporacija.Stranice.Uput
                 }
             }
             p.Id = id;
-            Pacijent pac = (Pacijent)cbPacijent.SelectedItem;
+            PacijentDTO pac = (PacijentDTO)cbPacijent.SelectedItem;
             ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
             
 
@@ -117,7 +115,7 @@ namespace ZdravoKorporacija.Stranice.Uput
             }
             catch (InvalidCastException)
             { }
-            foreach (Termin ter in termini)
+            foreach (TerminDTO ter in termini)
             {
                 if (ter.Pocetak.Equals(p.Pocetak) && ter.prostorija.Equals(p.prostorija))
                 {
@@ -136,9 +134,9 @@ namespace ZdravoKorporacija.Stranice.Uput
 
 
 
-            ZdravstveniKarton zk = new ZdravstveniKarton(null, pac.Jmbg, StanjePacijentaEnum.None, null, KrvnaGrupaEnum.None, null);
+            ZdravstveniKartonDTO zk = new ZdravstveniKartonDTO(null, pac.Jmbg, StanjePacijentaEnum.None, null, KrvnaGrupaEnum.None, null);
 
-            p.prostorija = (Prostorija)cbProstorija.SelectedItem;
+            p.prostorija = (ProstorijaDTO)cbProstorija.SelectedItem;
             p.Lekar = (Lekar)Lekari.SelectedItem;
             if (pac.ZdravstveniKarton != null)
                 p.zdravstveniKarton = pac.ZdravstveniKarton;
@@ -146,23 +144,18 @@ namespace ZdravoKorporacija.Stranice.Uput
             {
                 p.zdravstveniKarton = zk;
                 pac.ZdravstveniKarton = zk;
-                //pac.ZdravstveniKarton.AddTermin(p);
-                zdravstveniKartonServis.KreirajZdravstveniKarton(pac.ZdravstveniKarton, ids);
+                zdravstveniKartonServis.KreirajZdravstveniKarton(new ZdravstveniKarton(pac.ZdravstveniKarton), ids);
             }
 
-            Termin tZaLjekara = new Termin();
-            tZaLjekara.Id = p.Id;
-            p.Lekar.AddTermin(tZaLjekara);
-            //p.zdravstveniKarton.AddTermin(tZaLjekara);
+            this.pregledi.Add(p);
+            //if (terminController.ZakaziTermin(p, ids))
+            //{
 
-            if (terminServis.ZakaziTermin(p, ids))
-            {
-                this.pregledi.Add(p);
-                lekariDat.sacuvaj(lekari);
-                //pacijentiDat.sacuvaj(pacijenti); // višakk?
-            }
-            pac.AddTermin(p);
-            pacijentiServis.AzurirajPacijenta(pac);
+            //    lekariDat.sacuvaj(lekari);
+            //}
+            //pac.AddTermin(p);
+            //pacijentiController.AzurirajPacijenta(pac);
+            terminController.izdajUput(pac, p);
             this.Close();
         }
 

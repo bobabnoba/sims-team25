@@ -14,8 +14,14 @@ namespace ZdravoKorporacija.Model
         TerminRepozitorijum tr = TerminRepozitorijum.Instance;
         IzvestajService iz = IzvestajService.Instance;
         PacijentService pacijentServis = PacijentService.Instance;
+        ZdravstveniKartonServis zdravstveniKartonServis = new ZdravstveniKartonServis();
+        LekarRepozitorijum lekariDat = LekarRepozitorijum.Instance;
+        List<Lekar> lekari = LekarRepozitorijum.Instance.dobaviSve();
         IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapIzvestaj");
         Dictionary<int, int> id_map = new Dictionary<int, int>();
+
+        IDRepozitorijum uputDat = new IDRepozitorijum("iDMapTermin");
+        Dictionary<int, int> id_uput = new Dictionary<int, int>();
 
 
         private static TerminService _instance;
@@ -30,6 +36,32 @@ namespace ZdravoKorporacija.Model
                 }
                 return _instance;
             }
+        }
+
+
+        public bool izdajUput(PacijentDTO pac, TerminDTO termin)
+        {
+            id_uput = uputDat.dobaviSve();
+            
+            int id = 0;
+            for (int i = 0; i < 1000; i++)
+            {
+                if (id_uput[i] == 0)
+                {
+                    id = i;
+                    id_uput[i] = 1;
+                    break;
+                }
+            }
+            termin.Id = id;
+            if (ZakaziTermin(termin, id_uput))
+            {
+                lekariDat.sacuvaj(lekari);
+            }
+            pac.AddTermin(termin);
+            pacijentServis.AzurirajPacijenta(pac);
+          
+            return true;
         }
 
         public bool IzdajAnamnezu(IzvestajDTO izvestaj,TerminDTO termin)
@@ -131,6 +163,19 @@ namespace ZdravoKorporacija.Model
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
             
             termini.Add(termin);
+            datoteka.sacuvaj(termini);
+            datotekaID.sacuvaj(ids);
+
+            return true;
+        }
+
+        public bool ZakaziTermin(TerminDTO termin, Dictionary<int, int> ids)
+        {
+            TerminRepozitorijum datoteka = new TerminRepozitorijum();
+            List<Termin> termini = datoteka.dobaviSve();
+            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
+
+            termini.Add(new Termin(termin));
             datoteka.sacuvaj(termini);
             datotekaID.sacuvaj(ids);
 

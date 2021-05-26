@@ -31,7 +31,6 @@ namespace Service
         IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapRecept");
         Dictionary<int, int> ids = new Dictionary<int, int>();
 
-
         public bool IzdajRecept(PacijentDTO pacijent, ReceptDTO recept)
         {
             ids = datotekaID.dobaviSve();

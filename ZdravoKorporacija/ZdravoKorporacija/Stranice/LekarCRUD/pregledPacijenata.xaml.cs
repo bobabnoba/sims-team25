@@ -29,7 +29,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             
             try
             {
-                foreach (Termin t in lekarStart.termini)
+                foreach (TerminDTO t in lekarStart.termini)
                 {
                     if (t.zdravstveniKarton!=null)
                     {
@@ -60,7 +60,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         }
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            lekarStart ls = new lekarStart();
+            lekarStart ls = new lekarStart(lekarLogin.lekar);
             ls.Show();
             this.Close();
         }

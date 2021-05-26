@@ -63,9 +63,14 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             
             izvestajGrid.ItemsSource = izvestaji;
             dodajAnamnezu.Visibility = Visibility.Hidden;
-            
-                    
-            
+
+            try
+            {
+                if (zk.Alergije != null)
+                    AlergijeListBox.ItemsSource = zk.Alergije.Split(",");
+            }
+            catch (NullReferenceException) { }
+
             terapijaGrid.ItemsSource = pac.ZdravstveniKarton.recept;
 
             this.DataContext = this;

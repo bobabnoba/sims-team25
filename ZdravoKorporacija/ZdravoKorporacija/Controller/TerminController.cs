@@ -28,6 +28,11 @@ namespace Controller
                 return _instance;
             }
         }
+
+        public bool izdajUput(PacijentDTO pac, TerminDTO termin)
+        {
+            return ts.izdajUput(pac,termin);
+        }
         public bool IzdajAnamnezu(IzvestajDTO izvestaj, TerminDTO termin)
         {
             return ts.IzdajAnamnezu(izvestaj, termin);
@@ -47,6 +52,12 @@ namespace Controller
         public bool ZakaziTermin(Termin termin, Dictionary<int, int> id_map)
         {
             ts.ZakaziTermin(termin,id_map);
+            return true;
+        }
+
+        public bool ZakaziTermin(TerminDTO termin, Dictionary<int, int> id_map)
+        {
+            ts.ZakaziTermin(termin, id_map);
             return true;
         }
 

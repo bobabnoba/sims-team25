@@ -100,7 +100,7 @@ namespace ZdravoKorporacija.Stranice.StacionarnoLecenje
             }
 
             sl.DodajStacionarnoLecenje(stacionarnoLecenje);
-            //uputiZaStacionarno.uputi.Add(stacionarnoLecenje);
+            uputiZaStacionarno.uputi.Add(stacionarnoLecenje);
 
             this.Close();
         }

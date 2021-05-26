@@ -6,12 +6,14 @@ using ZdravoKorporacija.Model;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Repository;
 using System.Collections;
+using System.Collections.ObjectModel;
 
 namespace Service
 {
    public class LekServis
    {
-      public bool DodajLek(Lek Lek, Dictionary<int, int> id_map)
+        LekRepozitorijum datoteka = LekRepozitorijum.Instance;
+        public bool DodajLek(Lek Lek, Dictionary<int, int> id_map)
       {
            
             LekRepozitorijum datoteka = LekRepozitorijum.Instance;
@@ -82,6 +84,18 @@ namespace Service
             LekRepozitorijum datoteka = LekRepozitorijum.Instance;
             List<Lek> lekovi = datoteka.DobaviSve();
             return lekovi;
+        }
+
+        public List<LekDTO> PregledSvihLekova2()
+        {
+            List<Lek> lekovi = datoteka.DobaviSve();
+            List<LekDTO> lekDTOs = new List<LekDTO>();
+            foreach (Lek l in lekovi)
+            {
+                lekDTOs.Add(new LekDTO(l));
+            }
+            return lekDTOs;
+       
         }
 
 

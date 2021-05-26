@@ -126,7 +126,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
         }
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            lekarStart ls = new lekarStart();
+            lekarStart ls = new lekarStart(lekarLogin.lekar);
             ls.Show();
             this.Close();
         }

@@ -14,11 +14,5 @@ namespace Service
             List<Lekar> lekovi = datoteka.dobaviSve();
             return lekovi;
         }
-
-        public void izdajRecept()
-        {
-
-        }
-
     }
 }

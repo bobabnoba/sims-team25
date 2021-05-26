@@ -45,7 +45,7 @@ namespace Model
                 if(termin.izvestaj!=null)
             this.izvestaj = new Izvestaj(termin.izvestaj);
             this.zdravstveniKarton = new ZdravstveniKarton(termin.zdravstveniKarton);
-            this.prostorija = termin.prostorija;
+            this.prostorija = new Prostorija(termin.prostorija);
             Lekar = termin.Lekar;
             Id = termin.Id;
             Tip = termin.Tip;

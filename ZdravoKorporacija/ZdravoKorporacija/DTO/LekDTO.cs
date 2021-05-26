@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -11,6 +12,8 @@ namespace ZdravoKorporacija.DTO
         public String Sastojci { get; set; }
         public String NusPojave { get; set; }
         public String NazivLeka { get; set; }
+
+        public String Alergeni { get; set; }
 
         public List<LekDTO> alternativniLekovi;
 
@@ -57,7 +60,8 @@ namespace ZdravoKorporacija.DTO
             if (alternativniLekovi != null)
                 alternativniLekovi.Clear();
         }
-
+        public LekDTO()
+        { }
         public LekDTO(int ID, String pr, String sas, String np, String nl)
         {
             Id = ID;
@@ -68,5 +72,32 @@ namespace ZdravoKorporacija.DTO
             this.alternativniLekovi = new List<LekDTO>();
         }
 
+        public LekDTO(Lek lek)
+        {
+            Id = lek.Id;
+            Proizvodjac = lek.Proizvodjac;
+            Sastojci = lek.Sastojci;
+            NusPojave = lek.NusPojave;
+            NazivLeka = lek.NazivLeka;
+            Alergeni = lek.Alergeni;
+            this.alternativniLekovi = LekToLekDTO(lek.alternativniLekovi);
+        }
+        public List<LekDTO> LekToLekDTO(List<Lek> Lekovi)
+        {
+            if (Lekovi != null)
+            {
+                List<LekDTO> LekoviDTO = new List<LekDTO>();
+                foreach (Lek Lek in Lekovi)
+                {
+                    LekoviDTO.Add(new LekDTO(Lek));
+                }
+
+                return LekoviDTO;
+            }
+            else
+            {
+                return new List<LekDTO>();
+            }
+        }
     }
 }

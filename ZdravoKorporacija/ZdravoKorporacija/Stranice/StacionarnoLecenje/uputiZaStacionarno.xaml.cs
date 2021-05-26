@@ -28,27 +28,15 @@ namespace ZdravoKorporacija.Stranice.StacionarnoLecenje
         public uputiZaStacionarno(PacijentDTO pacijent)
         {
             InitializeComponent();
+            uputi = new ObservableCollection<StacionarnoLecenjeDTO>();
             this.DataContext = this;
             pac = pacijent;
             foreach (StacionarnoLecenjeDTO s in sl.PregledSvihStacionarnih())
             {
-                if (s.Pacijent.Jmbg.Equals(pacijent.Jmbg) && uputi.Count==0)
+                if (s.Pacijent.Jmbg.Equals(pacijent.Jmbg))
                 {
                     uputi.Add(s); 
-                }
-                else if(s.Pacijent.Jmbg.Equals(pacijent.Jmbg) && uputi.Count != 0)
-                {
-                    foreach (StacionarnoLecenjeDTO stac in uputi)
-                    {
-                        Trace.WriteLine(s.Id);
-                        if (!stac.Id.Equals(s.Id))
-                        {
-                            uputi.Add(s);
-                            break;
-                        }
-                    }
-                }
-                         
+                }         
             }
             dgUsers.ItemsSource = uputi;
         }
@@ -81,7 +69,7 @@ namespace ZdravoKorporacija.Stranice.StacionarnoLecenje
             {
                 stac = (StacionarnoLecenjeDTO)dgUsers.SelectedItem;
                 sl.ObrisiStacionarnoLecenje(stac);
-                //uputi.Remove(stac);
+                uputi.Remove(stac);
             }
             else
             {

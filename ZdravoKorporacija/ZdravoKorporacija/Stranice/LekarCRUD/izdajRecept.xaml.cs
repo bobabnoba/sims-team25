@@ -26,8 +26,8 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     public partial class izdajRecept : Window
     {
         private PacijentController pacijentController = PacijentController.Instance;
-        private LekServis lekServis = new LekServis();
-        private ObservableCollection<Lek> lekovi;
+        private LekController lekController = LekController.Instance;
+        private ObservableCollection<LekDTO> lekovi;
         PacijentDTO pac;
         TerminDTO ter;
         ReceptDTO r = new ReceptDTO();
@@ -37,13 +37,46 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
         public izdajRecept(PacijentDTO selektovani)
         {
+            bool ne = false;
             InitializeComponent();
             this.DataContext = this;
-            lekovi = new ObservableCollection<Lek>(lekServis.PregledSvihLekova());
+            lekovi = new ObservableCollection<LekDTO>();
+            pac = selektovani;
+            if (pac.ZdravstveniKarton.Alergije!=null)
+            { 
+            
+                foreach (LekDTO lek in lekController.PregledSvihLekova())
+                    {
+                        if (lek.Alergeni != null)
+                        {
+                            foreach (String st in lek.Alergeni.Split(","))
+                            {
+                            foreach (String s in pac.ZdravstveniKarton.Alergije.Split(","))
+                            {
 
+                                if (s.Equals(st))
+                                {
+                                    ne = true;
+                                }
+                            }
+
+                        }
+                            
+                        }
+                        
+                    if (!ne)
+                    {
+                        lekovi.Add(lek);
+                    }
+                }
+
+            
+            
+            }
+            else { lekovi = new ObservableCollection<LekDTO>(lekController.PregledSvihLekova()); }
             CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
             Date.BlackoutDates.Add(cdr);
-            pac = selektovani;
+  
             lekNaziv.ItemsSource = lekovi;
 
         }
@@ -51,20 +84,54 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         public izdajRecept(TerminDTO selektovani)
         {
             InitializeComponent();
+            bool ne = false;
             this.DataContext = this;
-      
-            lekovi = new ObservableCollection<Lek>(lekServis.PregledSvihLekova());
+            lekovi = new ObservableCollection<LekDTO>();
 
             CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
             Date.BlackoutDates.Add(cdr);
             ter = selektovani;
-            lekNaziv.ItemsSource = lekovi;
+         
             foreach (PacijentDTO p in pacijentController.PregledSvihPacijenata2())
             {
                 if (p.ZdravstveniKarton != null)
                     if (p.ZdravstveniKarton.Id.Equals(ter.zdravstveniKarton.Id))
                         pac = p;
             }
+            if (pac.ZdravstveniKarton.Alergije != null)
+            {
+
+                foreach (LekDTO lek in lekController.PregledSvihLekova())
+                {
+                    if (lek.Alergeni != null)
+                    {
+                        foreach (String st in lek.Alergeni.Split(","))
+                        {
+                            foreach (String s in pac.ZdravstveniKarton.Alergije.Split(","))
+                            {
+
+                                if (s.Equals(st))
+                                {
+                                    ne = true;
+                                }
+                            }
+
+                        }
+
+                    }
+
+                    if (!ne)
+                    {
+                        lekovi.Add(lek);
+                    }
+                }
+
+
+
+            }
+            else { lekovi = new ObservableCollection<LekDTO>(lekController.PregledSvihLekova()); }
+
+            lekNaziv.ItemsSource = lekovi;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

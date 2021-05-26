@@ -7,6 +7,7 @@ using System.Text;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Repository;
+using ZdravoKorporacija.Stranice.StacionarnoLecenje;
 
 namespace ZdravoKorporacija.Service
 {
@@ -46,6 +47,7 @@ namespace ZdravoKorporacija.Service
                 }
             }
             StacionarnoLecenje.Id = id;
+
             foreach (StacionarnoLecenje r in rr.DobaviSve())
             {
                 if (r.Id.Equals(StacionarnoLecenje.Id))
@@ -87,6 +89,7 @@ namespace ZdravoKorporacija.Service
                     StacionarnaLecenja.Remove(r);
                     StacionarnaLecenja.Add(new StacionarnoLecenje(StacionarnoLecenje));
                     rr.Sacuvaj(StacionarnaLecenja);
+                    uputiZaStacionarno.uputi.Add(StacionarnoLecenje);
                     return true;
                 }
             }
