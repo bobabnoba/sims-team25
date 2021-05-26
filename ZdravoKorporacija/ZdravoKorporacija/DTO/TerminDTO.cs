@@ -24,9 +24,20 @@ namespace ZdravoKorporacija.DTO
             if (izvestaj != null) this.Izvestaj = izvestaj;
             else this.Izvestaj = new IzvestajDTO();
         }
+        public TerminDTO(int id, LekarDTO lekar, TipTerminaEnum tip, DateTime pocetak, double trajanje, ProstorijaDTO prostorija)
+        {
+            this.Id = id;
+            this.Lekar = lekar;
+            this.Tip = tip;
+            this.Pocetak = pocetak;
+            this.Trajanje = 0.5;
+            this.zdravstveniKarton = null;
+            this.prostorija = prostorija;
+            this.Izvestaj = null;
+        }
 
 
-    public int Id { get; set; }
+        public int Id { get; set; }
     public TipTerminaEnum Tip { get; set; }
     public DateTime Pocetak { get; set; }
     public double Trajanje { get; set; }
@@ -35,6 +46,10 @@ namespace ZdravoKorporacija.DTO
     public ZdravstveniKartonDTO zdravstveniKarton { get; set; }
 
     public IzvestajDTO Izvestaj { get; set; }
+
+        public bool hitno { get; set; }
     }
+    
+
 
 }

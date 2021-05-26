@@ -6,9 +6,9 @@ using Model;
 
 namespace ZdravoKorporacija.DTO
 {
-    public class LekarDTO
+    public class LekarDTO : KorisnikDTO
     {
-        public LekarDTO(){}
+        public LekarDTO() : base() {}
 
         public LekarDTO(Lekar lekarEntitet)
         {
@@ -16,10 +16,17 @@ namespace ZdravoKorporacija.DTO
             this.Ime = lekarEntitet.Ime;
             this.Prezime = lekarEntitet.Prezime;
             //this.termini = new ArrayList(lekarEntitet.termin);
-
         }
 
-        public LekarDTO(string ime, string prezime, Int64 jmbg)
+        public LekarDTO(String Ime, String Prezime) : base(Ime, Prezime)
+        {
+        }
+
+        public LekarDTO(string ime, string prezime, Int64 jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password, UlogaEnum uloga) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password, uloga)
+        {
+        }
+
+        public LekarDTO(string ime, string prezime, Int64 jmbg) : base(ime, prezime, jmbg)
         {
             this.Ime = ime;
             this.Prezime = prezime;
@@ -28,10 +35,9 @@ namespace ZdravoKorporacija.DTO
 
         public System.Collections.ArrayList termini;
 
-        public String Ime { get; set; }
-        public String Prezime { get; set; }
-        public Int64 Jmbg { get; set; }
-
-        
+        public SpecijalizacijaEnum Specijalizacija { get; set; }
+        public List<RadniDan> radniDani { get; set; }
     }
+
 }
+
