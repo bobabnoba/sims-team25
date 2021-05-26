@@ -7,6 +7,117 @@
         "lek": null,
         "lekar": null,
         "zdravstveniKarton": null,
+        "Id": 1,
+        "Doziranje": "2x",
+        "Trajanje": 12,
+        "NazivLeka": "Cardiopirin",
+        "Pocetak": "0001-01-01T00:00:00"
+      },
+      {
+        "lek": null,
+        "lekar": null,
+        "zdravstveniKarton": null,
+        "Id": 0,
+        "Doziranje": "1",
+        "Trajanje": 7,
+        "NazivLeka": "Brufen",
+        "Pocetak": "2021-04-22T00:00:00"
+      },
+      {
+        "lek": null,
+        "lekar": null,
+        "zdravstveniKarton": null,
+        "Id": 12,
+        "Doziranje": "5",
+        "Trajanje": 5,
+        "NazivLeka": "Amoksicilin",
+        "Pocetak": "2021-05-02T08:00:00"
+      }
+    ],
+    "termin": [
+      {
+        "izvestaj": {
+          "termin": null,
+          "Id": 0,
+          "Opis": "Temperature",
+          "Simptomi": "Covid"
+        },
+        "zdravstveniKarton": {
+          "izvestajOHospitalizaciji": [],
+          "istorijaBolesti": [],
+          "recept": [
+            {
+              "lek": null,
+              "lekar": null,
+              "zdravstveniKarton": null,
+              "Id": 0,
+              "Doziranje": "2X",
+              "Trajanje": 11,
+              "NazivLeka": "Model.Lek",
+              "Pocetak": "0001-01-01T00:00:00"
+            },
+            {
+              "lek": null,
+              "lekar": null,
+              "zdravstveniKarton": null,
+              "Id": 0,
+              "Doziranje": "2",
+              "Trajanje": 3,
+              "NazivLeka": "Model.Lek",
+              "Pocetak": "0001-01-01T00:00:00"
+            },
+            {
+              "lek": null,
+              "lekar": null,
+              "zdravstveniKarton": null,
+              "Id": 1,
+              "Doziranje": "2x",
+              "Trajanje": 12,
+              "NazivLeka": "Cardiopirin",
+              "Pocetak": "0001-01-01T00:00:00"
+            }
+          ],
+          "termin": [],
+          "patient": null,
+          "Id": 2134567890213,
+          "ZdravstvenoStanje": 3,
+          "Alergije": null,
+          "KrvnaGrupa": 8,
+          "Vakcine": null
+        },
+        "prostorija": {
+          "inventar": [],
+          "statickaOprema": null,
+          "dinamickaOprema": null,
+          "Id": 0,
+          "Naziv": "soba11",
+          "Tip": 1,
+          "Slobodna": false,
+          "Sprat": 1
+        },
+        "Lekar": null,
+        "Id": 10,
+        "Tip": 0,
+        "Pocetak": "2021-04-23T09:00:00",
+        "Trajanje": 0.5,
+        "hitno": false
+      }
+    ],
+    "patient": null,
+    "Id": 5,
+    "ZdravstvenoStanje": 3,
+    "Alergije": "Polen,Mleko",
+    "KrvnaGrupa": 8,
+    "Vakcine": null
+  },
+  {
+    "izvestajOHospitalizaciji": [],
+    "istorijaBolesti": [],
+    "recept": [
+      {
+        "lek": null,
+        "lekar": null,
+        "zdravstveniKarton": null,
         "Id": 0,
         "Doziranje": "2",
         "Trajanje": 12,
@@ -18,7 +129,7 @@
     "patient": null,
     "Id": 123,
     "ZdravstvenoStanje": 3,
-    "Alergije": null,
+    "Alergije": "dfsdfXD",
     "KrvnaGrupa": 8,
     "Vakcine": null
   },
@@ -71,7 +182,7 @@
     "patient": null,
     "Id": 2134567890213,
     "ZdravstvenoStanje": 3,
-    "Alergije": "Polen,Mleko, droga",
+    "Alergije": "Polen,Mleko, drogaa",
     "KrvnaGrupa": 8,
     "Vakcine": null
   },
@@ -2615,6 +2726,8 @@
                 "Trajanje": 0.0
               }
             ],
+            "Specijalizacija": 0,
+            "radniDani": null,
             "Ime": "Veljko",
             "Prezime": "Vukovic",
             "Jmbg": 2334567890213,
@@ -2678,6 +2791,7 @@
         "Vakcine": null
       },
       "Guest": false,
+      "banovan": false,
       "Ime": "Dusan",
       "Prezime": "Lekic",
       "Jmbg": 3214567890122,
@@ -2691,120 +2805,9 @@
     },
     "Id": 3214567890122,
     "ZdravstvenoStanje": 3,
-    "Alergije": "dlake, scepa, kikiriki, scepica",
+    "Alergije": "dlake, scepa, kikiriki, DROGICA",
     "KrvnaGrupa": 8,
     "Vakcine": ""
-  },
-  {
-    "izvestajOHospitalizaciji": [],
-    "istorijaBolesti": [],
-    "recept": [
-      {
-        "lek": null,
-        "lekar": null,
-        "zdravstveniKarton": null,
-        "Id": 1,
-        "Doziranje": "2x",
-        "Trajanje": 12,
-        "NazivLeka": "Cardiopirin",
-        "Pocetak": "0001-01-01T00:00:00"
-      },
-      {
-        "lek": null,
-        "lekar": null,
-        "zdravstveniKarton": null,
-        "Id": 0,
-        "Doziranje": "1",
-        "Trajanje": 7,
-        "NazivLeka": "Brufen",
-        "Pocetak": "2021-04-22T00:00:00"
-      },
-      {
-        "lek": null,
-        "lekar": null,
-        "zdravstveniKarton": null,
-        "Id": 12,
-        "Doziranje": "5",
-        "Trajanje": 5,
-        "NazivLeka": "Amoksicilin",
-        "Pocetak": "2021-05-02T08:00:00"
-      }
-    ],
-    "termin": [
-      {
-        "izvestaj": {
-          "termin": null,
-          "Id": 0,
-          "Opis": "Temperature",
-          "Simptomi": "Covid"
-        },
-        "zdravstveniKarton": {
-          "izvestajOHospitalizaciji": [],
-          "istorijaBolesti": [],
-          "recept": [
-            {
-              "lek": null,
-              "lekar": null,
-              "zdravstveniKarton": null,
-              "Id": 0,
-              "Doziranje": "2X",
-              "Trajanje": 11,
-              "NazivLeka": "Model.Lek",
-              "Pocetak": "0001-01-01T00:00:00"
-            },
-            {
-              "lek": null,
-              "lekar": null,
-              "zdravstveniKarton": null,
-              "Id": 0,
-              "Doziranje": "2",
-              "Trajanje": 3,
-              "NazivLeka": "Model.Lek",
-              "Pocetak": "0001-01-01T00:00:00"
-            },
-            {
-              "lek": null,
-              "lekar": null,
-              "zdravstveniKarton": null,
-              "Id": 1,
-              "Doziranje": "2x",
-              "Trajanje": 12,
-              "NazivLeka": "Cardiopirin",
-              "Pocetak": "0001-01-01T00:00:00"
-            }
-          ],
-          "termin": [],
-          "patient": null,
-          "Id": 2134567890213,
-          "ZdravstvenoStanje": 3,
-          "Alergije": null,
-          "KrvnaGrupa": 8,
-          "Vakcine": null
-        },
-        "prostorija": {
-          "inventar": [],
-          "statickaOprema": null,
-          "dinamickaOprema": null,
-          "Id": 0,
-          "Naziv": "soba11",
-          "Tip": 1,
-          "Slobodna": false,
-          "Sprat": 1
-        },
-        "Lekar": null,
-        "Id": 10,
-        "Tip": 0,
-        "Pocetak": "2021-04-23T09:00:00",
-        "Trajanje": 0.5,
-        "hitno": false
-      }
-    ],
-    "patient": null,
-    "Id": 5,
-    "ZdravstvenoStanje": 3,
-    "Alergije": "Polen,Mleko",
-    "KrvnaGrupa": 8,
-    "Vakcine": null
   },
   {
     "izvestajOHospitalizaciji": [],
@@ -2855,8 +2858,64 @@
     "patient": null,
     "Id": 1234567890123,
     "ZdravstvenoStanje": 3,
-    "Alergije": "drogica, lol",
+    "Alergije": "drogica, loЛ,",
     "KrvnaGrupa": 8,
     "Vakcine": null
+  },
+  {
+    "izvestajOHospitalizaciji": [],
+    "istorijaBolesti": [],
+    "recept": [],
+    "termin": [],
+    "patient": {
+      "termin": null,
+      "notifikacije": null,
+      "ZdravstveniKarton": null,
+      "Guest": false,
+      "banovan": false,
+      "Ime": "xD",
+      "Prezime": "Dx",
+      "Jmbg": 56,
+      "BrojTelefona": 783,
+      "Mejl": "as",
+      "AdresaStanovanja": "",
+      "Pol": 0,
+      "Username": "gas2",
+      "Password": "va2",
+      "Uloga": 3
+    },
+    "Id": 56,
+    "ZdravstvenoStanje": 3,
+    "Alergije": "",
+    "KrvnaGrupa": 8,
+    "Vakcine": ""
+  },
+  {
+    "izvestajOHospitalizaciji": [],
+    "istorijaBolesti": [],
+    "recept": [],
+    "termin": [],
+    "patient": {
+      "termin": null,
+      "notifikacije": null,
+      "ZdravstveniKarton": null,
+      "Guest": false,
+      "banovan": false,
+      "Ime": "Milica",
+      "Prezime": "M",
+      "Jmbg": 6732,
+      "BrojTelefona": 4565687,
+      "Mejl": "mm",
+      "AdresaStanovanja": "",
+      "Pol": 1,
+      "Username": "mm",
+      "Password": "mm",
+      "Uloga": 3
+    },
+    "Id": 6732,
+    "ZdravstvenoStanje": 3,
+    "Alergije": "",
+    "KrvnaGrupa": 8,
+    "Vakcine": ""
   }
 ]

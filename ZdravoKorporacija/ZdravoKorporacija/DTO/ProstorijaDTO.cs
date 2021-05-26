@@ -5,10 +5,11 @@ using System.Text;
 
 namespace ZdravoKorporacija.DTO
 {
-    class ProstorijaDTO
+    public class ProstorijaDTO
     {
         public System.Collections.ArrayList inventar;
 
+        public ProstorijaDTO() { }
 
         public ProstorijaDTO(int id, string naziv, TipProstorijeEnum tip, bool slobodna, int sprat)
         {
@@ -20,14 +21,30 @@ namespace ZdravoKorporacija.DTO
             Sprat = sprat;
         }
 
+        public ProstorijaDTO(Prostorija prostorija)
+        {
+            if (prostorija != null)
+            {
+                this.inventar = prostorija.inventar;
+                //this.statickaOprema = new StatickaOpremaDTO( prostorija.statickaOprema);
+                this.dinamickaOprema = prostorija.dinamickaOprema;
+                Id = prostorija.Id;
+                Naziv = prostorija.Naziv;
+                Tip = prostorija.Tip;
+                Slobodna = prostorija.Slobodna;
+                Sprat = prostorija.Sprat;
+            }
+        }
 
-        public System.Collections.ArrayList statickaOprema;
+
+
+        public List<StatickaOpremaDTO> statickaOprema;
 
         /// <pdGenerated>default getter</pdGenerated>
-        public System.Collections.ArrayList GetStatickaOprema()
+        public List<StatickaOpremaDTO> GetStatickaOprema()
         {
             if (statickaOprema == null)
-                statickaOprema = new System.Collections.ArrayList();
+                statickaOprema = new List<StatickaOpremaDTO>();
             return statickaOprema;
         }
 
@@ -35,23 +52,23 @@ namespace ZdravoKorporacija.DTO
         public void SetStatickaOprema(System.Collections.ArrayList newStatickaOprema)
         {
             RemoveAllStatickaOprema();
-            foreach (StatickaOprema oStatickaOprema in newStatickaOprema)
+            foreach (StatickaOpremaDTO oStatickaOprema in newStatickaOprema)
                 AddStatickaOprema(oStatickaOprema);
         }
 
         /// <pdGenerated>default Add</pdGenerated>
-        public void AddStatickaOprema(StatickaOprema newStatickaOprema)
+        public void AddStatickaOprema(StatickaOpremaDTO newStatickaOprema)
         {
             if (newStatickaOprema == null)
                 return;
             if (this.statickaOprema == null)
-                this.statickaOprema = new System.Collections.ArrayList();
+                this.statickaOprema = new List<StatickaOpremaDTO>();
             if (!this.statickaOprema.Contains(newStatickaOprema))
                 this.statickaOprema.Add(newStatickaOprema);
         }
 
         /// <pdGenerated>default Remove</pdGenerated>
-        public void RemoveStatickaOprema(StatickaOprema oldStatickaOprema)
+        public void RemoveStatickaOprema(StatickaOpremaDTO oldStatickaOprema)
         {
             if (oldStatickaOprema == null)
                 return;

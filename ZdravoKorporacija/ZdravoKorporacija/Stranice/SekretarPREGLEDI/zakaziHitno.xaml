@@ -58,8 +58,8 @@
 
         </DataGrid>
         <TextBlock Text="Specijalizacija:" TextWrapping="Wrap" Margin="72,16,217,30" Grid.Row="2" Grid.ColumnSpan="2"/>
-        <RadioButton Content="Kardiohirurg" Margin="90,21,101,24" Grid.Column="1" Grid.Row="2" Checked="RadioButton_Checked"/>
-        <RadioButton Content="Neurolog" Margin="90,56,101,56" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Checked="RadioButton_Checked_1"/>
+        <RadioButton Name="kardioRB" Content="Kardiohirurg" Margin="90,21,101,24" Grid.Column="1" Grid.Row="2" Checked="RadioButton_Checked"/>
+        <RadioButton Name="neuroKB" Content="Neurolog" Margin="90,56,101,56" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Checked="RadioButton_Checked_1"/>
 
     </Grid>
 </Window>

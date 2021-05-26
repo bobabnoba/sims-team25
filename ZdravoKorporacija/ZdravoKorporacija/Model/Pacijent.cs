@@ -7,13 +7,27 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using ZdravoKorporacija.DTO;
 
 namespace Model
 {
-
     public class Pacijent : Korisnik
     {
         public Pacijent() : base() { }
+
+        public Pacijent(String username, String password)
+        {
+            this.Username = username;
+            this.Password = password;
+        }
+
+        public Pacijent(String username, String password, ZdravstveniKarton zk, Int64 jmbg)
+        {
+            this.Username = username;
+            this.Password = password;
+            this.ZdravstveniKarton = zk;
+            this.Jmbg = jmbg;
+        }
 
         public Pacijent(ZdravstveniKarton zdravstveniKarton, bool guest, string ime, string prezime, int jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password, UlogaEnum uloga) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password, uloga)
         {
@@ -22,42 +36,48 @@ namespace Model
             Guest = guest;
         }
 
-        public Pregled ZakaziPregled()
-        {
-            // TODO: implement
-            return null;
-        }
-
-        public void AzurirajPregled(Termin pregled)
-        {
-            // TODO: implement
-        }
-
-        public bool OtkaziPregled(Termin pregled)
-        {
-            // TODO: implement
-            return false;
-        }
-
-        public ArrayList UvidUPreglede()
-        {
-            // TODO: implement
-            return null;
-        }
-
         public List<Termin> termin;
-
-
-        public Pacijent(String Ime, String Prezime) : base(Ime, Prezime)
-        {
-
-        }
 
         public Pacijent(string ime, string prezime, Int64 jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password, UlogaEnum uloga) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password, uloga)
         {
         }
 
+        public Pacijent(PacijentDTO pacijent)
+        {
+            this.Ime = pacijent.Ime;
+            this.Prezime = pacijent.Prezime;
+            Jmbg = pacijent.Jmbg;
+            BrojTelefona = pacijent.BrojTelefona;
+            Mejl = pacijent.Mejl;
+            AdresaStanovanja = pacijent.AdresaStanovanja;
+            Pol = pacijent.Pol;
+            Username = pacijent.Username;
+            Password = pacijent.Password;
+            Uloga = pacijent.Uloga;
+            this.termin = terminDTOToTermin(pacijent.termin);
+            ZdravstveniKarton = new ZdravstveniKarton(pacijent.ZdravstveniKarton);
+            Guest = pacijent.Guest;
+            //this.notifikacije = pacijent.notifikacije;
+            this.banovan = pacijent.banovan;
+        }
 
+        public List<Termin> terminDTOToTermin(List<TerminDTO> terminiDTO)
+        {
+            if (terminiDTO != null)
+            {
+                List<Termin> termini = new List<Termin>();
+                foreach (TerminDTO termin in terminiDTO)
+                {
+                    termini.Add(new Termin(termin));
+                }
+
+                return termini;
+            }
+            else
+            {
+                return new List<Termin>();
+            }
+        }
 
         /// <pdGenerated>default getter</pdGenerated>
         public List<Termin> GetTermin()
@@ -116,6 +136,7 @@ namespace Model
         //  public ObservableCollection<Notifikacija> Notifikacije { get => notifikacije; set => notifikacije = value; }
 
         public ObservableCollection<Notifikacija> notifikacije;
+
 
         /// <pdGenerated>default getter</pdGenerated>
         public ObservableCollection<Notifikacija> GetNotifikacije()

@@ -3,6 +3,8 @@ using Repository;
 using Service;
 using System.Collections.ObjectModel;
 using System.Windows;
+using ZdravoKorporacija.Controller;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.SekretarCRUD
@@ -12,22 +14,19 @@ namespace ZdravoKorporacija.Stranice.SekretarCRUD
     /// </summary>
     public partial class obrisiNalogSekretar : Window
     {
-        private PacijentService storage = new PacijentService();
-        private PacijentRepozitorijum dat = new PacijentRepozitorijum();
-        private ObservableCollection<Pacijent> pacijenti;
-        private Pacijent p1;
-        public obrisiNalogSekretar(Pacijent selected, ObservableCollection<Pacijent> nalozi)
+        
+        private PacijentDTO p1;
+        private TerminController pacijentController = new TerminController();
+        public obrisiNalogSekretar(PacijentDTO selected)
         {
             InitializeComponent();
             p1 = selected;
-            pacijenti = nalozi;
         }
 
         private void da(object sender, RoutedEventArgs e)
         {
-            storage.ObrisiNalogPacijentu(p1);
-
-            this.pacijenti.Remove(p1);
+            pacijentController.ObrisiNalogPacijentu(pacijentController.PacijentDTO2Model(p1));
+            pacijentController.PregledSvihPacijenata().Remove(pacijentController.PacijentDTO2Model(p1));
             this.Close();
 
         }

@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Linq;
 using ZdravoKorporacija.Model;
+using ZdravoKorporacija.DTO;
 
 namespace ZdravoKorporacija.Stranice.LekoviCRUD
 {
@@ -24,22 +25,22 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
     public partial class DodavanjeAlternativnihLekova : Window
     {
         LekServis lekServis = new LekServis();
-        public ObservableCollection<Lek> ostalilekovi = new ObservableCollection<Lek>();
-        public ObservableCollection<Lek> alternativniLekovi = new ObservableCollection<Lek>();
+        public ObservableCollection<LekDTO> ostalilekovi = new ObservableCollection<LekDTO>();
+        public ObservableCollection<LekDTO> alternativniLekovi = new ObservableCollection<LekDTO>();
         ZahtevLek zl = new ZahtevLek();
 
 
-        public DodavanjeAlternativnihLekova(ObservableCollection<Lek> lekici)
+        public DodavanjeAlternativnihLekova(ObservableCollection<LekDTO> lekici)
         {
             InitializeComponent();
             alternativniLekovi = lekici;
             lekServis.PregledSvihLekova();
-            ostalilekovi = new ObservableCollection<Lek>(LekRepozitorijum.Instance.lekovi);
+            ostalilekovi = new ObservableCollection<LekDTO>(LekRepozitorijum.Instance.lekoviDTO);
             if (alternativniLekovi != null)
             {
-                foreach (Lek o in ostalilekovi.ToArray<Lek>())
+                foreach (LekDTO o in ostalilekovi.ToArray<LekDTO>())
                 {
-                    foreach (Lek l in alternativniLekovi)
+                    foreach (LekDTO l in alternativniLekovi)
                     {
                         if (o.Id == l.Id)
                         {
@@ -59,15 +60,11 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-
-            foreach (Lek selektovaniLek in dgLekovi.SelectedItems.Cast<Lek>().ToList())
+            foreach (LekDTO selektovaniLek in dgLekovi.SelectedItems.Cast<LekDTO>().ToList())
             {
                 alternativniLekovi.Add(selektovaniLek);
                 ostalilekovi.Remove(selektovaniLek);
             }
-
-
-
         }
 
         private void dgLekovi_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -100,7 +97,11 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-
+            foreach (LekDTO selektovaniLek in dgAlternativni.SelectedItems.Cast<LekDTO>().ToList())
+            {
+                alternativniLekovi.Remove(selektovaniLek);
+                ostalilekovi.Add(selektovaniLek);
+            }
         }
     }
 }

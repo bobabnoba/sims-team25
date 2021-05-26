@@ -14,6 +14,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ZdravoKorporacija.Controller;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
@@ -23,62 +25,121 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     /// </summary>
     public partial class izdajRecept : Window
     {
-        private PacijentService pacijentServis = new PacijentService();
-        private LekServis lekServis = new LekServis();
-        private ObservableCollection<Lek> lekovi;
-        Pacijent pac;
-        Termin ter;
-        Recept r = new Recept();
-        IDRepozitorijum datotekaID;
+        private PacijentController pacijentController = PacijentController.Instance;
+        private LekController lekController = LekController.Instance;
+        private ObservableCollection<LekDTO> lekovi;
+        PacijentDTO pac;
+        TerminDTO ter;
+        ReceptDTO r = new ReceptDTO();
 
         String now = DateTime.Now.ToString("hh:mm:ss tt");
         DateTime today = DateTime.Today;
 
-        Dictionary<int, int> ids = new Dictionary<int, int>();
-
-        public izdajRecept(Pacijent selektovani)
+        public izdajRecept(PacijentDTO selektovani)
         {
+            bool ne = false;
             InitializeComponent();
             this.DataContext = this;
-            datotekaID = new IDRepozitorijum("iDMapRecept");
-            ids = datotekaID.dobaviSve();
-            lekovi = new ObservableCollection<Lek>(lekServis.PregledSvihLekova());
+            lekovi = new ObservableCollection<LekDTO>();
+            pac = selektovani;
+            if (pac.ZdravstveniKarton.Alergije!=null)
+            { 
+            
+                foreach (LekDTO lek in lekController.PregledSvihLekova())
+                    {
+                        if (lek.Alergeni != null)
+                        {
+                            foreach (String st in lek.Alergeni.Split(","))
+                            {
+                            foreach (String s in pac.ZdravstveniKarton.Alergije.Split(","))
+                            {
 
+                                if (s.Equals(st))
+                                {
+                                    ne = true;
+                                }
+                            }
+
+                        }
+                            
+                        }
+                        
+                    if (!ne)
+                    {
+                        lekovi.Add(lek);
+                    }
+                }
+
+            
+            
+            }
+            else { lekovi = new ObservableCollection<LekDTO>(lekController.PregledSvihLekova()); }
             CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
             Date.BlackoutDates.Add(cdr);
-            pac = selektovani;
+  
             lekNaziv.ItemsSource = lekovi;
 
         }
 
-        public izdajRecept(Termin selektovani)
+        public izdajRecept(TerminDTO selektovani)
         {
             InitializeComponent();
+            bool ne = false;
             this.DataContext = this;
-            datotekaID = new IDRepozitorijum("iDMapRecept");
-            ids = datotekaID.dobaviSve();
-            lekovi = new ObservableCollection<Lek>(lekServis.PregledSvihLekova());
+            lekovi = new ObservableCollection<LekDTO>();
 
             CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
             Date.BlackoutDates.Add(cdr);
             ter = selektovani;
-            lekNaziv.ItemsSource = lekovi;
-            foreach (Pacijent p in new List<Pacijent>(pacijentServis.PregledSvihPacijenata()))
+         
+            foreach (PacijentDTO p in pacijentController.PregledSvihPacijenata2())
             {
                 if (p.ZdravstveniKarton != null)
                     if (p.ZdravstveniKarton.Id.Equals(ter.zdravstveniKarton.Id))
                         pac = p;
             }
+            if (pac.ZdravstveniKarton.Alergije != null)
+            {
 
+                foreach (LekDTO lek in lekController.PregledSvihLekova())
+                {
+                    if (lek.Alergeni != null)
+                    {
+                        foreach (String st in lek.Alergeni.Split(","))
+                        {
+                            foreach (String s in pac.ZdravstveniKarton.Alergije.Split(","))
+                            {
+
+                                if (s.Equals(st))
+                                {
+                                    ne = true;
+                                }
+                            }
+
+                        }
+
+                    }
+
+                    if (!ne)
+                    {
+                        lekovi.Add(lek);
+                    }
+                }
+
+
+
+            }
+            else { lekovi = new ObservableCollection<LekDTO>(lekController.PregledSvihLekova()); }
+
+            lekNaziv.ItemsSource = lekovi;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Lek l = (Lek)lekNaziv.SelectedItem;
+            LekDTO l = (LekDTO)lekNaziv.SelectedItem;
             if (string.IsNullOrEmpty(NoviLek.Text))
             {
                 r.NazivLeka = l.NazivLeka;
-
             }
             else
             {
@@ -100,21 +161,10 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             }
             catch (InvalidCastException)
             { }
-            int id = 0;
-            for (int i = 0; i < 1000; i++)
-            {
-                if (ids[i] == 0)
-                {
-                    id = i;
-                    ids[i] = 1;
-                    break;
-                }
-            }
-            r.Id = id;
+
+
+            pacijentController.IzdajRecept(pac, r);
             zdravstveniKartonPrikaz.recepti.Add(r);
-            datotekaID.sacuvaj(ids);
-            pac.ZdravstveniKarton.recept = zdravstveniKartonPrikaz.recepti;
-            pacijentServis.AzurirajPacijenta(pac);
             this.Close();
         }
 

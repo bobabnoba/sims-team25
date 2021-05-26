@@ -1,6 +1,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using Model;
 using Newtonsoft.Json;
@@ -10,6 +11,20 @@ namespace Repository
    public class AnketaRepozitorijum
    {
         private string lokacija;
+
+        private static AnketaRepozitorijum _instance;
+
+        public static AnketaRepozitorijum Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new AnketaRepozitorijum();
+                }
+                return _instance;
+            }
+        }
 
         public AnketaRepozitorijum()
         {

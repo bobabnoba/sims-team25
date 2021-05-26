@@ -1,20 +1,37 @@
 ﻿using Model;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
+using ZdravoKorporacija.DTO;
 
 namespace Repository
 {
-    class ProstorijaRepozitorijum
+    public class ProstorijaRepozitorijum
     {
-        private string lokacija;
+        private static ProstorijaRepozitorijum _instance;
+        public ObservableCollection<Prostorija> prostorije;
+        public ObservableCollection<ProstorijaDTO> prostorijeDTO;
+        public static ProstorijaRepozitorijum Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new ProstorijaRepozitorijum();
+
+                }
+                return _instance;
+            }
+        }
 
         public ProstorijaRepozitorijum()
         {
-            this.lokacija = @"..\..\..\Data\prostorije.json";
+           prostorije = new ObservableCollection<Prostorija>();
         }
 
-        public void sacuvaj(List<Prostorija> prostorije)
+        public string lokacija = @"..\..\..\Data\prostorije.json";
+        public void sacuvaj()
         {
             JsonSerializer serializer = new JsonSerializer();
             serializer.Formatting = Formatting.Indented;
@@ -24,19 +41,25 @@ namespace Repository
             jWriter.Close();
             writer.Close();
         }
-        public List<Prostorija> dobaviSve()
+        public ObservableCollection<Prostorija> dobaviSve()
         {
-            List<Prostorija> prostorije = new List<Prostorija>();
+            string lokacija = @"..\..\..\Data\prostorije.json";
+            List<Prostorija> ucitaneProstorije = new List<Prostorija>();
             if (File.Exists(lokacija))
             {
                 string jsonText = File.ReadAllText(lokacija);
                 if (!string.IsNullOrEmpty(jsonText))
                 {
-                    prostorije = JsonConvert.DeserializeObject<List<Prostorija>>(jsonText);
+                    ucitaneProstorije = JsonConvert.DeserializeObject<List<Prostorija>>(jsonText);
                 }
+            }
+            if (ucitaneProstorije != null)
+            {
+                prostorije = new ObservableCollection<Prostorija>(ucitaneProstorije);
             }
             return prostorije;
         }
+
 
     }
 }

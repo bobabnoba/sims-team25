@@ -12,6 +12,7 @@ using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Stranice;
 using ZdravoKorporacija.Stranice.LekarCRUD;
 using ZdravoKorporacija.Stranice.Logovanje;
+using ZdravoKorporacija.Stranice.PacijentCRUD;
 using ZdravoKorporacija.Stranice.SekretarCRUD;
 using ZdravoKorporacija.Stranice.UpravnikCRUD;
 
@@ -75,7 +76,7 @@ namespace ZdravoKorporacija
             //Termin tr2 = new Termin(zd1, pr1, dr1, TipTerminaEnum.Pregled, new DateTime(2020, 6, 6, 6, 30, 52), 90);
             TerminRepozitorijum terminiJSON = new TerminRepozitorijum();
             List<Termin> termini = new List<Termin>();
-            ProstorijaRepozitorijum prostorijeJSON = new ProstorijaRepozitorijum();
+            ProstorijaRepozitorijum prostorijeJSON = ProstorijaRepozitorijum.Instance;
             List<Prostorija> prostorije = new List<Prostorija>();
             //termini.Add(tr1);
             //termini.Add(tr2);
@@ -83,11 +84,11 @@ namespace ZdravoKorporacija
             pacijenti.Add(p1);
             pacijenti.Add(p2);
             pacijenti.Add(p3);
-            prostorije.Add(pr1);
-            prostorije.Add(pr2);
+            ProstorijaRepozitorijum.Instance.prostorije.Add(pr1);
+            ProstorijaRepozitorijum.Instance.prostorije.Add(pr2);
             pacijentJSON.sacuvaj(pacijenti);
             terminiJSON.sacuvaj(termini);
-            prostorijeJSON.sacuvaj(prostorije);
+            prostorijeJSON.sacuvaj();
         }
 
         private void Binding_Click(object sender, RoutedEventArgs e)
@@ -127,7 +128,7 @@ namespace ZdravoKorporacija
         }
         private void openPacijentFrame(object sender, RoutedEventArgs e)
         {
-            pacijentLogin pl = new pacijentLogin(UlogaEnum.Pacijent);
+            Login pl = new Login(UlogaEnum.Pacijent);
             pl.Show();
         }
     }

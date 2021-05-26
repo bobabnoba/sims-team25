@@ -1,6 +1,7 @@
 ﻿using Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ZdravoKorporacija.Controller;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.Magacin
@@ -20,26 +22,16 @@ namespace ZdravoKorporacija.Stranice.Magacin
     /// </summary>
     public partial class MagacinDodavanje : Window
     {
-
-        Dictionary<int, int> id_map = new Dictionary<int, int>();
-        public MagacinDodavanje(Dictionary<int, int> ids)
+        UpravnikController upravnikKontroler = new UpravnikController();
+        ObservableCollection<InventarDTO> opremaUMagacinu = new ObservableCollection<InventarDTO>(); 
+        public MagacinDodavanje(ObservableCollection<InventarDTO> magacinOprema)
         {
             InitializeComponent();
-            this.id_map = ids;
+            opremaUMagacinu = magacinOprema;
         }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
-            int id = 0;
-            for (int i = 0; i < 1000; i++)
-            {
-                if (id_map[i] == 0)
-                {
-                    id = i;
-                    id_map[i] = 1;
-                    break;
-                }
-            }
             string naziv = textboxNaziv.Text;
             int kolicina = 0;
             try
@@ -52,9 +44,12 @@ namespace ZdravoKorporacija.Stranice.Magacin
                 return;
             }
             string proizvodjac = textboxProizvodjac.Text;
-            UpravnikController uc = new UpravnikController();
 
-            uc.DodajUMagacin(id, naziv, kolicina, proizvodjac, new DateTime(), this.id_map);
+            InventarDTO opremaDTO = new InventarDTO(0, naziv, kolicina, proizvodjac, new DateTime());
+
+            if(upravnikKontroler.DodajUMagacin(opremaDTO)){
+                opremaUMagacinu.Add(opremaDTO);
+            }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

@@ -76,7 +76,16 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-
+            this.zl.lekari = new List<Lekar>();
+            foreach (Lekar selektovaniLekar in dgIzbraniLekari.SelectedItems.Cast<Lekar>().ToList())
+            {
+                izabraniLekari.Remove(selektovaniLekar);
+                sviLekari.Add(selektovaniLekar);
+            }
+            foreach (Lekar selektovaniLekar in izabraniLekari)
+            {
+                this.zl.lekari.Add(selektovaniLekar);
+            }
         }
 
         private void potvrdi(object sender, RoutedEventArgs e)

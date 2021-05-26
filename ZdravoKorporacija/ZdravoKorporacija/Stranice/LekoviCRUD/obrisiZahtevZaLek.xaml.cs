@@ -1,8 +1,10 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,20 +27,22 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
         LekServis lekServis = new LekServis();
         private ObservableCollection<ZahtevLek> zahteviPrikaz;
         private ZahtevLek zahtev;
-        private Dictionary<int, int> ids = new Dictionary<int, int>();
 
-        public obrisiZahtevZaLek(ObservableCollection<ZahtevLek> zahteviPrikaz, ZahtevLek zahtevLek, Dictionary<int, int> ids)
+        public obrisiZahtevZaLek(ObservableCollection<ZahtevLek> zahteviPrikaz, ZahtevLek zahtevLek)
         {
             InitializeComponent();
             this.zahteviPrikaz = zahteviPrikaz;
             this.zahtev = zahtevLek;
-            this.ids = ids;
         }
         private void da(object sender, RoutedEventArgs e)
         {
-            this.ids[this.zahtev.Id] = 0;
-            lekServis.ObrisiZahtevZaLek(zahtev, ids);
-            zahteviPrikaz.Remove(zahtev);
+            if(lekServis.ObrisiZahtevZaLek(zahtev))
+            {
+                zahteviPrikaz.Remove(zahtev);
+            }
+            this.zahtev.Komentar = textBoxKomentar.Text;
+            NeodobreniLekController neodobreniLekoviController = new NeodobreniLekController();
+            neodobreniLekoviController.DodajNeodobreniLek(this.zahtev);
             this.Close();
 
         }

@@ -12,6 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ZdravoKorporacija.Controller;
+using ZdravoKorporacija.DTO;
 
 namespace ZdravoKorporacija.Stranice.PacijentCRUD
 {
@@ -20,21 +22,18 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
     /// </summary>
     public partial class AnketiranjeBolnice : Window
     {
-        private Anketa anketa;
-        private Pacijent pacijent;
-        private AnketaRepozitorijum arepo = new AnketaRepozitorijum();
-        private List<Anketa> ankete;
-        public AnketiranjeBolnice(Pacijent pacijent)
+        private AnketaDTO anketa;
+        private PacijentDTO pacijentDTO;
+        private AnketaController anketaController = new AnketaController();
+
+        public AnketiranjeBolnice(PacijentDTO pacijentDTO)
         {
             InitializeComponent();
             IEnumerable<int> ocjene = Enumerable.Range(1, 10);
             ocjenaBolnice.ItemsSource = ocjene;
 
-            anketa = new Anketa();
-            this.pacijent = pacijent;
-
-            ankete = arepo.DobaviSve();
-
+            anketa = new AnketaDTO();
+            this.pacijentDTO = pacijentDTO;
         }
 
         private void odustani(object sender, RoutedEventArgs e)
@@ -45,14 +44,12 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
         {
             anketa.Tip = TipAnkete.Bolnica;
             anketa.Termin = null;
-            anketa.Id = arepo.DobaviSve().Count + 1;
-            anketa.IdAutora = pacijent.Jmbg;
+            anketa.IdAutora = pacijentDTO.Jmbg;
             anketa.Ocena = (int)ocjenaBolnice.SelectedItem;
             anketa.Komentar = (new TextRange(textbox.Document.ContentStart, textbox.Document.ContentEnd)).Text;
             anketa.Datum = DateTime.Parse(DateTime.Now.ToString());
 
-            ankete.Add(anketa);
-            arepo.Sacuvaj(ankete);
+            anketaController.dodajAnketuBolnice(anketa);
 
             this.Close();
         }

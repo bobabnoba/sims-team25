@@ -13,6 +13,8 @@ using System.Windows.Shapes;
 using Model;
 using Repository;
 using Service;
+using ZdravoKorporacija.Controller;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
@@ -22,50 +24,41 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
     /// </summary>
     public partial class zakaziPregledSekretar : Window
     {
-        private TerminService ts = new TerminService();
 
-        private ProstorijaService prostorijeStorage = new ProstorijaService();
-        private ProstorijaRepozitorijum pRep = new ProstorijaRepozitorijum();
-        private PacijentRepozitorijum pacijentiDat = new PacijentRepozitorijum();
-        private PacijentService pacijentiStorage = new PacijentService();
-        private List<Pacijent> pacijenti = new List<Pacijent>();
-        private LekarRepozitorijum lekariDat = new LekarRepozitorijum();
-        private List<Lekar> lekari = new List<Lekar>();
-        private List<Lekar> slobodniLekari;
-        private List<Prostorija> slobodneProstorije;
-        private List<Prostorija> prostorije = new List<Prostorija>();
-        private ObservableCollection<Termin> pregledi;
+
+        private List<LekarDTO> lekari = new List<LekarDTO>();
+        private List<LekarDTO> slobodniLekari;
+        private ObservableCollection<ProstorijaDTO> slobodneProstorije;
+        private ObservableCollection<ProstorijaDTO> prostorije = new ObservableCollection<ProstorijaDTO>();
 
         private int idTermina;
         private TipTerminaEnum tipTermina;
         private DateTime pocetakTermina;
-        private Lekar lekarTermina;
-        private ZdravstveniKarton kartonTermina;
-        private Prostorija prostorijaTermina;
+        private LekarDTO lekarTermina;
+        private ProstorijaDTO prostorijaTermina;
 
-        private Termin noviTermin;
-       
+        private TerminDTO noviTermin;
+        private TerminController tc = new TerminController();
 
         private Dictionary<int, int> ids = new Dictionary<int, int>();
 
         DateTime dateTime = DateTime.Now;
-        public zakaziPregledSekretar(ObservableCollection<Termin> termini, Dictionary<int, int> ids)
+        public zakaziPregledSekretar(Dictionary<int, int> ids)
         {
             InitializeComponent();
 
-            noviTermin = new Termin();
-            pregledi = termini;
+            noviTermin = new TerminDTO();
 
-            pacijenti = pacijentiDat.dobaviSve();
-            cbPacijent.ItemsSource = pacijenti;
 
-            lekari = lekariDat.dobaviSve();
-            Lekari.ItemsSource = lekari;
+
+            cbPacijent.ItemsSource = tc.PregledSvihPacijenata2DTO();
+
+            lekari = tc.PregledSvihLekaraDTO(tc.PregledSvihLekara());
 
             slobodniLekari = lekari;
             Lekari.ItemsSource = slobodniLekari;
 
-            prostorije = pRep.dobaviSve();
+            prostorije = tc.PregledSvihProstorijaDTO(tc.PregledSvihProstorija());
             cbProstorija.ItemsSource = prostorije;
 
             slobodneProstorije = prostorije;
@@ -91,39 +84,43 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
             cbProstorija.IsEnabled = true;
             Lekari.IsEnabled = true;
 
-            slobodniLekari      = ts.DobaviSlobodneLekare(lekari, pregledi, pocetakTermina);
-
-            slobodneProstorije = ts.DobaviSlobodneProstorije(prostorije, pregledi, noviTermin);
+            slobodniLekari = tc.PregledSvihLekaraDTO(tc.DobaviSlobodneLekare(pocetakTermina, SpecijalizacijaEnum.OpstaPraksa));
+            Lekari.ItemsSource = slobodniLekari;
+            slobodneProstorije = tc.PregledSvihProstorijaDTO(new ObservableCollection<Prostorija>(tc.DobaviSlobodneProstorije(tc.TerminDTO2Model(noviTermin))));
+            cbProstorija.ItemsSource = slobodneProstorije;
         }
 
         private void potvrdi(object sender, RoutedEventArgs e)
         {
-            int id = ts.MapaTermina(ids);
-            Pacijent pac = (Pacijent)cbPacijent.SelectedItem;
+            int id = tc.MapaTermina(ids);
+            PacijentDTO pac = (PacijentDTO)cbPacijent.SelectedItem;
 
 
             idTermina = id;
-            pocetakTermina      = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
-            prostorijaTermina   = (Prostorija)cbProstorija.SelectedItem;
-            lekarTermina        = (Lekar)Lekari.SelectedItem;
-            kartonTermina       = ts.ProveriKartonKodZakazivanja(pac);
-            if (cbTip.SelectedIndex == 0)            
-                tipTermina      = TipTerminaEnum.Pregled;            
-            else if (cbTip.SelectedIndex == 1)            
-                tipTermina      = TipTerminaEnum.Operacija;
+            pocetakTermina = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
+            prostorijaTermina = (ProstorijaDTO)cbProstorija.SelectedItem;
+            lekarTermina = (LekarDTO)Lekari.SelectedItem;
 
-            noviTermin   = ts.InicijalizujTermin(idTermina, tipTermina, pocetakTermina, pac, lekarTermina, prostorijaTermina);
+            if (cbTip.SelectedIndex == 0)
+                tipTermina = TipTerminaEnum.Pregled;
+            else if (cbTip.SelectedIndex == 1)
+                tipTermina = TipTerminaEnum.Operacija;
 
-            ts.InicijalizujTerminLekaru(noviTermin);
+            noviTermin = new TerminDTO(new ZdravstveniKartonDTO(tc.NadjiKartonID(pac.Jmbg)), prostorijaTermina, lekarTermina, tipTermina, pocetakTermina, 0.5, null);
+            noviTermin.Id = idTermina;
 
-            if (ts.ZakaziTermin(noviTermin, ids))
+            TerminDTO zaLekara = new TerminDTO();
+            zaLekara.Id = noviTermin.Id;
+
+            if (tc.ZakaziTermin(tc.TerminDTO2Model(noviTermin), ids))
             {
-                this.pregledi.Add(noviTermin);
-                lekari = lekariDat.dobaviSve();
-                lekariDat.sacuvaj(lekari);
+                tc.DodajTermin(tc.TerminDTO2Model(noviTermin));
+                tc.AzurirajLekare();
             }
-            pac.AddTermin(noviTermin);
-            pacijentiStorage.AzurirajPacijenta(pac);
+
+
+            tc.DodajTermin(tc.PacijentDTO2Model(pac), tc.TerminDTO2Model(noviTermin));
+            tc.AzurirajPacijenta(tc.PacijentDTO2Model(pac));
             this.Close();
         }
 
@@ -135,7 +132,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-          
+
         }
 
         private void odustani(object sender, RoutedEventArgs e)

@@ -6,52 +6,56 @@ using System.Collections;
 using Repository;
 using System.Diagnostics;
 using ZdravoKorporacija.Model;
+using System.Collections.ObjectModel;
+using ZdravoKorporacija.DTO;
 
 namespace Service
-{ 
-        public class StatickaOpremaService
+{
+    public class StatickaOpremaService
         {
-            TerminService ts = new TerminService();
-            public bool DodajOpremu(StatickaOprema st,DateTime dt,String sati,Prostorija p)
-            {
-            StatickaOpremaRepozitorijum stRepozitorijum =  StatickaOpremaRepozitorijum.Instance;
-            
-            String s = dt.ToString();
-            String date = s.Split(" ")[0];
-
-           // Debug.WriteLine(date + " " + sati);
-           // Debug.WriteLine("" + s);
-
-          //  DateTime datum = DateTime.Parse(date + " " + sati);
-          //  st.termin.Pocetak = datum;
-            Termin t = new Termin();
-            t.Pocetak = dt;
-            t.prostorija = p;
-           
-
-            
+        StatickaOpremaRepozitorijum statickaRepozitorijum = StatickaOpremaRepozitorijum.Instance;
+        TerminService terminServis = new TerminService();
+        public bool DodajOpremu(StatickaOpremaDTO statickaOpremaDTO,TerminDTO terminDTO,String sati)
+            {  
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
             Dictionary<int, int> ids = datotekaID.dobaviSve();
+            int slobodanId = nadjiSlobodanID(ids);
+            ids[slobodanId] = 1;
+
+
+            String s = terminDTO.Pocetak.ToString();
+            String date = s.Split(" ")[0];
+
+            TerminDTO termin = new TerminDTO();
+            termin.Id = slobodanId;
+            termin.prostorija = terminDTO.prostorija;
+            termin.Pocetak = terminDTO.Pocetak;
+
+
+            terminServis.ZakaziTerminDTO(termin,ids);
+            StatickaOprema statickaOprema = new StatickaOprema(statickaOpremaDTO);
+
+            StatickaOpremaRepozitorijum.Instance.magacinStatickaOprema.Add(statickaOprema);
+            statickaRepozitorijum.Sacuvaj();
+            return true;
+            }
+
+        private int nadjiSlobodanID(Dictionary<int, int> id_map)
+        {
             int id = 0;
             for (int i = 0; i < 1000; i++)
             {
-                if (ids[i] == 0)
+                if (id_map[i] == 0)
                 {
                     id = i;
-                    ids[i] = 1;
-                    break;
+                    id_map[i] = 1;
+                    return id;
                 }
             }
+            return id;
+        }
 
-            t.Id = id;
-           
-            ts.ZakaziTermin(t,ids);
-
-            stRepozitorijum.Sacuvaj(st);
-            return false;
-            }
-
-            public bool ObrisiOpremu(StatickaOprema oprema)
+        public bool ObrisiOpremu(StatickaOprema oprema)
             {
                 // TODO: implement
                 return false;
@@ -63,13 +67,29 @@ namespace Service
                 return false;
             }
 
-            public List<StatickaOprema> PregledSveOpreme()
+            public ObservableCollection<StatickaOprema> PregledSveOpreme()
             {
-            StatickaOpremaRepozitorijum sor = StatickaOpremaRepozitorijum.Instance;
-            return sor.DobaviSve();
+            return statickaRepozitorijum.DobaviSve();
+            }
+
+            public ObservableCollection<StatickaOpremaDTO> PregledSveOpremeDTO()
+             {
+            ObservableCollection<StatickaOprema> statickaOprema = statickaRepozitorijum.DobaviSve();
+            ObservableCollection<StatickaOpremaDTO> statickaOpremaDTO = new ObservableCollection<StatickaOpremaDTO>();
+            foreach (StatickaOprema oprema in statickaOprema)
+            {
+                statickaOpremaDTO.Add(konvertujEntitetUDTO(oprema));
+            }
+            return statickaOpremaDTO;
+
         }
 
-            public StatickaOprema PregledJedneOpreme()
+        public StatickaOpremaDTO konvertujEntitetUDTO(StatickaOprema zahtevLek)
+        {
+            return new StatickaOpremaDTO(zahtevLek);
+        }
+
+        public StatickaOprema PregledJedneOpreme()
             {
                 // TODO: implement
                 return null;

@@ -2,52 +2,40 @@
 using Repository;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Text;
+using ZdravoKorporacija.DTO;
 
 namespace Service
-{ 
-    public class DinamickaOpremaService
+{
+    public class DinamickaOpremaService 
     {
-        public bool DodajOpremu(Inventar inv,String dt,Prostorija pr)
+
+        MagacinService magacinServis = new MagacinService();
+        DinamickaOpremaRepozitorijum dinamickaOpremaRepozitorijum = DinamickaOpremaRepozitorijum.Instance;
+        public bool DodajOpremu(DinamickaOpremaDTO opremaDTO)
         {
-            int kolicina = -1;
-            try 
-            { 
-                kolicina = int.Parse(dt);
-            }
-            catch (FormatException) {
-                return false;
-            }
-            if (pr == null)
+          
+            if (opremaDTO.Prostorija == null)
             {
                 return false;
             }
-            
-            DinamickaOpremaRepozitorijum dtRepozitorijum = DinamickaOpremaRepozitorijum.Instance;
-            MagacinRepozitorijum magacinRepozitorijum = MagacinRepozitorijum.Instance;
-            if (kolicina <= inv.UkupnaKolicina) {
-                inv.UkupnaKolicina = inv.UkupnaKolicina - kolicina;
+          
 
-                DinamickaOprema din = new DinamickaOprema(inv, kolicina);
-                din.Prostorija = pr;
-                dtRepozitorijum.Sacuvaj(din);
+            DinamickaOprema dinamickaOprema = new DinamickaOprema(opremaDTO, opremaDTO.Kolicina);
+            dinamickaOprema.Prostorija = new Prostorija(opremaDTO.Prostorija);
+            InventarDTO inventar = new InventarDTO(opremaDTO.Id, opremaDTO.Naziv, opremaDTO.UkupnaKolicina, opremaDTO.Proizvodjac, opremaDTO.DatumNabavke);
 
-
-                List<Inventar> magacin = magacinRepozitorijum.DobaviSve();
-                //List<Inventar> magacin = MagacinRepozitorijum.Instance.magacinOprema.Remove(inv);
-                foreach (Inventar inventar in magacin)
-                {
-                    if (inventar.Id.Equals(inv.Id))
-                    {
-                       MagacinRepozitorijum.Instance.magacinOprema.Remove(inventar);
-                       magacin.Add(inv);
-                       magacinRepozitorijum.Sacuvaj(inv);
-                       return true;
-                    }
-                }
+            if (dinamickaOprema.Kolicina <= dinamickaOprema.UkupnaKolicina)
+            {
+                dinamickaOprema.UkupnaKolicina -= dinamickaOprema.Kolicina;
+                DinamickaOpremaRepozitorijum.Instance.magacinDinamickaOprema.Add(dinamickaOprema);
+                magacinServis.ObrisiOpremu(inventar);
+                dinamickaOpremaRepozitorijum.Sacuvaj();
+                return true;
             }
             return false;
-
         }
 
         public bool ObrisiOpremu(DinamickaOprema oprema)
@@ -62,11 +50,27 @@ namespace Service
             return false;
         }
 
-        public List<DinamickaOprema> PregledSveOpreme()
+        public ObservableCollection<DinamickaOprema> PregledSveOpreme()
         {
-            DinamickaOpremaRepozitorijum dor = DinamickaOpremaRepozitorijum.Instance;
-            return dor.DobaviSve();
-            
+            return dinamickaOpremaRepozitorijum.DobaviSve();
+
+        }
+
+        public ObservableCollection<DinamickaOpremaDTO> PregledSveOpremeDTO()
+        {
+            ObservableCollection<DinamickaOprema>  dinamickaOprema = dinamickaOpremaRepozitorijum.DobaviSve();
+            ObservableCollection<DinamickaOpremaDTO> dinamickaOpremaDTO = new ObservableCollection<DinamickaOpremaDTO>();
+            foreach (DinamickaOprema oprema in dinamickaOprema)
+            {
+                dinamickaOpremaDTO.Add(konvertujEntitetUDTO(oprema));
+            }
+            return dinamickaOpremaDTO;
+
+        }
+
+        public DinamickaOpremaDTO konvertujEntitetUDTO(DinamickaOprema dinamickaOprema)
+        {
+            return new DinamickaOpremaDTO(dinamickaOprema);
         }
 
         public DinamickaOprema PregledJedneOpreme()

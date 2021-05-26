@@ -1,17 +1,17 @@
 [
   {
     "inventar": [],
-    "statickaOprema": null,
-    "dinamickaOprema": null,
-    "Id": 0,
-    "Naziv": "soba11",
-    "Tip": 1,
-    "Slobodna": false,
-    "Sprat": 1
-  },
-  {
-    "inventar": [],
-    "statickaOprema": null,
+    "statickaOprema": [
+      {
+        "termin": null,
+        "Prostorija": null,
+        "Id": 6,
+        "Naziv": "infuzija",
+        "UkupnaKolicina": 100,
+        "Proizvodjac": "galenika",
+        "DatumNabavke": "0001-01-01T00:00:00"
+      }
+    ],
     "dinamickaOprema": null,
     "Id": 1,
     "Naziv": "soba12",
@@ -21,7 +21,27 @@
   },
   {
     "inventar": [],
-    "statickaOprema": null,
+    "statickaOprema": [],
+    "dinamickaOprema": [],
+    "Id": 0,
+    "Naziv": "soba11",
+    "Tip": 1,
+    "Slobodna": false,
+    "Sprat": 1
+  },
+  {
+    "inventar": [],
+    "statickaOprema": [
+      {
+        "termin": null,
+        "Prostorija": null,
+        "Id": 7,
+        "Naziv": "dfdsf",
+        "UkupnaKolicina": 200,
+        "Proizvodjac": "ds",
+        "DatumNabavke": "0001-01-01T00:00:00"
+      }
+    ],
     "dinamickaOprema": null,
     "Id": 2,
     "Naziv": "soba21",
@@ -41,7 +61,17 @@
   },
   {
     "inventar": [],
-    "statickaOprema": null,
+    "statickaOprema": [
+      {
+        "termin": null,
+        "Prostorija": null,
+        "Id": 3,
+        "Naziv": "operacioni sto",
+        "UkupnaKolicina": 0,
+        "Proizvodjac": "helas",
+        "DatumNabavke": "0001-01-01T00:00:00"
+      }
+    ],
     "dinamickaOprema": null,
     "Id": 4,
     "Naziv": "soba31",
@@ -71,20 +101,30 @@
   },
   {
     "inventar": [],
-    "statickaOprema": null,
-    "dinamickaOprema": null,
+    "statickaOprema": [],
+    "dinamickaOprema": [],
     "Id": 7,
-    "Naziv": "dasdd",
+    "Naziv": "soba34",
     "Tip": 0,
     "Slobodna": false,
-    "Sprat": 1
+    "Sprat": 2
   },
   {
     "inventar": [],
-    "statickaOprema": null,
-    "dinamickaOprema": null,
+    "statickaOprema": [
+      {
+        "termin": null,
+        "Prostorija": null,
+        "Id": 0,
+        "Naziv": "krevet",
+        "UkupnaKolicina": 4000,
+        "Proizvodjac": "simpo",
+        "DatumNabavke": "0001-01-01T00:00:00"
+      }
+    ],
+    "dinamickaOprema": [],
     "Id": 6,
-    "Naziv": "dasdas",
+    "Naziv": "soba35",
     "Tip": 1,
     "Slobodna": false,
     "Sprat": 1

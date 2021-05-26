@@ -4,11 +4,28 @@
 // Purpose: Definition of Class Prescription
 
 using System;
+using System.Collections;
+using ZdravoKorporacija.DTO;
 
 namespace Model
 {
     public class Recept
     {
+        public Recept()
+        {
+
+        }
+        public Recept(Lekar lekar, ZdravstveniKarton zdravstveniKarton, int id, string doziranje, int trajanje, string nazivLeka, DateTime pocetak)
+        {
+            this.lekar = lekar;
+            this.zdravstveniKarton = zdravstveniKarton;
+            Id = id;
+            Doziranje = doziranje;
+            Trajanje = trajanje;
+            NazivLeka = nazivLeka;
+            Pocetak = pocetak;
+        }
+
         public int Id { get; set; }
         public String Doziranje { get; set; }
         public int Trajanje { get; set; }
@@ -63,6 +80,34 @@ namespace Model
         public Lekar lekar;
         public ZdravstveniKarton zdravstveniKarton;
 
+        public Recept(int id, string doziranje, int trajanje, string nazivLeka, DateTime pocetak)
+        {
+            Id = id;
+            Doziranje = doziranje;
+            Trajanje = trajanje;
+            NazivLeka = nazivLeka;
+            Pocetak = pocetak;
+        }
+
+        public Recept(ReceptDTO recept)
+        {
+            Id = recept.Id;
+            Doziranje = recept.Doziranje;
+            Trajanje = recept.Trajanje;
+            NazivLeka = recept.NazivLeka;
+            Pocetak = recept.Pocetak;
+            //lek = new LekDTO(recept.lek);
+            zdravstveniKarton = new ZdravstveniKarton(recept.zdravstveniKarton);
+        }
+
+     
+        public Recept(int id, string doziranje, int trajanje, string nazivLeka, DateTime pocetak, ArrayList lek, Lekar lekar, ZdravstveniKarton zdravstveniKarton) : this(id, doziranje, trajanje, nazivLeka, pocetak)
+        {
+            this.lek = lek;
+            this.lekar = lekar;
+            this.zdravstveniKarton = zdravstveniKarton;
+        }
+
         /// <pdGenerated>default parent getter</pdGenerated>
         public ZdravstveniKarton GetZdravstveniKarton()
         {
@@ -88,6 +133,8 @@ namespace Model
                 }
             }
         }
+
+
 
     }
 }

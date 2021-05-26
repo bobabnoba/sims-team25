@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ZdravoKorporacija.Controller;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 
 
@@ -23,33 +24,23 @@ namespace ZdravoKorporacija.Stranice.Magacin
     /// <summary>
     /// Interaction logic for MagacinStart.xaml
     /// </summary>
-    public partial class MagacinStart : Window
+    public partial class MagacinStart : Page
     {
-        Dictionary<int, int> ids = new Dictionary<int, int>();
-
-        ObservableCollection<Inventar> filtrirana_oprema = new ObservableCollection<Inventar>();
+        UpravnikController upravnikKontroler = new UpravnikController();
+        ObservableCollection<InventarDTO> filtrirana_oprema = new ObservableCollection<InventarDTO>();
+        ObservableCollection<InventarDTO> magacinOprema = new ObservableCollection<InventarDTO>();
 
         public MagacinStart()
         {
             InitializeComponent();
-            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapMagacin");
-            ids = datotekaID.dobaviSve();
-            UpravnikController uc = new UpravnikController();
-            uc.DodajIzMagacina();
-            dgMagacinOprema.ItemsSource = MagacinRepozitorijum.Instance.magacinOprema;
-           
-
-
+            magacinOprema = upravnikKontroler.DodajIzMagacinaDTO();
+            dgMagacinOprema.ItemsSource = magacinOprema;
         }
 
-        private void dgMagacinOprema_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            dgMagacinOprema.ItemsSource = MagacinRepozitorijum.Instance.magacinOprema;
-        }
 
         private void dodaj(object sender, RoutedEventArgs e)
         {
-            MagacinDodavanje mc = new MagacinDodavanje(ids);
+            MagacinDodavanje mc = new MagacinDodavanje(magacinOprema);
             mc.Show();
         }
 
@@ -77,8 +68,8 @@ namespace ZdravoKorporacija.Stranice.Magacin
 
         private void slValue_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            this.filtrirana_oprema = new ObservableCollection<Inventar>();
-            foreach (Inventar inv in MagacinRepozitorijum.Instance.magacinOprema)
+            this.filtrirana_oprema = new ObservableCollection<InventarDTO>();
+            foreach (InventarDTO inv in magacinOprema)
             {
                
                if(inv.UkupnaKolicina <= (int)slValue.Value)
@@ -88,19 +79,14 @@ namespace ZdravoKorporacija.Stranice.Magacin
             }
         }
 
-        private void checkBox_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void provera() {
             List<RadioButton> radioButtons = magacin.Children.OfType<RadioButton>().ToList();
             RadioButton rbTarget = radioButtons
                   .Where(r => r.GroupName == "Group1" && (bool)r.IsChecked)
                   .SingleOrDefault();
 
-            this.filtrirana_oprema = new ObservableCollection<Inventar>();
-            foreach (Inventar inv in MagacinRepozitorijum.Instance.magacinOprema)
+            this.filtrirana_oprema = new ObservableCollection<InventarDTO>();
+            foreach (InventarDTO inv in magacinOprema)
             {
                 if (rbTarget == r2)
                 {
@@ -138,13 +124,25 @@ namespace ZdravoKorporacija.Stranice.Magacin
         private void ponisti_Click(object sender, RoutedEventArgs e)
         {
             slValue.Value = 0;
-            this.filtrirana_oprema = new ObservableCollection<Inventar>();
+            this.filtrirana_oprema = new ObservableCollection<InventarDTO>();
             dgMagacinOprema.ItemsSource = MagacinRepozitorijum.Instance.magacinOprema;
             r1.IsChecked = false;
             r2.IsChecked = false;
+        }
 
-
+        private void checkBox_Checked(object sender, RoutedEventArgs e)
+        {
 
         }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void dgMagacinOprema_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+        }
+
     }
 }

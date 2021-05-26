@@ -1,40 +1,32 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using Repository;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-
+using ZdravoKorporacija.DTO;
 
 namespace ZdravoKorporacija.Stranice.UpravnikCRUD
 {
     /// <summary>
     /// Interaction logic for upravnikStart.xaml
     /// </summary>
-    public partial class upravnikStart : Window
+    public partial class prostorijeStart : Page
     {
-        private ObservableCollection<Prostorija> prostorije = new ObservableCollection<Prostorija>();
+        private ObservableCollection<ProstorijaDTO> prostorije = new ObservableCollection<ProstorijaDTO>();
+        ProstorijaController prostorijaController = new ProstorijaController();
 
-        Dictionary<int, int> ids = new Dictionary<int, int>();
-       
-        public upravnikStart()
+        public prostorijeStart()
         {
             InitializeComponent();
-            ProstorijaRepozitorijum datoteka = new ProstorijaRepozitorijum();
-            prostorije = new ObservableCollection<Prostorija>(datoteka.dobaviSve());
-            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapProstorija");
-            ids = datotekaID.dobaviSve();
+            prostorije   = prostorijaController.PregledSvihProstorijaDTO();
             dgUsers.ItemsSource = prostorije;
-            // inicijalizacija
-            //for(int i = 0; i < 1000; i++)
-            //{
-            //ids[i] =0;
-            //}
         }
 
         private void dodaj(object sender, RoutedEventArgs e)
         {
-            dodajProstorijuUpravnik dp = new dodajProstorijuUpravnik(prostorije, ids);
+            dodajProstorijuUpravnik dp = new dodajProstorijuUpravnik(prostorije);
             dp.Show();
         }
 
@@ -44,7 +36,7 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
                 MessageBox.Show("Niste selektovali red", "Greska");
             else
             {
-                izbrisiProstorijuUpravnik ip = new izbrisiProstorijuUpravnik(prostorije, (Prostorija)dgUsers.SelectedItem, ids);
+                izbrisiProstorijuUpravnik ip = new izbrisiProstorijuUpravnik(prostorije, (ProstorijaDTO)dgUsers.SelectedItem);
                 ip.Show();
             }
         }
@@ -55,7 +47,7 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
                 MessageBox.Show("Niste selektovali red","Greska");
             else
             {
-                izmeniProstorijuUpravnik ip = new izmeniProstorijuUpravnik(prostorije, (Prostorija)dgUsers.SelectedItem, dgUsers.SelectedIndex);
+                izmeniProstorijuUpravnik ip = new izmeniProstorijuUpravnik(prostorije, (ProstorijaDTO)dgUsers.SelectedItem, dgUsers.SelectedIndex);
                 ip.Show();
             }
         }

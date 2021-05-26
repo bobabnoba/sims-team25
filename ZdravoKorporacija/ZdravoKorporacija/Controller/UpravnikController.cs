@@ -2,42 +2,63 @@
 using Service;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Controller
 {
     public class UpravnikController
     {
-        public Inventar DodajUMagacin(int id, string naziv, int ukupnaKolicina, string proizvodjac, DateTime datumNabavke,Dictionary<int,int> id_map)
+        MagacinService magacinServis = new MagacinService();
+        DinamickaOpremaService dinamickaOpremaServis = new DinamickaOpremaService();
+        StatickaOpremaService statickaOpremaServis = new StatickaOpremaService();
+        TerminService terminServis = new TerminService();
+        public bool DodajUMagacin(InventarDTO opremaDTO)
         {
-            MagacinService ms = new MagacinService();
-            ms.DodajOpremu(id, naziv, ukupnaKolicina, proizvodjac, datumNabavke,id_map);
-            return null;
+         return  magacinServis.DodajOpremu(opremaDTO);
         }
         public bool DodajIzMagacina()
         {
-            MagacinService ms = new MagacinService();
-            ms.PregledSveOpreme();
+            magacinServis.PregledSveOpreme();
             return true;
         }
-        public bool DodajIzMagacinaStaticke()
+
+        public ObservableCollection<InventarDTO> DodajIzMagacinaDTO()
         {
-            StatickaOpremaService sos = new StatickaOpremaService();
-            sos.PregledSveOpreme();
-            return true;
+            return magacinServis.PregledSveOpremeDTO();
         }
-        public bool DodajIzMagacinaDinamcike()
+        public ObservableCollection<StatickaOprema> PregledMagacinaStaticke()
         {
-            DinamickaOpremaService dos = new DinamickaOpremaService();
-            dos.PregledSveOpreme();
-            return true;
+            return statickaOpremaServis.PregledSveOpreme();   
         }
-        public List<Termin> PregledSvihTermina()
+
+        public ObservableCollection<StatickaOpremaDTO> PregledMagacinaStatickeDTO()
         {
-            TerminService tos = new TerminService();
-            return tos.PregledSvihTermina();
+            return statickaOpremaServis.PregledSveOpremeDTO();
+        }
+
+
+        public ObservableCollection<DinamickaOprema> PregledMagacinaDinamcike()
+        {
+            return dinamickaOpremaServis.PregledSveOpreme();
+        }
+
+        public ObservableCollection<DinamickaOpremaDTO> PregledMagacinaDinamcikeDTO()
+        {
+            return dinamickaOpremaServis.PregledSveOpremeDTO();
+        }
+        public List<Termin> PregledSvihTermina() {
+        
+            return terminServis.PregledSvihTermina();
             
+        }
+
+        public ObservableCollection<TerminDTO> PregledSvihTerminaDTO()
+        {
+            return terminServis.PregledSvihTerminaDTO();
+
         }
 
         public bool Registruj(string ime, string prezime, UlogaEnum uloga)

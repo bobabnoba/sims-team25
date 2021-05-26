@@ -15,7 +15,7 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
     /// <summary>
     /// Interaction logic for ZaposleniPocetna.xaml
     /// </summary>
-    public partial class ZaposleniPocetna : Window
+    public partial class ZaposleniPocetna : Page
     {
         public ZaposleniPocetna()
         {
@@ -39,6 +39,11 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
         }
 
         private void dgKorisnici_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void kreiraj(object sender, RoutedEventArgs e)
         {
 
         }

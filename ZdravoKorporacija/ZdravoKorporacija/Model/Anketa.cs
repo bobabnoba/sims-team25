@@ -13,6 +13,17 @@ namespace Model
     {
         public Anketa() { }
 
+        public Anketa(int id, long idAutora, DateTime datum, TipAnkete tip, int ocena, string komentar, Termin termin)
+        {
+            Id = id;
+            IdAutora = idAutora;
+            Datum = datum;
+            Tip = tip;
+            Ocena = ocena;
+            Komentar = komentar;
+            Termin = termin;
+        }
+
         public int Id { get; set; }
         public long IdAutora { get; set; }
         public DateTime Datum { get; set; }

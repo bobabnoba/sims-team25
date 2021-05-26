@@ -4,6 +4,8 @@
 // Purpose: Definition of Class Appointment
 
 using System;
+using ZdravoKorporacija.DTO;
+
 namespace Model
 {
 
@@ -12,18 +14,18 @@ namespace Model
 
         public Termin() { }
 
-        public Termin(int id, Lekar lekar, TipTerminaEnum tip, DateTime pocetak, double trajanje)
+        public Termin(int id, Lekar lekar, TipTerminaEnum tip, DateTime pocetak, double trajanje, ZdravstveniKarton zdravstveniKarton, Izvestaj izvestaj)
         {
             this.Id = id;
             this.Lekar = lekar;
             this.Tip = tip;
             this.Pocetak = pocetak;
-            this.Trajanje = 0.5;
-            this.zdravstveniKarton = null;
+            this.Trajanje = 30;
+            this.zdravstveniKarton = zdravstveniKarton;
             this.prostorija = null;
-            this.izvestaj = null;
+            this.izvestaj = izvestaj;
         }
-
+        
 
         public Termin(ZdravstveniKarton zdravstveniKarton, Prostorija prostorija, Lekar Lekar, TipTerminaEnum tip, DateTime pocetak, double trajanje,Izvestaj izvestaj)
         {
@@ -34,6 +36,31 @@ namespace Model
             Tip = tip;
             Pocetak = pocetak;
             Trajanje = trajanje;
+        }
+        public Termin(int id, Lekar lekar, TipTerminaEnum tip, DateTime pocetak, double trajanje)
+        {
+            Id = id;
+            Lekar = lekar;
+            Tip = tip;
+            Pocetak = pocetak;
+            Trajanje = trajanje;
+        }
+
+        public Termin(TerminDTO termin)
+        {
+            if(termin!=null)
+            { 
+                if(termin.izvestaj!=null)
+            this.izvestaj = new Izvestaj(termin.izvestaj);
+            this.zdravstveniKarton = new ZdravstveniKarton(termin.zdravstveniKarton);
+            this.prostorija = new Prostorija(termin.prostorija);
+            Lekar = new Lekar(termin.Lekar);
+            Id = termin.Id;
+            Tip = termin.Tip;
+            Pocetak = termin.Pocetak;
+            Trajanje = termin.Trajanje;
+            this.hitno = termin.hitno;
+            }
         }
 
         public Izvestaj izvestaj;
