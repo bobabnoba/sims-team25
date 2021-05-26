@@ -21,10 +21,7 @@ namespace ZdravoKorporacija.DTO
             Sprat = sprat;
         }
 
-<<<<<<< HEAD
-        public ProstorijaDTO()
-        {
-=======
+
         public ProstorijaDTO(Prostorija prostorija)
         {
             this.inventar = new System.Collections.ArrayList();
@@ -33,8 +30,8 @@ namespace ZdravoKorporacija.DTO
             Tip = prostorija.Tip;
             Slobodna = prostorija.Slobodna;
             Sprat = prostorija.Sprat;
->>>>>>> izmenalek
         }
+
 
 
         public System.Collections.ArrayList statickaOprema;

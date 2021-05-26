@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -9,7 +8,7 @@ namespace ZdravoKorporacija.DTO
 {
     public class LekarDTO : KorisnikDTO
     {
-        public LekarDTO() : base() {}
+        public LekarDTO() : base() { }
 
         public LekarDTO(Lekar lekarEntitet)
         {
@@ -33,49 +32,6 @@ namespace ZdravoKorporacija.DTO
             this.Prezime = prezime;
             this.Jmbg = jmbg;
         }
-
-        public System.Collections.ArrayList termini;
-
-        public SpecijalizacijaEnum Specijalizacija { get; set; }
-        public List<RadniDan> radniDani { get; set; }
-    }
-
-}
-
-=======
-﻿using Model;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ZdravoKorporacija.DTO
-{
-    public class LekarDTO:Korisnik
-    {
-        public LekarDTO() : base() { }
-        public LekarDTO(String Ime, String Prezime) : base(Ime, Prezime)
-        {
-
-        }
-
-        public LekarDTO(string ime, string prezime, Int64 jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password, UlogaEnum uloga) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password, uloga)
-        {
-        }
-
-        public LekarDTO(Lekar lekar) {
-            this.Ime = lekar.Ime;
-            this.Prezime = lekar.Prezime;
-            this.Jmbg = lekar.Jmbg;
-            this.BrojTelefona = lekar.BrojTelefona;
-            this.Mejl = lekar.Mejl;
-            this.AdresaStanovanja = lekar.AdresaStanovanja;
-            this.Pol = lekar.Pol;
-            this.Username = lekar.Username;
-            this.Password = lekar.Password;
-            this.Uloga = lekar.Uloga;
-
-        }
-
 
         public System.Collections.ArrayList termin;
 
@@ -137,6 +93,8 @@ namespace ZdravoKorporacija.DTO
             }
         }
 
+        public SpecijalizacijaEnum Specijalizacija { get; set; }
+        public List<RadniDan> radniDani { get; set; }
     }
+
 }
->>>>>>> izmenalek

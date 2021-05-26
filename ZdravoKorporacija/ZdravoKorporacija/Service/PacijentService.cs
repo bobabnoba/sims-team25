@@ -16,7 +16,7 @@ namespace Service
         {
             PacijentRepozitorijum datoteka = new PacijentRepozitorijum();
             List<Pacijent> pacijenti = datoteka.dobaviSve();
-            foreach(Pacijent p in pacijenti)
+            foreach (Pacijent p in pacijenti)
             {
                 if (p.Jmbg.Equals(jmbg))
                 {
@@ -33,7 +33,7 @@ namespace Service
             {
                 if (p.Jmbg.Equals(jmbg))
                 {
-                    return Model2DTO( p);
+                    return Model2DTO(p);
                 }
             }
             return null;
@@ -85,7 +85,7 @@ namespace Service
                 {
                     if (p.termin == null)
                         p.termin = new List<Termin>();
-                    foreach(Termin t in p.termin.ToArray())
+                    foreach (Termin t in p.termin.ToArray())
                     {
                         if (t.Id.Equals(termin.Id))
                             p.termin.Remove(t);
@@ -97,23 +97,23 @@ namespace Service
             return false;
         }
 
-        public bool ObrisiObavestenjePacijentu(string  not)
+        public bool ObrisiObavestenjePacijentu(string not)
         {
             PacijentRepozitorijum datoteka = new PacijentRepozitorijum();
             List<Pacijent> pacijenti = datoteka.dobaviSve();
             foreach (Pacijent p in pacijenti)
             {
-                foreach(Notifikacija n in p.notifikacije.ToList())
+                foreach (Notifikacija n in p.notifikacije.ToList())
                 {
-                    if(n!=null)
-                    if (n.Sadrzaj.Equals(not))
-                    {
-                        p.notifikacije.Remove(n);
-                    }
+                    if (n != null)
+                        if (n.Sadrzaj.Equals(not))
+                        {
+                            p.notifikacije.Remove(n);
+                        }
                 }
                 datoteka.sacuvaj(pacijenti);
-                
-                
+
+
             }
             return true;
         }
@@ -122,17 +122,17 @@ namespace Service
         {
             PacijentRepozitorijum datoteka = new PacijentRepozitorijum();
             List<Pacijent> pacijenti = datoteka.dobaviSve();
-            if(pacijent != null)
-            foreach (Pacijent p in pacijenti)
-            {
-                if (p.Jmbg.Equals(pacijent.Jmbg))
+            if (pacijent != null)
+                foreach (Pacijent p in pacijenti)
                 {
-                    pacijenti.Remove(p);
-                    pacijenti.Add(pacijent);
-                    datoteka.sacuvaj(pacijenti);
-                    return true;
+                    if (p.Jmbg.Equals(pacijent.Jmbg))
+                    {
+                        pacijenti.Remove(p);
+                        pacijenti.Add(pacijent);
+                        datoteka.sacuvaj(pacijenti);
+                        return true;
+                    }
                 }
-            }
             return false;
         }
 
@@ -153,7 +153,7 @@ namespace Service
         public List<Pacijent> PregledSvihPacijenata()
         {
             PacijentRepozitorijum datoteka = new PacijentRepozitorijum();
-            
+
             List<Pacijent> pacijenti = datoteka.dobaviSve();
             return pacijenti;
         }
@@ -166,17 +166,17 @@ namespace Service
                 modeli.Add(DTO2Model(pdto));
             return modeli;
         }
-        public List<PacijentDTO> PregledSvihPacijenata2DTO( )
+        public List<PacijentDTO> PregledSvihPacijenata2DTO()
         {
             List<Pacijent> modeli = new List<Pacijent>();
             modeli = PregledSvihPacijenata();
             List<PacijentDTO> dtos = new List<PacijentDTO>();
-            foreach(Pacijent model in modeli)
+            foreach (Pacijent model in modeli)
             {
                 dtos.Add(Model2DTO(model));
             }
             return dtos;
-        } 
+        }
 
         public PacijentDTO Model2DTO(Pacijent model)
         {
@@ -185,21 +185,21 @@ namespace Service
             PacijentDTO dto = new PacijentDTO(kartonDTO, model.Guest, model.Ime, model.Prezime, model.Jmbg, model.BrojTelefona, model.Mejl, model.AdresaStanovanja, model.Pol, model.Username, model.Password, model.Uloga);
             return dto;
         }
-     
+
         public Pacijent DTO2Model(PacijentDTO dto)
         {
-            
-                foreach(Pacijent p in PregledSvihPacijenata())
-                {
-                    if (p.Password.Equals(dto.Password))
-                        return p;
-                }
+
+            foreach (Pacijent p in PregledSvihPacijenata())
+            {
+                if (p.Password.Equals(dto.Password))
+                    return p;
+            }
             return null;
         }
         public void DodajTermin(Pacijent p, Termin t)
         {
             ZdravstveniKarton zk;
-            if  (p.ZdravstveniKarton == null  )
+            if (p.ZdravstveniKarton == null)
             {
                 zk = new ZdravstveniKarton(p, p.Jmbg, StanjePacijentaEnum.None, "", KrvnaGrupaEnum.None, "");
                 p.ZdravstveniKarton = zk;
@@ -222,14 +222,14 @@ namespace Service
             Termin noviTermin = ts.DTO2Model(terminDTO);
             if (terminDTO == null)
                 return;
-            foreach(Pacijent pacijent in PregledSvihPacijenata())
+            foreach (Pacijent pacijent in PregledSvihPacijenata())
             {
-                if(pacijent.Jmbg.Equals(pacijentDTO.Jmbg))
-                if (pacijent.termin == null)
-                {
-                    pacijent.termin = new List<Termin>();
-                    pacijent.termin.Add(noviTermin);
-                }
+                if (pacijent.Jmbg.Equals(pacijentDTO.Jmbg))
+                    if (pacijent.termin == null)
+                    {
+                        pacijent.termin = new List<Termin>();
+                        pacijent.termin.Add(noviTermin);
+                    }
                 if (!pacijent.termin.Contains(noviTermin))
                     pacijent.termin.Add(noviTermin);
             }
@@ -274,4 +274,3 @@ namespace Service
 
     }
 }
-

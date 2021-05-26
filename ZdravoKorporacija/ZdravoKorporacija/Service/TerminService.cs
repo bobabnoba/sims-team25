@@ -169,7 +169,7 @@ namespace ZdravoKorporacija.Model
         }
 
 
-<<<<<<< HEAD
+
         public List<Termin> PregledSvihTermina2Model(List<TerminDTO> dtos)
         {
             List<Termin> modeli = new List<Termin>();
@@ -231,8 +231,6 @@ namespace ZdravoKorporacija.Model
 
         }
 
-=======
->>>>>>> izmenalek
 
         public Termin InicijalizujTermin(int id, TipTerminaEnum tip, DateTime pocetak, Pacijent pacijent, Lekar lekar,
             Prostorija prostorija)
@@ -281,26 +279,25 @@ namespace ZdravoKorporacija.Model
             return slobodniLekari;
         }
 
-<<<<<<< HEAD
 
-        public List<Prostorija> DobaviSlobodneProstorije(Termin termin)
+        public ObservableCollection<Prostorija> DobaviSlobodneProstorije(Termin termin)
         {
-            List<Prostorija> slobodneProstorije = prostorijaServis.PregledSvihProstorija();
-=======
+        ObservableCollection<Prostorija> slobodneProstorije = prostorijaServis.PregledSvihProstorija();
+            return slobodneProstorije;
+        }
+
         public ObservableCollection<Prostorija> DobaviSlobodneProstorije(ObservableCollection<Prostorija> prostorije, ObservableCollection<Termin> pregledi, Termin termin)
         {
             ObservableCollection<Prostorija> slobodneProstorije = prostorije;
->>>>>>> izmenalek
+
 
             foreach (Termin t in PregledSvihTermina().ToArray())
             {
                 if (t.Pocetak.Equals(termin.Pocetak))
                 {
-<<<<<<< HEAD
+
                     foreach (Prostorija p in prostorijaServis.PregledSvihProstorija().ToArray())
-=======
-                    foreach (Prostorija p in prostorije)
->>>>>>> izmenalek
+
                     {
                         if (t.prostorija.Id.Equals(p.Id))
                         {
@@ -439,8 +436,8 @@ namespace ZdravoKorporacija.Model
 
         public TerminDTO Model2DTO(Termin model)
         {
-            TerminDTO dto = new TerminDTO(model.zdravstveniKarton, prostorijaServis.Model2DTO(model.prostorija),
-                lekarServis.Model2DTO(model.Lekar), model.Tip, model.Pocetak, 0.5, model.izvestaj);
+            TerminDTO dto = new TerminDTO(new ZdravstveniKartonDTO(model.zdravstveniKarton), prostorijaServis.Model2DTO(model.prostorija),
+                lekarServis.Model2DTO(model.Lekar), model.Tip, model.Pocetak, 0.5, new IzvestajDTO( model.izvestaj));
             dto.Id = model.Id;
             return dto;
         }
@@ -578,10 +575,10 @@ namespace ZdravoKorporacija.Model
             return slobodniLekari;
         }
 
-        public List<Prostorija> DobaviSlobodneProstorijeHITNO()
+        public ObservableCollection<Prostorija> DobaviSlobodneProstorijeHITNO()
         {
-            List<Prostorija> slobodneProstorije = new List<Prostorija>();
-            List<Prostorija> prostorije = prostorijaServis.PregledSvihProstorija();
+            ObservableCollection<Prostorija> slobodneProstorije = new ObservableCollection<Prostorija>();
+            ObservableCollection<Prostorija> prostorije = prostorijaServis.PregledSvihProstorija();
             slobodneProstorije = prostorije;
 
             foreach (Termin t in PregledSvihTermina())

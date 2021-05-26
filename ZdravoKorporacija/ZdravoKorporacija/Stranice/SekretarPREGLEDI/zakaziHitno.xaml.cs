@@ -29,24 +29,12 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
         private TerminService ts = new TerminService();
         private List<PacijentDTO> pacijenti = new List<PacijentDTO>();
         private Dictionary<int, int> ids = new Dictionary<int, int>();
-<<<<<<< HEAD
         private List<LekarDTO> lekari = new List<LekarDTO>();
         List<LekarDTO> slobodniLekari = new List<LekarDTO>();
-        private List<ProstorijaDTO> slobodneProstorije;
-        private List<ProstorijaDTO> prostorije = new List<ProstorijaDTO>();
+        private ObservableCollection<ProstorijaDTO> slobodneProstorije;
+        private ObservableCollection<ProstorijaDTO> prostorije = new ObservableCollection<ProstorijaDTO>();
         private List<TerminDTO> alternativniTermini = new List<TerminDTO>();
-=======
-        private ObservableCollection<Termin> pregledi;
-        private PacijentService ps = new PacijentService();
-        private LekarRepozitorijum lekariDat = new LekarRepozitorijum();
-        private List<Lekar> lekari = new List<Lekar>();
-        List<Lekar> slobodniLekari = new List<Lekar>();
-        private ObservableCollection<Prostorija> slobodneProstorije;
-        private ObservableCollection<Prostorija> prostorije = new ObservableCollection<Prostorija>();
-        private ProstorijaRepozitorijum pRep = ProstorijaRepozitorijum.Instance;
-        private ObservableCollection<Termin> alternativniTermini;
->>>>>>> izmenalek
-        private bool kardio ;
+        private bool kardio;
         private bool neuro;
         private TerminController controller = new TerminController();
         private TerminDTO noviTermin;
@@ -58,7 +46,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
         private DateTime pocetakTermina;
         private LekarDTO lekarTermina;
         private ProstorijaDTO prostorijaTermina;
-        public zakaziHitno( Dictionary<int, int> ids)
+        public zakaziHitno(Dictionary<int, int> ids)
         {
             InitializeComponent();
             noviTermin = new TerminDTO();
@@ -95,7 +83,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
 
             if (cbTip.SelectedIndex == 0)
             {
-                alternativniTermini = controller.PregledSvihTermina2DTO( controller.NadjiAlternativnePreglede());
+                alternativniTermini = controller.PregledSvihTermina2DTO(controller.NadjiAlternativnePreglede());
                 alternative.ItemsSource = alternativniTermini;
                 tipTermina = TipTerminaEnum.Pregled;
                 Dodaj();
@@ -115,7 +103,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
         {
             slobodniLekari = controller.PregledSvihLekaraDTO(controller.DobaviSlobodneLekareHITNO(specijalizacija));
 
-            slobodneProstorije = controller.PregledSvihProstorijaDTO(controller.DobaviSlobodneProstorijeHITNO());
+            slobodneProstorije = controller.PregledSvihProstorijaDTO(new ObservableCollection<Prostorija>(controller.DobaviSlobodneProstorijeHITNO()));
 
             if (slobodniLekari.Count() == 0 || slobodneProstorije.Count() == 0)
             {
@@ -138,7 +126,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
                 pocetakTermina = RoundUp(DateTime.Now, TimeSpan.FromMinutes(30));
 
 
-                noviTermin = new TerminDTO(controller.NadjiKartonID(pac.Jmbg), prostorijaTermina, lekarTermina, tipTermina, pocetakTermina, 0.5, null);
+                noviTermin = new TerminDTO(new ZdravstveniKartonDTO(controller.NadjiKartonID(pac.Jmbg)), prostorijaTermina, lekarTermina, tipTermina, pocetakTermina, 0.5, null);
                 noviTermin.hitno = true;
                 noviTermin.Id = id;
                 if (controller.ZakaziTermin(controller.TerminDTO2Model(noviTermin), ids))
@@ -168,11 +156,11 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
         {
             TerminDTO t = new TerminDTO();
             t = (TerminDTO)alternative.SelectedItem;
-            foreach(TerminDTO term in alternativniTermini)
+            foreach (TerminDTO term in alternativniTermini)
             {
                 if (term.Id.Equals(t.Id))
                 {
-                    
+
                     PacijentDTO pac = (PacijentDTO)cbPacijent.SelectedItem;
                     term.zdravstveniKarton = zkk.KonvertujEntitetUDTO(controller.NadjiKartonID(pac.Jmbg));
                     if (ts.AzurirajTermin(controller.TerminDTO2Model(term)))
@@ -189,14 +177,14 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
         {
             kardio = true;
             neuroKB.IsChecked = false;
-            
+
         }
 
         private void RadioButton_Checked_1(object sender, RoutedEventArgs e)
         {
             neuro = true;
             kardioRB.IsChecked = false;
-            
+
         }
     }
 }

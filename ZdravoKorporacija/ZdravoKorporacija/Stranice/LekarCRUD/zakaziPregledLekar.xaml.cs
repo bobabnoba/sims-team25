@@ -19,9 +19,8 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     /// </summary>
     public partial class zakaziPregledLekar : Window
     {
-<<<<<<< HEAD
-        private List<ProstorijaDTO> slobodneProstorije;
-        private List<ProstorijaDTO> prostorije = new List<ProstorijaDTO>();
+        private ObservableCollection<ProstorijaDTO> slobodneProstorije;
+        private ObservableCollection<ProstorijaDTO> prostorije = new ObservableCollection<ProstorijaDTO>();
 
         private int idTermina;
         private TipTerminaEnum tipTermina;
@@ -30,7 +29,6 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
         private TerminDTO noviTermin;
         private TerminController tc = new TerminController();
-=======
         private TerminService terminServis = new TerminService();
         private LekarRepozitorijum lekariDat = new LekarRepozitorijum();
         private ProstorijaService prostorijeServis = new ProstorijaService();
@@ -39,11 +37,9 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private List<Pacijent> pacijenti = new List<Pacijent>();
         private List<Lekar> lekari = new List<Lekar>();
         private List<Termin> termini = new List<Termin>();
-        private ObservableCollection<Prostorija> prostorije = new ObservableCollection<Prostorija>();
 
         private Termin p;
         private ObservableCollection<Termin> pregledi;
->>>>>>> izmenalek
         String now = DateTime.Now.ToString("hh:mm:ss tt");
         DateTime today = DateTime.Today;
 
@@ -99,7 +95,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             else if (cbTip.SelectedIndex == 1)
                 tipTermina = TipTerminaEnum.Operacija;
 
-            noviTermin = new TerminDTO(tc.NadjiKartonID(pac.Jmbg), prostorijaTermina, tc.NadjiLekaraPoJMBG(lekarLogin.jmbg), tipTermina, pocetakTermina, 0.5, null);
+            noviTermin = new TerminDTO(new ZdravstveniKartonDTO(tc.NadjiKartonID(pac.Jmbg)), prostorijaTermina, tc.NadjiLekaraPoJMBG(lekarLogin.jmbg), tipTermina, pocetakTermina, 0.5, null);
             noviTermin.Id = idTermina;
 
             if (tc.ZakaziTermin(tc.TerminDTO2Model(noviTermin), ids))

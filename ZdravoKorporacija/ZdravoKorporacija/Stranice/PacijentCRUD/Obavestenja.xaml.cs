@@ -52,11 +52,11 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
                 // if (DateTime.Now.ToString().Equals(ter.AddMinutes(1).ToString()))
                 if (DateTime.Now.ToString().Equals(ter.AddMinutes(-1).ToString())) // upravo otkucalo da je prikažem, >= ispunjeno za sve pa ih sve ispisuje
                 {
-                   // System.Diagnostics.Debug.WriteLine("'prikazi = true! '");
+                    // System.Diagnostics.Debug.WriteLine("'prikazi = true! '");
                     this.prikaziNotifikaciju = true;
                 }
                 int res = DateTime.Compare(DateTime.Now, ter.AddMinutes(-1));
-               // System.Diagnostics.Debug.WriteLine("res je " + res);
+                // System.Diagnostics.Debug.WriteLine("res je " + res);
 
 
                 if (this.prikaziNotifikaciju == true && res >= 0)

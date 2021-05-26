@@ -17,14 +17,14 @@ namespace ZdravoKorporacija.Konverteri
             => dtos.Select(dto => KonvertujDTOuEntitet(dto)).ToList();
 
         public Termin KonvertujDTOuEntitet(TerminDTO dto)
-        { 
+        {
             LekarKonverter lekarKonverter = new LekarKonverter();
             IzvestajKonverter izvestajKonverter = new IzvestajKonverter();
             ZdravstveniKartonKonverter zdravstveniKartonKonverter = new ZdravstveniKartonKonverter();
 
             if (dto != null)
                 return new Termin(dto.Id, lekarKonverter.KonvertujDTOuEntitet(dto.Lekar), dto.Tip, dto.Pocetak,
-                    dto.Trajanje, zdravstveniKartonKonverter.KonvertujDTOuEntitet(dto.zdravstveniKarton),izvestajKonverter.KonvertujDTOuEntitet(dto.Izvestaj));
+                    dto.Trajanje, zdravstveniKartonKonverter.KonvertujDTOuEntitet(dto.zdravstveniKarton), izvestajKonverter.KonvertujDTOuEntitet(dto.izvestaj));
             else return null;
         }
 

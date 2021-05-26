@@ -16,7 +16,7 @@ namespace ZdravoKorporacija.DTO
         private ProstorijaDTO prostorijaDTO;
         private LekarDTO lekarDTO;
         private double v;
-        private Izvestaj izvestaj;
+     
 
         public TerminDTO()
         {
@@ -31,11 +31,11 @@ namespace ZdravoKorporacija.DTO
             this.prostorija = prostorija;
             this.Lekar = lekar;
             this.zdravstveniKarton = zdravstveniKarton;
-            if (izvestaj != null) this.Izvestaj = izvestaj;
-            else this.Izvestaj = new IzvestajDTO();
+            if (izvestaj != null) this.izvestaj = izvestaj;
+            else this.izvestaj = new IzvestajDTO();
         }
-        public TerminDTO(int id, LekarDTO lekar, TipTerminaEnum tip, DateTime pocetak, double trajanje, ProstorijaDTO prostorija)
-        public TerminDTO() { }
+        public TerminDTO(int id, LekarDTO lekar, TipTerminaEnum tip, DateTime pocetak, double trajanje, ProstorijaDTO prostorija) { }
+        
 
         public TerminDTO(int id, LekarDTO lekar, TipTerminaEnum tip, DateTime pocetak, double trajanje)
         {
@@ -50,7 +50,7 @@ namespace ZdravoKorporacija.DTO
         }
 
 
-        public TerminDTO(ZdravstveniKartonDTO zdravstveniKarton, ProstorijaDTO prostorija, LekarDTO Lekar, TipTerminaEnum tip, DateTime pocetak, double trajanje, Izvestaj izvestaj)
+        public TerminDTO(ZdravstveniKartonDTO zdravstveniKarton, ProstorijaDTO prostorija, LekarDTO Lekar, TipTerminaEnum tip, DateTime pocetak, double trajanje, IzvestajDTO izvestaj)
         {
             this.izvestaj = izvestaj;
             this.zdravstveniKarton = zdravstveniKarton;
@@ -69,7 +69,7 @@ namespace ZdravoKorporacija.DTO
 
         public TerminDTO(Termin termin)
         {
-            this.izvestaj = termin.izvestaj;
+            this.izvestaj = new IzvestajDTO(termin.izvestaj);
             this.zdravstveniKarton = new ZdravstveniKartonDTO( termin.zdravstveniKarton);
             this.prostorija = new ProstorijaDTO(termin.prostorija);
             this.Lekar = new LekarDTO(termin.Lekar);
@@ -79,7 +79,7 @@ namespace ZdravoKorporacija.DTO
         }
 
 
-        public Izvestaj izvestaj;
+        public IzvestajDTO izvestaj;
         public ZdravstveniKartonDTO zdravstveniKarton;
 
         /// <pdGenerated>default parent getter</pdGenerated>

@@ -15,14 +15,12 @@ namespace Service
         public bool DodajProstoriju(ProstorijaDTO prostorijaDTO)
         {
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapProstorija");
-<<<<<<< HEAD
 
-=======
             Dictionary<int,int> id_map = datotekaID.dobaviSve();
             int id = nadjiSlobodanID(id_map);
             id_map[id] = 1;
             prostorijaDTO.Id = id;
->>>>>>> izmenalek
+
 
             Prostorija prostorija = new Prostorija(prostorijaDTO);
             ProstorijaRepozitorijum.Instance.prostorije.Add(prostorija);
@@ -129,11 +127,11 @@ namespace Service
             return modeli;
         }
     
-        public List<ProstorijaDTO> PregledSvihProstorijaDTO(List<Prostorija> modeli)
+        public ObservableCollection<ProstorijaDTO> PregledSvihProstorijaDTO(ObservableCollection<Prostorija> modeli)
         {
             if (modeli == null) 
              modeli = PregledSvihProstorija();
-            List<ProstorijaDTO> dtos = new List<ProstorijaDTO>();
+            ObservableCollection<ProstorijaDTO> dtos = new ObservableCollection<ProstorijaDTO>();
             foreach(Prostorija model in modeli)
             {
                 dtos.Add(Model2DTO(model));

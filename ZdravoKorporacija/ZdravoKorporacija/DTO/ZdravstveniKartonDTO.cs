@@ -16,7 +16,7 @@ namespace ZdravoKorporacija.DTO
             {
                 this.izvestajOHospitalizaciji = new System.Collections.ArrayList();
                 this.istorijaBolesti = new List<IstorijaBolestiDTO>();
-                this.recept = new ObservableCollection<ReceptDTO>();
+                this.recept = new List<ReceptDTO>();
                 this.termin = new List<TerminDTO>();
                 this.patient = patient;
                 Id = id;
@@ -30,7 +30,7 @@ namespace ZdravoKorporacija.DTO
         {
             this.izvestajOHospitalizaciji = zdravstveniKarton.izvestajOHospitalizaciji;
             this.istorijaBolesti = new List<IstorijaBolestiDTO>();
-            this.recept = new ObservableCollection<ReceptDTO>();
+            this.recept = new List<ReceptDTO>();
             this.termin = konvertujListuEntitetaUListuDTO( zdravstveniKarton.termin);
             this.patient = zdravstveniKarton.patient;
             Id = zdravstveniKarton.Id;
@@ -78,9 +78,6 @@ namespace ZdravoKorporacija.DTO
             }
         }
 
-        public ZdravstveniKartonDTO()
-            {
-            }
             public List<IstorijaBolestiDTO> istorijaBolesti;
 
             /// <pdGenerated>default getter</pdGenerated>
@@ -140,13 +137,12 @@ namespace ZdravoKorporacija.DTO
                     tmpIstorijaBolesti.Clear();
                 }
             }
-            public ObservableCollection<ReceptDTO> recept;
 
             /// <pdGenerated>default getter</pdGenerated>
-            public ObservableCollection<ReceptDTO> GetRecept()
+            public List<ReceptDTO> GetRecept()
             {
                 if (recept == null)
-                    recept = new ObservableCollection<ReceptDTO>();
+                recept = new List<ReceptDTO>();
                 return recept;
             }
 
@@ -164,7 +160,7 @@ namespace ZdravoKorporacija.DTO
                 if (newRecept == null)
                     return;
                 if (this.recept == null)
-                    this.recept = new ObservableCollection<ReceptDTO>();
+                    this.recept = new List<ReceptDTO>();
                 if (!this.recept.Contains(newRecept))
                 {
                     this.recept.Add(newRecept);
@@ -260,7 +256,6 @@ namespace ZdravoKorporacija.DTO
             }
             public Pacijent patient { get; set; }
 
-            public long Id { get; set; }
             public StanjePacijentaEnum ZdravstvenoStanje { get; set; }
             public String Alergije { get; set; }
             public KrvnaGrupaEnum KrvnaGrupa { get; set; }

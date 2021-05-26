@@ -23,8 +23,8 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
         {
             InitializeComponent();
             this.pacijentDTO = pacijentDTO;
-            tbSimptomi.DataContext = selektovaniTermin.Izvestaj;
-            tbOpis.DataContext = selektovaniTermin.Izvestaj;
+            tbSimptomi.DataContext = selektovaniTermin.izvestaj;
+            tbOpis.DataContext = selektovaniTermin.izvestaj;
             labelaTip.DataContext = selektovaniTermin;
             labelaDatum.DataContext = selektovaniTermin;
             labelaLekar.DataContext = selektovaniTermin;

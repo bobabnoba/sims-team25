@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -13,6 +14,14 @@ namespace ZdravoKorporacija.DTO
             Opis = opis;
             Simptomi = simptomi;
             Termin = termin;
+        }
+
+        public IzvestajDTO(Izvestaj izvestaj)
+        {
+            Id = izvestaj.Id;
+            Opis = izvestaj.Opis;
+            Simptomi = izvestaj.Simptomi;
+            Termin = new TerminDTO(izvestaj.termin);
         }
 
         public int Id { get; set; }

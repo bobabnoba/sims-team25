@@ -43,11 +43,11 @@ namespace ZdravoKorporacija.Controller
 
         public void dodajNotifikaciju(PacijentDTO ulogovaniPacijent)
         {
-            Pacijent pacijent = (Pacijent) servis.PregledSvihPacijenata()
+            Pacijent pacijent = (Pacijent)servis.PregledSvihPacijenata()
                 .FirstOrDefault(s => ulogovaniPacijent.korisnickoIme.Equals(s.Username));
 
             pacijent.notifikacije.Clear();
-            foreach(NotifikacijaDTO nDTO in ulogovaniPacijent.notifikacije)
+            foreach (NotifikacijaDTO nDTO in ulogovaniPacijent.notifikacije)
                 pacijent.notifikacije.Add(notifikacijaKonverter.KonvertujDTOuEntitet(nDTO));
 
             servis.AzurirajPacijenta(pacijent);
@@ -66,4 +66,3 @@ namespace ZdravoKorporacija.Controller
 
 
 }
-

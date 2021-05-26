@@ -31,7 +31,7 @@ namespace ZdravoKorporacija.Stranice
         private PacijentDTO pacijent;
         private List<LekarDTO> lekari = new List<LekarDTO>();
         private List<PacijentDTO> pacijenti = new List<PacijentDTO>();
-        private List<ProstorijaDTO> prostorije = new List<ProstorijaDTO>();
+        private ObservableCollection<ProstorijaDTO> prostorije = new ObservableCollection<ProstorijaDTO>();
         private TerminDTO t1;
         private TerminDTO t2;
         private TerminController controller = new TerminController();

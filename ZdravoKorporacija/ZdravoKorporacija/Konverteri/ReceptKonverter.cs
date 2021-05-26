@@ -26,7 +26,7 @@ namespace ZdravoKorporacija.Konverteri
         {
             LekarKonverter lekarKonverter = new LekarKonverter();
             ZdravstveniKartonKonverter zdravstveniKartonKonverter = new ZdravstveniKartonKonverter();
-            return new Recept(lekarKonverter.KonvertujDTOuEntitet(dto.Lekar), zdravstveniKartonKonverter.KonvertujDTOuEntitet(dto.ZdravstveniKarton), dto.Id, dto.Doziranje, dto.Trajanje, dto.NazivLeka, dto.Pocetak);
+            return new Recept(lekarKonverter.KonvertujDTOuEntitet(dto.Lekar), zdravstveniKartonKonverter.KonvertujDTOuEntitet(dto.zdravstveniKarton), dto.Id, dto.Doziranje, dto.Trajanje, dto.NazivLeka, dto.Pocetak);
             
         }
 

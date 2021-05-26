@@ -19,27 +19,26 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     /// </summary>
     public partial class izmeniPregledLekar : Window
     {
-<<<<<<< HEAD
+
         private List<LekarDTO> lekari= new List<LekarDTO>();
         private List<PacijentDTO> pacijenti = new List<PacijentDTO>();
-        private List<ProstorijaDTO> prostorije = new List<ProstorijaDTO>();
+        private ObservableCollection<ProstorijaDTO> prostorije = new ObservableCollection<ProstorijaDTO>();
         private TerminDTO t1;
         private TerminDTO t2;
         private ZdravstveniKartonKonverter zkk = new ZdravstveniKartonKonverter();
 
-=======
+
         private TerminService terminServis = new TerminService();
         private ProstorijaService prostorijeStorage = new ProstorijaService();
         private PacijentService pacijentiServis = new PacijentService();
-        private List<Pacijent> pacijenti = new List<Pacijent>();
+
         private LekarRepozitorijum lekariDat = new LekarRepozitorijum();
-        private List<Lekar> lekari = new List<Lekar>();
-        private ObservableCollection<Prostorija> prostorije = new ObservableCollection<Prostorija>();
+
         private Termin p;
         private Termin s; // selektovani, za ukloniti
         private ObservableCollection<Termin> pregledi;
         private List<Termin> termini;
->>>>>>> izmenalek
+
         String now = DateTime.Now.ToString("hh:mm:ss tt");
         DateTime today = DateTime.Today;
         private TerminController controller = new TerminController();
