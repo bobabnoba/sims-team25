@@ -16,6 +16,7 @@ using Repository;
 using Service;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Konverteri;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
@@ -38,6 +39,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
         private TerminController controller = new TerminController();
         private TerminDTO noviTermin;
         SpecijalizacijaEnum specijalizacija;
+        private ZdravstveniKartonKonverter zkk = new ZdravstveniKartonKonverter();
 
 
         private TipTerminaEnum tipTermina;
@@ -160,7 +162,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
                 {
                     
                     PacijentDTO pac = (PacijentDTO)cbPacijent.SelectedItem;
-                    term.zdravstveniKarton = controller.NadjiKartonID(pac.Jmbg);
+                    term.zdravstveniKarton = zkk.KonvertujEntitetUDTO(controller.NadjiKartonID(pac.Jmbg));
                     if (ts.AzurirajTermin(controller.TerminDTO2Model(term)))
                     {
                         controller.PregledSvihTermina().Remove(controller.TerminDTO2Model(t));

@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Konverteri;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice
@@ -32,6 +33,7 @@ namespace ZdravoKorporacija.Stranice
         private List<TerminDTO> pregledi;
         private NaloziController kartonController = new NaloziController();
         private double pacijent;
+        private ZdravstveniKartonKonverter zkk = new ZdravstveniKartonKonverter();
         public zakaziPregled( Dictionary<int,int> ids, double pacijent)
         {
             InitializeComponent();
@@ -77,12 +79,11 @@ namespace ZdravoKorporacija.Stranice
         {
             int id = tc.MapaTermina(ids);   
 
-          
-
+            
             noviTermin.Id = id;
             noviTermin.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
             noviTermin.Lekar = (LekarDTO)ljekar.SelectedItem;
-            noviTermin.zdravstveniKarton = tc.NadjiKartonID((long)pacijent);
+            noviTermin.zdravstveniKarton = zkk.KonvertujEntitetUDTO(tc.NadjiKartonID((long)pacijent));
 
             if (tc.ZakaziTermin(tc.TerminDTO2Model(noviTermin), ids))
             {

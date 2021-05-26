@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Service;
 using Model;
-using DTO;
+using ZdravoKorporacija.DTO;
 
 namespace ZdravoKorporacija.Controller
 {

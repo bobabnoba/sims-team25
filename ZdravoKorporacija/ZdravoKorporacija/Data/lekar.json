@@ -1,10 +1,8 @@
 [
   {
-<<<<<<< HEAD
     "termin": null,
     "Specijalizacija": 0,
     "radniDani": null,
-=======
     "termin": [
       {
         "izvestaj": null,
@@ -424,7 +422,6 @@
         "hitno": false
       }
     ],
->>>>>>> cleancode-pacijent
     "Ime": "Milos",
     "Prezime": "Zivic",
     "Jmbg": 2234567890113,

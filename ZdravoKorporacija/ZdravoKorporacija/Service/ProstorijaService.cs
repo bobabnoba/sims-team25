@@ -7,7 +7,7 @@ using ZdravoKorporacija.DTO;
 
 namespace Service
 {
-    class ProstorijaService
+    public class ProstorijaService
     {
         public bool DodajProstoriju(Prostorija prostorija, Dictionary<int, int> id_map)
         {

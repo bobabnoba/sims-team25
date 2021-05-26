@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Konverteri;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Stranice.Logovanje;
 
@@ -23,6 +24,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private List<ProstorijaDTO> prostorije = new List<ProstorijaDTO>();
         private TerminDTO t1;
         private TerminDTO t2;
+        private ZdravstveniKartonKonverter zkk = new ZdravstveniKartonKonverter();
 
         String now = DateTime.Now.ToString("hh:mm:ss tt");
         DateTime today = DateTime.Today;
@@ -134,7 +136,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
             t1.Lekar = controller.NadjiLekaraPoJMBG(lekarLogin.jmbg);
             t1.prostorija = (ProstorijaDTO)cbProstorija.SelectedItem;
-            t1.zdravstveniKarton = controller.NadjiKartonID(pacijent.Jmbg);
+            t1.zdravstveniKarton = zkk.KonvertujEntitetUDTO(controller.NadjiKartonID(pacijent.Jmbg));
             if (controller.AzurirajTermin(controller.TerminDTO2Model(t1)))
             {
                 controller.PregledSvihTermina().Remove(controller.DTO2ModelNadji(t2));

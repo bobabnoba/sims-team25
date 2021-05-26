@@ -23,7 +23,7 @@ namespace Model
             this.prostorija = null;
             this.izvestaj = izvestaj;
         }
-
+        
 
         public Termin(ZdravstveniKarton zdravstveniKarton, Prostorija prostorija, Lekar Lekar, TipTerminaEnum tip, DateTime pocetak, double trajanje,Izvestaj izvestaj)
         {
@@ -31,6 +31,14 @@ namespace Model
             this.zdravstveniKarton = zdravstveniKarton;
             this.prostorija = prostorija;
             this.Lekar = Lekar;
+            Tip = tip;
+            Pocetak = pocetak;
+            Trajanje = trajanje;
+        }
+        public Termin(int id, Lekar lekar, TipTerminaEnum tip, DateTime pocetak, double trajanje)
+        {
+            Id = id;
+            Lekar = lekar;
             Tip = tip;
             Pocetak = pocetak;
             Trajanje = trajanje;

@@ -8,6 +8,12 @@ namespace ZdravoKorporacija.DTO
     public class TerminDTO
     {
         private TerminController tc = new TerminController();
+        private ZdravstveniKarton zdravstveniKarton1;
+        private ProstorijaDTO prostorijaDTO;
+        private LekarDTO lekarDTO;
+        private double v;
+        private Izvestaj izvestaj;
+
         public TerminDTO()
         {
         }
@@ -36,6 +42,16 @@ namespace ZdravoKorporacija.DTO
             this.Izvestaj = null;
         }
 
+        public TerminDTO(ZdravstveniKarton zdravstveniKarton1, ProstorijaDTO prostorijaDTO, LekarDTO lekarDTO, TipTerminaEnum tip, DateTime pocetak, double v, Izvestaj izvestaj)
+        {
+            this.zdravstveniKarton1 = zdravstveniKarton1;
+            this.prostorijaDTO = prostorijaDTO;
+            this.lekarDTO = lekarDTO;
+            Tip = tip;
+            Pocetak = pocetak;
+            this.v = v;
+            this.izvestaj = izvestaj;
+        }
 
         public int Id { get; set; }
     public TipTerminaEnum Tip { get; set; }

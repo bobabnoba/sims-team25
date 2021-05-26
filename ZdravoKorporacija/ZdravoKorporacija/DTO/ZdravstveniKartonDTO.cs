@@ -10,12 +10,12 @@ namespace ZdravoKorporacija.DTO
         public long Id { get; set; }
 
         public List<ReceptDTO> recept;
-        private IEnumerable<ReceptDTO> jedegovna1;
-        private List<IstorijaBolesti> istorijaBolesti;
-        private PacijentDTO pacijentDTO;
 
         //public List<IstorijaBolesti> istorijaBolesti;
-
+        public ZdravstveniKartonDTO(long id)
+        {
+            this.Id = id;
+        }
         public ZdravstveniKartonDTO(IEnumerable<ReceptDTO> recept, List<IstorijaBolesti> istorijaBolesti, PacijentDTO pacijent, long id)
         {
             this.recept = new List<ReceptDTO>(recept);

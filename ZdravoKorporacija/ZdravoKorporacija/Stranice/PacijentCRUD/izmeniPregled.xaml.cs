@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Konverteri;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice
@@ -34,6 +35,7 @@ namespace ZdravoKorporacija.Stranice
         private TerminDTO t1;
         private TerminDTO t2;
         private TerminController controller = new TerminController();
+        private ZdravstveniKartonKonverter zkk = new ZdravstveniKartonKonverter();
 
         public izmeniPregled(Termin selektovani, ObservableCollection<Termin> termini, Pacijent pacijent)
         {
@@ -53,7 +55,7 @@ namespace ZdravoKorporacija.Stranice
 
 
 
-            t1.zdravstveniKarton = selektovani.zdravstveniKarton;
+            t1.zdravstveniKarton = zkk.KonvertujEntitetUDTO(selektovani.zdravstveniKarton);
             t1.Tip = selektovani.Tip;
             t1.Trajanje = 0.5;
             t1.Id = t2.Id;
@@ -92,7 +94,7 @@ namespace ZdravoKorporacija.Stranice
         {
             t1.Lekar = (LekarDTO)ljekar.SelectedItem;
             t1.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
-            t1.zdravstveniKarton = controller.NadjiKartonID(pacijent.Jmbg);
+            t1.zdravstveniKarton = zkk.KonvertujEntitetUDTO(controller.NadjiKartonID(pacijent.Jmbg));
 
             
 

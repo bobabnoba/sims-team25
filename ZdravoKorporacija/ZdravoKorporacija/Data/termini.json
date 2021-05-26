@@ -2963,7 +2963,6 @@
   },
   {
     "izvestaj": null,
-<<<<<<< HEAD
     "zdravstveniKarton": {
       "izvestajOHospitalizaciji": [],
       "istorijaBolesti": [],
@@ -3006,8 +3005,6 @@
   },
   {
     "izvestaj": null,
-=======
->>>>>>> cleancode-pacijent
     "zdravstveniKarton": {
       "izvestajOHospitalizaciji": [],
       "istorijaBolesti": [],

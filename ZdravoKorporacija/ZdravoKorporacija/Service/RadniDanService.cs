@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using DTO;
 using Model;
 using Repository;
+using ZdravoKorporacija.DTO;
 
 namespace Service
 {
