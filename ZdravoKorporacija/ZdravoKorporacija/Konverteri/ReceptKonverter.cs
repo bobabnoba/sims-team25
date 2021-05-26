@@ -35,7 +35,7 @@ namespace ZdravoKorporacija.Konverteri
 
         public IEnumerable<ReceptDTO> KonvertujEntiteteUDTOS(List<Recept> entiteti)
         {
-            throw new NotImplementedException();
+            return entiteti.Select(entitet => KonvertujEntitetUDTO(entitet)).ToList();
         }
 
         public ReceptDTO KonvertujEntitetUDTO(Recept entitet)
