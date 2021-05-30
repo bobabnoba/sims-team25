@@ -16,13 +16,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
+using ZdravoKorporacija.Stranice.LekarCRUD;
 
 namespace ZdravoKorporacija.Stranice.LekoviCRUD
 {
     /// <summary>
     /// Interaction logic for DodavanjeZahtevaZaLek.xaml
     /// </summary>
-    public partial class izmeniZahtevZaLek : Window
+    public partial class izmeniZahtevZaLek : Page
     {
         LekServis lekServis = new LekServis();
         DodavanjeAlternativnihLekova dodavanjeAlternativnih;
@@ -77,13 +78,13 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
             Dictionary<int, int> ids = datoteka.dobaviSve();
             lekServis.ObrisiZahtevZaLek(zl);
             lekServis.DodajZahtevLeka(zahtevLekDTO);
-            this.Close();
+            test.prozor.Content = new LekarZahteviZaDodavanjeLekaStart();
 
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            test.prozor.Content = new LekarZahteviZaDodavanjeLekaStart();
         }
 
         private void button_Click_2(object sender, RoutedEventArgs e)

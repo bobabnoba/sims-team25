@@ -49,8 +49,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
                 MessageBox.Show("Niste selektovali red", "Greska");
             else
             {
-                izmeniPregledLekar ip = new izmeniPregledLekar((TerminDTO)dgUsers.SelectedItem );
-                ip.Show();
+                test.prozor.Content = new izmeniPregledLekar((TerminDTO)dgUsers.SelectedItem);
             }
         }
 

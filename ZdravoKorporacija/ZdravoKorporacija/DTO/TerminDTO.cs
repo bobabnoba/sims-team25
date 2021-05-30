@@ -63,15 +63,18 @@ namespace ZdravoKorporacija.DTO
 
         public TerminDTO(Termin termin)
         {
-            this.izvestaj = new IzvestajDTO(termin.izvestaj);
-            this.zdravstveniKarton = new ZdravstveniKartonDTO(termin.zdravstveniKarton);
-            this.prostorija = new ProstorijaDTO(termin.prostorija);
-            Lekar = new LekarDTO(termin.Lekar);
-            Id = termin.Id;
-            Tip = termin.Tip;
-            Pocetak = termin.Pocetak;
-            Trajanje = termin.Trajanje;
-            this.hitno = termin.hitno;
+            if (termin != null)
+            {
+                this.izvestaj = new IzvestajDTO(termin.izvestaj);
+                this.zdravstveniKarton = new ZdravstveniKartonDTO(termin.zdravstveniKarton);
+                this.prostorija = new ProstorijaDTO(termin.prostorija);
+                Lekar = new LekarDTO(termin.Lekar);
+                Id = termin.Id;
+                Tip = termin.Tip;
+                Pocetak = termin.Pocetak;
+                Trajanje = termin.Trajanje;
+                this.hitno = termin.hitno;
+            }
         }
 
         public TerminDTO(ProstorijaDTO prostorija, DateTime pocetak)

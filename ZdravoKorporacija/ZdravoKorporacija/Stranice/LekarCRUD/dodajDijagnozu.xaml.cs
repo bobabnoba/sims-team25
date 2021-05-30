@@ -19,7 +19,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
 
 
-    public partial class dodajDijagnozu : Window
+    public partial class dodajDijagnozu : Page
     {
         private ZdravstveniKartonServis kartonServis = new ZdravstveniKartonServis();
         private ZdravstveniKartonRepozitorijum kartonDat = new ZdravstveniKartonRepozitorijum();
@@ -44,7 +44,6 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            this.Close();
         }
     }
 }

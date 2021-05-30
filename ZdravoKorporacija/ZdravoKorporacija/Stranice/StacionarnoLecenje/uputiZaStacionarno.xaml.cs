@@ -13,13 +13,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Stranice.LekarCRUD;
 
 namespace ZdravoKorporacija.Stranice.StacionarnoLecenje
 {
     /// <summary>
     /// Interaction logic for uputiZaStacionarno.xaml
     /// </summary>
-    public partial class uputiZaStacionarno : Window
+    public partial class uputiZaStacionarno : Page
     {
         StacionarnoLecenjeController sl = StacionarnoLecenjeController.Instance;
         public static ObservableCollection<StacionarnoLecenjeDTO> uputi = new ObservableCollection<StacionarnoLecenjeDTO>();
@@ -44,7 +45,7 @@ namespace ZdravoKorporacija.Stranice.StacionarnoLecenje
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             stacionarnoStart ss = new stacionarnoStart(pac);
-            ss.Show();
+            test.prozor.Content = ss;
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -54,7 +55,7 @@ namespace ZdravoKorporacija.Stranice.StacionarnoLecenje
             {
                 stac = (StacionarnoLecenjeDTO)dgUsers.SelectedItem;
                 izmeniUputStacionarno iu = new izmeniUputStacionarno(pac,stac);
-                iu.Show();
+                test.prozor.Content = iu;
             }
             else
             {

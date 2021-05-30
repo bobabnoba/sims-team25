@@ -24,7 +24,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     /// <summary>
     /// Interaction logic for dodajAnamnezu.xaml
     /// </summary>
-    public partial class dodajAnamnezu : Window
+    public partial class dodajAnamnezu : Page
     {
         private TerminController terminController = TerminController.Instance;
         private IzvestajDTO izvestaj = new IzvestajDTO();
@@ -46,12 +46,12 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
             terminController.IzdajAnamnezu(izvestaj, termin);
             zdravstveniKartonPrikaz.izvestaji.Add(izvestaj);
-            this.Close();
+            test.prozor.Content = new zdravstveniKartonPrikaz(termin);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            test.prozor.Content = new zdravstveniKartonPrikaz(termin);
         }
     }
 }

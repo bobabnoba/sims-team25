@@ -3,6 +3,8 @@ using Service;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
+using ZdravoKorporacija.Controller;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.Uput
@@ -13,12 +15,13 @@ namespace ZdravoKorporacija.Stranice.Uput
     public partial class otkaziUput : Window
     {
         private TerminService storage = new TerminService();
-        private ObservableCollection<Termin> termini;
+        private ObservableCollection<TerminDTO> termini;
         private PacijentService pacijentServis = new PacijentService();
-        Termin termin;
+        TerminController terminController = new TerminController();
+        TerminDTO termin;
         private Dictionary<int, int> ids = new Dictionary<int, int>();
 
-        public otkaziUput(ObservableCollection<Termin> ts, Termin t, Dictionary<int, int> ids)
+        public otkaziUput(ObservableCollection<TerminDTO> ts, TerminDTO t, Dictionary<int, int> ids)
         {
             InitializeComponent();
             termini = ts;
@@ -28,11 +31,11 @@ namespace ZdravoKorporacija.Stranice.Uput
 
         private void da(object sender, RoutedEventArgs e)
         {
-            this.ids[this.termin.Id] = 0;
-            storage.OtkaziTermin(termin, ids);
-            pacijentServis.ObrisiTerminPacijentu(termin);
-            termini.Remove(termin);
-            this.Close();
+            //this.ids[this.termin.Id] = 0;
+            //storage.OtkaziTermin(termin, ids);
+            //pacijentServis.ObrisiTerminPacijentu(termin);
+            //termini.Remove(termin);
+            //this.Close();
 
         }
 

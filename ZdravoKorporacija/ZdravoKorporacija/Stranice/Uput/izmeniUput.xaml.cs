@@ -5,7 +5,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using ZdravoKorporacija.Controller;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
+using ZdravoKorporacija.Stranice.LekarCRUD;
 using ZdravoKorporacija.Stranice.Logovanje;
 
 namespace ZdravoKorporacija.Stranice.Uput
@@ -13,25 +16,27 @@ namespace ZdravoKorporacija.Stranice.Uput
     /// <summary>
     /// Interaction logic for izmeniPregledLekar.xaml
     /// </summary>
-    public partial class izmeniUput : Window
+    public partial class izmeniUput : Page
     {
         private TerminService terminServis = new TerminService();
         private ProstorijaService prostorijeStorage = new ProstorijaService();
+        private LekarController lekarController = new LekarController();
         private PacijentService pacijentiServis = new PacijentService();
-        private List<Pacijent> pacijenti = new List<Pacijent>();
+        private List<PacijentDTO> pacijenti = new List<PacijentDTO>();
         private LekarRepozitorijum lekariDat = new LekarRepozitorijum();
-        private List<Lekar> lekari = new List<Lekar>();
+        private List<LekarDTO> lekari = new List<LekarDTO>();
+        private PacijentController pacijentController =PacijentController.Instance;
         private ObservableCollection<Prostorija> prostorije = new ObservableCollection<Prostorija>();
-        private Termin p;
-        private Termin s; // selektovani, za ukloniti
-        private ObservableCollection<Termin> pregledi;
-        private List<Termin> termini;
+        private TerminDTO p;
+        private TerminDTO s; // selektovani, za ukloniti
+        private ObservableCollection<TerminDTO> pregledi;
+        private List<TerminDTO> termini;
         String now = DateTime.Now.ToString("hh:mm:ss tt");
         DateTime today = DateTime.Today;
-        public izmeniUput(Termin selektovani, ObservableCollection<Termin> termini)
+        public izmeniUput(TerminDTO selektovani, ObservableCollection<TerminDTO> termini)
         {
             InitializeComponent();
-            pacijenti = pacijentiServis.PregledSvihPacijenata();
+            pacijenti = pacijentController.PregledSvihPacijenata2();
             p = selektovani;
             s = selektovani;
             cbPacijent.ItemsSource = pacijenti;
@@ -40,7 +45,7 @@ namespace ZdravoKorporacija.Stranice.Uput
 
                 // if(pacijent.ZdravstveniKarton.Id== selektovani.GetZdravstveniKarton().Id)
 
-                foreach (Pacijent pacijent in pacijenti)
+                foreach (PacijentDTO pacijent in pacijenti)
                 {
                     if (pacijent.ZdravstveniKarton != null)
                     {
@@ -53,8 +58,8 @@ namespace ZdravoKorporacija.Stranice.Uput
             catch (NullReferenceException) { }
             pregledi = termini;
 
-            lekari = lekariDat.dobaviSve();
-            lekari.Remove(lekarLogin.lekar);
+            lekari = (List<LekarDTO>)lekarController.dobaviListuDTOLekara();
+            lekari.Remove(new LekarDTO(lekarLogin.lekar));
             Lekari.ItemsSource = lekari;
             CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
             date.BlackoutDates.Add(cdr);
@@ -81,7 +86,7 @@ namespace ZdravoKorporacija.Stranice.Uput
             }
 
 
-            foreach (Pacijent p in pacijenti)
+            foreach (PacijentDTO p in pacijenti)
             {
                 if (p.ZdravstveniKarton == selektovani.zdravstveniKarton)
                 {
@@ -89,7 +94,7 @@ namespace ZdravoKorporacija.Stranice.Uput
                 }
             }
 
-            foreach (Lekar l in lekari)
+            foreach (LekarDTO l in lekari)
             {
                 if (selektovani.Lekar == null)
                 {
@@ -117,13 +122,13 @@ namespace ZdravoKorporacija.Stranice.Uput
 
         private void odustani(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            test.prozor.Content = new Uputi();
         }
 
         private void potvrdi(object sender, RoutedEventArgs e)
         {
             ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
-            termini = terminServis.PregledSvihTermina();
+            termini = terminServis.PregledSvihTermina2();
             String t = null;
             String d = date.Text;
             int prepodne = Int32.Parse(now.Substring(0, 2));
@@ -176,9 +181,9 @@ namespace ZdravoKorporacija.Stranice.Uput
                 p.Tip = TipTerminaEnum.Operacija;
             }
 
-            p.Lekar = lekarLogin.lekar;
-            p.prostorija = (Prostorija)cbProstorija.SelectedItem;
-            foreach (Termin ter in termini)
+            p.Lekar = new LekarDTO(lekarLogin.lekar);
+            p.prostorija = (ProstorijaDTO)cbProstorija.SelectedItem;
+            foreach (TerminDTO ter in termini)
             {
                 if (ter.Pocetak.Equals(p.Pocetak) && ter.prostorija.Equals(p.prostorija))
                 {
@@ -191,7 +196,7 @@ namespace ZdravoKorporacija.Stranice.Uput
                 this.pregledi.Remove(s);
                 this.pregledi.Add(p);
             }
-            this.Close();
+            test.prozor.Content = new Uputi();
 
         }
 

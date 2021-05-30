@@ -21,7 +21,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     /// <summary>
     /// Interaction logic for lekarStart.xaml
     /// </summary>
-    public partial class lekarStart : Window
+    public partial class lekarStart : Page
     {
         private TerminService storage = new TerminService();
         private TerminController terminController = TerminController.Instance;
@@ -46,7 +46,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             this.DataContext = this;
         }
 
-        public lekarStart(Lekar lekar)
+        public lekarStart(LekarDTO lekar)
         {
             InitializeComponent();
             termini = new ObservableCollection<TerminDTO>();
@@ -87,8 +87,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 MessageBox.Show("Pregled nije izabran. Molimo označite pregled koji želite da izmenite.", "Greška");
             else
             {
-                izmeniPregledLekar ip = new izmeniPregledLekar((TerminDTO)dgUsers.SelectedItem);
-                ip.Show();
+                test.prozor.Content = new izmeniPregledLekar((TerminDTO)dgUsers.SelectedItem);
             }
         }
 
@@ -96,14 +95,13 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
         private void zakaziPregled(object sender, RoutedEventArgs e)
         {
-            zakaziPregledLekar zp = new zakaziPregledLekar( ids);
-            zp.Show();
+            test.prozor.Content = new zakaziPregledLekar(ids);
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("sr");
         }
 
         private void prikaziKarton(object sender, RoutedEventArgs e)
         {
-            zdravstveniKartonPrikaz zk = new zdravstveniKartonPrikaz((TerminDTO)dgUsers.SelectedItem);
-            zk.Show();
+            test.prozor.Content = new zdravstveniKartonPrikaz((TerminDTO)dgUsers.SelectedItem);
         }
 
         private void otkaziPregled(object sender, RoutedEventArgs e)
@@ -125,27 +123,27 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             pregledPacijenata pp = new pregledPacijenata();
-            this.Close();
-            pp.Show();
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
             Uputi u = new Uputi();
-            u.Show();
-            this.Close();
         }
 
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
             LekarZahteviZaDodavanjeLekaStart l = new LekarZahteviZaDodavanjeLekaStart();
-            this.Close();
-            l.Show();
         }
 
         private void MenuItem_Click_3(object sender, RoutedEventArgs e)
         {
 
+        }
+
+ 
+        private void Label_PreviewMouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
         }
     }
 }

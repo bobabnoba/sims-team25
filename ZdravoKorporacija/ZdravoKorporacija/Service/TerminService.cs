@@ -162,6 +162,19 @@ namespace ZdravoKorporacija.Model
             return null;
         }
 
+        public TerminDTO FindOpByPocetak2(DateTime poc)
+        {
+            terminRepozitorijum = new TerminRepozitorijum();
+            List<Termin> termini = terminRepozitorijum.dobaviSve();
+            foreach (Termin t in termini)
+            {
+                if (t.Pocetak == poc && t.Tip == TipTerminaEnum.Operacija)
+                    return new TerminDTO(t);
+            }
+
+            return null;
+        }
+
         public List<Termin> FindPrByPocetak(DateTime poc)
         {
             terminRepozitorijum  = new TerminRepozitorijum();
@@ -171,6 +184,19 @@ namespace ZdravoKorporacija.Model
             {
                 if (t.Pocetak == poc && t.Tip == TipTerminaEnum.Pregled)
                     povratna.Add(t);
+            }
+
+            return povratna;
+        }
+        public List<TerminDTO> FindPrByPocetak2(DateTime poc)
+        {
+            terminRepozitorijum = new TerminRepozitorijum();
+            List<Termin> termini = terminRepozitorijum.dobaviSve();
+            List<TerminDTO> povratna = new List<TerminDTO>();
+            foreach (Termin t in termini)
+            {
+                if (t.Pocetak == poc && t.Tip == TipTerminaEnum.Pregled)
+                    povratna.Add(new TerminDTO(t));
             }
 
             return povratna;
@@ -267,16 +293,18 @@ namespace ZdravoKorporacija.Model
 
             foreach (Termin t in termini)
             {
-                if (t.Id.Equals(termin.Id))
+                if (t != null)
                 {
-                    termini.Remove(t);
-                    terminRepozitorijum .sacuvaj(termini);
-                    datotekaID.sacuvaj(ids);
+                    if (t.Id.Equals(termin.Id))
+                    {
+                        termini.Remove(t);
+                        terminRepozitorijum.sacuvaj(termini);
+                        datotekaID.sacuvaj(ids);
 
-                    return true;
+                        return true;
+                    }
                 }
             }
-
             return false;
         }
 
@@ -582,7 +610,8 @@ namespace ZdravoKorporacija.Model
         {
             foreach (Termin t in PregledSvihTermina())
             {
-                if (dto.Id.Equals(t.Id))
+                if (t != null)
+                    if (dto.Id.Equals(t.Id))
                     return t;
             }
 

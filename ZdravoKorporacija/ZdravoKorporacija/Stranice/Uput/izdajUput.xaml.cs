@@ -9,6 +9,7 @@ using System.Windows.Controls;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
+using ZdravoKorporacija.Stranice.LekarCRUD;
 using ZdravoKorporacija.Stranice.Logovanje;
 
 namespace ZdravoKorporacija.Stranice.Uput
@@ -16,18 +17,19 @@ namespace ZdravoKorporacija.Stranice.Uput
     /// <summary>
     /// Interaction logic for zakaziPregledLekar.xaml
     /// </summary>
-    public partial class izdajUput : Window
+    public partial class izdajUput : Page
     {
         private TerminController terminController = TerminController.Instance;
         private LekarRepozitorijum lekariDat = new LekarRepozitorijum();
         private ProstorijaController prostorijeController = new ProstorijaController();
+        private LekarController lekarController = new LekarController();
         private ZdravstveniKartonServis zdravstveniKartonServis = new ZdravstveniKartonServis();
         private PacijentController pacijentiController =  PacijentController.Instance;
         private List<PacijentDTO> pacijenti = new List<PacijentDTO>();
-        private List<Lekar> lekari = new List<Lekar>();
+        private List<LekarDTO> lekari = new List<LekarDTO>();
         private List<TerminDTO> termini = new List<TerminDTO>();
         private List<ProstorijaDTO> prostorije = new List<ProstorijaDTO>();
-        private List<Lekar> lekariZaPrikaz = new List<Lekar>();
+        private List<LekarDTO> lekariZaPrikaz = new List<LekarDTO>();
 
         private TerminDTO p;
         private ObservableCollection<TerminDTO> pregledi;
@@ -52,9 +54,9 @@ namespace ZdravoKorporacija.Stranice.Uput
             date.BlackoutDates.Add(cdr);
 
 
-            lekari = lekariDat.dobaviSve();
+            lekari = (List<LekarDTO>)lekarController.dobaviListuDTOLekara();
             lekariZaPrikaz = lekari;
-            lekariZaPrikaz.Remove(lekarLogin.lekar);
+            lekariZaPrikaz.Remove(new LekarDTO(lekarLogin.lekar));
             Lekari.ItemsSource = lekariZaPrikaz;
 
             prostorije = prostorijeController.PregledSvihProstorija2();
@@ -156,12 +158,12 @@ namespace ZdravoKorporacija.Stranice.Uput
             //pac.AddTermin(p);
             //pacijentiController.AzurirajPacijenta(pac);
             terminController.izdajUput(pac, p);
-            this.Close();
+            test.prozor.Content = new Uputi();
         }
 
         private void odustani(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            test.prozor.Content = new Uputi();
         }
 
 

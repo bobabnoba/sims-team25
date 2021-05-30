@@ -151,7 +151,12 @@ namespace Service
         }
         public ProstorijaDTO Model2DTO(Prostorija model)
         {
-            ProstorijaDTO dto = new ProstorijaDTO(model.Id, model.Naziv, model.Tip, model.Slobodna, model.Sprat);
+            ProstorijaDTO dto = null;
+            if (model != null)
+            {
+                dto = new ProstorijaDTO(model.Id, model.Naziv, model.Tip, model.Slobodna, model.Sprat);
+
+            }
             return dto;
         }
         public List<ProstorijaDTO> PregledSvihProstorija2()

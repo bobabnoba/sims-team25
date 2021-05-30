@@ -26,6 +26,7 @@ namespace ZdravoKorporacija
     {
         public static ContentControl cc = new ContentControl();
         public static  List<Specijalista> spec = new List<Specijalista>();
+        public static MainWindow mw = new MainWindow();
         UlogaEnum uloga;
         public MainWindow() 
         { 
@@ -38,7 +39,7 @@ namespace ZdravoKorporacija
             Specijalista s2 = new Specijalista("Milos", "Zivic");
             s2.Specijalizacija = SpecijalizacijaEnum.Neurolog;
             spec.Add(s2);
-
+            mw = this;
         }
 
 
@@ -117,8 +118,7 @@ namespace ZdravoKorporacija
         }
         private void openLekarFrame(object sender, RoutedEventArgs e)
         {
-            lekarLogin ll = new lekarLogin(UlogaEnum.Lekar);
-            ll.Show();
+            this.Content = new lekarLogin(UlogaEnum.Lekar);
 
         }
         private void openSekretarFrame(object sender, RoutedEventArgs e)

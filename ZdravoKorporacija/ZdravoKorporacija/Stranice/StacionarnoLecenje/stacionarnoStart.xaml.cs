@@ -11,6 +11,7 @@ using System.Windows.Controls;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
+using ZdravoKorporacija.Stranice.LekarCRUD;
 using ZdravoKorporacija.Stranice.Logovanje;
 
 
@@ -19,7 +20,7 @@ namespace ZdravoKorporacija.Stranice.StacionarnoLecenje
     /// <summary>
     /// Interaction logic for stacionarnoStart.xaml
     /// </summary>
-    public partial class stacionarnoStart : Window
+    public partial class stacionarnoStart : Page
     {
         private TerminController terminController = TerminController.Instance;
         private ProstorijaController prostorijeController = new ProstorijaController();
@@ -102,12 +103,12 @@ namespace ZdravoKorporacija.Stranice.StacionarnoLecenje
             sl.DodajStacionarnoLecenje(stacionarnoLecenje);
             uputiZaStacionarno.uputi.Add(stacionarnoLecenje);
 
-            this.Close();
+            test.prozor.Content = new pregledPacijenata();
         }
 
         private void odustani(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            test.prozor.Content = new pregledPacijenata();
         }
     }
 }

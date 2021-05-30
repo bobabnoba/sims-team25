@@ -20,7 +20,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     /// <summary>
     /// Interaction logic for zdravstveniKartonPrikaz.xaml
     /// </summary>
-    public partial class zdravstveniKartonPrikaz : Window
+    public partial class zdravstveniKartonPrikaz : Page
     {
         private TerminController terminController = TerminController.Instance;
         private ReceptController receptController = ReceptController.Instance;
@@ -164,7 +164,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             {
                 izdaj = new izdajRecept(sel);
             }
-            izdaj.Show();
+            test.prozor.Content = izdaj;
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -178,7 +178,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             dodajAnamnezu anamneza = new dodajAnamnezu(sel);
-            anamneza.Show();
+            test.prozor.Content = anamneza;
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)

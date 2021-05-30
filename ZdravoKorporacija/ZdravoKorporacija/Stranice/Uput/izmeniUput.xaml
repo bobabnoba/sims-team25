@@ -1,11 +1,11 @@
-﻿<Window x:Class="ZdravoKorporacija.Stranice.Uput.izmeniUput"
+﻿<Page x:Class="ZdravoKorporacija.Stranice.Uput.izmeniUput"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.Uput"
         mc:Ignorable="d"
-        Title="Izmeni Uput" Height="450" Width="450" Background="CadetBlue" WindowStartupLocation="CenterScreen">
+        Title="Izmeni Uput" Height="Auto" Width="Auto" Background="#80ccff">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="408" Width="417">
         <Grid.RowDefinitions>
             <RowDefinition Height="20*"/>
@@ -112,4 +112,4 @@
         </ComboBox>
 
     </Grid>
-</Window>
+</Page>

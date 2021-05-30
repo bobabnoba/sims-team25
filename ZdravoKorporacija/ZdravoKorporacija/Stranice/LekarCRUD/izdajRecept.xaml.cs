@@ -23,7 +23,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     /// <summary>
     /// Interaction logic for izdajRecept.xaml
     /// </summary>
-    public partial class izdajRecept : Window
+    public partial class izdajRecept : Page
     {
         private PacijentController pacijentController = PacijentController.Instance;
         private LekController lekController = LekController.Instance;
@@ -165,12 +165,12 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
             pacijentController.IzdajRecept(pac, r);
             zdravstveniKartonPrikaz.recepti.Add(r);
-            this.Close();
+            test.prozor.Content = new zdravstveniKartonPrikaz(pac);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            test.prozor.Content = new zdravstveniKartonPrikaz(pac);
         }
 
         private void NoviLek_TextChanged(object sender, TextChangedEventArgs e)

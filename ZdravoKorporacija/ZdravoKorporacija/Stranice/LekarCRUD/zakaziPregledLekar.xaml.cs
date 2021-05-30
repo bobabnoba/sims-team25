@@ -17,7 +17,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     /// <summary>
     /// Interaction logic for zakaziPregledLekar.xaml
     /// </summary>
-    public partial class zakaziPregledLekar : Window
+    public partial class zakaziPregledLekar : Page
     {
         private ObservableCollection<ProstorijaDTO> slobodneProstorije;
         private ObservableCollection<ProstorijaDTO> prostorije = new ObservableCollection<ProstorijaDTO>();
@@ -39,7 +39,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private List<Termin> termini = new List<Termin>();
 
         private Termin p;
-        private ObservableCollection<Termin> pregledi;
+        private ObservableCollection<Termin> pregledi = new ObservableCollection<Termin>();
         String now = DateTime.Now.ToString("hh:mm:ss tt");
         DateTime today = DateTime.Today;
 
@@ -140,18 +140,18 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             if (terminServis.ZakaziTermin(p, ids))
             {
                 this.pregledi.Add(p);
-                lekariDat.sacuvaj(lekari);
+                //lekariDat.sacuvaj(lekari);
                 //pacijentiDat.sacuvaj(pacijenti); // višakk?
             }
             pac.AddTermin(new TerminDTO(p));
             pacijentiServis.AzurirajPacijenta(pac);
 
-            this.Close();
+            test.prozor.Content = new lekarStart();
         }
 
         private void odustani(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            test.prozor.Content = new lekarStart();
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

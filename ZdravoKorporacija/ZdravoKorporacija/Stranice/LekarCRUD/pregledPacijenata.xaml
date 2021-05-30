@@ -1,20 +1,34 @@
-﻿<Window x:Class="ZdravoKorporacija.Stranice.LekarCRUD.pregledPacijenata"
+﻿<Page x:Class="ZdravoKorporacija.Stranice.LekarCRUD.pregledPacijenata"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.LekarCRUD"
-        mc:Ignorable="d"
-        Title="pregledPacijenata" Height="450" Width="800" Background="CadetBlue" WindowStartupLocation="CenterScreen">
+        mc:Ignorable="d" d:Height="450" d:Width="800"
+        Title="pregledPacijenata" Height="Auto" Width="Auto" Background="#80ccff">
     <Grid>
-        <Button Content="Zdravstveni karton" HorizontalAlignment="Center" Margin="0,70,0,0" VerticalAlignment="Top" Width="110" Height="44" Click="prikazKartona"/>
-        <Button Content="Uputi na stacionarno lecenje" HorizontalAlignment="Left" Margin="164,70,0,0" VerticalAlignment="Top" Width="159" Height="44" Click="stacionarnoLecenje"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="52*"/>
+            <ColumnDefinition Width="267*"/>
+            <ColumnDefinition Width="160.999*"/>
+            <ColumnDefinition Width="268*"/>
+            <ColumnDefinition Width="52*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="63*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="254*"/>
+            <RowDefinition Height="33*"/>
+        </Grid.RowDefinitions>
+        <Button Name="ZdravstveniKarton" Content = "Zdravstveni Karton"   HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="2" Click="prikazKartona" Height="48" Width="118"/>
 
-        <Grid Margin="10">
-            <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="156,140,84,34" SelectionChanged="dgUsers_SelectionChanged" CanUserAddRows="False">
-                <DataGrid.Columns>
-                    <!--<DataGridTextColumn Header="ID" Binding="{Binding Id}" />-->
-                    <!--<DataGridTextColumn Header="Pacijent">
+
+
+        <DataGrid Name="dgUsers" AutoGenerateColumns="False" CanUserAddRows="False" Grid.Row="3" Grid.ColumnSpan="3" Grid.Column="1" Margin="0,0,0,35" Grid.RowSpan="2">
+            <DataGrid.Columns>
+                <!--<DataGridTextColumn Header="ID" Binding="{Binding Id}" />-->
+                <!--<DataGridTextColumn Header="Pacijent">
                             <DataGridTextColumn.Binding>
                                 <MultiBinding StringFormat="{}{0} {1}">
                                     <Binding Path="Pacijent.Ime"/>
@@ -23,39 +37,26 @@
                             </DataGridTextColumn.Binding>
                         </DataGridTextColumn>
                     <DataGridTextColumn Header="Karton pacijenta" Binding="{Binding zdravstveniKarton}" />-->
-                    <DataGridTextColumn Header="Ime" Binding="{Binding Ime}" />
-                    <DataGridTextColumn Header="Prezime" Binding="{Binding Prezime}" />
-                    <DataGridTextColumn Header="JMBG" Binding="{Binding Jmbg}" />
-                    <DataGridTextColumn Header="Pol" Binding="{Binding Pol}" />
-                    <DataGridTemplateColumn Header="Uputi za stacionarno">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Content="..." Click="uputiZaStacionarno"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-                <!--<DataGrid.RowDetailsTemplate>
+                <DataGridTextColumn Header="Ime" Binding="{Binding Ime}"  Width="*" x:Uid="Ime"/>
+                <DataGridTextColumn Header="Prezime" Binding="{Binding Prezime}"  Width="*"/>
+                <DataGridTextColumn Header="JMBG" Binding="{Binding Jmbg}"  Width="*"/>
+                <DataGridTextColumn Header="Pol" Binding="{Binding Pol}"  Width="*"/>
+                <DataGridTemplateColumn Header="Uputi za stacionarno">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="..." Click="uputiZaStacionarno"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+            <!--<DataGrid.RowDetailsTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Details}" Margin="10" />
                     </DataTemplate>
                 </DataGrid.RowDetailsTemplate>-->
-            </DataGrid>
+        </DataGrid>
 
-        </Grid>
-
-        <TextBox HorizontalAlignment="Left" Margin="10,422,0,0" Text="ulogovani ste kao lekar" BorderBrush="CadetBlue" Background="CadetBlue" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" />
-        <Menu x:Name="Menu" Margin="0,151,644,45" HorizontalAlignment="Right" Width="116">
-            <Menu.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <VirtualizingStackPanel Orientation="Vertical"/>
-                </ItemsPanelTemplate>
-            </Menu.ItemsPanel>
-            <MenuItem Header="_Raspored termina" Margin="-1,1,1,-39" Click="MenuItem_Click"></MenuItem>
-            <MenuItem Header="_Prikaz pacijenata" Margin="-1,43,1,-81"></MenuItem>
-            <MenuItem Header="_Uputi" Margin="0,85,0,-123" Click="MenuItem_Click_1"/>
-            <MenuItem Header="_Zahtevi za lekove" Margin="0,127,0,-165" Click="MenuItem_Click_2" />
-
-        </Menu>
     </Grid>
-</Window>
+
+
+</Page>

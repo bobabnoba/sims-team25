@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.LekarCRUD"
         mc:Ignorable="d"
-        Title="Otkazivanje termina" Height="450" Width="450" Background="CadetBlue" WindowStartupLocation="CenterScreen">
+        Title="Otkazivanje termina" Height="454" Width="450" Background="#80ccff" WindowStartupLocation="CenterScreen">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
         <TextBlock Text="Da li ste sigurni da želite da otkažete pregled?" Margin="22,134,22,252"  FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
         <Button Content="DA" HorizontalAlignment="Left" Width="100" Margin="50,332,0,0" VerticalAlignment="Top" Click="da"/>

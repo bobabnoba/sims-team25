@@ -40,7 +40,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
             {
                 zahteviPrikaz.Remove(zahtev);
             }
-            this.zahtev.Komentar = textBoxKomentar.Text;
+            //this.zahtev.Komentar = textBoxKomentar.Text;
             NeodobreniLekController neodobreniLekoviController = new NeodobreniLekController();
             neodobreniLekoviController.DodajNeodobreniLek(this.zahtev);
             this.Close();

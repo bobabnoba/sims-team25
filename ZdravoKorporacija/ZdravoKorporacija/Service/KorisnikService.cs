@@ -6,6 +6,7 @@ using System.Text;
 using System.Linq;
 using System.Collections.ObjectModel;
 using System.Windows;
+using ZdravoKorporacija.DTO;
 
 namespace Service
 {
@@ -35,7 +36,7 @@ namespace Service
             public Korisnik Uloguj(UlogaEnum uloga, string ime, string sifra)
         {
          
-            Korisnik unos = new Korisnik();
+            KorisnikDTO unos = new KorisnikDTO();
             unos.Username = ime;
             unos.Password = sifra;
 

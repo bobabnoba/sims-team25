@@ -12,13 +12,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Stranice.LekarCRUD;
 
 namespace ZdravoKorporacija.Stranice.StacionarnoLecenje
 {
     /// <summary>
     /// Interaction logic for izmeniUputStacionarno.xaml
    
-        public partial class izmeniUputStacionarno : Window
+        public partial class izmeniUputStacionarno : Page
         {
             private TerminController terminController = TerminController.Instance;
             private ProstorijaController prostorijeController = new ProstorijaController();
@@ -116,15 +117,15 @@ namespace ZdravoKorporacija.Stranice.StacionarnoLecenje
                 }
             uputiZaStacionarno.uputi.Remove(stacionarno);
             sl.AzurirajStacionarnoLecenje(stacionarnoLecenje);
-               
-                
 
-                this.Close();
+
+
+            test.prozor.Content = new pregledPacijenata();
             }
 
             private void odustani(object sender, RoutedEventArgs e)
             {
-                this.Close();
-            }
+            test.prozor.Content = new pregledPacijenata();
+        }
         }
     }

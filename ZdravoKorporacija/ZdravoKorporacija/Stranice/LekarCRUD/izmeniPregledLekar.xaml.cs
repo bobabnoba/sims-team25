@@ -17,7 +17,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     /// <summary>
     /// Interaction logic for izmeniPregledLekar.xaml
     /// </summary>
-    public partial class izmeniPregledLekar : Window
+    public partial class izmeniPregledLekar : Page
     {
 
         private List<LekarDTO> lekari= new List<LekarDTO>();
@@ -98,7 +98,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
         private void odustani(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            test.prozor.Content = new lekarStart();
         }
 
         private void potvrdi(object sender, RoutedEventArgs e)
@@ -155,7 +155,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 controller.PregledSvihTermina().Remove(controller.DTO2ModelNadji(t2));
                 controller.PregledSvihTermina().Add(controller.DTO2ModelNadji(t1));
             }
-            this.Close();
+            test.prozor.Content = new lekarStart();
 
         }
 

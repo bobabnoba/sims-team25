@@ -17,7 +17,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     /// <summary>
     /// Interaction logic for pregledPacijenata.xaml
     /// </summary>
-    public partial class pregledPacijenata : Window
+    public partial class pregledPacijenata : Page
     {
         private PacijentService pacijentServis = PacijentService.Instance;
         private ObservableCollection<PacijentDTO> pacijenti = new ObservableCollection<PacijentDTO>();
@@ -58,47 +58,27 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         {
 
         }
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            lekarStart ls = new lekarStart(lekarLogin.lekar);
-            ls.Show();
-            this.Close();
-        }
-
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
-        {
-            Uputi u = new Uputi();
-            u.Show();
-            this.Close();
-        }
-
+       
         private void prikazKartona(object sender, RoutedEventArgs e)
         {
             zdravstveniKartonPrikaz zk = null;
             if (dgUsers.SelectedItem != null)
             {
-                zk = new zdravstveniKartonPrikaz((PacijentDTO)dgUsers.SelectedItem);
-                zk.Show();
+                test.prozor.Content = new zdravstveniKartonPrikaz((PacijentDTO)dgUsers.SelectedItem);
             }
             else
             {
                 MessageBox.Show("Niste selektovali red", "Greska");
             }
         }
-        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
-        {
-            LekarZahteviZaDodavanjeLekaStart l = new LekarZahteviZaDodavanjeLekaStart();
-            this.Close();
-            l.Show();
-        }
-
+      
         private void stacionarnoLecenje(object sender, RoutedEventArgs e)
         {
             stacionarnoStart ss = null;
             if (dgUsers.SelectedItem != null)
             {
                 ss = new stacionarnoStart((PacijentDTO)dgUsers.SelectedItem);
-                ss.Show();
+                test.prozor.Content = ss;
             }
             else
             {
@@ -111,7 +91,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             if (dgUsers.SelectedItem != null)
             {
                 ss = new uputiZaStacionarno((PacijentDTO)dgUsers.SelectedItem);
-                ss.Show();
+                test.prozor.Content = ss;
             }
             else
             {

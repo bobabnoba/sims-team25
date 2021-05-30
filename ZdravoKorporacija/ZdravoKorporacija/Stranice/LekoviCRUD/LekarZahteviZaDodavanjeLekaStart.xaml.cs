@@ -17,7 +17,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
     /// <summary>
     /// Interaction logic for LekarZahteviZaDodavanjeLekaStart.xaml
     /// </summary>
-    public partial class LekarZahteviZaDodavanjeLekaStart : Window
+    public partial class LekarZahteviZaDodavanjeLekaStart : Page
     {
         LekServis lekServis = new LekServis();
         public ObservableCollection<Lek> lekici;
@@ -101,34 +101,43 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            izmeniZahtevZaLek iz = new izmeniZahtevZaLek((ZahtevLek)dgZahtevi.SelectedItem);
-            iz.Show();
+            if (dgZahtevi.SelectedItem == null)
+            {
+                MessageBox.Show("Zahtev nije izabran.", "Greška");
+            }
+            else
+            {
+                test.prozor.Content = new izmeniZahtevZaLek((ZahtevLek)dgZahtevi.SelectedItem);
+            }
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            obrisiZahtevZaLek oz = new obrisiZahtevZaLek(zahteviPrikaz, (ZahtevLek)dgZahtevi.SelectedItem);
-            oz.Show();
+            if (dgZahtevi.SelectedItem == null)
+            {
+                MessageBox.Show("Zahtev nije izabran.", "Greška");
+            }
+            else
+            {
+                IDRepozitorijum datoteka = new IDRepozitorijum("iDMapLekova");
+                Dictionary<int, int> ids = datoteka.dobaviSve();
+                obrisiZahtevZaLek oz = new obrisiZahtevZaLek(zahteviPrikaz, (ZahtevLek)dgZahtevi.SelectedItem);
+                oz.Show();
+            }
         }
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            lekarStart ls = new lekarStart(lekarLogin.lekar);
-            ls.Show();
-            this.Close();
+            lekarStart ls = new lekarStart(new LekarDTO(lekarLogin.lekar));
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
             Uputi u = new Uputi();
-            u.Show();
-            this.Close();
         }
 
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
             pregledPacijenata pp = new pregledPacijenata();
-            this.Close();
-            pp.Show();
         }
 
         private void MenuItem_Click_3(object sender, RoutedEventArgs e)
