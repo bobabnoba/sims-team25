@@ -1,55 +1,56 @@
-﻿using Model;
-using Repository;
-using Service;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
+﻿using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using ZdravoKorporacija.Model;
-using ZdravoKorporacija.Service;
-using ZdravoKorporacija.Stranice.Logovanje;
+using ZdravoKorporacija.Controller;
+using ZdravoKorporacija.DTO;
 
 namespace ZdravoKorporacija.Stranice.PacijentCRUD
 {
     /// <summary>
-    /// Interaction logic for pocetna.xaml
+    /// Interaction logic for Pocetna.xaml
     /// </summary>
-    public partial class pocetna : Window
+    public partial class Pocetna : Window
     {
-        private TerminService storage = new TerminService();
-        private ObservableCollection<Termin> termini = new ObservableCollection<Termin>();
-        private PacijentService storagePacijent = new PacijentService();
-        private Pacijent pac = new Pacijent();
-        private Pacijent pacijent = new Pacijent();
-        private Dictionary<int, int> ids = new Dictionary<int, int>();
-        private Boolean prikazi;
-        private ObavestenjaService os = new ObavestenjaService();
-        private AnketaRepozitorijum arepo = new AnketaRepozitorijum();
-        private KorisnikService korisnikServis = new KorisnikService();
-        public pocetna()
+        private PacijentDTO pacijentDTO;
+        private AnketaController anketaController = new AnketaController();
+
+        public Pocetna(PacijentDTO pacijentDTO)
         {
             InitializeComponent();
-
+            this.pacijentDTO = pacijentDTO;
+            lblUlogovani.Content = pacijentDTO.Ime + " " + pacijentDTO.Prezime + " ";
+            CentrirajProzor();
         }
-
-        private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        
+        private void CentrirajProzor()
         {
-            pacijentLogin pl = new pacijentLogin(UlogaEnum.Pacijent);
-            pl.Show();
+            this.Left = (System.Windows.SystemParameters.PrimaryScreenWidth / 2) - (this.Width / 2);
+            this.Top = (System.Windows.SystemParameters.PrimaryScreenHeight / 2) - (this.Height / 2);
         }
 
-        private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
+
+        private void preglediBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            Main.Content = new Pregledi(pacijentDTO);
         }
 
-    }   
+        private void obavjestenjaBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new Obavestenja(pacijentDTO);
+        }
+
+        private void pocetnaBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Main.Content = null;
+        }
+
+        private void odjavaBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void kartonBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new ZKPacijent(pacijentDTO);
+        }
+    }
 }

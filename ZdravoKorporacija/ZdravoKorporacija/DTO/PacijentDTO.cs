@@ -53,8 +53,10 @@ namespace ZdravoKorporacija.DTO
                 notifikacije.Clear();
         }
 
-        public PacijentDTO(String korisnickoIme, String lozinka, ZdravstveniKartonDTO zdravstveniKarton, Int64 jmbg)
+        public PacijentDTO(String ime, String prezime, String korisnickoIme, String lozinka, ZdravstveniKartonDTO zdravstveniKarton, Int64 jmbg)
         {
+            this.Ime = ime;
+            this.Prezime = prezime;
             this.korisnickoIme = korisnickoIme;
             this.lozinka = lozinka;
             this.ZdravstveniKarton = zdravstveniKarton;

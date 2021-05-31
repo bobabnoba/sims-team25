@@ -38,12 +38,12 @@
             <ColumnDefinition Width="34*"/>
             <ColumnDefinition Width="11*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="dgTermini" Margin="26,0,22,40" AutoGenerateColumns="False"  CanUserAddRows="False" VerticalScrollBarVisibility="Visible" FontStretch="Normal" CanUserReorderColumns="False" MinColumnWidth="26" SelectionMode="Single" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="5" Grid.Column="0" Grid.Row="1" GridLinesVisibility="Horizontal" MinRowHeight="20" >
+        <DataGrid x:Name="dgTermini" Margin="26,0,22,40" AutoGenerateColumns="False"  CanUserAddRows="False" FontStretch="Normal" CanUserReorderColumns="False" IsReadOnly="True" SelectionMode="Single" Grid.RowSpan="5" Grid.Column="0" Grid.Row="1" GridLinesVisibility="Horizontal" >
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Datum i vreme" Binding="{Binding Pocetak, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="40*"/>
-                <DataGridTextColumn Header="Trajanje" Binding="{Binding Trajanje,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="20*"/>
-                <DataGridTextColumn Header="Lekar" Width="50*">
+                <DataGridTextColumn Header="Datum i vreme" Binding="{Binding Pocetak, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="Auto"/>
+                <DataGridTextColumn Header="Trajanje" Binding="{Binding Trajanje,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="Auto"/>
+                <DataGridTextColumn Header="Lekar" Width="Auto">
                     <DataGridTextColumn.Binding>
                         <MultiBinding StringFormat="{}{0} {1}">
                             <Binding Path="Lekar.Ime" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
@@ -51,8 +51,8 @@
                         </MultiBinding>
                     </DataGridTextColumn.Binding>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Tip" Binding="{Binding Tip, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="27*"/>
-                <DataGridTemplateColumn Header="Anamneza" Width="30*">
+                <DataGridTextColumn Header="Tip" Binding="{Binding Tip, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="Auto"/>
+                <DataGridTemplateColumn Header="Anamneza" Width="Auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Name="anamnezaBtn" Content="Pogledaj anamnezu" Click="AnamnezaBtn_OnClick"/>
@@ -61,11 +61,11 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="zakaziBtn"  Content="Zakaži pregled"  FontSize="18" Margin="10,0,14,47" Grid.Column="1" Grid.Row="1" Click="ZakaziPregledClick"/>
-        <Button x:Name="izmeniBtn" Grid.Row="2" Content="Izmeni pregled"  FontSize="18" Margin="10,0,14,47" Grid.Column="1" Click="IzmeniPregledClick"/>
-        <Button x:Name="otkaziBtn" Grid.Row="3" Content="Otkaži pregled"  FontSize="18" Margin="10,0,14,47" Grid.Column="1" Click="OtkaziPregledClick"/>
-        <Button x:Name="oceniTerminBtn" Grid.Row="4" Content="Oceni pregled" FontSize="18" Grid.Column="1" Margin="10,1,14,46" Click="oceniTerminBtn_Click" />
-        <Button x:Name="istorijaBtn" Grid.Row="5" Content="Istorija termina"  FontSize="18" Margin="10,7,14,40" Grid.Column="1" Click="IstorijaTerminaClick"/>
+        <Button x:Name="zakaziBtn"  Content="Zakaži pregled"  FontSize="18" Margin="10,0,14,47" Grid.Column="1" Grid.Row="1" Click="ZakaziPregledClick" MinHeight="30"/>
+        <Button x:Name="izmeniBtn" Grid.Row="2" Content="Izmeni pregled"  FontSize="18" Margin="10,0,14,47" Grid.Column="1" Click="IzmeniPregledClick" MinHeight="30"/>
+        <Button x:Name="otkaziBtn" Grid.Row="3" Content="Otkaži pregled"  FontSize="18" Margin="10,0,14,47" Grid.Column="1" Click="OtkaziPregledClick" MinHeight="30"/>
+        <Button x:Name="oceniTerminBtn" Grid.Row="4" Content="Oceni pregled" FontSize="18" Grid.Column="1" Margin="10,1,14,46" Click="oceniTerminBtn_Click" MinHeight="30" />
+        <Button x:Name="istorijaBtn" Grid.Row="5" Content="Istorija termina"  FontSize="18" Margin="10,7,14,40" Grid.Column="1" Click="IstorijaTerminaClick" MinHeight="30"/>
 
     </Grid>
 </Page>

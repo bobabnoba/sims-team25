@@ -79,7 +79,7 @@
                     <RowDefinition Height="631*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="500*"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Line Stroke="#FF845B5B" StrokeThickness="1" X1="500" Margin="-10,0,10,480" Grid.Row="1" HorizontalAlignment="Right"></Line>
                 <TextBlock x:Name="IPpacijenta" Text="Dušan Marković" FontSize="30" TextAlignment="Right" HorizontalAlignment="Right" Grid.Row="0" Height="60" Margin="0,47,167,13" TextWrapping="Wrap" Width="362" Foreground="#FFBB5555"/>

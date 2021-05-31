@@ -35,7 +35,7 @@ namespace ZdravoKorporacija.Konverteri
             NotifikacijaKonverter notifikacijaKonverter = new NotifikacijaKonverter();
             if (entitet != null)
             {
-                PacijentDTO pdto = new PacijentDTO(entitet.Username, entitet.Password,
+                PacijentDTO pdto = new PacijentDTO(entitet.Ime, entitet.Prezime, entitet.Username, entitet.Password,
                     zdravstveniKartonKonverter.KonvertujEntitetUDTO(entitet.ZdravstveniKarton), entitet.Jmbg);
                 foreach (Notifikacija n in entitet.notifikacije)
                 {

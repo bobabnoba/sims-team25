@@ -2,26 +2,35 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\GettyImages-493928198.jpg" />
+    <None Remove="Images\icons8-active-male-50.png" />
     <None Remove="Images\output-onlinepngtools.png" />
     <None Remove="Stranice\LekarCRUD\add.png" />
     <None Remove="Stranice\LekarCRUD\edit.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AeroWizard" Version="2.2.9" />
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
     <PackageReference Include="Prism.Wpf" Version="8.1.97" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\GettyImages-493928198.jpg" />
+    <Resource Include="Images\icons8-active-male-50.png" />
     <Resource Include="Images\output-onlinepngtools.png" />
     <Resource Include="Stranice\LekarCRUD\add.png" />
     <Resource Include="Stranice\LekarCRUD\edit.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Images\NewFolder\" />
   </ItemGroup>
 
 </Project>

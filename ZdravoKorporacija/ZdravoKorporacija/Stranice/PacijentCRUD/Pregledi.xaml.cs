@@ -43,8 +43,17 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
 
             terminiDTO = new ObservableCollection<TerminDTO>(terminKontroler.dobaviListuDTOtermina(pacijentDTO));
             dgTermini.ItemsSource = terminiDTO;
+            dgTermini.Loaded += PostaviSirinuKolonaDGT;
 
             this.DataContext = this;
+        }
+
+        public void PostaviSirinuKolonaDGT(object source, EventArgs e)
+        {
+            foreach (var column in dgTermini.Columns)
+            {
+                column.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            }
         }
 
         private void timer_Tick(object sender, EventArgs e)

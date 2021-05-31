@@ -37,7 +37,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
                 korisnikController.ulogovaniPacijent(uloga, imeText.Text, lozinkaText.Password);
             if (ulogovani != null)
             {
-                pocetna2 pocetna = new pocetna2(ulogovani);
+                Pocetna pocetna = new Pocetna(ulogovani);
                 pocetna.Show();
                 this.Close();
             }

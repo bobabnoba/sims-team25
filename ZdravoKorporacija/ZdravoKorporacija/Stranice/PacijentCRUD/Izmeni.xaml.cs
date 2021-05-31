@@ -36,6 +36,8 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
 
             azurirajDostupne();
             inicijalizujKomponente();
+
+            this.DataContext = this;
         }
 
         private void inicijalizujKomponente()
@@ -106,6 +108,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
 
         private void timeChanged(object sender, SelectionChangedEventArgs e)
         {
+            System.Diagnostics.Debug.WriteLine("u didnt touch me but im still there");
             azurirajDostupne();
 
             noviTermindDTO.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem);

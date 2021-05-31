@@ -29,20 +29,12 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
         public BeleskeStranica(PacijentDTO pacijentDTO)
         {
             InitializeComponent();
-            datum.Visibility = Visibility.Hidden;
-            vrijeme.Visibility = Visibility.Hidden;
+  
 
             beleskaDTO = new BeleskaDTO();
             this.pacijentDTO = pacijentDTO;
 
-
-        }
-
-        private void CbPodsetiMe_OnChecked(object sender, RoutedEventArgs e)
-        {
-            datum.Visibility = Visibility.Visible;
-            vrijeme.Visibility = Visibility.Visible;
-
+            this.DataContext = this;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

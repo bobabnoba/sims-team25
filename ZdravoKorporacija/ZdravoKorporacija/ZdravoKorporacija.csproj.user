@@ -108,6 +108,15 @@
     <Compile Update="Stranice\PacijentCRUD\pacijentStart.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Stranice\PacijentCRUD\Pocetna.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\PacijentCRUD\Wizard1.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Stranice\PacijentCRUD\wwww.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Stranice\PacijentCRUD\zakaziPregled.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -332,13 +341,22 @@
     <Page Update="Stranice\PacijentCRUD\pacijentStart.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Stranice\PacijentCRUD\pocetna.xaml">
+    <Page Update="Stranice\PacijentCRUD\Pocetna.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\PacijentCRUD\pocetnaaa.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\PacijentCRUD\pocetna2.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\PacijentCRUD\Pregledi.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\PacijentCRUD\Wizard1.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\PacijentCRUD\wwww.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\PacijentCRUD\Zakazi.xaml">
