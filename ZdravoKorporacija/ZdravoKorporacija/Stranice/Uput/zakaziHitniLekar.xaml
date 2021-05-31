@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.Uput"
         mc:Ignorable="d"
-       Title="Hitni termin" Height="Auto" Width="Auto" Background="#80ccff">
+       Title="Hitni termin" Height="Auto" Width="Auto" Background="{DynamicResource BackgroundColor}">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="408" Width="417">
         <Grid.RowDefinitions>
             <RowDefinition Height="20*"/>
@@ -23,11 +23,11 @@
         </Grid.ColumnDefinitions>
         <Button Content="POTVRDI" HorizontalAlignment="Left" Margin="104,38,0,0" Grid.Row="5" VerticalAlignment="Top" Width="80" Grid.ColumnSpan="2" Click="potvrdi"/>
         <Button Content="ODUSTANI" HorizontalAlignment="Left" Margin="102,38,0,0" Grid.Row="5" VerticalAlignment="Top" Width="80" Grid.Column="1" Click="odustani"/>
-        <TextBlock Text="Pacijent:" TextWrapping="Wrap" Margin="72,37,217,10" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <TextBlock Style="{DynamicResource textblock}" Text="Pacijent:" TextWrapping="Wrap" Margin="72,37,217,10" Grid.Row="1" Grid.ColumnSpan="2"/>
         <ComboBox Name="cbPacijent" Grid.Column="1" Margin="82,32,53,8" Grid.Row="1" SelectionChanged="ComboBox_SelectionChanged" Height="28">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock>
+                    <TextBlock Style="{DynamicResource textblock}">
                         <TextBlock.Text>
                             <MultiBinding StringFormat="{}{0} {1}">
                                 <Binding Path="Ime"/>
@@ -38,14 +38,14 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <TextBlock Text="Tip:" TextWrapping="Wrap" Margin="79,52,288,66" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <TextBlock Style="{DynamicResource textblock}" Text="Tip:" TextWrapping="Wrap" Margin="79,52,288,66" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
         <ComboBox Name="cbTip" Grid.Column="1" Margin="82,48,53,60" Height="28" Grid.RowSpan="2" >
             <ComboBoxItem>Pregled</ComboBoxItem>
             <ComboBoxItem>Operacija</ComboBoxItem>
         </ComboBox>
-        <DataGrid Visibility="Hidden" AutoGenerateColumns="False" Name="alternative" Grid.ColumnSpan="2" Margin="62,44,53,34" Grid.RowSpan="3" Grid.Row="2">
+        <DataGrid Style ="{DynamicResource dataGrid}" Visibility="Hidden" AutoGenerateColumns="False" Name="alternative" Grid.ColumnSpan="2" Margin="62,44,53,34" Grid.RowSpan="3" Grid.Row="2">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Vreme" Binding="{Binding Pocetak}" ></DataGridTextColumn>
+                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="Vreme" Binding="{Binding Pocetak}" ></DataGridTextColumn>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

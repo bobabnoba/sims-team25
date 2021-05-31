@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.Uput"
         mc:Ignorable="d"
-        Title="Izmeni Uput" Height="Auto" Width="Auto" Background="#80ccff">
+        Title="Izmeni Uput" Height="Auto" Width="Auto" Background="{DynamicResource BackgroundColor}">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="408" Width="417">
         <Grid.RowDefinitions>
             <RowDefinition Height="20*"/>
@@ -21,7 +21,7 @@
             <ColumnDefinition Width="59*"/>
             <ColumnDefinition Width="141*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Datum i vreme:" TextWrapping="Wrap" Margin="33,27,0,19" Grid.Row="1"/>
+        <TextBlock Style="{DynamicResource textblock}" Text="Datum i vreme:" TextWrapping="Wrap" Margin="33,27,0,19" Grid.Row="1"/>
         <DatePicker Name ="date" Grid.Column="1" HorizontalAlignment="Left" Margin="35,24,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="1.156,1.209" Height="28"/>
         <ComboBox Name ="time" SelectedValuePath="Content" Grid.Column="1" Margin="157,24,77,16" Grid.Row="1" SelectionChanged="time_SelectionChanged" Height="28" Width="60">
             <ComboBoxItem>08:00</ComboBoxItem>
@@ -60,11 +60,11 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <TextBlock Text="Pacijent:" TextWrapping="Wrap" Margin="53,21,234,58" Grid.Row="4" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <TextBlock Style="{DynamicResource textblock}" Text="Pacijent:" TextWrapping="Wrap" Margin="53,21,234,58" Grid.Row="4" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
         <ComboBox Name="cbPacijent" Grid.Column="1" Margin="58,21,77,21" Grid.Row="4" Height="26" >
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock>
+                    <TextBlock Style="{DynamicResource textblock}">
                         <TextBlock.Text>
                             <MultiBinding StringFormat="{}{0} {1}">
                                 <Binding Path="Ime"/>
@@ -75,11 +75,11 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <TextBlock Text="Prostorija:" TextWrapping="Wrap" Margin="53,10,234,1" Grid.Row="3" Grid.ColumnSpan="2"/>
+        <TextBlock Style="{DynamicResource textblock}" Text="Prostorija:" TextWrapping="Wrap" Margin="53,10,234,1" Grid.Row="3" Grid.ColumnSpan="2"/>
         <ComboBox Name="cbProstorija" Grid.Column="1" Margin="58,8,77,34" Grid.Row="3" Height="26">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock>
+                    <TextBlock Style="{DynamicResource textblock}">
                         <TextBlock.Text>
                             <MultiBinding StringFormat="{}{0} {1}">
                                 <Binding Path="Id"/>
@@ -90,16 +90,16 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <TextBlock Text="Tip:" TextWrapping="Wrap" Margin="53,40,235,10" Grid.Row="2" Grid.ColumnSpan="2"/>
+        <TextBlock Style="{DynamicResource textblock}" Text="Tip:" TextWrapping="Wrap" Margin="53,40,235,10" Grid.Row="2" Grid.ColumnSpan="2"/>
         <ComboBox Name="cbTip" Grid.Column="1" Margin="58,36,77,8" Grid.Row="2" Height="26">
             <ComboBoxItem>Pregled</ComboBoxItem>
             <ComboBoxItem>Operacija</ComboBoxItem>
         </ComboBox>
-        <TextBlock Text="Lekar:" TextWrapping="Wrap" Margin="53,51,235,56" Grid.Row="3" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <TextBlock Style="{DynamicResource textblock}" Text="Lekar:" TextWrapping="Wrap" Margin="53,51,235,56" Grid.Row="3" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
         <ComboBox x:Name="Lekari"  Grid.Column="1" Margin="58,52,77,56" Grid.Row="3" Height="28" Grid.RowSpan="2">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock>
+                    <TextBlock Style="{DynamicResource textblock}">
                         <TextBlock.Text>
                             <MultiBinding StringFormat="{}{0} {1}">
                                 <Binding Path="Ime"/>

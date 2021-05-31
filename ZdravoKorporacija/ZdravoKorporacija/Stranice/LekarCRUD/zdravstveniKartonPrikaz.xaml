@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.LekarCRUD"
         mc:Ignorable="d"
         d:DesignHeight="450" d:DesignWidth="800"
-        Title="zdravstveniKartonPrikaz" Height="Auto" Width="Auto" Background="#80ccff">
+        Title="zdravstveniKartonPrikaz" Height="Auto" Width="Auto" Background="{DynamicResource BackgroundColor}">
     <Grid>
         <!--<Button Content="Dodaj dijagnozu" HorizontalAlignment="Left" Margin="256,287,0,0" VerticalAlignment="Top" Width="101" Height="35"/>
         <Button Content="Obrisi dijagnozu" HorizontalAlignment="Left" Margin="256,367,0,0" VerticalAlignment="Top" Width="101" Height="35" RenderTransformOrigin="0.255,-0.75"/>
@@ -25,42 +25,42 @@
                 <RowDefinition Height="167*"/>
                 <RowDefinition Height="48*"/>
             </Grid.RowDefinitions>
-            <DataGrid x:Name="terapijaGrid" AutoGenerateColumns="False" SelectionChanged="dgUsers_SelectionChanged" CanUserAddRows="False" Grid.Column="3" Grid.Row="1" Margin="0,0,0,10">
+            <DataGrid Style ="{DynamicResource dataGrid}" x:Name="terapijaGrid" AutoGenerateColumns="False" SelectionChanged="dgUsers_SelectionChanged" CanUserAddRows="False" Grid.Column="3" Grid.Row="1" Margin="0,0,0,10">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Width="*" Header="Lek" Binding="{Binding NazivLeka}" />
-                    <DataGridTextColumn Width="*" Header="Doza" Binding="{Binding Doziranje}" />
-                    <DataGridTextColumn Width="*" Header="Pocetak" Binding="{Binding Pocetak}" />
-                    <DataGridTextColumn Width="*" Header="Trajanje" Binding="{Binding Trajanje}" />
+                    <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Width="*" Header="Lek" Binding="{Binding NazivLeka}" />
+                    <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Width="*" Header="Doza" Binding="{Binding Doziranje}" />
+                    <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Width="*" Header="Pocetak" Binding="{Binding Pocetak}" />
+                    <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Width="*" Header="Trajanje" Binding="{Binding Trajanje}" />
                 </DataGrid.Columns>
             </DataGrid>
-            <DataGrid x:Name="izvestajGrid" AutoGenerateColumns="False"  SelectionChanged="dgUsers_SelectionChanged" CanUserAddRows="False" Grid.Row="2" Grid.Column="3">
+            <DataGrid Style="{DynamicResource dataGrid}" x:Name="izvestajGrid" AutoGenerateColumns="False"  SelectionChanged="dgUsers_SelectionChanged" CanUserAddRows="False" Grid.Row="2" Grid.Column="3">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Width="*" Header="ID" Binding="{Binding Id}" />
-                    <DataGridTextColumn Width="*" Header="Simptomi" Binding="{Binding Simptomi}" />
-                    <DataGridTextColumn Width="*" Header="Opis" Binding="{Binding Opis}" />
+                    <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Width="*" Header="ID" Binding="{Binding Id}"/>
+                    <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Width="*" Header="Simptomi" Binding="{Binding Simptomi}" />
+                    <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Width="*" Header="Opis" Binding="{Binding Opis}" />
 
                 </DataGrid.Columns>
             </DataGrid>
             <Border BorderThickness="1" BorderBrush="Black" Margin="0,10,13,10" Grid.Row="1" Grid.Column="1"/>
-            <Label Content="Osnovni podaci&#xD;&#xA;" HorizontalAlignment="Left" Margin="0,2,0,0" VerticalAlignment="Top" FontSize="18" Height="35" Grid.Column="1" Grid.Row="1"/>
-            <Label Content="Ime:" HorizontalAlignment="Left" Margin="0,42,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
-            <Label Content="Prezime:" HorizontalAlignment="Left" Margin="0,68,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
-            <Label Content="JMBG:" HorizontalAlignment="Left" Margin="0,94,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
-            <Label Content="Pol:" HorizontalAlignment="Left" Margin="0,119,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
-            <Label Content="Krvna grupa:" HorizontalAlignment="Left" Margin="0,171,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
-            <Label Content="Broj telefona:" HorizontalAlignment="Left" Margin="0,145,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
-            <Label Name="ImeLabel" HorizontalAlignment="Left" Margin="93,54,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
-            <Label Name="PrezimeLabel" HorizontalAlignment="Left" Margin="93,76,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
-            <Label Name="JMBGLabel" HorizontalAlignment="Left" Margin="93,102,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
-            <Label Name="PolLabel" HorizontalAlignment="Left" Margin="93,128,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
-            <Label Name="BrojTelefonaLabel" HorizontalAlignment="Left" Margin="93,154,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
-            <Label Name="KrvnaGrupaLabel" HorizontalAlignment="Left" Margin="93,180,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
+            <Label Style="{DynamicResource label}"  Content="Osnovni podaci&#xD;&#xA;" HorizontalAlignment="Left" Margin="0,2,0,0" VerticalAlignment="Top" FontSize="18" Height="35" Grid.Column="1" Grid.Row="1"/>
+            <Label Style="{DynamicResource label}" Content="Ime:" HorizontalAlignment="Left" Margin="0,42,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
+            <Label Style="{DynamicResource label}" Content="Prezime:" HorizontalAlignment="Left" Margin="0,68,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
+            <Label Style="{DynamicResource label}" Content="JMBG:" HorizontalAlignment="Left" Margin="0,94,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
+            <Label Style="{DynamicResource label}" Content="Pol:" HorizontalAlignment="Left" Margin="0,119,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
+            <Label Style="{DynamicResource label}" Content="Krvna grupa:" HorizontalAlignment="Left" Margin="0,171,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
+            <Label Style="{DynamicResource label}" Content="Broj telefona:" HorizontalAlignment="Left" Margin="0,145,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
+            <Label Style="{DynamicResource label}" Name="ImeLabel" HorizontalAlignment="Left" Margin="93,54,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
+            <Label Style="{DynamicResource label}" Name="PrezimeLabel" HorizontalAlignment="Left" Margin="93,76,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
+            <Label Style="{DynamicResource label}" Name="JMBGLabel" HorizontalAlignment="Left" Margin="93,102,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
+            <Label Style="{DynamicResource label}" Name="PolLabel" HorizontalAlignment="Left" Margin="93,128,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
+            <Label Style="{DynamicResource label}" Name="BrojTelefonaLabel" HorizontalAlignment="Left" Margin="93,154,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
+            <Label Style="{DynamicResource label}" Name="KrvnaGrupaLabel" HorizontalAlignment="Left" Margin="93,180,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
             <Button Content="Izdaj recept"  Margin="10,0,15,10" VerticalAlignment="Bottom" Width="101" Height="35" Click="Button_Click_1" Grid.Column="2" Grid.Row="1"/>
             <Button Content="Obrisi recept" Margin="10,0,15,58" VerticalAlignment="Bottom" Width="101" Height="35" Click="Button_Click_2"  Grid.Column="2" Grid.Row="1"/>
             <Button Name="dodajAnamnezu" Content="Dodaj anamnezu"   VerticalAlignment="Bottom" Margin="10,83,15,48"  Width="101" Height="36" Click="Button_Click_3" Grid.Column="2" Grid.Row="2" />
             <Button Content="Izbrisi anamnezu"  Margin="10,0,15,0" VerticalAlignment="Bottom" Width="101" Height="35" Click="Button_Click_4" Grid.Column="2" Grid.Row="2"  />
-            <ListBox Name="AlergijeListBox" Margin="2,40,10,0" Grid.Row="2" Grid.Column="1"/>
-            <Label Content="Alergije" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top" FontSize="16" Height="35" Grid.Column="1" Grid.Row="2" Width="136"/>
+            <ListBox Style ="{DynamicResource list}" Name="AlergijeListBox" Margin="2,40,10,0" Grid.Row="2" Grid.Column="1"/>
+            <Label Style="{DynamicResource label}" Content="Alergije" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top" FontSize="16" Height="35" Grid.Column="1" Grid.Row="2" Width="136"/>
         </Grid>
 
     </Grid>

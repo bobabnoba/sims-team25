@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.Uput"
         mc:Ignorable="d"
-        Height="Auto" Width="Auto" Background="#80ccff" d:Height="450" d:Width="800"
+        Height="Auto" Width="Auto" Background="{DynamicResource BackgroundColor}" d:Height="450" d:Width="800"
       Title="Uputi">
 
     <Grid>
@@ -28,14 +28,14 @@
         <Button Content="Zakazi hitan termin" HorizontalAlignment="Center" VerticalAlignment="Center" Width="114" Height="44" Click="zakaziHitno" Grid.Column="1" Grid.Row="1"/>
         <Button Content="Izmeni uput" HorizontalAlignment="Center" VerticalAlignment="Center" Width="92" Height="40" RenderTransformOrigin="0.255,-0.75" Click="izmeniUput" Grid.Column="3" Grid.Row="1"/>
         <Button Content="Otkaži uput" HorizontalAlignment="Center" VerticalAlignment="Center" Width="92" Height="44" RenderTransformOrigin="0.033,-1.977" Click="otkaziUput" Grid.Column="4" Grid.Row="1"/>
-        <DataGrid Name="dgUsers" AutoGenerateColumns="False" CanUserAddRows="False" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="3">
+        <DataGrid Style ="{DynamicResource dataGrid}" Name="dgUsers" AutoGenerateColumns="False" CanUserAddRows="False" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="3">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Id}"  Width="*"/>
-                <DataGridTextColumn Header="Datum" Binding="{Binding Pocetak}"  Width="Auto"/>
-                <DataGridTextColumn Header="Tip pregleda" Binding="{Binding Tip}"  Width="*"/>
-                <DataGridTextColumn Header="Prostorija" Binding="{Binding prostorija.Naziv}"  Width="*"/>
-                <DataGridTextColumn Header="Hitno" Binding="{Binding hitno}"  Width="*"/>
-                <DataGridTemplateColumn Header="Zdravstveni Karton"  Width="Auto">
+                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="ID" Binding="{Binding Id}"  Width="*"/>
+                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="Datum" Binding="{Binding Pocetak}"  Width="Auto"/>
+                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="Tip pregleda" Binding="{Binding Tip}"  Width="*"/>
+                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="Prostorija" Binding="{Binding prostorija.Naziv}"  Width="*"/>
+                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="Hitno" Binding="{Binding hitno}"  Width="*"/>
+                <DataGridTemplateColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="Zdravstveni Karton"  Width="Auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Content="..." Click="prikaziKarton"/>

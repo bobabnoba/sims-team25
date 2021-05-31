@@ -27,6 +27,7 @@ namespace ZdravoKorporacija
         public static ContentControl cc = new ContentControl();
         public static  List<Specijalista> spec = new List<Specijalista>();
         public static MainWindow mw = new MainWindow();
+        private string CurrentLanguage { get; set; }
         UlogaEnum uloga;
         public MainWindow() 
         { 
@@ -41,7 +42,6 @@ namespace ZdravoKorporacija
             spec.Add(s2);
             mw = this;
         }
-
 
 
 

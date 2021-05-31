@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.LekarCRUD"
         mc:Ignorable="d"
-        Title="dodajAnamnezu" Height="Auto" Width="Auto" Background="#80ccff">
+        Title="dodajAnamnezu" Height="Auto" Width="Auto" Background="{DynamicResource BackgroundColor}">
     <Grid Height="331">
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -17,9 +17,9 @@
             <ColumnDefinition Width="145*"/>
             <ColumnDefinition Width="179*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock HorizontalAlignment="Center" Margin="0,4,0,0" Text="Simptomi:" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" Grid.Row="2" Width="54"/>
+        <TextBlock Style="{DynamicResource textblock}" Name="SimptomiText" HorizontalAlignment="Center" Margin="0,4,0,0" Text="Simptomi:" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" Grid.Row="2" Width="54"/>
         <TextBox Name="simptomiText" HorizontalAlignment="Center" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" Height="75" Grid.Row="2" Grid.Column="1"/>
-        <TextBlock  HorizontalAlignment="Center" Margin="0,14,0,0" Text="Opis:" TextWrapping="Wrap" VerticalAlignment="Top" Width="42" Height="16" Grid.Row="1"/>
+        <TextBlock Style="{DynamicResource textblock}" Name="OpisText" HorizontalAlignment="Center" Margin="0,14,0,0" Text="Opis:" TextWrapping="Wrap" VerticalAlignment="Top" Width="42" Height="16" Grid.Row="1"/>
         <Button Width="101" Content="POTVRDI" HorizontalAlignment="Left" Margin="44,0,0,0" VerticalAlignment="Center" Click="Button_Click" Grid.Row="3" Height="20"/>
         <Button Width="101" Content="ODUSTANI" HorizontalAlignment="Left" Margin="19,0,0,0" VerticalAlignment="Center" Click="Button_Click_1" Grid.Row="3" Height="20" Grid.Column="1" />
         <RichTextBox  Name="opisText" Margin="1,14,33,57" Grid.Column="1" Grid.Row="1">

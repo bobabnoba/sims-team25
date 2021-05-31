@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.LekarCRUD"
         mc:Ignorable="d"
-        Title="test" Height="550" Width="837" WindowStartupLocation="CenterScreen">
+        Title="test" Height="550" Width="837" WindowStartupLocation="CenterScreen" Background="{DynamicResource BackgroundColor}">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="btv" />
 
@@ -13,7 +13,7 @@
         <ControlTemplate x:Key="VsMenuTop" TargetType="MenuItem">
             <StackPanel TextBlock.FontSize="15px" Height="40">
                 <!-- label, icons, etc. -->
-                <Label Content="{TemplateBinding Header}" Margin="5" Foreground="White" />
+                <Label Style="{DynamicResource label}" Content="{TemplateBinding Header}" Margin="5" />
 
                 <!-- sub items -->
                 <Popup IsOpen="{TemplateBinding IsSubmenuOpen}" AllowsTransparency="True" Focusable="False">
@@ -33,12 +33,35 @@
             </StackPanel>
         </ControlTemplate>
 
+        <ControlTemplate x:Key="VsMenuEnd" TargetType="MenuItem" >
+            <DockPanel TextBlock.FontSize="15px" Height="40" DockPanel.Dock="Right">
+                <!-- label, icons, etc. -->
+                <Label  Style="{DynamicResource label}" Content="{TemplateBinding Header}" Margin="5"  />
+            
+                <!-- sub items -->
+                <Popup IsOpen="{TemplateBinding IsSubmenuOpen}" AllowsTransparency="True" Focusable="False">
+                    <Border BorderThickness="1" Background="White" BorderBrush="#E0E0E0">
+                        <StackPanel IsItemsHost="True" />
+                    </Border>
+                </Popup>
+                <DockPanel.Style>
+                    <Style TargetType="DockPanel">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver"  Value="True">
+                                <Setter Property="Background" Value="#106EBE" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DockPanel.Style>
+            </DockPanel>
+        </ControlTemplate>
+
         <!-- style a non-top level menu item -->
         <ControlTemplate x:Key="VsMenuSub" TargetType="MenuItem">
             <DockPanel TextBlock.FontSize="15px" x:Name="panel">
                 <!-- label, icons, etc. -->
-                <Image Source="{Binding Icon, RelativeSource={RelativeSource TemplatedParent}}" Width="20" Margin="5,0" />
-                <Label Content="{TemplateBinding Header}" Foreground="Black" Margin="0,5,5,5" />
+                    
+                <Label  Content="{TemplateBinding Header}"  Margin="0,5,5,5" />
 
                 <!-- draw the right arrow only if this menu item has sub items -->
                 <Image Source="icon_right.png" Visibility="{Binding HasItems, Converter={StaticResource btv}, RelativeSource={RelativeSource TemplatedParent}}" />
@@ -76,7 +99,7 @@
                 </Popup>
             </StackPanel>
         </ControlTemplate>
-
+        
         <!-- some base stuff -->
         <Style TargetType="Menu">
             <Setter Property="Background" Value="#0078D7" />
@@ -85,18 +108,23 @@
 
     </Window.Resources>
     <Grid>
-    <Frame x:Name="Main" Margin="0,40,0,0" NavigationUIVisibility="Hidden"/>
-    <!-- the real app and real menu -->
-   
-    <StackPanel>
-        <Menu IsMainMenu="True">
-                <MenuItem Header="_Zdravo Korporacija" Template="{StaticResource ZdravoKorporacija}" />
+        <Frame x:Name="Main" Margin="0,40,0,0" NavigationUIVisibility="Hidden"/>
+        <!-- the real app and real menu -->
+
+        <StackPanel>
+            <Menu  Style="{DynamicResource MenuStyle}" IsMainMenu="True" >
+                <MenuItem Header="_Zdravo Korporacija" Template="{StaticResource ZdravoKorporacija}"/>
                 <MenuItem Header="_Termini" Template="{StaticResource VsMenuTop}" Click="MenuItem_Click"/>
                 <MenuItem Header="_Pacijenti" Template="{StaticResource VsMenuTop}" Click="MenuItem_Click_1"/>
                 <MenuItem Header="_Uputi" Template="{StaticResource VsMenuTop}" Click="MenuItem_Click_2"/>
                 <MenuItem Header="_Zahtevi za lekove" Template="{StaticResource VsMenuTop}" Click="MenuItem_Click_3">
+
                 </MenuItem>
-        </Menu>
-    </StackPanel>
+                <MenuItem Header="Podesavanja"  HorizontalAlignment="Stretch" Template="{StaticResource VsMenuEnd}" >
+                    <MenuItem Name="tema" Header="Tamna tema" Template="{StaticResource VsMenuSub}" Style="{DynamicResource menuSub}" Click="promeniTemu"/>
+                    <MenuItem Header="Promeni jezik" Template="{StaticResource VsMenuSub}" Style="{DynamicResource menuSub}" Click="promeniJezik"/>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
     </Grid>
 </Window>
