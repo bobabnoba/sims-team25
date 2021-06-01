@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Globalization;
+using System.Reflection;
 using System.Resources;
 using System.Windows.Data;
 
@@ -14,6 +15,8 @@ public class TranslationSource
     }
 
     private readonly ResourceManager resManager = ZdravoKorporacija.Properties.Resources.ResourceManager;
+    //private readonly ResourceManager resManager = new ResourceManager("ZdravoKorporacija.Properties.Resources",
+    //    Assembly.GetExecutingAssembly()); 
     private CultureInfo currentCulture = null;
 
     public string this[string key]

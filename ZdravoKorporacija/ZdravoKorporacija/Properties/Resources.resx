@@ -306,6 +306,9 @@
   <data name="PrezimeGrid" xml:space="preserve">
     <value>Surname</value>
   </data>
+  <data name="PrezimeText" xml:space="preserve">
+    <value>Surname:</value>
+  </data>
   <data name="ProizvodjacGrid" xml:space="preserve">
     <value>Manufacturer</value>
   </data>
@@ -326,9 +329,6 @@
   </data>
   <data name="SimptomiText" xml:space="preserve">
     <value>Symptoms:</value>
-  </data>
-  <data name="SurnameText" xml:space="preserve">
-    <value>Prezime:</value>
   </data>
   <data name="TemaMenu" xml:space="preserve">
     <value>Change Theme</value>

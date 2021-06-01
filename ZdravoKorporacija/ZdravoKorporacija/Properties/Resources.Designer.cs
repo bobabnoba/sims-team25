@@ -628,6 +628,15 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Surname:.
+        /// </summary>
+        public static string PrezimeText {
+            get {
+                return ResourceManager.GetString("PrezimeText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Manufacturer.
         /// </summary>
         public static string ProizvodjacGrid {
@@ -687,15 +696,6 @@ namespace ZdravoKorporacija.Properties {
         public static string SimptomiText {
             get {
                 return ResourceManager.GetString("SimptomiText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Prezime:.
-        /// </summary>
-        public static string SurnameText {
-            get {
-                return ResourceManager.GetString("SurnameText", resourceCulture);
             }
         }
         

@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.Uput"
         mc:Ignorable="d"
+        xmlns:ns="clr-namespace:ZdravoKorporacija"
         Height="Auto" Width="Auto" Background="{DynamicResource BackgroundColor}" d:Height="450" d:Width="800"
       Title="Uputi">
 
@@ -24,7 +25,7 @@
             <ColumnDefinition Width="160*"/>
             <ColumnDefinition Width="45*"/>
         </Grid.ColumnDefinitions>
-        <Button Content="Izdaj uput" HorizontalAlignment="Center" VerticalAlignment="Center" Width="92" Height="44" Click="izdajUput" Grid.Column="2" Grid.Row="1"/>
+        <Button Content="Izdaj uput"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="92" Height="44" Click="izdajUput" Grid.Column="2" Grid.Row="1"/>
         <Button Content="Zakazi hitan termin" HorizontalAlignment="Center" VerticalAlignment="Center" Width="114" Height="44" Click="zakaziHitno" Grid.Column="1" Grid.Row="1"/>
         <Button Content="Izmeni uput" HorizontalAlignment="Center" VerticalAlignment="Center" Width="92" Height="40" RenderTransformOrigin="0.255,-0.75" Click="izmeniUput" Grid.Column="3" Grid.Row="1"/>
         <Button Content="Otkaži uput" HorizontalAlignment="Center" VerticalAlignment="Center" Width="92" Height="44" RenderTransformOrigin="0.033,-1.977" Click="otkaziUput" Grid.Column="4" Grid.Row="1"/>
