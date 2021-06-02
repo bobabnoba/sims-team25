@@ -20,6 +20,7 @@
                 <Button Content="Lekar" Click="openLekarFrame" Width="100" Margin="80,0,0,0"/>
 
             </StackPanel>
+            <Button Content="Button" HorizontalAlignment="Left" Margin="415,29,0,0" VerticalAlignment="Top" Click="Button_Click"/>
         </Grid>
     </DockPanel>
 </Window>

@@ -132,6 +132,10 @@ namespace ZdravoKorporacija
             pl.Show();
         }
 
-      
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            pocetna p = new pocetna();
+            p.Show();
+        }
     }
 }

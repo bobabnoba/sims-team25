@@ -5,61 +5,56 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.PacijentCRUD"
         mc:Ignorable="d"
-      Title="Zdravo korporacija"
-         MinHeight="700"
-        MinWidth="800"
+   Title="Zdravo korporacija"
+        Height="{Binding Source={x:Static SystemParameters.PrimaryScreenHeight}}"
+        Width="{Binding Source={x:Static SystemParameters.PrimaryScreenWidth}}" 
+        MinHeight="600"
+        MinWidth="900"
         WindowState="Maximized"
-        WindowStartupLocation="CenterScreen" Height="650" Width="1366">
-    <Grid >
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="240"/>
-            <ColumnDefinition Width="885*"/>
-            <ColumnDefinition Width="240*"/>
-        </Grid.ColumnDefinitions>
+        WindowStartupLocation="CenterScreen">
+
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="120"/>
-            <RowDefinition Height="503*"/>
-            <RowDefinition Height="99*"/>
+            <RowDefinition Height="591*"/>
+            <RowDefinition Height="63*"/>
         </Grid.RowDefinitions>
-        <Button Background="Transparent" BorderBrush="Transparent">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="240"/>
+            <ColumnDefinition Width="1053*"/>
+            <ColumnDefinition Width="240*"/>
+        </Grid.ColumnDefinitions>
+        <Button  Grid.Row="0" Grid.Column="0" Height ="120" Width="240" Background="Transparent" BorderBrush="Transparent">
             <Image Source="/Images/output-onlinepngtools.png" Stretch="None"/>
         </Button>
-        <Rectangle Stroke="Black" StrokeThickness="3" Grid.Column="0" Grid.ColumnSpan="3" Margin="166,111,171,46" Grid.RowSpan="3"/>
-        <!--<Label Content=" Prijavi se" FontSize="75" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1"/>
-        <Label Content="Korisničko ime:" FontSize="22" Grid.Row="2" Grid.Column="1"HorizontalAlignment="Left"/>
-        <TextBox Name="imeText" FontSize="22" Grid.Row="2" Grid.Column="1" BorderBrush="Black"/>
-        <Label Content="Lozinka:" FontSize="22" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left"/>
-        <PasswordBox Name="lozinkaText" FontSize="22" Grid.Row="5" Grid.Column="1"BorderBrush="Black" />
-        <Button Content="Potvrdi" Grid.Row="7" FontSize="22" Click="Button_Click" Grid.Column="1"/>
-        <Label Content="Zaboravili ste lozinku?" Grid.Row="9" Grid.Column="1" FontSize="16"/>-->
-        <Grid Grid.Column="0" Grid.ColumnSpan="3" Margin="166,111,171,46" Grid.RowSpan="3">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="290*"/>
-                <ColumnDefinition Width="447*"/>
-                <ColumnDefinition Width="292*"/>
-            </Grid.ColumnDefinitions>
+        <Grid Grid.Row="1" Margin="17,39,0,0" Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="130*"/>
-                <RowDefinition Height="30*"/>
-                <RowDefinition Height="50*"/>
-                <RowDefinition Height="50*"/>
-                <RowDefinition Height="50*"/>
-                <RowDefinition Height="50*"/>
-                <RowDefinition Height="30*"/>
-                <RowDefinition Height="50*"/>
-                <RowDefinition Height="30*"/>
-                <RowDefinition Height="50*"/>
+                <RowDefinition Height="120*"/>
+                <RowDefinition Height="59*"/>
+                <RowDefinition Height="59*"/>
+                <RowDefinition Height="59*"/>
+                <RowDefinition Height="59*"/>
+                <RowDefinition Height="59*"/>
+                <RowDefinition Height="59*"/>
+                <RowDefinition Height="59*"/>
             </Grid.RowDefinitions>
-            <Label Content=" Prijavi se" FontSize="74" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1" Margin="0,0,0,30" Grid.RowSpan="2" Width="318" />
-            <Label Content="Korisničko ime:" FontSize="22" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="0,30,0,51" Grid.RowSpan="3" Width="156"/>
-            <TextBox Name="imeText" TextAlignment="Justify" FontSize="22" Grid.Row="3" Grid.Column="1" BorderBrush="Black" Margin="0,0,0,50" Grid.RowSpan="2"/>
-            <Label Content="Lozinka:" FontSize="22" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Width="88"/>
-            <PasswordBox Name="lozinkaText" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" FontSize="22" Grid.Row="4" Grid.Column="1" BorderBrush="Black" Margin="0,50,0,30" Grid.RowSpan="3" />
-            <Button Content="Potvrdi" Grid.Row="6" FontSize="22" Click="Button_Click" Grid.Column="1" Margin="0,29,0,30" Grid.RowSpan="3" HorizontalAlignment="Center" Width="120"/>
-            <Label Content="Zaboravili ste lozinku?" Grid.Row="8" Grid.Column="1" FontSize="16" HorizontalAlignment="Center" Margin="0,30,0,0" Grid.RowSpan="2" Width="166"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
+            <Rectangle Stroke="Black" StrokeThickness="3" Grid.ColumnSpan="3" Grid.RowSpan="9"/>
+            <Label Content=" Prijavi se" FontSize="65" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1" Width="302" />
+            <Label Content="Korisničko ime:" FontSize="22" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" RenderTransformOrigin="0.542,0.674"/>
+            <TextBox Name="imeText" TextAlignment="Justify" FontSize="22" Grid.Row="2" Grid.Column="1" BorderBrush="Black"/>
+            <Label Content="Lozinka:" FontSize="22" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left"/>
+            <PasswordBox Name="lozinkaText" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" FontSize="22" Grid.Row="4" Grid.Column="1" BorderBrush="Black"  />
+            <Button Content="Potvrdi" Grid.Row="6" FontSize="22" Click="Button_Click" Grid.Column="1" HorizontalAlignment="Center" Width="173" />
+            <Label Content="Zaboravili ste lozinku?" Grid.Row="7" Grid.Column="1" FontSize="16" HorizontalAlignment="Center" Width="166" VerticalAlignment="Bottom"/>
 
         </Grid>
 
     </Grid>
+
 </Window>

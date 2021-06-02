@@ -12,7 +12,7 @@
     <Grid>
         <TabControl Margin="42,10,34,31"  Background="Transparent" BorderBrush="Black" >
 
-            <TabItem Header="Pregledi" FontSize="24" FontFamily="Corbel" BorderBrush="Black" Foreground="#FFBB5A55" Background="Transparent">
+            <TabItem Header="Pregledi" FontSize="24" FontFamily="Corbel" BorderBrush="Black" Foreground="#EB4D2323" Background="Transparent">
                 <Grid Background="#9EE38383">
                     <Grid.RowDefinitions>
                         <RowDefinition  Height="*"/>
@@ -48,13 +48,13 @@
                     </FlowDocumentScrollViewer>
                 </Grid>
             </TabItem>
-            <TabItem Header="Terapija" FontSize="24" FontFamily="Corbel" BorderBrush="Black" Foreground="#FFBB5A55" Background="Transparent">
+    <TabItem Header="Terapija" FontSize="24" FontFamily="Corbel" BorderBrush="Black" Foreground="#EB4D2323" Background="Transparent">
                 <Grid Background="#9EE38383">
                     <Button Content="Wizard" HorizontalAlignment="Left" Height="41" Margin="171,167,0,0" VerticalAlignment="Top" Width="103" Click="Button_Click"/>
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Obaveštenja" FontSize="24" FontFamily="Corbel" BorderBrush="Black" Foreground="#FFBB5A55" Background="Transparent">
+    <TabItem Header="Obaveštenja" FontSize="24" FontFamily="Corbel" BorderBrush="Black" Foreground="#EB4D2323" Background="Transparent">
                 <Grid Background="#9EE38383"/>
             </TabItem>
         </TabControl>
