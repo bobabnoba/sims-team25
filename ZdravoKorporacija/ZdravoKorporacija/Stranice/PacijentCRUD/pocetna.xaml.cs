@@ -52,5 +52,10 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
         {
             Main.Content = new ZKPacijent(pacijentDTO);
         }
+
+        private void pomocBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new Pomoc(pacijentDTO);
+        }
     }
 }

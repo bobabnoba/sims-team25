@@ -131,5 +131,7 @@ namespace ZdravoKorporacija
             Login pl = new Login(UlogaEnum.Pacijent);
             pl.Show();
         }
+
+      
     }
 }

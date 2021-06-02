@@ -3,12 +3,45 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.PacijentCRUD" 
         xmlns:ae="clr-namespace:AeroWizard;assembly=AeroWizard"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="Wizard1" Height="600" Width="500">
+        Title="Wizard1" Height="500" Width="450"
+        WindowStartupLocation="CenterScreen">
 
-    <Border>
-    </Border>
+    <Grid>
+        <xctk:Wizard FinishButtonClosesWindow="True">
+
+                <xctk:WizardPage x:Name="IntroPage" 
+                                   Title="Dobrodošli u Wizard aplikacije Zdravo korporacije!"
+                                   Description="Neki opis.." />
+                      
+            <xctk:WizardPage x:Name="Page1" PageType="Interior"
+                                   Title="Strana1"
+                                   Description="Neki opis.."
+                                   NextPage="{Binding ElementName=Page2}"
+                                   PreviousPage="{Binding ElementName=IntroPage}"
+                             > 
+                <Grid>
+                    <Image Source=""  Width="800"    />
+                </Grid>
+            </xctk:WizardPage>
+            <xctk:WizardPage x:Name="Page2" PageType="Interior"
+                                   Title="Strana2"
+                                   Description="Neki opis..">
+                <Grid>
+                    <Image Source=""  Width="800"    />
+                </Grid>
+            </xctk:WizardPage>
+            <xctk:WizardPage x:Name="Page3" PageType="Interior"
+                                   Title="Strana3"
+                                  Description="..."
+                                 >
+
+                <Image Source=""  Width="900" Height="500"   />
+            </xctk:WizardPage>
+
+        </xctk:Wizard>
+    </Grid>
 
 </Window>

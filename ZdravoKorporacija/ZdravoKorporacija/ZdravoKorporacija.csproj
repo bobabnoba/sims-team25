@@ -17,6 +17,7 @@
   <ItemGroup>
     <PackageReference Include="AeroWizard" Version="2.2.9" />
     <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
     <PackageReference Include="Prism.Wpf" Version="8.1.97" />
   </ItemGroup>
@@ -27,10 +28,6 @@
     <Resource Include="Images\output-onlinepngtools.png" />
     <Resource Include="Stranice\LekarCRUD\add.png" />
     <Resource Include="Stranice\LekarCRUD\edit.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Images\NewFolder\" />
   </ItemGroup>
 
 </Project>
