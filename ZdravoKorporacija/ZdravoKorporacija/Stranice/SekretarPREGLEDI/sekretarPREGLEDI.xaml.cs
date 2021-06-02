@@ -82,12 +82,9 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
                 MessageBox.Show("Pregled nije izabran. Molimo označite pregled koji želite da otkažete.", "Greška");
             else
             {
-                oktaziPregledLekar op = new oktaziPregledLekar( (TerminDTO)dgUsers.SelectedItem, ids);
+                oktaziPregledLekar op = new oktaziPregledLekar( (TerminDTO)dgUsers.SelectedItem);
                 op.Show();
             }
-
-
-
         }
 
         private void dgUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)

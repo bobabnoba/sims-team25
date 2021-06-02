@@ -201,14 +201,14 @@
   <data name="KrvnaGrupaText" xml:space="preserve">
     <value>Blood Type:</value>
   </data>
-  <data name="LanguageMenu" xml:space="preserve">
+  <data name="JezikMenu" xml:space="preserve">
     <value>Change Language</value>
   </data>
   <data name="LekariBtn" xml:space="preserve">
-    <value>Choose Doctors:</value>
+    <value>Choose Doctors</value>
   </data>
   <data name="LekarText" xml:space="preserve">
-    <value>Doctor</value>
+    <value>Choose the Doctors:</value>
   </data>
   <data name="LekGrid" xml:space="preserve">
     <value>Medicine</value>
@@ -247,7 +247,7 @@
     <value>Delete a Referral Request</value>
   </data>
   <data name="ObrisiZahtevDialog" xml:space="preserve">
-    <value>Are you sure you want to delete a request?</value>
+    <value>Are you sure you want to delete the request?</value>
   </data>
   <data name="OdobriZahtevBtn" xml:space="preserve">
     <value>Approve a Request</value>
@@ -331,7 +331,7 @@
     <value>Symptoms:</value>
   </data>
   <data name="TemaMenu" xml:space="preserve">
-    <value>Change Theme</value>
+    <value>DarkTheme</value>
   </data>
   <data name="TerminiMenu" xml:space="preserve">
     <value>Appointments</value>
@@ -368,5 +368,11 @@
   </data>
   <data name="ZdravstveniKartonGrid" xml:space="preserve">
     <value>Medical Record</value>
+  </data>
+  <data name="IzaberiDatumText" xml:space="preserve">
+    <value>Select a Date</value>
+  </data>
+  <data name="OdjaviSeMenu" xml:space="preserve">
+    <value>Logout</value>
   </data>
 </root>

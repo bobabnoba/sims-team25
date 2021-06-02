@@ -41,7 +41,6 @@ namespace ZdravoKorporacija.Stranice.StacionarnoLecenje
 
             stacionarnoLecenje.Pacijent = pacijent;
 
-
             CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
             date.BlackoutDates.Add(cdr);
 
@@ -103,12 +102,12 @@ namespace ZdravoKorporacija.Stranice.StacionarnoLecenje
             sl.DodajStacionarnoLecenje(stacionarnoLecenje);
             uputiZaStacionarno.uputi.Add(stacionarnoLecenje);
 
-            test.prozor.Content = new pregledPacijenata();
+            test.prozor.Content = new uputiZaStacionarno(stacionarnoLecenje.Pacijent);
         }
 
         private void odustani(object sender, RoutedEventArgs e)
         {
-            test.prozor.Content = new pregledPacijenata();
+            test.prozor.Content = new uputiZaStacionarno(stacionarnoLecenje.Pacijent);
         }
     }
 }

@@ -1,0 +1,97 @@
+[
+  {
+    "Id": 0,
+    "Prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": [],
+      "Id": 0,
+      "Naziv": "soba11",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 1
+    },
+    "Pocetak": "2021-06-13T08:30:00",
+    "Kraj": "0001-01-01T00:00:00",
+    "Trajanje": "3",
+    "Pacijent": {
+      "termin": [
+        {
+          "izvestaj": {
+            "termin": null,
+            "Id": 0,
+            "Opis": null,
+            "Simptomi": null
+          },
+          "zdravstveniKarton": {
+            "izvestajOHospitalizaciji": [],
+            "istorijaBolesti": null,
+            "recept": [],
+            "termin": [],
+            "patient": null,
+            "Id": 1234567890123,
+            "ZdravstvenoStanje": 3,
+            "Alergije": "drogica, loЛ,",
+            "KrvnaGrupa": 8,
+            "Vakcine": null
+          },
+          "prostorija": {
+            "inventar": null,
+            "statickaOprema": null,
+            "dinamickaOprema": null,
+            "Id": 0,
+            "Naziv": null,
+            "Tip": 0,
+            "Slobodna": false,
+            "Sprat": 0
+          },
+          "Lekar": {
+            "termin": null,
+            "Specijalizacija": 0,
+            "radniDani": null,
+            "Ime": "dr Scepan",
+            "Prezime": "Scepanovic",
+            "Jmbg": 5432,
+            "BrojTelefona": 0,
+            "Mejl": null,
+            "AdresaStanovanja": null,
+            "Pol": 0,
+            "Username": null,
+            "Password": null,
+            "Uloga": 0
+          },
+          "Id": 7,
+          "Tip": 0,
+          "Pocetak": "2021-05-27T10:00:00",
+          "Trajanje": 0.5,
+          "hitno": false
+        }
+      ],
+      "notifikacije": null,
+      "ZdravstveniKarton": {
+        "izvestajOHospitalizaciji": [],
+        "istorijaBolesti": null,
+        "recept": [],
+        "termin": [],
+        "patient": null,
+        "Id": 1234567890123,
+        "ZdravstvenoStanje": 3,
+        "Alergije": "drogica, loЛ,",
+        "KrvnaGrupa": 8,
+        "Vakcine": null
+      },
+      "Guest": false,
+      "banovan": false,
+      "Ime": "Dusan",
+      "Prezime": "Markovic",
+      "Jmbg": 1234567890123,
+      "BrojTelefona": 69000333,
+      "Mejl": "dusanmarkovic@gmail.com",
+      "AdresaStanovanja": "",
+      "Pol": 0,
+      "Username": "dusan",
+      "Password": "markovic",
+      "Uloga": 3
+    }
+  }
+]

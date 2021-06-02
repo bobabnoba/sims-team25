@@ -59,7 +59,7 @@ namespace ZdravoKorporacija.Stranice.Uput
             pregledi = termini;
 
             lekari = (List<LekarDTO>)lekarController.dobaviListuDTOLekara();
-            lekari.Remove(new LekarDTO(lekarLogin.lekar));
+            lekari.Remove(lekarLogin.lekar);
             Lekari.ItemsSource = lekari;
             CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
             date.BlackoutDates.Add(cdr);
@@ -181,7 +181,7 @@ namespace ZdravoKorporacija.Stranice.Uput
                 p.Tip = TipTerminaEnum.Operacija;
             }
 
-            p.Lekar = new LekarDTO(lekarLogin.lekar);
+            p.Lekar = lekarLogin.lekar;
             p.prostorija = (ProstorijaDTO)cbProstorija.SelectedItem;
             foreach (TerminDTO ter in termini)
             {

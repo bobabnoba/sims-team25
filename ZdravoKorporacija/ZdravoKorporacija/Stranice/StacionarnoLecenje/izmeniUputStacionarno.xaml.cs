@@ -30,6 +30,7 @@ namespace ZdravoKorporacija.Stranice.StacionarnoLecenje
         private StacionarnoLecenjeDTO stacionarno;
 
 
+
             String now = DateTime.Now.ToString("hh:mm:ss tt");
             DateTime today = DateTime.Today;
 
@@ -120,12 +121,12 @@ namespace ZdravoKorporacija.Stranice.StacionarnoLecenje
 
 
 
-            test.prozor.Content = new pregledPacijenata();
-            }
+            test.prozor.Content = new uputiZaStacionarno(stacionarnoLecenje.Pacijent);
+        }
 
             private void odustani(object sender, RoutedEventArgs e)
             {
-            test.prozor.Content = new pregledPacijenata();
+            test.prozor.Content = new uputiZaStacionarno(stacionarnoLecenje.Pacijent);
         }
         }
     }

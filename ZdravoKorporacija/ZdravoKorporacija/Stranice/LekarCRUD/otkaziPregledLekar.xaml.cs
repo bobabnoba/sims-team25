@@ -14,38 +14,27 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     /// </summary>
     public partial class oktaziPregledLekar : Window
     {
-        private TerminService storage = new TerminService();
-        private List<TerminDTO> termini;
-        private PacijentService pacijentServis = new PacijentService();
         TerminDTO termin;
-        private Dictionary<int, int> ids = new Dictionary<int, int>();
         private TerminController controller = new TerminController();
 
-        public oktaziPregledLekar( TerminDTO t, Dictionary<int, int> ids)
+        public oktaziPregledLekar( TerminDTO t)
         {
             InitializeComponent();
-            termini = controller.PregledSvihTermina2DTO(null);
             termin = t;
-            this.ids = ids;
         }
 
         private void da(object sender, RoutedEventArgs e)
         {
-            this.ids[this.termin.Id] = 0;
-            controller.ObrisiTerminPacijentu(controller.DTO2ModelNadji(termin));
-
-            controller.OtkaziTermin(controller.DTO2ModelNadji(termin), ids);
+            controller.OtkaziTermin(termin);
             
-            termini.Remove(termin);
+            lekarStart.termini.Remove(termin);
             
             this.Close();
-
         }
 
         private void ne(object sender, RoutedEventArgs e)
         {
             this.Close();
-
         }
     }
 }

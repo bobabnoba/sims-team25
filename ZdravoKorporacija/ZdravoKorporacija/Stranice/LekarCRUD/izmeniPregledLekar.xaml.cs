@@ -19,25 +19,11 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     /// </summary>
     public partial class izmeniPregledLekar : Page
     {
-
-        private List<LekarDTO> lekari= new List<LekarDTO>();
         private List<PacijentDTO> pacijenti = new List<PacijentDTO>();
         private ObservableCollection<ProstorijaDTO> prostorije = new ObservableCollection<ProstorijaDTO>();
         private TerminDTO t1;
         private TerminDTO t2;
         private ZdravstveniKartonKonverter zkk = new ZdravstveniKartonKonverter();
-
-
-        private TerminService terminServis = new TerminService();
-        private ProstorijaService prostorijeStorage = new ProstorijaService();
-        private PacijentService pacijentiServis = new PacijentService();
-
-        private LekarRepozitorijum lekariDat = new LekarRepozitorijum();
-
-        private Termin p;
-        private Termin s; // selektovani, za ukloniti
-        private ObservableCollection<Termin> pregledi;
-        private List<Termin> termini;
 
         String now = DateTime.Now.ToString("hh:mm:ss tt");
         DateTime today = DateTime.Today;
@@ -47,8 +33,6 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             InitializeComponent();
             pacijenti = controller.PregledSvihPacijenata2DTO();
             prostorije = controller.PregledSvihProstorijaDTO(null);
-            lekari = controller.PregledSvihLekaraDTO(null);
-
 
             t1 = selektovani;
             t2 = selektovani;
@@ -58,12 +42,13 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             {
                 if (selektovani.zdravstveniKarton == null)
                     break;
-                if (p.Jmbg == selektovani.zdravstveniKarton.Id)
+                if (p.ZdravstveniKarton.Id == selektovani.zdravstveniKarton.Id)
                 {
                     cbPacijent.SelectedItem = p;
                 }
             }
             cbProstorija.ItemsSource = prostorije;
+            
             foreach (ProstorijaDTO p in prostorije)
             {
                 if (selektovani.prostorija == null)
@@ -91,14 +76,14 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 cbTip.SelectedIndex = 1;
             }
 
-            t1.Trajanje = 0.5;
+            t1.Trajanje = 30;
             t1.Id = t2.Id;
 
         }
 
         private void odustani(object sender, RoutedEventArgs e)
         {
-            test.prozor.Content = new lekarStart();
+            test.prozor.Content = new lekarStart(lekarLogin.lekar) ;
         }
 
         private void potvrdi(object sender, RoutedEventArgs e)
@@ -147,7 +132,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 t1.Tip = TipTerminaEnum.Operacija;
             }
 
-            t1.Lekar = controller.NadjiLekaraPoJMBG(lekarLogin.jmbg);
+            t1.Lekar = controller.NadjiLekaraPoJMBG(lekarLogin.lekar.Jmbg);
             t1.prostorija = (ProstorijaDTO)cbProstorija.SelectedItem;
             t1.zdravstveniKarton = zkk.KonvertujEntitetUDTO(controller.NadjiKartonID(pacijent.Jmbg));
             if (controller.AzurirajTermin(controller.TerminDTO2Model(t1)))
@@ -155,7 +140,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 controller.PregledSvihTermina().Remove(controller.DTO2ModelNadji(t2));
                 controller.PregledSvihTermina().Add(controller.DTO2ModelNadji(t1));
             }
-            test.prozor.Content = new lekarStart();
+            test.prozor.Content = new lekarStart(lekarLogin.lekar);
 
         }
 

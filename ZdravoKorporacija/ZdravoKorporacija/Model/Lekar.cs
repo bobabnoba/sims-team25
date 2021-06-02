@@ -5,31 +5,44 @@
 
 using System;
 using System.Collections.Generic;
-using System.Windows.Documents;
 using ZdravoKorporacija.DTO;
 
 namespace Model
 {
     public class Lekar : Korisnik
     {
-        
+
         public Lekar() : base() { }
         public Lekar(String Ime, String Prezime) : base(Ime, Prezime)
         {
 
         }
 
-      
+
 
         public Lekar(string ime, string prezime, Int64 jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password, UlogaEnum uloga) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password, uloga)
         {
         }
 
-        public Lekar(LekarDTO lDTO)
+        public Lekar(LekarDTO lekarEntitet)
         {
-            this.Ime = lDTO.Ime;
-            this.Prezime = lDTO.Prezime;
-            this.Jmbg = lDTO.Jmbg;
+            if (lekarEntitet != null)
+            {
+                this.Jmbg = lekarEntitet.Jmbg;
+                this.Ime = lekarEntitet.Ime;
+                this.Prezime = lekarEntitet.Prezime;
+                this.Specijalizacija = lekarEntitet.Specijalizacija;
+                this.Username = lekarEntitet.Username;
+                this.Specijalizacija = lekarEntitet.Specijalizacija;
+                this.AdresaStanovanja = lekarEntitet.AdresaStanovanja;
+                this.BrojTelefona = lekarEntitet.BrojTelefona;
+                this.Password = lekarEntitet.Password;
+                this.Mejl = lekarEntitet.Mejl;
+                this.Uloga = lekarEntitet.Uloga;
+                this.radniDani = lekarEntitet.radniDani;
+                this.Pol = lekarEntitet.Pol;
+                //this.termini = new ArrayList(lekarEntitet.termin);
+            }
         }
 
         public Lekar(string Ime, string Prezime, Int64 jmbg) : base(Ime, Prezime)

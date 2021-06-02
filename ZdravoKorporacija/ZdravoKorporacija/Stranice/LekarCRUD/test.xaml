@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.LekarCRUD"
+        xmlns:ns="clr-namespace:ZdravoKorporacija"
         mc:Ignorable="d"
         Title="test" Height="550" Width="837" WindowStartupLocation="CenterScreen" Background="{DynamicResource BackgroundColor}">
     <Window.Resources>
@@ -113,17 +113,18 @@
 
         <StackPanel>
             <Menu  Style="{DynamicResource MenuStyle}" IsMainMenu="True" >
-                <MenuItem Header="_Zdravo Korporacija" Template="{StaticResource ZdravoKorporacija}"/>
-                <MenuItem Header="_Termini" Template="{StaticResource VsMenuTop}" Click="MenuItem_Click"/>
-                <MenuItem Header="_Pacijenti" Template="{StaticResource VsMenuTop}" Click="MenuItem_Click_1"/>
-                <MenuItem Header="_Uputi" Template="{StaticResource VsMenuTop}" Click="MenuItem_Click_2"/>
-                <MenuItem Header="_Zahtevi za lekove" Template="{StaticResource VsMenuTop}" Click="MenuItem_Click_3">
+                <MenuItem Header="{ns:Loc ZdravoKorporacijaMenu}" Template="{StaticResource ZdravoKorporacija}"/>
+                <MenuItem Header="{ns:Loc TerminiMenu}"  Template="{StaticResource VsMenuTop}" Click="MenuItem_Click"/>
+                <MenuItem Header="{ns:Loc PacijentiMenu}"  Template="{StaticResource VsMenuTop}" Click="MenuItem_Click_1"/>
+                <MenuItem Header="{ns:Loc UputiMenu}" Template="{StaticResource VsMenuTop}" Click="MenuItem_Click_2"/>
+                <MenuItem Header="{ns:Loc ZahteviZaLekoveMenu}" Template="{StaticResource VsMenuTop}" Click="MenuItem_Click_3">
 
                 </MenuItem>
-                <MenuItem Header="Podesavanja"  HorizontalAlignment="Stretch" Template="{StaticResource VsMenuEnd}" >
-                    <MenuItem Name="tema" Header="Tamna tema" Template="{StaticResource VsMenuSub}" Style="{DynamicResource menuSub}" Click="promeniTemu"/>
-                    <MenuItem Header="Promeni jezik" Template="{StaticResource VsMenuSub}" Style="{DynamicResource menuSub}" Click="promeniJezik"/>
+                <MenuItem Header="{ns:Loc PodesavanjaMenu}"  HorizontalAlignment="Stretch" Template="{StaticResource VsMenuTop}" >
+                    <MenuItem Name="tema" Header="{ns:Loc TemaMenu}" Template="{StaticResource VsMenuSub}" Style="{DynamicResource menuSub}" Click="promeniTemu"/>
+                    <MenuItem Header="{ns:Loc JezikMenu}" Template="{StaticResource VsMenuSub}" Style="{DynamicResource menuSub}" Click="promeniJezik"/>
                 </MenuItem>
+                <MenuItem Header="{ns:Loc OdjaviSeMenu}" Template="{StaticResource VsMenuEnd}" Click="MenuItem_Click_4"/>
             </Menu>
         </StackPanel>
     </Grid>

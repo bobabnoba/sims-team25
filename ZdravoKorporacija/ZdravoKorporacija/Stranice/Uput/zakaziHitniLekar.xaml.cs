@@ -178,19 +178,14 @@ namespace ZdravoKorporacija.Stranice.Uput
                     tZaLekara.Id = zaUpis.Id;
                     zaUpis.Lekar.AddTermin(tZaLekara);
 
-                    if (ts.ZakaziTermin(zaUpis, ids))
+                    if (ts.ZakaziTermin(zaUpis,pac))
                     {
                         this.pregledi.Add(zaUpis);
                         lekari = (List<LekarDTO>)lekarController.dobaviListuDTOLekara();
                         //lekariDat.sacuvaj(lekari);
 
                     }
-                    pac.AddTermin(zaUpis);
-                    ps.AzurirajPacijenta(pac);
-
-           
-
-                }
+           }
 
             }
             else if (cbTip.SelectedIndex == 1)
@@ -276,15 +271,13 @@ namespace ZdravoKorporacija.Stranice.Uput
                     tZaLekara.Id = zaUpis.Id;
                     zaUpis.Lekar.AddTermin(tZaLekara);
 
-                    if (ts.ZakaziTermin(zaUpis, ids))
+                    if (ts.ZakaziTermin(zaUpis, pac))
                     {
                         this.pregledi.Add(zaUpis);
                         lekari = (List<LekarDTO>)lekarController.dobaviListuDTOLekara();
                         //lekariDat.sacuvaj(lekari);
 
                     }
-                    pac.AddTermin(zaUpis);
-                    ps.AzurirajPacijenta(pac);
 
                     test.prozor.Content = new Uputi();
                 }

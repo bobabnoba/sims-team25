@@ -100,6 +100,8 @@ namespace ZdravoKorporacija.DTO
             return zdravstveniKarton;
         }
 
+       
+
         /// <pdGenerated>default parent setter</pdGenerated>
         /// <param>newZdravstveniKarton</param>
         public void SetZdravstveniKarton(ZdravstveniKartonDTO newZdravstveniKarton)

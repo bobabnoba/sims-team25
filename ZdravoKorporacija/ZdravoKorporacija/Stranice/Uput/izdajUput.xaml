@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.Uput"
+       xmlns:ns="clr-namespace:ZdravoKorporacija"
         mc:Ignorable="d"
          Title="Izdavanje Uputa" Height="Auto" Width="Auto" Background="{DynamicResource BackgroundColor}">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="408" Width="417">
@@ -21,7 +22,7 @@
             <ColumnDefinition Width="59*"/>
             <ColumnDefinition Width="141*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Style="{DynamicResource textblock}" Text="Datum i vreme:" TextWrapping="Wrap" Margin="33,24,0,22" Grid.Row="1"/>
+        <TextBlock Style="{DynamicResource textblock}" Text="{ns:Loc DatumIVremeText}" TextWrapping="Wrap" Margin="33,24,0,22" Grid.Row="1"/>
         <DatePicker Name ="date" Grid.Column="1" HorizontalAlignment="Left" Margin="45,22,0,0" Grid.Row="1" VerticalAlignment="Top" Height="28"/>
         <ComboBox Name ="time" Grid.Column="1" Margin="159,22,77,22" Grid.Row="1"  Height="28" Width="60" >
             <ComboBoxItem>08:00</ComboBoxItem>
@@ -49,9 +50,9 @@
             <ComboBoxItem>19:00</ComboBoxItem>
             <ComboBoxItem>19:30</ComboBoxItem>
         </ComboBox>
-        <Button Name ="potvrdiButton" Content="POTVRDI" HorizontalAlignment="Left" Margin="96,34,0,0" Grid.Row="5" VerticalAlignment="Top" Width="80" Grid.ColumnSpan="2" Click="potvrdi" />
-        <Button Content="ODUSTANI" HorizontalAlignment="Left" Margin="94,34,0,0" Grid.Row="5" VerticalAlignment="Top" Width="80" Grid.Column="1" Click="odustani" />
-        <TextBlock Style="{DynamicResource textblock}" Text="Pacijent:" TextWrapping="Wrap" Margin="52,13,237,34" Grid.Row="4" Grid.ColumnSpan="2"/>
+        <Button Name ="potvrdiButton" Content="{ns:Loc PotvrdiBtn}" HorizontalAlignment="Left" Margin="96,34,0,0" Grid.Row="5" VerticalAlignment="Top" Width="80" Grid.ColumnSpan="2" Click="potvrdi" />
+        <Button Content="{ns:Loc OdustaniBtn}" HorizontalAlignment="Left" Margin="94,34,0,0" Grid.Row="5" VerticalAlignment="Top" Width="80" Grid.Column="1" Click="odustani" />
+        <TextBlock Style="{DynamicResource textblock}" Text="{ns:Loc PacijentText}" TextWrapping="Wrap" Margin="52,13,237,34" Grid.Row="4" Grid.ColumnSpan="2"/>
         <ComboBox Name="cbPacijent" Grid.Column="1" Margin="58,10,77,34" Grid.Row="4"  Height="28">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
@@ -66,7 +67,7 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <TextBlock Style="{DynamicResource textblock}" Text="Lekar:" TextWrapping="Wrap" Margin="53,44,235,63" Grid.Row="3" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <TextBlock Style="{DynamicResource textblock}" Text="{ns:Loc LekarText}" TextWrapping="Wrap" Margin="53,44,235,63" Grid.Row="3" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
         <ComboBox Name="Lekari"  Grid.Column="1" Margin="58,41,77,3" Grid.Row="3" Height="28">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
@@ -81,7 +82,7 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <TextBlock Style="{DynamicResource textblock}" TextWrapping="Wrap" Margin="52,11,241,34" Grid.Row="3" Grid.ColumnSpan="2"><Run Text="Prostorija"/><Run Text=":"/></TextBlock>
+        <TextBlock Style="{DynamicResource textblock}" TextWrapping="Wrap" Margin="52,11,241,34" Grid.Row="3" Grid.ColumnSpan="2" Text="{ns:Loc ProstorijaText}" ></TextBlock>
         <ComboBox Name="cbProstorija" Grid.Column="1" Margin="58,4,77,40" Grid.Row="3" Height="28">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
@@ -96,7 +97,7 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <TextBlock Style="{DynamicResource textblock}" Text="Tip:" TextWrapping="Wrap" Margin="53,38,20,12" Grid.Row="2"/>
+        <TextBlock Style="{DynamicResource textblock}" Text="{ns:Loc TipText}" TextWrapping="Wrap" Margin="53,38,20,12" Grid.Row="2"/>
         <ComboBox Name="cbTip" Grid.Column="1" Margin="58,35,77,10" Grid.Row="2" Height="28" >
             <ComboBoxItem>Pregled</ComboBoxItem>
             <ComboBoxItem>Operacija</ComboBoxItem>

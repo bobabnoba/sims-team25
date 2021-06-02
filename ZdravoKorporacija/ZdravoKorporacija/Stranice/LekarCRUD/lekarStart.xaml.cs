@@ -23,28 +23,11 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     /// </summary>
     public partial class lekarStart : Page
     {
-        private TerminService storage = new TerminService();
         private TerminController terminController = TerminController.Instance;
         private ObservableCollection<TerminDTO> terminiSvi = new ObservableCollection<TerminDTO>();
         public static ObservableCollection<TerminDTO> termini = new ObservableCollection<TerminDTO>();
         public static ObservableCollection<TerminDTO> uputi = new ObservableCollection<TerminDTO>();
         public static ObservableCollection<TerminDTO> terminiDTO = new ObservableCollection<TerminDTO>();
-        private Dictionary<int, int> ids = new Dictionary<int, int>();
-
-
-
-        public lekarStart()
-        {
-            InitializeComponent();
-
-            IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
-            ids = datotekaID.dobaviSve();
-
-            terminiSvi = new ObservableCollection<TerminDTO>(terminController.PregledSvihTermina2());
-            
-            dgUsers.ItemsSource = terminiSvi;
-            this.DataContext = this;
-        }
 
         public lekarStart(LekarDTO lekar)
         {
@@ -52,8 +35,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             termini = new ObservableCollection<TerminDTO>();
             uputi = new ObservableCollection<TerminDTO>();
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
-            ids = datotekaID.dobaviSve();
-
+            
             terminiSvi = new ObservableCollection<TerminDTO>(terminController.PregledSvihTermina2());
            
             foreach(TerminDTO t in terminiSvi)
@@ -95,8 +77,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
         private void zakaziPregled(object sender, RoutedEventArgs e)
         {
-            test.prozor.Content = new zakaziPregledLekar(ids);
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("sr");
+            test.prozor.Content = new zakaziPregledLekar();
         }
 
         private void prikaziKarton(object sender, RoutedEventArgs e)
@@ -110,7 +91,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 MessageBox.Show("Niste selektovali red", "Greska");
             else
             {
-                oktaziPregledLekar op = new oktaziPregledLekar( (TerminDTO)dgUsers.SelectedItem,ids);
+                oktaziPregledLekar op = new oktaziPregledLekar((TerminDTO)dgUsers.SelectedItem);
                 op.Show();
             }
         }

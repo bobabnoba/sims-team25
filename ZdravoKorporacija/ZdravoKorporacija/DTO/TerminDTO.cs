@@ -1,25 +1,20 @@
 ﻿using System;
-using AutoMapper;
 using Model;
-using ZdravoKorporacija.Controller;
-﻿using Model;
-using System;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace ZdravoKorporacija.DTO
 {
     public class TerminDTO
     {
-        private TerminController tc = new TerminController();
-        private ZdravstveniKarton zdravstveniKarton1;
-        private ProstorijaDTO prostorijaDTO;
-        private LekarDTO lekarDTO;
-        private double v;
-     
+       
 
         public TerminDTO()
         {
+        }
+
+        public TerminDTO(int id)
+        {
+            this.Id = id;
         }
 
         public TerminDTO(int id, TipTerminaEnum tip, DateTime pocetak, double trajanje, ProstorijaDTO prostorija, LekarDTO lekar, ZdravstveniKartonDTO zdravstveniKarton, IzvestajDTO izvestaj)
@@ -68,7 +63,7 @@ namespace ZdravoKorporacija.DTO
                 this.izvestaj = new IzvestajDTO(termin.izvestaj);
                 this.zdravstveniKarton = new ZdravstveniKartonDTO(termin.zdravstveniKarton);
                 this.prostorija = new ProstorijaDTO(termin.prostorija);
-                Lekar = new LekarDTO(termin.Lekar);
+                Lekar = new LekarDTO(termin.Lekar) ;
                 Id = termin.Id;
                 Tip = termin.Tip;
                 Pocetak = termin.Pocetak;

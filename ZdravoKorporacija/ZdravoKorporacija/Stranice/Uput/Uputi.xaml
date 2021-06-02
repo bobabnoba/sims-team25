@@ -25,18 +25,18 @@
             <ColumnDefinition Width="160*"/>
             <ColumnDefinition Width="45*"/>
         </Grid.ColumnDefinitions>
-        <Button Content="Izdaj uput"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="92" Height="44" Click="izdajUput" Grid.Column="2" Grid.Row="1"/>
-        <Button Content="Zakazi hitan termin" HorizontalAlignment="Center" VerticalAlignment="Center" Width="114" Height="44" Click="zakaziHitno" Grid.Column="1" Grid.Row="1"/>
-        <Button Content="Izmeni uput" HorizontalAlignment="Center" VerticalAlignment="Center" Width="92" Height="40" RenderTransformOrigin="0.255,-0.75" Click="izmeniUput" Grid.Column="3" Grid.Row="1"/>
-        <Button Content="Otkaži uput" HorizontalAlignment="Center" VerticalAlignment="Center" Width="92" Height="44" RenderTransformOrigin="0.033,-1.977" Click="otkaziUput" Grid.Column="4" Grid.Row="1"/>
+        <Button Content="{ns:Loc IzdajUputBtn}"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="92" Height="44" Click="izdajUput" Grid.Column="2" Grid.Row="1"/>
+        <Button Content="{ns:Loc ZakaziHitanBtn}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="114" Height="44" Click="zakaziHitno" Grid.Column="1" Grid.Row="1"/>
+        <Button Content="{ns:Loc IzmeniUputBtn}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="92" Height="40" RenderTransformOrigin="0.255,-0.75" Click="izmeniUput" Grid.Column="3" Grid.Row="1"/>
+        <Button Content="{ns:Loc OtkaziUputBtn}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="92" Height="44" RenderTransformOrigin="0.033,-1.977" Click="otkaziUput" Grid.Column="4" Grid.Row="1"/>
         <DataGrid Style ="{DynamicResource dataGrid}" Name="dgUsers" AutoGenerateColumns="False" CanUserAddRows="False" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="3">
             <DataGrid.Columns>
                 <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="ID" Binding="{Binding Id}"  Width="*"/>
-                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="Datum" Binding="{Binding Pocetak}"  Width="Auto"/>
-                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="Tip pregleda" Binding="{Binding Tip}"  Width="*"/>
-                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="Prostorija" Binding="{Binding prostorija.Naziv}"  Width="*"/>
-                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="Hitno" Binding="{Binding hitno}"  Width="*"/>
-                <DataGridTemplateColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="Zdravstveni Karton"  Width="Auto">
+                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="{ns:Loc DatumGrid}" Binding="{Binding Pocetak}"  Width="Auto"/>
+                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="{ns:Loc TipGrid}" Binding="{Binding Tip}"  Width="*"/>
+                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="{ns:Loc ProstorijaGrid}" Binding="{Binding prostorija.Naziv}"  Width="*"/>
+                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="{ns:Loc HitnoGrid}" Binding="{Binding hitno}"  Width="*"/>
+                <DataGridTemplateColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="{ns:Loc ZdravstveniKartonGrid}"  Width="Auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Content="..." Click="prikaziKarton"/>

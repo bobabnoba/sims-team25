@@ -5,6 +5,7 @@ using Repository;
 using ZdravoKorporacija.Model;
 using System.Collections.ObjectModel;
 using ZdravoKorporacija.DTO;
+using System.Diagnostics;
 
 namespace Service
 {
@@ -59,18 +60,20 @@ namespace Service
       
       public bool ObrisiRecept(ReceptDTO recept)
       {
+            id_map = datotekaID.dobaviSve();
             foreach (Recept r in rr.DobaviSve())
             {
+                //Trace.WriteLine(recept.Id + r.Id);
                 if (r.Id.Equals(recept.Id))
-                {
+                { 
                     recepti.Remove(r);
                     rr.Sacuvaj(recepti);
-                    id_map = datotekaID.dobaviSve();
                     id_map[recept.Id] = 0;
                     datotekaID.sacuvaj(id_map);
+                    return true;
                 }
             }
-            return true ;
+            return false;
         }
       
       public bool AzurirajRecept(ReceptDTO recept)

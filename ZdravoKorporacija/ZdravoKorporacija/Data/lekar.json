@@ -1,8 +1,5 @@
 [
   {
-    "termin": null,
-    "Specijalizacija": 0,
-    "radniDani": null,
     "termin": [
       {
         "izvestaj": null,
@@ -213,6 +210,8 @@
         "hitno": false
       }
     ],
+    "Specijalizacija": 0,
+    "radniDani": null,
     "Ime": "Veljko",
     "Prezime": "Vukovic",
     "Jmbg": 2334567890213,
@@ -422,6 +421,8 @@
         "hitno": false
       }
     ],
+    "Specijalizacija": 0,
+    "radniDani": null,
     "Ime": "Milos",
     "Prezime": "Zivic",
     "Jmbg": 2234567890113,

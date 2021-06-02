@@ -57,15 +57,11 @@ namespace Service
 
         PacijentRepozitorijum pr = PacijentRepozitorijum.Instance;
         ReceptServis rs = ReceptServis.Instance;
-        IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapRecept");
-        Dictionary<int, int> ids = new Dictionary<int, int>();
 
         public bool IzdajRecept(PacijentDTO pacijent, ReceptDTO recept)
         {
-            ids = datotekaID.dobaviSve();
             rs.DodajRecept(recept);
             Pacijent p = new Pacijent(pacijent);
-            datotekaID.sacuvaj(ids);
             p.ZdravstveniKarton.recept.Add(new Recept(recept));
             AzurirajPacijenta(p);
             return true;
@@ -81,7 +77,6 @@ namespace Service
             }
             AzurirajPacijenta(p);
             rs.ObrisiRecept(recept);
-            datotekaID.sacuvaj(ids);
             return true;
         }
 

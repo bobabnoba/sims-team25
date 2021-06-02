@@ -40,7 +40,7 @@ namespace Service
                 }
             }
             izvestaji.Add(convertToModel(izvestaj));
-            Trace.WriteLine(convertToModel(izvestaj).Id);
+            //Trace.WriteLine(convertToModel(izvestaj).Id);
             ir.Sacuvaj(izvestaji);
             datotekaID.sacuvaj(id_map);
             return true;

@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.LekarCRUD"
+       xmlns:ns="clr-namespace:ZdravoKorporacija"
       mc:Ignorable="d" 
       Height="Auto" Width="Auto"  d:Height="450" d:Width="800"
       Title="Lekar" Background="{DynamicResource BackgroundColor}">
@@ -23,18 +24,18 @@
             <ColumnDefinition Width="52*"/>
             <ColumnDefinition Width="13*"/>
         </Grid.ColumnDefinitions>
-        <Button Content="Zakaži termin" HorizontalAlignment="Center" VerticalAlignment="Center" Width="92" Height="44" Click="zakaziPregled" Grid.Column="1" Grid.Row="1"/>
-        <Button Content="Izmeni termin" HorizontalAlignment="Center" VerticalAlignment="Center" Width="92" Height="44" Click="izmeniPregled" Grid.Column="2" Grid.Row="1"/>
-        <Button Content="Otkaži termin" HorizontalAlignment="Center" VerticalAlignment="Center" Width="92" Height="44" Click="otkaziPregled" Grid.Column="3" Grid.Row="1"/>
+        <Button Content="{ns:Loc ZakaziTerminBtn}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="139" Height="44" Click="zakaziPregled" Grid.Column="1" Grid.Row="1"/>
+        <Button Content="{ns:Loc IzmeniTerminBtn}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="122" Height="44" Click="izmeniPregled" Grid.Column="2" Grid.Row="1"/>
+        <Button Content="{ns:Loc OtkaziTerminBtn}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="136" Height="44" Click="otkaziPregled" Grid.Column="3" Grid.Row="1"/>
 
         <DataGrid Style ="{DynamicResource dataGrid}" Name="dgUsers" AutoGenerateColumns="False" CanUserAddRows="False" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3">
             <DataGrid.Columns>
                 <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="ID" Binding="{Binding Id}" Width="*"/>
-                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="Datum" Binding="{Binding Pocetak}" Width="Auto"/>
-                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="Tip pregleda" Binding="{Binding Tip}" Width="*"/>
-                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="Prostorija" Binding="{Binding prostorija.Naziv}" Width="*"/>
-                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="Hitno" Binding="{Binding hitno}" Width="*"/>
-                <DataGridTemplateColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="Zdravstveni Karton" Width="*">
+                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="{ns:Loc DatumGrid}" Binding="{Binding Pocetak}" Width="Auto"/>
+                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="{ns:Loc TipGrid}" Binding="{Binding Tip}" Width="*"/>
+                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="{ns:Loc ProstorijaGrid}" Binding="{Binding prostorija.Naziv}" Width="*"/>
+                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="{ns:Loc HitnoGrid}" Binding="{Binding hitno}" Width="*"/>
+                <DataGridTemplateColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="{ns:Loc ZdravstveniKartonGrid}" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Content="..." Click="prikaziKarton"/>

@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.Logovanje"
+       xmlns:ns="clr-namespace:ZdravoKorporacija"
         mc:Ignorable="d" d:DesignWidth="450" Background="{DynamicResource BackgroundColor}"
       Title="lekarlogin" HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="458">
 
@@ -29,7 +30,7 @@
                     <RotateTransform Angle="0.071"/>
                     <TranslateTransform/>
                 </TransformGroup>
-            </TextBlock.RenderTransform><Run FontWeight="Bold" Text="Korisni"/><Run FontWeight="Bold" Text="čko ime"/><Run FontWeight="Bold" Text=":"/></TextBlock>
+            </TextBlock.RenderTransform><Run FontWeight="Bold" Text="{ns:Loc KorisnickoImeText}" /></TextBlock>
         <TextBox Name="imeText" HorizontalAlignment="Left" Height="27" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Margin="0,30,0,0" Grid.Row="1" Grid.Column="1"/>
         <TextBlock Style="{DynamicResource textblock}" HorizontalAlignment="Left" FontSize="20" Margin="0,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="24" Width="134" Grid.Row="2" Grid.Column="1">
             <TextBlock.RenderTransform>
@@ -39,9 +40,9 @@
 
                     <TranslateTransform/>
                 </TransformGroup>
-            </TextBlock.RenderTransform><Run FontWeight="Bold" Text="Lozinka:"/></TextBlock>
+            </TextBlock.RenderTransform><Run FontWeight="Bold" Text="{ns:Loc LozinkaText}"/></TextBlock>
         <PasswordBox Name="lozinkaText" HorizontalAlignment="Left" Margin="0,46,0,0" VerticalAlignment="Top" Height="26" Width="186" Grid.Row="2" Grid.Column="1"/>
-        <Button Content="Potvrdi" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,23,0,0" VerticalAlignment="Top" Width="158" Height="38" BorderThickness="5" Click="Button_Click" Grid.Row="3" Grid.Column="1" />
+        <Button Content="{ns:Loc PotvrdiBtn}" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,23,0,0" VerticalAlignment="Top" Width="158" Height="38" BorderThickness="5" Click="Button_Click" Grid.Row="3" Grid.Column="1" />
 
     </Grid>
 </Page>

@@ -51,7 +51,8 @@ namespace Service
                 dto.Specijalizacija = model.Specijalizacija;
             }
             return dto;
-           }
+        }
+
         public List<Lekar> PregledSvihLekaraModel(List<LekarDTO> dtos)
         {
             List<Lekar> modeli = new List<Lekar>();
@@ -121,11 +122,11 @@ namespace Service
             return model;
 
         }
-        public Lekar NadjiLekaraPoJMBG(long lekar)
+        public Lekar NadjiLekaraPoJMBG(long jmbg)
         {
             foreach(Lekar l in PregledSvihLekara())
             {
-                if (l.Jmbg.Equals(lekar))
+                if (l.Jmbg.Equals(jmbg))
                     return l;
             }
             return null;

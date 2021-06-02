@@ -8,12 +8,6 @@ using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
@@ -31,9 +25,6 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         PacijentDTO pac;
         TerminDTO ter;
         ReceptDTO r = new ReceptDTO();
-
-        String now = DateTime.Now.ToString("hh:mm:ss tt");
-        DateTime today = DateTime.Today;
 
         public izdajRecept(PacijentDTO selektovani)
         {
@@ -69,9 +60,6 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                         lekovi.Add(lek);
                     }
                 }
-
-            
-            
             }
             else { lekovi = new ObservableCollection<LekDTO>(lekController.PregledSvihLekova()); }
             CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));

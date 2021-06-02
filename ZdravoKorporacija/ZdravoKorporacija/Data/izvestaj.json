@@ -1,0 +1,20 @@
+[
+  {
+    "termin": null,
+    "Id": 1,
+    "Opis": "2\r\n",
+    "Simptomi": "ddd"
+  },
+  {
+    "termin": null,
+    "Id": 2,
+    "Opis": "z\r\n",
+    "Simptomi": "zzz"
+  },
+  {
+    "termin": null,
+    "Id": 3,
+    "Opis": "ded\r\n",
+    "Simptomi": "ded"
+  }
+]

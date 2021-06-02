@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.LekarCRUD"
         mc:Ignorable="d" d:Height="450" d:Width="800"
+      xmlns:ns="clr-namespace:ZdravoKorporacija"
         Title="pregledPacijenata" Height="Auto" Width="Auto" Background="{DynamicResource BackgroundColor}">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -21,7 +22,7 @@
             <RowDefinition Height="254*"/>
             <RowDefinition Height="33*"/>
         </Grid.RowDefinitions>
-        <Button Name="ZdravstveniKarton" Content = "Zdravstveni Karton"   HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="2" Click="prikazKartona" Height="48" Width="118"/>
+        <Button Name="zdravstveniKartonBtn" Content = "{ns:Loc ZdravstveniKartonBtn}"   HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="2" Click="prikazKartona" Height="48" Width="118"/>
 
 
 
@@ -37,11 +38,11 @@
                             </DataGridTextColumn.Binding>
                         </DataGridTextColumn>
                     <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="Karton pacijenta" Binding="{Binding zdravstveniKarton}" />-->
-                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="Ime" Binding="{Binding Ime}"  Width="*" x:Uid="Ime"/>
-                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="Prezime" Binding="{Binding Prezime}"  Width="*"/>
-                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="JMBG" Binding="{Binding Jmbg}"  Width="*"/>
-                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="Pol" Binding="{Binding Pol}"  Width="*"/>
-                <DataGridTemplateColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="Uputi za stacionarno" >
+                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="{ns:Loc ImeGrid}" Binding="{Binding Ime}"  Width="*" x:Uid="Ime"/>
+                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="{ns:Loc PrezimeGrid}" Binding="{Binding Prezime}"  Width="*"/>
+                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="{ns:Loc JMBGGrid}" Binding="{Binding Jmbg}"  Width="*"/>
+                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="{ns:Loc PolGrid}" Binding="{Binding Pol}"  Width="*"/>
+                <DataGridTemplateColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="{ns:Loc UputiZaStacionarnoGrid}" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Content="..." Click="uputiZaStacionarno"/>

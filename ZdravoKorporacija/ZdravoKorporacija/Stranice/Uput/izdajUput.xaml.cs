@@ -56,7 +56,7 @@ namespace ZdravoKorporacija.Stranice.Uput
 
             lekari = (List<LekarDTO>)lekarController.dobaviListuDTOLekara();
             lekariZaPrikaz = lekari;
-            lekariZaPrikaz.Remove(new LekarDTO(lekarLogin.lekar));
+            lekariZaPrikaz.Remove(lekarLogin.lekar);
             Lekari.ItemsSource = lekariZaPrikaz;
 
             prostorije = prostorijeController.PregledSvihProstorija2();

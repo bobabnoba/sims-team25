@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
@@ -32,14 +33,14 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         {
             CurrentLanguage = "en-US";
             InitializeComponent();
-            Main.Content = new lekarStart(new LekarDTO(lekarLogin.lekar));
+            Main.Content = new lekarStart(lekarLogin.lekar);
             prozor = Main;
             Trace.WriteLine(CurrentLanguage);
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            Main.Content = new lekarStart();
+            Main.Content = new lekarStart(lekarLogin.lekar);
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
@@ -60,15 +61,29 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private void promeniTemu(object sender, RoutedEventArgs e)
         {
             App app = (App)Application.Current;
-            if(tema.Header.ToString() == "Tamna tema")
+            if(tema.Header.ToString() == "Tamna tema" || tema.Header.ToString() == "Dark theme")
             {
                 app.ChangeTheme(new Uri("Themes/Dark.xaml", UriKind.Relative));
-                tema.Header = "Svetla tema";
+                if (CurrentLanguage.Equals("en-US"))
+                {
+                    tema.Header = "Light theme";
+                }
+                else
+                {
+                    tema.Header = "Svetla tema";
+                }
             }
             else 
             {
                 app.ChangeTheme(new Uri("Themes/Light.xaml", UriKind.Relative));
-                tema.Header = "Tamna tema";
+                if (CurrentLanguage.Equals("en-US"))
+                {
+                    tema.Header = "Dark theme";
+                }
+                else
+                {
+                    tema.Header = "Tamna tema";
+                }
             }
         }
 
@@ -85,5 +100,12 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             }
             app.ChangeLanguage(CurrentLanguage);
         }
+
+        private void MenuItem_Click_4(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            MainWindow.mw.Show();
+        }
+          
     }
 }

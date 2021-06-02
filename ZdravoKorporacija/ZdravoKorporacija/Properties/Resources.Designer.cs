@@ -205,6 +205,15 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select a Date.
+        /// </summary>
+        public static string IzaberiDatumText {
+            get {
+                return ResourceManager.GetString("IzaberiDatumText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete an Anamnesis.
         /// </summary>
         public static string IzbrisiAnamnezuBtn {
@@ -277,6 +286,15 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change Language.
+        /// </summary>
+        public static string JezikMenu {
+            get {
+                return ResourceManager.GetString("JezikMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unique Identity Number.
         /// </summary>
         public static string JMBGGrid {
@@ -313,16 +331,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Change Language.
-        /// </summary>
-        public static string LanguageMenu {
-            get {
-                return ResourceManager.GetString("LanguageMenu", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Choose Doctors:.
+        ///   Looks up a localized string similar to Choose Doctors.
         /// </summary>
         public static string LekariBtn {
             get {
@@ -331,7 +340,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Doctor.
+        ///   Looks up a localized string similar to Choose the Doctors:.
         /// </summary>
         public static string LekarText {
             get {
@@ -448,11 +457,20 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to delete a request?.
+        ///   Looks up a localized string similar to Are you sure you want to delete the request?.
         /// </summary>
         public static string ObrisiZahtevDialog {
             get {
                 return ResourceManager.GetString("ObrisiZahtevDialog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logout.
+        /// </summary>
+        public static string OdjaviSeMenu {
+            get {
+                return ResourceManager.GetString("OdjaviSeMenu", resourceCulture);
             }
         }
         
@@ -700,7 +718,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Change Theme.
+        ///   Looks up a localized string similar to DarkTheme.
         /// </summary>
         public static string TemaMenu {
             get {

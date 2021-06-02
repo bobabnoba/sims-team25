@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.LekoviCRUD"
         mc:Ignorable="d"
+        xmlns:ns="clr-namespace:ZdravoKorporacija"
         Title="LekarZahteviZaDodavanjeLekaStart" d:Height="450" d:Width="800" Height="Auto" Width="Auto" Background="{DynamicResource BackgroundColor}">
     <Grid>
         <Grid.RowDefinitions>
@@ -21,16 +22,16 @@
             <ColumnDefinition Width="52*"/>
             <ColumnDefinition Width="13*"/>
         </Grid.ColumnDefinitions>
-        <Button Content="Izmeni zahtev" HorizontalAlignment="Center" VerticalAlignment="Center" Width="96" Height="38" Click="Button_Click_1" Grid.Column="2" Grid.Row="1"  />
-        <Button Content="Izbriši zahtev" HorizontalAlignment="Center" VerticalAlignment="Center" Width="96" Height="38" Click="Button_Click_2" Grid.Column="3" Grid.Row="1" />
+        <Button Content="{ns:Loc IzmeniZahtevBtn}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="96" Height="38" Click="Button_Click_1" Grid.Column="2" Grid.Row="1"  />
+        <Button Content="{ns:Loc IzbrisiZahtevBtn}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="96" Height="38" Click="Button_Click_2" Grid.Column="3" Grid.Row="1" />
         <DataGrid Style ="{DynamicResource dataGrid}" x:Name="dgZahtevi" AutoGenerateColumns="False" Grid.ColumnSpan="3" Grid.Column="1" SelectionChanged="dgZahtevi_SelectionChanged" CanUserAddRows="False" Grid.Row="3">
             <DataGrid.Columns>
                 <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="Id" Binding="{Binding Id}"  Width="*"/>
-                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="Naziv" Binding="{Binding Lek.NazivLeka}"  Width="*"/>
-                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="Proizvodjac" Binding="{Binding Lek.Proizvodjac}"  Width="*"/>
-                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="Neophodnih potvrda" Binding="{Binding NeophodnihPotvrda}"  Width="Auto"/>
-                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="Potvrdilo" Binding="{Binding BrojPotvrda}"  Width="*"/>
-                <DataGridTemplateColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="Alternativni lekovi" Width="Auto">
+                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="{ns:Loc NazivGrid}" Binding="{Binding Lek.NazivLeka}"  Width="*"/>
+                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="{ns:Loc ProizvodjacGrid}" Binding="{Binding Lek.Proizvodjac}"  Width="*"/>
+                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="{ns:Loc NeophodneGrid}" Binding="{Binding NeophodnihPotvrda}"  Width="Auto"/>
+                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="{ns:Loc PotvrdiloGrid}" Binding="{Binding BrojPotvrda}"  Width="*"/>
+                <DataGridTemplateColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="{ns:Loc AlternativniGrid}" Width="Auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Content="..." Click="izmenaAlternativnihLekova"/>
@@ -42,7 +43,7 @@
             </DataGrid.Columns>
 
         </DataGrid>
-        <Button Content="Odobri zahtev" HorizontalAlignment="Center" VerticalAlignment="Center" Width="97" Height="38" Click="dodaj" Grid.Column="1" Grid.Row="1"/>
+        <Button Content="{ns:Loc OdobriZahtevBtn}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="97" Height="38" Click="dodaj" Grid.Column="1" Grid.Row="1"/>
 
     </Grid>
 </Page>

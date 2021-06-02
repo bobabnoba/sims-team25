@@ -102,7 +102,76 @@ namespace Service
             return null;
         }
 
-       public Boolean DodajKorisnika(Korisnik registrovani)
+        public KorisnikDTO Uloguj2(UlogaEnum uloga, string ime, string sifra)
+        {
+
+            KorisnikDTO unos = new KorisnikDTO();
+            unos.Username = ime;
+            unos.Password = sifra;
+
+
+            if (uloga == UlogaEnum.Upravnik)
+            {
+                List<Korisnik> lista = new List<Korisnik>(kr.DobaviSve());
+                KorisnikDTO upravnik = new KorisnikDTO(lista.FirstOrDefault(s => s.Username.Equals(unos.Username)));
+                if (upravnik != null)
+                {
+                    KorisnikDTO ulogovani = new KorisnikDTO(lista.FirstOrDefault(s => (s.Username.Equals(unos.Username) && s.Password.Equals(unos.Password))));
+                    if (ulogovani != null)
+                    {
+                        return ulogovani;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Pogrešna šifra", "Greška");
+                        return null;
+                    }
+
+
+                }
+                else
+                {
+                    MessageBox.Show("Pogrešno korisničko ime", "Greška");
+                    return null;
+                }
+            }
+
+            if (uloga == UlogaEnum.Pacijent)
+            {
+                List<Korisnik> lista = new List<Korisnik>(kr.DobaviSve());
+                KorisnikDTO pacijent = new KorisnikDTO(lista.FirstOrDefault(s => s.Username.Equals(unos.Username)));
+                if (pacijent != null)
+                {
+                    return pacijent;
+                }
+            }
+
+            if (uloga == UlogaEnum.Lekar)
+            {
+                List<Korisnik> lista = new List<Korisnik>(kr.DobaviSve());
+                KorisnikDTO lekar = new KorisnikDTO(lista.FirstOrDefault(s => s.Username.Equals(unos.Username)));
+                if (lekar != null)
+                {
+                    return lekar;
+                }
+            }
+
+            if (uloga == UlogaEnum.Sekretar)
+            {
+                List<Korisnik> lista = new List<Korisnik>(kr.DobaviSve());
+                KorisnikDTO sekretar = new KorisnikDTO(lista.FirstOrDefault(s => s.Username.Equals(unos.Username)));
+                if (sekretar != null)
+                {
+                    return sekretar;
+                }
+            }
+
+
+
+            return null;
+        }
+
+        public Boolean DodajKorisnika(Korisnik registrovani)
         {
             kr.korisnici.Add(registrovani);
             kr.Sacuvaj();

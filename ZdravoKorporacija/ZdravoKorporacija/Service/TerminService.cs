@@ -7,8 +7,7 @@ using System.Linq;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Konverteri;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using ZdravoKorporacija.DTO;
+
 
 namespace ZdravoKorporacija.Model
 {
@@ -28,11 +27,9 @@ namespace ZdravoKorporacija.Model
         private ProstorijaService prostorijaServis = new ProstorijaService();
         private RadniDanService daniServis = new RadniDanService();
 
-       
         TerminRepozitorijum tr = TerminRepozitorijum.Instance;
         IzvestajService iz = IzvestajService.Instance;
         PacijentService pacijentServis = PacijentService.Instance;
-        ZdravstveniKartonServis zdravstveniKartonServis = new ZdravstveniKartonServis();
         LekarRepozitorijum lekariDat = LekarRepozitorijum.Instance;
         List<Lekar> lekari = LekarRepozitorijum.Instance.dobaviSve();
         IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapIzvestaj");
@@ -72,7 +69,7 @@ namespace ZdravoKorporacija.Model
                 }
             }
             termin.Id = id;
-            if (ZakaziTermin(termin, id_uput))
+            if (ZakaziTermin(termin,pac))
             {
                 lekariDat.sacuvaj(lekari);
             }
@@ -237,21 +234,74 @@ namespace ZdravoKorporacija.Model
             return true;
         }
 
-        public bool ZakaziTermin(TerminDTO termin, Dictionary<int, int> ids)
+        public bool ZakaziTermin(TerminDTO termin,PacijentDTO pacijent)
         {
             TerminRepozitorijum datoteka = new TerminRepozitorijum();
             List<Termin> termini = datoteka.dobaviSve();
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
+            id_map = datotekaID.dobaviSve();
+            
+            int id = 0;
+            for (int i = 0; i < 1000; i++)
+            {
+                if (id_map[i] == 0)
+                {
+                    id = i;
+                    id_map[i] = 1;
+                    break;
+                }
+            }
+            termin.Id = id;
+            foreach (Termin t in datoteka.dobaviSve())
+            {
+                if (termin.Id.Equals(t.Id))
+                {
+                    return false;
+                }
+            }
+            
 
             termini.Add(new Termin(termin));
             datoteka.sacuvaj(termini);
-            datotekaID.sacuvaj(ids);
-
+            datotekaID.sacuvaj(id_map);
+            pacijent.AddTermin(new TerminDTO(termin.Id));
+            pacijentServis.AzurirajPacijenta(pacijent);
             return true;
         }
 
+        public bool OtkaziTermin(TerminDTO termin)
+        {
+            terminRepozitorijum = new TerminRepozitorijum();
+            List<Termin> termini = terminRepozitorijum.dobaviSve();
+            IDRepozitorijum datotekaId = new IDRepozitorijum("iDMapTermin");
+            PacijentDTO pacijent = new PacijentDTO();
+            Dictionary<int, int> ids = datotekaId.dobaviSve();
+            foreach (PacijentDTO pac in pacijentServis.PregledSvihPacijenata2())
+            {
+                if(termin.zdravstveniKarton.Id.Equals(pac.ZdravstveniKarton.Id))
+                {
+                    pacijent = pac;
+                }
+            }
+            foreach (Termin t in termini)
+            {
+                if (t != null)
+                {
+                    if (t.Id.Equals(termin.Id))
+                    {
+                        
+                        ids[termin.Id] = 0;
+                        termini.Remove(t);
+                        terminRepozitorijum.sacuvaj(termini);
+                        OtkaziTerminPacijent(new Termin(termin),new Pacijent(pacijent));
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
 
-        public bool AzurirajTermin(Termin termin)
+            public bool AzurirajTermin(Termin termin)
         {
            terminRepozitorijum  = new TerminRepozitorijum();
             List<Termin> termini = terminRepozitorijum .dobaviSve();

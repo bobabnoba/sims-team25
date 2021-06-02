@@ -29,17 +29,18 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             
             try
             {
-                foreach (TerminDTO t in lekarStart.termini)
+                foreach (PacijentDTO p in pacijentServis.PregledSvihPacijenata2())
                 {
-                    if (t.zdravstveniKarton!=null)
+                    foreach (TerminDTO t in lekarStart.termini)
                     {
-                        foreach (PacijentDTO p in pacijentServis.PregledSvihPacijenata2())
+                        if (t.zdravstveniKarton != null)
                         {
                             if (t.zdravstveniKarton.Id.Equals(p.ZdravstveniKarton.Id))
                             {
                                 if (!pacijentiPrikaz.Contains(p))
                                 {
                                     pacijentiPrikaz.Add(p);
+                                    break;
                                 }
                             }
                         }

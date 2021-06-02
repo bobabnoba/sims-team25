@@ -40,7 +40,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             izvestaj.Simptomi = simptomiText.Text;
-            TextRange textRange = new TextRange(opisText.Document.ContentStart, opisText.Document.ContentEnd);
+            TextRange textRange = new TextRange(opisTxt.Document.ContentStart, opisTxt.Document.ContentEnd);
             izvestaj.Opis = textRange.Text;
             
 

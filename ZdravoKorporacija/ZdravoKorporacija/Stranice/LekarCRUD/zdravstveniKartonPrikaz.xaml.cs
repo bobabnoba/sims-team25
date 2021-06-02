@@ -41,8 +41,8 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         public zdravstveniKartonPrikaz(PacijentDTO selektovani)
         {
             InitializeComponent();
-            ObservableCollection<ReceptDTO> recepti = new ObservableCollection<ReceptDTO>();
-        ObservableCollection<IzvestajDTO> izvestaji = new ObservableCollection<IzvestajDTO>();
+            recepti = new ObservableCollection<ReceptDTO>();
+            izvestaji = new ObservableCollection<IzvestajDTO>();
             this.DataContext = this;
             pacijenti = pacijentController.PregledSvihPacijenata2();
             pac = selektovani;
@@ -70,8 +70,9 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                     AlergijeListBox.ItemsSource = zk.Alergije.Split(",");
             }
             catch (NullReferenceException) { }
-
-            terapijaGrid.ItemsSource = pac.ZdravstveniKarton.recept;
+            //Trace.WriteLine(pac.ZdravstveniKarton.recept[0]);
+            recepti = new ObservableCollection<ReceptDTO>(pac.ZdravstveniKarton.recept);
+            terapijaGrid.ItemsSource = recepti;
 
             this.DataContext = this;
 
@@ -89,16 +90,16 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         public zdravstveniKartonPrikaz(TerminDTO t)
         {
             InitializeComponent();
-            List<ReceptDTO> recepti = new List<ReceptDTO>();
-             ObservableCollection<IzvestajDTO> izvestaji = new ObservableCollection<IzvestajDTO>();    
-             pacijenti = pacijentController.PregledSvihPacijenata2();      
+            recepti = new ObservableCollection<ReceptDTO>();
+            izvestaji = new ObservableCollection<IzvestajDTO>();
+            pacijenti = pacijentController.PregledSvihPacijenata2();      
          
             zkt = t.zdravstveniKarton;
             tab = 2;
             sel = t;
             
             foreach(PacijentDTO pacijent in pacijentController.PregledSvihPacijenata2())
-            {
+            {           
                 if(pacijent.ZdravstveniKarton.Id.Equals(zkt.Id))
                 {
                     pac = pacijent;
@@ -137,7 +138,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                     BrojTelefonaLabel.Content = p.BrojTelefona;
                     JMBGLabel.Content = p.Jmbg;
                     PolLabel.Content = p.Pol;
-                    recepti = p.ZdravstveniKarton.recept;
+                    recepti = new ObservableCollection<ReceptDTO>(pac.ZdravstveniKarton.recept);
                     terapijaGrid.ItemsSource = p.ZdravstveniKarton.recept;
 
                     try { KrvnaGrupaLabel.Content = p.ZdravstveniKarton.KrvnaGrupa; }

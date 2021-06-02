@@ -177,7 +177,7 @@ namespace ZdravoKorporacija.Stranice
                 }
                 else
                 {
-                    LekarCRUD.oktaziPregledLekar op = new LekarCRUD.oktaziPregledLekar(controller.Model2DTO((Termin)dgUsers.SelectedItem), ids);
+                    LekarCRUD.oktaziPregledLekar op = new LekarCRUD.oktaziPregledLekar(controller.Model2DTO((Termin)dgUsers.SelectedItem));
                     op.Show();
                 }
             }

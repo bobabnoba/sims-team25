@@ -4,11 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.Uput"
+    xmlns:ns="clr-namespace:ZdravoKorporacija"
         mc:Ignorable="d"
         Title="otkaziUput" Height="450" Width="450" Background="{DynamicResource BackgroundColor}" WindowStartupLocation="CenterScreen">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock Style="{DynamicResource textblock}" Text="Da li ste sigurni da želite da otkažete uput?" Margin="22,134,22,252"  FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-        <Button Content="DA" HorizontalAlignment="Left" Width="100" Margin="50,332,0,0" VerticalAlignment="Top" Click="da"/>
-        <Button Content="NE" HorizontalAlignment="Left" Width="100" Margin="250,332,0,0" VerticalAlignment="Top" Click="ne"/>
+        <TextBlock Style="{DynamicResource textblock}" Text="{ns:Loc OtkaziUputDialog}" Margin="22,134,22,252"  FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        <Button Content="{ns:Loc DaBtn}" HorizontalAlignment="Left" Width="100" Margin="50,332,0,0" VerticalAlignment="Top" Click="da"/>
+        <Button Content="{ns:Loc NeBtn}" HorizontalAlignment="Left" Width="100" Margin="250,332,0,0" VerticalAlignment="Top" Click="ne"/>
     </Grid>
 </Window>

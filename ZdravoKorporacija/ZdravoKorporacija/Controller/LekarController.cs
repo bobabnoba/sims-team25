@@ -13,7 +13,7 @@ namespace ZdravoKorporacija.Controller
 {
     public class LekarController
     {
-        private LekarService servis;
+        private LekarService servis = new LekarService();
         private LekarKonverter lekarKonverter;
 
         public LekarController()
@@ -26,6 +26,17 @@ namespace ZdravoKorporacija.Controller
         public IEnumerable<LekarDTO> dobaviListuDTOLekara()
             => servis.PregledSvihLekara().Select(entitet => lekarKonverter.KonvertujEntitetUDTO(entitet)).ToList();
 
+      
+        public List<LekarDTO> PregledSvihLekara()
+        {
+            List<Lekar> lekari = servis.PregledSvihLekara();
+            List<LekarDTO> lekarDTOs= new List<LekarDTO>();
+            foreach (Lekar l in lekari)
+            {
+                lekarDTOs.Add(new LekarDTO(l));
+            }
+            return lekarDTOs;
+        }
         //public LekarDTO konvertujEntitetUDTO(Lekar entitet)
         //{
         //    return new LekarDTO(entitet);

@@ -115,6 +115,12 @@ namespace ZdravoKorporacija.Controller
         {
             return terminServis.OtkaziTermin(termin, ids);
         }
+
+        public bool OtkaziTermin(TerminDTO termin)
+        {
+            return terminServis.OtkaziTermin(termin);
+        }
+
         public bool ObrisiTerminPacijentu(Termin termin)
         {
             return pacijentServis.ObrisiTerminPacijentu(termin);
@@ -279,9 +285,9 @@ namespace ZdravoKorporacija.Controller
             return ts.FindPrByPocetak(poc);
         }
 
-        public bool ZakaziTermin(TerminDTO termin, Dictionary<int, int> id_map)
+        public bool ZakaziTermin(TerminDTO termin,PacijentDTO pacijent)
         {
-            ts.ZakaziTermin(termin, id_map);
+            ts.ZakaziTermin(termin,pacijent);
             return true;
         }
 

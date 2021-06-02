@@ -127,7 +127,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
         }
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            lekarStart ls = new lekarStart(new LekarDTO(lekarLogin.lekar));
+            lekarStart ls = new lekarStart(lekarLogin.lekar);
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)

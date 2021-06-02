@@ -32,7 +32,7 @@ namespace ZdravoKorporacija.DTO
             { 
             this.izvestajOHospitalizaciji = zdravstveniKarton.izvestajOHospitalizaciji;
             this.istorijaBolesti = new List<IstorijaBolestiDTO>();
-            this.recept = new List<ReceptDTO>();
+            this.recept = konvertujListuEntitetaUListuDTO(zdravstveniKarton.recept);
             this.termin = konvertujListuEntitetaUListuDTO( zdravstveniKarton.termin);
             this.patient = zdravstveniKarton.patient;
             Id = zdravstveniKarton.Id;
@@ -41,6 +41,21 @@ namespace ZdravoKorporacija.DTO
             KrvnaGrupa = zdravstveniKarton.KrvnaGrupa;
             Vakcine = zdravstveniKarton.Vakcine;
             }
+        }
+
+        public List<ReceptDTO> konvertujListuEntitetaUListuDTO(List<Recept> recepti)
+        {
+            List<ReceptDTO> receptiDTO = new List<ReceptDTO>();
+            if (recepti != null)
+            {
+
+                foreach (Recept recept in recepti)
+                {
+                    receptiDTO.Add(new ReceptDTO(recept));
+                }
+
+            }
+            return receptiDTO;
         }
 
         public ZdravstveniKartonDTO(){}

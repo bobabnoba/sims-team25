@@ -68,7 +68,6 @@ namespace ZdravoKorporacija.Service
             {
                 if (r.Id.Equals(StacionarnoLecenje.Id))
                 {
-                    Trace.WriteLine(r.Id + StacionarnoLecenje.Id.ToString());
                     StacionarnaLecenja.Remove(r);
                     rr.Sacuvaj(StacionarnaLecenja);
                     id_map = datotekaID.dobaviSve();
