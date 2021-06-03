@@ -24,11 +24,13 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
     {
         private KorisnikController korisnikController = new KorisnikController();
         private UlogaEnum uloga;
+        public static bool wizard;
 
         public Login(UlogaEnum uloga)
         {
             InitializeComponent();
             this.uloga = uloga;
+            wizard = false;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -47,6 +49,11 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
             }
                        
                   
+        }
+
+        private void wizardCb_Checked(object sender, RoutedEventArgs e)
+        {
+            wizard = true;
         }
     }
 }

@@ -19,14 +19,24 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
             this.pacijentDTO = pacijentDTO;
             lblUlogovani.Content = pacijentDTO.Ime + " " + pacijentDTO.Prezime + " ";
             CentrirajProzor();
+            prikaziWizard();
         }
-        
+
+        private void prikaziWizard()
+        {
+            if (Login.wizard)
+            {
+                Wizard1 wizardDialog = new Wizard1();
+                this.Show();
+                wizardDialog.Show();
+            }
+        }
+
         private void CentrirajProzor()
         {
             this.Left = (System.Windows.SystemParameters.PrimaryScreenWidth / 2) - (this.Width / 2);
             this.Top = (System.Windows.SystemParameters.PrimaryScreenHeight / 2) - (this.Height / 2);
         }
-
 
         private void preglediBtn_Click(object sender, RoutedEventArgs e)
         {
