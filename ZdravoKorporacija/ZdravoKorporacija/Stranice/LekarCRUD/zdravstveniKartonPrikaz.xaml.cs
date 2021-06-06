@@ -33,7 +33,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
         public static ObservableCollection<ReceptDTO> recepti = new ObservableCollection<ReceptDTO>();
         public static ObservableCollection<IzvestajDTO> izvestaji = new ObservableCollection<IzvestajDTO>();
-        PacijentDTO pac;
+        PacijentDTO pac = new PacijentDTO();
         TerminDTO sel = new TerminDTO();
 
         public static int tab = 0;
@@ -45,8 +45,12 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             izvestaji = new ObservableCollection<IzvestajDTO>();
             this.DataContext = this;
             pacijenti = pacijentController.PregledSvihPacijenata2();
-            pac = selektovani;
-            zk = selektovani.ZdravstveniKarton;
+            foreach (PacijentDTO p in pacijenti)
+            {
+                if (p.Jmbg.Equals(selektovani.Jmbg))
+                    pac = p;
+            }
+            zk = pac.ZdravstveniKarton;
             tab = 1;
            
                 foreach (IzvestajDTO iz in izvestajController.PregledSvihIzvestaja())
@@ -77,6 +81,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 {
                     if (r.Id.Equals(rec.Id))
                     {
+                        
                         recepti.Add(r);
                         break;
                     }
@@ -114,6 +119,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 if(pacijent.ZdravstveniKarton.Id.Equals(zkt.Id))
                 {
                     pac = pacijent;
+                    break;
                 }
             }
             foreach (IzvestajDTO iz in izvestajController.PregledSvihIzvestaja())
@@ -140,26 +146,31 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             }
             catch (NullReferenceException) { }
 
-           
 
-            this.DataContext = this;
-            foreach (PacijentDTO p in pacijenti)
+            foreach (ReceptDTO r in receptController.PregledSvihRecepata())
             {
-                if (p.ZdravstveniKarton.Id == zkt.Id)
+                foreach (ReceptDTO rec in pac.ZdravstveniKarton.recept)
                 {
-                    ImeLabel.Content = p.Ime;
-                    PrezimeLabel.Content = p.Prezime;
-                    BrojTelefonaLabel.Content = p.BrojTelefona;
-                    JMBGLabel.Content = p.Jmbg;
-                    PolLabel.Content = p.Pol;
-                    recepti = new ObservableCollection<ReceptDTO>(pac.ZdravstveniKarton.recept);
-                    terapijaGrid.ItemsSource = p.ZdravstveniKarton.recept;
-
-                    try { KrvnaGrupaLabel.Content = p.ZdravstveniKarton.KrvnaGrupa; }
-                    catch (NullReferenceException)
-                    { }
+                    if (r.Id.Equals(rec.Id))
+                    {
+                        recepti.Add(r);
+                        break;
+                    }
                 }
             }
+
+            ImeLabel.Content = pac.Ime;
+            PrezimeLabel.Content = pac.Prezime;
+            BrojTelefonaLabel.Content = pac.BrojTelefona;
+            JMBGLabel.Content = pac.Jmbg;
+            PolLabel.Content = pac.Pol;
+            terapijaGrid.ItemsSource = recepti;
+
+            try { KrvnaGrupaLabel.Content = pac.ZdravstveniKarton.KrvnaGrupa; }
+            catch (NullReferenceException) { }
+
+            this.DataContext = this;
+            
         }
 
         private void dgUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -153,12 +153,27 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
             pacijentController.IzdajRecept(pac, r);
             zdravstveniKartonPrikaz.recepti.Add(r);
-            test.prozor.Content = new zdravstveniKartonPrikaz(pac);
+
+            if (zdravstveniKartonPrikaz.tab == 1)
+            {
+                test.prozor.Content = new zdravstveniKartonPrikaz(pac);
+            }
+            else
+            {
+                test.prozor.Content = new zdravstveniKartonPrikaz(ter);
+            }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            test.prozor.Content = new zdravstveniKartonPrikaz(pac);
+            if (zdravstveniKartonPrikaz.tab == 1)
+            {
+                test.prozor.Content = new zdravstveniKartonPrikaz(pac);
+            }
+            else
+            {
+                test.prozor.Content = new zdravstveniKartonPrikaz(ter);
+            }
         }
 
         private void NoviLek_TextChanged(object sender, TextChangedEventArgs e)

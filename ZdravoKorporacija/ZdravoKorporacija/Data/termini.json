@@ -3128,6 +3128,128 @@
           "Trajanje": 12,
           "NazivLeka": "Brufen",
           "Pocetak": "2021-05-01T00:00:00"
+        }
+      ],
+      "termin": [],
+      "patient": null,
+      "Id": 123,
+      "ZdravstvenoStanje": 3,
+      "Alergije": "dfsdfXD",
+      "KrvnaGrupa": 8,
+      "Vakcine": null
+    },
+    "prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 1,
+      "Naziv": "soba12",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 1
+    },
+    "Lekar": {
+      "termin": null,
+      "Specijalizacija": 0,
+      "radniDani": null,
+      "Ime": "Milos",
+      "Prezime": "Zivic",
+      "Jmbg": 2234567890113,
+      "BrojTelefona": 69393334,
+      "Mejl": "zivko99@gmail.com",
+      "AdresaStanovanja": "",
+      "Pol": 0,
+      "Username": "milos",
+      "Password": "zivic",
+      "Uloga": 0
+    },
+    "Id": 11,
+    "Tip": 1,
+    "Pocetak": "2021-06-13T10:00:00",
+    "Trajanje": 30.0,
+    "hitno": false
+  },
+  {
+    "izvestaj": {
+      "termin": null,
+      "Id": 0,
+      "Opis": "dda\r\n",
+      "Simptomi": "ddd"
+    },
+    "zdravstveniKarton": {
+      "izvestajOHospitalizaciji": [],
+      "istorijaBolesti": null,
+      "recept": [],
+      "termin": [],
+      "patient": null,
+      "Id": 3214567890122,
+      "ZdravstvenoStanje": 3,
+      "Alergije": "dlake, scepa, kikiriki, DROGICA",
+      "KrvnaGrupa": 8,
+      "Vakcine": ""
+    },
+    "prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 1,
+      "Naziv": "soba12",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 1
+    },
+    "Lekar": {
+      "termin": null,
+      "Specijalizacija": 0,
+      "radniDani": null,
+      "Ime": "Milos",
+      "Prezime": "Zivic",
+      "Jmbg": 2234567890113,
+      "BrojTelefona": 0,
+      "Mejl": null,
+      "AdresaStanovanja": null,
+      "Pol": 0,
+      "Username": null,
+      "Password": null,
+      "Uloga": 0
+    },
+    "Id": 8,
+    "Tip": 0,
+    "Pocetak": "2021-06-13T09:30:00",
+    "Trajanje": 30.0,
+    "hitno": false
+  },
+  {
+    "izvestaj": {
+      "termin": null,
+      "Id": 4,
+      "Opis": "ds\r\n",
+      "Simptomi": "dd"
+    },
+    "zdravstveniKarton": {
+      "izvestajOHospitalizaciji": [],
+      "istorijaBolesti": null,
+      "recept": [
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": {
+            "izvestajOHospitalizaciji": null,
+            "istorijaBolesti": null,
+            "recept": null,
+            "termin": null,
+            "patient": null,
+            "Id": 0,
+            "ZdravstvenoStanje": 0,
+            "Alergije": null,
+            "KrvnaGrupa": 0,
+            "Vakcine": null
+          },
+          "Id": 0,
+          "Doziranje": "2",
+          "Trajanje": 12,
+          "NazivLeka": "Brufen",
+          "Pocetak": "2021-05-01T00:00:00"
         },
         {
           "lek": null,
@@ -3229,123 +3351,6 @@
     "Id": 19,
     "Tip": 0,
     "Pocetak": "2021-06-05T08:30:00",
-    "Trajanje": 30.0,
-    "hitno": false
-  },
-  {
-    "izvestaj": null,
-    "zdravstveniKarton": {
-      "izvestajOHospitalizaciji": [],
-      "istorijaBolesti": null,
-      "recept": [
-        {
-          "lek": null,
-          "lekar": null,
-          "zdravstveniKarton": {
-            "izvestajOHospitalizaciji": null,
-            "istorijaBolesti": null,
-            "recept": null,
-            "termin": null,
-            "patient": null,
-            "Id": 0,
-            "ZdravstvenoStanje": 0,
-            "Alergije": null,
-            "KrvnaGrupa": 0,
-            "Vakcine": null
-          },
-          "Id": 0,
-          "Doziranje": "2",
-          "Trajanje": 12,
-          "NazivLeka": "Brufen",
-          "Pocetak": "2021-05-01T00:00:00"
-        }
-      ],
-      "termin": [],
-      "patient": null,
-      "Id": 123,
-      "ZdravstvenoStanje": 3,
-      "Alergije": "dfsdfXD",
-      "KrvnaGrupa": 8,
-      "Vakcine": null
-    },
-    "prostorija": {
-      "inventar": [],
-      "statickaOprema": null,
-      "dinamickaOprema": null,
-      "Id": 1,
-      "Naziv": "soba12",
-      "Tip": 1,
-      "Slobodna": false,
-      "Sprat": 1
-    },
-    "Lekar": {
-      "termin": null,
-      "Specijalizacija": 0,
-      "radniDani": null,
-      "Ime": "Milos",
-      "Prezime": "Zivic",
-      "Jmbg": 2234567890113,
-      "BrojTelefona": 69393334,
-      "Mejl": "zivko99@gmail.com",
-      "AdresaStanovanja": "",
-      "Pol": 0,
-      "Username": "milos",
-      "Password": "zivic",
-      "Uloga": 0
-    },
-    "Id": 11,
-    "Tip": 1,
-    "Pocetak": "2021-06-13T10:00:00",
-    "Trajanje": 30.0,
-    "hitno": false
-  },
-  {
-    "izvestaj": {
-      "termin": null,
-      "Id": 0,
-      "Opis": "dda\r\n",
-      "Simptomi": "ddd"
-    },
-    "zdravstveniKarton": {
-      "izvestajOHospitalizaciji": [],
-      "istorijaBolesti": null,
-      "recept": [],
-      "termin": [],
-      "patient": null,
-      "Id": 3214567890122,
-      "ZdravstvenoStanje": 3,
-      "Alergije": "dlake, scepa, kikiriki, DROGICA",
-      "KrvnaGrupa": 8,
-      "Vakcine": ""
-    },
-    "prostorija": {
-      "inventar": [],
-      "statickaOprema": null,
-      "dinamickaOprema": null,
-      "Id": 1,
-      "Naziv": "soba12",
-      "Tip": 1,
-      "Slobodna": false,
-      "Sprat": 1
-    },
-    "Lekar": {
-      "termin": null,
-      "Specijalizacija": 0,
-      "radniDani": null,
-      "Ime": "Milos",
-      "Prezime": "Zivic",
-      "Jmbg": 2234567890113,
-      "BrojTelefona": 0,
-      "Mejl": null,
-      "AdresaStanovanja": null,
-      "Pol": 0,
-      "Username": null,
-      "Password": null,
-      "Uloga": 0
-    },
-    "Id": 8,
-    "Tip": 0,
-    "Pocetak": "2021-06-13T09:30:00",
     "Trajanje": 30.0,
     "hitno": false
   }
