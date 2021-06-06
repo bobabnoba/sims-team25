@@ -92,6 +92,14 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                     }
                 }
             }
+            foreach (TerminDTO ter in lekarStart.termini)
+            {
+                if (ter.Pocetak.Equals(termin.Pocetak) && ter.prostorija.Id.Equals(termin.prostorija.Id))
+                {
+                    MessageBox.Show("Postoji termin u izabranom vremenu", "Greska");
+                    return;
+                }
+            }
             termin.zdravstveniKarton = new ZdravstveniKartonDTO(tc.NadjiKartonID(pac.Jmbg));
 
             if (cbTip.SelectedIndex == 0)
@@ -104,7 +112,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
             if (tc.ZakaziTermin(termin,pac))
             {
-                this.pregledi.Add(termin);
+                //this.pregledi.Add(termin);
             }
  
             test.prozor.Content = new lekarStart(lekarLogin.lekar);

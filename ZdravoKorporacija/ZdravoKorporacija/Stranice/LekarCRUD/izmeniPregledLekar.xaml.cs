@@ -21,6 +21,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     {
         private List<PacijentDTO> pacijenti = new List<PacijentDTO>();
         private ObservableCollection<ProstorijaDTO> prostorije = new ObservableCollection<ProstorijaDTO>();
+        private List<TerminDTO> termini = new List<TerminDTO> ();
         private TerminDTO t1;
         private TerminDTO t2;
         private ZdravstveniKartonKonverter zkk = new ZdravstveniKartonKonverter();
@@ -33,7 +34,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             InitializeComponent();
             pacijenti = controller.PregledSvihPacijenata2DTO();
             prostorije = controller.PregledSvihProstorijaDTO(null);
-
+            termini = TerminController.Instance.PregledSvihTermina2();
             t1 = selektovani;
             t2 = selektovani;
             cbPacijent.ItemsSource = pacijenti;
@@ -94,7 +95,8 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             int prepodne = Int32.Parse(now.Substring(0, 2));
             int popodne = prepodne + 12;
             PacijentDTO pacijent = (PacijentDTO)cbPacijent.SelectedItem;
-
+            t1.prostorija = (ProstorijaDTO)cbProstorija.SelectedItem;
+            t1.Pocetak = DateTime.Parse(d + " " + t);
             if (!date.SelectedDate.HasValue || time.SelectedIndex == -1 || cbTip.SelectedIndex == -1
                || cbProstorija.SelectedIndex == -1 || cbPacijent.SelectedIndex == -1 )
             {
@@ -122,7 +124,15 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 }
 
             }
-            t1.Pocetak = DateTime.Parse(d + " " + t);
+            foreach (TerminDTO ter in termini)
+            {
+                if (ter.Pocetak.Equals(t1.Pocetak) && ter.prostorija.Equals(t1.prostorija))
+                {
+                    MessageBox.Show("Postoji termin u izabranom vremenu", "Greska");
+                    return;
+                }
+            }
+          
             if (cbTip.SelectedIndex == 0)
             {
                 t1.Tip = TipTerminaEnum.Pregled;
@@ -133,7 +143,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             }
 
             t1.Lekar = controller.NadjiLekaraPoJMBG(lekarLogin.lekar.Jmbg);
-            t1.prostorija = (ProstorijaDTO)cbProstorija.SelectedItem;
+            
             t1.zdravstveniKarton = zkk.KonvertujEntitetUDTO(controller.NadjiKartonID(pacijent.Jmbg));
             if (controller.AzurirajTermin(controller.TerminDTO2Model(t1)))
             {

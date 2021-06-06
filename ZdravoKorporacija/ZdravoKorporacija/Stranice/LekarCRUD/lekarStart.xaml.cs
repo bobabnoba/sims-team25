@@ -15,6 +15,8 @@ using ZdravoKorporacija.Stranice.LekoviCRUD;
 using ZdravoKorporacija.DTO;
 using Controller;
 using ZdravoKorporacija.Controller;
+using System.Linq;
+using System;
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
 {
@@ -61,6 +63,12 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             
             dgUsers.ItemsSource = termini;
             this.DataContext = this;
+        }
+
+        private void textBox1_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            var filtered = termini.Where(termin => termin.Pocetak.ToString().StartsWith(searchBar.Text));
+            dgUsers.ItemsSource = filtered;
         }
 
         private void izmeniPregled(object sender, RoutedEventArgs e)
@@ -125,6 +133,11 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private void Label_PreviewMouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

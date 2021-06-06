@@ -10,8 +10,11 @@
     <None Remove="Images\output-onlinepngtools.png" />
     <None Remove="Properties\Resources.resources" />
     <None Remove="Properties\Resources.sr-LATN.resources" />
+    <None Remove="Stranice\img\loupe.png" />
     <None Remove="Stranice\LekarCRUD\add.png" />
     <None Remove="Stranice\LekarCRUD\edit.png" />
+    <None Remove="Stranice\LekarCRUD\loupe.png" />
+    <None Remove="Stranice\Uput\loupe.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,8 +28,17 @@
     <Resource Include="Images\output-onlinepngtools.png" />
     <Resource Include="Properties\Resources.resources" />
     <Resource Include="Properties\Resources.sr-LATN.resources" />
+    <Resource Include="Stranice\img\loupe.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Stranice\LekarCRUD\add.png" />
     <Resource Include="Stranice\LekarCRUD\edit.png" />
+    <Resource Include="Stranice\LekarCRUD\loupe.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Stranice\Uput\loupe.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

@@ -736,6 +736,15 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Type.
+        /// </summary>
+        public static string TipGrid {
+            get {
+                return ResourceManager.GetString("TipGrid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Type:.
         /// </summary>
         public static string TipText {

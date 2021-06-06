@@ -71,7 +71,18 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             }
             catch (NullReferenceException) { }
             //Trace.WriteLine(pac.ZdravstveniKarton.recept[0]);
-            recepti = new ObservableCollection<ReceptDTO>(pac.ZdravstveniKarton.recept);
+            foreach (ReceptDTO r in receptController.PregledSvihRecepata())
+            {
+                foreach (ReceptDTO rec in pac.ZdravstveniKarton.recept)
+                {
+                    if (r.Id.Equals(rec.Id))
+                    {
+                        recepti.Add(r);
+                        break;
+                    }
+                }
+            }
+            //recepti = new ObservableCollection<ReceptDTO>(pac.ZdravstveniKarton.recept);
             terapijaGrid.ItemsSource = recepti;
 
             this.DataContext = this;
@@ -107,6 +118,8 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             }
             foreach (IzvestajDTO iz in izvestajController.PregledSvihIzvestaja())
             {
+                if(pac!=null)
+                { 
                 foreach (TerminDTO ter in pac.termin)
                 {
                     if (ter.izvestaj.Id.Equals(iz.Id))
@@ -114,6 +127,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                         izvestaji.Add(iz);
                         break;
                     }
+                }
                 }
             }
 

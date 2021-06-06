@@ -342,6 +342,9 @@
   <data name="TerminiMenu" xml:space="preserve">
     <value>Termini</value>
   </data>
+  <data name="TipGrid" xml:space="preserve">
+    <value>Tip</value>
+  </data>
   <data name="TipText" xml:space="preserve">
     <value>Tip:</value>
   </data>

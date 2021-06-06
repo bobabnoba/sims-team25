@@ -375,4 +375,7 @@
   <data name="OdjaviSeMenu" xml:space="preserve">
     <value>Logout</value>
   </data>
+  <data name="TipGrid" xml:space="preserve">
+    <value>Type</value>
+  </data>
 </root>

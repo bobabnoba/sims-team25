@@ -289,11 +289,13 @@ namespace ZdravoKorporacija.Model
                 {
                     if (t.Id.Equals(termin.Id))
                     {
-                        
                         ids[termin.Id] = 0;
                         termini.Remove(t);
                         terminRepozitorijum.sacuvaj(termini);
-                        OtkaziTerminPacijent(new Termin(termin),new Pacijent(pacijent));
+                        datotekaId.sacuvaj(ids);
+                        if(pacijent.termin!=null)
+                        pacijent.termin.Remove(termin);
+                        pacijentServis.AzurirajPacijenta(pacijent);
                         return true;
                     }
                 }

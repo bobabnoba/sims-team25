@@ -3065,6 +3065,253 @@
       "recept": [],
       "termin": [],
       "patient": null,
+      "Id": 123,
+      "ZdravstvenoStanje": 3,
+      "Alergije": "dfsdfXD",
+      "KrvnaGrupa": 8,
+      "Vakcine": null
+    },
+    "prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": [],
+      "Id": 0,
+      "Naziv": "soba11",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 1
+    },
+    "Lekar": {
+      "termin": null,
+      "Specijalizacija": 0,
+      "radniDani": null,
+      "Ime": "Dragana",
+      "Prezime": "Gaga",
+      "Jmbg": 953,
+      "BrojTelefona": 0,
+      "Mejl": null,
+      "AdresaStanovanja": null,
+      "Pol": 0,
+      "Username": null,
+      "Password": null,
+      "Uloga": 0
+    },
+    "Id": 13,
+    "Tip": 0,
+    "Pocetak": "2021-06-20T09:00:00",
+    "Trajanje": 0.5,
+    "hitno": false
+  },
+  {
+    "izvestaj": null,
+    "zdravstveniKarton": {
+      "izvestajOHospitalizaciji": [],
+      "istorijaBolesti": null,
+      "recept": [
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": {
+            "izvestajOHospitalizaciji": null,
+            "istorijaBolesti": null,
+            "recept": null,
+            "termin": null,
+            "patient": null,
+            "Id": 0,
+            "ZdravstvenoStanje": 0,
+            "Alergije": null,
+            "KrvnaGrupa": 0,
+            "Vakcine": null
+          },
+          "Id": 0,
+          "Doziranje": "2",
+          "Trajanje": 12,
+          "NazivLeka": "Brufen",
+          "Pocetak": "2021-05-01T00:00:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": {
+            "izvestajOHospitalizaciji": null,
+            "istorijaBolesti": null,
+            "recept": null,
+            "termin": null,
+            "patient": null,
+            "Id": 0,
+            "ZdravstvenoStanje": 0,
+            "Alergije": null,
+            "KrvnaGrupa": 0,
+            "Vakcine": null
+          },
+          "Id": 2,
+          "Doziranje": "2",
+          "Trajanje": 12,
+          "NazivLeka": "Mendilex",
+          "Pocetak": "2021-04-30T00:00:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": {
+            "izvestajOHospitalizaciji": null,
+            "istorijaBolesti": null,
+            "recept": null,
+            "termin": null,
+            "patient": null,
+            "Id": 0,
+            "ZdravstvenoStanje": 0,
+            "Alergije": null,
+            "KrvnaGrupa": 0,
+            "Vakcine": null
+          },
+          "Id": 4,
+          "Doziranje": "1",
+          "Trajanje": 17,
+          "NazivLeka": "Brufen",
+          "Pocetak": "2021-05-01T00:00:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": {
+            "izvestajOHospitalizaciji": null,
+            "istorijaBolesti": null,
+            "recept": null,
+            "termin": null,
+            "patient": null,
+            "Id": 0,
+            "ZdravstvenoStanje": 0,
+            "Alergije": null,
+            "KrvnaGrupa": 0,
+            "Vakcine": null
+          },
+          "Id": 1,
+          "Doziranje": "3",
+          "Trajanje": 3,
+          "NazivLeka": "Cardiopirin",
+          "Pocetak": "2021-04-30T00:00:00"
+        }
+      ],
+      "termin": [],
+      "patient": null,
+      "Id": 1234567890123,
+      "ZdravstvenoStanje": 3,
+      "Alergije": "drogica, loЛ,",
+      "KrvnaGrupa": 8,
+      "Vakcine": null
+    },
+    "prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 1,
+      "Naziv": "soba12",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 1
+    },
+    "Lekar": {
+      "termin": null,
+      "Specijalizacija": 0,
+      "radniDani": null,
+      "Ime": "Milos",
+      "Prezime": "Zivic",
+      "Jmbg": 2234567890113,
+      "BrojTelefona": 69393334,
+      "Mejl": "zivko99@gmail.com",
+      "AdresaStanovanja": "",
+      "Pol": 0,
+      "Username": "milos",
+      "Password": "zivic",
+      "Uloga": 0
+    },
+    "Id": 19,
+    "Tip": 0,
+    "Pocetak": "2021-06-05T08:30:00",
+    "Trajanje": 30.0,
+    "hitno": false
+  },
+  {
+    "izvestaj": null,
+    "zdravstveniKarton": {
+      "izvestajOHospitalizaciji": [],
+      "istorijaBolesti": null,
+      "recept": [
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": {
+            "izvestajOHospitalizaciji": null,
+            "istorijaBolesti": null,
+            "recept": null,
+            "termin": null,
+            "patient": null,
+            "Id": 0,
+            "ZdravstvenoStanje": 0,
+            "Alergije": null,
+            "KrvnaGrupa": 0,
+            "Vakcine": null
+          },
+          "Id": 0,
+          "Doziranje": "2",
+          "Trajanje": 12,
+          "NazivLeka": "Brufen",
+          "Pocetak": "2021-05-01T00:00:00"
+        }
+      ],
+      "termin": [],
+      "patient": null,
+      "Id": 123,
+      "ZdravstvenoStanje": 3,
+      "Alergije": "dfsdfXD",
+      "KrvnaGrupa": 8,
+      "Vakcine": null
+    },
+    "prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 1,
+      "Naziv": "soba12",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 1
+    },
+    "Lekar": {
+      "termin": null,
+      "Specijalizacija": 0,
+      "radniDani": null,
+      "Ime": "Milos",
+      "Prezime": "Zivic",
+      "Jmbg": 2234567890113,
+      "BrojTelefona": 69393334,
+      "Mejl": "zivko99@gmail.com",
+      "AdresaStanovanja": "",
+      "Pol": 0,
+      "Username": "milos",
+      "Password": "zivic",
+      "Uloga": 0
+    },
+    "Id": 11,
+    "Tip": 1,
+    "Pocetak": "2021-06-13T10:00:00",
+    "Trajanje": 30.0,
+    "hitno": false
+  },
+  {
+    "izvestaj": {
+      "termin": null,
+      "Id": 0,
+      "Opis": "dda\r\n",
+      "Simptomi": "ddd"
+    },
+    "zdravstveniKarton": {
+      "izvestajOHospitalizaciji": [],
+      "istorijaBolesti": null,
+      "recept": [],
+      "termin": [],
+      "patient": null,
       "Id": 3214567890122,
       "ZdravstvenoStanje": 3,
       "Alergije": "dlake, scepa, kikiriki, DROGICA",
@@ -3099,106 +3346,6 @@
     "Id": 8,
     "Tip": 0,
     "Pocetak": "2021-06-13T09:30:00",
-    "Trajanje": 30.0,
-    "hitno": false
-  },
-  {
-    "izvestaj": {
-      "termin": null,
-      "Id": 2,
-      "Opis": "z\r\n",
-      "Simptomi": "zzz"
-    },
-    "zdravstveniKarton": {
-      "izvestajOHospitalizaciji": [],
-      "istorijaBolesti": null,
-      "recept": [],
-      "termin": [],
-      "patient": null,
-      "Id": 2134567890213,
-      "ZdravstvenoStanje": 3,
-      "Alergije": "Polen,Mleko, drogaa",
-      "KrvnaGrupa": 8,
-      "Vakcine": null
-    },
-    "prostorija": {
-      "inventar": [],
-      "statickaOprema": null,
-      "dinamickaOprema": null,
-      "Id": 1,
-      "Naziv": "soba12",
-      "Tip": 1,
-      "Slobodna": false,
-      "Sprat": 1
-    },
-    "Lekar": {
-      "termin": null,
-      "Specijalizacija": 0,
-      "radniDani": null,
-      "Ime": "Milos",
-      "Prezime": "Zivic",
-      "Jmbg": 2234567890113,
-      "BrojTelefona": 0,
-      "Mejl": null,
-      "AdresaStanovanja": null,
-      "Pol": 0,
-      "Username": null,
-      "Password": null,
-      "Uloga": 0
-    },
-    "Id": 11,
-    "Tip": 0,
-    "Pocetak": "2021-06-13T08:30:00",
-    "Trajanje": 30.0,
-    "hitno": false
-  },
-  {
-    "izvestaj": {
-      "termin": null,
-      "Id": 3,
-      "Opis": "ded\r\n",
-      "Simptomi": "ded"
-    },
-    "zdravstveniKarton": {
-      "izvestajOHospitalizaciji": [],
-      "istorijaBolesti": null,
-      "recept": [],
-      "termin": [],
-      "patient": null,
-      "Id": 2134567890213,
-      "ZdravstvenoStanje": 3,
-      "Alergije": "Polen,Mleko, drogaa",
-      "KrvnaGrupa": 8,
-      "Vakcine": null
-    },
-    "prostorija": {
-      "inventar": [],
-      "statickaOprema": null,
-      "dinamickaOprema": null,
-      "Id": 1,
-      "Naziv": "soba12",
-      "Tip": 1,
-      "Slobodna": false,
-      "Sprat": 1
-    },
-    "Lekar": {
-      "termin": null,
-      "Specijalizacija": 0,
-      "radniDani": null,
-      "Ime": "Milos",
-      "Prezime": "Zivic",
-      "Jmbg": 2234567890113,
-      "BrojTelefona": 69393334,
-      "Mejl": "zivko99@gmail.com",
-      "AdresaStanovanja": "",
-      "Pol": 0,
-      "Username": "milos",
-      "Password": "zivic",
-      "Uloga": 0
-    },
-    "Id": 12,
-    "Tip": 0,
-    "Pocetak": "2021-06-06T08:30:00",
     "Trajanje": 30.0,
     "hitno": false
   }

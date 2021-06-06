@@ -61,7 +61,7 @@ namespace Service
       public bool ObrisiRecept(ReceptDTO recept)
       {
             id_map = datotekaID.dobaviSve();
-            foreach (Recept r in rr.DobaviSve())
+            foreach (Recept r in recepti)
             {
                 //Trace.WriteLine(recept.Id + r.Id);
                 if (r.Id.Equals(recept.Id))

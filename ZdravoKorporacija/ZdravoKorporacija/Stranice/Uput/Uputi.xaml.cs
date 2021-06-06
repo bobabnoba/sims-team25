@@ -2,6 +2,7 @@
 using Repository;
 using Service;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.DTO;
@@ -17,11 +18,8 @@ namespace ZdravoKorporacija.Stranice.Uput
     /// </summary>
     public partial class Uputi : Page
     {
-        private TerminService storage = new TerminService();
-        private PacijentService storagePacijent = new PacijentService();
-        private Pacijent pac = new Pacijent();
         private Dictionary<int, int> ids = new Dictionary<int, int>();
-        private PacijentService pacijentServis = new PacijentService();
+      
 
         public Uputi()
         {
@@ -33,14 +31,17 @@ namespace ZdravoKorporacija.Stranice.Uput
             this.DataContext = this;
         }
 
+        private void textBox1_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            var filtered = lekarStart.uputi.Where(termin => termin.Pocetak.ToString().StartsWith(searchBar.Text));
+            dgUsers.ItemsSource = filtered;
+        }
         private void izmeniUput(object sender, RoutedEventArgs e)
         {
             if (dgUsers.SelectedItem == null)
                 MessageBox.Show("Pregled nije izabran. Molimo označite pregled koji želite da izmenite.", "Greška");
             else
             {
-                //izmeniUput iu = new izmeniUput((Termin)dgUsers.SelectedItem, lekarStart.uputi);
-                //iu.Show();
                 test.prozor.Content = new izmeniUput((TerminDTO)dgUsers.SelectedItem, lekarStart.uputi);
             }
         }
@@ -61,11 +62,8 @@ namespace ZdravoKorporacija.Stranice.Uput
                 MessageBox.Show("Niste selektovali red", "Greska");
             else
             {
-
                 otkaziUput ou = new otkaziUput(lekarStart.uputi, (TerminDTO)dgUsers.SelectedItem, ids);
                 ou.Show();
-                //otkaziUput ou = new otkaziUput(lekarStart.uputi, (Termin)dgUsers.SelectedItem, ids);
-                //ou.Show();
             }
         }
 
@@ -73,8 +71,7 @@ namespace ZdravoKorporacija.Stranice.Uput
 
         private void zakaziHitno(object sender, RoutedEventArgs e)
         {
-            //zakaziHitniLekar zh = new zakaziHitniLekar(lekarStart.uputi, ids);
-            //zh.Show();
+           
             test.prozor.Content = new zakaziHitniLekar(lekarStart.uputi, ids);
         }
 

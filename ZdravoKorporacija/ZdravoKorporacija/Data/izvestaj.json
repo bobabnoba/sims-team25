@@ -16,5 +16,11 @@
     "Id": 3,
     "Opis": "ded\r\n",
     "Simptomi": "ded"
+  },
+  {
+    "termin": null,
+    "Id": 0,
+    "Opis": "dda\r\n",
+    "Simptomi": "ddd"
   }
 ]

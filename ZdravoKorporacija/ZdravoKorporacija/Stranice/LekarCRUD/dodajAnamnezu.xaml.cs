@@ -45,7 +45,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             
 
             terminController.IzdajAnamnezu(izvestaj, termin);
-            zdravstveniKartonPrikaz.izvestaji.Add(izvestaj);
+            //zdravstveniKartonPrikaz.izvestaji.Add(izvestaj);
             test.prozor.Content = new zdravstveniKartonPrikaz(termin);
         }
 

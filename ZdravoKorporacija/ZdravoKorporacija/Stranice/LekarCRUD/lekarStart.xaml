@@ -44,6 +44,8 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <TextBox Name="searchBar" TextWrapping="Wrap" Width="120" Grid.Column="3" Height="21" Margin="88,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="2" KeyUp="textBox1_KeyUp" TextChanged="TextBox_TextChanged"/>
+        <Image Grid.Column="3" Margin="60,10,125,10" Height="21" Width="21" Grid.Row="2" Source="loupe.png"  HorizontalAlignment="Right" />
 
 
 

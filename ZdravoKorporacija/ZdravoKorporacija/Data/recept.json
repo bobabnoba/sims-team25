@@ -19,5 +19,47 @@
     "Trajanje": 4,
     "NazivLeka": "3",
     "Pocetak": "2021-06-06T08:30:00"
+  },
+  {
+    "lek": null,
+    "lekar": null,
+    "zdravstveniKarton": {
+      "izvestajOHospitalizaciji": null,
+      "istorijaBolesti": null,
+      "recept": null,
+      "termin": null,
+      "patient": null,
+      "Id": 0,
+      "ZdravstvenoStanje": 0,
+      "Alergije": null,
+      "KrvnaGrupa": 0,
+      "Vakcine": null
+    },
+    "Id": 1,
+    "Doziranje": "3",
+    "Trajanje": 4,
+    "NazivLeka": "Lekic",
+    "Pocetak": "2021-06-12T08:30:00"
+  },
+  {
+    "lek": null,
+    "lekar": null,
+    "zdravstveniKarton": {
+      "izvestajOHospitalizaciji": null,
+      "istorijaBolesti": null,
+      "recept": null,
+      "termin": null,
+      "patient": null,
+      "Id": 0,
+      "ZdravstvenoStanje": 0,
+      "Alergije": null,
+      "KrvnaGrupa": 0,
+      "Vakcine": null
+    },
+    "Id": 3,
+    "Doziranje": "3",
+    "Trajanje": 4,
+    "NazivLeka": "zz",
+    "Pocetak": "2021-06-13T08:30:00"
   }
 ]
