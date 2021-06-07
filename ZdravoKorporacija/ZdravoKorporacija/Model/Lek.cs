@@ -18,6 +18,7 @@ namespace Model
         public String NusPojave { get; set; }
         public String NazivLeka { get; set; }
 
+        public double Kolicina { get; set; }
         public String Alergeni { get; set; }
 
         public List<Lek> alternativniLekovi;
@@ -66,13 +67,14 @@ namespace Model
                 alternativniLekovi.Clear();
         }
         public Lek() { }
-        public Lek(int  ID, String pr, String sas, String np, String nl)
+        public Lek(int  ID, String pr, String sas, String np, String nl,double kolicina)
         {
             Id = ID;
             Proizvodjac = pr;
             Sastojci = sas;
             NusPojave = np;
             NazivLeka = nl;
+            Kolicina = kolicina;
             this.alternativniLekovi = new List<Lek>();
         }
         public Lek(LekDTO lekDTO)
@@ -82,6 +84,7 @@ namespace Model
             Sastojci = lekDTO.Sastojci;
             NusPojave = lekDTO.NusPojave;
             NazivLeka = lekDTO.NazivLeka;
+            Kolicina = Double.Parse(lekDTO.Kolicina);
             this.alternativniLekovi = konvertujListuEntitetaUListuDTO(lekDTO.alternativniLekovi);
 
         }

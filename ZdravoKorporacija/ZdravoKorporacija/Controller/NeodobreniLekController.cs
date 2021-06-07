@@ -13,7 +13,8 @@ namespace Controller
         NeodobreniLekService neodobreniLekService = new NeodobreniLekService();
         public bool DodajNeodobreniLek(ZahtevLek zahtevLek)
         {
-            LekDTO lek = new LekDTO(zahtevLek.Lek.Id, zahtevLek.Lek.Proizvodjac, zahtevLek.Lek.Sastojci, zahtevLek.Lek.NusPojave, zahtevLek.Lek.NazivLeka);
+            String kolicina = "" + zahtevLek.Lek.Kolicina;
+            LekDTO lek = new LekDTO(zahtevLek.Lek.Id, zahtevLek.Lek.Proizvodjac, zahtevLek.Lek.Sastojci, zahtevLek.Lek.NusPojave, zahtevLek.Lek.NazivLeka, kolicina);
             ZahtevLekDTO zahtevZaNeodobreniLek = new ZahtevLekDTO(lek, zahtevLek.NeophodnihPotvrda, zahtevLek.BrojPotvrda,zahtevLek.Komentar);
             zahtevZaNeodobreniLek.lekari = zahtevLek.lekari;
         

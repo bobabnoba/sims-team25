@@ -46,6 +46,7 @@ namespace ZdravoKorporacija.Stranice.DinamickaOpremaCRUD
 
 
             if(dinamickaOpremaKontroler.DodajOpremu(opremaDTO)){
+                Double novaKolicina = Double.Parse(textboxKolicina.Text);
                 dinamickaOpremaDTO.Add(opremaDTO);
             }
         }

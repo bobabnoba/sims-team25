@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Stranice.UpravnikCRUD;
 
 namespace ZdravoKorporacija.Stranice.Logovanje
@@ -21,7 +22,7 @@ namespace ZdravoKorporacija.Stranice.Logovanje
     public partial class upavnikLogin : Window
     {
         KorisnikService ks = new KorisnikService();
-        Korisnik ulogovan;
+        KorisnikDTO ulogovan;
         UlogaEnum upravnik;
         public upavnikLogin(global::Model.UlogaEnum uloga)
         {

@@ -63,6 +63,7 @@ namespace ZdravoKorporacija.DTO
 
         public TerminDTO(Termin termin)
         {
+            if (termin == null) { termin = new Termin(); }
             this.izvestaj = new IzvestajDTO(termin.izvestaj);
             this.zdravstveniKarton = new ZdravstveniKartonDTO(termin.zdravstveniKarton);
             this.prostorija = new ProstorijaDTO(termin.prostorija);

@@ -3352,6 +3352,8 @@
           "hitno": false
         }
       ],
+      "Specijalizacija": 0,
+      "radniDani": null,
       "Ime": "Veljko",
       "Prezime": "Vukovic",
       "Jmbg": 2334567890213,
@@ -3633,6 +3635,8 @@
           "hitno": false
         }
       ],
+      "Specijalizacija": 0,
+      "radniDani": null,
       "Ime": "Milos",
       "Prezime": "Zivic",
       "Jmbg": 2234567890113,
@@ -3656,6 +3660,8 @@
     "prostorija": null,
     "Lekar": {
       "termin": null,
+      "Specijalizacija": 0,
+      "radniDani": null,
       "Ime": "Milos",
       "Prezime": "Zivic",
       "Jmbg": 2234567890113,
@@ -3746,6 +3752,8 @@
     "prostorija": null,
     "Lekar": {
       "termin": null,
+      "Specijalizacija": 0,
+      "radniDani": null,
       "Ime": "Milos",
       "Prezime": "Zivic",
       "Jmbg": 2234567890113,
@@ -3836,6 +3844,8 @@
     "prostorija": null,
     "Lekar": {
       "termin": null,
+      "Specijalizacija": 0,
+      "radniDani": null,
       "Ime": "Veljko",
       "Prezime": "Vukovic",
       "Jmbg": 2334567890213,
@@ -3851,6 +3861,141 @@
     "Tip": 0,
     "Pocetak": "2021-05-29T09:00:00",
     "Trajanje": 30.0,
+    "hitno": false
+  },
+  {
+    "izvestaj": null,
+    "zdravstveniKarton": {
+      "izvestajOHospitalizaciji": null,
+      "istorijaBolesti": null,
+      "recept": null,
+      "termin": null,
+      "patient": null,
+      "Id": 0,
+      "ZdravstvenoStanje": 0,
+      "Alergije": null,
+      "KrvnaGrupa": 0,
+      "Vakcine": null
+    },
+    "prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": [],
+      "Id": 0,
+      "Naziv": "soba11",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 1
+    },
+    "Lekar": {
+      "termin": null,
+      "Specijalizacija": 0,
+      "radniDani": null,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": 0,
+      "BrojTelefona": 0,
+      "Mejl": null,
+      "AdresaStanovanja": null,
+      "Pol": 0,
+      "Username": null,
+      "Password": null,
+      "Uloga": 0
+    },
+    "Id": 8,
+    "Tip": 0,
+    "Pocetak": "2021-06-02T13:00:00",
+    "Trajanje": 0.0,
+    "hitno": false
+  },
+  {
+    "izvestaj": null,
+    "zdravstveniKarton": {
+      "izvestajOHospitalizaciji": null,
+      "istorijaBolesti": null,
+      "recept": null,
+      "termin": null,
+      "patient": null,
+      "Id": 0,
+      "ZdravstvenoStanje": 0,
+      "Alergije": null,
+      "KrvnaGrupa": 0,
+      "Vakcine": null
+    },
+    "prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": [],
+      "Id": 0,
+      "Naziv": "soba11",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 1
+    },
+    "Lekar": {
+      "termin": null,
+      "Specijalizacija": 0,
+      "radniDani": null,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": 0,
+      "BrojTelefona": 0,
+      "Mejl": null,
+      "AdresaStanovanja": null,
+      "Pol": 0,
+      "Username": null,
+      "Password": null,
+      "Uloga": 0
+    },
+    "Id": 11,
+    "Tip": 0,
+    "Pocetak": "2021-06-02T13:00:00",
+    "Trajanje": 0.0,
+    "hitno": false
+  },
+  {
+    "izvestaj": null,
+    "zdravstveniKarton": {
+      "izvestajOHospitalizaciji": null,
+      "istorijaBolesti": null,
+      "recept": null,
+      "termin": null,
+      "patient": null,
+      "Id": 0,
+      "ZdravstvenoStanje": 0,
+      "Alergije": null,
+      "KrvnaGrupa": 0,
+      "Vakcine": null
+    },
+    "prostorija": {
+      "inventar": [],
+      "statickaOprema": null,
+      "dinamickaOprema": null,
+      "Id": 3,
+      "Naziv": "soba22",
+      "Tip": 1,
+      "Slobodna": false,
+      "Sprat": 2
+    },
+    "Lekar": {
+      "termin": null,
+      "Specijalizacija": 0,
+      "radniDani": null,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": 0,
+      "BrojTelefona": 0,
+      "Mejl": null,
+      "AdresaStanovanja": null,
+      "Pol": 0,
+      "Username": null,
+      "Password": null,
+      "Uloga": 0
+    },
+    "Id": 12,
+    "Tip": 0,
+    "Pocetak": "2021-06-02T13:00:00",
+    "Trajanje": 0.0,
     "hitno": false
   }
 ]

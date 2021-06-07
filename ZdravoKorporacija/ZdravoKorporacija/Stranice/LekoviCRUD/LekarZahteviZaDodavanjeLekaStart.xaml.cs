@@ -67,7 +67,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
 
 
                 ZahtevLek zahtev = (ZahtevLek)dgZahtevi.SelectedItem;
-                Lek l = new Lek(id, zahtev.Lek.Proizvodjac, zahtev.Lek.Sastojci, zahtev.Lek.NusPojave, zahtev.Lek.NazivLeka);
+                Lek l = new Lek(id, zahtev.Lek.Proizvodjac, zahtev.Lek.Sastojci, zahtev.Lek.NusPojave, zahtev.Lek.NazivLeka,zahtev.Lek.Kolicina);
                 l.alternativniLekovi = zahtev.Lek.alternativniLekovi;
                 lekServis.DodajLek(l, ids);
                 Debug.WriteLine(zahtev.Id);
@@ -132,6 +132,11 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
         }
 
         private void MenuItem_Click_3(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_Click_4(object sender, RoutedEventArgs e)
         {
 
         }

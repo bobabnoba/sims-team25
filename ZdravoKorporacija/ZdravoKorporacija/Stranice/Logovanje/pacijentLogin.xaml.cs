@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ZdravoKorporacija.DTO;
 
 namespace ZdravoKorporacija.Stranice.Logovanje
 {
@@ -21,7 +22,7 @@ namespace ZdravoKorporacija.Stranice.Logovanje
     public partial class pacijentLogin : Window
     {
         private KorisnikService ks = new KorisnikService();
-        private Korisnik ulogovan;
+        private KorisnikDTO ulogovan;
         private PacijentRepozitorijum pacRepo = new PacijentRepozitorijum();
         private Pacijent pacijent = new Pacijent();
         private UlogaEnum uloga;

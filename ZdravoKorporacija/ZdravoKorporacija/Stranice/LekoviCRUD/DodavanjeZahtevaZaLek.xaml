@@ -21,7 +21,9 @@
         <Button Content="Odustani" HorizontalAlignment="Left" Margin="237,506,0,0" VerticalAlignment="Top" Height="26" Width="96" Click="Button_Click_1"/>
         <Label x:Name="label_Copy4" Content="Neophodnih potvrda" HorizontalAlignment="Left" Margin="70,371,0,0" VerticalAlignment="Top" Height="25"/>
         <ComboBox x:Name="comboBoxBrojPotvrda" HorizontalAlignment="Left" Margin="225,371,0,0" VerticalAlignment="Top" Width="120" Height="25" SelectionChanged="comboBoxBrojPotvrda_SelectionChanged"/>
-        <Label x:Name="label_Copy5" Content="Posalji zahtev lekarima" HorizontalAlignment="Left" Margin="70,426,0,0" VerticalAlignment="Top" Height="25" Width="138"/>
-        <Button x:Name="button1" Content="Izaberi lekare" HorizontalAlignment="Left" Margin="225,426,0,0" VerticalAlignment="Top" Width="120" Height="25" Click="button1_Click"/>
+        <Label x:Name="label_Copy5" Content="Posalji zahtev lekarima" HorizontalAlignment="Left" Margin="70,414,0,0" VerticalAlignment="Top" Height="25" Width="138"/>
+        <Button x:Name="button1" Content="Izaberi lekare" HorizontalAlignment="Left" Margin="225,414,0,0" VerticalAlignment="Top" Width="120" Height="25" Click="button1_Click"/>
+        <Label x:Name="label_Copy6" Content="Kolicina" HorizontalAlignment="Left" Margin="70,453,0,0" VerticalAlignment="Top" Height="25" Width="138"/>
+        <TextBox x:Name="textBoxKolicina" HorizontalAlignment="Left" Margin="225,453,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="25"/>
     </Grid>
 </Window>

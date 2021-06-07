@@ -21,7 +21,7 @@
   },
   {
     "inventar": [],
-    "statickaOprema": [],
+    "statickaOprema": null,
     "dinamickaOprema": [],
     "Id": 0,
     "Naziv": "soba11",

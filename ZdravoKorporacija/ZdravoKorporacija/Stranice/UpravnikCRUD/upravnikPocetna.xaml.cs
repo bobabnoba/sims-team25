@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Stranice.DinamickaOpremaCRUD;
 using ZdravoKorporacija.Stranice.LekoviCRUD;
 using ZdravoKorporacija.Stranice.Magacin;
@@ -21,10 +23,10 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
     /// </summary>
     public partial class upravnikPocetna : Page
     {
-        public upravnikPocetna()
+        public upravnikPocetna(KorisnikDTO ulogovaniUpravnik)
         {
             InitializeComponent();
-
+            labelKorisnik.Content = ulogovaniUpravnik.Ime + "  " + ulogovaniUpravnik.Prezime;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -71,6 +73,16 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
         private void profil(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+         
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+         
         }
     }
 }

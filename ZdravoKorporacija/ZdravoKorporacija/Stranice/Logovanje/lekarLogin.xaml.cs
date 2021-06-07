@@ -2,6 +2,7 @@
 using Service;
 using System.Diagnostics;
 using System.Windows;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Stranice.LekarCRUD;
 
@@ -14,7 +15,7 @@ namespace ZdravoKorporacija.Stranice.Logovanje
     {
         LekarRepozitorijum lr = new LekarRepozitorijum();
         KorisnikService ks = new KorisnikService();
-        Korisnik ulogovan;
+        KorisnikDTO ulogovan;
         public static Lekar lekar = new Lekar();
         public static long jmbg;
         UlogaEnum uloga;

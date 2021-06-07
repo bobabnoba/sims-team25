@@ -1,79 +1,44 @@
 [
   {
-    "Id": 0,
-    "Naziv": "krevet",
-    "UkupnaKolicina": 4000,
-    "Proizvodjac": "simpo",
-    "DatumNabavke": "0001-01-01T00:00:00"
-  },
-  {
-    "Id": 4,
+    "Id": 1,
     "Naziv": "Hanzaplast",
     "UkupnaKolicina": 100,
     "Proizvodjac": "Keek",
     "DatumNabavke": "0001-01-01T00:00:00"
   },
   {
-    "Id": 3,
+    "Id": 2,
     "Naziv": "operacioni sto",
-    "UkupnaKolicina": 0,
+    "UkupnaKolicina": 20,
     "Proizvodjac": "helas",
     "DatumNabavke": "0001-01-01T00:00:00"
   },
   {
-    "Id": 1,
+    "Id": 3,
     "Naziv": "krevet",
-    "UkupnaKolicina": 0,
+    "UkupnaKolicina": 1000,
     "Proizvodjac": "simpo",
     "DatumNabavke": "0001-01-01T00:00:00"
   },
   {
-    "Id": 6,
+    "Id": 4,
     "Naziv": "infuzija",
-    "UkupnaKolicina": 100,
+    "UkupnaKolicina": 1000,
     "Proizvodjac": "galenika",
     "DatumNabavke": "0001-01-01T00:00:00"
   },
   {
-    "Id": 7,
+    "Id": 6,
     "Naziv": "dfdsf",
-    "UkupnaKolicina": 200,
+    "UkupnaKolicina": 2000,
     "Proizvodjac": "ds",
     "DatumNabavke": "0001-01-01T00:00:00"
   },
   {
     "Id": 5,
     "Naziv": "Stolovi",
-    "UkupnaKolicina": 0,
+    "UkupnaKolicina": 300,
     "Proizvodjac": "jysk",
-    "DatumNabavke": "0001-01-01T00:00:00"
-  },
-  {
-    "Id": 2,
-    "Naziv": "stolica",
-    "UkupnaKolicina": 100,
-    "Proizvodjac": "forma ideale",
-    "DatumNabavke": "0001-01-01T00:00:00"
-  },
-  {
-    "Id": 2,
-    "Naziv": "stolica",
-    "UkupnaKolicina": 100,
-    "Proizvodjac": "forma ideale",
-    "DatumNabavke": "0001-01-01T00:00:00"
-  },
-  {
-    "Id": 2,
-    "Naziv": "stolica",
-    "UkupnaKolicina": 100,
-    "Proizvodjac": "forma ideale",
-    "DatumNabavke": "0001-01-01T00:00:00"
-  },
-  {
-    "Id": 2,
-    "Naziv": "stolica",
-    "UkupnaKolicina": 100,
-    "Proizvodjac": "forma ideale",
     "DatumNabavke": "0001-01-01T00:00:00"
   }
 ]

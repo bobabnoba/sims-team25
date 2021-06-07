@@ -22,13 +22,14 @@ namespace Service
             int id = nadjiSlobodanID(id_map);
             id_map[id] = 1;
 
-
-            Lek lek = new Lek(zahtevLek.Lek.Id, zahtevLek.Lek.Proizvodjac, zahtevLek.Lek.Sastojci, zahtevLek.Lek.NusPojave, zahtevLek.Lek.NazivLeka);
+            Double kolicina = Double.Parse(zahtevLek.Lek.Kolicina);
+            Lek lek = new Lek(zahtevLek.Lek.Id, zahtevLek.Lek.Proizvodjac, zahtevLek.Lek.Sastojci, zahtevLek.Lek.NusPojave, zahtevLek.Lek.NazivLeka,kolicina);
             ZahtevLek zahtevZaNeodobreniLek = new ZahtevLek(lek, zahtevLek.NeophodnihPotvrda, zahtevLek.BrojPotvrda,zahtevLek.Komentar);
 
             foreach (LekDTO lekD in zahtevLek.Lek.alternativniLekovi)
             {
-                Lek l = new Lek(lekD.Id, lekD.NusPojave, lekD.Sastojci, lekD.NusPojave, lekD.NazivLeka);
+                Double kolicinaAlternativnih = Double.Parse(zahtevLek.Lek.Kolicina);
+                Lek l = new Lek(lekD.Id, lekD.NusPojave, lekD.Sastojci, lekD.NusPojave, lekD.NazivLeka,kolicina);
                 zahtevZaNeodobreniLek.Lek.alternativniLekovi.Add(l);
             }
 
