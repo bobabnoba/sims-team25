@@ -65,7 +65,7 @@
                 </CheckBox.RenderTransform>
             </CheckBox>
             <Button Content="Potvrdi" Grid.Row="9" FontSize="22" Click="Button_Click" Grid.Column="1" HorizontalAlignment="Center" Width="173" />
-            <TextBox Name="pogresniKred" Text="" TextAlignment="Center" Foreground="Red" TextWrapping="Wrap" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" FontSize="18" Grid.Row="7" Grid.Column="1" BorderBrush="Transparent"/>
+            <TextBox Name="pogresniKred" Text="" TextAlignment="Center" Foreground="Red" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" FontSize="16" Grid.Row="7" Grid.Column="1" BorderBrush="Transparent"/>
 
         </Grid>
 

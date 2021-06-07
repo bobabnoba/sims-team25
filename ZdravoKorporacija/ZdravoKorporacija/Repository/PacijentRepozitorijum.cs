@@ -51,7 +51,7 @@ namespace Repository
                 string jsonText = File.ReadAllText(lokacija);
                 if (!string.IsNullOrEmpty(jsonText))
                 {
-                    pacijenti = JsonConvert.DeserializeObject<List<Pacijent>>(jsonText);
+                        pacijenti = JsonConvert.DeserializeObject<List<Pacijent>>(jsonText);
                 }
             }
             return pacijenti;

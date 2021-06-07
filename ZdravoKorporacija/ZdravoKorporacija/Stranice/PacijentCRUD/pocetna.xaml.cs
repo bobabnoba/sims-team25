@@ -67,5 +67,10 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
         {
             Main.Content = new Pomoc(pacijentDTO);
         }
+
+        private void profilBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new Profil(pacijentDTO);
+        }
     }
 }

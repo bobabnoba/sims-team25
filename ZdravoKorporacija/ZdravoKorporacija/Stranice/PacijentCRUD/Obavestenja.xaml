@@ -6,15 +6,67 @@
       xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.PacijentCRUD"
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="630"
-      Title="Obavestenja">
+      Title="Obaveštenja">
 
     <Grid>
-        <DataGrid x:Name="dgObavjestenja"  AutoGenerateColumns="false" CanUserAddRows="False" Margin="33,38,33,40" MinRowHeight="33" SelectionMode="Single" GridLinesVisibility="Horizontal">
-        <DataGrid.Columns>
-            <DataGridTextColumn Header="Datum" Binding="{Binding Path = Datum}" Width="*"/>
+        <DataGrid x:Name="dgObavjestenja" FontFamily="Varta" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" AutoGenerateColumns="False" RowHeaderWidth="0" CanUserAddRows="False" FontSize="20" Margin="33,38,33,40"  SelectionMode="Single" Background="Transparent" BorderBrush="#FF1E243E" Foreground="#FF121523" CanUserDeleteRows="False" CanUserResizeRows="False" MinRowHeight="20" GridLinesVisibility="None" AreRowDetailsFrozen="True" RowDetailsVisibilityMode="Visible" RowHeight = "35">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Datum i vreme" Binding="{Binding Path = Datum}" Width="*"/>
                 <DataGridTextColumn Header="Tip" Binding="{Binding Path=Tip}" Width="*"/>
-            <DataGridTextColumn Header="Sadržaj" Binding="{Binding Path=Sadrzaj}" Width="*"/>
-        </DataGrid.Columns>
+                <!--<DataGridCheckBoxColumn Header="Status" Width="*"/>-->
+                <DataGridTextColumn Header="Status" Binding="{Binding Path=Status}" Width="*"/>
+            </DataGrid.Columns>
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="TextBlock.TextAlignment" Value="Left"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                <Grid Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </DataGrid.CellStyle>
+            <DataGrid.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" 
+                   Color="#AAD84D4D"/>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#CCDAFF" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+                <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="#FF1E243E" />
+                    <Setter Property="Foreground" Value="#FFFFFFFF" />
+                    <Setter Property="FontSize" Value="25"/>
+                    <Setter Property="Height" Value="50"/>
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <DockPanel Background="#644c60b9">
+                        <Image DockPanel.Dock="Left" Source="/Images/exclamation.png" Height="50" />
+                        <TextBox Text="{Binding Sadrzaj}" FontFamily="Varta" FontSize="20" FontWeight="Medium" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"  Background="#00FFFFFF" Height="50" SelectionBrush="#00000000" SelectionTextBrush="#00000000"></TextBox>
+
+                    </DockPanel>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
+
+            <!--<DataGrid.RowStyle >
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#FFD84D4D"/>
+                            <Setter Property="Foreground" Value="White"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>-->
         </DataGrid>
     </Grid>
 </Page>

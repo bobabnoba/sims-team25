@@ -80,8 +80,8 @@ namespace ZdravoKorporacija.DTO
             Pocetak = pocetak;
         }
 
-        public IzvestajDTO izvestaj;
-        public ZdravstveniKartonDTO zdravstveniKarton;
+        public IzvestajDTO izvestaj { get; set; }
+        public ZdravstveniKartonDTO zdravstveniKarton { get; set; }
 
         /// <pdGenerated>default parent getter</pdGenerated>
         public ZdravstveniKartonDTO GetZdravstveniKarton()

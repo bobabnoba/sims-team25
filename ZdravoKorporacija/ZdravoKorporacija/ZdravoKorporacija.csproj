@@ -13,6 +13,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\damiano.jpg" />
+    <None Remove="Images\exclamation.png" />
     <None Remove="Images\GettyImages-493928198.jpg" />
     <None Remove="Images\icons8-active-male-50.png" />
     <None Remove="Images\output-onlinepngtools.png" />
@@ -33,6 +35,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\damiano.jpg" />
+    <Resource Include="Images\exclamation.png" />
     <Resource Include="Images\GettyImages-493928198.jpg" />
     <Resource Include="Images\icons8-active-male-50.png" />
     <Resource Include="Images\output-onlinepngtools.png" />
