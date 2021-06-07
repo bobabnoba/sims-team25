@@ -24,6 +24,7 @@ namespace ZdravoKorporacija.Stranice.SekretarLekari
         private DateTime Do;
         private double id;
         private bool prva; 
+        private PromeniSmenuDTO smenaDTO;
         public smeneLekara(LekarDTO lekar1)
         {
             InitializeComponent();
@@ -41,7 +42,8 @@ namespace ZdravoKorporacija.Stranice.SekretarLekari
             Od = DateTime.Parse(odDP.Text);
             Do = DateTime.Parse(doDP.Text);
 
-            controller.DrugaSmena(Od, Do, id, prva);
+            smenaDTO = new PromeniSmenuDTO(Od, Do, id, prva);
+            controller.PromeniSmenu(smenaDTO);
             this.Close();
 
         }

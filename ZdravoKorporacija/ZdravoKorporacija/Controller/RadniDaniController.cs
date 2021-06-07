@@ -33,9 +33,9 @@ namespace ZdravoKorporacija.Controller
         {
              danServis.DodajSlobodneDane(Od, Do, lekar);
         }
-        public void DrugaSmena(DateTime Od, DateTime Do, double lekar, bool prva)
+        public void PromeniSmenu(PromeniSmenuDTO smenaDTO)
         {
-            danServis.DrugaSmena(Od, Do, lekar,  prva);
+            danServis.DrugaSmena(smenaDTO);
         }
         public List<RadniDan> PregledSvihRadnihDana2Model(List<RadniDanDTO> dtos)
         {

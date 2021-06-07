@@ -127,15 +127,15 @@ namespace Service
             }
         }
 
-        public void DrugaSmena(DateTime Od, DateTime Do, double lekar, bool prva)
+        public void DrugaSmena(PromeniSmenuDTO smenaDTO)
         {
             List<RadniDan> dani = datoteka.dobaviSve();
             foreach(RadniDan rd in dani.ToArray())
             {
-                if (rd.dan.Date.CompareTo(Od.Date) >= 0 && rd.dan.Date.CompareTo(Do.Date) <= 0 && rd.lekar.Equals(lekar))
+                if (rd.dan.Date.CompareTo(smenaDTO.Od.Date) >= 0 && rd.dan.Date.CompareTo(smenaDTO.Do.Date) <= 0 && rd.lekar.Equals(smenaDTO.idLekara))
                 {
                     RadniDan novi = rd;
-                    if (prva == false)
+                    if (smenaDTO.prvaSmena == false)
                         novi.prvaSmena = false;
                     else
                         novi.prvaSmena = true;

@@ -153,13 +153,13 @@ namespace ZdravoKorporacija.Model
         {
            terminRepozitorijum  = new TerminRepozitorijum();
             List<Termin> termini = terminRepozitorijum .dobaviSve();
+            Termin temp = null;
             foreach (Termin t in termini)
             {
                 if (t.Pocetak == poc && t.Tip == TipTerminaEnum.Operacija)
-                    return t;
+                    temp = t;
             }
-
-            return null;
+            return temp;
         }
 
         public List<Termin> FindPrByPocetak(DateTime poc)
@@ -229,23 +229,25 @@ namespace ZdravoKorporacija.Model
         {
            terminRepozitorijum  = new TerminRepozitorijum();
             List<Termin> termini = terminRepozitorijum .dobaviSve();
-            foreach (Termin t in termini)
+            bool ret = false;
+            foreach (Termin t in termini.ToList())
             {
                 if (t.Id.Equals(termin.Id))
                 {
                     termini.Remove(t);
                     termini.Add(termin);
                     terminRepozitorijum .sacuvaj(termini);
-                    return true;
+                    ret = true;
                 }
             }
 
-            return false;
+            return ret;
         }
 
         public bool AzurirajTermin(TerminDTO termin)
         {
             List<Termin> termini = tr.dobaviSve();
+            bool ret = false;
             foreach (Termin t in termini)
             {
                 if (t.Id.Equals(termin.Id))
@@ -253,10 +255,10 @@ namespace ZdravoKorporacija.Model
                     termini.Remove(t);
                     termini.Add(new Termin(termin));
                     tr.sacuvaj(termini);
-                    return true;
+                    ret =  true;
                 }
             }
-            return false;
+            return ret;
         }
 
         public bool OtkaziTermin(Termin termin, Dictionary<int, int> ids)
@@ -264,8 +266,8 @@ namespace ZdravoKorporacija.Model
            terminRepozitorijum  = new TerminRepozitorijum();
             List<Termin> termini = terminRepozitorijum .dobaviSve();
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
-
-            foreach (Termin t in termini)
+            bool ret = false;
+            foreach (Termin t in termini.ToList())
             {
                 if (t.Id.Equals(termin.Id))
                 {
@@ -273,26 +275,27 @@ namespace ZdravoKorporacija.Model
                     terminRepozitorijum .sacuvaj(termini);
                     datotekaID.sacuvaj(ids);
 
-                    return true;
+                    ret =  true;
                 }
             }
 
-            return false;
+            return ret;
         }
 
         public Termin PregledTermina(int id)
         {
            terminRepozitorijum  = new TerminRepozitorijum();
             List<Termin> termini = terminRepozitorijum.dobaviSve();
+            Termin ret = null;
             foreach (Termin t in termini)
             {
                 if (t.Id.Equals(id))
                 {
-                    return t;
+                    ret =  t;
                 }
             }
 
-            return null;
+            return ret;
         }
 
         public List<Termin> PregledSvihTermina()
@@ -502,28 +505,31 @@ namespace ZdravoKorporacija.Model
             TerminRepozitorijum datoteka = new TerminRepozitorijum();
             List<Termin> termini = datoteka.dobaviSve();
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
+            bool ret = true;
             foreach (Termin t in termini)
             {
                 if (t.Id.Equals(termin.Id))
                 {
-                    return false;
+                    ret =  false;
                 }
             }
 
+            if(ret == true) { 
             termini.Add(termin);
             datoteka.sacuvaj(termini);
             datotekaID.sacuvaj(ids);
             Ban b = BanRepozitorijum.Instance.dobavi(pacijent.Jmbg);
             b.zakazanCnt++;
             BanRepozitorijum.Instance.sacuvaj(b);
-
-            return true;
+            }
+            return  ret;
         }
 
         public bool AzurirajTerminPacijent(Termin termin, Pacijent pacijent)
         {
             TerminRepozitorijum datoteka = new TerminRepozitorijum();
             List<Termin> termini = datoteka.dobaviSve();
+            bool ret = false;
             foreach (Termin t in termini)
             {
                 if (t.Id.Equals(termin.Id))
@@ -532,11 +538,11 @@ namespace ZdravoKorporacija.Model
                     termini.Add(termin);
                     datoteka.sacuvaj(termini);
                     azurirajBanInfo(pacijent, TA_POMJERANJE);
-                    return true;
+                    ret =  true;
                 }
             }
 
-            return false;
+            return ret;
         }
 
         public bool OtkaziTerminPacijent(Termin termin, Pacijent pacijent)
@@ -547,9 +553,7 @@ namespace ZdravoKorporacija.Model
             Dictionary<int, int> ids = datotekaID.dobaviSve();
 
             PacijentRepozitorijum pr = new PacijentRepozitorijum();
-            // Pacijent p = (Pacijent) pr.dobaviSve()
-            //     .FirstOrDefault(p => p.ZdravstveniKarton.Equals(termin.zdravstveniKarton)); // jedan param manje
-
+            bool ret = false;
             foreach (Termin t in termini)
             {
                 if (t.Id.Equals(termin.Id))
@@ -560,11 +564,11 @@ namespace ZdravoKorporacija.Model
                     datotekaID.sacuvaj(ids);
                     azurirajBanInfo(pacijent, TA_OTKAZIVANJE);
 
-                    return true;
+                    ret =  true;
                 }
             }
 
-            return false;
+            return ret;
         }
 
         public Termin DTO2Model(TerminDTO dto)
@@ -580,13 +584,14 @@ namespace ZdravoKorporacija.Model
 
         public Termin DTO2ModelNadji(TerminDTO dto)
         {
+            Termin ret = null;
             foreach (Termin t in PregledSvihTermina())
             {
                 if (dto.Id.Equals(t.Id))
-                    return t;
+                    ret = t;
             }
 
-            return null;
+            return ret;
         }
 
         public void DodajTermin(Termin t)
