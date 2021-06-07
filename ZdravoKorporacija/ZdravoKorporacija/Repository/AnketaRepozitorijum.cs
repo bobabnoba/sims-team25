@@ -1,15 +1,12 @@
-
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
 using Model;
 using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.IO;
 
 namespace Repository
 {
-   public class AnketaRepozitorijum
-   {
+    public class AnketaRepozitorijum
+    {
         private string lokacija;
 
         private static AnketaRepozitorijum _instance;
@@ -31,25 +28,25 @@ namespace Repository
             this.lokacija = @"..\..\..\Data\anketa.json";
         }
         public bool Kreiraj()
-      {
-         // TODO: implement
-         return false;
-      }
-      
-      public bool Obrisi(int id)
-      {
-         // TODO: implement
-         return false;
-      }
-      
-      public Anketa Dobavi()
-      {
-         // TODO: implement
-         return null;
-      }
-      
-      public List<Anketa> DobaviSve()
-      {
+        {
+            // TODO: implement
+            return false;
+        }
+
+        public bool Obrisi(int id)
+        {
+            // TODO: implement
+            return false;
+        }
+
+        public Anketa Dobavi()
+        {
+            // TODO: implement
+            return null;
+        }
+
+        public List<Anketa> DobaviSve()
+        {
             List<Anketa> ankete = new List<Anketa>();
             if (File.Exists(lokacija))
             {
@@ -61,9 +58,9 @@ namespace Repository
             }
             return ankete;
         }
-      
-      public void Sacuvaj(List<Anketa> ankete)
-      {
+
+        public void Sacuvaj(List<Anketa> ankete)
+        {
             JsonSerializer serializer = new JsonSerializer();
             serializer.Formatting = Formatting.Indented;
             StreamWriter writer = new StreamWriter(lokacija);
@@ -72,6 +69,6 @@ namespace Repository
             jWriter.Close();
             writer.Close();
         }
-   
-   }
+
+    }
 }

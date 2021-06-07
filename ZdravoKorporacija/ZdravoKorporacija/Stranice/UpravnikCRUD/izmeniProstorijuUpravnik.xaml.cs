@@ -1,11 +1,9 @@
 ﻿using Controller;
 using Model;
-using Service;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.UpravnikCRUD
 {
@@ -41,14 +39,14 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
 
             comboBoxIzmenaSprat.SelectedIndex = prostorijaDTO.Sprat;
 
-          
+
 
         }
 
         private void potvrdi(object sender, RoutedEventArgs e)
         {
             string ime = textBoxIzmenaNaziv.Text;
-            
+
             TipProstorijeEnum tip;
             int sprat;
             if (comboBoxIzmenaTip.SelectedIndex == 0)
@@ -64,13 +62,13 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
                 tip = TipProstorijeEnum.Ordinacija;
             }
             sprat = comboBoxIzmenaSprat.SelectedIndex;
-            
+
             ProstorijaDTO prostorijaDTO = new ProstorijaDTO(prostorijaIzmenjena.Id, ime, tip, false, sprat);
 
             if (prostorijaKontroler.AzurirajProstoriju(prostorijaDTO, this.indeks))
             {
                 prostorije.RemoveAt(indeks);
-                prostorije.Insert(indeks,prostorijaDTO);
+                prostorije.Insert(indeks, prostorijaDTO);
             }
             this.Close();
         }

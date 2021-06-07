@@ -1,15 +1,13 @@
-using System;
 using Model;
-using System.Collections.Generic;
 using Repository;
-using ZdravoKorporacija.Model;
+using System.Collections.Generic;
 
 namespace Service
 {
-   public class TerapijaServis
-   {
-      public bool DodajTerapiju(Terapija terapija)
-      {
+    public class TerapijaServis
+    {
+        public bool DodajTerapiju(Terapija terapija)
+        {
             TerapijaRepozitorijum datoteka = new TerapijaRepozitorijum();
             List<Terapija> terapije = datoteka.DobaviSve();
             foreach (Terapija t in terapije)
@@ -23,9 +21,9 @@ namespace Service
             datoteka.Sacuvaj(terapije);
             return true;
         }
-      
-      public bool ObrisiTerapiju(Terapija terapija)
-      {
+
+        public bool ObrisiTerapiju(Terapija terapija)
+        {
             TerapijaRepozitorijum datoteka = new TerapijaRepozitorijum();
             List<Terapija> terapije = datoteka.DobaviSve();
             foreach (Terapija t in terapije)
@@ -39,9 +37,9 @@ namespace Service
             }
             return false;
         }
-      
-      public bool AzurirajTerapiju(Terapija terapija)
-      {
+
+        public bool AzurirajTerapiju(Terapija terapija)
+        {
             TerapijaRepozitorijum datoteka = new TerapijaRepozitorijum();
             List<Terapija> terapije = datoteka.DobaviSve();
             foreach (Terapija t in terapije)
@@ -56,9 +54,9 @@ namespace Service
             }
             return false;
         }
-      
-      public Terapija PregledTerapije(Terapija terapija)
-      {
+
+        public Terapija PregledTerapije(Terapija terapija)
+        {
             TerapijaRepozitorijum datoteka = new TerapijaRepozitorijum();
             List<Terapija> terapije = datoteka.DobaviSve();
             foreach (Terapija t in terapije)
@@ -70,13 +68,13 @@ namespace Service
             }
             return null;
         }
-      
-      public List<Terapija> PregledSvihTerapija()
-      {
+
+        public List<Terapija> PregledSvihTerapija()
+        {
             TerapijaRepozitorijum datoteka = new TerapijaRepozitorijum();
             List<Terapija> terapije = datoteka.DobaviSve();
             return terapije;
         }
-   
-   }
+
+    }
 }

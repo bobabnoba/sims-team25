@@ -1,15 +1,10 @@
-﻿using Model;
-using Repository;
-using Service;
+﻿using Repository;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Stranice.LekarCRUD;
-using ZdravoKorporacija.Stranice.LekoviCRUD;
-using ZdravoKorporacija.Stranice.Logovanje;
 
 namespace ZdravoKorporacija.Stranice.Uput
 {
@@ -19,7 +14,7 @@ namespace ZdravoKorporacija.Stranice.Uput
     public partial class Uputi : Page
     {
         private Dictionary<int, int> ids = new Dictionary<int, int>();
-      
+
 
         public Uputi()
         {
@@ -42,7 +37,7 @@ namespace ZdravoKorporacija.Stranice.Uput
                 MessageBox.Show("Pregled nije izabran. Molimo označite pregled koji želite da izmenite.", "Greška");
             else
             {
-                test.prozor.Content = new izmeniUput((TerminDTO)dgUsers.SelectedItem, lekarStart.uputi);
+                test.prozor.Content = new izmeniUput((TerminDTO)dgUsers.SelectedItem);
             }
         }
 
@@ -62,16 +57,16 @@ namespace ZdravoKorporacija.Stranice.Uput
                 MessageBox.Show("Niste selektovali red", "Greska");
             else
             {
-                otkaziUput ou = new otkaziUput(lekarStart.uputi, (TerminDTO)dgUsers.SelectedItem, ids);
+                otkaziUput ou = new otkaziUput((TerminDTO)dgUsers.SelectedItem);
                 ou.Show();
             }
         }
 
-       
+
 
         private void zakaziHitno(object sender, RoutedEventArgs e)
         {
-           
+
             test.prozor.Content = new zakaziHitniLekar(lekarStart.uputi, ids);
         }
 

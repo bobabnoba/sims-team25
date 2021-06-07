@@ -1,17 +1,12 @@
 ﻿using Model;
-using Repository;
 using Service;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Konverteri;
-using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice
 {
@@ -20,8 +15,8 @@ namespace ZdravoKorporacija.Stranice
     /// </summary>
     public partial class zakaziPregled : Window
     {
-      
-      
+
+
         private Dictionary<int, int> ids = new Dictionary<int, int>();
         private Boolean selected; // true ljekar, false vrijeme
         private TerminController tc = new TerminController();
@@ -34,14 +29,14 @@ namespace ZdravoKorporacija.Stranice
         private NaloziController kartonController = new NaloziController();
         private double pacijent;
         private ZdravstveniKartonKonverter zkk = new ZdravstveniKartonKonverter();
-        public zakaziPregled( Dictionary<int,int> ids, double pacijent)
+        public zakaziPregled(Dictionary<int, int> ids, double pacijent)
         {
             InitializeComponent();
-            this.ids = ids;           
-            this.pacijent = pacijent;            
+            this.ids = ids;
+            this.pacijent = pacijent;
             pregledi = tc.PregledSvihTermina2DTO(null);
             lekari = tc.PregledSvihLekaraDTO(tc.PregledSvihLekara());
-            slobodniLekari = lekari;           
+            slobodniLekari = lekari;
 
             noviTermin.Tip = TipTerminaEnum.Pregled;
             noviTermin.Trajanje = 0.5;
@@ -77,9 +72,9 @@ namespace ZdravoKorporacija.Stranice
 
         private void potvrdi(object sender, RoutedEventArgs e)
         {
-            int id = tc.MapaTermina(ids);   
+            int id = tc.MapaTermina(ids);
 
-            
+
             noviTermin.Id = id;
             noviTermin.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
             noviTermin.Lekar = (LekarDTO)ljekar.SelectedItem;
@@ -134,7 +129,7 @@ namespace ZdravoKorporacija.Stranice
 
                     foreach (TerminDTO t in pregledi)
                     {
-                        
+
                         if (t.Lekar.Jmbg.Equals(noviTermin.Lekar.Jmbg))
                         {
                             if (t.Pocetak.Date.Equals(((DateTime)date.SelectedDate).Date))
@@ -170,9 +165,9 @@ namespace ZdravoKorporacija.Stranice
 
                     foreach (TerminDTO t in pregledi)
                     {
-                        if (t.Lekar.Jmbg.Equals(noviTermin.Lekar.Jmbg)) 
+                        if (t.Lekar.Jmbg.Equals(noviTermin.Lekar.Jmbg))
                         {
-                            if (t.Pocetak.Date.Equals(((DateTime)date.SelectedDate).Date)) 
+                            if (t.Pocetak.Date.Equals(((DateTime)date.SelectedDate).Date))
                             {
                                 time.Items.Remove(t.Pocetak.ToShortTimeString());
                             }
@@ -187,7 +182,7 @@ namespace ZdravoKorporacija.Stranice
                 {
                     noviTermin.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
 
-                    slobodniLekari = tc.PregledSvihLekaraDTO(tc.DobaviSlobodneLekare( noviTermin.Pocetak, SpecijalizacijaEnum.OpstaPraksa));
+                    slobodniLekari = tc.PregledSvihLekaraDTO(tc.DobaviSlobodneLekare(noviTermin.Pocetak, SpecijalizacijaEnum.OpstaPraksa));
 
 
                     slobodni();
@@ -198,7 +193,7 @@ namespace ZdravoKorporacija.Stranice
         private void slobodni()
         {
             ljekar.IsEnabled = true;
-            
+
         }
         private void ljekar_changed(object sender, SelectionChangedEventArgs e)
         {
@@ -230,7 +225,7 @@ namespace ZdravoKorporacija.Stranice
                     noviTermin.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
 
 
-                    slobodniLekari = tc.PregledSvihLekaraDTO(tc.DobaviSlobodneLekare( noviTermin.Pocetak, SpecijalizacijaEnum.OpstaPraksa));
+                    slobodniLekari = tc.PregledSvihLekaraDTO(tc.DobaviSlobodneLekare(noviTermin.Pocetak, SpecijalizacijaEnum.OpstaPraksa));
 
                     slobodni();
                 }

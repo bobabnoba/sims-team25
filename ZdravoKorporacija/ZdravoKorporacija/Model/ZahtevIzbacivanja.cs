@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Model
 {
@@ -19,7 +17,7 @@ namespace Model
         }
 
 
-        public ZahtevIzbacivanja(int id, StatickaOprema staticka, DateTime pocetak, DateTime kraj,int indeks, Prostorija prostorija)
+        public ZahtevIzbacivanja(int id, StatickaOprema staticka, DateTime pocetak, DateTime kraj, int indeks, Prostorija prostorija)
         {
             this.Id = id;
             this.prostorija = prostorija;

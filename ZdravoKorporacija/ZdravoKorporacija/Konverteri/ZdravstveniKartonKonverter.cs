@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Model;
+using System.Collections.Generic;
 using System.Linq;
-using Model;
 using ZdravoKorporacija.DTO;
 
 namespace ZdravoKorporacija.Konverteri
@@ -28,7 +28,7 @@ namespace ZdravoKorporacija.Konverteri
             ReceptKonverter receptKonverter = new ReceptKonverter();
             if (entitet != null)
             {
-               return new ZdravstveniKartonDTO(receptKonverter.KonvertujEntiteteUDTOS(entitet.recept), entitet.istorijaBolesti, pacijentKonverter.KonvertujEntitetUDTO((entitet.patient)), entitet.Id);
+                return new ZdravstveniKartonDTO(receptKonverter.KonvertujEntiteteUDTOS(entitet.recept), entitet.istorijaBolesti, pacijentKonverter.KonvertujEntitetUDTO((entitet.patient)), entitet.Id);
 
             }
             else

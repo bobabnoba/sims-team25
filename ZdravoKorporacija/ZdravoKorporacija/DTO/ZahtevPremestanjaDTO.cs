@@ -1,7 +1,5 @@
 ﻿using Model;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ZdravoKorporacija.DTO
 {
@@ -28,7 +26,8 @@ namespace ZdravoKorporacija.DTO
             this.StatickaOprema = staticka;
         }
 
-        public ZahtevPremestanjaDTO(ZahtevPremestanja zahtevPremestanja) {
+        public ZahtevPremestanjaDTO(ZahtevPremestanja zahtevPremestanja)
+        {
             this.Id = zahtevPremestanja.Id;
             this.prostorija = new ProstorijaDTO(zahtevPremestanja.prostorija);
             this.Pocetak = zahtevPremestanja.Pocetak;

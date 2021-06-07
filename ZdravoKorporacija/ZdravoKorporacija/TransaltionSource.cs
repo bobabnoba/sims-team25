@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using System.Globalization;
-using System.Reflection;
 using System.Resources;
 using System.Windows.Data;
 
@@ -49,7 +48,7 @@ namespace ZdravoKorporacija
     }
 
 
-    public class LocExtension:Binding
+    public class LocExtension : Binding
     {
         public LocExtension(string name)
             : base("[" + name + "]")

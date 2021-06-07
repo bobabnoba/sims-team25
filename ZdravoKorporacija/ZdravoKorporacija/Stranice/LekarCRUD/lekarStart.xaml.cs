@@ -1,22 +1,13 @@
-﻿using Model;
-
-using Service;
-
+﻿
 using Repository;
-
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using ZdravoKorporacija.Model;
-using System.Diagnostics;
-using ZdravoKorporacija.Stranice.Uput;
-using ZdravoKorporacija.Stranice.LekoviCRUD;
-using ZdravoKorporacija.DTO;
-using Controller;
 using ZdravoKorporacija.Controller;
-using System.Linq;
-using System;
+using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Stranice.LekoviCRUD;
+using ZdravoKorporacija.Stranice.Uput;
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
 {
@@ -37,10 +28,10 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             termini = new ObservableCollection<TerminDTO>();
             uputi = new ObservableCollection<TerminDTO>();
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
-            
+
             terminiSvi = new ObservableCollection<TerminDTO>(terminController.PregledSvihTermina2());
-           
-            foreach(TerminDTO t in terminiSvi)
+
+            foreach (TerminDTO t in terminiSvi)
             {
                 if (t.Lekar != null)
                 {
@@ -60,7 +51,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                     }
                 }
             }
-            
+
             dgUsers.ItemsSource = termini;
             this.DataContext = this;
         }
@@ -94,7 +85,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         }
 
         private void otkaziPregled(object sender, RoutedEventArgs e)
-        { 
+        {
             if (dgUsers.SelectedItem == null)
                 MessageBox.Show("Niste selektovali red", "Greska");
             else
@@ -129,7 +120,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
         }
 
- 
+
         private void Label_PreviewMouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");

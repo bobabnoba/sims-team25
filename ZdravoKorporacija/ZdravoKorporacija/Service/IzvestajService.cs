@@ -1,16 +1,13 @@
-using System;
 using Model;
-using System.Collections.Generic;
 using Repository;
-using ZdravoKorporacija.Model;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using ZdravoKorporacija.DTO;
-using System.Diagnostics;
 
 namespace Service
 {
-   public class IzvestajService
-   {
+    public class IzvestajService
+    {
         IzvestajRepozitorijum ir = IzvestajRepozitorijum.Instance;
         IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapIzvestaj");
         ObservableCollection<Izvestaj> izvestaji = IzvestajRepozitorijum.Instance.DobaviSve();
@@ -30,7 +27,7 @@ namespace Service
         }
 
         public bool DodajIzvestaj(IzvestajDTO izvestaj, Dictionary<int, int> id_map)
-      {
+        {
 
             foreach (Izvestaj iz in izvestaji)
             {
@@ -45,9 +42,9 @@ namespace Service
             datotekaID.sacuvaj(id_map);
             return true;
         }
-      
-      public bool ObrisiIzvestaj(IzvestajDTO izvestaj, Dictionary<int, int> id_map)
-      {
+
+        public bool ObrisiIzvestaj(IzvestajDTO izvestaj, Dictionary<int, int> id_map)
+        {
             foreach (Izvestaj iz in izvestaji)
             {
                 if (iz.Id.Equals(izvestaj.Id))
@@ -59,10 +56,10 @@ namespace Service
             }
             return false;
         }
-      
-      public bool AzurirajIzvestaj(IzvestajDTO izvestaj)
-      {
-             ObservableCollection<Izvestaj> izvestaji = ir.DobaviSve();
+
+        public bool AzurirajIzvestaj(IzvestajDTO izvestaj)
+        {
+            ObservableCollection<Izvestaj> izvestaji = ir.DobaviSve();
             foreach (Izvestaj iz in izvestaji)
             {
                 if (iz.Id.Equals(izvestaj.Id))
@@ -75,9 +72,9 @@ namespace Service
             }
             return false;
         }
-      
-      public IzvestajDTO PregledIzvestaj(string id)
-      {
+
+        public IzvestajDTO PregledIzvestaj(string id)
+        {
             ObservableCollection<Izvestaj> izvestaji = ir.DobaviSve();
             foreach (Izvestaj iz in izvestaji)
             {
@@ -88,9 +85,9 @@ namespace Service
             }
             return null;
         }
-      
-      public ObservableCollection<IzvestajDTO> PregledSvihIzvestaja()
-      {
+
+        public ObservableCollection<IzvestajDTO> PregledSvihIzvestaja()
+        {
             ObservableCollection<Izvestaj> izvestaji = ir.DobaviSve();
             ObservableCollection<IzvestajDTO> izvestajDTOs = new ObservableCollection<IzvestajDTO>();
             foreach (Izvestaj i in izvestaji)
@@ -99,8 +96,8 @@ namespace Service
             }
             return izvestajDTOs;
         }
-      
-      public Izvestaj convertToModel(IzvestajDTO izvestaj)
+
+        public Izvestaj convertToModel(IzvestajDTO izvestaj)
         {
             return new Izvestaj(izvestaj);
         }

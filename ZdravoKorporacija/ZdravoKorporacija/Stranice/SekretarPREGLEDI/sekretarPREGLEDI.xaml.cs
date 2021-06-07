@@ -1,19 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Model;
+﻿using Model;
 using Repository;
 using Service;
+using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Controls;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
@@ -57,7 +47,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
 
         private void zakaziPregled(object sender, RoutedEventArgs e)
         {
-            zakaziPregledSekretar zp = new zakaziPregledSekretar( ids);
+            zakaziPregledSekretar zp = new zakaziPregledSekretar(ids);
             zp.Show();
         }
 
@@ -82,7 +72,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
                 MessageBox.Show("Pregled nije izabran. Molimo označite pregled koji želite da otkažete.", "Greška");
             else
             {
-                oktaziPregledLekar op = new oktaziPregledLekar( (TerminDTO)dgUsers.SelectedItem);
+                oktaziPregledLekar op = new oktaziPregledLekar((TerminDTO)dgUsers.SelectedItem);
                 op.Show();
             }
         }

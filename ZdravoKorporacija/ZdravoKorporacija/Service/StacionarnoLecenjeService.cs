@@ -1,9 +1,6 @@
 ﻿using Repository;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Text;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Repository;
@@ -84,7 +81,7 @@ namespace ZdravoKorporacija.Service
             foreach (StacionarnoLecenje r in StacionarnaLecenja)
             {
                 if (r.Id.Equals(StacionarnoLecenje.Id))
-                { 
+                {
                     StacionarnaLecenja.Remove(r);
                     StacionarnaLecenja.Add(new StacionarnoLecenje(StacionarnoLecenje));
                     rr.Sacuvaj(StacionarnaLecenja);

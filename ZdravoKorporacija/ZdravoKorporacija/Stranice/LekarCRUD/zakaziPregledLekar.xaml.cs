@@ -1,16 +1,12 @@
 ﻿using Controller;
 using Model;
-using Repository;
-using Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Stranice.Logovanje;
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
@@ -20,13 +16,12 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     /// </summary>
     public partial class zakaziPregledLekar : Page
     {
-        private ObservableCollection<ProstorijaDTO> slobodneProstorije;
         private List<ProstorijaDTO> prostorije = new List<ProstorijaDTO>();
 
         private TerminController tc = new TerminController();
         private ProstorijaController pc = new ProstorijaController();
         private PacijentController pacc = PacijentController.Instance;
-       
+
 
         private TerminDTO termin = new TerminDTO();
         private ObservableCollection<TerminDTO> pregledi = new ObservableCollection<TerminDTO>();
@@ -36,12 +31,12 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         public zakaziPregledLekar()
         {
             InitializeComponent();
-          
+
             cbPacijent.ItemsSource = pacc.PregledSvihPacijenata2();
 
 
             prostorije = pc.PregledSvihProstorija2();
- 
+
             cbProstorija.ItemsSource = prostorije;
 
             DateTime danas = DateTime.Today;
@@ -58,13 +53,13 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         {
             PacijentDTO pac = (PacijentDTO)cbPacijent.SelectedItem;
 
-            
+
             ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
 
             String t = cboItem.Content.ToString();
             termin.Pocetak = DateTime.Parse(date.Text + " " + t);
             termin.prostorija = (ProstorijaDTO)cbProstorija.SelectedItem;
-            
+
             String d = date.Text;
             int prepodne = Int32.Parse(now.Substring(0, 2));
             int popodne = prepodne + 12;
@@ -108,13 +103,13 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 termin.Tip = TipTerminaEnum.Operacija;
 
             termin.Lekar = tc.NadjiLekaraPoJMBG(lekarLogin.lekar.Jmbg);
-            
 
-            if (tc.ZakaziTermin(termin,pac))
+
+            if (tc.ZakaziTermin(termin, pac))
             {
                 //this.pregledi.Add(termin);
             }
- 
+
             test.prozor.Content = new lekarStart(lekarLogin.lekar);
         }
 

@@ -4,7 +4,6 @@
 // Purpose: Definition of Class Medicine
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using ZdravoKorporacija.DTO;
 
@@ -66,7 +65,7 @@ namespace Model
                 alternativniLekovi.Clear();
         }
         public Lek() { }
-        public Lek(int  ID, String pr, String sas, String np, String nl)
+        public Lek(int ID, String pr, String sas, String np, String nl)
         {
             Id = ID;
             Proizvodjac = pr;

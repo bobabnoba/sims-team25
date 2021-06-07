@@ -1,18 +1,14 @@
-﻿using Model;
-using Repository;
+﻿using Controller;
 using Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
 using ZdravoKorporacija.Controller;
-using ZdravoKorporacija.Model;
-using ZdravoKorporacija.Service;
-using System.Linq;
-using Controller;
 using ZdravoKorporacija.DTO;
 
 namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
@@ -65,13 +61,13 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
             ZahtevPremestanjaDTO zahtevPremestanjaDTO = new ZahtevPremestanjaDTO();
             zahtevPremestanjaDTO.StatickaOprema = staticka;
             this.indeks = (int)cbProstorija.SelectedIndex;
-           
+
             zahtevPremestanjaDTO.prostorija = (ProstorijaDTO)cbProstorija.SelectedItem;
             zahtevPremestanjaDTO.Pocetak = (DateTime)timePicker.SelectedDate;
             zahteviController.ZakaziPremestanje((InventarDTO)cbMagacin.SelectedItem, zahtevPremestanjaDTO, (String)sati.SelectedItem, textBoxTrajanje.Text);
         }
-       
-     
+
+
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
@@ -99,7 +95,8 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
         }
 
 
-        public void ProveraTermina() {
+        public void ProveraTermina()
+        {
             if (cbProstorija.SelectedIndex != -1)
             {
                 selected = true;
@@ -107,8 +104,8 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
 
             if (selected)
             {
-               ProstorijaDTO prost = (ProstorijaDTO)cbProstorija.SelectedItem;
-               
+                ProstorijaDTO prost = (ProstorijaDTO)cbProstorija.SelectedItem;
+
                 foreach (TerminDTO terminDTO in pregledi)
                 {
                     if (terminDTO.prostorija != null && terminDTO.prostorija.Id.Equals(prost.Id))
@@ -138,7 +135,8 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
             }
         }
 
-        public void timer() {
+        public void timer()
+        {
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += ProveraZahteva;
@@ -164,7 +162,7 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
 
                 zahteviController.ObrisiZahtevPremestanja(premastanjeZahtevDTO);
                 TerminDTO terminDTO = new TerminDTO(premastanjeZahtevDTO.prostorija, premastanjeZahtevDTO.Pocetak);
-                statickaopremaStorage.DodajOpremu(premastanjeZahtevDTO.StatickaOprema,terminDTO,"10");
+                statickaopremaStorage.DodajOpremu(premastanjeZahtevDTO.StatickaOprema, terminDTO, "10");
                 MessageBox.Show("zavrsen termin");
                 ProstorijaDTO p = premastanjeZahtevDTO.prostorija;
                 StatickaOpremaDTO stat = new StatickaOpremaDTO((InventarDTO)premastanjeZahtevDTO.StatickaOprema);
@@ -186,7 +184,7 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
 
             for (DateTime tm = danas.AddHours(8); tm < danas.AddHours(22); tm = tm.AddMinutes(30))
             {
-               comboBoxSati.Items.Add(tm.ToShortTimeString());
+                comboBoxSati.Items.Add(tm.ToShortTimeString());
 
             }
 

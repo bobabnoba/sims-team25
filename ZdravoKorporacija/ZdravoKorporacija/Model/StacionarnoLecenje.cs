@@ -1,7 +1,5 @@
 ﻿using Model;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using ZdravoKorporacija.DTO;
 
 namespace ZdravoKorporacija.Model
@@ -18,7 +16,7 @@ namespace ZdravoKorporacija.Model
 
         public Pacijent Pacijent { get; set; }
         public StacionarnoLecenje() { }
-        public StacionarnoLecenje(int id, Prostorija prostorija, DateTime pocetak, DateTime kraj, String trajanje,Pacijent pacijent)
+        public StacionarnoLecenje(int id, Prostorija prostorija, DateTime pocetak, DateTime kraj, String trajanje, Pacijent pacijent)
         {
             Id = id;
             Prostorija = prostorija;

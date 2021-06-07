@@ -1,5 +1,5 @@
-﻿using System;
-using Model;
+﻿using Model;
+using System;
 
 namespace ZdravoKorporacija.DTO
 {

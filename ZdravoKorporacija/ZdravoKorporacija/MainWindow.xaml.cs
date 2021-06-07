@@ -1,20 +1,13 @@
 ﻿using Model;
 
 using Repository;
-
-using Service;
-
-using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Model;
-using ZdravoKorporacija.Stranice;
-using ZdravoKorporacija.Stranice.LekarCRUD;
 using ZdravoKorporacija.Stranice.Logovanje;
 using ZdravoKorporacija.Stranice.PacijentCRUD;
 using ZdravoKorporacija.Stranice.SekretarCRUD;
-using ZdravoKorporacija.Stranice.UpravnikCRUD;
 
 namespace ZdravoKorporacija
 {
@@ -25,15 +18,15 @@ namespace ZdravoKorporacija
     public partial class MainWindow : Window
     {
         public static ContentControl cc = new ContentControl();
-        public static  List<Specijalista> spec = new List<Specijalista>();
+        public static List<Specijalista> spec = new List<Specijalista>();
         public static MainWindow mw = new MainWindow();
         private string CurrentLanguage { get; set; }
         UlogaEnum uloga;
-        public MainWindow() 
-        { 
+        public MainWindow()
+        {
             InitializeComponent();
             cc.Content = this.Content;
-            Specijalista s1 = new Specijalista("Veljko","Vukovic" );
+            Specijalista s1 = new Specijalista("Veljko", "Vukovic");
             s1.Specijalizacija = SpecijalizacijaEnum.Kardiohirurg;
             spec.Add(s1);
 
@@ -114,7 +107,7 @@ namespace ZdravoKorporacija
             uloga = UlogaEnum.Upravnik;
             upavnikLogin l = new upavnikLogin(uloga);
             l.Show();
-           
+
         }
         private void openLekarFrame(object sender, RoutedEventArgs e)
         {

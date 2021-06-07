@@ -4,8 +4,6 @@
  * Purpose: Definition of the Class TipNotifikacije
  ***********************************************************************/
 
-using System;
-
 namespace Model
 {
 

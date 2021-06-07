@@ -1,27 +1,23 @@
 ﻿using Model;
 using Repository;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Text;
 using ZdravoKorporacija.DTO;
 
 namespace Service
 {
-    public class DinamickaOpremaService 
+    public class DinamickaOpremaService
     {
 
         MagacinService magacinServis = new MagacinService();
         DinamickaOpremaRepozitorijum dinamickaOpremaRepozitorijum = DinamickaOpremaRepozitorijum.Instance;
         public bool DodajOpremu(DinamickaOpremaDTO opremaDTO)
         {
-          
+
             if (opremaDTO.Prostorija == null)
             {
                 return false;
             }
-          
+
 
             DinamickaOprema dinamickaOprema = new DinamickaOprema(opremaDTO, opremaDTO.Kolicina);
             dinamickaOprema.Prostorija = new Prostorija(opremaDTO.Prostorija);
@@ -58,7 +54,7 @@ namespace Service
 
         public ObservableCollection<DinamickaOpremaDTO> PregledSveOpremeDTO()
         {
-            ObservableCollection<DinamickaOprema>  dinamickaOprema = dinamickaOpremaRepozitorijum.DobaviSve();
+            ObservableCollection<DinamickaOprema> dinamickaOprema = dinamickaOpremaRepozitorijum.DobaviSve();
             ObservableCollection<DinamickaOpremaDTO> dinamickaOpremaDTO = new ObservableCollection<DinamickaOpremaDTO>();
             foreach (DinamickaOprema oprema in dinamickaOprema)
             {

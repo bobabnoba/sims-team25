@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Model;
 using Service;
-using Model;
+using System;
+using System.Collections.Generic;
 using ZdravoKorporacija.DTO;
 
 namespace ZdravoKorporacija.Controller
@@ -31,11 +30,11 @@ namespace ZdravoKorporacija.Controller
         }
         public void DodajSlobodneDane(DateTime Od, DateTime Do, double lekar)
         {
-             danServis.DodajSlobodneDane(Od, Do, lekar);
+            danServis.DodajSlobodneDane(Od, Do, lekar);
         }
         public void DrugaSmena(DateTime Od, DateTime Do, double lekar, bool prva)
         {
-            danServis.DrugaSmena(Od, Do, lekar,  prva);
+            danServis.DrugaSmena(Od, Do, lekar, prva);
         }
         public List<RadniDan> PregledSvihRadnihDana2Model(List<RadniDanDTO> dtos)
         {

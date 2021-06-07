@@ -1,16 +1,14 @@
-﻿using System;
+﻿using Model;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Model;
 using ZdravoKorporacija.DTO;
 
 namespace ZdravoKorporacija.Konverteri
 {
     public class NotifikacijaKonverter : IKonverter<Notifikacija, NotifikacijaDTO>
     {
-       
-        public NotifikacijaKonverter() {}
+
+        public NotifikacijaKonverter() { }
 
         public List<Notifikacija> KonvertujDTOSuEntitete(IEnumerable<NotifikacijaDTO> dtos)
             => dtos.Select(dto => KonvertujDTOuEntitet(dto)).ToList();

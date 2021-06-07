@@ -1,11 +1,6 @@
-﻿using Model;
-using Service;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Windows;
+﻿using System.Windows;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
 {
@@ -17,7 +12,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         TerminDTO termin;
         private TerminController controller = new TerminController();
 
-        public oktaziPregledLekar( TerminDTO t)
+        public oktaziPregledLekar(TerminDTO t)
         {
             InitializeComponent();
             termin = t;
@@ -26,9 +21,9 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private void da(object sender, RoutedEventArgs e)
         {
             controller.OtkaziTermin(termin);
-            
+
             lekarStart.termini.Remove(termin);
-            
+
             this.Close();
         }
 

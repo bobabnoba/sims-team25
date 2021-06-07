@@ -1,10 +1,8 @@
 ﻿using Model;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Text;
 
 namespace Repository
 {
@@ -70,7 +68,7 @@ namespace Repository
         }
 
         public int Sacuvaj()
-        { 
+        {
             string lokacija = @"..\..\..\Data\dinamickaOprema.json";
             JsonSerializer serializer = new JsonSerializer();
             serializer.Formatting = Formatting.Indented;

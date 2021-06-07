@@ -1,9 +1,7 @@
-﻿using System;
+﻿using Model;
+using Repository;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Model;
-using Repository;
 
 namespace ZdravoKorporacija.Service
 {
@@ -31,6 +29,6 @@ namespace ZdravoKorporacija.Service
             return poslednja;
         }
 
-        
+
     }
 }

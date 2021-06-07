@@ -1,18 +1,10 @@
 ﻿using Model;
 using Repository;
 using Service;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
 {
@@ -26,11 +18,11 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         ZdravstveniKarton zk;
         //private List<Lekar> ljekari;
         Dijagnoza d;
-        public dodajDijagnozu(ObservableCollection<Dijagnoza> dijagnoze,ZdravstveniKarton zk)
+        public dodajDijagnozu(ObservableCollection<Dijagnoza> dijagnoze, ZdravstveniKarton zk)
         {
             InitializeComponent();
             d = new Dijagnoza();
-            this.zk = zk; 
+            this.zk = zk;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -38,8 +30,8 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             d.Oboljenje = oboljenjeText.Text;
             d.Opis = new TextRange(opisText.Document.ContentStart, opisText.Document.ContentEnd).Text;
 
-           // foreach (IstorijaBolesti i in selektovani.ZdravstveniKarton.GetIstorijaBolesti())
-             //   dgUsers.ItemsSource = i.GetDijagnoza();
+            // foreach (IstorijaBolesti i in selektovani.ZdravstveniKarton.GetIstorijaBolesti())
+            //   dgUsers.ItemsSource = i.GetDijagnoza();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

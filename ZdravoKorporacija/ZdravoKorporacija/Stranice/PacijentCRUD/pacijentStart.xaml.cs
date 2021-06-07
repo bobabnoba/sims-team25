@@ -1,22 +1,16 @@
 ﻿using Model;
-
+using Repository;
 using Service;
 using System;
-
-using Repository;
-
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using ZdravoKorporacija.Model;
-using ZdravoKorporacija.Stranice.PacijentCRUD;
 using System.Windows.Threading;
-using ZdravoKorporacija.Service;
-using System.ComponentModel;
-using System.Linq;
 using ZdravoKorporacija.Controller;
+using ZdravoKorporacija.Model;
+using ZdravoKorporacija.Service;
 
 namespace ZdravoKorporacija.Stranice
 {
@@ -52,13 +46,13 @@ namespace ZdravoKorporacija.Stranice
             ids = datotekaID.dobaviSve();
 
             ObservableCollection<Termin> sviTermini = new ObservableCollection<Termin>(storage.PregledSvihTermina());
-            foreach(Termin t in sviTermini)
+            foreach (Termin t in sviTermini)
             {
-                if(t!=null)
-                if (t.zdravstveniKarton != null && t.zdravstveniKarton.Id.Equals(pacijent.ZdravstveniKarton.Id))
-                {
-                    termini.Add(t);
-                }
+                if (t != null)
+                    if (t.zdravstveniKarton != null && t.zdravstveniKarton.Id.Equals(pacijent.ZdravstveniKarton.Id))
+                    {
+                        termini.Add(t);
+                    }
             }
             dgUsers.ItemsSource = termini;
             this.DataContext = this;
@@ -69,14 +63,14 @@ namespace ZdravoKorporacija.Stranice
 
             Anketa poslednja = (Anketa)ankete.LastOrDefault(s => s.IdAutora.Equals(pacijent.Jmbg) && s.Termin == null);
 
-            
+
             if (poslednja != null && DateTime.Compare(poslednja.Datum, DateTime.Parse(DateTime.Now.AddMinutes(-9).ToString())) <= 0)
             {
                 anketaB.Visibility = Visibility.Visible;
             }
         }
 
-        
+
         private void timer_Tick(object sender, EventArgs e)
         {
             korisnikServis.provjeriStatus(pacijent);
@@ -85,7 +79,7 @@ namespace ZdravoKorporacija.Stranice
             {
                 DateTime ter = r.Pocetak;
 
-            //    Debug.WriteLine("termin: " + ter.ToString() + ", sad je: " + DateTime.Now.ToString()); //*
+                //    Debug.WriteLine("termin: " + ter.ToString() + ", sad je: " + DateTime.Now.ToString()); //*
 
                 //if (DateTime.Compare(DateTime.Now, ter.AddMinutes(-1)) == 0) // ovo i za jednake vraca 1, nikad 0 ....
                 //{
@@ -101,7 +95,7 @@ namespace ZdravoKorporacija.Stranice
 
                 int res = DateTime.Compare(DateTime.Now, ter.AddMinutes(1));
 
-               // Debug.WriteLine("res je " + res); //*
+                // Debug.WriteLine("res je " + res); //*
 
                 if (this.prikazi == true && res >= 0)
                 {
@@ -129,7 +123,7 @@ namespace ZdravoKorporacija.Stranice
             else
             {
                 Termin t = (Termin)dgUsers.SelectedItem;
-               // Debug.WriteLine("Danas je " + DateTime.Today.ToString());
+                // Debug.WriteLine("Danas je " + DateTime.Today.ToString());
                 if (t.Pocetak.Date <= DateTime.Today.AddDays(1).Date)
                 {
                     MessageBox.Show("Nije moguće izmeniti pregled koji je zakazan u predstojećih 24h", "Greška");
@@ -159,7 +153,7 @@ namespace ZdravoKorporacija.Stranice
             }
             else
             {
-                zakaziPregled zp = new zakaziPregled( ids, pacijent.Jmbg);
+                zakaziPregled zp = new zakaziPregled(ids, pacijent.Jmbg);
                 zp.Show();
             }
         }
@@ -223,9 +217,9 @@ namespace ZdravoKorporacija.Stranice
 
         private void popuniAnketu(object sender, RoutedEventArgs e)
         {
-                //AnketiranjeBolnice ab = new AnketiranjeBolnice(pacijent);
-                //ab.Show();
-                //anketaB.Visibility = Visibility.Hidden;
+            //AnketiranjeBolnice ab = new AnketiranjeBolnice(pacijent);
+            //ab.Show();
+            //anketaB.Visibility = Visibility.Hidden;
 
         }
     }

@@ -24,7 +24,7 @@ namespace ZdravoKorporacija.Stranice.Uput
         private ProstorijaController prostorijeController = new ProstorijaController();
         private LekarController lekarController = new LekarController();
         private ZdravstveniKartonServis zdravstveniKartonServis = new ZdravstveniKartonServis();
-        private PacijentController pacijentiController =  PacijentController.Instance;
+        private PacijentController pacijentiController = PacijentController.Instance;
         private List<PacijentDTO> pacijenti = new List<PacijentDTO>();
         private List<LekarDTO> lekari = new List<LekarDTO>();
         private List<TerminDTO> termini = new List<TerminDTO>();
@@ -80,7 +80,7 @@ namespace ZdravoKorporacija.Stranice.Uput
             p.Id = id;
             PacijentDTO pac = (PacijentDTO)cbPacijent.SelectedItem;
             ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
-            
+
 
             String d = date.Text;
             String t = null;
@@ -150,13 +150,9 @@ namespace ZdravoKorporacija.Stranice.Uput
             }
 
             this.pregledi.Add(p);
-            //if (terminController.ZakaziTermin(p, ids))
-            //{
+            CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
+            date.BlackoutDates.Add(cdr);
 
-            //    lekariDat.sacuvaj(lekari);
-            //}
-            //pac.AddTermin(p);
-            //pacijentiController.AzurirajPacijenta(pac);
             terminController.izdajUput(pac, p);
             test.prozor.Content = new Uputi();
         }

@@ -1,23 +1,21 @@
-
-using System;
-using System.Collections.Generic;
-using System.IO;
 using Model;
 using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.IO;
 
 namespace Repository
 {
-   public class BeleskaRepozitorijum
-   {
+    public class BeleskaRepozitorijum
+    {
         private string lokacija;
 
         public BeleskaRepozitorijum()
         {
             this.lokacija = @"..\..\..\Data\beleska.json";
         }
-     
-      public List<Beleska> DobaviSve()
-      {
+
+        public List<Beleska> DobaviSve()
+        {
             List<Beleska> beleske = new List<Beleska>();
             if (File.Exists(lokacija))
             {
@@ -29,9 +27,9 @@ namespace Repository
             }
             return beleske;
         }
-      
-      public void Sacuvaj(List<Beleska> beleske)
-      {
+
+        public void Sacuvaj(List<Beleska> beleske)
+        {
             JsonSerializer serializer = new JsonSerializer();
             serializer.Formatting = Formatting.Indented;
             StreamWriter writer = new StreamWriter(lokacija);
@@ -40,6 +38,6 @@ namespace Repository
             jWriter.Close();
             writer.Close();
         }
-   
-   }
+
+    }
 }

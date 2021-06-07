@@ -1,23 +1,10 @@
-﻿using System;
+﻿using Repository;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Model;
-using Repository;
-using Service;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Stranice.SekretarCRUD;
 
 namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
@@ -33,7 +20,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
         private TerminController controller = new TerminController();
         public sekretarNALOZI()
         {
-            
+
             InitializeComponent();
             PacijentRepozitorijum dat = new PacijentRepozitorijum();
             pacijenti = controller.PregledSvihPacijenata2DTO();
@@ -44,7 +31,7 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
                     pacijenti.Remove(p);
                 }
             }
-            
+
             dgUsers.ItemsSource = pacijenti;
 
 

@@ -2,9 +2,8 @@
 using Repository;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Linq;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using ZdravoKorporacija.DTO;
 
@@ -33,9 +32,9 @@ namespace Service
 
             return false;
         }
-            public Korisnik Uloguj(UlogaEnum uloga, string ime, string sifra)
+        public Korisnik Uloguj(UlogaEnum uloga, string ime, string sifra)
         {
-         
+
             KorisnikDTO unos = new KorisnikDTO();
             unos.Username = ime;
             unos.Password = sifra;
@@ -182,25 +181,25 @@ namespace Service
         public void provjeriStatus(Pacijent pacijent)
         {
             b = BanRepozitorijum.Instance.dobavi(pacijent.Jmbg);
-        
+
             if (b.otkazanCnt >= 3 || b.zakazanCnt >= 3 || b.pomerenCnt >= 3)
-                {
-                    banKorisnika(pacijent);
-                    b.trenutakBanovanja = DateTime.Now.ToString();
+            {
+                banKorisnika(pacijent);
+                b.trenutakBanovanja = DateTime.Now.ToString();
 
-                    b.otkazanCnt = 0;
-                    b.pomerenCnt = 0;
-                    b.zakazanCnt = 0;
-                }
+                b.otkazanCnt = 0;
+                b.pomerenCnt = 0;
+                b.zakazanCnt = 0;
+            }
 
-                // DateTime.Compare(DateTime.Now, DateTime.Parse(b.trenutakBanovanja).AddMinutes(3)) >= 0
-                if (pacijent.banovan && DateTime.Compare(DateTime.Now, DateTime.Parse(b.trenutakBanovanja).AddMinutes(3)) >= 0)
-                {
-                    unbanKorisnika(pacijent);
-                }
+            // DateTime.Compare(DateTime.Now, DateTime.Parse(b.trenutakBanovanja).AddMinutes(3)) >= 0
+            if (pacijent.banovan && DateTime.Compare(DateTime.Now, DateTime.Parse(b.trenutakBanovanja).AddMinutes(3)) >= 0)
+            {
+                unbanKorisnika(pacijent);
+            }
 
-                pacServis.AzurirajPacijenta(pacijent);
-                BanRepozitorijum.Instance.sacuvaj(b);
+            pacServis.AzurirajPacijenta(pacijent);
+            BanRepozitorijum.Instance.sacuvaj(b);
 
         }
 

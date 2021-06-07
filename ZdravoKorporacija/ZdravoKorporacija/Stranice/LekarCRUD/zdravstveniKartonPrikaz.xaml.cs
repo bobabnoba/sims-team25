@@ -1,18 +1,10 @@
-﻿using Controller;
-using Model;
-using Repository;
-using Service;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.Model;
 
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
@@ -52,19 +44,19 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             }
             zk = pac.ZdravstveniKarton;
             tab = 1;
-           
-                foreach (IzvestajDTO iz in izvestajController.PregledSvihIzvestaja())
+
+            foreach (IzvestajDTO iz in izvestajController.PregledSvihIzvestaja())
+            {
+                foreach (TerminDTO ter in pac.termin)
                 {
-                    foreach (TerminDTO ter in pac.termin)
+                    if (ter.izvestaj.Id.Equals(iz.Id) && !izvestaji.Contains(iz))
                     {
-                        if (ter.izvestaj.Id.Equals(iz.Id) && !izvestaji.Contains(iz))
-                        {
-                            izvestaji.Add(iz);
-                            break;
-                        }
+                        izvestaji.Add(iz);
+                        break;
                     }
                 }
-            
+            }
+
             izvestajGrid.ItemsSource = izvestaji;
             dodajAnamnezu.Visibility = Visibility.Hidden;
 
@@ -81,7 +73,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 {
                     if (r.Id.Equals(rec.Id))
                     {
-                        
+
                         recepti.Add(r);
                         break;
                     }
@@ -108,15 +100,15 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             InitializeComponent();
             recepti = new ObservableCollection<ReceptDTO>();
             izvestaji = new ObservableCollection<IzvestajDTO>();
-            pacijenti = pacijentController.PregledSvihPacijenata2();      
-         
+            pacijenti = pacijentController.PregledSvihPacijenata2();
+
             zkt = t.zdravstveniKarton;
             tab = 2;
             sel = t;
-            
-            foreach(PacijentDTO pacijent in pacijentController.PregledSvihPacijenata2())
-            {           
-                if(pacijent.ZdravstveniKarton.Id.Equals(zkt.Id))
+
+            foreach (PacijentDTO pacijent in pacijentController.PregledSvihPacijenata2())
+            {
+                if (pacijent.ZdravstveniKarton.Id.Equals(zkt.Id))
                 {
                     pac = pacijent;
                     break;
@@ -124,16 +116,16 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             }
             foreach (IzvestajDTO iz in izvestajController.PregledSvihIzvestaja())
             {
-                if(pac!=null)
-                { 
-                foreach (TerminDTO ter in pac.termin)
+                if (pac != null)
                 {
-                    if (ter.izvestaj.Id.Equals(iz.Id))
+                    foreach (TerminDTO ter in pac.termin)
                     {
-                        izvestaji.Add(iz);
-                        break;
+                        if (ter.izvestaj.Id.Equals(iz.Id))
+                        {
+                            izvestaji.Add(iz);
+                            break;
+                        }
                     }
-                }
                 }
             }
 
@@ -170,7 +162,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             catch (NullReferenceException) { }
 
             this.DataContext = this;
-            
+
         }
 
         private void dgUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -184,7 +176,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             if (tab == 1)
             {
                 izdaj = new izdajRecept(pac);
-                
+
             }
             else if (tab == 2)
             {
@@ -230,8 +222,8 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                         pac = p;
                 }
             }
-            
-            terminController.ObrisiAnamnezu(iz,sel);
+
+            terminController.ObrisiAnamnezu(iz, sel);
             izvestaji.Remove(iz);
         }
     }

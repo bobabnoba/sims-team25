@@ -27,7 +27,7 @@ namespace Repository
 
         public ProstorijaRepozitorijum()
         {
-           prostorije = new ObservableCollection<Prostorija>();
+            prostorije = new ObservableCollection<Prostorija>();
         }
 
         public string lokacija = @"..\..\..\Data\prostorije.json";

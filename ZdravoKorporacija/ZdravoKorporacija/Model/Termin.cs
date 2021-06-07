@@ -25,9 +25,9 @@ namespace Model
             this.prostorija = null;
             this.izvestaj = izvestaj;
         }
-        
 
-        public Termin(ZdravstveniKarton zdravstveniKarton, Prostorija prostorija, Lekar Lekar, TipTerminaEnum tip, DateTime pocetak, double trajanje,Izvestaj izvestaj)
+
+        public Termin(ZdravstveniKarton zdravstveniKarton, Prostorija prostorija, Lekar Lekar, TipTerminaEnum tip, DateTime pocetak, double trajanje, Izvestaj izvestaj)
         {
             this.izvestaj = izvestaj;
             this.zdravstveniKarton = zdravstveniKarton;
@@ -48,18 +48,18 @@ namespace Model
 
         public Termin(TerminDTO termin)
         {
-            if(termin!=null)
-            { 
-                if(termin.izvestaj!=null)
-            this.izvestaj = new Izvestaj(termin.izvestaj);
-            this.zdravstveniKarton = new ZdravstveniKarton(termin.zdravstveniKarton);
-            this.prostorija = new Prostorija(termin.prostorija);
-            Lekar = new Lekar(termin.Lekar);
-            Id = termin.Id;
-            Tip = termin.Tip;
-            Pocetak = termin.Pocetak;
-            Trajanje = termin.Trajanje;
-            this.hitno = termin.hitno;
+            if (termin != null)
+            {
+                if (termin.izvestaj != null)
+                    this.izvestaj = new Izvestaj(termin.izvestaj);
+                this.zdravstveniKarton = new ZdravstveniKarton(termin.zdravstveniKarton);
+                this.prostorija = new Prostorija(termin.prostorija);
+                Lekar = new Lekar(termin.Lekar);
+                Id = termin.Id;
+                Tip = termin.Tip;
+                Pocetak = termin.Pocetak;
+                Trajanje = termin.Trajanje;
+                this.hitno = termin.hitno;
             }
         }
 

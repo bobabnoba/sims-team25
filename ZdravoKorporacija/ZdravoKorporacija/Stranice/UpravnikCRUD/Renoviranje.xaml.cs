@@ -1,20 +1,10 @@
-﻿using Model;
-using Service;
+﻿using Controller;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ZdravoKorporacija.DTO;
-using System.Linq;
-using System.Collections.ObjectModel;
-using Controller;
 
 namespace ZdravoKorporacija.Stranice.UpravnikCRUD
 {
@@ -37,7 +27,7 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
             izabraneProstorije = new ObservableCollection<ProstorijaDTO>();
             prostorije = prostorijeKontroler.PregledSvihProstorijaDTO();
             cbProstorija.ItemsSource = prostorije;
-            cbProstorija.SelectedIndex = index ;
+            cbProstorija.SelectedIndex = index;
             satiCombobox = sati;
             kalendarInit();
         }
@@ -60,7 +50,7 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
 
         private void potvrdi(object sender, RoutedEventArgs e)
         {
-            ZahtevRenoviranjeDTO zahtevRenoviranje = new ZahtevRenoviranjeDTO(0,(ProstorijaDTO) cbProstorija.SelectedItem, (DateTime)timePicker.SelectedDate, (String)sati.SelectedItem, textBoxTrajanje.Text);
+            ZahtevRenoviranjeDTO zahtevRenoviranje = new ZahtevRenoviranjeDTO(0, (ProstorijaDTO)cbProstorija.SelectedItem, (DateTime)timePicker.SelectedDate, (String)sati.SelectedItem, textBoxTrajanje.Text);
             zahtevRenoviranje.prostorije = izabraneProstorije.ToList<ProstorijaDTO>();
             renoviranjeKontroler.ZakaziRenoviranje(zahtevRenoviranje);
         }
@@ -70,10 +60,10 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
             this.Close();
         }
         private void date_changed(object sender, SelectionChangedEventArgs e)
-        { 
-        
+        {
+
         }
-            private void sati_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void sati_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }

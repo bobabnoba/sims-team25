@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using Service;
 using System;
 using System.Collections.Generic;
@@ -18,22 +19,19 @@ namespace ZdravoKorporacija.Stranice.Uput
     /// </summary>
     public partial class izmeniUput : Page
     {
-        private TerminService terminServis = new TerminService();
-        private ProstorijaService prostorijeStorage = new ProstorijaService();
-        private LekarController lekarController = new LekarController();
-        private PacijentService pacijentiServis = new PacijentService();
+        private TerminController tc = TerminController.Instance;
+        private ProstorijaController pc = ProstorijaController.Instance;
+        private LekarController lekarController = LekarController.Instance;
         private List<PacijentDTO> pacijenti = new List<PacijentDTO>();
-        private LekarRepozitorijum lekariDat = new LekarRepozitorijum();
         private List<LekarDTO> lekari = new List<LekarDTO>();
-        private PacijentController pacijentController =PacijentController.Instance;
-        private ObservableCollection<Prostorija> prostorije = new ObservableCollection<Prostorija>();
+        private PacijentController pacijentController = PacijentController.Instance;
+        private List<ProstorijaDTO> prostorije = new List<ProstorijaDTO>();
         private TerminDTO p;
         private TerminDTO s; // selektovani, za ukloniti
-        private ObservableCollection<TerminDTO> pregledi;
         private List<TerminDTO> termini;
         String now = DateTime.Now.ToString("hh:mm:ss tt");
         DateTime today = DateTime.Today;
-        public izmeniUput(TerminDTO selektovani, ObservableCollection<TerminDTO> termini)
+        public izmeniUput(TerminDTO selektovani)
         {
             InitializeComponent();
             pacijenti = pacijentController.PregledSvihPacijenata2();
@@ -56,7 +54,6 @@ namespace ZdravoKorporacija.Stranice.Uput
 
             }
             catch (NullReferenceException) { }
-            pregledi = termini;
 
             lekari = (List<LekarDTO>)lekarController.dobaviListuDTOLekara();
             lekari.Remove(lekarLogin.lekar);
@@ -64,16 +61,15 @@ namespace ZdravoKorporacija.Stranice.Uput
             CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
             date.BlackoutDates.Add(cdr);
 
-            //Termin ne vidi pacijenta ni doktora -- cb nemaju selected item
             try
             {
                 date.SelectedDate = selektovani.Pocetak;
                 time.SelectedValue = selektovani.Pocetak.ToString("HH:mm");
             }
             catch (Exception) { }
-            prostorije = prostorijeStorage.PregledSvihProstorija();
+            prostorije = pc.PregledSvihProstorija2();
             cbProstorija.ItemsSource = prostorije;
-            foreach (Prostorija p in prostorije)
+            foreach (ProstorijaDTO p in prostorije)
             {
                 if (selektovani.prostorija == null)
                 {
@@ -115,8 +111,7 @@ namespace ZdravoKorporacija.Stranice.Uput
                 cbTip.SelectedIndex = 1;
             }
 
-
-            p.Trajanje = 0.5;
+            p.Trajanje = 30;
             p.Id = s.Id;
         }
 
@@ -128,7 +123,7 @@ namespace ZdravoKorporacija.Stranice.Uput
         private void potvrdi(object sender, RoutedEventArgs e)
         {
             ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
-            termini = terminServis.PregledSvihTermina2();
+            termini = tc.PregledSvihTermina2();
             String t = null;
             String d = date.Text;
             int prepodne = Int32.Parse(now.Substring(0, 2));
@@ -144,16 +139,6 @@ namespace ZdravoKorporacija.Stranice.Uput
             if (cboItem != null)
             {
                 t = cboItem.Content.ToString();
-
-                /* if (Int32.Parse(t.Substring(0, 2)) < (now.Substring(9, 8).Equals("po podne") ? Int32.Parse(now.Substring(0, 2)) + 12 : Int32.Parse(now.Substring(0, 2))))
-                { MessageBox.Show("Nevalidno Vreme","Greska");
-                    return;
-                }
-                else if (Int32.Parse(t.Substring(3, 2)) < Int32.Parse(now.Substring(3, 2))) 
-                { MessageBox.Show("Nevalidno Vreme", "Greska");
-                    return;
-                } */
-
 
                 if (d.Equals(today.ToString("dd.M.yyyy.")))
                 {
@@ -183,6 +168,7 @@ namespace ZdravoKorporacija.Stranice.Uput
 
             p.Lekar = lekarLogin.lekar;
             p.prostorija = (ProstorijaDTO)cbProstorija.SelectedItem;
+
             foreach (TerminDTO ter in termini)
             {
                 if (ter.Pocetak.Equals(p.Pocetak) && ter.prostorija.Equals(p.prostorija))
@@ -191,10 +177,10 @@ namespace ZdravoKorporacija.Stranice.Uput
                     return;
                 }
             }
-            if (terminServis.AzurirajTermin(p))
+            if (tc.AzurirajTermin(p))
             {
-                this.pregledi.Remove(s);
-                this.pregledi.Add(p);
+                lekarStart.uputi.Remove(s);
+                lekarStart.uputi.Add(p);
             }
             test.prozor.Content = new Uputi();
 

@@ -1,11 +1,9 @@
 ﻿using Model;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ZdravoKorporacija.DTO
 {
-    public class DinamickaOpremaDTO:InventarDTO
+    public class DinamickaOpremaDTO : InventarDTO
     {
 
         public int Kolicina { get; set; }
@@ -24,10 +22,11 @@ namespace ZdravoKorporacija.DTO
             Kolicina = kolicina;
         }
 
-        public DinamickaOpremaDTO(DinamickaOprema dinamickaOprema){
+        public DinamickaOpremaDTO(DinamickaOprema dinamickaOprema)
+        {
             Kolicina = dinamickaOprema.Kolicina;
             Prostorija = new ProstorijaDTO(dinamickaOprema.Prostorija);
-            InventarDTO oprema = new InventarDTO(dinamickaOprema.Id, dinamickaOprema.Naziv, dinamickaOprema.UkupnaKolicina, dinamickaOprema.Proizvodjac,dinamickaOprema.DatumNabavke);
+            InventarDTO oprema = new InventarDTO(dinamickaOprema.Id, dinamickaOprema.Naziv, dinamickaOprema.UkupnaKolicina, dinamickaOprema.Proizvodjac, dinamickaOprema.DatumNabavke);
             this.Id = dinamickaOprema.Id;
             this.Naziv = dinamickaOprema.Naziv;
             this.UkupnaKolicina = dinamickaOprema.UkupnaKolicina;

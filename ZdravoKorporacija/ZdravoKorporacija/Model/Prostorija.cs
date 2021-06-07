@@ -31,16 +31,16 @@ namespace Model
 
         public Prostorija(ProstorijaDTO prostorija)
         {
-            if(prostorija!=null)
-            { 
-            this.inventar = prostorija.inventar;
-            //this.statickaOprema = prostorija.statickaOprema;
-            this.dinamickaOprema = prostorija.dinamickaOprema;
-            Id = prostorija.Id;
-            Naziv = prostorija.Naziv;
-            Tip = prostorija.Tip;
-            Slobodna = prostorija.Slobodna;
-            Sprat = prostorija.Sprat;
+            if (prostorija != null)
+            {
+                this.inventar = prostorija.inventar;
+                //this.statickaOprema = prostorija.statickaOprema;
+                this.dinamickaOprema = prostorija.dinamickaOprema;
+                Id = prostorija.Id;
+                Naziv = prostorija.Naziv;
+                Tip = prostorija.Tip;
+                Slobodna = prostorija.Slobodna;
+                Sprat = prostorija.Sprat;
             }
         }
 

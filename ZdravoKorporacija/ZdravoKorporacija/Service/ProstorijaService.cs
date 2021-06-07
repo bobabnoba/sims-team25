@@ -1,10 +1,7 @@
-﻿using Microsoft.VisualBasic.CompilerServices;
-using Model;
+﻿using Model;
 using Repository;
 using System.Collections.Generic;
-using System.Net.Http.Headers;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using ZdravoKorporacija.DTO;
 
 namespace Service
@@ -16,7 +13,7 @@ namespace Service
         {
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapProstorija");
 
-            Dictionary<int,int> id_map = datotekaID.dobaviSve();
+            Dictionary<int, int> id_map = datotekaID.dobaviSve();
             int id = nadjiSlobodanID(id_map);
             id_map[id] = 1;
             prostorijaDTO.Id = id;
@@ -24,7 +21,7 @@ namespace Service
 
             Prostorija prostorija = new Prostorija(prostorijaDTO);
             ProstorijaRepozitorijum.Instance.prostorije.Add(prostorija);
-            
+
             datoteka.sacuvaj();
             datotekaID.sacuvaj(id_map);
             return true;
@@ -83,22 +80,23 @@ namespace Service
 
         public ObservableCollection<Prostorija> PregledSvihProstorija()
         {
-            return datoteka.dobaviSve();  
+            return datoteka.dobaviSve();
         }
 
         public ObservableCollection<ProstorijaDTO> PregledSvihProstorijaDTO()
         {
             ObservableCollection<Prostorija> prostorije = datoteka.dobaviSve();
             ObservableCollection<ProstorijaDTO> prostorijeDTO = new ObservableCollection<ProstorijaDTO>();
-            foreach(Prostorija prostorija in prostorije)
+            foreach (Prostorija prostorija in prostorije)
             {
                 prostorijeDTO.Add(konvertujEntitetUDTO(prostorija));
             }
             return prostorijeDTO;
-            
+
         }
 
-        public ProstorijaDTO konvertujEntitetUDTO(Prostorija prostorija) {
+        public ProstorijaDTO konvertujEntitetUDTO(Prostorija prostorija)
+        {
             return new ProstorijaDTO(prostorija);
         }
 
@@ -126,13 +124,13 @@ namespace Service
             }
             return modeli;
         }
-    
+
         public ObservableCollection<ProstorijaDTO> PregledSvihProstorijaDTO(ObservableCollection<Prostorija> modeli)
         {
-            if (modeli == null) 
-             modeli = PregledSvihProstorija();
+            if (modeli == null)
+                modeli = PregledSvihProstorija();
             ObservableCollection<ProstorijaDTO> dtos = new ObservableCollection<ProstorijaDTO>();
-            foreach(Prostorija model in modeli)
+            foreach (Prostorija model in modeli)
             {
                 dtos.Add(Model2DTO(model));
             }
@@ -141,8 +139,8 @@ namespace Service
 
         public Prostorija DTO2Model(ProstorijaDTO dto)
         {
-            if(dto != null)
-                foreach(Prostorija p in PregledSvihProstorija())
+            if (dto != null)
+                foreach (Prostorija p in PregledSvihProstorija())
                 {
                     if (dto.Id.Equals(p.Id))
                         return p;

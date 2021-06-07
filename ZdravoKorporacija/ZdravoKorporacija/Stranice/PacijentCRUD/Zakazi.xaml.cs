@@ -54,7 +54,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
 
             foreach (LekarDTO dostupanLjekar in ljekari)
                 dostupniLjekari.Add(dostupanLjekar);
-            
+
             ljekar.ItemsSource = dostupniLjekari;
 
             time.Items.Clear();
@@ -78,7 +78,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
             terminDTO.zdravstveniKarton = pacijentDTO.ZdravstveniKarton;
             Boolean bu = terminKontroler.zakaziPregled(terminDTO, pacijentDTO);
             this.pregledi.Add(terminDTO);
-            
+
             this.Close();
 
         }
@@ -164,7 +164,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
                 {
                     foreach (TerminDTO td in nedostupniTermini())
                     {
-                        if(td != null) time.Items.Remove(td.Pocetak.ToShortTimeString());
+                        if (td != null) time.Items.Remove(td.Pocetak.ToShortTimeString());
 
                     }
                     time.IsEnabled = true;
@@ -175,10 +175,10 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
                 if (time.SelectedIndex != -1 && date.SelectedDate != null)
                 {
                     DateTime terminPregleda = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
-                    
+
                     if (nedostupanLjekar(terminPregleda) != null) dostupniLjekari.Remove(nedostupanLjekar(terminPregleda));
                     ljekar.IsEnabled = true;
-                }               
+                }
             }
 
         }
@@ -218,7 +218,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
             }
             return termini;
         }
-        
+
 
         private void odustani(object sender, RoutedEventArgs e)
         {

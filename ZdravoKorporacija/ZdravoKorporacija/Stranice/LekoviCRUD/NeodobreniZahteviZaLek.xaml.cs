@@ -25,7 +25,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
             if (dgNeodobreniLek.SelectedItem != null)
             {
 
-                posaljiZahtevZaLek posaljiZahtev = new posaljiZahtevZaLek(neodobreniZahtevi,(ZahtevLekDTO)dgNeodobreniLek.SelectedItem);
+                posaljiZahtevZaLek posaljiZahtev = new posaljiZahtevZaLek(neodobreniZahtevi, (ZahtevLekDTO)dgNeodobreniLek.SelectedItem);
                 posaljiZahtev.Show();
             }
             else
@@ -43,21 +43,8 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
         {
             if (dgNeodobreniLek.SelectedItem != null)
             {
-                IzmenaZahtevaZaLek izmenaZahtevaZaLek = new IzmenaZahtevaZaLek((int)dgNeodobreniLek.SelectedIndex, (ZahtevLekDTO)dgNeodobreniLek.SelectedItem,neodobreniZahtevi);
+                IzmenaZahtevaZaLek izmenaZahtevaZaLek = new IzmenaZahtevaZaLek((int)dgNeodobreniLek.SelectedIndex, (ZahtevLekDTO)dgNeodobreniLek.SelectedItem, neodobreniZahtevi);
                 izmenaZahtevaZaLek.Show();
-            }
-            else
-            {
-                MessageBox.Show("Morate selektovati zahtev da bi ste izmenili","Greška");
-            }
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            if (dgNeodobreniLek.SelectedItem != null)
-            {
-            obrisiNeodobreniLek obrisiNeodobreniZahtevLek = new obrisiNeodobreniLek(neodobreniZahtevi,(ZahtevLekDTO) dgNeodobreniLek.SelectedItem);
-            obrisiNeodobreniZahtevLek.Show();
             }
             else
             {
@@ -65,7 +52,20 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
             }
         }
 
-        private void  izmenaAlternativnihLekova(object sender, RoutedEventArgs e)
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            if (dgNeodobreniLek.SelectedItem != null)
+            {
+                obrisiNeodobreniLek obrisiNeodobreniZahtevLek = new obrisiNeodobreniLek(neodobreniZahtevi, (ZahtevLekDTO)dgNeodobreniLek.SelectedItem);
+                obrisiNeodobreniZahtevLek.Show();
+            }
+            else
+            {
+                MessageBox.Show("Morate selektovati zahtev da bi ste izmenili", "Greška");
+            }
+        }
+
+        private void izmenaAlternativnihLekova(object sender, RoutedEventArgs e)
         {
 
         }

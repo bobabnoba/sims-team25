@@ -1,15 +1,9 @@
-﻿using Model;
+﻿using Service;
+using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using ZdravoKorporacija.Model;
-using System;
-using Service;
-using ZdravoKorporacija.Stranice.Logovanje;
-using ZdravoKorporacija.Stranice.Uput;
-using ZdravoKorporacija.Stranice.LekoviCRUD;
 using ZdravoKorporacija.DTO;
-using System.Diagnostics;
 using ZdravoKorporacija.Stranice.StacionarnoLecenje;
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
@@ -22,11 +16,11 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private PacijentService pacijentServis = PacijentService.Instance;
         private ObservableCollection<PacijentDTO> pacijenti = new ObservableCollection<PacijentDTO>();
         private ObservableCollection<PacijentDTO> pacijentiPrikaz = new ObservableCollection<PacijentDTO>();
-        
+
         public pregledPacijenata()
         {
             InitializeComponent();
-            
+
             try
             {
                 foreach (PacijentDTO p in pacijentServis.PregledSvihPacijenata2())
@@ -49,7 +43,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 dgUsers.ItemsSource = pacijentiPrikaz;
                 this.DataContext = this;
             }
-            catch (NullReferenceException) 
+            catch (NullReferenceException)
             {
                 return;
             }
@@ -59,7 +53,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         {
 
         }
-       
+
         private void prikazKartona(object sender, RoutedEventArgs e)
         {
             zdravstveniKartonPrikaz zk = null;
@@ -72,7 +66,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 MessageBox.Show("Niste selektovali red", "Greska");
             }
         }
-      
+
         private void stacionarnoLecenje(object sender, RoutedEventArgs e)
         {
             stacionarnoStart ss = null;

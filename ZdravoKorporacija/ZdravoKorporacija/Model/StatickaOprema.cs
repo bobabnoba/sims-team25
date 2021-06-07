@@ -30,7 +30,8 @@ namespace Model
             this.termin = termin;
         }
 
-        public StatickaOprema(StatickaOpremaDTO statickaOpremaDTO) {
+        public StatickaOprema(StatickaOpremaDTO statickaOpremaDTO)
+        {
             this.termin = new Termin(statickaOpremaDTO.termin);
         }
 

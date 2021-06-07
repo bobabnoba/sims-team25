@@ -12,7 +12,7 @@ namespace Model
         public int Id { get; set; }
         public String Sadrzaj { get; set; }
         public DateTime Datum { get; set; }
-        public Beleska() {}
+        public Beleska() { }
 
         public Beleska(int id, string sadrzaj, DateTime datum)
         {

@@ -1,15 +1,12 @@
 ﻿using Model;
-using Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Konverteri;
-using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Stranice.Logovanje;
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
@@ -21,7 +18,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     {
         private List<PacijentDTO> pacijenti = new List<PacijentDTO>();
         private ObservableCollection<ProstorijaDTO> prostorije = new ObservableCollection<ProstorijaDTO>();
-        private List<TerminDTO> termini = new List<TerminDTO> ();
+        private List<TerminDTO> termini = new List<TerminDTO>();
         private TerminDTO t1;
         private TerminDTO t2;
         private ZdravstveniKartonKonverter zkk = new ZdravstveniKartonKonverter();
@@ -49,7 +46,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 }
             }
             cbProstorija.ItemsSource = prostorije;
-            
+
             foreach (ProstorijaDTO p in prostorije)
             {
                 if (selektovani.prostorija == null)
@@ -65,8 +62,9 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             time.SelectedValue = selektovani.Pocetak.ToString("HH:mm");
 
             CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
-            date.BlackoutDates.Add(cdr);
+            try { date.BlackoutDates.Add(cdr); }
 
+            catch (Exception e) { }
 
             if (t1.Tip == TipTerminaEnum.Pregled)
             {
@@ -84,7 +82,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
         private void odustani(object sender, RoutedEventArgs e)
         {
-            test.prozor.Content = new lekarStart(lekarLogin.lekar) ;
+            test.prozor.Content = new lekarStart(lekarLogin.lekar);
         }
 
         private void potvrdi(object sender, RoutedEventArgs e)
@@ -98,7 +96,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             t1.prostorija = (ProstorijaDTO)cbProstorija.SelectedItem;
             t1.Pocetak = DateTime.Parse(d + " " + t);
             if (!date.SelectedDate.HasValue || time.SelectedIndex == -1 || cbTip.SelectedIndex == -1
-               || cbProstorija.SelectedIndex == -1 || cbPacijent.SelectedIndex == -1 )
+               || cbProstorija.SelectedIndex == -1 || cbPacijent.SelectedIndex == -1)
             {
                 MessageBox.Show("Niste popunili sva polja", "Greska");
                 return;
@@ -107,16 +105,16 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             if (cboItem != null)
             {
                 t = cboItem.Content.ToString();
-                             
+
                 if (d.Equals(today.ToString("dd.M.yyyy.")))
                 {
-                    if (Int32.Parse(t.Substring(0, 2)) < (now.Substring(9, 8).Equals("po podne") ? popodne: prepodne))
+                    if (Int32.Parse(t.Substring(0, 2)) < (now.Substring(9, 8).Equals("po podne") ? popodne : prepodne))
                     {
                         MessageBox.Show("Nevalidno Vreme", "Greska");
-                        
+
                         return;
                     }
-                    else if ((Int32.Parse(t.Substring(0, 2))==prepodne || Int32.Parse(t.Substring(0, 2))==popodne) && Int32.Parse(t.Substring(3, 2)) < Int32.Parse(now.Substring(3, 2)))
+                    else if ((Int32.Parse(t.Substring(0, 2)) == prepodne || Int32.Parse(t.Substring(0, 2)) == popodne) && Int32.Parse(t.Substring(3, 2)) < Int32.Parse(now.Substring(3, 2)))
                     {
                         MessageBox.Show("Nevalidno Vreme", "Greska");
                         return;
@@ -132,7 +130,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                     return;
                 }
             }
-          
+
             if (cbTip.SelectedIndex == 0)
             {
                 t1.Tip = TipTerminaEnum.Pregled;
@@ -143,7 +141,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             }
 
             t1.Lekar = controller.NadjiLekaraPoJMBG(lekarLogin.lekar.Jmbg);
-            
+
             t1.zdravstveniKarton = zkk.KonvertujEntitetUDTO(controller.NadjiKartonID(pacijent.Jmbg));
             if (controller.AzurirajTermin(controller.TerminDTO2Model(t1)))
             {

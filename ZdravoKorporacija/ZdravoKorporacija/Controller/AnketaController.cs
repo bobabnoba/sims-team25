@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Model;
+﻿using Model;
 using Service;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Konverteri;
@@ -42,6 +39,6 @@ namespace ZdravoKorporacija.Controller
             Anketa anketa = anketaKonverter.KonvertujDTOuEntitet(anketaDTO);
             anketaService.dodajAnketu(anketa);
         }
-    
+
     }
 }

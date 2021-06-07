@@ -1,23 +1,8 @@
-﻿using Controller;
-using Model;
-using Repository;
-using Service;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
 {
@@ -31,7 +16,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
         TerminDTO termin = new TerminDTO();
 
-       
+
         public dodajAnamnezu(TerminDTO selektovani)
         {
             InitializeComponent();
@@ -42,7 +27,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             izvestaj.Simptomi = simptomiText.Text;
             TextRange textRange = new TextRange(opisTxt.Document.ContentStart, opisTxt.Document.ContentEnd);
             izvestaj.Opis = textRange.Text;
-            
+
 
             terminController.IzdajAnamnezu(izvestaj, termin);
             //zdravstveniKartonPrikaz.izvestaji.Add(izvestaj);

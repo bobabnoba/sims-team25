@@ -1,15 +1,13 @@
-﻿using System;
+﻿using Model;
+using Repository;
+using Service;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
-using Model;
-using ZdravoKorporacija.Model;
 using System.Linq;
-using ZdravoKorporacija.Repository;
-using Service;
-using Repository;
-using ZdravoKorporacija.Stranice.sekretarObavestenja;
 using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Model;
+using ZdravoKorporacija.Repository;
 
 namespace ZdravoKorporacija.Service
 {
@@ -31,7 +29,7 @@ namespace ZdravoKorporacija.Service
         public List<Notifikacija> PregledSvihObavestenja2Model(List<NotifikacijaDTO> dtos)
         {
             List<Notifikacija> modeli = new List<Notifikacija>();
-            foreach(NotifikacijaDTO ndto in dtos)
+            foreach (NotifikacijaDTO ndto in dtos)
             {
                 modeli.Add(DTO2Model(ndto));
             }
@@ -40,15 +38,15 @@ namespace ZdravoKorporacija.Service
         public List<NotifikacijaDTO> PregledSvihObavestenja2DTO(List<Notifikacija> modeli)
         {
             List<NotifikacijaDTO> dtos = new List<NotifikacijaDTO>();
-            foreach(Notifikacija model in modeli)
+            foreach (Notifikacija model in modeli)
             {
-                if (model != null) 
-                dtos.Add(model2DTO(model));
+                if (model != null)
+                    dtos.Add(model2DTO(model));
             }
             return dtos;
         }
 
-        public void generisiObavestenja() 
+        public void generisiObavestenja()
         {
 
             termini = datotekaTer.dobaviSve();
@@ -60,15 +58,15 @@ namespace ZdravoKorporacija.Service
                 {
                     foreach (Notifikacija n in not.ToList())
                     {
-                        if(n!=null)
-                        if (n.Tip == TipNotifikacije.Obavestenje)
-                            p.notifikacije.Remove(n);
+                        if (n != null)
+                            if (n.Tip == TipNotifikacije.Obavestenje)
+                                p.notifikacije.Remove(n);
                     }
                 }
                 foreach (Termin t in termini)
                 {
-                    if(t != null)
-                        if (p.Jmbg.Equals( t.zdravstveniKarton.Id))
+                    if (t != null)
+                        if (p.Jmbg.Equals(t.zdravstveniKarton.Id))
                         {
 
                             Notifikacija obavestenje = new Notifikacija();
@@ -85,9 +83,9 @@ namespace ZdravoKorporacija.Service
                             obavestenje.Tip = TipNotifikacije.Obavestenje;
                             obavestenje.Sadrzaj = "Zakazan termin: " + t.Tip.ToString() + ", vreme: " + t.Pocetak.ToString();
 
-                            
+
                             p.notifikacije.Add(obavestenje);
-                            
+
                             datotekaPac.sacuvaj(pacijenti);
                         }
                 }
@@ -99,16 +97,16 @@ namespace ZdravoKorporacija.Service
             List<Pacijent> pacijenti = pr.dobaviSve();
             ObavestenjaRep datoteka = new ObavestenjaRep();
             List<Notifikacija> notifikacije = datoteka.dobaviSve();
-            
+
             foreach (Notifikacija n in notifikacije)
             {
-                if(n!=null)
-                if (not.Id.Equals(n.Id))
-                    return false;
+                if (n != null)
+                    if (not.Id.Equals(n.Id))
+                        return false;
             }
             notifikacije.Add(not);
             datoteka.sacuvaj(notifikacije);
-            foreach(Pacijent p in pacijenti)
+            foreach (Pacijent p in pacijenti)
             {
                 p.notifikacije.Add(not);
                 pr.sacuvaj(pacijenti);
@@ -123,10 +121,12 @@ namespace ZdravoKorporacija.Service
             List<Pacijent> pacijenti = pr.dobaviSve();
             ObavestenjaRep datoteka = new ObavestenjaRep();
             List<Notifikacija> notifikacije = datoteka.dobaviSve();
-            foreach (Pacijent p in pacijenti) { 
+            foreach (Pacijent p in pacijenti)
+            {
                 foreach (Notifikacija n in notifikacije)
                 {
-                    if (n.Id.Equals(not.Id)) {
+                    if (n.Id.Equals(not.Id))
+                    {
                         notifikacije.Remove(n);
                         p.notifikacije.Remove(n);
                         notifikacije.Add(not);
@@ -134,30 +134,30 @@ namespace ZdravoKorporacija.Service
                         return true;
                     }
                 }
-        }
+            }
             return false;
         }
-        
-        public bool obrisiObavestenje(String  not)
+
+        public bool obrisiObavestenje(String not)
         {
             PacijentRepozitorijum pr = new PacijentRepozitorijum();
             List<Pacijent> pacijenti = pr.dobaviSve();
             ObavestenjaRep datoteka = new ObavestenjaRep();
             List<Notifikacija> notifikacije = datoteka.dobaviSve();
             PacijentService pc = new PacijentService();
-                foreach (Notifikacija n in notifikacije)
-                {
-                if(n!=null)
+            foreach (Notifikacija n in notifikacije)
+            {
+                if (n != null)
                     if (not.Equals(n.Sadrzaj))
                     {
-                    pc.ObrisiObavestenjePacijentu(not);
-                    notifikacije.Remove(n);
-                    datoteka.sacuvaj(notifikacije);
-                   
-                    return true;
+                        pc.ObrisiObavestenjePacijentu(not);
+                        notifikacije.Remove(n);
+                        datoteka.sacuvaj(notifikacije);
+
+                        return true;
                     }
-                }
-           
+            }
+
             return false;
         }
 
@@ -194,10 +194,10 @@ namespace ZdravoKorporacija.Service
         {
             ObavestenjaRep datoteka = new ObavestenjaRep();
             List<Notifikacija> obavestenja = datoteka.dobaviSve();
-            foreach(Notifikacija n in obavestenja)
+            foreach (Notifikacija n in obavestenja)
             {
-                if(n!=null)
-                if (n.Sadrzaj.Equals(dto.Sadrzaj)) ;
+                if (n != null)
+                    if (n.Sadrzaj.Equals(dto.Sadrzaj)) ;
                 return n;
             }
             return null;
@@ -205,6 +205,6 @@ namespace ZdravoKorporacija.Service
     }
 }
 
-  
-    
+
+
 

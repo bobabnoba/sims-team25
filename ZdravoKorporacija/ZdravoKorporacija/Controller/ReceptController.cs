@@ -1,8 +1,5 @@
 ﻿using Service;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using ZdravoKorporacija.DTO;
 
 namespace ZdravoKorporacija.Controller

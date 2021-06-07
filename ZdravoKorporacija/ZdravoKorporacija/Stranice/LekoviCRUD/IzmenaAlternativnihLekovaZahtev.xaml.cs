@@ -1,20 +1,11 @@
 ﻿using Model;
 using Repository;
 using Service;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Linq;
-using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.LekoviCRUD
 {
@@ -66,7 +57,8 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
                 alternativniLekovi.Add(selektovaniLek);
                 ostalilekovi.Remove(selektovaniLek);
             }
-            foreach (Lek leki in alternativniLekovi) {
+            foreach (Lek leki in alternativniLekovi)
+            {
                 this.zl.Lek.alternativniLekovi.Add(leki);
             }
 

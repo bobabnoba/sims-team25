@@ -4,7 +4,6 @@
 // Purpose: Definition of Class Patient
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using ZdravoKorporacija.DTO;
@@ -126,7 +125,7 @@ namespace Model
         public ZdravstveniKarton ZdravstveniKarton { get; set; }
 
         public bool Guest { get; set; }
-       
+
 
         public long GetJmbg()
         {

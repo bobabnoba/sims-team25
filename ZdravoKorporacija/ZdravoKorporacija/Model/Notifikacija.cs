@@ -5,10 +5,9 @@
  ***********************************************************************/
 
 using System;
-using System.Collections;
 
 namespace Model
-{ 
+{
     public class Notifikacija
     {
         public Notifikacija() { }

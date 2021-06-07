@@ -1,9 +1,8 @@
-﻿using System;
+﻿using Model;
+using Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Model;
-using Repository;
 using ZdravoKorporacija.DTO;
 
 namespace Service
@@ -15,21 +14,21 @@ namespace Service
         private LekarService lekarServis = new LekarService();
         public RadniDan NadjiDanZaLekara(DateTime dan, double lekar)
         {
-            
-            foreach(RadniDan rd in datoteka.dobaviSve())
+
+            foreach (RadniDan rd in datoteka.dobaviSve())
             {
-                if(rd.dan.Date.CompareTo( dan.Date ) == 0 && rd.lekar == lekar)
+                if (rd.dan.Date.CompareTo(dan.Date) == 0 && rd.lekar == lekar)
                 {
                     return rd;
                 }
-                
+
             }
             return null;
         }
         public List<RadniDan> NadjiSveDaneZaLekara(double lekar)
         {
-            List < RadniDan > dani = new List<RadniDan>();
-            foreach(RadniDan rd in PregledSvihRadnihDana())
+            List<RadniDan> dani = new List<RadniDan>();
+            foreach (RadniDan rd in PregledSvihRadnihDana())
             {
                 if (rd.lekar.Equals(lekar))
                     dani.Add(rd);
@@ -40,24 +39,24 @@ namespace Service
         public void InicijalizujRadneDane()
         {
             List<RadniDan> sviDani = PregledSvihRadnihDana();
-            foreach(Lekar l in lekarServis.PregledSvihLekara())
+            foreach (Lekar l in lekarServis.PregledSvihLekara())
             {
                 List<RadniDan> dani = new List<RadniDan>();
-                foreach(RadniDan rd in PregledSvihRadnihDana())
+                foreach (RadniDan rd in PregledSvihRadnihDana())
                 {
                     if (rd.lekar.Equals(l.Jmbg))
                         dani.Add(rd);
                 }
-                if(dani.Count() == 0)
+                if (dani.Count() == 0)
                 {
                     for (DateTime date = DateTime.Now.Date; date <= DateTime.Now.AddDays(150); date = date.AddDays(1))
                     {
-                        
+
                         //l.radniDani.Add(new RadniDan(date, l.Jmbg, false, true));
-                        dani.Add(new RadniDan(date.Date, l.Jmbg, false,true));
-                        
+                        dani.Add(new RadniDan(date.Date, l.Jmbg, false, true));
+
                     }
-                    foreach(RadniDan dan in dani)
+                    foreach (RadniDan dan in dani)
                     {
                         sviDani.Add(dan);
                         datoteka.sacuvaj(sviDani);
@@ -69,10 +68,10 @@ namespace Service
         public bool AzurirajRadniDan(RadniDan dan)
         {
             List<RadniDan> dani = datoteka.dobaviSve();
-            if(dan != null)
-                foreach(RadniDan rd in dani)
+            if (dan != null)
+                foreach (RadniDan rd in dani)
                 {
-                    if(rd.dan.Date.Equals(dan.dan.Date) && rd.lekar.Equals(dan.lekar))
+                    if (rd.dan.Date.Equals(dan.dan.Date) && rd.lekar.Equals(dan.lekar))
                     {
                         dani.Remove(rd);
                         dani.Add(dan);
@@ -84,10 +83,10 @@ namespace Service
         }
         public List<RadniDanDTO> PregledSvihRadnihDana2DTO(List<RadniDan> modeli)
         {
-            if(modeli == null)
+            if (modeli == null)
                 modeli = PregledSvihRadnihDana();
             List<RadniDanDTO> dtos = new List<RadniDanDTO>();
-            foreach(RadniDan model in modeli)
+            foreach (RadniDan model in modeli)
             {
                 dtos.Add(Model2DTO(model));
             }
@@ -96,7 +95,7 @@ namespace Service
         public List<RadniDan> PregledSvihRadnihDana2Model(List<RadniDanDTO> dtos)
         {
             List<RadniDan> modeli = new List<RadniDan>();
-            foreach(RadniDanDTO rddto in dtos)
+            foreach (RadniDanDTO rddto in dtos)
             {
                 modeli.Add(DTO2Model(rddto));
             }
@@ -110,7 +109,7 @@ namespace Service
         public void DodajSlobodneDane(DateTime Od, DateTime Do, double lekar)
         {
             List<RadniDan> dani = datoteka.dobaviSve();
-            foreach(RadniDan rd in dani.ToArray())
+            foreach (RadniDan rd in dani.ToArray())
             {
                 if (rd.dan.CompareTo(Od) >= 0 && rd.dan.CompareTo(Do) <= 0 && rd.lekar.Equals(lekar))
                 {
@@ -123,14 +122,14 @@ namespace Service
                         datoteka.sacuvaj(dani);
                     }
                 }
-             
+
             }
         }
 
         public void DrugaSmena(DateTime Od, DateTime Do, double lekar, bool prva)
         {
             List<RadniDan> dani = datoteka.dobaviSve();
-            foreach(RadniDan rd in dani.ToArray())
+            foreach (RadniDan rd in dani.ToArray())
             {
                 if (rd.dan.Date.CompareTo(Od.Date) >= 0 && rd.dan.Date.CompareTo(Do.Date) <= 0 && rd.lekar.Equals(lekar))
                 {
@@ -150,9 +149,9 @@ namespace Service
         }
         public RadniDan DTO2Model(RadniDanDTO dto)
         {
-            foreach(RadniDan rd in PregledSvihRadnihDana())
+            foreach (RadniDan rd in PregledSvihRadnihDana())
             {
-                if(rd.dan.Date.Equals(dto.dan.Date) && rd.lekar.Equals(dto.lekar))
+                if (rd.dan.Date.Equals(dto.dan.Date) && rd.lekar.Equals(dto.lekar))
                 {
                     return rd;
                 }
@@ -167,9 +166,9 @@ namespace Service
         public List<RadniDan> PregledOdDo(DateTime Od, DateTime Do, double lekar)
         {
             List<RadniDan> dani = new List<RadniDan>();
-            foreach(RadniDan rd in PregledSvihRadnihDana())
+            foreach (RadniDan rd in PregledSvihRadnihDana())
             {
-                if(rd.dan.Date >= Od.Date && rd.dan.Date <= Do.Date && rd.lekar.Equals(lekar))
+                if (rd.dan.Date >= Od.Date && rd.dan.Date <= Do.Date && rd.lekar.Equals(lekar))
                 {
                     dani.Add(rd);
                 }

@@ -1,5 +1,4 @@
-﻿using Controller;
-using Model;
+﻿using Model;
 using Repository;
 using Service;
 using System.Collections.Generic;
@@ -7,7 +6,6 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
-using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Stranice.LekarCRUD;
 using ZdravoKorporacija.Stranice.Logovanje;
 using ZdravoKorporacija.Stranice.Uput;
@@ -72,7 +70,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
                 lekServis.DodajLek(l, ids);
                 Debug.WriteLine(zahtev.Id);
                 zahtev.BrojPotvrda++;
-                foreach(Lekar lekar in zahtev.lekari.ToArray())
+                foreach (Lekar lekar in zahtev.lekari.ToArray())
                 {
                     if (lekar.Jmbg.Equals(lekarLogin.lekar.Jmbg))
                         zahtev.lekari.Remove(lekar);
@@ -81,7 +79,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
                 lekServis.AzurirajZahtevLeka(zahtev);
                 if (zahtev.BrojPotvrda.Equals(zahtev.NeophodnihPotvrda))
                     lekServis.ObrisiZahtevZaLek(zahtev);
-             }
+            }
         }
 
         private void izmenaAlternativnihLekova(object sender, RoutedEventArgs e)

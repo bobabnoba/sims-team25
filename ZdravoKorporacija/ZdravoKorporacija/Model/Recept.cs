@@ -100,7 +100,7 @@ namespace Model
             zdravstveniKarton = new ZdravstveniKarton(recept.zdravstveniKarton);
         }
 
-     
+
         public Recept(int id, string doziranje, int trajanje, string nazivLeka, DateTime pocetak, ArrayList lek, Lekar lekar, ZdravstveniKarton zdravstveniKarton) : this(id, doziranje, trajanje, nazivLeka, pocetak)
         {
             this.lek = lek;

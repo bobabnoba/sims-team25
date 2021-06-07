@@ -1,12 +1,10 @@
-﻿using Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using ZdravoKorporacija.DTO;
 
 namespace Model
 {
-   public  class ZahtevLek
+    public class ZahtevLek
     {
         public int Id { get; set; }
         public Lek Lek { get; set; }
@@ -59,14 +57,15 @@ namespace Model
         public int BrojPotvrda { get; set; }
 
         public ZahtevLek() { }
-        public ZahtevLek(Lek lek,int neophodnihPotvrda,int brojTrenutnihPotvrda) {
+        public ZahtevLek(Lek lek, int neophodnihPotvrda, int brojTrenutnihPotvrda)
+        {
             this.Lek = lek;
             this.NeophodnihPotvrda = neophodnihPotvrda;
             this.BrojPotvrda = brojTrenutnihPotvrda;
             this.lekari = new List<Lekar>();
         }
 
-        public ZahtevLek(Lek lek, int neophodnihPotvrda, int brojTrenutnihPotvrda,String komentar)
+        public ZahtevLek(Lek lek, int neophodnihPotvrda, int brojTrenutnihPotvrda, String komentar)
         {
             this.Lek = lek;
             this.NeophodnihPotvrda = neophodnihPotvrda;

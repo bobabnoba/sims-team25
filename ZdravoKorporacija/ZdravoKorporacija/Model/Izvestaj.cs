@@ -4,7 +4,6 @@
 // Purpose: Definition of Class Report
 
 using System;
-using System.Collections.Generic;
 using ZdravoKorporacija.DTO;
 
 namespace Model

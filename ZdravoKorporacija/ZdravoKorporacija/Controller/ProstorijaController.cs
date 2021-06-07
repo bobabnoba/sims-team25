@@ -1,9 +1,7 @@
 ﻿using Model;
 using Service;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using ZdravoKorporacija.DTO;
 
 namespace Controller
@@ -12,6 +10,20 @@ namespace Controller
     {
         ProstorijaService prostorijaService = new ProstorijaService();
 
+        private static ProstorijaController _instance;
+
+        public static ProstorijaController Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new ProstorijaController();
+                }
+                return _instance;
+            }
+        }
+
         public bool DodajProstoriju(ProstorijaDTO prostorijaDTO)
         {
             return prostorijaService.DodajProstoriju(prostorijaDTO);
@@ -19,12 +31,12 @@ namespace Controller
 
         public bool AzurirajProstoriju(ProstorijaDTO novaProstorijaDTO, int indeks)
         {
-            return prostorijaService.AzurirajProstoriju(novaProstorijaDTO,indeks);
+            return prostorijaService.AzurirajProstoriju(novaProstorijaDTO, indeks);
         }
 
-            public ObservableCollection<Prostorija> PregledSvihProstorija()
+        public ObservableCollection<Prostorija> PregledSvihProstorija()
         {
-            return prostorijaService.PregledSvihProstorija();    
+            return prostorijaService.PregledSvihProstorija();
         }
 
         public ObservableCollection<ProstorijaDTO> PregledSvihProstorijaDTO()

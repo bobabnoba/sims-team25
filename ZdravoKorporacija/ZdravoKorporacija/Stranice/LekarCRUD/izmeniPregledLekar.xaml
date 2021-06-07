@@ -24,7 +24,7 @@
         </Grid.ColumnDefinitions>
         <TextBlock Style="{DynamicResource textblock}" Text="{ns:Loc DatumIVremeText}" TextWrapping="Wrap" Margin="33,27,0,19" Grid.Row="1"/>
         <DatePicker Name ="date" Grid.Column="1" HorizontalAlignment="Left" Margin="35,24,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="1.156,1.209" Height="28"/>
-        <ComboBox Name ="time" SelectedValuePath="Content" Grid.Column="1" Margin="157,24,77,16" Grid.Row="1" SelectionChanged="time_SelectionChanged" Height="28" Width="60">
+        <ComboBox Name ="time" SelectedValuePath="Content" Grid.Column="1" Margin="177,24,54,16" Grid.Row="1" SelectionChanged="time_SelectionChanged" Height="28">
             <ComboBoxItem>08:00</ComboBoxItem>
             <ComboBoxItem>08:30</ComboBoxItem>
             <ComboBoxItem>09:00</ComboBoxItem>

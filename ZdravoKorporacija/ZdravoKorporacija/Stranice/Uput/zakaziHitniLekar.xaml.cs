@@ -103,7 +103,7 @@ namespace ZdravoKorporacija.Stranice.Uput
                         alternativniTermini.Add(t);
                     }
                 }
-               
+
                 provera = ts.FindPrByPocetak2(RoundUp(DateTime.Now, TimeSpan.FromMinutes(30)));
                 foreach (TerminDTO t in pregledi)
                 {
@@ -158,7 +158,7 @@ namespace ZdravoKorporacija.Stranice.Uput
 
                     zaUpis.Id = id;
                     zaUpis.hitno = true;
-                    
+
                     zaUpis.Pocetak = RoundUp(DateTime.Now, TimeSpan.FromMinutes(30));
                     PacijentDTO pac = (PacijentDTO)cbPacijent.SelectedItem;
 
@@ -178,14 +178,14 @@ namespace ZdravoKorporacija.Stranice.Uput
                     tZaLekara.Id = zaUpis.Id;
                     zaUpis.Lekar.AddTermin(tZaLekara);
 
-                    if (ts.ZakaziTermin(zaUpis,pac))
+                    if (ts.ZakaziTermin(zaUpis, pac))
                     {
                         this.pregledi.Add(zaUpis);
                         lekari = (List<LekarDTO>)lekarController.dobaviListuDTOLekara();
                         //lekariDat.sacuvaj(lekari);
 
                     }
-           }
+                }
 
             }
             else if (cbTip.SelectedIndex == 1)
@@ -293,7 +293,7 @@ namespace ZdravoKorporacija.Stranice.Uput
                         Trace.WriteLine("uso");
                         pregledi.Add(term);
                         break;
-                       // this.pregledi = (ObservableCollection<Termin>)(ts.PregledSvihTermina()) ;
+                        // this.pregledi = (ObservableCollection<Termin>)(ts.PregledSvihTermina()) ;
                     }
                 }
             }

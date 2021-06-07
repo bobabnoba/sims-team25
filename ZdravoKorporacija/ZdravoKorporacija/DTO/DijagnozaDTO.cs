@@ -1,8 +1,6 @@
 ﻿using Model;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ZdravoKorporacija.DTO
 {
@@ -89,12 +87,12 @@ namespace ZdravoKorporacija.DTO
                     {
                         IstorijaBolestiDTO oldIstorijaBolesti = this.istorijaBolesti;
                         this.istorijaBolesti = null;
-                    //    oldIstorijaBolesti.RemoveDijagnoza(this);
+                        //    oldIstorijaBolesti.RemoveDijagnoza(this);
                     }
                     if (newIstorijaBolesti != null)
                     {
                         this.istorijaBolesti = newIstorijaBolesti;
-                  //      this.istorijaBolesti.AddDijagnoza(this);
+                        //      this.istorijaBolesti.AddDijagnoza(this);
                     }
                 }
             }

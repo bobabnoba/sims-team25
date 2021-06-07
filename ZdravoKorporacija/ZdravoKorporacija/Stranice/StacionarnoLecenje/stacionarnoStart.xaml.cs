@@ -1,18 +1,11 @@
 ﻿using Controller;
-using Model;
-using Repository;
-using Service;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Stranice.LekarCRUD;
-using ZdravoKorporacija.Stranice.Logovanje;
 
 
 namespace ZdravoKorporacija.Stranice.StacionarnoLecenje
@@ -32,7 +25,7 @@ namespace ZdravoKorporacija.Stranice.StacionarnoLecenje
 
         String now = DateTime.Now.ToString("hh:mm:ss tt");
         DateTime today = DateTime.Today;
-  
+
 
 
         public stacionarnoStart(PacijentDTO pacijent)
@@ -52,7 +45,7 @@ namespace ZdravoKorporacija.Stranice.StacionarnoLecenje
         private void potvrdi(object sender, RoutedEventArgs e)
         {
             termini = terminController.PregledSvihTermina2();
-           
+
             ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
             stacionarnoLecenje.Trajanje = trajanjeText.Text;
             String d = date.Text;
@@ -83,7 +76,7 @@ namespace ZdravoKorporacija.Stranice.StacionarnoLecenje
                     }
                 }
             }
-            stacionarnoLecenje.Prostorija =(ProstorijaDTO) cbProstorija.SelectedItem;
+            stacionarnoLecenje.Prostorija = (ProstorijaDTO)cbProstorija.SelectedItem;
             try
             {
                 stacionarnoLecenje.Pocetak = DateTime.Parse(d + " " + t);

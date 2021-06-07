@@ -1,19 +1,7 @@
-﻿using Model;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Diagnostics;
-using System.Globalization;
-using System.Text;
-using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Stranice.LekoviCRUD;
 using ZdravoKorporacija.Stranice.Logovanje;
 using ZdravoKorporacija.Stranice.Uput;
@@ -61,28 +49,28 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private void promeniTemu(object sender, RoutedEventArgs e)
         {
             App app = (App)Application.Current;
-            if(tema.Header.ToString() == "Tamna tema" || tema.Header.ToString() == "Dark theme")
+            if (tema.Header.ToString() == "Tamna Tema" || tema.Header.ToString() == "Dark Theme")
             {
                 app.ChangeTheme(new Uri("Themes/Dark.xaml", UriKind.Relative));
                 if (CurrentLanguage.Equals("en-US"))
                 {
-                    tema.Header = "Light theme";
+                    tema.Header = "Light Theme";
                 }
                 else
                 {
-                    tema.Header = "Svetla tema";
+                    tema.Header = "Svetla Tema";
                 }
             }
-            else 
+            else
             {
                 app.ChangeTheme(new Uri("Themes/Light.xaml", UriKind.Relative));
                 if (CurrentLanguage.Equals("en-US"))
                 {
-                    tema.Header = "Dark theme";
+                    tema.Header = "Dark Theme";
                 }
                 else
                 {
-                    tema.Header = "Tamna tema";
+                    tema.Header = "Tamna Tema";
                 }
             }
         }
@@ -106,6 +94,6 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             this.Close();
             MainWindow.mw.Show();
         }
-          
+
     }
 }

@@ -1,16 +1,6 @@
-﻿using Prism.Services.Dialogs;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Text;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Stranice.LekarCRUD;
@@ -36,8 +26,8 @@ namespace ZdravoKorporacija.Stranice.StacionarnoLecenje
             {
                 if (s.Pacijent.Jmbg.Equals(pacijent.Jmbg))
                 {
-                    uputi.Add(s); 
-                }         
+                    uputi.Add(s);
+                }
             }
             dgUsers.ItemsSource = uputi;
         }
@@ -54,7 +44,7 @@ namespace ZdravoKorporacija.Stranice.StacionarnoLecenje
             if (dgUsers.SelectedItem != null)
             {
                 stac = (StacionarnoLecenjeDTO)dgUsers.SelectedItem;
-                izmeniUputStacionarno iu = new izmeniUputStacionarno(pac,stac);
+                izmeniUputStacionarno iu = new izmeniUputStacionarno(pac, stac);
                 test.prozor.Content = iu;
             }
             else
@@ -76,7 +66,7 @@ namespace ZdravoKorporacija.Stranice.StacionarnoLecenje
             {
                 MessageBox.Show("Niste selektovali red", "Greska");
             }
-  
+
         }
 
     }

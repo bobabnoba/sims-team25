@@ -1,12 +1,12 @@
-﻿using System;
-using Model;
+﻿using Model;
+using System;
 
 
 namespace ZdravoKorporacija.DTO
 {
     public class TerminDTO
     {
-       
+
 
         public TerminDTO()
         {
@@ -30,7 +30,7 @@ namespace ZdravoKorporacija.DTO
             else this.izvestaj = new IzvestajDTO();
         }
         public TerminDTO(int id, LekarDTO lekar, TipTerminaEnum tip, DateTime pocetak, double trajanje, ProstorijaDTO prostorija) { }
-        
+
 
         public TerminDTO(int id, LekarDTO lekar, TipTerminaEnum tip, DateTime pocetak, double trajanje)
         {
@@ -63,7 +63,7 @@ namespace ZdravoKorporacija.DTO
                 this.izvestaj = new IzvestajDTO(termin.izvestaj);
                 this.zdravstveniKarton = new ZdravstveniKartonDTO(termin.zdravstveniKarton);
                 this.prostorija = new ProstorijaDTO(termin.prostorija);
-                Lekar = new LekarDTO(termin.Lekar) ;
+                Lekar = new LekarDTO(termin.Lekar);
                 Id = termin.Id;
                 Tip = termin.Tip;
                 Pocetak = termin.Pocetak;

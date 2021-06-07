@@ -1,13 +1,13 @@
 
-﻿using System;
-using System.Collections.Generic;
 using Model;
 using Service;
-using ZdravoKorporacija.DTO;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Konverteri;
 using ZdravoKorporacija.Model;
-using System.Collections.ObjectModel;
 
 namespace ZdravoKorporacija.Controller
 {
@@ -19,6 +19,8 @@ namespace ZdravoKorporacija.Controller
         private PacijentService pacijentServis = new PacijentService();
         private ZdravstveniKartonServis kartonServis = new ZdravstveniKartonServis();
 
+
+
         public bool ObrisiLekara(Lekar lekar)
         {
             return lekarServis.ObrisiLekara(lekar);
@@ -29,7 +31,7 @@ namespace ZdravoKorporacija.Controller
         }
         public LekarDTO NadjiLekaraPoJMBG(long lekar)
         {
-            return Model2DTO( lekarServis.NadjiLekaraPoJMBG(lekar));
+            return Model2DTO(lekarServis.NadjiLekaraPoJMBG(lekar));
         }
         public Pacijent NadjiPacijentaPoJMBG(long jmbg)
         {
@@ -64,6 +66,11 @@ namespace ZdravoKorporacija.Controller
         {
             return terminServis.AzurirajTermin(termin);
         }
+
+        public bool AzurirajTermin(TerminDTO termin)
+        {
+            return terminServis.AzurirajTermin(termin);
+        } 
         public Termin DTO2ModelNadji(TerminDTO dto)
         {
             return terminServis.DTO2ModelNadji(dto);
@@ -80,10 +87,10 @@ namespace ZdravoKorporacija.Controller
         {
             return terminServis.Model2DTO(model);
         }
-        
+
         internal bool AzurirajLekara(Lekar lekar)
         {
-            return lekarServis.AzurirajLekara( lekar);
+            return lekarServis.AzurirajLekara(lekar);
         }
 
         public bool ObrisiNalogPacijentu(Pacijent pacijent)
@@ -107,9 +114,9 @@ namespace ZdravoKorporacija.Controller
         {
             return prostorijaServis.PregledSvihProstorija2Model(dtos);
         }
-        public ObservableCollection<Prostorija> DobaviSlobodneProstorije(  Termin termin)
+        public ObservableCollection<Prostorija> DobaviSlobodneProstorije(Termin termin)
         {
-           return terminServis.DobaviSlobodneProstorije( termin);
+            return terminServis.DobaviSlobodneProstorije(termin);
         }
         public bool OtkaziTermin(Termin termin, Dictionary<int, int> ids)
         {
@@ -125,9 +132,9 @@ namespace ZdravoKorporacija.Controller
         {
             return pacijentServis.ObrisiTerminPacijentu(termin);
         }
-        public List<Lekar> DobaviSlobodneLekare( DateTime pocetakTermina, SpecijalizacijaEnum specijalizacija)
+        public List<Lekar> DobaviSlobodneLekare(DateTime pocetakTermina, SpecijalizacijaEnum specijalizacija)
         {
-            return terminServis.DobaviSlobodneLekare( pocetakTermina, specijalizacija);
+            return terminServis.DobaviSlobodneLekare(pocetakTermina, specijalizacija);
         }
         public int MapaTermina(Dictionary<int, int> ids)
         {
@@ -249,7 +256,7 @@ namespace ZdravoKorporacija.Controller
             return terminServis.AzurirajTerminPacijent(t, p);
         }
 
-       TerminService ts = TerminService.Instance;
+        TerminService ts = TerminService.Instance;
         private static TerminController _instance;
 
         public static TerminController Instance
@@ -266,7 +273,7 @@ namespace ZdravoKorporacija.Controller
 
         public bool izdajUput(PacijentDTO pac, TerminDTO termin)
         {
-            return ts.izdajUput(pac,termin);
+            return ts.izdajUput(pac, termin);
         }
         public bool IzdajAnamnezu(IzvestajDTO izvestaj, TerminDTO termin)
         {
@@ -285,9 +292,9 @@ namespace ZdravoKorporacija.Controller
             return ts.FindPrByPocetak(poc);
         }
 
-        public bool ZakaziTermin(TerminDTO termin,PacijentDTO pacijent)
+        public bool ZakaziTermin(TerminDTO termin, PacijentDTO pacijent)
         {
-            ts.ZakaziTermin(termin,pacijent);
+            ts.ZakaziTermin(termin, pacijent);
             return true;
         }
 

@@ -1,9 +1,8 @@
-﻿using System;
+﻿using Model;
+using Newtonsoft.Json;
 using System.Collections.Generic;
-using Model;
 using System.Collections.ObjectModel;
 using System.IO;
-using Newtonsoft.Json;
 
 namespace Repository
 {
@@ -68,7 +67,7 @@ namespace Repository
         }
 
         public bool Sacuvaj()
-        { 
+        {
             string lokacija = @"..\..\..\Data\korisnici.json";
             JsonSerializer serializer = new JsonSerializer();
             //serializer.PreserveReferencesHandling = PreserveReferencesHandling.All;

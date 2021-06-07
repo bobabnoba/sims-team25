@@ -78,7 +78,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
             {
                 dostupniLjekaridto.Add(lll);
             }
-            
+
             ljekar.ItemsSource = dostupniLjekaridto;
         }
 

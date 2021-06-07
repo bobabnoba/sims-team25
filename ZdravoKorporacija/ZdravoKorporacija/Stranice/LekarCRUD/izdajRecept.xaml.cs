@@ -1,16 +1,9 @@
-﻿using Model;
-using Repository;
-using Service;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
 {
@@ -33,15 +26,15 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             this.DataContext = this;
             lekovi = new ObservableCollection<LekDTO>();
             pac = selektovani;
-            if (pac.ZdravstveniKarton.Alergije!=null)
-            { 
-            
+            if (pac.ZdravstveniKarton.Alergije != null)
+            {
+
                 foreach (LekDTO lek in lekController.PregledSvihLekova())
+                {
+                    if (lek.Alergeni != null)
                     {
-                        if (lek.Alergeni != null)
+                        foreach (String st in lek.Alergeni.Split(","))
                         {
-                            foreach (String st in lek.Alergeni.Split(","))
-                            {
                             foreach (String s in pac.ZdravstveniKarton.Alergije.Split(","))
                             {
 
@@ -52,9 +45,9 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                             }
 
                         }
-                            
-                        }
-                        
+
+                    }
+
                     if (!ne)
                     {
                         lekovi.Add(lek);
@@ -64,7 +57,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             else { lekovi = new ObservableCollection<LekDTO>(lekController.PregledSvihLekova()); }
             CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
             Date.BlackoutDates.Add(cdr);
-  
+
             lekNaziv.ItemsSource = lekovi;
 
         }
@@ -79,7 +72,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
             Date.BlackoutDates.Add(cdr);
             ter = selektovani;
-         
+
             foreach (PacijentDTO p in pacijentController.PregledSvihPacijenata2())
             {
                 if (p.ZdravstveniKarton != null)

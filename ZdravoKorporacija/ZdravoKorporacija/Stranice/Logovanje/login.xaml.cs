@@ -1,6 +1,4 @@
-﻿using Model;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows;
 using System.Windows.Navigation;
 
 namespace ZdravoKorporacija.Stranice
@@ -10,7 +8,7 @@ namespace ZdravoKorporacija.Stranice
     /// </summary>
     public partial class login : Window
     {
-        
+
         public login()
         {
             InitializeComponent();

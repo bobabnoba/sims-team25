@@ -1,22 +1,19 @@
-using System;
 using Model;
-using System.Collections.Generic;
 using Repository;
+using System.Collections.Generic;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Repository;
-using System.Collections;
-using System.Collections.ObjectModel;
 
 namespace Service
 {
-   public class LekServis
-   {
+    public class LekServis
+    {
         LekRepozitorijum datoteka = LekRepozitorijum.Instance;
         public bool DodajLek(Lek Lek, Dictionary<int, int> id_map)
-      {
-           
+        {
+
             LekRepozitorijum datoteka = LekRepozitorijum.Instance;
-       
+
 
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapLekova");
             LekRepozitorijum.Instance.lekovi.Add(Lek);
@@ -24,12 +21,12 @@ namespace Service
             datotekaID.sacuvaj(id_map);
             //dodato
             datoteka.DobaviSve();
-            
+
             return true;
         }
 
         public bool ObrisiLek(Lek lek, Dictionary<int, int> id_map)
-      {
+        {
             LekRepozitorijum datoteka = LekRepozitorijum.Instance;
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapLekova");
 
@@ -45,12 +42,12 @@ namespace Service
             }
             return false;
         }
-      
-      public bool AzurirajLek(Lek lek)
-      {
+
+        public bool AzurirajLek(Lek lek)
+        {
             LekRepozitorijum datoteka = LekRepozitorijum.Instance;
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapLekova");
-           
+
             foreach (Lek l in LekRepozitorijum.Instance.lekovi)
             {
                 if (l.Id.Equals(lek.Id))
@@ -63,11 +60,11 @@ namespace Service
             }
             return false;
         }
-      
-      public Lek PregledLeka(string id)
-      {
+
+        public Lek PregledLeka(string id)
+        {
             LekRepozitorijum datoteka = LekRepozitorijum.Instance;
-           
+
             foreach (Lek l in LekRepozitorijum.Instance.lekovi)
             {
                 if (l.Id.Equals(id))
@@ -77,9 +74,9 @@ namespace Service
             }
             return null;
         }
-      
-      public List<Lek> PregledSvihLekova()
-      {
+
+        public List<Lek> PregledSvihLekova()
+        {
             LekRepozitorijum datoteka = LekRepozitorijum.Instance;
             List<Lek> lekovi = datoteka.DobaviSve();
             return lekovi;
@@ -94,7 +91,7 @@ namespace Service
                 lekDTOs.Add(new LekDTO(l));
             }
             return lekDTOs;
-       
+
         }
 
 
@@ -107,13 +104,14 @@ namespace Service
             int id = nadjiSlobodanID(id_map);
             id_map[id] = 1;
 
-            Lek lek = new Lek(zahtevLek.Lek.Id,zahtevLek.Lek.Proizvodjac,zahtevLek.Lek.Sastojci,zahtevLek.Lek.NusPojave,zahtevLek.Lek.NazivLeka);
-            ZahtevLek zahtevZaLek = new ZahtevLek(lek,zahtevLek.NeophodnihPotvrda,zahtevLek.BrojPotvrda);
-            
-            foreach (LekDTO lekD in zahtevLek.Lek.alternativniLekovi) {
-                Lek l = new Lek(lekD.Id,lekD.NusPojave,lekD.Sastojci,lekD.NusPojave,lekD.NazivLeka);
+            Lek lek = new Lek(zahtevLek.Lek.Id, zahtevLek.Lek.Proizvodjac, zahtevLek.Lek.Sastojci, zahtevLek.Lek.NusPojave, zahtevLek.Lek.NazivLeka);
+            ZahtevLek zahtevZaLek = new ZahtevLek(lek, zahtevLek.NeophodnihPotvrda, zahtevLek.BrojPotvrda);
+
+            foreach (LekDTO lekD in zahtevLek.Lek.alternativniLekovi)
+            {
+                Lek l = new Lek(lekD.Id, lekD.NusPojave, lekD.Sastojci, lekD.NusPojave, lekD.NazivLeka);
                 zahtevZaLek.Lek.alternativniLekovi.Add(l);
-             }
+            }
 
             zahtevZaLek.Setlekari(zahtevLek.lekari);
 
@@ -142,12 +140,12 @@ namespace Service
             return false;
         }
 
-            public bool ObrisiZahtevZaLek(ZahtevLek zahtevLek)
+        public bool ObrisiZahtevZaLek(ZahtevLek zahtevLek)
         {
             ZahtevLekRepozitorijum datoteka = ZahtevLekRepozitorijum.Instance;
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapZahtevZaLek");
             datoteka.dobaviSve();
-            
+
             Dictionary<int, int> id_map = datotekaID.dobaviSve();
             id_map[zahtevLek.Id] = 0;
 

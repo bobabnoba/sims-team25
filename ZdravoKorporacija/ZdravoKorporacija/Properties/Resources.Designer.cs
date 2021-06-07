@@ -718,7 +718,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DarkTheme.
+        ///   Looks up a localized string similar to Dark Theme.
         /// </summary>
         public static string TemaMenu {
             get {

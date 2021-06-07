@@ -24,7 +24,8 @@ namespace Model
             DatumNabavke = datumNabavke;
         }
 
-        public Inventar(InventarDTO inventarDTO) {
+        public Inventar(InventarDTO inventarDTO)
+        {
             Id = inventarDTO.Id;
             Naziv = inventarDTO.Naziv;
             UkupnaKolicina = inventarDTO.UkupnaKolicina;
@@ -33,7 +34,7 @@ namespace Model
 
         }
 
-       
+
 
         public int Id { get; set; }
         public String Naziv { get; set; }

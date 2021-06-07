@@ -2,11 +2,7 @@
 using Repository;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.Service;
 
 namespace Service
 {
@@ -37,7 +33,7 @@ namespace Service
 
             DateTime kraj = pocetak.AddMinutes(minuta);
 
-            ZahtevRenoviranja zahtev = new ZahtevRenoviranja(zahtevId,new Prostorija(zahtevRenoviranjaDTO.Prostorija), pocetak, kraj, zahtevRenoviranjaDTO.Trajanje);
+            ZahtevRenoviranja zahtev = new ZahtevRenoviranja(zahtevId, new Prostorija(zahtevRenoviranjaDTO.Prostorija), pocetak, kraj, zahtevRenoviranjaDTO.Trajanje);
 
             List<StatickaOprema> oprema = zahtev.Prostorija.statickaOprema;
 
@@ -51,7 +47,7 @@ namespace Service
                     ZahtevIzbacivanja zi = new ZahtevIzbacivanja();
                     zi.prostorija = zahtev.Prostorija;
                     zp.Pocetak = zahtevRenoviranjaDTO.PocetakDan;
-                    
+
                     zahtevI.ZakaziIzbacivanje(inventar, zi, zahtevRenoviranjaDTO.PocetakDan, zahtevRenoviranjaDTO.PocetakSati, zahtevRenoviranjaDTO.Trajanje);
                     zahtevP.ZakaziPremestanje(inventar, zp, zahtevRenoviranjaDTO.PocetakSati, zahtevRenoviranjaDTO.Trajanje);
                 }

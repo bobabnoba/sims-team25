@@ -1,11 +1,9 @@
 ﻿using Model;
 using Service;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Stranice.LekarCRUD;
 
 namespace ZdravoKorporacija.Stranice.Logovanje
