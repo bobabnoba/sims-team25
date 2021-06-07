@@ -13,10 +13,12 @@ namespace ZdravoKorporacija.Konverteri
 
         public ZdravstveniKarton KonvertujDTOuEntitet(ZdravstveniKartonDTO dto)
         {
+            if(dto != null) { 
             PacijentKonverter pacijentKonverter = new PacijentKonverter();
             ReceptKonverter receptKonverter = new ReceptKonverter();
             return new ZdravstveniKarton(receptKonverter.KonvertujDTOSuEntitete(dto.recept), pacijentKonverter.KonvertujDTOuEntitet(dto.pacijent), dto.Id);
-
+            }
+            return null;
         }
 
         public IEnumerable<ZdravstveniKartonDTO> KonvertujEntiteteUDTOS(List<ZdravstveniKarton> entiteti)
