@@ -4,7 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.PacijentCRUD"
-      mc:Ignorable="d" 
+      xmlns:calendar="clr-namespace:MyCalendar.Calendar;assembly=MyCalendar.Calendar"
+    mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="630"
       Title="Pomoć"
       Background="Transparent">
@@ -55,7 +56,8 @@
                 </Grid>
             </TabItem>
     <TabItem Header="Obaveštenja" FontSize="24" FontFamily="Corbel" BorderBrush="Black" Foreground="#EB4D2323" Background="Transparent">
-                <Grid Background="#9EE38383"/>
+                <Grid Background="#9EE38383">
+                 </Grid>
             </TabItem>
         </TabControl>
 

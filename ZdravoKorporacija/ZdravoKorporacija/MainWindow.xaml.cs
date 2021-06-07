@@ -6,6 +6,8 @@ using Service;
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Model;
@@ -27,9 +29,12 @@ namespace ZdravoKorporacija
         public static ContentControl cc = new ContentControl();
         public static  List<Specijalista> spec = new List<Specijalista>();
         UlogaEnum uloga;
+
         public MainWindow() 
         { 
             InitializeComponent();
+
+
             cc.Content = this.Content;
             Specijalista s1 = new Specijalista("Veljko","Vukovic" );
             s1.Specijalizacija = SpecijalizacijaEnum.Kardiohirurg;

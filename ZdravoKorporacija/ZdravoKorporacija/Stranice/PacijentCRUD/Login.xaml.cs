@@ -45,7 +45,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
             }
             else
             {
-                MessageBox.Show("Neispravan unos. Molimo pokušajte ponovo.", "Neuspešno logovanje");
+                pogresniKred.Text = "Pogrešno korisničko ime/lozinka.";
             }
                        
                   
