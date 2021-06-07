@@ -4,6 +4,8 @@ using System.Text;
 using Service;
 using Model;
 using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.ServiceZaKonverzije;
+using ZdravoKorporacija.ServiceSekretarUtility;
 
 namespace ZdravoKorporacija.Controller
 {
@@ -11,7 +13,8 @@ namespace ZdravoKorporacija.Controller
 
     {
         private RadniDanService danServis = new RadniDanService();
-
+        private RadniDaniServiceZaKonverzije danKonverzije = new RadniDaniServiceZaKonverzije();
+        private RadniDanSekretarUtility danSekretar = new RadniDanSekretarUtility();
         public RadniDan NadjiDanZaLekara(DateTime dan, double lekar)
         {
             return danServis.NadjiDanZaLekara(dan, lekar);
@@ -27,19 +30,19 @@ namespace ZdravoKorporacija.Controller
         }
         public List<RadniDanDTO> PregledSvihRadnihDana2DTO(List<RadniDan> modeli)
         {
-            return danServis.PregledSvihRadnihDana2DTO(modeli);
+            return danKonverzije.PregledSvihRadnihDana2DTO(modeli);
         }
         public void DodajSlobodneDane(DateTime Od, DateTime Do, double lekar)
         {
-             danServis.DodajSlobodneDane(Od, Do, lekar);
+            danSekretar.DodajSlobodneDane(Od, Do, lekar);
         }
         public void PromeniSmenu(PromeniSmenuDTO smenaDTO)
         {
-            danServis.DrugaSmena(smenaDTO);
+            danSekretar.PromeniSmenu(smenaDTO);
         }
         public List<RadniDan> PregledSvihRadnihDana2Model(List<RadniDanDTO> dtos)
         {
-            return danServis.PregledSvihRadnihDana2Model(dtos);
+            return danKonverzije.PregledSvihRadnihDana2Model(dtos);
         }
         public List<RadniDan> NadjiSveDaneZaLekara(double lekar)
         {
@@ -51,15 +54,15 @@ namespace ZdravoKorporacija.Controller
         }
         public RadniDanDTO Model2DTO(RadniDan model)
         {
-            return danServis.Model2DTO(model);
+            return danKonverzije.Model2DTO(model);
         }
         public RadniDan DTO2Model(RadniDanDTO dto)
         {
-            return danServis.DTO2Model(dto);
+            return danKonverzije.DTO2Model(dto);
         }
         public List<RadniDan> PregledOdDo(DateTime Od, DateTime Do, double lekar)
         {
-            return danServis.PregledOdDo(Od, Do, lekar);
+            return danSekretar.PregledOdDo(Od, Do, lekar);
         }
     }
 }

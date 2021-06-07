@@ -4,20 +4,23 @@ using System.Text;
 using Model;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Service;
+using ZdravoKorporacija.ServiceSekretarUtility;
+using ZdravoKorporacija.ServiceZaKonverzije;
 
 namespace ZdravoKorporacija.Controller
 {
     class ObavestenjaController
     {
         private ObavestenjaService obavestenjaServis = new ObavestenjaService();
-
+        private ObavestenjaServiceZaKonverzije obavestenjaKonverzije = new ObavestenjaServiceZaKonverzije();
+        private ObavestenjaSekretarUtility obavestenjaSekretar = new ObavestenjaSekretarUtility();
         public void generisiObavestenja()
         {
-            obavestenjaServis.generisiObavestenja();
+            obavestenjaSekretar.generisiObavestenja();
         }
         public List<Notifikacija> pregled()
         {
-           return obavestenjaServis.pregled();
+           return obavestenjaServis.PregledSvihObavestenja();
         }
         public bool dodajObavestenje(Notifikacija not)
         {
@@ -29,15 +32,15 @@ namespace ZdravoKorporacija.Controller
         }
         public Notifikacija DTO2ModelNapravi(NotifikacijaDTO dto)
         {
-            return obavestenjaServis.DTO2ModelNapravi(dto);
+            return obavestenjaKonverzije.DTO2ModelNapravi(dto);
         }
         public NotifikacijaDTO model2DTO(Notifikacija model)
         {
-            return obavestenjaServis.model2DTO(model);
+            return obavestenjaKonverzije.model2DTO(model);
         }
         public Notifikacija DTO2Model(NotifikacijaDTO dto)
         {
-            return obavestenjaServis.DTO2Model(dto);
+            return obavestenjaKonverzije.DTO2Model(dto);
         }
         public List<Notifikacija> PregledSvihObavestenja()
         {
@@ -45,11 +48,11 @@ namespace ZdravoKorporacija.Controller
         }
         public List<Notifikacija> PregledSvihObavestenja2Model(List<NotifikacijaDTO> dtos)
         {
-            return obavestenjaServis.PregledSvihObavestenja2Model(dtos);
+            return obavestenjaKonverzije.PregledSvihObavestenja2Model(dtos);
         }
         public List<NotifikacijaDTO> PregledSvihObavestenja2DTO(List<Notifikacija> modeli)
         {
-            return obavestenjaServis.PregledSvihObavestenja2DTO(modeli);
+            return obavestenjaKonverzije.PregledSvihObavestenja2DTO(modeli);
         }
 
     }

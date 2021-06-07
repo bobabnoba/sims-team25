@@ -131,5 +131,11 @@ namespace ZdravoKorporacija
             Login pl = new Login(UlogaEnum.Pacijent);
             pl.Show();
         }
+
+        private void ffBTN_Click(object sender, RoutedEventArgs e)
+        {
+            Feedback ff = new Feedback();
+            ff.Show();
+        }
     }
 }

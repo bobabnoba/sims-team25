@@ -20,6 +20,7 @@
                 <Button Content="Lekar" Click="openLekarFrame" Width="100" Margin="80,0,0,0"/>
 
             </StackPanel>
+            <Button Content="FEEDBACK" Name="ffBTN" Margin="216,78,184,167" Click="ffBTN_Click"/>
         </Grid>
     </DockPanel>
 </Window>
