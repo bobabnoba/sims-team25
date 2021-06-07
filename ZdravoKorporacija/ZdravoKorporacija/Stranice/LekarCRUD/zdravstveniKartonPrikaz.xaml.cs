@@ -5,7 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
-
+using ZdravoKorporacija.Factory;
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
 {
@@ -14,8 +14,8 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     /// </summary>
     public partial class zdravstveniKartonPrikaz : Page
     {
+        private static IReceptController _receptController;
         private TerminController terminController = TerminController.Instance;
-        private ReceptController receptController = ReceptController.Instance;
         private PacijentController pacijentController = PacijentController.Instance;
         private IzvestajController izvestajController = IzvestajController.Instance;
         private ObservableCollection<TerminDTO> termini = new ObservableCollection<TerminDTO>();
@@ -32,6 +32,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
         public zdravstveniKartonPrikaz(PacijentDTO selektovani)
         {
+            _receptController = ReceptControllerFactory.Create();
             InitializeComponent();
             recepti = new ObservableCollection<ReceptDTO>();
             izvestaji = new ObservableCollection<IzvestajDTO>();
@@ -67,7 +68,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             }
             catch (NullReferenceException) { }
             //Trace.WriteLine(pac.ZdravstveniKarton.recept[0]);
-            foreach (ReceptDTO r in receptController.PregledSvihRecepata())
+            foreach (ReceptDTO r in _receptController.PregledSvihRecepata())
             {
                 foreach (ReceptDTO rec in pac.ZdravstveniKarton.recept)
                 {
@@ -98,6 +99,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         public zdravstveniKartonPrikaz(TerminDTO t)
         {
             InitializeComponent();
+            _receptController = ReceptControllerFactory.Create();
             recepti = new ObservableCollection<ReceptDTO>();
             izvestaji = new ObservableCollection<IzvestajDTO>();
             pacijenti = pacijentController.PregledSvihPacijenata2();
@@ -139,7 +141,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             catch (NullReferenceException) { }
 
 
-            foreach (ReceptDTO r in receptController.PregledSvihRecepata())
+            foreach (ReceptDTO r in _receptController.PregledSvihRecepata())
             {
                 foreach (ReceptDTO rec in pac.ZdravstveniKarton.recept)
                 {

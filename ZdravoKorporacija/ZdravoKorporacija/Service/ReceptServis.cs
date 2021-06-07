@@ -3,17 +3,21 @@ using Repository;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Factory;
+using ZdravoKorporacija.Repository;
 
 namespace Service
 {
-    public class ReceptServis
+    public class ReceptServis: IReceptServis
     {
-        ReceptRepozitorijum rr = ReceptRepozitorijum.Instance;
         public static ObservableCollection<Recept> recepti = ReceptRepozitorijum.Instance.DobaviSve();
         IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapRecept");
         Dictionary<int, int> id_map = new Dictionary<int, int>();
 
         private static ReceptServis _instance;
+
+        private static IReceptRepozitorijum _receptRepozitorijum;
+
 
         public static ReceptServis Instance
         {
@@ -21,11 +25,14 @@ namespace Service
             {
                 if (_instance == null)
                 {
+                    _receptRepozitorijum = ReceptRepozitorijumFactory.Create();
                     _instance = new ReceptServis();
+                    recepti = _receptRepozitorijum.DobaviSve();
                 }
                 return _instance;
             }
         }
+
         public bool DodajRecept(ReceptDTO recept)
         {
             id_map = datotekaID.dobaviSve();
@@ -41,7 +48,7 @@ namespace Service
             }
             recept.Id = id;
 
-            foreach (Recept r in rr.DobaviSve())
+            foreach (Recept r in _receptRepozitorijum.DobaviSve())
             {
                 if (r.Id.Equals(recept.Id))
                 {
@@ -50,7 +57,7 @@ namespace Service
             }
 
             recepti.Add(ConvertToModel(recept));
-            rr.Sacuvaj(recepti);
+            _receptRepozitorijum.Sacuvaj(recepti);
             datotekaID.sacuvaj(id_map);
             return true;
         }
@@ -64,7 +71,7 @@ namespace Service
                 if (r.Id.Equals(recept.Id))
                 {
                     recepti.Remove(r);
-                    rr.Sacuvaj(recepti);
+                    _receptRepozitorijum.Sacuvaj(recepti);
                     id_map[recept.Id] = 0;
                     datotekaID.sacuvaj(id_map);
                     return true;
@@ -81,7 +88,7 @@ namespace Service
                 {
                     recepti.Remove(r);
                     recepti.Add(new Recept(recept));
-                    rr.Sacuvaj(recepti);
+                    _receptRepozitorijum.Sacuvaj(recepti);
                     return true;
                 }
             }
@@ -102,7 +109,7 @@ namespace Service
 
         public ObservableCollection<ReceptDTO> PregledSvihRecepata()
         {
-            ObservableCollection<Recept> recepti = rr.DobaviSve();
+            ObservableCollection<Recept> recepti = _receptRepozitorijum.DobaviSve();
             ObservableCollection<ReceptDTO> receptDTOs = new ObservableCollection<ReceptDTO>();
             foreach (Recept r in recepti)
             {
