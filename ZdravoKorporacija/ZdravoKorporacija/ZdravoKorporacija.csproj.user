@@ -117,6 +117,9 @@
     <Compile Update="Stranice\PacijentCRUD\Pomoc.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Stranice\PacijentCRUD\Terapija.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Stranice\PacijentCRUD\Wizard1.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -360,6 +363,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\PacijentCRUD\Pregledi.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\PacijentCRUD\Terapija.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\PacijentCRUD\Wizard1.xaml">
