@@ -1,0 +1,37 @@
+﻿<Page x:Class="ZdravoKorporacija.Stranice.PacijentCRUD.PocetnaStranica"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.PacijentCRUD"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="630"
+      Title="PocetnaStranica">
+
+    <Grid Background="Transparent">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="45*"/>
+        </Grid.RowDefinitions>
+        <Image Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Source="/Images/pocetna.png" Grid.RowSpan="5" Height="520" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,40,0"/>
+        <TextBlock Text="Dobar dan!" FontFamily="Corbel" FontWeight="Bold" FontSize="70" Grid.Row="0" Grid.Column="0" Margin="20,30,0,0" HorizontalAlignment="Center" />
+        <TextBlock Text="Kako se osećate danas?" TextWrapping="Wrap" FontFamily="Corbel" FontWeight="Bold" FontSize="40" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="0" Margin="40,0,0,0"/>
+        <Button Content="Zakaži pregled" FontFamily="Corbel" FontWeight="Bold" FontSize ="26" Grid.Row="2" Width="210" Grid.Column="0" Background="#AFD44C4C" Margin="68,0,67,28" />
+
+        <TextBlock Text="Da li ste zadovoljni radom naše aplikacije?" TextWrapping="Wrap" FontFamily="Corbel" FontSize="30" Grid.Row="5" Grid.Column="0"  HorizontalAlignment="Left" />
+        <Button Content="Ostavi feedback" FontFamily="Corbel" FontWeight="Bold" FontSize ="26" Grid.Row="6"  Grid.Column="0" Background="#FF789EFF" HorizontalAlignment="Left" Width="200" Margin="20,0,0,15"/>
+        <Button Content="Oceni nas" FontFamily="Corbel" FontWeight="Bold" FontSize = "26" Grid.Row="6"  Grid.Column="1" Background="#FF789EFF" HorizontalAlignment="Left"  Width="200" Margin="-210,0,0,15" />
+
+    </Grid>
+</Page>

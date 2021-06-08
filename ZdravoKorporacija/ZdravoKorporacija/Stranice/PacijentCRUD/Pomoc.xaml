@@ -57,7 +57,8 @@
             </TabItem>
     <TabItem Header="Obaveštenja" FontSize="24" FontFamily="Corbel" BorderBrush="Black" Foreground="#EB4D2323" Background="Transparent">
                 <Grid Background="#9EE38383">
-                 </Grid>
+                    <calendar:Calendar />
+                </Grid>
             </TabItem>
         </TabControl>
 

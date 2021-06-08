@@ -18,6 +18,7 @@
     <None Remove="Images\GettyImages-493928198.jpg" />
     <None Remove="Images\icons8-active-male-50.png" />
     <None Remove="Images\output-onlinepngtools.png" />
+    <None Remove="Images\pocetna.png" />
     <None Remove="Stranice\LekarCRUD\add.png" />
     <None Remove="Stranice\LekarCRUD\edit.png" />
   </ItemGroup>
@@ -40,6 +41,7 @@
     <Resource Include="Images\GettyImages-493928198.jpg" />
     <Resource Include="Images\icons8-active-male-50.png" />
     <Resource Include="Images\output-onlinepngtools.png" />
+    <Resource Include="Images\pocetna.png" />
     <Resource Include="Stranice\LekarCRUD\add.png" />
     <Resource Include="Stranice\LekarCRUD\edit.png" />
   </ItemGroup>
