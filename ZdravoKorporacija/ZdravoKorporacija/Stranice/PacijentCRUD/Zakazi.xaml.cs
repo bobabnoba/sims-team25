@@ -38,9 +38,9 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
             dostupniLjekari = new BindingList<LekarDTO>();
 
 
-            date.IsEnabled = false;
-            time.IsEnabled = false;
-            ljekar.IsEnabled = false;
+            //date.IsEnabled = false;
+            //time.IsEnabled = false;
+            //ljekar.IsEnabled = false;
             selektovaneVrijednosti();
         }
 
@@ -72,34 +72,42 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
 
         private void potvrdi(object sender, RoutedEventArgs e)
         {
-            terminDTO.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
-            terminDTO.Lekar = (LekarDTO)ljekar.SelectedItem;
-            terminDTO.Trajanje = 30;
-            terminDTO.zdravstveniKarton = pacijentDTO.ZdravstveniKarton;
-            Boolean bu = terminKontroler.zakaziPregled(terminDTO, pacijentDTO);
-            this.pregledi.Add(terminDTO);
+            datumValidan();
+            vriejemValidno();
+            ljekarValidan();
+
+            if (datumValidan() && vriejemValidno() && ljekarValidan()) { 
+                terminDTO.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
+                terminDTO.Lekar = (LekarDTO)ljekar.SelectedItem;
+                terminDTO.Trajanje = 30;
+                terminDTO.zdravstveniKarton = pacijentDTO.ZdravstveniKarton;
+                Boolean bu = terminKontroler.zakaziPregled(terminDTO, pacijentDTO);
+                this.pregledi.Add(terminDTO);
             
-            this.Close();
+                this.Close();
+            }
 
         }
 
         private void VremeChecked(object sender, RoutedEventArgs e)
         {
+            btnPotvrdi.IsEnabled = true;
             selektovaneVrijednosti();
             prioritetLjekar = false;
-            date.IsEnabled = true;
-            time.IsEnabled = true;
-            ljekar.IsEnabled = false;
+            //date.IsEnabled = true;
+            //time.IsEnabled = true;
+            //ljekar.IsEnabled = false;
 
         }
 
         private void LekarChecked(object sender, RoutedEventArgs e)
         {
+            btnPotvrdi.IsEnabled = true;
             selektovaneVrijednosti();
             prioritetLjekar = true;
-            date.IsEnabled = true;
-            time.IsEnabled = false;
-            ljekar.IsEnabled = true;
+            //date.IsEnabled = true;
+            //time.IsEnabled = false;
+            //ljekar.IsEnabled = true;
 
 
         }
@@ -114,7 +122,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
                         if (td != null) time.Items.Remove(td.Pocetak.ToShortTimeString());
 
                     }
-                    time.IsEnabled = true;
+                    //time.IsEnabled = true;
                 }
             }
             else
@@ -124,7 +132,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
                     DateTime terminPregleda = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
 
                     if (nedostupanLjekar(terminPregleda) != null) dostupniLjekari.Remove(nedostupanLjekar(terminPregleda));
-                    ljekar.IsEnabled = true;
+                    //ljekar.IsEnabled = true;
                 }
             }
 
@@ -141,7 +149,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
                         if (td != null) time.Items.Remove(td.Pocetak.ToShortTimeString());
 
                     }
-                    time.IsEnabled = true;
+                   // time.IsEnabled = true;
                 }
             }
             else //prioritet vrijeme
@@ -150,7 +158,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
                 {
                     DateTime terminPregleda = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
                     if (nedostupanLjekar(terminPregleda) != null) dostupniLjekari.Remove(nedostupanLjekar(terminPregleda));
-                    ljekar.IsEnabled = true;
+                    //ljekar.IsEnabled = true;
                 }
             }
 
@@ -167,7 +175,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
                         if(td != null) time.Items.Remove(td.Pocetak.ToShortTimeString());
 
                     }
-                    time.IsEnabled = true;
+                    //time.IsEnabled = true;
                 }
             }
             else
@@ -177,7 +185,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
                     DateTime terminPregleda = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
                     
                     if (nedostupanLjekar(terminPregleda) != null) dostupniLjekari.Remove(nedostupanLjekar(terminPregleda));
-                    ljekar.IsEnabled = true;
+                    //ljekar.IsEnabled = true;
                 }               
             }
 
@@ -224,5 +232,48 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
         {
             this.Close();
         }
+
+        public bool ljekarValidan()
+        {
+            if (ljekar.SelectedItem == null)
+            {
+                tbLjekar.Text = "Morate izabrati lekara za pregled!";
+                return false;
+            }
+            else
+            {
+                tbLjekar.Text = "";
+                return true;
+            }
+        }
+
+        public bool datumValidan()
+        {
+            if (date.SelectedDate == null)
+            {
+                tbDate.Text = "Morate izabrati datum pregleda!";
+                return false;
+            }
+            else
+            {
+                tbDate.Text = "";
+                return true;
+            }
+        }
+
+        public bool vriejemValidno()
+        {
+            if (time.SelectedItem == null)
+            {
+                tbTime.Text = "Morate izabrati vreme pregleda!";
+                return false;
+            }
+            else
+            {
+                tbTime.Text = "";
+                return true;
+            }
+        }
+
     }
 }

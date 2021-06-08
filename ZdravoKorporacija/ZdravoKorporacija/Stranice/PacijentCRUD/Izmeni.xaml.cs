@@ -33,28 +33,21 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
             this.mojiPregledi = termini; //pregledi
             this.dostupniLjekaridto = new BindingList<LekarDTO>();
             this.ljekaridto = (List<LekarDTO>)lekarKontroler.dobaviListuDTOLekara();
-
-            azurirajDostupne();
+            dostupniLjekaridto = new BindingList<LekarDTO>(ljekaridto);
+            ljekar.ItemsSource = dostupniLjekaridto;
             inicijalizujKomponente();
+        //    azurirajDostupne();
 
-            this.DataContext = this;
+
         }
 
         private void inicijalizujKomponente()
         {
-            foreach (LekarDTO l in ljekaridto)
-            {
-                if (l.Jmbg == selektovanidto.Lekar.Jmbg)
-                {
-                    ljekar.SelectedItem = l;
-                }
-            }
+
 
             ////// **********************
-            CalendarDateRange kalendar = new CalendarDateRange(DateTime.MinValue, selektovanidto.Pocetak.AddDays(-3));
-            CalendarDateRange kalendar1 = new CalendarDateRange(selektovanidto.Pocetak.AddDays(3), DateTime.MaxValue);
+            CalendarDateRange kalendar = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
             date.BlackoutDates.Add(kalendar);
-            date.BlackoutDates.Add(kalendar1);
 
             date.SelectedDate = selektovanidto.Pocetak;
             DateTime danas = DateTime.Today;
@@ -65,6 +58,14 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
             }
 
             time.SelectedItem = selektovanidto.Pocetak.ToShortTimeString();
+
+            foreach (LekarDTO l in dostupniLjekaridto)
+            {
+                if (l.Jmbg == selektovanidto.Lekar.Jmbg)
+                {
+                    ljekar.SelectedItem = l;
+                }
+            }
 
         }
 
@@ -79,9 +80,19 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
             foreach (LekarDTO lll in ljekaridto)
             {
                 dostupniLjekaridto.Add(lll);
+                
+
             }
             
             ljekar.ItemsSource = dostupniLjekaridto;
+
+            foreach (LekarDTO l in dostupniLjekaridto)
+            {
+                if (l.Jmbg == selektovanidto.Lekar.Jmbg)
+                {
+                    ljekar.SelectedItem = l;
+                }
+            }
         }
 
         private void potvrdi(object sender, RoutedEventArgs e)
@@ -108,61 +119,71 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
 
         private void timeChanged(object sender, SelectionChangedEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("u didnt touch me but im still there");
-            azurirajDostupne();
+            
 
             noviTermindDTO.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem);
 
-            if (!(noviTermindDTO.Pocetak.ToShortTimeString().Equals(selektovanidto.Pocetak.ToShortTimeString())))
-            {
-
-                if (!((noviTermindDTO.Pocetak.ToShortDateString().Equals(selektovanidto.Pocetak.ToShortDateString())) && noviTermindDTO.Pocetak.ToShortTimeString().Equals(selektovanidto.Pocetak.ToShortTimeString())))
+                if(!noviTermindDTO.Pocetak.ToString().Equals(selektovanidto.Pocetak.ToString()))
                 {
-
-                    mojiPregledi.Remove(noviTermindDTO);
-                    foreach (TerminDTO term in mojiPregledi)
+                System.Diagnostics.Debug.WriteLine("u time");
+                //azurirajDostupne();
+                if (!(noviTermindDTO.Pocetak.ToShortTimeString().Equals(selektovanidto.Pocetak.ToShortTimeString())))
                     {
-                        if (term.Pocetak.Equals(noviTermindDTO.Pocetak))
+
+                        if (!((noviTermindDTO.Pocetak.ToShortDateString().Equals(selektovanidto.Pocetak.ToShortDateString())) && noviTermindDTO.Pocetak.ToShortTimeString().Equals(selektovanidto.Pocetak.ToShortTimeString())))
                         {
-                            foreach (LekarDTO l in ljekaridto.ToArray())
+
+                            mojiPregledi.Remove(noviTermindDTO);
+                            foreach (TerminDTO term in mojiPregledi)
                             {
-                                if (l.Jmbg.Equals(term.Lekar.Jmbg))
+                                if (term.Pocetak.Equals(noviTermindDTO.Pocetak))
                                 {
-                                    dostupniLjekaridto.Remove(l);
-                                    ljekar.SelectedItem = null;
+                                    foreach (LekarDTO l in ljekaridto.ToArray())
+                                    {
+                                        if (l.Jmbg.Equals(term.Lekar.Jmbg))
+                                        {
+                                            dostupniLjekaridto.Remove(l);
+                                            ljekar.SelectedItem = null;
+                                        }
+                                    }
                                 }
                             }
                         }
+
                     }
                 }
-
-            }
 
         }
         private void dateChanged(object sender, SelectionChangedEventArgs e)
         {
-            azurirajDostupne();
+            
 
             noviTermindDTO.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem);
 
-            if (!(noviTermindDTO.Pocetak.ToShortDateString().Equals(selektovanidto.Pocetak.ToShortDateString())))
+            if(!noviTermindDTO.Pocetak.ToShortDateString().Equals(selektovanidto.Pocetak.ToShortDateString()))
             {
-                if (!((noviTermindDTO.Pocetak.ToShortDateString().Equals(selektovanidto.Pocetak.ToShortDateString())))) //&& p.Pocetak.ToShortTimeString().Equals(vrijemeSelekt)))
+                System.Diagnostics.Debug.WriteLine("u date");
+               // azurirajDostupne();
+
+                if (!(noviTermindDTO.Pocetak.ToShortDateString().Equals(selektovanidto.Pocetak.ToShortDateString())))
                 {
-                    mojiPregledi.Remove(noviTermindDTO);
-
-                    foreach (TerminDTO term in mojiPregledi)
+                    if (!((noviTermindDTO.Pocetak.ToShortDateString().Equals(selektovanidto.Pocetak.ToShortDateString())))) //&& p.Pocetak.ToShortTimeString().Equals(vrijemeSelekt)))
                     {
+                        mojiPregledi.Remove(noviTermindDTO);
 
-
-                        if (term.Pocetak.ToString().Equals(noviTermindDTO.Pocetak.ToString()))
+                        foreach (TerminDTO term in mojiPregledi)
                         {
-                            foreach (LekarDTO l in ljekaridto.ToArray())
+
+
+                            if (term.Pocetak.ToString().Equals(noviTermindDTO.Pocetak.ToString()))
                             {
-                                if (l.Jmbg.Equals(term.Lekar.Jmbg))
+                                foreach (LekarDTO l in ljekaridto.ToArray())
                                 {
-                                    dostupniLjekaridto.Remove(l);
-                                    ljekar.SelectedItem = null;
+                                    if (l.Jmbg.Equals(term.Lekar.Jmbg))
+                                    {
+                                        dostupniLjekaridto.Remove(l);
+                                        ljekar.SelectedItem = null;
+                                    }
                                 }
                             }
                         }

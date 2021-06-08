@@ -17,7 +17,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="290*"/>
-            <RowDefinition Height="50*"/>
+            <RowDefinition Height="45*"/>
         </Grid.RowDefinitions>
         <DockPanel  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  Margin="55, 40, 60, 0">
             <Grid DockPanel.Dock="Top" Background="#ff1e243e" MinHeight="70">
@@ -47,7 +47,13 @@
                 
         </DockPanel>
 
-        <Button Grid.Column="1" Grid.Row="1" Width="200" Height="50" Foreground="#ff1e243e" Background="#ffd84d4d" FontFamily="Corbel" FontSize="20" FontWeight="Bold" Margin="0, 20, 0, 0">Generiši PDF izveštaj</Button>
+        <Button Grid.Column="1" Grid.Row="1" Name="btnGenerisi" Width="240" Height="50" Foreground="#ff1e243e" Background="#ffd84d4d" FontFamily="Corbel" FontSize="20" FontWeight="Bold" Margin="0, 15, 0, 10" Click="Button_Click" >
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Images/pdf.png" Stretch="UniformToFill" Height="40" Width="40" RenderTransformOrigin="0.419,0.2"/>
+                <TextBlock Text="Generiši PDF izveštaj" VerticalAlignment="Center"/>
+
+            </StackPanel>
+        </Button>
             
     </Grid>
 </Page>

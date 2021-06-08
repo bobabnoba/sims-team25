@@ -5,22 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.PacijentCRUD"
         mc:Ignorable="d"
-        Title="Anketiranje bolnice" Height="550" Width="400"
-        Background="CadetBlue">
-    <Grid Margin="0,-10,0,0" Height="598" VerticalAlignment="Top">
-        <TextBlock TextWrapping="Wrap" Margin="18,112,259,437" FontSize="14"><Run Language="sr-latn-rs" Text="Ocenite usluge bolnice:"/><LineBreak/><Run/></TextBlock>
-        <ComboBox x:Name ="ocjenaBolnice" Margin="126,112,175,451" RenderTransformOrigin="0.507,0.18"/>
-        <TextBlock TextWrapping="Wrap" Margin="28,29,55,514" TextAlignment="Center" FontSize="20"><Run Language="sr-latn-rs" Text="Zdravo korporacija"/><LineBreak/><Run Language="sr-latn-rs"/></TextBlock>
-        <RichTextBox Name="textbox" HorizontalAlignment="Left" Height="174" Margin="126,199,0,0" VerticalAlignment="Top" Width="230" >
-            <FlowDocument>
-                <Paragraph>
-                    <Run Text=""/>
-                </Paragraph>
-            </FlowDocument>
-        </RichTextBox>
-        <TextBlock TextWrapping="Wrap" Margin="21,199,259,319" FontSize="14"><Run Language="sr-latn-rs" Text="Vaše mišljenje:"/></TextBlock>
-        <Button Content="POTVRDI" HorizontalAlignment="Left" Margin="89,460,0,0" VerticalAlignment="Top" Width="80" Click="potvrdi"/>
-        <Button Content="ODUSTANI" HorizontalAlignment="Left" Margin="201,460,0,0" VerticalAlignment="Top" Width="80" Click="odustani"/>
+       Title="Zdravo korporacija" Height="469" Width="400"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
 
+    <Grid Background="#784c60b9">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="20*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="0*"/>
+            <RowDefinition Height="0*"/>
+            <RowDefinition Height="0*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="20*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Oceni naše usluge" FontWeight="Bold" Grid.Row="1" Grid.ColumnSpan="2" FontSize="28" Grid.Column="1" HorizontalAlignment="Center" Margin="49,6,57,5" Width="200" Height="55" FontFamily="Corbel" Foreground="#FF1E243E"/>
+        <TextBlock Text="Ocena:" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" FontSize="18" Margin="0,15,0,7" FontFamily="Corbel" Foreground="#FF1E243E" Grid.RowSpan="2"/>
+        <TextBlock Text="Komentar:" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" FontSize="18" Margin="0,78,0,8" FontFamily="Corbel" Foreground="#FF1E243E" Grid.RowSpan="3"/>
+        <ComboBox x:Name="ocjenaBolnice" Background="Transparent" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Grid.Row="6" Grid.Column="1" FontFamily="Corbel" FontSize="16" Foreground="#FF1E243E" Height="35" Grid.ColumnSpan="2" Margin="92,9,10,34"/>
+        <RichTextBox x:Name="textbox"  Grid.Row="7" Grid.Column="1"  FontFamily="Corbel" FontSize="16" Foreground="#FF1E243E"  Grid.RowSpan="3" Background="#FFEAEAEA" Height="100" Grid.ColumnSpan="2" Margin="92,1,10,32"/>
+
+        <Button Content="Odustani" FontWeight="Bold"  Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="2" Margin="40,4,162,4" Click="odustani" BorderBrush="#FF1E243E" FontFamily="Corbel" FontSize="18" Background="#CCD84D4D" Foreground="#FF1E243E" Height="40" Width="120" RenderTransformOrigin="0.008,0.437"/>
+        <Button Content="Potvrdi" FontWeight="Bold" Grid.Row="11" Grid.Column="2"  Click="potvrdi" BorderBrush="#FF1E243E" FontFamily="Corbel" FontSize="18" Background="#CCD84D4D" Foreground="#FF1E243E" Height="40" Width="120"/>
     </Grid>
 </Window>

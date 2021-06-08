@@ -1,17 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using ZdravoKorporacija.DTO;
 
 namespace ZdravoKorporacija.Stranice.PacijentCRUD
@@ -22,11 +12,13 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
     public partial class Terapija : Page
     {
         private PacijentDTO pacijentDTO;
+        private PrintDialog _printDialog = new PrintDialog();
+
         public Terapija(PacijentDTO pacijentDTO)
         {
             InitializeComponent();
-            calendarComponents();
             this.pacijentDTO = pacijentDTO;
+            calendarComponents();
 
             mjeseci.SelectionChanged += (o, e) => osvjeziPrikazKalendara();
             godine.SelectionChanged += (o, e) => osvjeziPrikazKalendara();
@@ -38,7 +30,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
             string str;
             foreach (ReceptDTO r in pacijentDTO.ZdravstveniKarton.recept)
             {
-                str = "Lek: " + r.NazivLeka + "@" + "Vreme: " + r.Pocetak.ToShortTimeString();
+                str = "Lek: " + r.NazivLeka + "@" + "Vreme: " + r.Pocetak.ToShortTimeString() + "@";
                 str = str.Replace("@", " " + Environment.NewLine);
 
                 string boo = r.Pocetak.ToUniversalTime().ToString("MMMM");
@@ -46,8 +38,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
                 if (mjeseci.SelectedIndex == (th - 1))
                 
                 {
-                    kalendar.Days[(int)r.Pocetak.Day - 1].Notes = str;
-                    kalendar.Days[(int)r.Pocetak.Day - 1].Enabled = false;
+                    kalendar.Days[(int)r.Pocetak.Day + 1].Notes = str;
                 }
                 
             }
@@ -86,6 +77,8 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
             int newmnths = DateTime.ParseExact(startMonth, "MMMM", System.Globalization.CultureInfo.CurrentCulture).Month;
             mjeseci.SelectedIndex = newmnths - 1;
 
+            dodajNotes();
+
             //double width = 0;
             //foreach(ComboBoxItem item in mjeseci.Items)
             //{
@@ -96,6 +89,13 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
             //mjeseci.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
             //mjeseci.Width = mjeseci.DesiredSize.Width + width;
 
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            btnGenerisi.Visibility = Visibility.Hidden;
+            _printDialog.PrintVisual(this, "Izveštaj o rasporedu uzimanja terapije");
 
         }
     }

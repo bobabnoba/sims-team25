@@ -100,88 +100,6 @@
           "Trajanje": 12,
           "NazivLeka": "Brufen",
           "Pocetak": "2021-05-01T00:00:00"
-        },
-        {
-          "lek": null,
-          "lekar": null,
-          "zdravstveniKarton": null,
-          "Id": 2,
-          "Doziranje": "2",
-          "Trajanje": 12,
-          "NazivLeka": "Mendilex",
-          "Pocetak": "2021-04-30T00:00:00"
-        },
-        {
-          "lek": null,
-          "lekar": null,
-          "zdravstveniKarton": null,
-          "Id": 4,
-          "Doziranje": "1",
-          "Trajanje": 17,
-          "NazivLeka": "Brufen",
-          "Pocetak": "2021-05-01T00:00:00"
-        },
-        {
-          "lek": null,
-          "lekar": null,
-          "zdravstveniKarton": null,
-          "Id": 1,
-          "Doziranje": "3",
-          "Trajanje": 3,
-          "NazivLeka": "Cardiopirin",
-          "Pocetak": "2021-04-30T00:00:00"
-        }
-      ],
-      "termin": null,
-      "patient": null,
-      "Id": 1234567890123,
-      "ZdravstvenoStanje": 3,
-      "Alergije": "drogica, loЛ,",
-      "KrvnaGrupa": 8,
-      "Vakcine": null
-    },
-    "prostorija": {
-      "inventar": [],
-      "statickaOprema": [
-        {
-          "termin": null,
-          "Prostorija": null,
-          "Id": 2,
-          "Naziv": "stolica",
-          "UkupnaKolicina": 100,
-          "Proizvodjac": "forma ideale",
-          "DatumNabavke": "0001-01-01T00:00:00"
-        }
-      ],
-      "dinamickaOprema": null,
-      "Id": 5,
-      "Naziv": "soba33",
-      "Tip": 1,
-      "Slobodna": false,
-      "Sprat": 3
-    },
-    "Lekar": null,
-    "Id": 15,
-    "Tip": 1,
-    "Pocetak": "2021-10-23T08:00:00",
-    "Trajanje": 0.5,
-    "hitno": false
-  },
-  {
-    "izvestaj": null,
-    "zdravstveniKarton": {
-      "izvestajOHospitalizaciji": [],
-      "istorijaBolesti": [],
-      "recept": [
-        {
-          "lek": null,
-          "lekar": null,
-          "zdravstveniKarton": null,
-          "Id": 0,
-          "Doziranje": "2",
-          "Trajanje": 12,
-          "NazivLeka": "Brufen",
-          "Pocetak": "2021-05-01T00:00:00"
         }
       ],
       "termin": null,
@@ -3569,31 +3487,6 @@
     "hitno": false
   },
   {
-    "izvestaj": null,
-    "zdravstveniKarton": null,
-    "prostorija": null,
-    "Lekar": {
-      "termin": null,
-      "Specijalizacija": 0,
-      "radniDani": null,
-      "Ime": "Milos",
-      "Prezime": "Zivic",
-      "Jmbg": 2234567890113,
-      "BrojTelefona": 0,
-      "Mejl": null,
-      "AdresaStanovanja": null,
-      "Pol": 0,
-      "Username": null,
-      "Password": null,
-      "Uloga": 0
-    },
-    "Id": 0,
-    "Tip": 0,
-    "Pocetak": "2021-06-03T11:30:00",
-    "Trajanje": 0.5,
-    "hitno": false
-  },
-  {
     "izvestaj": {
       "termin": null,
       "Id": 0,
@@ -3856,6 +3749,618 @@
     "Id": 8,
     "Tip": 0,
     "Pocetak": "2021-07-03T08:30:00",
+    "Trajanje": 30.0,
+    "hitno": false
+  },
+  {
+    "izvestaj": {
+      "termin": null,
+      "Id": 0,
+      "Opis": null,
+      "Simptomi": null
+    },
+    "zdravstveniKarton": {
+      "izvestajOHospitalizaciji": [],
+      "istorijaBolesti": [],
+      "recept": [
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 0,
+          "Doziranje": "2",
+          "Trajanje": 12,
+          "NazivLeka": "Brufen",
+          "Pocetak": "2021-06-26T08:30:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 1,
+          "Doziranje": "2",
+          "Trajanje": 12,
+          "NazivLeka": "Brufen",
+          "Pocetak": "2021-04-24T19:30:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 2,
+          "Doziranje": "2",
+          "Trajanje": 12,
+          "NazivLeka": "Mendilex",
+          "Pocetak": "2021-06-20T13:00:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 3,
+          "Doziranje": "2",
+          "Trajanje": 12,
+          "NazivLeka": "Mendilex",
+          "Pocetak": "2021-06-18T13:00:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 4,
+          "Doziranje": "1",
+          "Trajanje": 17,
+          "NazivLeka": "Cardiopirin",
+          "Pocetak": "2021-04-13T15:30:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 5,
+          "Doziranje": "3",
+          "Trajanje": 3,
+          "NazivLeka": "Cardiopirin",
+          "Pocetak": "2021-04-14T15:30:00"
+        }
+      ],
+      "termin": null,
+      "patient": null,
+      "Id": 1234567890123,
+      "ZdravstvenoStanje": 3,
+      "Alergije": "drogica, loЛ,",
+      "KrvnaGrupa": 8,
+      "Vakcine": null
+    },
+    "prostorija": null,
+    "Lekar": {
+      "termin": null,
+      "Specijalizacija": 0,
+      "radniDani": null,
+      "Ime": "Deki",
+      "Prezime": "Dragoslavic",
+      "Jmbg": 1121212,
+      "BrojTelefona": 0,
+      "Mejl": null,
+      "AdresaStanovanja": null,
+      "Pol": 0,
+      "Username": null,
+      "Password": null,
+      "Uloga": 0
+    },
+    "Id": 11,
+    "Tip": 0,
+    "Pocetak": "2021-06-11T09:00:00",
+    "Trajanje": 30.0,
+    "hitno": false
+  },
+  {
+    "izvestaj": {
+      "termin": null,
+      "Id": 0,
+      "Opis": null,
+      "Simptomi": null
+    },
+    "zdravstveniKarton": {
+      "izvestajOHospitalizaciji": [],
+      "istorijaBolesti": [],
+      "recept": [
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 0,
+          "Doziranje": "2",
+          "Trajanje": 12,
+          "NazivLeka": "Brufen",
+          "Pocetak": "2021-06-26T08:30:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 1,
+          "Doziranje": "2",
+          "Trajanje": 12,
+          "NazivLeka": "Brufen",
+          "Pocetak": "2021-04-24T19:30:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 2,
+          "Doziranje": "2",
+          "Trajanje": 12,
+          "NazivLeka": "Mendilex",
+          "Pocetak": "2021-06-20T13:00:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 3,
+          "Doziranje": "2",
+          "Trajanje": 12,
+          "NazivLeka": "Mendilex",
+          "Pocetak": "2021-06-18T13:00:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 4,
+          "Doziranje": "1",
+          "Trajanje": 17,
+          "NazivLeka": "Cardiopirin",
+          "Pocetak": "2021-04-13T15:30:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 5,
+          "Doziranje": "3",
+          "Trajanje": 3,
+          "NazivLeka": "Cardiopirin",
+          "Pocetak": "2021-04-14T15:30:00"
+        }
+      ],
+      "termin": null,
+      "patient": null,
+      "Id": 1234567890123,
+      "ZdravstvenoStanje": 3,
+      "Alergije": "drogica, loЛ,",
+      "KrvnaGrupa": 8,
+      "Vakcine": null
+    },
+    "prostorija": null,
+    "Lekar": {
+      "termin": null,
+      "Specijalizacija": 0,
+      "radniDani": null,
+      "Ime": "Deki",
+      "Prezime": "Dragoslavic",
+      "Jmbg": 1121212,
+      "BrojTelefona": 0,
+      "Mejl": null,
+      "AdresaStanovanja": null,
+      "Pol": 0,
+      "Username": null,
+      "Password": null,
+      "Uloga": 0
+    },
+    "Id": 12,
+    "Tip": 0,
+    "Pocetak": "2021-07-01T09:00:00",
+    "Trajanje": 30.0,
+    "hitno": false
+  },
+  {
+    "izvestaj": {
+      "termin": null,
+      "Id": 0,
+      "Opis": null,
+      "Simptomi": null
+    },
+    "zdravstveniKarton": {
+      "izvestajOHospitalizaciji": [],
+      "istorijaBolesti": [],
+      "recept": [
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 0,
+          "Doziranje": "2",
+          "Trajanje": 12,
+          "NazivLeka": "Brufen",
+          "Pocetak": "2021-06-26T08:30:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 1,
+          "Doziranje": "2",
+          "Trajanje": 12,
+          "NazivLeka": "Brufen",
+          "Pocetak": "2021-04-24T19:30:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 2,
+          "Doziranje": "2",
+          "Trajanje": 12,
+          "NazivLeka": "Mendilex",
+          "Pocetak": "2021-06-20T13:00:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 3,
+          "Doziranje": "2",
+          "Trajanje": 12,
+          "NazivLeka": "Mendilex",
+          "Pocetak": "2021-06-18T13:00:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 4,
+          "Doziranje": "1",
+          "Trajanje": 17,
+          "NazivLeka": "Cardiopirin",
+          "Pocetak": "2021-04-13T15:30:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 5,
+          "Doziranje": "3",
+          "Trajanje": 3,
+          "NazivLeka": "Cardiopirin",
+          "Pocetak": "2021-04-14T15:30:00"
+        }
+      ],
+      "termin": null,
+      "patient": null,
+      "Id": 1234567890123,
+      "ZdravstvenoStanje": 3,
+      "Alergije": "drogica, loЛ,",
+      "KrvnaGrupa": 8,
+      "Vakcine": null
+    },
+    "prostorija": null,
+    "Lekar": {
+      "termin": null,
+      "Specijalizacija": 0,
+      "radniDani": null,
+      "Ime": "Milos",
+      "Prezime": "Zivic",
+      "Jmbg": 2234567890113,
+      "BrojTelefona": 0,
+      "Mejl": null,
+      "AdresaStanovanja": null,
+      "Pol": 0,
+      "Username": null,
+      "Password": null,
+      "Uloga": 0
+    },
+    "Id": 0,
+    "Tip": 0,
+    "Pocetak": "2021-07-10T08:30:00",
+    "Trajanje": 30.0,
+    "hitno": false
+  },
+  {
+    "izvestaj": {
+      "termin": null,
+      "Id": 0,
+      "Opis": null,
+      "Simptomi": null
+    },
+    "zdravstveniKarton": {
+      "izvestajOHospitalizaciji": [],
+      "istorijaBolesti": [],
+      "recept": [
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 0,
+          "Doziranje": "2",
+          "Trajanje": 12,
+          "NazivLeka": "Brufen",
+          "Pocetak": "2021-06-26T08:30:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 1,
+          "Doziranje": "2",
+          "Trajanje": 12,
+          "NazivLeka": "Brufen",
+          "Pocetak": "2021-04-24T19:30:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 2,
+          "Doziranje": "2",
+          "Trajanje": 12,
+          "NazivLeka": "Mendilex",
+          "Pocetak": "2021-06-20T13:00:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 3,
+          "Doziranje": "2",
+          "Trajanje": 12,
+          "NazivLeka": "Mendilex",
+          "Pocetak": "2021-06-18T13:00:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 4,
+          "Doziranje": "1",
+          "Trajanje": 17,
+          "NazivLeka": "Cardiopirin",
+          "Pocetak": "2021-04-13T15:30:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 5,
+          "Doziranje": "3",
+          "Trajanje": 3,
+          "NazivLeka": "Cardiopirin",
+          "Pocetak": "2021-04-14T15:30:00"
+        }
+      ],
+      "termin": null,
+      "patient": null,
+      "Id": 1234567890123,
+      "ZdravstvenoStanje": 3,
+      "Alergije": "drogica, loЛ,",
+      "KrvnaGrupa": 8,
+      "Vakcine": null
+    },
+    "prostorija": null,
+    "Lekar": {
+      "termin": null,
+      "Specijalizacija": 0,
+      "radniDani": null,
+      "Ime": "dr Scepan",
+      "Prezime": "Scepanovic",
+      "Jmbg": 5432,
+      "BrojTelefona": 0,
+      "Mejl": null,
+      "AdresaStanovanja": null,
+      "Pol": 0,
+      "Username": null,
+      "Password": null,
+      "Uloga": 0
+    },
+    "Id": 13,
+    "Tip": 0,
+    "Pocetak": "2021-06-18T09:00:00",
+    "Trajanje": 30.0,
+    "hitno": false
+  },
+  {
+    "izvestaj": {
+      "termin": null,
+      "Id": 0,
+      "Opis": null,
+      "Simptomi": null
+    },
+    "zdravstveniKarton": {
+      "izvestajOHospitalizaciji": [],
+      "istorijaBolesti": [],
+      "recept": [
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 0,
+          "Doziranje": "2",
+          "Trajanje": 12,
+          "NazivLeka": "Brufen",
+          "Pocetak": "2021-06-26T08:30:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 1,
+          "Doziranje": "2",
+          "Trajanje": 12,
+          "NazivLeka": "Brufen",
+          "Pocetak": "2021-04-24T19:30:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 2,
+          "Doziranje": "2",
+          "Trajanje": 12,
+          "NazivLeka": "Mendilex",
+          "Pocetak": "2021-06-20T13:00:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 3,
+          "Doziranje": "2",
+          "Trajanje": 12,
+          "NazivLeka": "Mendilex",
+          "Pocetak": "2021-06-18T13:00:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 4,
+          "Doziranje": "1",
+          "Trajanje": 17,
+          "NazivLeka": "Cardiopirin",
+          "Pocetak": "2021-04-13T15:30:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 5,
+          "Doziranje": "3",
+          "Trajanje": 3,
+          "NazivLeka": "Cardiopirin",
+          "Pocetak": "2021-04-14T15:30:00"
+        }
+      ],
+      "termin": null,
+      "patient": null,
+      "Id": 1234567890123,
+      "ZdravstvenoStanje": 3,
+      "Alergije": "drogica, loЛ,",
+      "KrvnaGrupa": 8,
+      "Vakcine": null
+    },
+    "prostorija": null,
+    "Lekar": {
+      "termin": null,
+      "Specijalizacija": 0,
+      "radniDani": null,
+      "Ime": "dr Scepan",
+      "Prezime": "Scepanovic",
+      "Jmbg": 5432,
+      "BrojTelefona": 0,
+      "Mejl": null,
+      "AdresaStanovanja": null,
+      "Pol": 0,
+      "Username": null,
+      "Password": null,
+      "Uloga": 0
+    },
+    "Id": 14,
+    "Tip": 0,
+    "Pocetak": "2021-06-11T09:00:00",
+    "Trajanje": 30.0,
+    "hitno": false
+  },
+  {
+    "izvestaj": {
+      "termin": null,
+      "Id": 0,
+      "Opis": null,
+      "Simptomi": null
+    },
+    "zdravstveniKarton": {
+      "izvestajOHospitalizaciji": [],
+      "istorijaBolesti": [],
+      "recept": [
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 0,
+          "Doziranje": "2",
+          "Trajanje": 12,
+          "NazivLeka": "Brufen",
+          "Pocetak": "2021-06-26T08:30:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 1,
+          "Doziranje": "2",
+          "Trajanje": 12,
+          "NazivLeka": "Brufen",
+          "Pocetak": "2021-04-24T19:30:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 2,
+          "Doziranje": "2",
+          "Trajanje": 12,
+          "NazivLeka": "Mendilex",
+          "Pocetak": "2021-06-20T13:00:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 3,
+          "Doziranje": "2",
+          "Trajanje": 12,
+          "NazivLeka": "Mendilex",
+          "Pocetak": "2021-06-18T13:00:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 4,
+          "Doziranje": "1",
+          "Trajanje": 17,
+          "NazivLeka": "Cardiopirin",
+          "Pocetak": "2021-04-13T15:30:00"
+        },
+        {
+          "lek": null,
+          "lekar": null,
+          "zdravstveniKarton": null,
+          "Id": 5,
+          "Doziranje": "3",
+          "Trajanje": 3,
+          "NazivLeka": "Cardiopirin",
+          "Pocetak": "2021-04-14T15:30:00"
+        }
+      ],
+      "termin": null,
+      "patient": null,
+      "Id": 1234567890123,
+      "ZdravstvenoStanje": 3,
+      "Alergije": "drogica, loЛ,",
+      "KrvnaGrupa": 8,
+      "Vakcine": null
+    },
+    "prostorija": null,
+    "Lekar": {
+      "termin": null,
+      "Specijalizacija": 0,
+      "radniDani": null,
+      "Ime": "Veljko",
+      "Prezime": "Vukovic",
+      "Jmbg": 2334567890213,
+      "BrojTelefona": 0,
+      "Mejl": null,
+      "AdresaStanovanja": null,
+      "Pol": 0,
+      "Username": null,
+      "Password": null,
+      "Uloga": 0
+    },
+    "Id": 15,
+    "Tip": 0,
+    "Pocetak": "2021-07-02T08:30:00",
     "Trajanje": 30.0,
     "hitno": false
   }

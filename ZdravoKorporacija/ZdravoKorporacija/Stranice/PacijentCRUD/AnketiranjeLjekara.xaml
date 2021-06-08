@@ -5,39 +5,57 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.PacijentCRUD"
         mc:Ignorable="d"
-        Title="Anketiranje ljekara" Height="600" Width="500"
-        Background="CadetBlue">
-    <Grid Margin="38,44,40,40">
-        <Grid Margin="0,-10,22,0" Height="598" VerticalAlignment="Top">
-            <TextBlock TextWrapping="Wrap" Margin="18,112,259,437" FontSize="14"><Run Text="Ocen"/><Run Language="sr-latn-rs" Text="a:"/><LineBreak/><Run/></TextBlock>
-            <ComboBox x:Name ="ocjenaLjekara" Margin="126,112,175,451" RenderTransformOrigin="0.507,0.18"/>
-            <RichTextBox x:Name="textbox" HorizontalAlignment="Left" Height="174" Margin="126,199,0,0" VerticalAlignment="Top" Width="230" >
-                <FlowDocument>
-                    <Paragraph>
-                        <Run Text=""/>
-                    </Paragraph>
-                </FlowDocument>
-            </RichTextBox>
-            <TextBlock TextWrapping="Wrap" Margin="21,199,259,319" FontSize="14"><Run Language="sr-latn-rs" Text="Vaše mišljenje:"/></TextBlock>
-            <Button Content="POTVRDI" HorizontalAlignment="Left" Margin="89,460,0,0" VerticalAlignment="Top" Width="80" Click="potvrdi"/>
-            <Button Content="ODUSTANI" HorizontalAlignment="Left" Margin="201,460,0,0" VerticalAlignment="Top" Width="80" Click="odustani"/>
-            <TextBlock TextWrapping="Wrap" Margin="18,19,259,530" FontSize="14"><Run Language="sr-latn-rs" Text="Lekar:"/></TextBlock>
-            <ComboBox x:Name ="ljekar" Margin="126,10,31,553" RenderTransformOrigin="0.507,0.18">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock>
-                            <TextBlock.Text>
-                                <MultiBinding StringFormat="{}{0} {1}">
-                                    <Binding Path="Ime"/>
-                                    <Binding Path="Prezime"/>
-                                </MultiBinding>
-                            </TextBlock.Text>
-                        </TextBlock>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
+        Title="Zdravo korporacija" Height="469" Width="400"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    
+    <Grid Background="#784c60b9">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="20*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="20*"/>
+        </Grid.RowDefinitions>
+        <Label Content="  Oceni pregled" FontWeight="Bold" Grid.Row="1" Grid.ColumnSpan="2" FontSize="28" Grid.Column="1" HorizontalAlignment="Center" Margin="49,6,57,5" Width="200" Height="55" FontFamily="Corbel" Foreground="#FF1E243E"/>
+        <TextBlock Text="Lekar:" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" FontSize="18" Margin="0,18,0,4" FontFamily="Corbel" Foreground="#FF1E243E"/>
+        <TextBlock Text="Ocena:" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" FontSize="18" Margin="0,4,0,10" FontFamily="Corbel" Foreground="#FF1E243E"/>
+        <TextBlock Text="Komentar:" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" FontSize="18" Margin="0,55,0,31" FontFamily="Corbel" Foreground="#FF1E243E" Grid.RowSpan="3"/>
 
-        </Grid>
+        <ComboBox x:Name="ljekar" Background="Transparent" IsEnabled="False" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Grid.Row="4" Grid.Column="1" FontFamily="Corbel" Foreground="#FF1E243E" Height="35" Width="205" Grid.ColumnSpan="2" Margin="92,6,24,6">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Path="Ime"/>
+                                <Binding Path="Prezime"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <ComboBox x:Name="ocjenaLjekara" Background="Transparent" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Grid.Row="6" Grid.Column="1" FontFamily="Corbel" FontSize="16" Foreground="#FF1E243E" Height="35" Width="205" Grid.ColumnSpan="2" Margin="92,0,24,25"/>
+        <RichTextBox x:Name="textbox"  Grid.Row="6" Grid.Column="1"  FontFamily="Corbel" FontSize="16" Foreground="#FF1E243E"  Grid.RowSpan="4" Background="#FFEAEAEA" Width="205" Height="100" Grid.ColumnSpan="2" Margin="92,55,24,8">
 
+        </RichTextBox>
+
+        <Button Content="Odustani" FontWeight="Bold"  Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="2" Margin="40,4,162,4" Click="odustani" BorderBrush="#FF1E243E" FontFamily="Corbel" FontSize="18" Background="#CCD84D4D" Foreground="#FF1E243E" Height="40" Width="120"/>
+        <Button Content="Potvrdi" FontWeight="Bold" Grid.Row="11" Grid.Column="2"  Click="potvrdi" BorderBrush="#FF1E243E" FontFamily="Corbel" FontSize="18" Background="#CCD84D4D" Foreground="#FF1E243E" Height="40" Width="120"/>
     </Grid>
 </Window>

@@ -1,19 +1,10 @@
-﻿using Model;
-using Repository;
-using Service;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media.Animation;
 using System.Windows.Threading;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.Model;
-using ZdravoKorporacija.Service;
 
 namespace ZdravoKorporacija.Stranice.PacijentCRUD
 {
@@ -43,51 +34,21 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
 
             terminiDTO = new ObservableCollection<TerminDTO>(terminKontroler.dobaviListuDTOtermina(pacijentDTO));
 
-            calendarComponents();
-            
-            //dgTermini.ItemsSource = terminiDTO;
-            //dgTermini.Loaded += PostaviSirinuKolonaDGT;
+            dgTermini.ItemsSource = terminiDTO;
+            dgTermini.Loaded += PostaviSirinuKolonaDGT;
 
             this.DataContext = this;
         }
 
-        public void calendarComponents()
+
+
+        public void PostaviSirinuKolonaDGT(object source, EventArgs e)
         {
-            List<string> mjesec = new List<string> { "Januar", "Februar", "Mart", "April", "Maj", "Jun", "Jul", "Avgust", 
-                                                                        "Septembar", "Oktobar", "Novembar", "Decembar" };
-            mjeseci.ItemsSource = mjesec;
-
-            for (int i = -50; i < 50; i++)
+            foreach (var column in dgTermini.Columns)
             {
-                godine.Items.Add(DateTime.Today.AddYears(i).Year);
+                column.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
             }
-
-            godine.SelectedItem = DateTime.Today.Year;
-
-            string startMonth = DateTime.Now.ToUniversalTime().ToString("MMM yyyy");
-            int newmnths = DateTime.ParseExact(startMonth, "MMM yyyy", System.Globalization.CultureInfo.CurrentCulture).Month;
-            mjeseci.SelectedIndex = newmnths;
-
-            //double width = 0;
-            //foreach(ComboBoxItem item in mjeseci.Items)
-            //{
-            //    item.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
-            //    if (item.DesiredSize.Width > width)
-            //        width = item.DesiredSize.Width;
-            //}
-            //mjeseci.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
-            //mjeseci.Width = mjeseci.DesiredSize.Width + width;
-
-
         }
-
-        //public void PostaviSirinuKolonaDGT(object source, EventArgs e)
-        //{
-        //    foreach (var column in dgTermini.Columns)
-        //    {
-        //        column.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
-        //    }
-        //}
 
         private void timer_Tick(object sender, EventArgs e)
         {
@@ -97,107 +58,80 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
 
         private void ZakaziPregledClick(object sender, RoutedEventArgs e)
         {
-            //if (pacijentKontroler.pacijentJeBanovan(pacijentDTO))
-            //{
-            //    MessageBox.Show("Trenutno nije moguce zakazati pregled. Molimo pokusajte kasnije.", "Banovani ste");
-            //}
-            //else
-            //{
-            //    Zakazi zakaziDijalog = new Zakazi(terminiDTO, pacijentDTO);
-            //    zakaziDijalog.Show();
-            //}
+            if (pacijentKontroler.pacijentJeBanovan(pacijentDTO))
+            {
+                MessageBox.Show("Trenutno nije moguće zakazati pregled. Molimo pokušajte kasnije.", "Banovani ste");
+            }
+            else
+            {
+                Zakazi zakaziDijalog = new Zakazi(terminiDTO, pacijentDTO);
+                zakaziDijalog.Show();
+            }
         }
          private void IzmeniPregledClick(object sender, RoutedEventArgs e)
         {
-            //if (dgTermini.SelectedItem == null)
-            //    MessageBox.Show("Pregled nije izabran. Molimo označite pregled koji želite da izmenite.", "Greška");
-            //else
-            //{
-            //    //Termin t = (Termin)dgTermini.SelectedItem;
-            //    //if (t.Pocetak.Date <= DateTime.Today.AddDays(1).Date)
-            //    //{
-            //    //    MessageBox.Show("Nije moguće izmeniti pregled koji je zakazan u predstojećih 24h", "Greška");
-            //    //}
-            //    //else
-            //    //{
-            //        if (pacijentKontroler.pacijentJeBanovan(pacijentDTO))
-            //        {  
-            //            MessageBox.Show("Trenutno nije moguce izmeniti pregled. Molimo pokusajte kasnije.", "Banovani ste");
-            //        }
-            //        else
-            //        {
-            //            Izmeni ip = new Izmeni((TerminDTO)dgTermini.SelectedItem, terminiDTO, pacijentDTO);
-            //            ip.Show();
-            //        }
-            //    //}
-            //}
+            if (dgTermini.SelectedItem == null)
+                MessageBox.Show("Pregled nije izabran. Molimo označite pregled koji želite da izmenite.", "Greška");
+            else
+            {
+                //Termin t = (Termin)dgTermini.SelectedItem;
+                //if (t.Pocetak.Date <= DateTime.Today.AddDays(1).Date)
+                //{
+                //    MessageBox.Show("Nije moguće izmeniti pregled koji je zakazan u predstojećih 24h", "Greška");
+                //}
+                //else
+                //{
+                if (pacijentKontroler.pacijentJeBanovan(pacijentDTO))
+                {
+                    MessageBox.Show("Trenutno nije moguće izmeniti pregled. Molimo pokušajte kasnije.", "Banovani ste");
+                }
+                else
+                {
+                    Izmeni ip = new Izmeni((TerminDTO)dgTermini.SelectedItem, terminiDTO, pacijentDTO);
+                    ip.Show();
+                }
+                //}
+            }
         }
 
          private void OtkaziPregledClick(object sender, RoutedEventArgs e)
         {
-            //if (dgTermini.SelectedItem == null)
-            //    MessageBox.Show("Pregled nije izabran. Molimo označite pregled koji želite da otkažete.", "Greška");
-            //else
-            //{
-            //    if(pacijentKontroler.pacijentJeBanovan(pacijentDTO))
-            //    {
-            //        MessageBox.Show("Trenutno nije moguce otkazati pregled. Molimo pokusajte kasnije.", "Banovani ste");
-            //    }
-            //    else
-            //    {
-            //        if (MessageBox.Show("Da li ste sigurni da želite da otkažete pregled?", "Otkaži pregled",
-            //                       MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-            //        {
-            //            TerminDTO selektovani = (TerminDTO)dgTermini.SelectedItem;
-            //            terminKontroler.otkaziPregled(selektovani, pacijentDTO);
-            //            terminiDTO.Remove(selektovani);
-            //        }
-            //    }
-            //}
+            if (dgTermini.SelectedItem == null)
+                MessageBox.Show("Pregled nije izabran. Molimo označite pregled koji želite da otkažete.", "Greška");
+            else
+            {
+                if (pacijentKontroler.pacijentJeBanovan(pacijentDTO))
+                {
+                    MessageBox.Show("Trenutno nije moguće otkazati pregled. Molimo pokušajte kasnije.", "Banovani ste");
+                }
+                else
+                {
+                    if (MessageBox.Show("Da li ste sigurni da želite da otkažete pregled?", "Otkaži pregled",
+                                   MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                    {
+                        TerminDTO selektovani = (TerminDTO)dgTermini.SelectedItem;
+                        terminKontroler.otkaziPregled(selektovani, pacijentDTO);
+                        terminiDTO.Remove(selektovani);
+                    }
+                }
+            }
         }
 
          private void oceniTerminBtn_Click(object sender, RoutedEventArgs e)
-         {
-            // if (dgTermini.SelectedItem == null)
-            //     MessageBox.Show("Pregled nije izabran. Molimo označite pregled koji želite da ocenite.", "Greška");
-            // else if(anketaController.vecOcijenjen((TerminDTO)dgTermini.SelectedItem))
-            // {
-            //    MessageBox.Show("Već ste popunili anketu za ovaj pregled.", "Greška");
-            //}
-            // else
-            // {
-            //     AnketiranjeLjekara anketaDijalog =
-            //         new AnketiranjeLjekara((TerminDTO) dgTermini.SelectedItem, pacijentDTO);
-            //     anketaDijalog.Show();
-            // }
-         }
-
-
-
-        private void AnamnezaBtn_OnClick(object sender, RoutedEventArgs e)
         {
-            //AnamnezaProzor anamneza = new AnamnezaProzor((TerminDTO) dgTermini.SelectedItem, pacijentDTO);
-            //anamneza.Show();
-        }
-
-
-        private void IstorijaTerminaClick(object sender, RoutedEventArgs e)
-        {
-            terminiDTO.Clear();
-            List<TerminDTO> sviTermini = (List<TerminDTO>)terminKontroler.dobaviListuDTOProslihtermina(pacijentDTO);
-            foreach (TerminDTO t in sviTermini)
+            if (dgTermini.SelectedItem == null)
+                MessageBox.Show("Pregled nije izabran. Molimo označite pregled koji želite da ocenite.", "Greška");
+            else if (anketaController.vecOcijenjen((TerminDTO)dgTermini.SelectedItem))
             {
-                if (t.Pocetak < DateTime.Now)
-                {
-                    terminiDTO.Add(t);
-                }
+                MessageBox.Show("Već ste popunili anketu za ovaj pregled.", "Greška");
             }
-            oceniTerminBtn.Visibility = Visibility.Hidden;
-            zakaziBtn.Visibility = Visibility.Hidden;
-            otkaziBtn.Visibility = Visibility.Hidden;
-            izmeniBtn.Visibility = Visibility.Hidden;
-            istorijaBtn.Visibility = Visibility.Hidden;
-
+            else
+            {
+                AnketiranjeLjekara anketaDijalog =
+                    new AnketiranjeLjekara((TerminDTO)dgTermini.SelectedItem, pacijentDTO);
+                anketaDijalog.Show();
+            }
         }
+
     }
 }

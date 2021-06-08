@@ -24,7 +24,7 @@
             <ColumnDefinition Width="1053*"/>
             <ColumnDefinition Width="240*"/>
         </Grid.ColumnDefinitions>
-        <Button  Grid.Row="0" Grid.Column="0" Height ="120" Width="240" Background="Transparent" BorderBrush="Transparent">
+        <Button  IsHitTestVisible="False" Grid.Row="0" Grid.Column="0" Height ="120" Width="240" Background="Transparent" BorderBrush="Transparent">
             <Image Source="/Images/output-onlinepngtools.png" Stretch="None"/>
         </Button>
         <Rectangle Stroke="Black" StrokeThickness="3" Grid.Column="1" Grid.Row="1" />
@@ -32,9 +32,9 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="130*"/>
                 <RowDefinition Height="50*"/>
+                <RowDefinition Height="45*"/>
                 <RowDefinition Height="50*"/>
-                <RowDefinition Height="50*"/>
-                <RowDefinition Height="50*"/>
+                <RowDefinition Height="45*"/>
                 <RowDefinition Height="59*"/>
                 <RowDefinition Height="34*"/>
                 <RowDefinition Height="34*"/>
@@ -51,10 +51,10 @@
             <!--<Rectangle Stroke="Black" StrokeThickness="3" Grid.ColumnSpan="3" Grid.RowSpan="9"/>-->
             <Label Content=" Prijavi se" FontSize="65" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1" Width="302" />
             <Label Content="Korisničko ime:" FontSize="22" HorizontalAlignment="Left"  Grid.Column="1" Grid.Row="1"/>
-            <TextBox Name="imeText" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" FontSize="22" Grid.Row="2" Grid.Column="1" BorderBrush="Black"/>
+            <TextBox Name="imeText" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" FontSize="22" Grid.Row="2" Grid.Column="1" BorderBrush="Black"/>
             <Label Content="Lozinka:" FontSize="22" Grid.Row="3" HorizontalAlignment="Left" Grid.Column="1"/>
-            <PasswordBox Name="lozinkaText" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" FontSize="22" Grid.Row="4" Grid.Column="1" BorderBrush="Black"  />
-            <CheckBox x:Name="wizardCb" VerticalAlignment="Center" Grid.Row="5" Grid.Column="1" Content="Prvi put koristim aplikaciju" Checked="wizardCb_Checked">
+            <PasswordBox Name="lozinkaText" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" FontSize="22" Grid.Row="4" Grid.Column="1" BorderBrush="Black"  />
+            <CheckBox x:Name="wizardCb" VerticalAlignment="Center" Grid.Row="5" Grid.Column="1" Content="Prvi put koristim aplikaciju" Checked="wizardCb_Checked" >
                 <CheckBox.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleX="1.8" ScaleY="1.8"/>
@@ -65,7 +65,7 @@
                 </CheckBox.RenderTransform>
             </CheckBox>
             <Button Content="Potvrdi" Grid.Row="9" FontSize="22" Click="Button_Click" Grid.Column="1" HorizontalAlignment="Center" Width="173" />
-            <TextBox Name="pogresniKred" Text="" TextAlignment="Center" Foreground="Red" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" FontSize="16" Grid.Row="7" Grid.Column="1" BorderBrush="Transparent"/>
+            <TextBox Name="pogresniKred" Text="" IsHitTestVisible="False" IsReadOnly="True" TextAlignment="Center" Foreground="Red" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" FontSize="16" Grid.Row="7" Grid.Column="1" BorderBrush="Transparent"/>
 
         </Grid>
 
