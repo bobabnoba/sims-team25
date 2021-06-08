@@ -7,6 +7,19 @@ namespace Service
 {
     public class ZdravstveniKartonServis
     {
+        private static ZdravstveniKartonServis _instance;
+        
+        public static ZdravstveniKartonServis Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new ZdravstveniKartonServis();
+                }
+                return _instance;
+            }
+        }
         public bool KreirajZdravstveniKarton(ZdravstveniKarton ZdravstveniKarton, Dictionary<int, int> id_map)
         {
             ZdravstveniKartonRepozitorijum datoteka = new ZdravstveniKartonRepozitorijum();
@@ -54,9 +67,6 @@ namespace Service
         {
             ZdravstveniKartonRepozitorijum datoteka = new ZdravstveniKartonRepozitorijum();
             List<ZdravstveniKarton> zdravstveniKartoni = datoteka.DobaviSve();
-
-
-
 
             foreach (ZdravstveniKarton pr in zdravstveniKartoni)
             {

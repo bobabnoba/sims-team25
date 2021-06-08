@@ -157,11 +157,11 @@ namespace Service
             }
             return dto;
         }
-        public List<ProstorijaDTO> PregledSvihProstorija2()
+        public ObservableCollection<ProstorijaDTO> PregledSvihProstorija2()
         {
             ProstorijaRepozitorijum datoteka = new ProstorijaRepozitorijum();
             ObservableCollection<Prostorija> prostorije = datoteka.dobaviSve();
-            List<ProstorijaDTO> prostorijeDTO = new List<ProstorijaDTO>();
+            ObservableCollection<ProstorijaDTO> prostorijeDTO = new ObservableCollection<ProstorijaDTO>();
             foreach (Prostorija Prostorija in prostorije)
             {
                 prostorijeDTO.Add(convertToDTO(Prostorija));

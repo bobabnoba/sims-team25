@@ -1,7 +1,9 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Controller;
@@ -17,6 +19,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     public partial class izmeniPregledLekar : Page
     {
         private List<PacijentDTO> pacijenti = new List<PacijentDTO>();
+        private ProstorijaController pc = ProstorijaController.Instance;
         private ObservableCollection<ProstorijaDTO> prostorije = new ObservableCollection<ProstorijaDTO>();
         private List<TerminDTO> termini = new List<TerminDTO>();
         private TerminDTO t1;
@@ -25,12 +28,12 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
         String now = DateTime.Now.ToString("hh:mm:ss tt");
         DateTime today = DateTime.Today;
-        private TerminController controller = new TerminController();
+        private TerminController controller = TerminController.Instance;
         public izmeniPregledLekar(TerminDTO selektovani)
         {
             InitializeComponent();
             pacijenti = controller.PregledSvihPacijenata2DTO();
-            prostorije = controller.PregledSvihProstorijaDTO(null);
+            prostorije = pc.PregledSvihProstorija2();
             termini = TerminController.Instance.PregledSvihTermina2();
             t1 = selektovani;
             t2 = selektovani;
@@ -154,8 +157,46 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
         private void time_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
+            if (time.SelectedIndex != -1 && date.SelectedDate.HasValue)
+            {
+                String t = cboItem.Content.ToString();
+                prostorije = controller.DobaviSlobodneProstorije3(t1,DateTime.Parse(date.Text + " " + t),(ProstorijaDTO)cbProstorija.SelectedItem);
+                cbProstorija.ItemsSource = prostorije;
+                foreach (ProstorijaDTO p in prostorije)
+                {
+                    if (t1.prostorija == null)
+                    {
+                        break;
+                    }
+                    if (p.Id == t1.prostorija.Id)
+                    {
+                        cbProstorija.SelectedItem = p;
+                    }
+                }
+            }
+        }
 
-
+        private void date_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
+            if (time.SelectedIndex != -1 && date.SelectedDate.HasValue)
+            {
+                String t = cboItem.Content.ToString();
+                prostorije = controller.DobaviSlobodneProstorije3(t1,DateTime.Parse(date.Text + " " + t), (ProstorijaDTO)cbProstorija.SelectedItem);
+                cbProstorija.ItemsSource = prostorije;
+                foreach (ProstorijaDTO p in prostorije)
+                {
+                    if (t1.prostorija == null)
+                    {
+                        break;
+                    }
+                    if (p.Id == t1.prostorija.Id)
+                    {
+                        cbProstorija.SelectedItem = p;
+                    }
+                }
+            }
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

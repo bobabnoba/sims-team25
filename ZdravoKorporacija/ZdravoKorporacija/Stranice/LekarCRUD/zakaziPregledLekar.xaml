@@ -23,7 +23,7 @@
             <ColumnDefinition Width="141*"/>
         </Grid.ColumnDefinitions>
         <TextBlock Style="{DynamicResource textblock}" Text="{ns:Loc DatumIVremeText}" TextWrapping="Wrap" Margin="33,24,0,22" Grid.Row="1"/>
-        <DatePicker Name ="date" Grid.Column="1" HorizontalAlignment="Left" Margin="45,22,0,0" Grid.Row="1" VerticalAlignment="Top" Height="28"/>
+        <DatePicker Name ="date" Grid.Column="1" HorizontalAlignment="Left" Margin="45,22,0,0" Grid.Row="1" VerticalAlignment="Top" Height="28" SelectedDateChanged="date_SelectionChanged"/>
         <ComboBox Name ="time" Grid.Column="1" Margin="159,22,77,22" Grid.Row="1" SelectionChanged="time_SelectionChanged" Height="28" Width="60" >
             <ComboBoxItem>08:00</ComboBoxItem>
             <ComboBoxItem>08:30</ComboBoxItem>
@@ -56,7 +56,7 @@
         <ComboBox Name="cbPacijent" Grid.Column="1" Margin="58,0,77,40" Grid.Row="4" SelectionChanged="ComboBox_SelectionChanged" Height="28">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Style="{DynamicResource textblock}">
+                    <TextBlock >
                         <TextBlock.Text>
                             <MultiBinding StringFormat="{}{0} {1}">
                                 <Binding Path="Ime"/>
@@ -71,7 +71,7 @@
         <ComboBox Name="cbProstorija" Grid.Column="1" Margin="58,18,77,22" Grid.Row="3" Height="28">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Style="{DynamicResource textblock}">
+                    <TextBlock >
                         <TextBlock.Text>
                             <MultiBinding StringFormat="{}{0} {1}">
                                 <Binding Path="Id"/>

@@ -4,6 +4,7 @@ using Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Konverteri;
@@ -549,6 +550,65 @@ namespace ZdravoKorporacija.Model
                 }
             }
 
+            return slobodneProstorije;
+        }
+
+        public ObservableCollection<ProstorijaDTO> DobaviSlobodneProstorije2(DateTime Pocetak)
+        {
+            ObservableCollection<ProstorijaDTO> slobodneProstorije = prostorijaServis.PregledSvihProstorija2();
+
+
+            foreach (TerminDTO t in PregledSvihTermina2().ToArray())
+            {
+                if(Pocetak!=null)
+                if (t.Pocetak.Equals(Pocetak))
+                {
+
+                    foreach (ProstorijaDTO p in slobodneProstorije)
+
+                    {
+                        if (t.prostorija.Id.Equals(p.Id))
+                        {
+                            slobodneProstorije.Remove(p);
+                            return slobodneProstorije;
+                        }
+                    }
+                }
+            }
+            return slobodneProstorije;
+        }
+
+        public ObservableCollection<ProstorijaDTO> DobaviSlobodneProstorije3(TerminDTO termin,DateTime Pocetak,ProstorijaDTO prostorija)
+        {
+            ObservableCollection<ProstorijaDTO> slobodneProstorije = prostorijaServis.PregledSvihProstorija2();
+            List<TerminDTO> terminDTOs = PregledSvihTermina2();
+            foreach(TerminDTO t in terminDTOs)
+            {
+                if (t.Id.Equals(termin.Id))
+                {
+                    terminDTOs.Remove(t);
+                    break;
+                }
+                
+            }
+
+            foreach (TerminDTO t in terminDTOs)
+            {
+                if (Pocetak != null)
+                    if (t.Pocetak.Equals(Pocetak))
+                    {
+
+                        foreach (ProstorijaDTO p in slobodneProstorije)
+                        {
+                            if (t.prostorija.Id.Equals(p.Id))
+                            {
+                                Trace.WriteLine(!(t.prostorija.Id.Equals(prostorija.Id)));
+                                slobodneProstorije.Remove(p);
+                                return slobodneProstorije;
+                            }
+                        }
+                    }
+            }
             return slobodneProstorije;
         }
 

@@ -34,7 +34,7 @@
         <ComboBox x:Name="lekNaziv" Grid.Column="2" Margin="33,23,23,19" Grid.Row="2" >
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Style="{DynamicResource textblock}">
+                    <TextBlock >
                         <TextBlock.Text>
                             <MultiBinding StringFormat="{}{0}">
                                 <Binding Path="NazivLeka"/>

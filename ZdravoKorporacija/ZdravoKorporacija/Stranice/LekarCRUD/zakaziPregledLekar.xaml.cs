@@ -3,6 +3,7 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Controller;
@@ -16,7 +17,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     /// </summary>
     public partial class zakaziPregledLekar : Page
     {
-        private List<ProstorijaDTO> prostorije = new List<ProstorijaDTO>();
+        private ObservableCollection<ProstorijaDTO> prostorije = new ObservableCollection<ProstorijaDTO>();
 
         private TerminController tc = new TerminController();
         private ProstorijaController pc = new ProstorijaController();
@@ -24,7 +25,6 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
 
         private TerminDTO termin = new TerminDTO();
-        private ObservableCollection<TerminDTO> pregledi = new ObservableCollection<TerminDTO>();
         String now = DateTime.Now.ToString("hh:mm:ss tt");
         DateTime today = DateTime.Today;
 
@@ -124,7 +124,24 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
         private void time_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
+            if (time.SelectedIndex != -1 && date.SelectedDate.HasValue)
+            {
+                String t = cboItem.Content.ToString();
+            prostorije = tc.DobaviSlobodneProstorije2(DateTime.Parse(date.Text + " " + t));
+            cbProstorija.ItemsSource = prostorije;
+            }
+        }
 
+        private void date_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
+            if (time.SelectedIndex != -1 && date.SelectedDate.HasValue)
+            {
+                String t = cboItem.Content.ToString();
+                prostorije = tc.DobaviSlobodneProstorije2(DateTime.Parse(date.Text + " " + t));
+                cbProstorija.ItemsSource = prostorije;
+            }
         }
     }
 }

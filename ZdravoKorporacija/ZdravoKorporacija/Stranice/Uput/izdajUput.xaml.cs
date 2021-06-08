@@ -20,15 +20,14 @@ namespace ZdravoKorporacija.Stranice.Uput
     public partial class izdajUput : Page
     {
         private TerminController terminController = TerminController.Instance;
-        private LekarRepozitorijum lekariDat = new LekarRepozitorijum();
-        private ProstorijaController prostorijeController = new ProstorijaController();
-        private LekarController lekarController = new LekarController();
-        private ZdravstveniKartonServis zdravstveniKartonServis = new ZdravstveniKartonServis();
+        private ProstorijaController prostorijeController = ProstorijaController.Instance;
+        private LekarController lekarController = LekarController.Instance;
+        private ZdravstveniKartonController zkController = ZdravstveniKartonController.Instance;
         private PacijentController pacijentiController = PacijentController.Instance;
         private List<PacijentDTO> pacijenti = new List<PacijentDTO>();
         private List<LekarDTO> lekari = new List<LekarDTO>();
         private List<TerminDTO> termini = new List<TerminDTO>();
-        private List<ProstorijaDTO> prostorije = new List<ProstorijaDTO>();
+        private ObservableCollection<ProstorijaDTO> prostorije = new ObservableCollection<ProstorijaDTO>();
         private List<LekarDTO> lekariZaPrikaz = new List<LekarDTO>();
 
         private TerminDTO p;
@@ -146,7 +145,7 @@ namespace ZdravoKorporacija.Stranice.Uput
             {
                 p.zdravstveniKarton = zk;
                 pac.ZdravstveniKarton = zk;
-                zdravstveniKartonServis.KreirajZdravstveniKarton(new ZdravstveniKarton(pac.ZdravstveniKarton), ids);
+                zkController.KreirajZdravstveniKarton(new ZdravstveniKarton(pac.ZdravstveniKarton), ids);
             }
 
             this.pregledi.Add(p);
@@ -162,6 +161,27 @@ namespace ZdravoKorporacija.Stranice.Uput
             test.prozor.Content = new Uputi();
         }
 
+        private void time_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
+            if (time.SelectedIndex != -1 && date.SelectedDate.HasValue)
+            {
+                String t = cboItem.Content.ToString();
+                prostorije = terminController.DobaviSlobodneProstorije2(DateTime.Parse(date.Text + " " + t));
+                cbProstorija.ItemsSource = prostorije;
+            }
+        }
 
+        private void date_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
+            if (time.SelectedIndex != -1 && date.SelectedDate.HasValue)
+            {
+                String t = cboItem.Content.ToString();
+                prostorije = terminController.DobaviSlobodneProstorije2(DateTime.Parse(date.Text + " " + t));
+                cbProstorija.ItemsSource = prostorije;
+            }
+        }
     }
+
 }

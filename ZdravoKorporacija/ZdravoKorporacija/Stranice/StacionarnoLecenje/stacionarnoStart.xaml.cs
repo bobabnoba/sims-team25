@@ -1,6 +1,7 @@
 ﻿using Controller;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Controller;
@@ -19,7 +20,7 @@ namespace ZdravoKorporacija.Stranice.StacionarnoLecenje
         private ProstorijaController prostorijeController = new ProstorijaController();
         private StacionarnoLecenjeController sl = StacionarnoLecenjeController.Instance;
         private List<TerminDTO> termini = new List<TerminDTO>();
-        private List<ProstorijaDTO> prostorije = new List<ProstorijaDTO>();
+        private ObservableCollection<ProstorijaDTO> prostorije = new ObservableCollection<ProstorijaDTO>();
         private StacionarnoLecenjeDTO stacionarnoLecenje = new StacionarnoLecenjeDTO();
 
 

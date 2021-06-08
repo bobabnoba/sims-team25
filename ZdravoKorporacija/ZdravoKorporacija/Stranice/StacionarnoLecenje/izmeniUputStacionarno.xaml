@@ -56,7 +56,7 @@
         <ComboBox Name="cbProstorija" Grid.Column="1" Margin="58,18,77,22" Grid.Row="3" Height="28">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Style="{DynamicResource textblock}">
+                    <TextBlock >
                         <TextBlock.Text>
                             <MultiBinding StringFormat="{}{0} {1}">
                                 <Binding Path="Id"/>

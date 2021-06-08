@@ -24,8 +24,6 @@ namespace ZdravoKorporacija.Stranice.Uput
         {
             tc.OtkaziTermin(termin);
             lekarStart.uputi.Remove(termin);
-            //pacijentServis.ObrisiTerminPacijentu(termin);
-            //termini.Remove(termin);
             this.Close();
 
         }

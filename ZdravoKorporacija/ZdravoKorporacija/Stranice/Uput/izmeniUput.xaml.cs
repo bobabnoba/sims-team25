@@ -25,7 +25,7 @@ namespace ZdravoKorporacija.Stranice.Uput
         private List<PacijentDTO> pacijenti = new List<PacijentDTO>();
         private List<LekarDTO> lekari = new List<LekarDTO>();
         private PacijentController pacijentController = PacijentController.Instance;
-        private List<ProstorijaDTO> prostorije = new List<ProstorijaDTO>();
+        private ObservableCollection<ProstorijaDTO> prostorije = new ObservableCollection<ProstorijaDTO>();
         private TerminDTO p;
         private TerminDTO s; // selektovani, za ukloniti
         private List<TerminDTO> termini;
@@ -188,13 +188,47 @@ namespace ZdravoKorporacija.Stranice.Uput
 
         private void time_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
-
+            ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
+            if (time.SelectedIndex != -1 && date.SelectedDate.HasValue)
+            {
+                String t = cboItem.Content.ToString();
+                prostorije = tc.DobaviSlobodneProstorije3(this.p, DateTime.Parse(date.Text + " " + t), (ProstorijaDTO)cbProstorija.SelectedItem);
+                cbProstorija.ItemsSource = prostorije;
+                foreach (ProstorijaDTO p in prostorije)
+                {
+                    if (this.p.prostorija == null)
+                    {
+                        break;
+                    }
+                    if (p.Id == this.p.prostorija.Id)
+                    {
+                        cbProstorija.SelectedItem = p;
+                    }
+                }
+            }
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void date_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
+            if (time.SelectedIndex != -1 && date.SelectedDate.HasValue)
+            {
+                String t = cboItem.Content.ToString();
+                prostorije = tc.DobaviSlobodneProstorije3(this.p, DateTime.Parse(date.Text + " " + t), (ProstorijaDTO)cbProstorija.SelectedItem);
+                cbProstorija.ItemsSource = prostorije;
+                foreach (ProstorijaDTO p in prostorije)
+                {
+                    if (this.p.prostorija == null)
+                    {
+                        break;
+                    }
+                    if (p.Id == this.p.prostorija.Id)
+                    {
+                        cbProstorija.SelectedItem = p;
+                    }
+                }
+            }
         }
+
     }
 }

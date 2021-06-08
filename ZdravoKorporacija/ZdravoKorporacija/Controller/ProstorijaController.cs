@@ -49,7 +49,7 @@ namespace Controller
             return prostorijaService.ObrisiProstoriju(prostorijaZaBrisanje);
         }
 
-        public List<ProstorijaDTO> PregledSvihProstorija2()
+        public ObservableCollection<ProstorijaDTO> PregledSvihProstorija2()
         {
             return prostorijaService.PregledSvihProstorija2();
         }

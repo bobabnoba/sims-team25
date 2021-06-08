@@ -20,7 +20,15 @@ namespace ZdravoKorporacija.Controller
         private ZdravstveniKartonServis kartonServis = new ZdravstveniKartonServis();
 
 
+        public ObservableCollection<ProstorijaDTO> DobaviSlobodneProstorije2(DateTime pocetak)
+        {
+            return terminServis.DobaviSlobodneProstorije2(pocetak);
+        }
 
+        public ObservableCollection<ProstorijaDTO> DobaviSlobodneProstorije3(TerminDTO termin, DateTime pocetak, ProstorijaDTO prostorija)
+        {
+            return terminServis.DobaviSlobodneProstorije3(termin,pocetak,prostorija);
+        }
         public bool ObrisiLekara(Lekar lekar)
         {
             return lekarServis.ObrisiLekara(lekar);
