@@ -25,7 +25,7 @@ namespace ZdravoKorporacija.Stranice.Uput
             tc.OtkaziTermin(termin);
             lekarStart.uputi.Remove(termin);
             this.Close();
-
+            MessageBox.Show("Uspesno ste otkazali uput!");
         }
 
         private void ne(object sender, RoutedEventArgs e)

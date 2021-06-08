@@ -14,6 +14,8 @@ namespace ZdravoKorporacija.DTO
 
         public KorisnikDTO(Korisnik korisnik)
         {
+            if (korisnik != null)
+            { 
             Jmbg = korisnik.Jmbg;
             BrojTelefona = korisnik.BrojTelefona;
             Mejl = korisnik.Mejl;
@@ -22,7 +24,7 @@ namespace ZdravoKorporacija.DTO
             Username = korisnik.Username;
             Password = korisnik.Password;
             Uloga = korisnik.Uloga;
-
+            }
         }
 
         public KorisnikDTO(string Ime, string Prezime, long jmbg) : this(Ime, Prezime)

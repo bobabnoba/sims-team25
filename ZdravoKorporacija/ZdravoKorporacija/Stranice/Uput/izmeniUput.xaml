@@ -24,7 +24,7 @@
         </Grid.ColumnDefinitions>
         <TextBlock Style="{DynamicResource textblock}" Text="{ns:Loc DatumIVremeText}" TextWrapping="Wrap" Margin="33,24,0,22" Grid.Row="1"/>
         <DatePicker Name ="date" Grid.Column="1" HorizontalAlignment="Left" Margin="45,22,0,0" Grid.Row="1" VerticalAlignment="Top" Height="28"/>
-        <ComboBox Name ="time" Grid.Column="1" Margin="174,22,60,18" Grid.Row="1"  Height="28" Width="60" SelectionChanged="time_SelectionChanged_1" >
+        <ComboBox Name ="time" Grid.Column="1" Margin="174,22,60,18" Grid.Row="1"  Height="28" Width="60" SelectionChanged="time_SelectionChanged" >
             <ComboBoxItem>08:00</ComboBoxItem>
             <ComboBoxItem>08:30</ComboBoxItem>
             <ComboBoxItem>09:00</ComboBoxItem>
@@ -50,7 +50,7 @@
             <ComboBoxItem>19:00</ComboBoxItem>
             <ComboBoxItem>19:30</ComboBoxItem>
         </ComboBox>
-        <Button Name ="potvrdiButton" Content="{ns:Loc PotvrdiBtn}" HorizontalAlignment="Left" Margin="96,34,0,0" Grid.Row="5" VerticalAlignment="Top" Width="80" Grid.ColumnSpan="2" Click="potvrdi" />
+        <Button Name ="potvrdiButton"  Content="{ns:Loc PotvrdiBtn}" HorizontalAlignment="Left" Margin="96,34,0,0" Grid.Row="5" VerticalAlignment="Top" Width="80" Grid.ColumnSpan="2" Click="potvrdi" />
         <Button Content="{ns:Loc OdustaniBtn}" HorizontalAlignment="Left" Margin="94,34,0,0" Grid.Row="5" VerticalAlignment="Top" Width="80" Grid.Column="1" Click="odustani" />
         <TextBlock Style="{DynamicResource textblock}" Text="{ns:Loc PacijentText}" TextWrapping="Wrap" Margin="52,13,237,34" Grid.Row="4" Grid.ColumnSpan="2"/>
         <ComboBox Name="cbPacijent" Grid.Column="1" Margin="58,10,77,34" Grid.Row="4"  Height="28">

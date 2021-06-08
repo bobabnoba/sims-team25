@@ -154,6 +154,7 @@ namespace ZdravoKorporacija.Stranice.Uput
 
             terminController.izdajUput(pac, p);
             test.prozor.Content = new Uputi();
+            MessageBox.Show("Uspesno ste izdali uput!");
         }
 
         private void odustani(object sender, RoutedEventArgs e)

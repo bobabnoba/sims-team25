@@ -25,6 +25,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             lekarStart.termini.Remove(termin);
 
             this.Close();
+            MessageBox.Show("Uspesno ste otkazali pregled!");
         }
 
         private void ne(object sender, RoutedEventArgs e)

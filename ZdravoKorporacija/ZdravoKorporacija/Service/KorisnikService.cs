@@ -3,6 +3,7 @@ using Repository;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using ZdravoKorporacija.DTO;
@@ -82,7 +83,21 @@ namespace Service
                 Korisnik lekar = (Korisnik)lista.FirstOrDefault(s => s.Username.Equals(unos.Username));
                 if (lekar != null)
                 {
-                    return lekar;
+                    Korisnik ulogovani = (Korisnik)lista.FirstOrDefault(s => (s.Username.Equals(unos.Username) && s.Password.Equals(unos.Password)));
+                    if (ulogovani != null)
+                    {
+                        return ulogovani;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Pogresna sifra", "Greska");
+                        return null;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Pogresno korisnicko ime", "Greska");
+                    return null;
                 }
             }
 
@@ -149,9 +164,24 @@ namespace Service
             {
                 List<Korisnik> lista = new List<Korisnik>(kr.DobaviSve());
                 KorisnikDTO lekar = new KorisnikDTO(lista.FirstOrDefault(s => s.Username.Equals(unos.Username)));
-                if (lekar != null)
+                 if (lekar != null)
                 {
-                    return lekar;
+                    Korisnik ulogovani = (Korisnik)lista.FirstOrDefault(s => (s.Username.Equals(unos.Username) && s.Password.Equals(unos.Password)));
+                    KorisnikDTO k = new KorisnikDTO(ulogovani);
+                    if (ulogovani != null)
+                    {
+                        return k;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Pogresna sifra", "Greska");
+                        return null;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Pogresno korisnicko ime", "Greska");
+                    return null;
                 }
             }
 

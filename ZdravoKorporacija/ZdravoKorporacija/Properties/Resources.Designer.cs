@@ -70,7 +70,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Choose Alternatives:.
+        ///   Looks up a localized string similar to _Choose Alternatives:.
         /// </summary>
         public static string AlternativniBtn {
             get {
@@ -106,7 +106,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Yes.
+        ///   Looks up a localized string similar to _Yes.
         /// </summary>
         public static string DaBtn {
             get {
@@ -160,7 +160,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add.
+        ///   Looks up a localized string similar to _Add.
         /// </summary>
         public static string DodajBtn {
             get {
@@ -214,7 +214,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delete an Anamnesis.
+        ///   Looks up a localized string similar to _Delete an Anamnesis.
         /// </summary>
         public static string IzbrisiAnamnezuBtn {
             get {
@@ -223,7 +223,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delete a Request.
+        ///   Looks up a localized string similar to _Delete a Request.
         /// </summary>
         public static string IzbrisiZahtevBtn {
             get {
@@ -232,7 +232,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Issue a Prescription.
+        ///   Looks up a localized string similar to _Issue a Prescription.
         /// </summary>
         public static string IzdajReceptBtn {
             get {
@@ -241,7 +241,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Issue a Referral Request .
+        ///   Looks up a localized string similar to _Issue a Referral Request .
         /// </summary>
         public static string IzdajUputBtn {
             get {
@@ -250,7 +250,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Edit.
+        ///   Looks up a localized string similar to _Edit.
         /// </summary>
         public static string IzmeniBtn {
             get {
@@ -259,7 +259,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Edit an Appointment.
+        ///   Looks up a localized string similar to _Edit an Appointment.
         /// </summary>
         public static string IzmeniTerminBtn {
             get {
@@ -268,7 +268,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Edit a Referral Request.
+        ///   Looks up a localized string similar to _Edit a Referral Request.
         /// </summary>
         public static string IzmeniUputBtn {
             get {
@@ -277,7 +277,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Edit a Request.
+        ///   Looks up a localized string similar to _Edit a Request.
         /// </summary>
         public static string IzmeniZahtevBtn {
             get {
@@ -286,7 +286,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Change Language.
+        ///   Looks up a localized string similar to _Change Language.
         /// </summary>
         public static string JezikMenu {
             get {
@@ -295,7 +295,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unique Identity Number.
+        ///   Looks up a localized string similar to  Identity Number.
         /// </summary>
         public static string JMBGGrid {
             get {
@@ -304,7 +304,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unique Identity Number:.
+        ///   Looks up a localized string similar to Identity Number:.
         /// </summary>
         public static string JMBGText {
             get {
@@ -331,7 +331,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Choose Doctors.
+        ///   Looks up a localized string similar to _Choose Doctors.
         /// </summary>
         public static string LekariBtn {
             get {
@@ -385,7 +385,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No.
+        ///   Looks up a localized string similar to _No.
         /// </summary>
         public static string NeBtn {
             get {
@@ -394,7 +394,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Number of Necessary Confirmations:.
+        ///   Looks up a localized string similar to _Number of Necessary Confirmations:.
         /// </summary>
         public static string NeophodneBtn {
             get {
@@ -430,7 +430,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delete.
+        ///   Looks up a localized string similar to _Delete.
         /// </summary>
         public static string ObrisiBtn {
             get {
@@ -439,7 +439,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delete a Prescription.
+        ///   Looks up a localized string similar to _Delete a Prescription.
         /// </summary>
         public static string ObrisiReceptBtn {
             get {
@@ -448,7 +448,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delete a Referral Request.
+        ///   Looks up a localized string similar to _Delete a Referral Request.
         /// </summary>
         public static string ObrisiUputBtn {
             get {
@@ -466,7 +466,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Logout.
+        ///   Looks up a localized string similar to _Logout.
         /// </summary>
         public static string OdjaviSeMenu {
             get {
@@ -475,7 +475,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Approve a Request.
+        ///   Looks up a localized string similar to _Approve a Request.
         /// </summary>
         public static string OdobriZahtevBtn {
             get {
@@ -484,7 +484,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cancel.
+        ///   Looks up a localized string similar to _Cancel.
         /// </summary>
         public static string OdustaniBtn {
             get {
@@ -520,7 +520,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cancel an Appointment.
+        ///   Looks up a localized string similar to _Cancel an Appointment.
         /// </summary>
         public static string OtkaziTerminBtn {
             get {
@@ -547,7 +547,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Patients.
+        ///   Looks up a localized string similar to _Patients.
         /// </summary>
         public static string PacijentiMenu {
             get {
@@ -592,7 +592,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Settings.
+        ///   Looks up a localized string similar to _Settings.
         /// </summary>
         public static string PodesavanjaMenu {
             get {
@@ -619,7 +619,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Confirm.
+        ///   Looks up a localized string similar to _Confirm.
         /// </summary>
         public static string PotvrdiBtn {
             get {
@@ -718,7 +718,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dark Theme.
+        ///   Looks up a localized string similar to _Dark Theme.
         /// </summary>
         public static string TemaMenu {
             get {
@@ -727,7 +727,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Appointments.
+        ///   Looks up a localized string similar to _Appointments.
         /// </summary>
         public static string TerminiMenu {
             get {
@@ -772,7 +772,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Referral letters.
+        ///   Looks up a localized string similar to _Referral letters.
         /// </summary>
         public static string UputiMenu {
             get {
@@ -781,7 +781,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Referral For Stationary Treatment.
+        ///   Looks up a localized string similar to Referrals for Stationary Treatment.
         /// </summary>
         public static string UputiZaStacionarnoGrid {
             get {
@@ -790,7 +790,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Requests for Medicine.
+        ///   Looks up a localized string similar to _New Medicine Requests.
         /// </summary>
         public static string ZahteviZaLekoveMenu {
             get {
@@ -799,7 +799,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Make an Emergency Appointment.
+        ///   Looks up a localized string similar to _Make an Emergency Appointment.
         /// </summary>
         public static string ZakaziHitniBtn {
             get {
@@ -808,7 +808,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Make an Appointment.
+        ///   Looks up a localized string similar to _Make an Appointment.
         /// </summary>
         public static string ZakaziTerminBtn {
             get {
@@ -826,7 +826,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Medical Record.
+        ///   Looks up a localized string similar to _Medical Record.
         /// </summary>
         public static string ZdravstveniKartonBtn {
             get {

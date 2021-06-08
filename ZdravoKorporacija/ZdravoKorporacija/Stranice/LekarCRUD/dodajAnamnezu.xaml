@@ -5,26 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.LekarCRUD"
         xmlns:ns="clr-namespace:ZdravoKorporacija"
-        mc:Ignorable="d"
+        mc:Ignorable="d" d:Height="450" d:Width="450"
         Title="dodajAnamnezu" Height="Auto" Width="Auto" Background="{DynamicResource BackgroundColor}">
-    <Grid Height="331">
+    <Grid >
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="40*"/>
             <RowDefinition Height="106"/>
             <RowDefinition Height="85"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="63"/>
+            <RowDefinition Height="37*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="145"/>
-            <ColumnDefinition Width="155"/>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="156"/>
+            <ColumnDefinition Width="164"/>
+            <ColumnDefinition Width="7*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Style="{DynamicResource textblock}" Name="SimptomiText" HorizontalAlignment="Center" Margin="0,4,0,0" Text="{ns:Loc SimptomiText}" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" Grid.Row="2" Width="80"/>
-        <TextBox Name="simptomiText" HorizontalAlignment="Center" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" Height="75" Grid.Row="2" Grid.Column="1"/>
+        <TextBlock Style="{DynamicResource textblock}" Name="SimptomiText" HorizontalAlignment="Left" Margin="3,4,0,0" Text="{ns:Loc SimptomiText}" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" Grid.Row="2" Width="80" Grid.Column="1"/>
+        <TextBox Name="simptomiText" HorizontalAlignment="Center" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Height="75" Grid.Row="2" Grid.Column="2"/>
 
-        <TextBlock Style="{DynamicResource textblock}" Name="Opis" HorizontalAlignment="Center" Margin="0,14,0,0" Text="{ns:Loc OpisText}" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="16" Grid.Row="1"/>
-        <Button Width="101" Content="{ns:Loc DodajBtn}" HorizontalAlignment="Left" Margin="44,0,0,0" VerticalAlignment="Center" Click="Button_Click" Grid.Row="3" Height="20"/>
-        <Button Width="101" Content="{ns:Loc OdustaniBtn}" HorizontalAlignment="Left" Margin="19,0,0,0" VerticalAlignment="Center" Click="Button_Click_1" Grid.Row="3" Height="20" Grid.Column="1" />
-        <RichTextBox  Name="opisTxt" Margin="1,14,33,57" Grid.Column="1" Grid.Row="1">
+        <TextBlock Style="{DynamicResource textblock}" Name="Opis" HorizontalAlignment="Left" Margin="3,14,0,0" Text="{ns:Loc OpisText}" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="16" Grid.Row="1" Grid.Column="1"/>
+        <Button Width="102" Content="{ns:Loc DodajBtn}" HorizontalAlignment="Center" Margin="0,40,0,0" VerticalAlignment="Top" Click="Button_Click" Grid.Row="3" Height="20" Grid.Column="1"/>
+        <Button Width="100" Content="{ns:Loc OdustaniBtn}" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Button_Click_1" Grid.Row="3" Height="20" Grid.Column="2" Margin="0,40,0,0" />
+        <RichTextBox  Name="opisTxt" Margin="12,14,17,57" Grid.Column="2" Grid.Row="1">
             <FlowDocument>
                 <Paragraph>
                 </Paragraph>

@@ -29,9 +29,11 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             izvestaj.Opis = textRange.Text;
 
 
-            terminController.IzdajAnamnezu(izvestaj, termin);
+            terminController.IzdajAnamnezu(izvestaj, termin) ;
+          
             //zdravstveniKartonPrikaz.izvestaji.Add(izvestaj);
             test.prozor.Content = new zdravstveniKartonPrikaz(termin);
+            MessageBox.Show("Uspesno ste izdali anamnezu!");
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

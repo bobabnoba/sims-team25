@@ -56,6 +56,9 @@
                     </DataTemplate>
                 </DataGrid.RowDetailsTemplate>-->
         </DataGrid>
+        <TextBox x:Name="searchBar" TextWrapping="Wrap" Width="119" Grid.Column="3" Height="21" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="2" KeyUp="textBox1_KeyUp"/>
+        <Image Grid.Column="3" Margin="0,12,0,5" Height="21" Width="21" Grid.Row="2" Source="/Stranice/LekarCRUD/loupe.png"  HorizontalAlignment="Center" />
+        <Image Grid.Column="4" HorizontalAlignment="Left" Height="25" Margin="10,6,0,0" Source="/Stranice/LekarCRUD/curve-down-arrow.png" Grid.Row="4" VerticalAlignment="Top" Width="34" MouseDown="Image_MouseDown"/>
 
     </Grid>
 

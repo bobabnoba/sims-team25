@@ -61,6 +61,7 @@ namespace ZdravoKorporacija.Stranice.StacionarnoLecenje
                 stac = (StacionarnoLecenjeDTO)dgUsers.SelectedItem;
                 sl.ObrisiStacionarnoLecenje(stac);
                 uputi.Remove(stac);
+                MessageBox.Show("Uspesno ste otkazali uput za stacionarno lecenje!");
             }
             else
             {

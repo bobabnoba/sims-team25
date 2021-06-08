@@ -121,7 +121,7 @@
     <value>Alergije:</value>
   </data>
   <data name="AlternativniBtn" xml:space="preserve">
-    <value>Izaberi Alternativu:</value>
+    <value>_Izaberi Alternativu:</value>
   </data>
   <data name="AlternativniGrid" xml:space="preserve">
     <value>Alternative</value>
@@ -133,7 +133,7 @@
     <value>Broj Telefona:</value>
   </data>
   <data name="DaBtn" xml:space="preserve">
-    <value>Da</value>
+    <value>_Da</value>
   </data>
   <data name="DateText" xml:space="preserve">
     <value>Izabari Datum</value>
@@ -148,7 +148,7 @@
     <value>Dnevna doza:</value>
   </data>
   <data name="DodajAnamnezuBtn" xml:space="preserve">
-    <value>Izdaj Anamnezu</value>
+    <value>_Izdaj Anamnezu</value>
   </data>
   <data name="DodajBtn" xml:space="preserve">
     <value>Dodaj</value>
@@ -166,34 +166,34 @@
     <value>Ime:</value>
   </data>
   <data name="IzaberiDatumText" xml:space="preserve">
-    <value>Izaberi Datum</value>
+    <value>Izaberi Datum:</value>
   </data>
   <data name="IzbrisiAnamnezuBtn" xml:space="preserve">
-    <value>Izbrisi Anamnezu</value>
+    <value>_Izbrisi Anamnezu</value>
   </data>
   <data name="IzbrisiZahtevBtn" xml:space="preserve">
-    <value>Izbrisi Uput</value>
+    <value>_Izbrisi Uput</value>
   </data>
   <data name="IzdajReceptBtn" xml:space="preserve">
-    <value>Izdaj Recept</value>
+    <value>_Izdaj Recept</value>
   </data>
   <data name="IzdajUputBtn" xml:space="preserve">
-    <value>Izdaj Uput</value>
+    <value>_Izdaj Uput</value>
   </data>
   <data name="IzmeniBtn" xml:space="preserve">
-    <value>Izmeni</value>
+    <value>_Izmeni</value>
   </data>
   <data name="IzmeniTerminBtn" xml:space="preserve">
-    <value>Izmeni Termin</value>
+    <value>_Izmeni Termin</value>
   </data>
   <data name="IzmeniUputBtn" xml:space="preserve">
-    <value>Izmeni Uput</value>
+    <value>_Izmeni Uput</value>
   </data>
   <data name="IzmeniZahtevBtn" xml:space="preserve">
-    <value>Izmeni Zahtev</value>
+    <value>_Izmeni Zahtev</value>
   </data>
   <data name="JezikMenu" xml:space="preserve">
-    <value>Promeni Jezik</value>
+    <value>_Izmenii Jezik</value>
   </data>
   <data name="JMBGGrid" xml:space="preserve">
     <value>JMBG</value>
@@ -208,7 +208,7 @@
     <value>Krvna Grupa:</value>
   </data>
   <data name="LekariBtn" xml:space="preserve">
-    <value>Izaberi Lekare</value>
+    <value>_Izaberi Lekare</value>
   </data>
   <data name="LekarText" xml:space="preserve">
     <value>Izaberi Lekare:</value>
@@ -226,7 +226,7 @@
     <value>Naziv Leka:</value>
   </data>
   <data name="NeBtn" xml:space="preserve">
-    <value>Ne</value>
+    <value>_Ne</value>
   </data>
   <data name="NeophodneBtn" xml:space="preserve">
     <value>Broj Neophodnih Potvrda:</value>
@@ -241,25 +241,25 @@
     <value>Nus Pojave:</value>
   </data>
   <data name="ObrisiBtn" xml:space="preserve">
-    <value>Obrisi</value>
+    <value>_Obrisi</value>
   </data>
   <data name="ObrisiReceptBtn" xml:space="preserve">
-    <value>Obrisi Recept</value>
+    <value>_Obrisi Recept</value>
   </data>
   <data name="ObrisiUputBtn" xml:space="preserve">
-    <value>Obrisi Uput</value>
+    <value>_Obrisi Uput</value>
   </data>
   <data name="ObrisiZahtevDialog" xml:space="preserve">
     <value>Da li ste sigurni da zelite da obrisete zahtev?</value>
   </data>
   <data name="OdjaviSeMenu" xml:space="preserve">
-    <value>Odjavi Se</value>
+    <value>_Odjavi Se</value>
   </data>
   <data name="OdobriZahtevBtn" xml:space="preserve">
-    <value>Odobri Zahtev</value>
+    <value>_Odobri Zahtev</value>
   </data>
   <data name="OdustaniBtn" xml:space="preserve">
-    <value>Odustani</value>
+    <value>_Odustani</value>
   </data>
   <data name="OpisGrid" xml:space="preserve">
     <value>Opis</value>
@@ -271,7 +271,7 @@
     <value>Osnovni Podaci:</value>
   </data>
   <data name="OtkaziTerminBtn" xml:space="preserve">
-    <value>Otkazi Termin</value>
+    <value>_Otkazi Termin</value>
   </data>
   <data name="OtkaziTerminDialog" xml:space="preserve">
     <value>Da li ste sigurni da zelite da otkazete termin?</value>
@@ -280,7 +280,7 @@
     <value>Da li ste sigurni da zelite da otkazete uput?</value>
   </data>
   <data name="PacijentiMenu" xml:space="preserve">
-    <value>Pacijenti</value>
+    <value>_Lista Pacijenata</value>
   </data>
   <data name="PacijentText" xml:space="preserve">
     <value>Pacijent:</value>
@@ -295,7 +295,7 @@
     <value>Pocetak:</value>
   </data>
   <data name="PodesavanjaMenu" xml:space="preserve">
-    <value>Podesavanja</value>
+    <value>_Podesavanja</value>
   </data>
   <data name="PolGrid" xml:space="preserve">
     <value>Pol</value>
@@ -304,7 +304,7 @@
     <value>Pol:</value>
   </data>
   <data name="PotvrdiBtn" xml:space="preserve">
-    <value>Potvrdi</value>
+    <value>_Potvrdi</value>
   </data>
   <data name="PotvrdiloGrid" xml:space="preserve">
     <value>Potvrdilo</value>
@@ -337,10 +337,10 @@
     <value>Simptomi:</value>
   </data>
   <data name="TemaMenu" xml:space="preserve">
-    <value>Tamna Tema</value>
+    <value>_Tamna Tema</value>
   </data>
   <data name="TerminiMenu" xml:space="preserve">
-    <value>Termini</value>
+    <value>_Termini</value>
   </data>
   <data name="TipGrid" xml:space="preserve">
     <value>Tip</value>
@@ -355,19 +355,19 @@
     <value>Trajanje(u danima):</value>
   </data>
   <data name="UputiMenu" xml:space="preserve">
-    <value>Uputi</value>
+    <value>_Uputi</value>
   </data>
   <data name="UputiZaStacionarnoGrid" xml:space="preserve">
     <value>Uputi za Stacionarno Lecenje</value>
   </data>
   <data name="ZahteviZaLekoveMenu" xml:space="preserve">
-    <value>Zahtevi za Lekove</value>
+    <value>_Zahtevi za Lekove</value>
   </data>
   <data name="ZakaziHitniBtn" xml:space="preserve">
-    <value>Zakazi Hitnu Operaciju</value>
+    <value>_Zakazi Hitnu Operaciju</value>
   </data>
   <data name="ZakaziTerminBtn" xml:space="preserve">
-    <value>Zakazi Termin</value>
+    <value>_Zakazi Termin</value>
   </data>
   <data name="ZdravoKorporacijaMenu" xml:space="preserve">
     <value>Zdravo Korporacija</value>

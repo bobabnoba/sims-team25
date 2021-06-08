@@ -143,9 +143,12 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             catch (InvalidCastException)
             { }
 
+            if(pacijentController.IzdajRecept(pac, r))
+            {
+               
+                zdravstveniKartonPrikaz.recepti.Add(r);
+            }
 
-            pacijentController.IzdajRecept(pac, r);
-            zdravstveniKartonPrikaz.recepti.Add(r);
 
             if (zdravstveniKartonPrikaz.tab == 1)
             {
@@ -155,6 +158,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             {
                 test.prozor.Content = new zdravstveniKartonPrikaz(ter);
             }
+            MessageBox.Show("Uspesno ste izdali recept!");
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

@@ -1,6 +1,7 @@
 ﻿using Service;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.DTO;
@@ -14,7 +15,6 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     public partial class pregledPacijenata : Page
     {
         private PacijentService pacijentServis = PacijentService.Instance;
-        private ObservableCollection<PacijentDTO> pacijenti = new ObservableCollection<PacijentDTO>();
         private ObservableCollection<PacijentDTO> pacijentiPrikaz = new ObservableCollection<PacijentDTO>();
 
         public pregledPacijenata()
@@ -53,7 +53,11 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         {
 
         }
-
+        private void textBox1_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            var filtered = pacijentiPrikaz.Where(pacijent => pacijent.Ime.StartsWith(searchBar.Text));
+            dgUsers.ItemsSource = filtered;
+        }
         private void prikazKartona(object sender, RoutedEventArgs e)
         {
             zdravstveniKartonPrikaz zk = null;
@@ -92,6 +96,12 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             {
                 MessageBox.Show("Niste selektovali red", "Greska");
             }
+        }
+
+        private void Image_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            PrintDialog _printDialog = new PrintDialog();
+            _printDialog.PrintVisual(this, "Izvestaj o trenutnom stanju lekova");
         }
     }
 }

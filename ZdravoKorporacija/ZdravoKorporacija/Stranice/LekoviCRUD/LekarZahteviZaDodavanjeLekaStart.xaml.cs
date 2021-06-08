@@ -106,6 +106,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
             else
             {
                 test.prozor.Content = new izmeniZahtevZaLek((ZahtevLek)dgZahtevi.SelectedItem);
+                MessageBox.Show("Uspesno ste odobrili zahtev!");
             }
         }
 

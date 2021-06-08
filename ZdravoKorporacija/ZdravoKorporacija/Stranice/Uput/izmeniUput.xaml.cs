@@ -183,6 +183,7 @@ namespace ZdravoKorporacija.Stranice.Uput
                 lekarStart.uputi.Add(p);
             }
             test.prozor.Content = new Uputi();
+            MessageBox.Show("Uspesno ste izmenili uput!");
 
         }
 

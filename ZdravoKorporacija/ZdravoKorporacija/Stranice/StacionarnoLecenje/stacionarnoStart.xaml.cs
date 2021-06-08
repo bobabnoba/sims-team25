@@ -97,6 +97,7 @@ namespace ZdravoKorporacija.Stranice.StacionarnoLecenje
             uputiZaStacionarno.uputi.Add(stacionarnoLecenje);
 
             test.prozor.Content = new uputiZaStacionarno(stacionarnoLecenje.Pacijent);
+            MessageBox.Show("Uspesno ste izdali uput za stacionarno lecenje!");
         }
 
         private void odustani(object sender, RoutedEventArgs e)

@@ -152,6 +152,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 controller.PregledSvihTermina().Add(controller.DTO2ModelNadji(t1));
             }
             test.prozor.Content = new lekarStart(lekarLogin.lekar);
+            MessageBox.Show("Uspesno ste izmenili pregled!");
 
         }
 

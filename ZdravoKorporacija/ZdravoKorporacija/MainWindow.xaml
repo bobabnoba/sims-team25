@@ -15,10 +15,10 @@
         <ContentControl Name="ContentHolder" />
         <Grid DockPanel.Dock="Bottom" VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel Height="44" Width="808" HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Top" Margin="0,289,0,0">
-                <Button Content="Upravnik" Click="openUpravnikFrame" Width="100" Margin="80,0,0,0"/>
-                <Button Content="Sekretar" Click="openSekretarFrame" Width="100" Margin="80,0,0,0"/>
-                <Button Content="Pacijent" Click="openPacijentFrame" Width="100" Margin="80,0,0,0"/>
-                <Button Content="Lekar" Click="openLekarFrame" Width="100" Margin="80,0,0,0"/>
+                <Button Content="_Upravnik" Click="openUpravnikFrame" Width="100" Margin="80,0,0,0"/>
+                <Button Content="_Sekretar" Click="openSekretarFrame" Width="100" Margin="80,0,0,0"/>
+                <Button Content="_Pacijent" Click="openPacijentFrame" Width="100" Margin="80,0,0,0"/>
+                <Button Content="_Lekar" Click="openLekarFrame" Width="100" Margin="80,0,0,0"/>
 
             </StackPanel>
         </Grid>

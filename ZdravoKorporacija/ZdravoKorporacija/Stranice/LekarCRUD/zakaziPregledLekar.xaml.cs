@@ -51,11 +51,17 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
         private void potvrdi(object sender, RoutedEventArgs e)
         {
+            
+            if (!date.SelectedDate.HasValue || time.SelectedIndex == -1 || cbTip.SelectedIndex == -1
+                || cbProstorija.SelectedIndex == -1 || cbPacijent.SelectedIndex == -1)
+            {
+                MessageBox.Show("Niste popunili sva polja", "Greska");
+                return;
+            }
             PacijentDTO pac = (PacijentDTO)cbPacijent.SelectedItem;
 
 
             ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
-
             String t = cboItem.Content.ToString();
             termin.Pocetak = DateTime.Parse(date.Text + " " + t);
             termin.prostorija = (ProstorijaDTO)cbProstorija.SelectedItem;
@@ -63,12 +69,6 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             String d = date.Text;
             int prepodne = Int32.Parse(now.Substring(0, 2));
             int popodne = prepodne + 12;
-            if (!date.SelectedDate.HasValue || time.SelectedIndex == -1 || cbTip.SelectedIndex == -1
-                || cbProstorija.SelectedIndex == -1 || cbPacijent.SelectedIndex == -1)
-            {
-                MessageBox.Show("Niste popunili sva polja", "Greska");
-                return;
-            }
             if (cboItem != null)
             {
                 t = cboItem.Content.ToString();
@@ -111,6 +111,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             }
 
             test.prozor.Content = new lekarStart(lekarLogin.lekar);
+            MessageBox.Show("Uspesno ste zakazali pregled!");
         }
 
         private void odustani(object sender, RoutedEventArgs e)

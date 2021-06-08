@@ -49,16 +49,16 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         private void promeniTemu(object sender, RoutedEventArgs e)
         {
             App app = (App)Application.Current;
-            if (tema.Header.ToString() == "Tamna Tema" || tema.Header.ToString() == "Dark Theme")
+            if (tema.Header.ToString() == "_Tamna Tema" || tema.Header.ToString() == "_Dark Theme")
             {
                 app.ChangeTheme(new Uri("Themes/Dark.xaml", UriKind.Relative));
                 if (CurrentLanguage.Equals("en-US"))
                 {
-                    tema.Header = "Light Theme";
+                    tema.Header = "_Light Theme";
                 }
                 else
                 {
-                    tema.Header = "Svetla Tema";
+                    tema.Header = "_Svetla Tema";
                 }
             }
             else
@@ -66,11 +66,11 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                 app.ChangeTheme(new Uri("Themes/Light.xaml", UriKind.Relative));
                 if (CurrentLanguage.Equals("en-US"))
                 {
-                    tema.Header = "Dark Theme";
+                    tema.Header = "_Dark Theme";
                 }
                 else
                 {
-                    tema.Header = "Tamna Tema";
+                    tema.Header = "_Tamna Tema";
                 }
             }
         }

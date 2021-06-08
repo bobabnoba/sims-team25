@@ -31,6 +31,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
             NeodobreniLekController neodobreniLekoviController = new NeodobreniLekController();
             neodobreniLekoviController.DodajNeodobreniLek(this.zahtev);
             this.Close();
+            MessageBox.Show("Uspesno ste obrisali zahtev!");
 
         }
 
