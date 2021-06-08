@@ -6,6 +6,7 @@ using System.Text;
 using Model;
 using Repository;
 using ZdravoKorporacija.Model;
+using ZdravoKorporacija.ServiceZaKonverzije;
 
 namespace ZdravoKorporacija.ServiceSekretarUtility
 {
@@ -16,6 +17,7 @@ namespace ZdravoKorporacija.ServiceSekretarUtility
         private PacijentRepozitorijum datotekaPac = new PacijentRepozitorijum();
         private List<Pacijent> pacijenti;
         private ObservableCollection<Notifikacija> not = new ObservableCollection<Notifikacija>();
+        private Mediator mediator;
         public void generisiObavestenja()
         {
 

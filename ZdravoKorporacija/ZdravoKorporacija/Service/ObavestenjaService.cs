@@ -43,6 +43,10 @@ namespace ZdravoKorporacija.Service
             datoteka.sacuvaj(notifikacije);
             foreach(Pacijent p in pacijenti)
             {
+                if(p.notifikacije == null)
+                {
+                    p.notifikacije = new ObservableCollection<Notifikacija>();
+                }
                 p.notifikacije.Add(not);
                 pr.sacuvaj(pacijenti);
             }

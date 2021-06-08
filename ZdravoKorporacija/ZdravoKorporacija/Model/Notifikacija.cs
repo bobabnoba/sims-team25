@@ -6,27 +6,23 @@
 
 using System;
 using System.Collections;
+using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Participanti;
+using ZdravoKorporacija.ServiceZaKonverzije;
 
 namespace Model
 { 
-    public class Notifikacija
+    public class Notifikacija : ObavestenjaParticipant
     {
-        public Notifikacija() { }
+    
+        public Notifikacija() : base() { }
+      
 
-        public Notifikacija(int id, DateTime datum, TipNotifikacije tip, string sadrzaj, string status)
+        public Notifikacija(Mediator mediator, int id, DateTime datum, TipNotifikacije tip, string sadrzaj, string status) : base(mediator, id, datum, tip, sadrzaj, status)
         {
-            Id = id;
-            Datum = datum;
-            Tip = tip;
-            Sadrzaj = sadrzaj;
-            Status = status;
-        }
 
-        public int Id { get; set; }
-        public DateTime Datum { get; set; }
-        public TipNotifikacije Tip { get; set; }
-        public String Sadrzaj { get; set; }
-        public String Status { get; set; }
+        }
+    
 
     }
 }

@@ -1,7 +1,40 @@
 [
   {
     "termin": null,
-    "notifikacije": null,
+    "notifikacije": [
+      {
+        "mediator": null,
+        "Id": 10000,
+        "Datum": "2021-06-08T04:14:19.6067788+02:00",
+        "Tip": 2,
+        "Sadrzaj": "asd",
+        "Status": null
+      },
+      {
+        "mediator": null,
+        "Id": 9999,
+        "Datum": "2021-06-08T04:14:24.8367858+02:00",
+        "Tip": 2,
+        "Sadrzaj": "xddd",
+        "Status": null
+      },
+      {
+        "mediator": null,
+        "Id": 9998,
+        "Datum": "2021-06-08T04:14:26.324586+02:00",
+        "Tip": 2,
+        "Sadrzaj": "xddd",
+        "Status": null
+      },
+      {
+        "mediator": null,
+        "Id": 9997,
+        "Datum": "2021-06-08T04:14:33.7426325+02:00",
+        "Tip": 2,
+        "Sadrzaj": "RADIIIIIIIIIIIIIIIIIIIIII",
+        "Status": null
+      }
+    ],
     "ZdravstveniKarton": null,
     "Guest": false,
     "banovan": false,
@@ -506,6 +539,7 @@
     ],
     "notifikacije": [
       {
+        "mediator": null,
         "Id": 2,
         "Datum": "2021-05-25T21:40:25.8551023+02:00",
         "Tip": 1,
@@ -513,6 +547,7 @@
         "Status": "Neprocitano"
       },
       {
+        "mediator": null,
         "Id": 3,
         "Datum": "2021-05-25T21:40:25.8631577+02:00",
         "Tip": 1,
@@ -520,6 +555,7 @@
         "Status": "Neprocitano"
       },
       {
+        "mediator": null,
         "Id": 4,
         "Datum": "2021-05-25T21:40:25.8644498+02:00",
         "Tip": 1,
@@ -527,6 +563,7 @@
         "Status": "Neprocitano"
       },
       {
+        "mediator": null,
         "Id": 5,
         "Datum": "2021-05-25T21:40:25.8658905+02:00",
         "Tip": 1,
@@ -534,6 +571,7 @@
         "Status": "Neprocitano"
       },
       {
+        "mediator": null,
         "Id": 6,
         "Datum": "2021-05-25T21:40:25.8672956+02:00",
         "Tip": 1,
@@ -541,6 +579,7 @@
         "Status": "Neprocitano"
       },
       {
+        "mediator": null,
         "Id": 10000,
         "Datum": "2021-05-25T23:23:35.4904474+02:00",
         "Tip": 2,
@@ -548,11 +587,44 @@
         "Status": null
       },
       {
+        "mediator": null,
         "Id": 7,
         "Datum": "2021-05-26T03:58:00",
         "Tip": 0,
         "Sadrzaj": "zxxxxxxxxxxxxxx",
         "Status": "Neprocitano"
+      },
+      {
+        "mediator": null,
+        "Id": 10000,
+        "Datum": "2021-06-08T04:14:19.6067788+02:00",
+        "Tip": 2,
+        "Sadrzaj": "asd",
+        "Status": null
+      },
+      {
+        "mediator": null,
+        "Id": 9999,
+        "Datum": "2021-06-08T04:14:24.8367858+02:00",
+        "Tip": 2,
+        "Sadrzaj": "xddd",
+        "Status": null
+      },
+      {
+        "mediator": null,
+        "Id": 9998,
+        "Datum": "2021-06-08T04:14:26.324586+02:00",
+        "Tip": 2,
+        "Sadrzaj": "xddd",
+        "Status": null
+      },
+      {
+        "mediator": null,
+        "Id": 9997,
+        "Datum": "2021-06-08T04:14:33.7426325+02:00",
+        "Tip": 2,
+        "Sadrzaj": "RADIIIIIIIIIIIIIIIIIIIIII",
+        "Status": null
       }
     ],
     "ZdravstveniKarton": {
@@ -683,6 +755,7 @@
     ],
     "notifikacije": [
       {
+        "mediator": null,
         "Id": 2,
         "Datum": "2021-05-25T21:40:25.8551023+02:00",
         "Tip": 1,
@@ -690,6 +763,7 @@
         "Status": "Neprocitano"
       },
       {
+        "mediator": null,
         "Id": 3,
         "Datum": "2021-05-25T21:40:25.8631577+02:00",
         "Tip": 1,
@@ -697,6 +771,7 @@
         "Status": "Neprocitano"
       },
       {
+        "mediator": null,
         "Id": 4,
         "Datum": "2021-05-25T21:40:25.8644498+02:00",
         "Tip": 1,
@@ -704,6 +779,7 @@
         "Status": "Neprocitano"
       },
       {
+        "mediator": null,
         "Id": 5,
         "Datum": "2021-05-25T21:40:25.8658905+02:00",
         "Tip": 1,
@@ -711,6 +787,7 @@
         "Status": "Neprocitano"
       },
       {
+        "mediator": null,
         "Id": 6,
         "Datum": "2021-05-25T21:40:25.8672956+02:00",
         "Tip": 1,
@@ -718,10 +795,43 @@
         "Status": "Neprocitano"
       },
       {
+        "mediator": null,
         "Id": 10000,
         "Datum": "2021-05-25T23:23:35.4904474+02:00",
         "Tip": 2,
         "Sadrzaj": "dobar dan",
+        "Status": null
+      },
+      {
+        "mediator": null,
+        "Id": 10000,
+        "Datum": "2021-06-08T04:14:19.6067788+02:00",
+        "Tip": 2,
+        "Sadrzaj": "asd",
+        "Status": null
+      },
+      {
+        "mediator": null,
+        "Id": 9999,
+        "Datum": "2021-06-08T04:14:24.8367858+02:00",
+        "Tip": 2,
+        "Sadrzaj": "xddd",
+        "Status": null
+      },
+      {
+        "mediator": null,
+        "Id": 9998,
+        "Datum": "2021-06-08T04:14:26.324586+02:00",
+        "Tip": 2,
+        "Sadrzaj": "xddd",
+        "Status": null
+      },
+      {
+        "mediator": null,
+        "Id": 9997,
+        "Datum": "2021-06-08T04:14:33.7426325+02:00",
+        "Tip": 2,
+        "Sadrzaj": "RADIIIIIIIIIIIIIIIIIIIIII",
         "Status": null
       }
     ],
@@ -1175,10 +1285,43 @@
     ],
     "notifikacije": [
       {
+        "mediator": null,
         "Id": 10000,
         "Datum": "2021-05-25T23:23:35.4904474+02:00",
         "Tip": 2,
         "Sadrzaj": "dobar dan",
+        "Status": null
+      },
+      {
+        "mediator": null,
+        "Id": 10000,
+        "Datum": "2021-06-08T04:14:19.6067788+02:00",
+        "Tip": 2,
+        "Sadrzaj": "asd",
+        "Status": null
+      },
+      {
+        "mediator": null,
+        "Id": 9999,
+        "Datum": "2021-06-08T04:14:24.8367858+02:00",
+        "Tip": 2,
+        "Sadrzaj": "xddd",
+        "Status": null
+      },
+      {
+        "mediator": null,
+        "Id": 9998,
+        "Datum": "2021-06-08T04:14:26.324586+02:00",
+        "Tip": 2,
+        "Sadrzaj": "xddd",
+        "Status": null
+      },
+      {
+        "mediator": null,
+        "Id": 9997,
+        "Datum": "2021-06-08T04:14:33.7426325+02:00",
+        "Tip": 2,
+        "Sadrzaj": "RADIIIIIIIIIIIIIIIIIIIIII",
         "Status": null
       }
     ],
@@ -1211,6 +1354,7 @@
     "termin": [],
     "notifikacije": [
       {
+        "mediator": null,
         "Id": 10000,
         "Datum": "2021-05-25T23:23:35.4904474+02:00",
         "Tip": 2,
@@ -1218,6 +1362,7 @@
         "Status": null
       },
       {
+        "mediator": null,
         "Id": 2,
         "Datum": "2021-05-25T23:23:42.4691166+02:00",
         "Tip": 1,
@@ -1225,11 +1370,44 @@
         "Status": "Neprocitano"
       },
       {
+        "mediator": null,
         "Id": 3,
         "Datum": "2021-05-25T23:23:42.4711206+02:00",
         "Tip": 1,
         "Sadrzaj": "Zakazan termin: Pregled, vreme: 5/25/2021 10:00:00 AM",
         "Status": "Neprocitano"
+      },
+      {
+        "mediator": null,
+        "Id": 10000,
+        "Datum": "2021-06-08T04:14:19.6067788+02:00",
+        "Tip": 2,
+        "Sadrzaj": "asd",
+        "Status": null
+      },
+      {
+        "mediator": null,
+        "Id": 9999,
+        "Datum": "2021-06-08T04:14:24.8367858+02:00",
+        "Tip": 2,
+        "Sadrzaj": "xddd",
+        "Status": null
+      },
+      {
+        "mediator": null,
+        "Id": 9998,
+        "Datum": "2021-06-08T04:14:26.324586+02:00",
+        "Tip": 2,
+        "Sadrzaj": "xddd",
+        "Status": null
+      },
+      {
+        "mediator": null,
+        "Id": 9997,
+        "Datum": "2021-06-08T04:14:33.7426325+02:00",
+        "Tip": 2,
+        "Sadrzaj": "RADIIIIIIIIIIIIIIIIIIIIII",
+        "Status": null
       }
     ],
     "ZdravstveniKarton": {

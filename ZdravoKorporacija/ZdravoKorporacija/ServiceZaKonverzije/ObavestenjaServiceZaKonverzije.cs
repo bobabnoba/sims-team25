@@ -9,6 +9,7 @@ namespace ZdravoKorporacija.ServiceZaKonverzije
 {
     class ObavestenjaServiceZaKonverzije
     {
+        private Mediator mediator;
         public Notifikacija DTO2ModelNapravi(NotifikacijaDTO dto)
         {
             Notifikacija model = new Notifikacija();

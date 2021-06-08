@@ -14,6 +14,7 @@ using Model;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Service;
+using ZdravoKorporacija.ServiceZaKonverzije;
 
 namespace ZdravoKorporacija.Stranice.sekretarObavestenja
 {
@@ -24,11 +25,13 @@ namespace ZdravoKorporacija.Stranice.sekretarObavestenja
     {
         private ObavestenjaController controller = new ObavestenjaController();
         private List<NotifikacijaDTO> obavestenja;
+        private Mediator mediator;
         public sekretarObavestenja()
         {
             InitializeComponent();
             obavestenja = controller.PregledSvihObavestenja2DTO(controller.PregledSvihObavestenja());
             globalna.ItemsSource = obavestenja;
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
