@@ -96,6 +96,8 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
         {
             btnGenerisi.Visibility = Visibility.Hidden;
             _printDialog.PrintVisual(this, "Izveštaj o rasporedu uzimanja terapije");
+            btnGenerisi.Visibility = Visibility.Visible;
+
 
         }
     }

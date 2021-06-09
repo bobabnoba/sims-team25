@@ -4766,9 +4766,9 @@
       "Password": null,
       "Uloga": 0
     },
-    "Id": 20,
+    "Id": 21,
     "Tip": 0,
-    "Pocetak": "2021-10-01T18:30:00",
+    "Pocetak": "2021-11-05T09:30:00",
     "Trajanje": 30.0,
     "hitno": false
   },
@@ -4857,9 +4857,9 @@
       "termin": null,
       "Specijalizacija": 0,
       "radniDani": null,
-      "Ime": "Deki",
-      "Prezime": "Dragoslavic",
-      "Jmbg": 1121212,
+      "Ime": "Milos",
+      "Prezime": "Zivic",
+      "Jmbg": 2234567890113,
       "BrojTelefona": 0,
       "Mejl": null,
       "AdresaStanovanja": null,
@@ -4868,9 +4868,9 @@
       "Password": null,
       "Uloga": 0
     },
-    "Id": 21,
+    "Id": 22,
     "Tip": 0,
-    "Pocetak": "2021-11-05T09:30:00",
+    "Pocetak": "2021-06-24T10:00:00",
     "Trajanje": 30.0,
     "hitno": false
   }
