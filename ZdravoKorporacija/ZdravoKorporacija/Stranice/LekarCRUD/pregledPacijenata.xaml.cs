@@ -100,22 +100,13 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             }
         }
 
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            Trace.WriteLine("Uso");
-            //handler codes go here as needed.
-            if (e.Key == Key.I)
-            {
-                PrintDialog _printDialog = new PrintDialog();
-                _printDialog.PrintVisual(this, "Izvestaj o trenutnom stanju lekova");
-            }
-        }
 
        
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             PrintDialog _printDialog = new PrintDialog();
             _printDialog.PrintVisual(this, "Izvestaj o trenutnom stanju lekova");
+            MessageBox.Show("Uspesno ste izgenerisali izvestaj!");
         }
     }
 }
