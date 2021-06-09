@@ -23,8 +23,8 @@
             <RowDefinition Height="50*"/>
         </Grid.RowDefinitions>
         <Image Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Source="/Images/pocetna.png" Grid.RowSpan="5" Height="520" HorizontalAlignment="Right" VerticalAlignment="Top"/>
-        <TextBlock Text="Dobar dan!" Margin="55, 0, 0, 0" FontFamily="Corbel" FontWeight="Bold" FontSize="60" Grid.Row="0" Grid.Column="0"  HorizontalAlignment="Left" />
-        <TextBlock Text="Kako se osećate danas?" Margin="55, 0, 0, 0" TextWrapping="Wrap" FontFamily="Corbel" FontWeight="Bold" FontSize="40" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" />
+        <TextBlock Text="Dobar dan!" Margin="30, 0, 0, 0" FontFamily="Corbel" FontWeight="Bold" FontSize="60" Grid.Row="0" Grid.Column="0"  HorizontalAlignment="Left" />
+        <TextBlock Text="Kako se osećate danas?" Margin="30, 0, 0, 0" TextWrapping="Wrap" FontFamily="Corbel" FontWeight="Bold" FontSize="40" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" />
         <!--<Button Content="Zakaži pregled" FontFamily="Corbel" FontWeight="Bold" FontSize ="26" Grid.Row="2" Width="210" Grid.Column="0" Background="#AFD44C4C" Margin="68,0,67,28" />-->
 
         <Grid Grid.Row="2" Grid.ColumnSpan="1" >
@@ -37,7 +37,7 @@
                 <RowDefinition Height="290*"/>
                 <RowDefinition Height="45*"/>
             </Grid.RowDefinitions>
-            <DockPanel  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  Margin="55, 40, 60, 0">
+            <DockPanel  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  Margin="30, 10, 10, -114">
                 <Grid DockPanel.Dock="Top" Background="#ff1e243e" MinHeight="70">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="20*"/>
@@ -64,13 +64,13 @@
                 <calendar:Calendar Name="kalendar" Background="#ff1e243e" FontFamily="Corbel" Foreground="White" />
 
             </DockPanel>
-            <Button Content="Zakaži pregled" FontFamily="Corbel" FontWeight="Bold" FontSize ="26" Grid.Row="1" Grid.ColumnSpan="3" Background="#AFD44C4C" Margin="79,19,79,-10" />
+            <!--<Button Content="Zakaži pregled" FontFamily="Corbel" FontWeight="Bold" FontSize ="26" Grid.Row="3" Width="180" Grid.ColumnSpan="3" Background="#AFD44C4C" Margin="79, 67, 79, -55" />-->
 
 
         </Grid>
 
-        <TextBlock Text="(Ne)zadovoljni našim uslugama?" Width="400" FontFamily="Corbel" FontSize="30" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="-10, -50, 0, 10" />
-        <Button Content="Oceni nas" FontFamily="Corbel" FontWeight="Bold" FontSize = "26" Grid.Row="3"  Grid.Column="1" Background="#FF789EFF" HorizontalAlignment="Left"  Width="190" Margin="23,10,0,14" Height="40" Grid.ColumnSpan="2" />
+        <TextBlock Text="(Ne)zadovoljni našim uslugama?" Width="400" FontFamily="Corbel" FontSize="30" Grid.ColumnSpan="3" Grid.Column="1" TextWrapping="Wrap" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Bottom"  Grid.RowSpan="2" Margin="70, 0, 0, 70"/>
+        <Button Content="Oceni nas" FontFamily="Corbel" FontWeight="Bold" FontSize = "26" Grid.Row="3"  Grid.Column="1" Background="#FF789EFF" HorizontalAlignment="Left"  Width="190" Margin="180,10,0,14" Height="40" Grid.ColumnSpan="2" Click="Button_Click" />
 
     </Grid>
 </Page>

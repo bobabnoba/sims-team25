@@ -75,7 +75,10 @@
                     <Label Name="lblUlogovani" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Foreground="#FFBBC3E6" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#FF1E243E" Height="62" FontWeight="Bold" FontFamily="Corbel"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Height="90">
-                    <Image Height="80" Width="80" VerticalAlignment="Bottom" Margin="0,0,20,0"/>
+                    <Border   BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0,0,20,0" Background="Black" BorderBrush="#aad84d4d">
+                         <Image Height="80" Width="80" Source="/Images/upper.png" VerticalAlignment="Center" OpacityMask="#FF975050"/>
+                    </Border>
+                    <!--<Image Height="80" Width="80" Source="/Images/upper.png" VerticalAlignment="Center"  Margin="0,0,20,0"/>-->
                 </StackPanel>
             </StackPanel>
 

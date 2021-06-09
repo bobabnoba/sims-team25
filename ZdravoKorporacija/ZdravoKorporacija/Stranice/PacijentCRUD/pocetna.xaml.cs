@@ -19,9 +19,10 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
             InitializeComponent();
             this.pacijentDTO = pacijentDTO;
             lblUlogovani.Content = pacijentDTO.Ime + " " + pacijentDTO.Prezime + " ";
-            Main.Content = new PocetnaStranica(pacijentDTO);
             CentrirajProzor();
             prikaziWizard();
+            Main.Content = new PocetnaStranica(pacijentDTO);
+
         }
 
         private void prikaziWizard()

@@ -21,6 +21,8 @@
     <None Remove="Images\output-onlinepngtools.png" />
     <None Remove="Images\pdf.png" />
     <None Remove="Images\pocetna.png" />
+    <None Remove="Images\profedit.png" />
+    <None Remove="Images\upper.png" />
     <None Remove="Stranice\LekarCRUD\add.png" />
     <None Remove="Stranice\LekarCRUD\edit.png" />
   </ItemGroup>
@@ -49,6 +51,8 @@
     <Resource Include="Images\output-onlinepngtools.png" />
     <Resource Include="Images\pdf.png" />
     <Resource Include="Images\pocetna.png" />
+    <Resource Include="Images\profedit.png" />
+    <Resource Include="Images\upper.png" />
     <Resource Include="Stranice\LekarCRUD\add.png" />
     <Resource Include="Stranice\LekarCRUD\edit.png" />
   </ItemGroup>
