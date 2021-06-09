@@ -49,8 +49,8 @@
         <Border BorderThickness="2" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#ffd84d4d" Grid.Column="3" Grid.Row="0" Grid.RowSpan="4">
             <Image Grid.Column="3" Grid.Row="0" Grid.RowSpan="4"  Source="/Images/damiano.jpg" OpacityMask="#FF975050"/>
         </Border>
-        <Button Name="btnUredi"  Grid.Row="5" Grid.Column="3" Background="#f9d84d4d" Content="Uredi profil" Foreground="#ff1e243e"  FontFamily="Corbel" FontWeight="Bold" FontSize="24" Margin="15,15,15,0" Width="165" Click="Button_Click"  />
-        <Button Name="btnPotvrdi" Grid.Row="5" Grid.Column="3" Background="#f9d84d4d" Content="Potvrdi" Foreground="#ff1e243e"  FontFamily="Corbel" FontWeight="Bold" FontSize="24" Margin="47,15,47,0" Width="165" Click="Button2_Click" IsEnabled="False" Visibility="Hidden"/>
+        <Button Name="btnUredi"  Grid.Row="5" Grid.Column="3" Background="#f9d84d4d" Content="_Uredi profil" Foreground="#ff1e243e"  FontFamily="Corbel" FontWeight="Bold" FontSize="24" Margin="15,15,15,0" Width="165" Click="Button_Click"  />
+        <Button Name="btnPotvrdi" Grid.Row="5" Grid.Column="3" Background="#f9d84d4d" Content="_Potvrdi" Foreground="#ff1e243e"  FontFamily="Corbel" FontWeight="Bold" FontSize="24" Margin="47,15,47,0" Width="165" Click="Button2_Click" IsEnabled="False" Visibility="Hidden"/>
 
     </Grid>
 </Page>

@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Threading;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
@@ -40,7 +41,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
             this.DataContext = this;
         }
 
-
+    
 
         public void PostaviSirinuKolonaDGT(object source, EventArgs e)
         {
@@ -71,7 +72,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
          private void IzmeniPregledClick(object sender, RoutedEventArgs e)
         {
             if (dgTermini.SelectedItem == null)
-                MessageBox.Show("Pregled nije izabran. Molimo označite pregled koji želite da izmenite.", "Greška");
+                System.Windows.MessageBox.Show("Pregled nije izabran. Molimo označite pregled koji želite da izmenite.", "Greška");
             else
             {
                 //Termin t = (Termin)dgTermini.SelectedItem;

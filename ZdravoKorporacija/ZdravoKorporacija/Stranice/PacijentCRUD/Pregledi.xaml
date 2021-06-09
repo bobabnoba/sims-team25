@@ -92,10 +92,10 @@
                 </Style>
             </DataGrid.Resources>
         </DataGrid>
-        <Button x:Name="zakaziBtn"  Content="Zakaži pregled"  FontSize="22" Margin="10,0,14,47" Grid.Column="1" Grid.Row="1" Click="ZakaziPregledClick" MinHeight="30" Background="#EED84D4D" BorderBrush="#FF1E243E" Foreground="White" FontFamily="Corbel" FontWeight="Bold" Width="180" Height="60"/>
-        <Button x:Name="izmeniBtn" Grid.Row="3" Content="Izmeni pregled"  FontSize="20" Margin="10,0,14,47" Grid.Column="1" Click="IzmeniPregledClick" MinHeight="30" Background="#eeD84D4D" BorderBrush="#FF1E243E" Foreground="White" FontFamily="Corbel" FontWeight="Normal" Width="180" Height="60"/>
-        <Button x:Name="otkaziBtn" Grid.Row="4" Content="Otkaži pregled"  FontSize="20" Margin="10,0,14,47" Grid.Column="1" Click="OtkaziPregledClick" MinHeight="30" Background="#EED84D4D" BorderBrush="#FF1E243E" Foreground="White" FontFamily="Corbel" FontWeight="Normal" Width="180" Height="60"/>
-        <Button x:Name="oceniTerminBtn" Grid.Row="5" Content="Oceni pregled" FontSize="20" Grid.Column="1" Margin="10,0,14,47" Click="oceniTerminBtn_Click" MinHeight="30" Background="#EED84D4D" BorderBrush="#FF1E243E" Foreground="White" FontFamily="Corbel" FontWeight="Normal" Width="180" Height="60" />
+        <Button x:Name="zakaziBtn"  Content="_Zakaži pregled"  FontSize="22" Margin="10,0,14,47" Grid.Column="1" Grid.Row="1" Click="ZakaziPregledClick" MinHeight="30" Background="#EED84D4D" BorderBrush="#FF1E243E" Foreground="White" FontFamily="Corbel" FontWeight="Bold" Width="180" Height="60"/>
+        <Button x:Name="izmeniBtn" Grid.Row="3" Content="_Izmeni pregled"  FontSize="20" Margin="10,0,14,47" Grid.Column="1" Click="IzmeniPregledClick" MinHeight="30" Background="#eeD84D4D" BorderBrush="#FF1E243E" Foreground="White" FontFamily="Corbel" FontWeight="Normal" Width="180" Height="60"/>
+        <Button x:Name="otkaziBtn" Grid.Row="4" Content="_Otkaži pregled"  FontSize="20" Margin="10,0,14,47" Grid.Column="1" Click="OtkaziPregledClick" MinHeight="30" Background="#EED84D4D" BorderBrush="#FF1E243E" Foreground="White" FontFamily="Corbel" FontWeight="Normal" Width="180" Height="60"/>
+        <Button x:Name="oceniTerminBtn" Grid.Row="5" Content="_Oceni pregled" FontSize="20" Grid.Column="1" Margin="10,0,14,47" Click="oceniTerminBtn_Click" MinHeight="30" Background="#EED84D4D" BorderBrush="#FF1E243E" Foreground="White" FontFamily="Corbel" FontWeight="Normal" Width="180" Height="60" />
 
     </Grid>
 </Page>

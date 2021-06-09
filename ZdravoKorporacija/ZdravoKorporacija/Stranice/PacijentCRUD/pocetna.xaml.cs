@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Input;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
 
@@ -39,44 +40,46 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
             this.Top = (System.Windows.SystemParameters.PrimaryScreenHeight / 2) - (this.Height / 2);
         }
 
-        private void preglediBtn_Click(object sender, RoutedEventArgs e)
+        public void preglediBtn_Click(object sender, RoutedEventArgs e)
         {
             Main.Content = new Pregledi(pacijentDTO);
         }
 
-        private void obavjestenjaBtn_Click(object sender, RoutedEventArgs e)
+        public void obavjestenjaBtn_Click(object sender, RoutedEventArgs e)
         {
             Main.Content = new Obavestenja(pacijentDTO);
         }
 
-        private void pocetnaBtn_Click(object sender, RoutedEventArgs e)
+        public void pocetnaBtn_Click(object sender, RoutedEventArgs e)
         {
             Main.Content = new PocetnaStranica(pacijentDTO);
         }
 
-        private void odjavaBtn_Click(object sender, RoutedEventArgs e)
+        public void odjavaBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
-        private void kartonBtn_Click(object sender, RoutedEventArgs e)
+        public void kartonBtn_Click(object sender, RoutedEventArgs e)
         {
             Main.Content = new ZKPacijent(pacijentDTO);
         }
 
-        private void pomocBtn_Click(object sender, RoutedEventArgs e)
+        public void pomocBtn_Click(object sender, RoutedEventArgs e)
         {
             Main.Content = new Pomoc(pacijentDTO);
         }
 
-        private void profilBtn_Click(object sender, RoutedEventArgs e)
+        public void profilBtn_Click(object sender, RoutedEventArgs e)
         {
             Main.Content = new Profil(pacijentDTO);
         }
 
-        private void terapijaBtn_Click(object sender, RoutedEventArgs e)
+        public void terapijaBtn_Click(object sender, RoutedEventArgs e)
         {
             Main.Content = new Terapija(pacijentDTO);
         }
+
+    
     }
 }

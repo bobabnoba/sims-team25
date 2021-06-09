@@ -22,7 +22,7 @@
                 </Style.Triggers>
             </Style>-->
 
-            <TabItem Header="Lični podaci" FontSize="24" FontFamily="Corbel" Foreground="White" BorderBrush="#ff1e243e" Background="Transparent" >
+            <TabItem Header="_Lični podaci" FontSize="24" FontFamily="Corbel" Foreground="White" BorderBrush="#ff1e243e" Background="Transparent" >
                 <Grid>
                     <Grid Background="Transparent" Margin="0,44,0,10" >
                         <Grid.ColumnDefinitions>
@@ -63,7 +63,7 @@
 
 
             </TabItem>
-            <TabItem Header="Istorija bolesti" FontSize="24" FontFamily="Corbel" Foreground="White" BorderBrush="#ff1e243e" Background="Transparent">
+            <TabItem Header="_Istorija bolesti" FontSize="24" FontFamily="Corbel" Foreground="White" BorderBrush="#ff1e243e" Background="Transparent">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="120*"/>
@@ -136,7 +136,7 @@
                                         <Expander HorizontalAlignment="Stretch" Background="White" RenderTransformOrigin="0.5,0.5">
                                             <Expander.Header>
                                                 <StackPanel>
-                                                    <TextBlock  FontSize=" 25" >Izveštaj sa pregleda i postavljena dijagnoza</TextBlock>
+                                                    <TextBlock  FontSize=" 20" >Izveštaj sa pregleda i postavljena dijagnoza</TextBlock>
                                                 </StackPanel>
                                             </Expander.Header>
                                             <StackPanel Margin="4 4 4 4" Orientation="Vertical" >
@@ -156,7 +156,7 @@
                     </DataGrid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Alergije" FontSize="24" FontFamily="Corbel" BorderBrush="#ff1e243e" Foreground="White" Background="Transparent">
+            <TabItem Header="_Alergije" FontSize="24" FontFamily="Corbel" BorderBrush="#ff1e243e" Foreground="White" Background="Transparent">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="120*"/>
