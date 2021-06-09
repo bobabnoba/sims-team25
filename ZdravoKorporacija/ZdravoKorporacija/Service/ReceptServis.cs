@@ -10,7 +10,7 @@ namespace Service
 {
     public class ReceptServis: IReceptServis
     {
-        public static ObservableCollection<Recept> recepti = ReceptRepozitorijum.Instance.DobaviSve();
+        public static ObservableCollection<Recept> recepti;
         IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapRecept");
         Dictionary<int, int> id_map = new Dictionary<int, int>();
 

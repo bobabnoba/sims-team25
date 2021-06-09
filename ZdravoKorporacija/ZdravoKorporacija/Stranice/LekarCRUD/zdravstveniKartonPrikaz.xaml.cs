@@ -14,10 +14,10 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     /// </summary>
     public partial class zdravstveniKartonPrikaz : Page
     {
-        private static IReceptController _receptController;
+        private static IReceptController _receptController = ReceptControllerFactory.Create();
+        private static IIzvestajController _izvestajController = IzvestajControllerFactory.Create();
         private TerminController terminController = TerminController.Instance;
         private PacijentController pacijentController = PacijentController.Instance;
-        private IzvestajController izvestajController = IzvestajController.Instance;
         private ObservableCollection<TerminDTO> termini = new ObservableCollection<TerminDTO>();
         private List<PacijentDTO> pacijenti = new List<PacijentDTO>();
         private ZdravstveniKartonDTO zk = new ZdravstveniKartonDTO();
@@ -32,7 +32,8 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
         public zdravstveniKartonPrikaz(PacijentDTO selektovani)
         {
-            _receptController = ReceptControllerFactory.Create();
+            //_receptController = ReceptControllerFactory.Create();
+            //_izvestajController = IzvestajControllerFactory.Create();
             InitializeComponent();
             recepti = new ObservableCollection<ReceptDTO>();
             izvestaji = new ObservableCollection<IzvestajDTO>();
@@ -46,7 +47,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             zk = pac.ZdravstveniKarton;
             tab = 1;
 
-            foreach (IzvestajDTO iz in izvestajController.PregledSvihIzvestaja())
+            foreach (IzvestajDTO iz in _izvestajController.PregledSvihIzvestaja())
             {
                 foreach (TerminDTO ter in pac.termin)
                 {
@@ -99,7 +100,6 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         public zdravstveniKartonPrikaz(TerminDTO t)
         {
             InitializeComponent();
-            _receptController = ReceptControllerFactory.Create();
             recepti = new ObservableCollection<ReceptDTO>();
             izvestaji = new ObservableCollection<IzvestajDTO>();
             pacijenti = pacijentController.PregledSvihPacijenata2();
@@ -116,7 +116,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                     break;
                 }
             }
-            foreach (IzvestajDTO iz in izvestajController.PregledSvihIzvestaja())
+            foreach (IzvestajDTO iz in _izvestajController.PregledSvihIzvestaja())
             {
                 if (pac != null)
                 {

@@ -83,7 +83,14 @@ namespace ZdravoKorporacija.Model
                 }
                 if (slobodan)
                 {
-                        lekarStart.uputi.Remove(t);
+                        foreach (TerminDTO termin1 in lekarStart.uputi)
+                        {
+                            if(termin1.Id.Equals(t.Id))
+                            {
+                                lekarStart.uputi.Remove(termin1);
+                                break;
+                            }
+                        }
                         t.Pocetak = RoundUp(DateTime.Now, TimeSpan.FromMinutes(30)).AddMinutes(i);
                         AzurirajTermin(t);
                         lekarStart.uputi.Add(t);

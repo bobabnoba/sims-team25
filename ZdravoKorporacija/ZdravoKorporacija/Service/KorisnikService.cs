@@ -33,7 +33,8 @@ namespace Service
 
             return false;
         }
-        public Korisnik Uloguj(UlogaEnum uloga, string ime, string sifra)
+
+    public Korisnik Uloguj(UlogaEnum uloga, string ime, string sifra)
         {
 
             KorisnikDTO unos = new KorisnikDTO();
