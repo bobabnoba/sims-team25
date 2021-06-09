@@ -35,6 +35,10 @@ namespace ZdravoKorporacija.Controller
             return zkServis.KreirajZdravstveniKarton(ZdravstveniKarton, id_map);
         }
 
+        public bool KreirajZdravstveniKarton2(ZdravstveniKartonDTO ZdravstveniKarton)
+        {
+            return zkServis.KreirajZdravstveniKarton2(ZdravstveniKarton);
+        }
 
         public bool KreirajZdravstveniKartonJMBG(ZdravstveniKarton ZdravstveniKarton)
         {

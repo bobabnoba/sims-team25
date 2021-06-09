@@ -62,7 +62,6 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         }
         private void prikazKartona(object sender, RoutedEventArgs e)
         {
-            zdravstveniKartonPrikaz zk = null;
             if (dgUsers.SelectedItem != null)
             {
                 test.prozor.Content = new zdravstveniKartonPrikaz((PacijentDTO)dgUsers.SelectedItem);

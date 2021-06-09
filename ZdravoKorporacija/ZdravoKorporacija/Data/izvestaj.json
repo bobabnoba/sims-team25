@@ -46,5 +46,11 @@
     "Id": 7,
     "Opis": "ddd\r\n",
     "Simptomi": "gfgf"
+  },
+  {
+    "termin": null,
+    "Id": 8,
+    "Opis": "lll\r\n",
+    "Simptomi": "zds"
   }
 ]

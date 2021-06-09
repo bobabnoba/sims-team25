@@ -8,7 +8,7 @@ using System.Diagnostics;
 using System.Linq;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Konverteri;
-
+using ZdravoKorporacija.Stranice.LekarCRUD;
 
 namespace ZdravoKorporacija.Model
 {
@@ -55,6 +55,47 @@ namespace ZdravoKorporacija.Model
         }
 
 
+        public bool zakaziHitniLekar(TerminDTO termin,PacijentDTO pacijent)
+        {
+            List<Termin> termini = terminRepozitorijum.dobaviSve();
+            Boolean slobodan = false;
+            TerminDTO t = FindTerminToMove(termin);
+            
+           
+        if (t != null)
+            {
+            for (int i = 30; i < 300; i += 30)
+            {
+                foreach (Termin ter in termini)
+                {
+                    if (ter.hitno == false)
+                    {
+                        if (ter.Pocetak != RoundUp(DateTime.Now, TimeSpan.FromMinutes(i)))
+                        {
+                            slobodan = true;
+                            break;
+                        }
+                        else
+                        {
+                            slobodan = false;
+                        }
+                    }
+                }
+                if (slobodan)
+                {
+                        lekarStart.uputi.Remove(t);
+                        t.Pocetak = RoundUp(DateTime.Now, TimeSpan.FromMinutes(30)).AddMinutes(i);
+                        AzurirajTermin(t);
+                        lekarStart.uputi.Add(t);
+                        Trace.WriteLine(t.Id+" "+t.Pocetak);
+                        break;
+                }
+               }
+             }
+            
+            ZakaziTermin(termin,pacijent);
+            return true;
+        }
         public bool izdajUput(PacijentDTO pac, TerminDTO termin)
         {
             id_uput = uputDat.dobaviSve();
@@ -167,6 +208,19 @@ namespace ZdravoKorporacija.Model
             foreach (Termin t in termini)
             {
                 if (t.Pocetak == poc && t.Tip == TipTerminaEnum.Operacija)
+                    return new TerminDTO(t);
+            }
+
+            return null;
+        }
+
+        public TerminDTO FindTerminToMove(TerminDTO termin)
+        {
+            terminRepozitorijum = new TerminRepozitorijum();
+            List<Termin> termini = terminRepozitorijum.dobaviSve();
+            foreach (Termin t in termini)
+            {
+                if (t.Pocetak.Equals(termin.Pocetak) && t.prostorija.Id.Equals(termin.prostorija.Id) && t.hitno==false)
                     return new TerminDTO(t);
             }
 

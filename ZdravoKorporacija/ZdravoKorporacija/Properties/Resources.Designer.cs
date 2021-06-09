@@ -349,7 +349,7 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Choose the Doctors:.
+        ///   Looks up a localized string similar to Doctor:.
         /// </summary>
         public static string LekarText {
             get {

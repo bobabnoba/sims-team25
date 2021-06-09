@@ -62,6 +62,38 @@ namespace Service
             return true;
         }
 
+        public bool KreirajZdravstveniKarton2(ZdravstveniKartonDTO ZdravstveniKarton)
+        {
+            ZdravstveniKartonRepozitorijum datoteka = new ZdravstveniKartonRepozitorijum();
+            List<ZdravstveniKarton> zdravstveniKartoni = datoteka.DobaviSve();
+           
+        IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapZdravstveniKarton");
+
+            Dictionary<int, int> id_map = datotekaID.dobaviSve();
+            int id = 0;
+            for (int i = 0; i < 1000; i++)
+            {
+                if (id_map[i] == 0)
+                {
+                    id = i;
+                    id_map[i] = 1;
+                    break;
+                }
+            }
+            ZdravstveniKarton.Id = id;
+
+            foreach (ZdravstveniKarton pr in zdravstveniKartoni)
+            {
+                if (pr.Id.Equals(ZdravstveniKarton.Id))
+                {
+                    return false;
+                }
+            }
+            zdravstveniKartoni.Add(new ZdravstveniKarton(ZdravstveniKarton));
+            datoteka.Sacuvaj(zdravstveniKartoni);
+            datotekaID.sacuvaj(id_map);
+            return true;
+        }
 
         public bool KreirajZdravstveniKartonJMBG(ZdravstveniKarton ZdravstveniKarton)
         {

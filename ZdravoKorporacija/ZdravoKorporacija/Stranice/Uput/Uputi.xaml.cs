@@ -43,7 +43,7 @@ namespace ZdravoKorporacija.Stranice.Uput
 
         private void izdajUput(object sender, RoutedEventArgs e)
         {
-            test.prozor.Content = new izdajUput(lekarStart.uputi, ids);
+            test.prozor.Content = new izdajUput();
         }
 
         private void prikaziKarton(object sender, RoutedEventArgs e)
@@ -67,7 +67,7 @@ namespace ZdravoKorporacija.Stranice.Uput
         private void zakaziHitno(object sender, RoutedEventArgs e)
         {
 
-            test.prozor.Content = new zakaziHitniLekar(lekarStart.uputi, ids);
+            test.prozor.Content = new zakaziHitniLekar();
         }
 
     }

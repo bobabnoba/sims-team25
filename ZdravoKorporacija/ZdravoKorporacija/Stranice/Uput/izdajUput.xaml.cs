@@ -1,6 +1,5 @@
 ﻿using Controller;
 using Model;
-using Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,7 +7,6 @@ using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Stranice.LekarCRUD;
 using ZdravoKorporacija.Stranice.Logovanje;
 
@@ -31,23 +29,20 @@ namespace ZdravoKorporacija.Stranice.Uput
         private List<LekarDTO> lekariZaPrikaz = new List<LekarDTO>();
 
         private TerminDTO p;
-        private ObservableCollection<TerminDTO> pregledi;
+
         String now = DateTime.Now.ToString("hh:mm:ss tt");
         DateTime today = DateTime.Today;
 
         private Dictionary<int, int> ids = new Dictionary<int, int>();
 
-        public izdajUput(ObservableCollection<TerminDTO> termini, Dictionary<int, int> ids)
+        public izdajUput()
         {
             InitializeComponent();
 
             p = new TerminDTO();
             pacijenti = pacijentiController.PregledSvihPacijenata2();
             cbPacijent.ItemsSource = pacijenti;
-            pregledi = termini;
-
-            this.ids = ids;
-
+ 
 
             CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
             date.BlackoutDates.Add(cdr);
@@ -66,17 +61,7 @@ namespace ZdravoKorporacija.Stranice.Uput
         private void potvrdi(object sender, RoutedEventArgs e)
         {
             termini = terminController.PregledSvihTermina2();
-            int id = 0;
-            for (int i = 0; i < 1000; i++)
-            {
-                if (ids[i] == 0)
-                {
-                    id = i;
-                    ids[i] = 1;
-                    break;
-                }
-            }
-            p.Id = id;
+           
             PacijentDTO pac = (PacijentDTO)cbPacijent.SelectedItem;
             ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
 
@@ -145,10 +130,10 @@ namespace ZdravoKorporacija.Stranice.Uput
             {
                 p.zdravstveniKarton = zk;
                 pac.ZdravstveniKarton = zk;
-                zkController.KreirajZdravstveniKarton(new ZdravstveniKarton(pac.ZdravstveniKarton), ids);
+                zkController.KreirajZdravstveniKarton2(pac.ZdravstveniKarton);
             }
 
-            this.pregledi.Add(p);
+            lekarStart.uputi.Add(p);
             CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
             date.BlackoutDates.Add(cdr);
 

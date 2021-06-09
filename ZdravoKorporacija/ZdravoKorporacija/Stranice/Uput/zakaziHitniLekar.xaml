@@ -24,8 +24,8 @@
         </Grid.ColumnDefinitions>
         <Button Content="{ns:Loc DodajBtn}" HorizontalAlignment="Left" Margin="104,38,0,0" Grid.Row="5" VerticalAlignment="Top" Width="80" Grid.ColumnSpan="2" Click="potvrdi"/>
         <Button Content="{ns:Loc OdustaniBtn}" HorizontalAlignment="Left" Margin="102,38,0,0" Grid.Row="5" VerticalAlignment="Top" Width="80" Grid.Column="1" Click="odustani"/>
-        <TextBlock Style="{DynamicResource textblock}" Text="{ns:Loc PacijentText}" TextWrapping="Wrap" Margin="72,37,217,10" Grid.Row="1" Grid.ColumnSpan="2"/>
-        <ComboBox Name="cbPacijent" Grid.Column="1" Margin="82,32,53,8" Grid.Row="1" SelectionChanged="ComboBox_SelectionChanged" Height="28">
+        <TextBlock Style="{DynamicResource textblock}" Text="{ns:Loc PacijentText}" TextWrapping="Wrap" Margin="72,24,217,24" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <ComboBox Name="cbPacijent" Grid.Column="1" Margin="82,18,53,22" Grid.Row="1" SelectionChanged="ComboBox_SelectionChanged" Height="28">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock >
@@ -39,24 +39,42 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <TextBlock Style="{DynamicResource textblock}" Text="{ns:Loc TipText}" TextWrapping="Wrap" Margin="79,52,288,66" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
-        <ComboBox Name="cbTip" Grid.Column="1" Margin="82,48,53,60" Height="28" Grid.RowSpan="2" >
+        <TextBlock Style="{DynamicResource textblock}" Text="{ns:Loc TipText}" TextWrapping="Wrap" Margin="73,35,0,15" RenderTransformOrigin="0.56,-0.389"/>
+        <ComboBox Name="cbTip" Grid.Column="1" Margin="82,30,53,10" Height="28" >
             <ComboBoxItem>Pregled</ComboBoxItem>
             <ComboBoxItem>Operacija</ComboBoxItem>
         </ComboBox>
-        <DataGrid Style ="{DynamicResource dataGrid}" Visibility="Hidden" AutoGenerateColumns="False" Name="alternative" Grid.ColumnSpan="2" Margin="62,44,53,34" Grid.RowSpan="3" Grid.Row="2">
-            <DataGrid.Columns>
-                <DataGridTextColumn HeaderStyle="{DynamicResource dataGridHeader}" Header="Vreme" Binding="{Binding Pocetak}" ></DataGridTextColumn>
-                <DataGridTemplateColumn>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Click="zameni">Zameni pacijenta</Button>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
+        <TextBlock Style="{DynamicResource textblock}" Text="{ns:Loc LekarText}" TextWrapping="Wrap" Margin="73,23,215,16" Grid.Row="3" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="Lekari"  Grid.Column="1" Margin="82,20,53,20" Grid.Row="3" Height="28">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Path="Ime"/>
+                                <Binding Path="Prezime"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBlock Style="{DynamicResource textblock}" TextWrapping="Wrap" Margin="72,25,273,20" Grid.Row="2" Text="{ns:Loc ProstorijaText}" Grid.ColumnSpan="2" />
+        <ComboBox x:Name="cbProstorija" Grid.Column="1" Margin="82,20,54,20" Grid.Row="2" Height="28">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Path="Id"/>
+                                <Binding Path="Naziv"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
 
-        </DataGrid>
 
     </Grid>
 </Page>

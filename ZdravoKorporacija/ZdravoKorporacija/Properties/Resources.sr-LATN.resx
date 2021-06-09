@@ -214,7 +214,7 @@
     <value>_Izaberi Lekare</value>
   </data>
   <data name="LekarText" xml:space="preserve">
-    <value>Izaberi Lekare:</value>
+    <value>Lekar:</value>
   </data>
   <data name="LekGrid" xml:space="preserve">
     <value>Lek</value>

@@ -208,7 +208,7 @@
     <value>_Choose Doctors</value>
   </data>
   <data name="LekarText" xml:space="preserve">
-    <value>Choose the Doctors:</value>
+    <value>Doctor:</value>
   </data>
   <data name="LekGrid" xml:space="preserve">
     <value>Medicine</value>
