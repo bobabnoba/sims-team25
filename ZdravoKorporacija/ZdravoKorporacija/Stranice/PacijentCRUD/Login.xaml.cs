@@ -2,6 +2,7 @@
 using System.Windows;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Stranice.PacijentCRUD.Onscreen_Keyboard;
 
 namespace ZdravoKorporacija.Stranice.PacijentCRUD
 {
@@ -42,6 +43,22 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
         private void wizardCb_Checked(object sender, RoutedEventArgs e)
         {
             wizard = true;
+        }
+
+        private void tastIme_Click(object sender, RoutedEventArgs e)
+        {
+            Keyboard k = new Keyboard(imeText, tastIme);
+            k.Top = 343;
+            k.Left = 860;
+            k.ShowDialog();
+        }
+
+        private void tastLoz_Click(object sender, RoutedEventArgs e)
+        {
+            Keyboard k = new Keyboard(imeText, tastIme);
+            k.Top = 430;
+            k.Left = 860;
+            k.ShowDialog();
         }
     }
 }

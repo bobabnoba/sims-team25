@@ -52,8 +52,14 @@
             <Label Content=" Prijavi se" FontSize="65" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1" Width="302" />
             <Label Content="Korisničko ime:" FontSize="22" HorizontalAlignment="Left"  Grid.Column="1" Grid.Row="1"/>
             <TextBox Name="imeText" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" FontSize="22" Grid.Row="2" Grid.Column="1" BorderBrush="Black"/>
+            <Button x:Name="tastIme" Width="60" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="1" Click="tastIme_Click" BorderBrush="Black">
+                <Image Source="/Images/icons8-keyboard-40.png"></Image>
+            </Button>
+            <Button x:Name="tastLoz" Width="60" HorizontalAlignment="Right" Grid.Row="4" Grid.Column="1" Click="tastLoz_Click" BorderBrush="Black">
+                <Image Source="/Images/icons8-keyboard-40.png"></Image>
+            </Button>
             <Label Content="Lozinka:" FontSize="22" Grid.Row="3" HorizontalAlignment="Left" Grid.Column="1"/>
-            <PasswordBox Name="lozinkaText" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" FontSize="22" Grid.Row="4" Grid.Column="1" BorderBrush="Black"  />
+            <PasswordBox Name="lozinkaText" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" FontSize="22" Grid.Row="3" Grid.Column="1" BorderBrush="Black" Margin="0,45,58,54" Grid.RowSpan="3"/>
             <CheckBox x:Name="wizardCb" VerticalAlignment="Center" Grid.Row="5" Grid.Column="1" Content="Prvi put koristim aplikaciju" Checked="wizardCb_Checked" >
                 <CheckBox.RenderTransform>
                     <TransformGroup>

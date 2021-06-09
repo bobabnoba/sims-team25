@@ -102,6 +102,9 @@
     <Compile Update="Stranice\Logovanje\login.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Stranice\PacijentCRUD\Onscreen Keyboard\proba3.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Stranice\PacijentCRUD\otkaziPregled.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -339,6 +342,15 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\PacijentCRUD\Obavestenja.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\PacijentCRUD\Onscreen Keyboard\Keyboard.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\PacijentCRUD\Onscreen Keyboard\KeyboardAlternate.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\PacijentCRUD\Onscreen Keyboard\proba3.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\PacijentCRUD\otkaziPregled.xaml">

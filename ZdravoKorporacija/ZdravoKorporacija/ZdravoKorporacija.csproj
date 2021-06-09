@@ -18,6 +18,7 @@
     <None Remove="Images\exclamation.png" />
     <None Remove="Images\GettyImages-493928198.jpg" />
     <None Remove="Images\icons8-active-male-50.png" />
+    <None Remove="Images\icons8-keyboard-40.png" />
     <None Remove="Images\output-onlinepngtools.png" />
     <None Remove="Images\pdf.png" />
     <None Remove="Images\pocetna.png" />
@@ -48,6 +49,7 @@
     <Resource Include="Images\exclamation.png" />
     <Resource Include="Images\GettyImages-493928198.jpg" />
     <Resource Include="Images\icons8-active-male-50.png" />
+    <Resource Include="Images\icons8-keyboard-40.png" />
     <Resource Include="Images\output-onlinepngtools.png" />
     <Resource Include="Images\pdf.png" />
     <Resource Include="Images\pocetna.png" />
