@@ -9,6 +9,21 @@ namespace Service
     public class ProstorijaService
     {
         ProstorijaRepozitorijum datoteka = ProstorijaRepozitorijum.Instance;
+
+        private static ProstorijaService _instance;
+
+        public static ProstorijaService Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new ProstorijaService();
+                }
+                return _instance;
+            }
+        }
+
         public bool DodajProstoriju(ProstorijaDTO prostorijaDTO)
         {
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapProstorija");

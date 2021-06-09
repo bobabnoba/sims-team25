@@ -51,7 +51,6 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
         private void potvrdi(object sender, RoutedEventArgs e)
         {
-            
             if (!date.SelectedDate.HasValue || time.SelectedIndex == -1 || cbTip.SelectedIndex == -1
                 || cbProstorija.SelectedIndex == -1 || cbPacijent.SelectedIndex == -1)
             {

@@ -93,6 +93,7 @@ namespace ZdravoKorporacija.Stranice.StacionarnoLecenje
                 }
             }
 
+
             sl.DodajStacionarnoLecenje(stacionarnoLecenje);
             uputiZaStacionarno.uputi.Add(stacionarnoLecenje);
 
@@ -103,6 +104,28 @@ namespace ZdravoKorporacija.Stranice.StacionarnoLecenje
         private void odustani(object sender, RoutedEventArgs e)
         {
             test.prozor.Content = new uputiZaStacionarno(stacionarnoLecenje.Pacijent);
+        }
+
+        private void time_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
+            if (time.SelectedIndex != -1 && date.SelectedDate.HasValue && trajanjeText!=null)
+            {
+                String t = cboItem.Content.ToString();
+                prostorije = sl.DobaviSlobodneProstorijeStacionarno(DateTime.Parse(date.Text + " " + t), trajanjeText.Text);
+                cbProstorija.ItemsSource = prostorije;
+            }
+        }
+
+        private void date_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
+            if (time.SelectedIndex != -1 && date.SelectedDate.HasValue && trajanjeText != null)
+            {
+                String t = cboItem.Content.ToString();
+                prostorije = sl.DobaviSlobodneProstorijeStacionarno(DateTime.Parse(date.Text + " " + t), trajanjeText.Text);
+                cbProstorija.ItemsSource = prostorije;
+            }
         }
     }
 }

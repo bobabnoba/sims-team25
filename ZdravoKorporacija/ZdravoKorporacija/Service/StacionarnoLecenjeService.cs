@@ -1,4 +1,6 @@
 ﻿using Repository;
+using Service;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using ZdravoKorporacija.DTO;
@@ -12,6 +14,7 @@ namespace ZdravoKorporacija.Service
     {
 
         StacionarnoLecenjeRepozitorijum rr = StacionarnoLecenjeRepozitorijum.Instance;
+        ProstorijaService ps = ProstorijaService.Instance;
         public static ObservableCollection<StacionarnoLecenje> StacionarnaLecenja = StacionarnoLecenjeRepozitorijum.Instance.DobaviSve();
         IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapStacionarnoLecenje");
         Dictionary<int, int> id_map = new Dictionary<int, int>();
@@ -57,6 +60,29 @@ namespace ZdravoKorporacija.Service
             rr.Sacuvaj(StacionarnaLecenja);
             datotekaID.sacuvaj(id_map);
             return true;
+        }
+
+        public ObservableCollection<ProstorijaDTO> DobaviSlobodneProstorijeStacionarno(DateTime Pocetak, String trajanje)
+        {
+            ObservableCollection<ProstorijaDTO> slobodneProstorije = ps.PregledSvihProstorija2();
+
+
+            foreach (StacionarnoLecenjeDTO s in PregledSvihStacionarnih())
+            {
+                if (Pocetak != null && trajanje.Length!=0)
+                    if (s.Pocetak.AddDays(Double.Parse(s.Trajanje))>=(Pocetak.AddDays(Double.Parse(trajanje))) && Pocetak>=s.Pocetak)
+                    {
+                        foreach (ProstorijaDTO p in slobodneProstorije)
+                        {
+                            if (s.Prostorija.Id.Equals(p.Id))
+                            {
+                                slobodneProstorije.Remove(p);
+                                return slobodneProstorije;
+                            }
+                        }
+                    }
+            }
+            return slobodneProstorije;
         }
 
         public bool ObrisiStacionarnoLecenje(StacionarnoLecenjeDTO StacionarnoLecenje)

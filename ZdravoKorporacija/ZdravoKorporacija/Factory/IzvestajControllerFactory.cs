@@ -9,7 +9,8 @@ namespace ZdravoKorporacija.Factory
     {
         public static IIzvestajController Create()
         {
-            return IzvestajController.Instance;
+            //return IzvestajController.Instance;
+            return new IzvestajController();
         }
     }
 }

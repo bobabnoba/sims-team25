@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Service;
 
@@ -20,7 +21,12 @@ namespace ZdravoKorporacija.Controller
                 return _instance;
             }
         }
-        public bool DodajStacionarnoLecenje(StacionarnoLecenjeDTO StacionarnoLecenje)
+
+        public ObservableCollection<ProstorijaDTO> DobaviSlobodneProstorijeStacionarno(DateTime Pocetak, String trajanje)
+        {
+            return sl.DobaviSlobodneProstorijeStacionarno(Pocetak, trajanje);
+        }
+            public bool DodajStacionarnoLecenje(StacionarnoLecenjeDTO StacionarnoLecenje)
         {
             return sl.DodajStacionarnoLecenje(StacionarnoLecenje);
         }

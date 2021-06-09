@@ -9,7 +9,8 @@ namespace ZdravoKorporacija.Factory
     {
         public static IReceptController Create()
         {
-            return ReceptController.Instance;
+            //return ReceptController.Instance;
+            return new ReceptController();
         }
     }
 }
