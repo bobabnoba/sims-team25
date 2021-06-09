@@ -192,6 +192,9 @@
   <data name="IzmeniZahtevBtn" xml:space="preserve">
     <value>_Izmeni Zahtev</value>
   </data>
+  <data name="IzvestajiBtn" xml:space="preserve">
+    <value>_Izvestaj</value>
+  </data>
   <data name="JezikMenu" xml:space="preserve">
     <value>_Izmenii Jezik</value>
   </data>
@@ -255,6 +258,9 @@
   <data name="OdjaviSeMenu" xml:space="preserve">
     <value>_Odjavi Se</value>
   </data>
+  <data name="OdjaviSeToolTip" xml:space="preserve">
+    <value>AlT+O</value>
+  </data>
   <data name="OdobriZahtevBtn" xml:space="preserve">
     <value>_Odobri Zahtev</value>
   </data>
@@ -282,6 +288,9 @@
   <data name="PacijentiMenu" xml:space="preserve">
     <value>_Lista Pacijenata</value>
   </data>
+  <data name="PacijentiToolTip" xml:space="preserve">
+    <value>ALT+L</value>
+  </data>
   <data name="PacijentText" xml:space="preserve">
     <value>Pacijent:</value>
   </data>
@@ -296,6 +305,9 @@
   </data>
   <data name="PodesavanjaMenu" xml:space="preserve">
     <value>_Podesavanja</value>
+  </data>
+  <data name="PodesavanjaToolTip" xml:space="preserve">
+    <value>ALT+P</value>
   </data>
   <data name="PolGrid" xml:space="preserve">
     <value>Pol</value>
@@ -342,6 +354,9 @@
   <data name="TerminiMenu" xml:space="preserve">
     <value>_Termini</value>
   </data>
+  <data name="TerminiToolTip" xml:space="preserve">
+    <value>ALT+T</value>
+  </data>
   <data name="TipGrid" xml:space="preserve">
     <value>Tip</value>
   </data>
@@ -357,8 +372,14 @@
   <data name="UputiMenu" xml:space="preserve">
     <value>_Uputi</value>
   </data>
+  <data name="UputiToolTip" xml:space="preserve">
+    <value>ALT+U</value>
+  </data>
   <data name="UputiZaStacionarnoGrid" xml:space="preserve">
     <value>Uputi za Stacionarno Lecenje</value>
+  </data>
+  <data name="ZahteviToolTip" xml:space="preserve">
+    <value>ALT+Z</value>
   </data>
   <data name="ZahteviZaLekoveMenu" xml:space="preserve">
     <value>_Zahtevi za Lekove</value>

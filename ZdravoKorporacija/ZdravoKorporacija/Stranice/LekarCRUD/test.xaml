@@ -114,17 +114,17 @@
         <StackPanel>
             <Menu  Style="{DynamicResource MenuStyle}" IsMainMenu="True" >
                 <MenuItem Header="{ns:Loc ZdravoKorporacijaMenu}" Template="{StaticResource ZdravoKorporacija}"/>
-                <MenuItem Header="{ns:Loc TerminiMenu}"  Template="{StaticResource VsMenuTop}" Click="MenuItem_Click"/>
-                <MenuItem Header="{ns:Loc PacijentiMenu}"  Template="{StaticResource VsMenuTop}" Click="MenuItem_Click_1"/>
-                <MenuItem Header="{ns:Loc UputiMenu}" Template="{StaticResource VsMenuTop}" Click="MenuItem_Click_2"/>
-                <MenuItem Header="{ns:Loc ZahteviZaLekoveMenu}" Template="{StaticResource VsMenuTop}" Click="MenuItem_Click_3">
+                <MenuItem ToolTip="{ns:Loc TerminiToolTip}" Header="{ns:Loc TerminiMenu}"  Template="{StaticResource VsMenuTop}" Click="MenuItem_Click"/>
+                <MenuItem ToolTip="{ns:Loc PacijentiToolTip}" Header="{ns:Loc PacijentiMenu}"  Template="{StaticResource VsMenuTop}" Click="MenuItem_Click_1"/>
+                <MenuItem ToolTip="{ns:Loc UputiToolTip}" Header="{ns:Loc UputiMenu}" Template="{StaticResource VsMenuTop}" Click="MenuItem_Click_2"/>
+                <MenuItem ToolTip="{ns:Loc ZahteviToolTip}" Header="{ns:Loc ZahteviZaLekoveMenu}" Template="{StaticResource VsMenuTop}" Click="MenuItem_Click_3">
 
                 </MenuItem>
-                <MenuItem Header="{ns:Loc PodesavanjaMenu}"  HorizontalAlignment="Stretch" Template="{StaticResource VsMenuTop}" >
+                <MenuItem ToolTip="{ns:Loc PodesavanjaToolTip}" Header="{ns:Loc PodesavanjaMenu}"  HorizontalAlignment="Stretch" Template="{StaticResource VsMenuTop}" >
                     <MenuItem Name="tema" Header="{ns:Loc TemaMenu}" Template="{StaticResource VsMenuSub}" Style="{DynamicResource menuSub}" Click="promeniTemu"/>
                     <MenuItem Header="{ns:Loc JezikMenu}" Template="{StaticResource VsMenuSub}" Style="{DynamicResource menuSub}" Click="promeniJezik"/>
                 </MenuItem>
-                <MenuItem Header="{ns:Loc OdjaviSeMenu}" Template="{StaticResource VsMenuEnd}" Click="MenuItem_Click_4"/>
+                <MenuItem ToolTip="{ns:Loc OdjaviSeToolTip}" Header="{ns:Loc OdjaviSeMenu}" Template="{StaticResource VsMenuEnd}" Click="MenuItem_Click_4"/>
             </Menu>
         </StackPanel>
     </Grid>

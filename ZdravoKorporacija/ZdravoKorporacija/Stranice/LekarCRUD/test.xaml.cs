@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using ZdravoKorporacija.Stranice.LekoviCRUD;
 using ZdravoKorporacija.Stranice.Logovanje;
 using ZdravoKorporacija.Stranice.Uput;
@@ -94,6 +95,5 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             this.Close();
             MainWindow.mw.Show();
         }
-
     }
 }

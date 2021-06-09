@@ -1,9 +1,11 @@
 ﻿using Service;
 using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Stranice.StacionarnoLecenje;
 
@@ -98,7 +100,19 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             }
         }
 
-        private void Image_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            Trace.WriteLine("Uso");
+            //handler codes go here as needed.
+            if (e.Key == Key.I)
+            {
+                PrintDialog _printDialog = new PrintDialog();
+                _printDialog.PrintVisual(this, "Izvestaj o trenutnom stanju lekova");
+            }
+        }
+
+       
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             PrintDialog _printDialog = new PrintDialog();
             _printDialog.PrintVisual(this, "Izvestaj o trenutnom stanju lekova");

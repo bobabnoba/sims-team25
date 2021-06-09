@@ -378,4 +378,25 @@
   <data name="TipGrid" xml:space="preserve">
     <value>Type</value>
   </data>
+  <data name="IzvestajiBtn" xml:space="preserve">
+    <value>_Report</value>
+  </data>
+  <data name="OdjaviSeToolTip" xml:space="preserve">
+    <value>AlT+L</value>
+  </data>
+  <data name="PacijentiToolTip" xml:space="preserve">
+    <value>ALT+P</value>
+  </data>
+  <data name="PodesavanjaToolTip" xml:space="preserve">
+    <value>ALT+S</value>
+  </data>
+  <data name="TerminiToolTip" xml:space="preserve">
+    <value>ALT+A</value>
+  </data>
+  <data name="UputiToolTip" xml:space="preserve">
+    <value>ALT+R</value>
+  </data>
+  <data name="ZahteviToolTip" xml:space="preserve">
+    <value>ALT+N</value>
+  </data>
 </root>

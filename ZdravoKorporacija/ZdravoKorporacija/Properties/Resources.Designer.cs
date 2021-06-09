@@ -286,6 +286,15 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _Report.
+        /// </summary>
+        public static string IzvestajiBtn {
+            get {
+                return ResourceManager.GetString("IzvestajiBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _Change Language.
         /// </summary>
         public static string JezikMenu {
@@ -475,6 +484,15 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to AlT+L.
+        /// </summary>
+        public static string OdjaviSeToolTip {
+            get {
+                return ResourceManager.GetString("OdjaviSeToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _Approve a Request.
         /// </summary>
         public static string OdobriZahtevBtn {
@@ -556,6 +574,15 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ALT+P.
+        /// </summary>
+        public static string PacijentiToolTip {
+            get {
+                return ResourceManager.GetString("PacijentiToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Patient:.
         /// </summary>
         public static string PacijentText {
@@ -597,6 +624,15 @@ namespace ZdravoKorporacija.Properties {
         public static string PodesavanjaMenu {
             get {
                 return ResourceManager.GetString("PodesavanjaMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ALT+S.
+        /// </summary>
+        public static string PodesavanjaToolTip {
+            get {
+                return ResourceManager.GetString("PodesavanjaToolTip", resourceCulture);
             }
         }
         
@@ -736,6 +772,15 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ALT+A.
+        /// </summary>
+        public static string TerminiToolTip {
+            get {
+                return ResourceManager.GetString("TerminiToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Type.
         /// </summary>
         public static string TipGrid {
@@ -781,11 +826,29 @@ namespace ZdravoKorporacija.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ALT+R.
+        /// </summary>
+        public static string UputiToolTip {
+            get {
+                return ResourceManager.GetString("UputiToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Referrals for Stationary Treatment.
         /// </summary>
         public static string UputiZaStacionarnoGrid {
             get {
                 return ResourceManager.GetString("UputiZaStacionarnoGrid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ALT+N.
+        /// </summary>
+        public static string ZahteviToolTip {
+            get {
+                return ResourceManager.GetString("ZahteviToolTip", resourceCulture);
             }
         }
         
