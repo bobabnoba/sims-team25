@@ -1,22 +1,19 @@
 ﻿using Model;
+using Repository;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Collections;
-using Repository;
-using System.Diagnostics;
-using ZdravoKorporacija.Model;
 using System.Collections.ObjectModel;
 using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Model;
 
 namespace Service
 {
     public class StatickaOpremaService
-        {
+    {
         StatickaOpremaRepozitorijum statickaRepozitorijum = StatickaOpremaRepozitorijum.Instance;
         TerminService terminServis = new TerminService();
-        public bool DodajOpremu(StatickaOpremaDTO statickaOpremaDTO,TerminDTO terminDTO,String sati)
-            {  
+        public bool DodajOpremu(StatickaOpremaDTO statickaOpremaDTO, TerminDTO terminDTO, String sati)
+        {
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
             Dictionary<int, int> ids = datotekaID.dobaviSve();
             int slobodanId = nadjiSlobodanID(ids);
@@ -32,13 +29,13 @@ namespace Service
             termin.Pocetak = terminDTO.Pocetak;
 
 
-            terminServis.ZakaziTerminDTO(termin,ids);
+            terminServis.ZakaziTerminDTO(termin, ids);
             StatickaOprema statickaOprema = new StatickaOprema(statickaOpremaDTO);
 
             StatickaOpremaRepozitorijum.Instance.magacinStatickaOprema.Add(statickaOprema);
             statickaRepozitorijum.Sacuvaj();
             return true;
-            }
+        }
 
         private int nadjiSlobodanID(Dictionary<int, int> id_map)
         {
@@ -56,24 +53,24 @@ namespace Service
         }
 
         public bool ObrisiOpremu(StatickaOprema oprema)
-            {
-                // TODO: implement
-                return false;
-            }
+        {
+            // TODO: implement
+            return false;
+        }
 
-            public bool AzurirajOpremu(StatickaOprema oprema)
-            {
-                // TODO: implement
-                return false;
-            }
+        public bool AzurirajOpremu(StatickaOprema oprema)
+        {
+            // TODO: implement
+            return false;
+        }
 
-            public ObservableCollection<StatickaOprema> PregledSveOpreme()
-            {
+        public ObservableCollection<StatickaOprema> PregledSveOpreme()
+        {
             return statickaRepozitorijum.DobaviSve();
-            }
+        }
 
-            public ObservableCollection<StatickaOpremaDTO> PregledSveOpremeDTO()
-             {
+        public ObservableCollection<StatickaOpremaDTO> PregledSveOpremeDTO()
+        {
             ObservableCollection<StatickaOprema> statickaOprema = statickaRepozitorijum.DobaviSve();
             ObservableCollection<StatickaOpremaDTO> statickaOpremaDTO = new ObservableCollection<StatickaOpremaDTO>();
             foreach (StatickaOprema oprema in statickaOprema)
@@ -90,10 +87,10 @@ namespace Service
         }
 
         public StatickaOprema PregledJedneOpreme()
-            {
-                // TODO: implement
-                return null;
-            }
+        {
+            // TODO: implement
+            return null;
+        }
 
 
     }

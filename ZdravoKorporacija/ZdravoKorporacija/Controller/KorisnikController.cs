@@ -1,13 +1,7 @@
 ﻿using Model;
 using Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
-using System.Security.Cryptography.Pkcs;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Konverteri;
-using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Controller
 {
@@ -20,14 +14,14 @@ namespace ZdravoKorporacija.Controller
         public PacijentDTO ulogovaniPacijent(UlogaEnum uloga, string korisnickoIme, string lozinka)
         {
             //Korisnik ulogovan = ks.Uloguj(uloga, korisnickoIme, lozinka);
-       
+
             Pacijent ulogovani = pacijentService.dobaviUlogovanog(korisnickoIme, lozinka);
             return pacijentKonverter.KonvertujEntitetUDTO(ulogovani);
         }
 
     }
 
-   
+
 
 }
 

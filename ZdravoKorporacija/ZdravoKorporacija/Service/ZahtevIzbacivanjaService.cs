@@ -2,7 +2,6 @@
 using Repository;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Repository;
 
@@ -19,7 +18,7 @@ namespace Service
             DateTime dt = zahtevIzabacivanja.Pocetak;
             int id = nadjiSlobodanID(id_map);
             id_map[id] = 1;
-            
+
 
             zahtevIzabacivanja.Id = id;
             Inventar inventar = new Inventar(inventarDTO);
@@ -52,7 +51,7 @@ namespace Service
 
         public List<ZahtevIzbacivanja> PregledSvihZahtevaIzbacivanja()
         {
-          ZahtevIzbacivanjaRepozitorijum zpr = ZahtevIzbacivanjaRepozitorijum.Instance;
+            ZahtevIzbacivanjaRepozitorijum zpr = ZahtevIzbacivanjaRepozitorijum.Instance;
             return zpr.dobaviSve();
         }
 

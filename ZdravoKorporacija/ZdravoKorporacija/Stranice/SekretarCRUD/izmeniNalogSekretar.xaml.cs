@@ -1,11 +1,7 @@
 ﻿using Model;
-using Repository;
-using Service;
-using System.Collections.ObjectModel;
 using System.Windows;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.SekretarCRUD
 {
@@ -17,7 +13,7 @@ namespace ZdravoKorporacija.Stranice.SekretarCRUD
 
     public partial class izmeniNalogSekretar : Window
     {
-       
+
         private PacijentDTO p1;
         private TerminController tc = new TerminController();
 
@@ -64,8 +60,8 @@ namespace ZdravoKorporacija.Stranice.SekretarCRUD
             {
                 pol = PolEnum.Zenski;
             }
-            
-            PacijentDTO novi = new PacijentDTO(p1.ZdravstveniKarton,p1.Guest,ime, prezime, jmbg, br, mejl, "", pol, username, password, UlogaEnum.Pacijent);
+
+            PacijentDTO novi = new PacijentDTO(p1.ZdravstveniKarton, p1.Guest, ime, prezime, jmbg, br, mejl, "", pol, username, password, UlogaEnum.Pacijent);
             if (tc.AzurirajPacijenta(tc.DTO2ModelNapravi(novi)))
             {
                 tc.PregledSvihPacijenata().Add(tc.PacijentDTO2Model(novi));

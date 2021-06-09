@@ -1,7 +1,4 @@
-﻿using Model;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.DTO
@@ -40,6 +37,6 @@ namespace ZdravoKorporacija.DTO
             Pacijent = new PacijentDTO(stacionarnoLecenje.Pacijent);
         }
 
-      
+
     }
 }

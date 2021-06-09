@@ -5,13 +5,13 @@
 
 using Model;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using ZdravoKorporacija.Repository;
 
 namespace Repository
 {
-    public class IzvestajRepozitorijum
+    public class IzvestajRepozitorijum : IIzvestajRepozitorijum
     {
         private string lokacija;
 

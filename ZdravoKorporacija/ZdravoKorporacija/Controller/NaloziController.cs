@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Model;
+﻿using Model;
 using Service;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
@@ -19,7 +16,7 @@ namespace ZdravoKorporacija.Controller
         {
             return pacijentServis.KreirajNalogPacijentu(pacijent);
         }
-        
+
         public Pacijent DTO2Model(PacijentDTO dto)
         {
             return pacijentServis.DTO2Model(dto);
@@ -30,7 +27,7 @@ namespace ZdravoKorporacija.Controller
         }
         public bool AzurirajPacijenta(Pacijent pacijent)
         {
-           return pacijentServis.AzurirajPacijenta(pacijent);
+            return pacijentServis.AzurirajPacijenta(pacijent);
         }
         public bool DodajLekara(Lekar lekar)
         {

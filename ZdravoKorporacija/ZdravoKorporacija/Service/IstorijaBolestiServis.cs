@@ -1,14 +1,14 @@
-using System;
 using Model;
-using System.Collections.Generic;
 using Repository;
+using System;
+using System.Collections.Generic;
 
 namespace Service
 {
-   public class IstorijaBolestiServis
-   {
-      public bool DodajIstorijuBolesti(IstorijaBolesti istorijaBolesti)
-      {
+    public class IstorijaBolestiServis
+    {
+        public bool DodajIstorijuBolesti(IstorijaBolesti istorijaBolesti)
+        {
             IstorijaBolestiRepozitorijum datoteka = new IstorijaBolestiRepozitorijum();
             List<IstorijaBolesti> istorijeBolesti = datoteka.DobaviSve();
             foreach (IstorijaBolesti i in istorijeBolesti)
@@ -22,9 +22,9 @@ namespace Service
             datoteka.Sacuvaj(istorijeBolesti);
             return true;
         }
-      
-      public bool ObrisiIstorijuBolesti(IstorijaBolesti istorijaBolesti)
-      {
+
+        public bool ObrisiIstorijuBolesti(IstorijaBolesti istorijaBolesti)
+        {
             IstorijaBolestiRepozitorijum datoteka = new IstorijaBolestiRepozitorijum();
             List<IstorijaBolesti> istorijeBolesti = datoteka.DobaviSve();
             foreach (IstorijaBolesti i in istorijeBolesti)
@@ -38,9 +38,9 @@ namespace Service
             }
             return false;
         }
-      
-      public bool AzurirajIstorijuBolesti(IstorijaBolesti istorijaBolesti)
-      {
+
+        public bool AzurirajIstorijuBolesti(IstorijaBolesti istorijaBolesti)
+        {
             IstorijaBolestiRepozitorijum datoteka = new IstorijaBolestiRepozitorijum();
             List<IstorijaBolesti> istorijeBolesti = datoteka.DobaviSve();
             foreach (IstorijaBolesti i in istorijeBolesti)
@@ -55,9 +55,9 @@ namespace Service
             }
             return false;
         }
-      
-      public IstorijaBolesti PregledIstorijeBolesti(String id)
-      {
+
+        public IstorijaBolesti PregledIstorijeBolesti(String id)
+        {
             IstorijaBolestiRepozitorijum datoteka = new IstorijaBolestiRepozitorijum();
             List<IstorijaBolesti> istorijeBolesti = datoteka.DobaviSve();
             foreach (IstorijaBolesti i in istorijeBolesti)
@@ -69,13 +69,13 @@ namespace Service
             }
             return null;
         }
-      
-      public List<IstorijaBolesti> PregledSvihIstorijaBolesti()
-      {
+
+        public List<IstorijaBolesti> PregledSvihIstorijaBolesti()
+        {
             IstorijaBolestiRepozitorijum datoteka = new IstorijaBolestiRepozitorijum();
             List<IstorijaBolesti> istorijeBolesti = datoteka.DobaviSve();
             return istorijeBolesti;
         }
-   
-   }
+
+    }
 }

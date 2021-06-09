@@ -1,7 +1,4 @@
 ﻿using Controller;
-using Model;
-using Repository;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,7 +17,7 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
         public prostorijeStart()
         {
             InitializeComponent();
-            prostorije   = prostorijaController.PregledSvihProstorijaDTO();
+            prostorije = prostorijaController.PregledSvihProstorijaDTO();
             dgUsers.ItemsSource = prostorije;
         }
 
@@ -44,7 +41,7 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             if (dgUsers.SelectedItem == null)
-                MessageBox.Show("Niste selektovali red","Greska");
+                MessageBox.Show("Niste selektovali red", "Greska");
             else
             {
                 izmeniProstorijuUpravnik ip = new izmeniProstorijuUpravnik(prostorije, (ProstorijaDTO)dgUsers.SelectedItem, dgUsers.SelectedIndex);

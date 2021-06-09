@@ -1,6 +1,5 @@
-﻿using Model;
-using Repository;
-using Service;
+﻿using Controller;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,7 +8,6 @@ using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Stranice.Logovanje;
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
@@ -17,56 +15,30 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
     /// <summary>
     /// Interaction logic for zakaziPregledLekar.xaml
     /// </summary>
-    public partial class zakaziPregledLekar : Window
+    public partial class zakaziPregledLekar : Page
     {
-        private ObservableCollection<ProstorijaDTO> slobodneProstorije;
         private ObservableCollection<ProstorijaDTO> prostorije = new ObservableCollection<ProstorijaDTO>();
 
-        private int idTermina;
-        private TipTerminaEnum tipTermina;
-        private DateTime pocetakTermina;
-        private ProstorijaDTO prostorijaTermina;
-
-        private TerminDTO noviTermin;
         private TerminController tc = new TerminController();
-        private TerminService terminServis = new TerminService();
-        private LekarRepozitorijum lekariDat = new LekarRepozitorijum();
-        private ProstorijaService prostorijeServis = new ProstorijaService();
-        private ZdravstveniKartonServis zdravstveniKartonServis = new ZdravstveniKartonServis();
-        private PacijentService pacijentiServis = new PacijentService();
-        private List<Pacijent> pacijenti = new List<Pacijent>();
-        private List<Lekar> lekari = new List<Lekar>();
-        private List<Termin> termini = new List<Termin>();
+        private ProstorijaController pc = new ProstorijaController();
+        private PacijentController pacc = PacijentController.Instance;
 
-        private Termin p;
-        private ObservableCollection<Termin> pregledi;
+
+        private TerminDTO termin = new TerminDTO();
         String now = DateTime.Now.ToString("hh:mm:ss tt");
         DateTime today = DateTime.Today;
 
-        private Dictionary<int, int> ids = new Dictionary<int, int>();
-
-
-
-        public zakaziPregledLekar( Dictionary<int, int> ids)
+        public zakaziPregledLekar()
         {
             InitializeComponent();
 
-            noviTermin = new TerminDTO();
-            
-
-            
-            cbPacijent.ItemsSource = tc.PregledSvihPacijenata2DTO();
+            cbPacijent.ItemsSource = pacc.PregledSvihPacijenata2();
 
 
-         
+            prostorije = pc.PregledSvihProstorija2();
 
-            prostorije = tc.PregledSvihProstorijaDTO(tc.PregledSvihProstorija());
             cbProstorija.ItemsSource = prostorije;
 
-            slobodneProstorije = prostorije;
-            cbProstorija.ItemsSource = slobodneProstorije;
-
-            this.ids = ids;
             DateTime danas = DateTime.Today;
             for (DateTime tm = danas.AddHours(8); tm < danas.AddHours(22); tm = tm.AddMinutes(30))
             {
@@ -74,30 +46,28 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             }
             CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
             date.BlackoutDates.Add(cdr);
+            termin.Trajanje = 30;
         }
 
         private void potvrdi(object sender, RoutedEventArgs e)
         {
-            int id = tc.MapaTermina(ids);
-            PacijentDTO pac = (PacijentDTO)cbPacijent.SelectedItem;
-
-
-            idTermina = id;
-            ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
-
-            String t = cboItem.Content.ToString();
-            pocetakTermina = DateTime.Parse(date.Text + " " + t);
-            prostorijaTermina = (ProstorijaDTO)cbProstorija.SelectedItem;
-          
-            String d = date.Text;
-            int prepodne = Int32.Parse(now.Substring(0, 2));
-            int popodne = prepodne + 12;
             if (!date.SelectedDate.HasValue || time.SelectedIndex == -1 || cbTip.SelectedIndex == -1
                 || cbProstorija.SelectedIndex == -1 || cbPacijent.SelectedIndex == -1)
             {
                 MessageBox.Show("Niste popunili sva polja", "Greska");
                 return;
             }
+            PacijentDTO pac = (PacijentDTO)cbPacijent.SelectedItem;
+
+
+            ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
+            String t = cboItem.Content.ToString();
+            termin.Pocetak = DateTime.Parse(date.Text + " " + t);
+            termin.prostorija = (ProstorijaDTO)cbProstorija.SelectedItem;
+
+            String d = date.Text;
+            int prepodne = Int32.Parse(now.Substring(0, 2));
+            int popodne = prepodne + 12;
             if (cboItem != null)
             {
                 t = cboItem.Content.ToString();
@@ -116,53 +86,62 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                     }
                 }
             }
-            
+            foreach (TerminDTO ter in lekarStart.termini)
+            {
+                if (ter.Pocetak.Equals(termin.Pocetak) && ter.prostorija.Id.Equals(termin.prostorija.Id))
+                {
+                    MessageBox.Show("Postoji termin u izabranom vremenu", "Greska");
+                    return;
+                }
+            }
+            termin.zdravstveniKarton = new ZdravstveniKartonDTO(tc.NadjiKartonID(pac.Jmbg));
 
             if (cbTip.SelectedIndex == 0)
-                tipTermina = TipTerminaEnum.Pregled;
+                termin.Tip = TipTerminaEnum.Pregled;
             else if (cbTip.SelectedIndex == 1)
-                tipTermina = TipTerminaEnum.Operacija;
+                termin.Tip = TipTerminaEnum.Operacija;
 
-            noviTermin = new TerminDTO(new ZdravstveniKartonDTO(tc.NadjiKartonID(pac.Jmbg)), prostorijaTermina, tc.NadjiLekaraPoJMBG(lekarLogin.jmbg), tipTermina, pocetakTermina, 0.5, null);
-            noviTermin.Id = idTermina;
+            termin.Lekar = tc.NadjiLekaraPoJMBG(lekarLogin.lekar.Jmbg);
 
-            if (tc.ZakaziTermin(tc.TerminDTO2Model(noviTermin), ids))
+
+            if (tc.ZakaziTermin(termin, pac))
             {
-                tc.DodajTermin(tc.TerminDTO2Model(noviTermin));
-                tc.AzurirajLekare();
+                //this.pregledi.Add(termin);
             }
 
-
-
-            tc.DodajTermin(tc.PacijentDTO2Model(pac), tc.TerminDTO2Model(noviTermin));
-            tc.AzurirajPacijenta(tc.PacijentDTO2Model(pac));
-
-            if (terminServis.ZakaziTermin(p, ids))
-            {
-                this.pregledi.Add(p);
-                lekariDat.sacuvaj(lekari);
-                //pacijentiDat.sacuvaj(pacijenti); // višakk?
-            }
-            pac.AddTermin(new TerminDTO(p));
-            pacijentiServis.AzurirajPacijenta(pac);
-
-            this.Close();
+            test.prozor.Content = new lekarStart(lekarLogin.lekar);
+            MessageBox.Show("Uspesno ste zakazali pregled!");
         }
 
         private void odustani(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            test.prozor.Content = new lekarStart(lekarLogin.lekar);
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
-
         }
 
         private void time_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
+            if (time.SelectedIndex != -1 && date.SelectedDate.HasValue)
+            {
+                String t = cboItem.Content.ToString();
+            prostorije = tc.DobaviSlobodneProstorije2(DateTime.Parse(date.Text + " " + t));
+            cbProstorija.ItemsSource = prostorije;
+            }
+        }
 
+        private void date_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
+            if (time.SelectedIndex != -1 && date.SelectedDate.HasValue)
+            {
+                String t = cboItem.Content.ToString();
+                prostorije = tc.DobaviSlobodneProstorije2(DateTime.Parse(date.Text + " " + t));
+                cbProstorija.ItemsSource = prostorije;
+            }
         }
     }
 }

@@ -4,7 +4,6 @@
 // Purpose: Definition of Class Medicine
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using ZdravoKorporacija.DTO;
 

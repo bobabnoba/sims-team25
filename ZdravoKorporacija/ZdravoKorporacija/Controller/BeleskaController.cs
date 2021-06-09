@@ -1,12 +1,7 @@
-﻿using System;
+﻿using Model;
 using System.Collections.Generic;
-using System.Text;
-using System.Windows.Documents;
-using Model;
-using Service;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Konverteri;
-using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Service;
 
 namespace ZdravoKorporacija.Controller

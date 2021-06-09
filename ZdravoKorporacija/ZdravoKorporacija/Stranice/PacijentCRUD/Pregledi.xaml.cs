@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -53,7 +54,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            pacijentKontroler.provjeriStatus(pacijentDTO); 
+            pacijentKontroler.provjeriStatus(pacijentDTO);
 
         }
 
@@ -69,7 +70,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
                 zakaziDijalog.Show();
             }
         }
-         private void IzmeniPregledClick(object sender, RoutedEventArgs e)
+        private void IzmeniPregledClick(object sender, RoutedEventArgs e)
         {
             if (dgTermini.SelectedItem == null)
                 System.Windows.MessageBox.Show("Pregled nije izabran. Molimo označite pregled koji želite da izmenite.", "Greška");
@@ -84,7 +85,11 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
                 //{
                 if (pacijentKontroler.pacijentJeBanovan(pacijentDTO))
                 {
+
                     MessageBox.Show("Trenutno nije moguće izmeniti pregled. Molimo pokušajte kasnije.", "Banovani ste");
+
+                    MessageBox.Show("Trenutno nije moguce izmeniti pregled. Molimo pokusajte kasnije.", "Banovani ste");
+
                 }
                 else
                 {
@@ -95,7 +100,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
             }
         }
 
-         private void OtkaziPregledClick(object sender, RoutedEventArgs e)
+        private void OtkaziPregledClick(object sender, RoutedEventArgs e)
         {
             if (dgTermini.SelectedItem == null)
                 MessageBox.Show("Pregled nije izabran. Molimo označite pregled koji želite da otkažete.", "Greška");
@@ -118,7 +123,9 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
             }
         }
 
-         private void oceniTerminBtn_Click(object sender, RoutedEventArgs e)
+
+        private void oceniTerminBtn_Click(object sender, RoutedEventArgs e)
+
         {
             if (dgTermini.SelectedItem == null)
                 MessageBox.Show("Pregled nije izabran. Molimo označite pregled koji želite da ocenite.", "Greška");
@@ -127,6 +134,30 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
                 MessageBox.Show("Već ste popunili anketu za ovaj pregled.", "Greška");
             }
             else
+
+
+            {
+                AnketiranjeLjekara anketaDijalog =
+                    new AnketiranjeLjekara((TerminDTO)dgTermini.SelectedItem, pacijentDTO);
+                anketaDijalog.Show();
+            }
+        }
+
+
+
+        private void AnamnezaBtn_OnClick(object sender, RoutedEventArgs e)
+        {
+            AnamnezaProzor anamneza = new AnamnezaProzor((TerminDTO)dgTermini.SelectedItem, pacijentDTO);
+            anamneza.Show();
+        }
+
+
+        private void IstorijaTerminaClick(object sender, RoutedEventArgs e)
+        {
+            terminiDTO.Clear();
+            List<TerminDTO> sviTermini = (List<TerminDTO>)terminKontroler.dobaviListuDTOProslihtermina(pacijentDTO);
+            foreach (TerminDTO t in sviTermini)
+
             {
                 AnketiranjeLjekara anketaDijalog =
                     new AnketiranjeLjekara((TerminDTO)dgTermini.SelectedItem, pacijentDTO);

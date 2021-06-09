@@ -1,15 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using Model;
+using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Model;
 using ZdravoKorporacija.DTO;
 
 namespace ZdravoKorporacija.Konverteri
 {
     public class PacijentKonverter : IKonverter<Pacijent, PacijentDTO>
     {
-       
+
         public PacijentKonverter()
         {
         }
@@ -49,6 +47,6 @@ namespace ZdravoKorporacija.Konverteri
                 return null;
             }
         }
-       
+
     }
 }

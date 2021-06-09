@@ -1,15 +1,13 @@
-using System;
 using Model;
-using System.Collections.Generic;
 using Repository;
-using ZdravoKorporacija.Model;
+using System.Collections.Generic;
 
 namespace Service
 {
-   public class DijagnozaServis
-   {
-      public bool DodajDijagnozu(Dijagnoza Dijagnoza)
-      {
+    public class DijagnozaServis
+    {
+        public bool DodajDijagnozu(Dijagnoza Dijagnoza)
+        {
             DijagnozaRepozitorijum datoteka = new DijagnozaRepozitorijum();
             List<Dijagnoza> dijagnoze = datoteka.DobaviSve();
             foreach (Dijagnoza t in dijagnoze)
@@ -23,9 +21,9 @@ namespace Service
             datoteka.Sacuvaj(dijagnoze);
             return true;
         }
-      
-      public bool ObrisiDijagnozu(Dijagnoza Dijagnoza)
-      {
+
+        public bool ObrisiDijagnozu(Dijagnoza Dijagnoza)
+        {
             DijagnozaRepozitorijum datoteka = new DijagnozaRepozitorijum();
             List<Dijagnoza> dijagnoze = datoteka.DobaviSve();
             foreach (Dijagnoza t in dijagnoze)
@@ -39,9 +37,9 @@ namespace Service
             }
             return false;
         }
-      
-      public bool AzurirajDijagnozu(Dijagnoza dijagnoza)
-      {
+
+        public bool AzurirajDijagnozu(Dijagnoza dijagnoza)
+        {
             DijagnozaRepozitorijum datoteka = new DijagnozaRepozitorijum();
             List<Dijagnoza> dijagnoze = datoteka.DobaviSve();
             foreach (Dijagnoza d in dijagnoze)
@@ -56,9 +54,9 @@ namespace Service
             }
             return false;
         }
-      
-      public Dijagnoza PregledDijagnoze(Dijagnoza dijagnoza)
-      {
+
+        public Dijagnoza PregledDijagnoze(Dijagnoza dijagnoza)
+        {
             DijagnozaRepozitorijum datoteka = new DijagnozaRepozitorijum();
             List<Dijagnoza> dijagnoze = datoteka.DobaviSve();
             foreach (Dijagnoza d in dijagnoze)
@@ -70,13 +68,13 @@ namespace Service
             }
             return null;
         }
-      
-      public List<Dijagnoza> PregledSvihDijagnoza()
-      {
+
+        public List<Dijagnoza> PregledSvihDijagnoza()
+        {
             DijagnozaRepozitorijum datoteka = new DijagnozaRepozitorijum();
             List<Dijagnoza> dijagnoze = datoteka.DobaviSve();
             return dijagnoze;
         }
-   
-   }
+
+    }
 }

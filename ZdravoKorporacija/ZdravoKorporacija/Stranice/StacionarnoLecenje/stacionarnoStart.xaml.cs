@@ -1,17 +1,12 @@
 ﻿using Controller;
-using Model;
-using Repository;
-using Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.Model;
-using ZdravoKorporacija.Stranice.Logovanje;
+using ZdravoKorporacija.Stranice.LekarCRUD;
 
 
 namespace ZdravoKorporacija.Stranice.StacionarnoLecenje
@@ -19,19 +14,19 @@ namespace ZdravoKorporacija.Stranice.StacionarnoLecenje
     /// <summary>
     /// Interaction logic for stacionarnoStart.xaml
     /// </summary>
-    public partial class stacionarnoStart : Window
+    public partial class stacionarnoStart : Page
     {
         private TerminController terminController = TerminController.Instance;
         private ProstorijaController prostorijeController = new ProstorijaController();
         private StacionarnoLecenjeController sl = StacionarnoLecenjeController.Instance;
         private List<TerminDTO> termini = new List<TerminDTO>();
-        private List<ProstorijaDTO> prostorije = new List<ProstorijaDTO>();
+        private ObservableCollection<ProstorijaDTO> prostorije = new ObservableCollection<ProstorijaDTO>();
         private StacionarnoLecenjeDTO stacionarnoLecenje = new StacionarnoLecenjeDTO();
 
 
         String now = DateTime.Now.ToString("hh:mm:ss tt");
         DateTime today = DateTime.Today;
-  
+
 
 
         public stacionarnoStart(PacijentDTO pacijent)
@@ -39,7 +34,6 @@ namespace ZdravoKorporacija.Stranice.StacionarnoLecenje
             InitializeComponent();
 
             stacionarnoLecenje.Pacijent = pacijent;
-
 
             CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
             date.BlackoutDates.Add(cdr);
@@ -52,7 +46,7 @@ namespace ZdravoKorporacija.Stranice.StacionarnoLecenje
         private void potvrdi(object sender, RoutedEventArgs e)
         {
             termini = terminController.PregledSvihTermina2();
-           
+
             ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
             stacionarnoLecenje.Trajanje = trajanjeText.Text;
             String d = date.Text;
@@ -83,7 +77,7 @@ namespace ZdravoKorporacija.Stranice.StacionarnoLecenje
                     }
                 }
             }
-            stacionarnoLecenje.Prostorija =(ProstorijaDTO) cbProstorija.SelectedItem;
+            stacionarnoLecenje.Prostorija = (ProstorijaDTO)cbProstorija.SelectedItem;
             try
             {
                 stacionarnoLecenje.Pocetak = DateTime.Parse(d + " " + t);
@@ -99,15 +93,39 @@ namespace ZdravoKorporacija.Stranice.StacionarnoLecenje
                 }
             }
 
+
             sl.DodajStacionarnoLecenje(stacionarnoLecenje);
             uputiZaStacionarno.uputi.Add(stacionarnoLecenje);
 
-            this.Close();
+            test.prozor.Content = new uputiZaStacionarno(stacionarnoLecenje.Pacijent);
+            MessageBox.Show("Uspesno ste izdali uput za stacionarno lecenje!");
         }
 
         private void odustani(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            test.prozor.Content = new uputiZaStacionarno(stacionarnoLecenje.Pacijent);
+        }
+
+        private void time_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
+            if (time.SelectedIndex != -1 && date.SelectedDate.HasValue && trajanjeText!=null)
+            {
+                String t = cboItem.Content.ToString();
+                prostorije = sl.DobaviSlobodneProstorijeStacionarno(DateTime.Parse(date.Text + " " + t), trajanjeText.Text);
+                cbProstorija.ItemsSource = prostorije;
+            }
+        }
+
+        private void date_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
+            if (time.SelectedIndex != -1 && date.SelectedDate.HasValue && trajanjeText != null)
+            {
+                String t = cboItem.Content.ToString();
+                prostorije = sl.DobaviSlobodneProstorijeStacionarno(DateTime.Parse(date.Text + " " + t), trajanjeText.Text);
+                cbProstorija.ItemsSource = prostorije;
+            }
         }
     }
 }

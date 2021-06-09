@@ -2,9 +2,9 @@
 using Repository;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Linq;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Linq;
 using System.Windows;
 using ZdravoKorporacija.DTO;
 
@@ -83,7 +83,21 @@ namespace Service
                 KorisnikDTO lekar = (KorisnikDTO)lista.FirstOrDefault(s => s.Username.Equals(unos.Username));
                 if (lekar != null)
                 {
-                    return lekar;
+                    KorisnikDTO ulogovani = (KorisnikDTO)lista.FirstOrDefault(s => (s.Username.Equals(unos.Username) && s.Password.Equals(unos.Password)));
+                    if (ulogovani != null)
+                    {
+                        return ulogovani;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Pogresna sifra", "Greska");
+                        return null;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Pogresno korisnicko ime", "Greska");
+                    return null;
                 }
             }
 
@@ -102,7 +116,91 @@ namespace Service
             return null;
         }
 
-       public Boolean DodajKorisnika(Korisnik registrovani)
+        public KorisnikDTO Uloguj2(UlogaEnum uloga, string ime, string sifra)
+        {
+
+            KorisnikDTO unos = new KorisnikDTO();
+            unos.Username = ime;
+            unos.Password = sifra;
+
+
+            if (uloga == UlogaEnum.Upravnik)
+            {
+                List<Korisnik> lista = new List<Korisnik>(kr.DobaviSve());
+                KorisnikDTO upravnik = new KorisnikDTO(lista.FirstOrDefault(s => s.Username.Equals(unos.Username)));
+                if (upravnik != null)
+                {
+                    KorisnikDTO ulogovani = new KorisnikDTO(lista.FirstOrDefault(s => (s.Username.Equals(unos.Username) && s.Password.Equals(unos.Password))));
+                    if (ulogovani != null)
+                    {
+                        return ulogovani;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Pogrešna šifra", "Greška");
+                        return null;
+                    }
+
+
+                }
+                else
+                {
+                    MessageBox.Show("Pogrešno korisničko ime", "Greška");
+                    return null;
+                }
+            }
+
+            if (uloga == UlogaEnum.Pacijent)
+            {
+                List<Korisnik> lista = new List<Korisnik>(kr.DobaviSve());
+                KorisnikDTO pacijent = new KorisnikDTO(lista.FirstOrDefault(s => s.Username.Equals(unos.Username)));
+                if (pacijent != null)
+                {
+                    return pacijent;
+                }
+            }
+
+            if (uloga == UlogaEnum.Lekar)
+            {
+                List<Korisnik> lista = new List<Korisnik>(kr.DobaviSve());
+                KorisnikDTO lekar = new KorisnikDTO(lista.FirstOrDefault(s => s.Username.Equals(unos.Username)));
+                 if (lekar != null)
+                {
+                    Korisnik ulogovani = (Korisnik)lista.FirstOrDefault(s => (s.Username.Equals(unos.Username) && s.Password.Equals(unos.Password)));
+                    KorisnikDTO k = new KorisnikDTO(ulogovani);
+                    if (ulogovani != null)
+                    {
+                        return k;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Pogresna sifra", "Greska");
+                        return null;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Pogresno korisnicko ime", "Greska");
+                    return null;
+                }
+            }
+
+            if (uloga == UlogaEnum.Sekretar)
+            {
+                List<Korisnik> lista = new List<Korisnik>(kr.DobaviSve());
+                KorisnikDTO sekretar = new KorisnikDTO(lista.FirstOrDefault(s => s.Username.Equals(unos.Username)));
+                if (sekretar != null)
+                {
+                    return sekretar;
+                }
+            }
+
+
+
+            return null;
+        }
+
+        public Boolean DodajKorisnika(Korisnik registrovani)
         {
             kr.korisnici.Add(registrovani);
             kr.Sacuvaj();
@@ -113,25 +211,25 @@ namespace Service
         public void provjeriStatus(Pacijent pacijent)
         {
             b = BanRepozitorijum.Instance.dobavi(pacijent.Jmbg);
-        
+
             if (b.otkazanCnt >= 3 || b.zakazanCnt >= 3 || b.pomerenCnt >= 3)
-                {
-                    banKorisnika(pacijent);
-                    b.trenutakBanovanja = DateTime.Now.ToString();
+            {
+                banKorisnika(pacijent);
+                b.trenutakBanovanja = DateTime.Now.ToString();
 
-                    b.otkazanCnt = 0;
-                    b.pomerenCnt = 0;
-                    b.zakazanCnt = 0;
-                }
+                b.otkazanCnt = 0;
+                b.pomerenCnt = 0;
+                b.zakazanCnt = 0;
+            }
 
-                // DateTime.Compare(DateTime.Now, DateTime.Parse(b.trenutakBanovanja).AddMinutes(3)) >= 0
-                if (pacijent.banovan && DateTime.Compare(DateTime.Now, DateTime.Parse(b.trenutakBanovanja).AddMinutes(3)) >= 0)
-                {
-                    unbanKorisnika(pacijent);
-                }
+            // DateTime.Compare(DateTime.Now, DateTime.Parse(b.trenutakBanovanja).AddMinutes(3)) >= 0
+            if (pacijent.banovan && DateTime.Compare(DateTime.Now, DateTime.Parse(b.trenutakBanovanja).AddMinutes(3)) >= 0)
+            {
+                unbanKorisnika(pacijent);
+            }
 
-                pacServis.AzurirajPacijenta(pacijent);
-                BanRepozitorijum.Instance.sacuvaj(b);
+            pacServis.AzurirajPacijenta(pacijent);
+            BanRepozitorijum.Instance.sacuvaj(b);
 
         }
 

@@ -1,18 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Model;
-using Repository;
+﻿using Model;
 using Service;
+using System.Collections.ObjectModel;
+using System.Windows;
 
 
 namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
@@ -31,14 +20,15 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
             InitializeComponent();
             pacijent = izabrani;
             karton = kr.findById(izabrani.Jmbg);
-            
+
             if (karton == null)
             {
-                dgKarton.ItemsSource = null ;
+                dgKarton.ItemsSource = null;
                 nemaText.Visibility = Visibility.Visible;
                 nemaButt.Visibility = Visibility.Visible;
 
-            } else
+            }
+            else
             {
                 ZdravstveniKarton temp = kr.findById(izabrani.Jmbg);
                 kartoni.Add(temp);
@@ -56,10 +46,10 @@ namespace ZdravoKorporacija.Stranice.SekretarPREGLEDI
         private void nemaButt_Click(object sender, RoutedEventArgs e)
         {
             ZdravstveniKarton zk = new ZdravstveniKarton(pacijent, pacijent.GetJmbg(), StanjePacijentaEnum.None, "", KrvnaGrupaEnum.None, "");
-            if(kr.KreirajZdravstveniKartonJMBG(zk))
+            if (kr.KreirajZdravstveniKartonJMBG(zk))
                 pacijent.ZdravstveniKarton = zk;
             this.Close();
-            
+
         }
     }
 }

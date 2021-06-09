@@ -1,7 +1,6 @@
 ﻿using Model;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ZdravoKorporacija.DTO
 {
@@ -63,14 +62,14 @@ namespace ZdravoKorporacija.DTO
         public LekarDTO Lekar;
         public ZdravstveniKartonDTO zdravstveniKarton;
 
-        public ReceptDTO(int id, string doziranje, int trajanje, string nazivLeka, DateTime pocetak,  LekarDTO lekar)
+        public ReceptDTO(int id, string doziranje, int trajanje, string nazivLeka, DateTime pocetak, LekarDTO lekar)
         {
             Id = id;
             Doziranje = doziranje;
             Trajanje = trajanje;
             NazivLeka = nazivLeka;
             Pocetak = pocetak;
-            this.Lekar = lekar;        
+            this.Lekar = lekar;
         }
 
         public ReceptDTO(int id, string doziranje, int trajanje, string nazivLeka, DateTime pocetak, LekarDTO lekar, ZdravstveniKartonDTO zdravstveniKarton)
@@ -99,6 +98,8 @@ namespace ZdravoKorporacija.DTO
         {
             return zdravstveniKarton;
         }
+
+
 
         /// <pdGenerated>default parent setter</pdGenerated>
         /// <param>newZdravstveniKarton</param>

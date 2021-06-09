@@ -3,12 +3,12 @@ using Repository;
 using Service;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Konverteri;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
-using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Stranice.LekarCRUD;
 
 namespace ZdravoKorporacija.Model
 {
@@ -28,11 +28,9 @@ namespace ZdravoKorporacija.Model
         private ProstorijaService prostorijaServis = new ProstorijaService();
         private RadniDanService daniServis = new RadniDanService();
 
-       
         TerminRepozitorijum tr = TerminRepozitorijum.Instance;
         IzvestajService iz = IzvestajService.Instance;
         PacijentService pacijentServis = PacijentService.Instance;
-        ZdravstveniKartonServis zdravstveniKartonServis = new ZdravstveniKartonServis();
         LekarRepozitorijum lekariDat = LekarRepozitorijum.Instance;
         List<Lekar> lekari = LekarRepozitorijum.Instance.dobaviSve();
         IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapIzvestaj");
@@ -57,10 +55,58 @@ namespace ZdravoKorporacija.Model
         }
 
 
+        public bool zakaziHitniLekar(TerminDTO termin,PacijentDTO pacijent)
+        {
+            List<Termin> termini = terminRepozitorijum.dobaviSve();
+            Boolean slobodan = false;
+            TerminDTO t = FindTerminToMove(termin);
+            
+           
+        if (t != null)
+            {
+            for (int i = 30; i < 300; i += 30)
+            {
+                foreach (Termin ter in termini)
+                {
+                    if (ter.hitno == false)
+                    {
+                        if (ter.Pocetak != RoundUp(DateTime.Now, TimeSpan.FromMinutes(i)))
+                        {
+                            slobodan = true;
+                            break;
+                        }
+                        else
+                        {
+                            slobodan = false;
+                        }
+                    }
+                }
+                if (slobodan)
+                {
+                        foreach (TerminDTO termin1 in lekarStart.uputi)
+                        {
+                            if(termin1.Id.Equals(t.Id))
+                            {
+                                lekarStart.uputi.Remove(termin1);
+                                break;
+                            }
+                        }
+                        t.Pocetak = RoundUp(DateTime.Now, TimeSpan.FromMinutes(30)).AddMinutes(i);
+                        AzurirajTermin(t);
+                        lekarStart.uputi.Add(t);
+                        Trace.WriteLine(t.Id+" "+t.Pocetak);
+                        break;
+                }
+               }
+             }
+            
+            ZakaziTermin(termin,pacijent);
+            return true;
+        }
         public bool izdajUput(PacijentDTO pac, TerminDTO termin)
         {
             id_uput = uputDat.dobaviSve();
-            
+
             int id = 0;
             for (int i = 0; i < 1000; i++)
             {
@@ -72,19 +118,19 @@ namespace ZdravoKorporacija.Model
                 }
             }
             termin.Id = id;
-            if (ZakaziTermin(termin, id_uput))
+            if (ZakaziTermin(termin, pac))
             {
                 lekariDat.sacuvaj(lekari);
             }
             pac.AddTermin(termin);
             pacijentServis.AzurirajPacijenta(pac);
-          
+
             return true;
         }
 
-        public bool IzdajAnamnezu(IzvestajDTO izvestaj,TerminDTO termin)
+        public bool IzdajAnamnezu(IzvestajDTO izvestaj, TerminDTO termin)
         {
-            List < PacijentDTO > pacijenti = new List<PacijentDTO>(pacijentServis.PregledSvihPacijenata2());
+            List<PacijentDTO> pacijenti = new List<PacijentDTO>(pacijentServis.PregledSvihPacijenata2());
             id_map = datotekaID.dobaviSve();
 
             int id = 0;
@@ -113,9 +159,9 @@ namespace ZdravoKorporacija.Model
                     pacijentServis.AzurirajPacijenta(p);
                     break;
                 }
-                    
+
             }
-            iz.DodajIzvestaj(izvestaj,id_map);
+            iz.DodajIzvestaj(izvestaj, id_map);
             termin.izvestaj = izvestaj;
             AzurirajTermin(termin);
             return true;
@@ -142,11 +188,11 @@ namespace ZdravoKorporacija.Model
                     }
                 }
             }
-            
+
             termin.izvestaj = null;
             AzurirajTermin(termin);
             pacijentServis.AzurirajPacijenta(pac);
-            iz.ObrisiIzvestaj(izvestaj,id_map);
+            iz.ObrisiIzvestaj(izvestaj, id_map);
             return true;
         }
         public Termin FindOpByPocetak(DateTime poc)
@@ -162,10 +208,36 @@ namespace ZdravoKorporacija.Model
             return temp;
         }
 
+        public TerminDTO FindOpByPocetak2(DateTime poc)
+        {
+            terminRepozitorijum = new TerminRepozitorijum();
+            List<Termin> termini = terminRepozitorijum.dobaviSve();
+            foreach (Termin t in termini)
+            {
+                if (t.Pocetak == poc && t.Tip == TipTerminaEnum.Operacija)
+                    return new TerminDTO(t);
+            }
+
+            return null;
+        }
+
+        public TerminDTO FindTerminToMove(TerminDTO termin)
+        {
+            terminRepozitorijum = new TerminRepozitorijum();
+            List<Termin> termini = terminRepozitorijum.dobaviSve();
+            foreach (Termin t in termini)
+            {
+                if (t.Pocetak.Equals(termin.Pocetak) && t.prostorija.Id.Equals(termin.prostorija.Id) && t.hitno==false)
+                    return new TerminDTO(t);
+            }
+
+            return null;
+        }
+
         public List<Termin> FindPrByPocetak(DateTime poc)
         {
-            terminRepozitorijum  = new TerminRepozitorijum();
-            List<Termin> termini = terminRepozitorijum .dobaviSve();
+            terminRepozitorijum = new TerminRepozitorijum();
+            List<Termin> termini = terminRepozitorijum.dobaviSve();
             List<Termin> povratna = new List<Termin>();
             foreach (Termin t in termini)
             {
@@ -175,23 +247,36 @@ namespace ZdravoKorporacija.Model
 
             return povratna;
         }
+        public List<TerminDTO> FindPrByPocetak2(DateTime poc)
+        {
+            terminRepozitorijum = new TerminRepozitorijum();
+            List<Termin> termini = terminRepozitorijum.dobaviSve();
+            List<TerminDTO> povratna = new List<TerminDTO>();
+            foreach (Termin t in termini)
+            {
+                if (t.Pocetak == poc && t.Tip == TipTerminaEnum.Pregled)
+                    povratna.Add(new TerminDTO(t));
+            }
+
+            return povratna;
+        }
 
         public void DodajTermin(TerminDTO dto)
         {
-            terminRepozitorijum  = new TerminRepozitorijum();
-            List<Termin> termini =terminRepozitorijum .dobaviSve();
+            terminRepozitorijum = new TerminRepozitorijum();
+            List<Termin> termini = terminRepozitorijum.dobaviSve();
             termini.Add(DTO2Model(dto));
 
         }
 
         public bool ZakaziTermin(Termin termin, Dictionary<int, int> ids)
         {
-            terminRepozitorijum  = new TerminRepozitorijum();
-            List<Termin> termini = terminRepozitorijum .dobaviSve();
+            terminRepozitorijum = new TerminRepozitorijum();
+            List<Termin> termini = terminRepozitorijum.dobaviSve();
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
 
             termini.Add(termin);
-            terminRepozitorijum .sacuvaj(termini);
+            terminRepozitorijum.sacuvaj(termini);
             datotekaID.sacuvaj(ids);
 
             return true;
@@ -199,31 +284,86 @@ namespace ZdravoKorporacija.Model
 
         public bool ZakaziTerminDTO(TerminDTO terminDTO, Dictionary<int, int> ids)
         {
-            Termin termin = new Termin(terminDTO); 
-            terminRepozitorijum  = new TerminRepozitorijum();
-            List<Termin> termini = terminRepozitorijum .dobaviSve();
+            Termin termin = new Termin(terminDTO);
+            terminRepozitorijum = new TerminRepozitorijum();
+            List<Termin> termini = terminRepozitorijum.dobaviSve();
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
 
             termini.Add(termin);
-           terminRepozitorijum .sacuvaj(termini);
+            terminRepozitorijum.sacuvaj(termini);
             datotekaID.sacuvaj(ids);
 
             return true;
         }
 
-        public bool ZakaziTermin(TerminDTO termin, Dictionary<int, int> ids)
+        public bool ZakaziTermin(TerminDTO termin, PacijentDTO pacijent)
         {
             TerminRepozitorijum datoteka = new TerminRepozitorijum();
             List<Termin> termini = datoteka.dobaviSve();
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
+            id_map = datotekaID.dobaviSve();
+
+            int id = 0;
+            for (int i = 0; i < 1000; i++)
+            {
+                if (id_map[i] == 0)
+                {
+                    id = i;
+                    id_map[i] = 1;
+                    break;
+                }
+            }
+            termin.Id = id;
+            foreach (Termin t in datoteka.dobaviSve())
+            {
+                if (termin.Id.Equals(t.Id))
+                {
+                    return false;
+                }
+            }
+
 
             termini.Add(new Termin(termin));
             datoteka.sacuvaj(termini);
-            datotekaID.sacuvaj(ids);
-
+            datotekaID.sacuvaj(id_map);
+            pacijent.AddTermin(new TerminDTO(termin.Id));
+            pacijentServis.AzurirajPacijenta(pacijent);
             return true;
         }
 
+        public bool OtkaziTermin(TerminDTO termin)
+        {
+            terminRepozitorijum = new TerminRepozitorijum();
+            List<Termin> termini = terminRepozitorijum.dobaviSve();
+            IDRepozitorijum datotekaId = new IDRepozitorijum("iDMapTermin");
+            PacijentDTO pacijent = new PacijentDTO();
+            Dictionary<int, int> ids = datotekaId.dobaviSve();
+            foreach (PacijentDTO pac in pacijentServis.PregledSvihPacijenata2())
+            {
+                if (termin.zdravstveniKarton.Id.Equals(pac.ZdravstveniKarton.Id))
+                {
+                    pacijent = pac;
+                }
+            }
+            foreach (Termin t in termini)
+            {
+                if (t != null)
+                {
+                    if (t.Id.Equals(termin.Id))
+                    {
+                        ids[termin.Id] = 0;
+                        termini.Remove(t);
+                        terminRepozitorijum.sacuvaj(termini);
+                        datotekaId.sacuvaj(ids);
+                        if (pacijent.termin != null)
+                            pacijent.termin.Remove(termin);
+                        pacijentServis.AzurirajPacijenta(pacijent);
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
 
         public bool AzurirajTermin(Termin termin)
         {
@@ -263,19 +403,22 @@ namespace ZdravoKorporacija.Model
 
         public bool OtkaziTermin(Termin termin, Dictionary<int, int> ids)
         {
-           terminRepozitorijum  = new TerminRepozitorijum();
-            List<Termin> termini = terminRepozitorijum .dobaviSve();
+            terminRepozitorijum = new TerminRepozitorijum();
+            List<Termin> termini = terminRepozitorijum.dobaviSve();
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapTermin");
             bool ret = false;
             foreach (Termin t in termini.ToList())
             {
-                if (t.Id.Equals(termin.Id))
+                if (t != null)
                 {
-                    termini.Remove(t);
-                    terminRepozitorijum .sacuvaj(termini);
-                    datotekaID.sacuvaj(ids);
+                    if (t.Id.Equals(termin.Id))
+                    {
+                        termini.Remove(t);
+                        terminRepozitorijum.sacuvaj(termini);
+                        datotekaID.sacuvaj(ids);
 
-                    ret =  true;
+                        ret = true;
+                    }
                 }
             }
 
@@ -284,7 +427,7 @@ namespace ZdravoKorporacija.Model
 
         public Termin PregledTermina(int id)
         {
-           terminRepozitorijum  = new TerminRepozitorijum();
+            terminRepozitorijum = new TerminRepozitorijum();
             List<Termin> termini = terminRepozitorijum.dobaviSve();
             Termin ret = null;
             foreach (Termin t in termini)
@@ -297,7 +440,10 @@ namespace ZdravoKorporacija.Model
 
             return ret;
         }
-
+             DateTime RoundUp(DateTime dt, TimeSpan d)
+        {
+            return new DateTime((dt.Ticks + d.Ticks - 1) / d.Ticks * d.Ticks, dt.Kind);
+        }
         public List<Termin> PregledSvihTermina()
         {
             List<Termin> termini = terminRepozitorijum.dobaviSve();
@@ -437,7 +583,7 @@ namespace ZdravoKorporacija.Model
             {
                 if (rd.dan.Date.Equals(pocetakTermina.Date) && rd.odmor == true)
                 {
-                    slobodniLekari.Remove(lekarServis.NadjiLekaraPoJMBG((long) rd.lekar));
+                    slobodniLekari.Remove(lekarServis.NadjiLekaraPoJMBG((long)rd.lekar));
                 }
             }
 
@@ -447,7 +593,7 @@ namespace ZdravoKorporacija.Model
 
         public ObservableCollection<Prostorija> DobaviSlobodneProstorije(Termin termin)
         {
-        ObservableCollection<Prostorija> slobodneProstorije = prostorijaServis.PregledSvihProstorija();
+            ObservableCollection<Prostorija> slobodneProstorije = prostorijaServis.PregledSvihProstorija();
             return slobodneProstorije;
         }
 
@@ -472,6 +618,65 @@ namespace ZdravoKorporacija.Model
                 }
             }
 
+            return slobodneProstorije;
+        }
+
+        public ObservableCollection<ProstorijaDTO> DobaviSlobodneProstorije2(DateTime Pocetak)
+        {
+            ObservableCollection<ProstorijaDTO> slobodneProstorije = prostorijaServis.PregledSvihProstorija2();
+
+
+            foreach (TerminDTO t in PregledSvihTermina2().ToArray())
+            {
+                if(Pocetak!=null)
+                if (t.Pocetak.Equals(Pocetak))
+                {
+
+                    foreach (ProstorijaDTO p in slobodneProstorije)
+
+                    {
+                        if (t.prostorija.Id.Equals(p.Id))
+                        {
+                            slobodneProstorije.Remove(p);
+                            return slobodneProstorije;
+                        }
+                    }
+                }
+            }
+            return slobodneProstorije;
+        }
+
+        public ObservableCollection<ProstorijaDTO> DobaviSlobodneProstorije3(TerminDTO termin,DateTime Pocetak,ProstorijaDTO prostorija)
+        {
+            ObservableCollection<ProstorijaDTO> slobodneProstorije = prostorijaServis.PregledSvihProstorija2();
+            List<TerminDTO> terminDTOs = PregledSvihTermina2();
+            foreach(TerminDTO t in terminDTOs)
+            {
+                if (t.Id.Equals(termin.Id))
+                {
+                    terminDTOs.Remove(t);
+                    break;
+                }
+                
+            }
+
+            foreach (TerminDTO t in terminDTOs)
+            {
+                if (Pocetak != null)
+                    if (t.Pocetak.Equals(Pocetak))
+                    {
+
+                        foreach (ProstorijaDTO p in slobodneProstorije)
+                        {
+                            if (t.prostorija.Id.Equals(p.Id))
+                            {
+                                Trace.WriteLine(!(t.prostorija.Id.Equals(prostorija.Id)));
+                                slobodneProstorije.Remove(p);
+                                return slobodneProstorije;
+                            }
+                        }
+                    }
+            }
             return slobodneProstorije;
         }
 
@@ -604,7 +809,7 @@ namespace ZdravoKorporacija.Model
         public TerminDTO Model2DTO(Termin model)
         {
             TerminDTO dto = new TerminDTO(new ZdravstveniKartonDTO(model.zdravstveniKarton), prostorijaServis.Model2DTO(model.prostorija),
-                lekarServis.Model2DTO(model.Lekar), model.Tip, model.Pocetak, 0.5, new IzvestajDTO( model.izvestaj));
+                lekarServis.Model2DTO(model.Lekar), model.Tip, model.Pocetak, 0.5, new IzvestajDTO(model.izvestaj));
             dto.Id = model.Id;
             return dto;
         }
@@ -672,16 +877,16 @@ namespace ZdravoKorporacija.Model
 
                             slobodniLekari.Remove(l);
                         }
-                        else if (daniServis.NadjiDanZaLekara(DateTime.Now, (double) l.Jmbg).odmor == true)
+                        else if (daniServis.NadjiDanZaLekara(DateTime.Now, (double)l.Jmbg).odmor == true)
                         {
                             slobodniLekari.Remove(l);
                         }
-                        else if (daniServis.NadjiDanZaLekara(DateTime.Now, (double) l.Jmbg).prvaSmena == true &&
+                        else if (daniServis.NadjiDanZaLekara(DateTime.Now, (double)l.Jmbg).prvaSmena == true &&
                                  dateString.Contains('P'))
                         {
                             slobodniLekari.Remove(l);
                         }
-                        else if (daniServis.NadjiDanZaLekara(DateTime.Now, (double) l.Jmbg).prvaSmena == false &&
+                        else if (daniServis.NadjiDanZaLekara(DateTime.Now, (double)l.Jmbg).prvaSmena == false &&
                                  dateString.Contains('A'))
                         {
                             slobodniLekari.Remove(l);
@@ -721,16 +926,16 @@ namespace ZdravoKorporacija.Model
 
                             slobodniLekari.Remove(l);
                         }
-                        else if (daniServis.NadjiDanZaLekara(DateTime.Now, (double) l.Jmbg).odmor == true)
+                        else if (daniServis.NadjiDanZaLekara(DateTime.Now, (double)l.Jmbg).odmor == true)
                         {
                             slobodniLekari.Remove(l);
                         }
-                        else if (daniServis.NadjiDanZaLekara(DateTime.Now, (double) l.Jmbg).prvaSmena == true &&
+                        else if (daniServis.NadjiDanZaLekara(DateTime.Now, (double)l.Jmbg).prvaSmena == true &&
                                  dateString.Contains('P'))
                         {
                             slobodniLekari.Remove(l);
                         }
-                        else if (daniServis.NadjiDanZaLekara(DateTime.Now, (double) l.Jmbg).prvaSmena == false &&
+                        else if (daniServis.NadjiDanZaLekara(DateTime.Now, (double)l.Jmbg).prvaSmena == false &&
                                  dateString.Contains('A'))
                         {
                             slobodniLekari.Remove(l);
@@ -765,10 +970,7 @@ namespace ZdravoKorporacija.Model
             return slobodneProstorije;
         }
 
-        DateTime RoundUp(DateTime dt, TimeSpan d)
-        {
-            return new DateTime((dt.Ticks + d.Ticks - 1) / d.Ticks * d.Ticks, dt.Kind);
-        }
+    
 
         public Boolean zakaziPregled(Termin termin, Pacijent pacijent)
         {

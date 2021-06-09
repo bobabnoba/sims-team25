@@ -1,5 +1,4 @@
-﻿using Controller;
-using Model;
+﻿using Model;
 using Repository;
 using Service;
 using System.Collections.Generic;
@@ -7,7 +6,6 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
-using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Stranice.LekarCRUD;
 using ZdravoKorporacija.Stranice.Logovanje;
 using ZdravoKorporacija.Stranice.Uput;
@@ -17,7 +15,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
     /// <summary>
     /// Interaction logic for LekarZahteviZaDodavanjeLekaStart.xaml
     /// </summary>
-    public partial class LekarZahteviZaDodavanjeLekaStart : Window
+    public partial class LekarZahteviZaDodavanjeLekaStart : Page
     {
         LekServis lekServis = new LekServis();
         public ObservableCollection<Lek> lekici;
@@ -72,7 +70,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
                 lekServis.DodajLek(l, ids);
                 Debug.WriteLine(zahtev.Id);
                 zahtev.BrojPotvrda++;
-                foreach(Lekar lekar in zahtev.lekari.ToArray())
+                foreach (Lekar lekar in zahtev.lekari.ToArray())
                 {
                     if (lekar.Jmbg.Equals(lekarLogin.lekar.Jmbg))
                         zahtev.lekari.Remove(lekar);
@@ -81,7 +79,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
                 lekServis.AzurirajZahtevLeka(zahtev);
                 if (zahtev.BrojPotvrda.Equals(zahtev.NeophodnihPotvrda))
                     lekServis.ObrisiZahtevZaLek(zahtev);
-             }
+            }
         }
 
         private void izmenaAlternativnihLekova(object sender, RoutedEventArgs e)
@@ -101,34 +99,44 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            izmeniZahtevZaLek iz = new izmeniZahtevZaLek((ZahtevLek)dgZahtevi.SelectedItem);
-            iz.Show();
+            if (dgZahtevi.SelectedItem == null)
+            {
+                MessageBox.Show("Zahtev nije izabran.", "Greška");
+            }
+            else
+            {
+                test.prozor.Content = new izmeniZahtevZaLek((ZahtevLek)dgZahtevi.SelectedItem);
+                MessageBox.Show("Uspesno ste odobrili zahtev!");
+            }
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            obrisiZahtevZaLek oz = new obrisiZahtevZaLek(zahteviPrikaz, (ZahtevLek)dgZahtevi.SelectedItem);
-            oz.Show();
+            if (dgZahtevi.SelectedItem == null)
+            {
+                MessageBox.Show("Zahtev nije izabran.", "Greška");
+            }
+            else
+            {
+                IDRepozitorijum datoteka = new IDRepozitorijum("iDMapLekova");
+                Dictionary<int, int> ids = datoteka.dobaviSve();
+                obrisiZahtevZaLek oz = new obrisiZahtevZaLek(zahteviPrikaz, (ZahtevLek)dgZahtevi.SelectedItem);
+                oz.Show();
+            }
         }
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             lekarStart ls = new lekarStart(lekarLogin.lekar);
-            ls.Show();
-            this.Close();
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
             Uputi u = new Uputi();
-            u.Show();
-            this.Close();
         }
 
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
             pregledPacijenata pp = new pregledPacijenata();
-            this.Close();
-            pp.Show();
         }
 
         private void MenuItem_Click_3(object sender, RoutedEventArgs e)

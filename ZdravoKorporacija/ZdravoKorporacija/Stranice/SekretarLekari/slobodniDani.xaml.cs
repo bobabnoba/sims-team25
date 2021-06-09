@@ -1,14 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
 
@@ -27,16 +18,16 @@ namespace ZdravoKorporacija.Stranice.SekretarLekari
         {
             InitializeComponent();
             id = lekar.Jmbg;
-            
+
         }
 
-      
+
 
         private void dodaj(object sender, RoutedEventArgs e)
         {
             Od = DateTime.Parse(odDP.Text);
             Do = DateTime.Parse(doDP.Text);
-            
+
             controller.DodajSlobodneDane(Od, Do, id);
             this.Close();
         }

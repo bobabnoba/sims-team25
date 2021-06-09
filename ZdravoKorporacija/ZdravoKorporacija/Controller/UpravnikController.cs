@@ -1,9 +1,7 @@
 ﻿using Model;
 using Service;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Model;
 
@@ -17,7 +15,7 @@ namespace ZdravoKorporacija.Controller
         TerminService terminServis = new TerminService();
         public bool DodajUMagacin(InventarDTO opremaDTO)
         {
-         return  magacinServis.DodajOpremu(opremaDTO);
+            return magacinServis.DodajOpremu(opremaDTO);
         }
         public bool DodajIzMagacina()
         {
@@ -31,7 +29,7 @@ namespace ZdravoKorporacija.Controller
         }
         public ObservableCollection<StatickaOprema> PregledMagacinaStaticke()
         {
-            return statickaOpremaServis.PregledSveOpreme();   
+            return statickaOpremaServis.PregledSveOpreme();
         }
 
         public ObservableCollection<StatickaOpremaDTO> PregledMagacinaStatickeDTO()
@@ -49,10 +47,11 @@ namespace ZdravoKorporacija.Controller
         {
             return dinamickaOpremaServis.PregledSveOpremeDTO();
         }
-        public List<Termin> PregledSvihTermina() {
-        
+        public List<Termin> PregledSvihTermina()
+        {
+
             return terminServis.PregledSvihTermina();
-            
+
         }
 
         public ObservableCollection<TerminDTO> PregledSvihTerminaDTO()
@@ -64,7 +63,7 @@ namespace ZdravoKorporacija.Controller
         public bool Registruj(string ime, string prezime, UlogaEnum uloga)
         {
             KorisnikService ks = new KorisnikService();
-            ks.DodajKorisnika(ime,prezime,uloga);
+            ks.DodajKorisnika(ime, prezime, uloga);
             return false;
         }
 

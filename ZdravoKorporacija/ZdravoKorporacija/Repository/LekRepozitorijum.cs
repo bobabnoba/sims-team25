@@ -3,18 +3,17 @@
 // Created: Tuesday, March 23, 2021 10:47:16 PM
 // Purpose: Definition of Class Doctor
 
-using System;
+using Model;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
-using Model;
-using Newtonsoft.Json;
 using ZdravoKorporacija.DTO;
 
 namespace Repository
 {
-   public class LekRepozitorijum
-   {
+    public class LekRepozitorijum
+    {
         private static LekRepozitorijum _instance;
         public ObservableCollection<Lek> lekovi;
         public ObservableCollection<LekDTO> lekoviDTO;
@@ -37,28 +36,28 @@ namespace Repository
             lekovi = new ObservableCollection<Lek>();
         }
 
-     
-        
+
+
         public bool Kreiraj()
-      {
-         // TODO: implement
-         return false;
-      }
-      
-      public bool Obrisi(int id)
-      {
-         // TODO: implement
-         return false;
-      }
-      
-      public Lek Dobavi()
-      {
-         // TODO: implement
-         return null;
-      }
-      
-      public List<Lek> DobaviSve()
-      { 
+        {
+            // TODO: implement
+            return false;
+        }
+
+        public bool Obrisi(int id)
+        {
+            // TODO: implement
+            return false;
+        }
+
+        public Lek Dobavi()
+        {
+            // TODO: implement
+            return null;
+        }
+
+        public List<Lek> DobaviSve()
+        {
             List<Lek> ucitaniLekovi = new List<Lek>();
             List<LekDTO> ucitani = new List<LekDTO>();
             if (File.Exists(lokacija))
@@ -66,10 +65,10 @@ namespace Repository
                 string jsonText = File.ReadAllText(lokacija);
                 if (!string.IsNullOrEmpty(jsonText))
                 {
-                ucitaniLekovi = JsonConvert.DeserializeObject<List<Lek>>(jsonText);
-                ucitani= JsonConvert.DeserializeObject<List<LekDTO>>(jsonText);
+                    ucitaniLekovi = JsonConvert.DeserializeObject<List<Lek>>(jsonText);
+                    ucitani = JsonConvert.DeserializeObject<List<LekDTO>>(jsonText);
                 }
-                if(ucitaniLekovi != null)
+                if (ucitaniLekovi != null)
                 {
                     lekovi = new ObservableCollection<Lek>(ucitaniLekovi);
                 }
@@ -79,10 +78,10 @@ namespace Repository
                 }
             }
             return ucitaniLekovi;
-      }
-      
-      public void Sacuvaj()
-      {
+        }
+
+        public void Sacuvaj()
+        {
             JsonSerializer serializer = new JsonSerializer();
             serializer.Formatting = Formatting.Indented;
             StreamWriter writer = new StreamWriter(lokacija);
@@ -91,6 +90,6 @@ namespace Repository
             jWriter.Close();
             writer.Close();
         }
-   
-   }
+
+    }
 }

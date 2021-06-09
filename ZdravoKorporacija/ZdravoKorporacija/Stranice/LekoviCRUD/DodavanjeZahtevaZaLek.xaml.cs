@@ -1,21 +1,11 @@
 ﻿using Model;
 using Repository;
 using Service;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.LekoviCRUD
 {
@@ -36,7 +26,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
             lekici = new ObservableCollection<LekDTO>();
             lekari = new ObservableCollection<Lekar>();
             List<int> potvrda = new List<int>();
-            for(int i =1; i<= 10; i++)
+            for (int i = 1; i <= 10; i++)
             {
                 potvrda.Add(i);
             }
@@ -52,22 +42,22 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
           
             LekDTO lek = new LekDTO(0,textBoxProizvodjac.Text,textBoxSastojci.Text,textBoxPojave.Text,textBoxNazivLeka.Text, textBoxKolicina.Text);
 
-            int neophodno = (int) comboBoxBrojPotvrda.SelectedItem;
+            int neophodno = (int)comboBoxBrojPotvrda.SelectedItem;
 
             List<LekDTO> alekoviDTO = new List<LekDTO>();
-            
 
-            
+
+
 
             ObservableCollection<Lekar> izabrani = izborLekaraZaPotvrdu.izabraniLekari;
             List<Lekar> lekariIzabrani = new List<Lekar>();
-            foreach( Lekar lekarS in izabrani)
+            foreach (Lekar lekarS in izabrani)
             {
                 lekariIzabrani.Add(lekarS);
             }
 
 
-            ZahtevLekDTO zahtevLekDTO = new ZahtevLekDTO(lek,neophodno,0);
+            ZahtevLekDTO zahtevLekDTO = new ZahtevLekDTO(lek, neophodno, 0);
             zahtevLekDTO.Lek.SetalternativniLekovi(alekoviDTO);
             zahtevLekDTO.lekari = lekariIzabrani;
             IDRepozitorijum datoteka = new IDRepozitorijum("iDMapZahtevZaLek");
@@ -89,7 +79,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
             zahtevLekDTO.Id = zahtevId;
 
             lekServis.DodajZahtevLeka(zahtevLekDTO);
-          
+
 
         }
 
@@ -100,10 +90,10 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
 
         private void button_Click_2(object sender, RoutedEventArgs e)
         {
-           
+
             dodavanjeAlternativnih = new DodavanjeAlternativnihLekova(lekici);
             dodavanjeAlternativnih.Show();
-           
+
         }
 
         private void comboBoxBrojPotvrda_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -113,7 +103,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            izborLekaraZaPotvrdu = new IzborLekaraZaPotvrdu(lekari,new ZahtevLek());
+            izborLekaraZaPotvrdu = new IzborLekaraZaPotvrdu(lekari, new ZahtevLek());
             izborLekaraZaPotvrdu.Show();
         }
     }

@@ -1,8 +1,7 @@
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
-using Model;
 
 namespace ZdravoKorporacija.DTO
 {
@@ -69,9 +68,9 @@ namespace ZdravoKorporacija.DTO
             this.termin = new List<TerminDTO>();
             ZdravstveniKarton = zdravstveniKarton;
             Guest = guest;
-        }     
+        }
 
-        public PacijentDTO(Pacijent pacijent) 
+        public PacijentDTO(Pacijent pacijent)
         {
             this.Ime = pacijent.Ime;
             this.Prezime = pacijent.Prezime;
@@ -82,7 +81,7 @@ namespace ZdravoKorporacija.DTO
             Pol = pacijent.Pol;
             Username = pacijent.Username;
             Password = pacijent.Password;
-            Uloga = pacijent.Uloga; 
+            Uloga = pacijent.Uloga;
             this.termin = terminToTerminDTO(pacijent.termin);
             ZdravstveniKarton = new ZdravstveniKartonDTO(pacijent.ZdravstveniKarton);
             Guest = pacijent.Guest;
@@ -111,58 +110,58 @@ namespace ZdravoKorporacija.DTO
 
         /// <pdGenerated>default getter</pdGenerated>
         public List<TerminDTO> GetTermin()
-            {
-                if (termin == null)
-                    termin = new List<TerminDTO>();
-                return termin;
-            }
-
-            /// <pdGenerated>default setter</pdGenerated>
-            public void SetTermin(System.Collections.ArrayList newTermin)
-            {
-                RemoveAllTermin();
-                foreach (TerminDTO oTermin in newTermin)
-                    AddTermin(oTermin);
-            }
-
-            /// <pdGenerated>default Add</pdGenerated>
-            public void AddTermin(TerminDTO newTermin)
-            {
-                if (newTermin == null)
-                    return;
-                if (this.termin == null)
-                    this.termin = new List<TerminDTO>();
-                if (!this.termin.Contains(newTermin))
-                    this.termin.Add(newTermin);
-            }
-
-            /// <pdGenerated>default Remove</pdGenerated>
-            public void RemoveTermin(TerminDTO oldTermin)
-            {
-                if (oldTermin == null)
-                    return;
-                if (this.termin != null)
-                {
-                    this.termin.Remove(oldTermin);
-                    System.Diagnostics.Debug.WriteLine("Izbrisalo");
-                }
-            }
-            /// <pdGenerated>default removeAll</pdGenerated>
-            public void RemoveAllTermin()
-            {
-                if (termin != null)
-                    termin.Clear();
-            }
-         
-            public long GetJmbg()
-            {
-                return this.Jmbg;
-            }
-
-            //  public ObservableCollection<Notifikacija> Notifikacije { get => notifikacije; set => notifikacije = value; }
-
-            public Boolean banovan { get; set; }
-
-
+        {
+            if (termin == null)
+                termin = new List<TerminDTO>();
+            return termin;
         }
+
+        /// <pdGenerated>default setter</pdGenerated>
+        public void SetTermin(System.Collections.ArrayList newTermin)
+        {
+            RemoveAllTermin();
+            foreach (TerminDTO oTermin in newTermin)
+                AddTermin(oTermin);
+        }
+
+        /// <pdGenerated>default Add</pdGenerated>
+        public void AddTermin(TerminDTO newTermin)
+        {
+            if (newTermin == null)
+                return;
+            if (this.termin == null)
+                this.termin = new List<TerminDTO>();
+            if (!this.termin.Contains(newTermin))
+                this.termin.Add(newTermin);
+        }
+
+        /// <pdGenerated>default Remove</pdGenerated>
+        public void RemoveTermin(TerminDTO oldTermin)
+        {
+            if (oldTermin == null)
+                return;
+            if (this.termin != null)
+            {
+                this.termin.Remove(oldTermin);
+                System.Diagnostics.Debug.WriteLine("Izbrisalo");
+            }
+        }
+        /// <pdGenerated>default removeAll</pdGenerated>
+        public void RemoveAllTermin()
+        {
+            if (termin != null)
+                termin.Clear();
+        }
+
+        public long GetJmbg()
+        {
+            return this.Jmbg;
+        }
+
+        //  public ObservableCollection<Notifikacija> Notifikacije { get => notifikacije; set => notifikacije = value; }
+
+        public Boolean banovan { get; set; }
+
+
+    }
 }

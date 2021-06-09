@@ -3,7 +3,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.IO;
 
 namespace ZdravoKorporacija.Model
@@ -45,7 +44,7 @@ namespace ZdravoKorporacija.Model
             jWriter.Close();
             writer.Close();
 
-           // Serijalizacija(termini);
+            // Serijalizacija(termini);
 
             //Serijalizacija(termini);
 
@@ -53,7 +52,7 @@ namespace ZdravoKorporacija.Model
 
         public void sacuvaj2(ObservableCollection<Termin> termini)
         {
-            
+
             JsonSerializer serializer = new JsonSerializer();
             //serializer.PreserveReferencesHandling = PreserveReferencesHandling.All;
             serializer.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
@@ -73,13 +72,13 @@ namespace ZdravoKorporacija.Model
         string SerializeObjectByJObject(List<Termin> ter)
         {
             string s = "";
-          
+
             var joa = JArray.FromObject(ter);
            
             //int i = 0;
 
             //foreach ( JObject z in joa) {
-                
+
             //    joa[i]["prostorija"]["inventar"].Parent.Remove();
             //    joa[i]["prostorija"]["statickaOprema"].Parent.Remove();
             //    joa[i]["prostorija"]["dinamickaOprema"].Parent.Remove();
@@ -87,10 +86,10 @@ namespace ZdravoKorporacija.Model
             //    joa[i]["prostorija"]["Tip"].Parent.Remove();
             //    joa[i]["prostorija"]["Slobodna"].Parent.Remove();
             //    joa[i]["prostorija"]["Sprat"].Parent.Remove();
-              
+
             //    i++;
             //}
-         
+
             //jo.Remove("prostorija");
             //jo.Add("prostorija", new JObject());
             //jo["prostorija"].AddAnnotation("Id") ;

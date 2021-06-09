@@ -1,6 +1,4 @@
 ﻿using Controller;
-using Model;
-using Service;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -16,7 +14,7 @@ namespace ZdravoKorporacija.Stranice.DinamickaOpremaCRUD
     {
 
         private DinamickaOpremaController dinamickaOpremaKontroler = new DinamickaOpremaController();
-        private ProstorijaController prostorijeKontroler= new ProstorijaController();
+        private ProstorijaController prostorijeKontroler = new ProstorijaController();
         private MagacinController magacinKontroler = new MagacinController();
         ObservableCollection<DinamickaOpremaDTO> dinamickaOpremaDTO;
         public dinamickaOpremaPremestanjeIzMagacina(ObservableCollection<DinamickaOpremaDTO> dinamickaOprema)
@@ -29,7 +27,7 @@ namespace ZdravoKorporacija.Stranice.DinamickaOpremaCRUD
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-          
+
             InventarDTO inv = (InventarDTO)cbMagacin.SelectedItem;
             int kolicina;
             try
@@ -38,7 +36,7 @@ namespace ZdravoKorporacija.Stranice.DinamickaOpremaCRUD
             }
             catch (FormatException)
             {
-                return ;
+                return;
             }
 
             DinamickaOpremaDTO opremaDTO = new DinamickaOpremaDTO(inv, kolicina);

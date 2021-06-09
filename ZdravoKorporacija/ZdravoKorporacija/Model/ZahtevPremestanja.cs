@@ -1,7 +1,4 @@
-﻿using Model;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 using ZdravoKorporacija.DTO;
 
 namespace Model
@@ -10,7 +7,7 @@ namespace Model
     {
         public ZahtevPremestanja() { }
 
-        public ZahtevPremestanja(int id,StatickaOprema staticka, DateTime pocetak, DateTime kraj, double trajanje)
+        public ZahtevPremestanja(int id, StatickaOprema staticka, DateTime pocetak, DateTime kraj, double trajanje)
         {
             this.Id = id;
             this.Pocetak = pocetak;
@@ -43,6 +40,6 @@ namespace Model
         public int Id { get; set; }
         public DateTime Pocetak { get; set; }
         public DateTime Kraj { get; set; }
-     
+
     }
 }

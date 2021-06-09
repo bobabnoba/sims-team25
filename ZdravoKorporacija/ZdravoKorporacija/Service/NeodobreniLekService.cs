@@ -3,10 +3,7 @@ using Repository;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Text;
 using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.Repository;
 
 namespace Service
 {
@@ -67,16 +64,16 @@ namespace Service
         {
             return this.datoteka.dobaviSve();
         }
-        
+
         public ObservableCollection<ZahtevLekDTO> PregledNeodobrenihLekovaDTO()
         {
             ObservableCollection<ZahtevLek> zahteviLek = datoteka.dobaviSve();
             ObservableCollection<ZahtevLekDTO> zahteviLekDTO = new ObservableCollection<ZahtevLekDTO>();
             foreach (ZahtevLek zahtev in zahteviLek)
             {
-              zahteviLekDTO.Add(konvertujEntitetUDTO(zahtev));
+                zahteviLekDTO.Add(konvertujEntitetUDTO(zahtev));
             }
-            return  zahteviLekDTO;
+            return zahteviLekDTO;
 
         }
 
@@ -85,7 +82,7 @@ namespace Service
             return new ZahtevLekDTO(zahtevLek);
         }
 
-        public bool AzurirajZahtev(int indeks,ZahtevLekDTO zahtevLekDTO)
+        public bool AzurirajZahtev(int indeks, ZahtevLekDTO zahtevLekDTO)
         {
             ZahtevLek zahtevLek = new ZahtevLek(zahtevLekDTO);
 
@@ -97,7 +94,7 @@ namespace Service
                 if (zahtevNeodobreniLek.Id.Equals(zahtevLek.Id))
                 {
                     NeodobreniLekRepository.Instance.neodobreniLekovi.RemoveAt(indeks);
-                    NeodobreniLekRepository.Instance.neodobreniLekovi.Insert(indeks,zahtevLek);
+                    NeodobreniLekRepository.Instance.neodobreniLekovi.Insert(indeks, zahtevLek);
                     datoteka.sacuvaj();
                     return true;
                 }

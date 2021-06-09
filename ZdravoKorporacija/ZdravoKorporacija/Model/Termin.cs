@@ -25,9 +25,9 @@ namespace Model
             this.prostorija = null;
             this.izvestaj = izvestaj;
         }
-        
 
-        public Termin(ZdravstveniKarton zdravstveniKarton, Prostorija prostorija, Lekar Lekar, TipTerminaEnum tip, DateTime pocetak, double trajanje,Izvestaj izvestaj)
+
+        public Termin(ZdravstveniKarton zdravstveniKarton, Prostorija prostorija, Lekar Lekar, TipTerminaEnum tip, DateTime pocetak, double trajanje, Izvestaj izvestaj)
         {
             this.izvestaj = izvestaj;
             this.zdravstveniKarton = zdravstveniKarton;

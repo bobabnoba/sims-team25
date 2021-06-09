@@ -1,15 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Model;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Model;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
 
@@ -20,12 +10,12 @@ namespace ZdravoKorporacija.Stranice.SekretarLekari
     /// </summary>
     public partial class izmeniLekara : Window
     {
-        private SpecijalizacijaEnum specijalizacija ;
+        private SpecijalizacijaEnum specijalizacija;
         private PolEnum pol;
 
         private LekarDTO l1;
         private TerminController controller = new TerminController();
-        
+
         public izmeniLekara(LekarDTO izabrani)
         {
             InitializeComponent();
@@ -89,7 +79,7 @@ namespace ZdravoKorporacija.Stranice.SekretarLekari
         }
         public void odrediInicijalnuSpecijalizaciju(LekarDTO lekar)
         {
-            if(lekar.Specijalizacija == SpecijalizacijaEnum.Oftamolog)
+            if (lekar.Specijalizacija == SpecijalizacijaEnum.Oftamolog)
             {
                 specCB.SelectedIndex = 0;
             }

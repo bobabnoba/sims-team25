@@ -1,8 +1,5 @@
 ﻿using Model;
 using Service;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -28,7 +25,7 @@ namespace ZdravoKorporacija.Stranice.Logovanje
         {
             InitializeComponent();
             this.upravnik = uloga;
-           
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -45,7 +42,7 @@ namespace ZdravoKorporacija.Stranice.Logovanje
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-           
+
         }
 
         private void odustani_Click(object sender, RoutedEventArgs e)

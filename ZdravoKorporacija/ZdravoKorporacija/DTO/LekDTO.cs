@@ -1,7 +1,6 @@
 ﻿using Model;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ZdravoKorporacija.DTO
 {
@@ -73,10 +72,11 @@ namespace ZdravoKorporacija.DTO
             this.alternativniLekovi = new List<LekDTO>();
         }
 
-        public LekDTO(Lek lek) {
+        public LekDTO(Lek lek)
+        {
             Id = lek.Id;
             Proizvodjac = lek.Proizvodjac;
-            Sastojci =lek.Sastojci;
+            Sastojci = lek.Sastojci;
             NusPojave = lek.NusPojave;
             NazivLeka = lek.NazivLeka;
             Kolicina = ""+ lek.Kolicina;
@@ -87,12 +87,12 @@ namespace ZdravoKorporacija.DTO
             List<LekDTO> lekoviDTO = new List<LekDTO>();
             if (lekovi != null)
             {
-                
+
                 foreach (Lek lek in lekovi)
                 {
                     lekoviDTO.Add(new LekDTO(lek));
                 }
-               
+
             }
             return lekoviDTO;
         }

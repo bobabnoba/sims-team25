@@ -1,11 +1,7 @@
 ﻿using Controller;
-using Model;
-using Service;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.Model;
 
 
 namespace ZdravoKorporacija.Stranice.UpravnikCRUD

@@ -1,7 +1,6 @@
 ﻿using Model;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ZdravoKorporacija.DTO
 {
@@ -67,7 +66,7 @@ namespace ZdravoKorporacija.DTO
             this.Lek.alternativniLekovi = new List<LekDTO>();
         }
 
-        public ZahtevLekDTO(LekDTO lek, int neophodnihPotvrda, int brojTrenutnihPotvrda,String komentar)
+        public ZahtevLekDTO(LekDTO lek, int neophodnihPotvrda, int brojTrenutnihPotvrda, String komentar)
         {
             this.Lek = lek;
             this.NeophodnihPotvrda = neophodnihPotvrda;

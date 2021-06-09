@@ -1,22 +1,11 @@
-﻿using Model;
-using Repository;
-using System;
+﻿using Repository;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.Model;
 
 
 namespace ZdravoKorporacija.Stranice.Magacin
@@ -56,12 +45,13 @@ namespace ZdravoKorporacija.Stranice.Magacin
 
         private void searchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            provera();        
+            provera();
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            if (filtrirana_oprema != null) {
+            if (filtrirana_oprema != null)
+            {
                 dgMagacinOprema.ItemsSource = this.filtrirana_oprema;
             }
         }
@@ -71,15 +61,16 @@ namespace ZdravoKorporacija.Stranice.Magacin
             this.filtrirana_oprema = new ObservableCollection<InventarDTO>();
             foreach (InventarDTO inv in magacinOprema)
             {
-               
-               if(inv.UkupnaKolicina <= (int)slValue.Value)
+
+                if (inv.UkupnaKolicina <= (int)slValue.Value)
                 {
                     filtrirana_oprema.Add(inv);
                 }
             }
         }
 
-        private void provera() {
+        private void provera()
+        {
             List<RadioButton> radioButtons = magacin.Children.OfType<RadioButton>().ToList();
             RadioButton rbTarget = radioButtons
                   .Where(r => r.GroupName == "Group1" && (bool)r.IsChecked)

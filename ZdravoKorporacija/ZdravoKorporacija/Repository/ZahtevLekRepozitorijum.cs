@@ -1,11 +1,8 @@
 ﻿using Model;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Text;
-using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Repository
 {
@@ -32,7 +29,7 @@ namespace ZdravoKorporacija.Repository
             zahteviLek = new ObservableCollection<ZahtevLek>();
         }
 
-       
+
 
         public void sacuvaj()
         {
@@ -41,7 +38,7 @@ namespace ZdravoKorporacija.Repository
             serializer.Formatting = Formatting.Indented;
             StreamWriter writer = new StreamWriter(lokacija);
             JsonWriter jWriter = new JsonTextWriter(writer);
-            serializer.Serialize(jWriter,zahteviLek);
+            serializer.Serialize(jWriter, zahteviLek);
             jWriter.Close();
             writer.Close();
         }

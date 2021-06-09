@@ -1,9 +1,7 @@
 ﻿using Model;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.IO;
 
 namespace Repository
@@ -37,7 +35,7 @@ namespace Repository
         public void sacuvaj(Ban noviBan)
         {
             List<Ban> x = new List<Ban>(bans);
-            foreach(Ban b in x)
+            foreach (Ban b in x)
             {
                 if (b.idKorisnika.Equals(noviBan.idKorisnika))
                 {
@@ -52,7 +50,7 @@ namespace Repository
             serializer.Formatting = Formatting.Indented;
             StreamWriter writer = new StreamWriter(lokacija);
             JsonWriter jWriter = new JsonTextWriter(writer);
-            serializer.Serialize(jWriter, bans); 
+            serializer.Serialize(jWriter, bans);
             jWriter.Close();
             writer.Close();
         }
@@ -60,7 +58,7 @@ namespace Repository
         public Ban dobavi(long id)
         {
             Ban retBan = new Ban();
-            foreach(Ban b in bans)
+            foreach (Ban b in bans)
             {
                 if (b.idKorisnika.Equals(id))
                 {
@@ -82,7 +80,7 @@ namespace Repository
                     banovi = JsonConvert.DeserializeObject<List<Ban>>(jsonText);
                 }
             }
-            if(banovi != null)
+            if (banovi != null)
             {
                 bans = new ObservableCollection<Ban>(banovi);
             }

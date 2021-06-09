@@ -1,20 +1,16 @@
 ﻿using Model;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Newtonsoft.Json;
-using System.IO;
-using ZdravoKorporacija.Stranice.Magacin;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using ZdravoKorporacija.DTO;
+using System.IO;
 
 namespace Repository
 {
     public class MagacinRepozitorijum
     {
         private static MagacinRepozitorijum _instance;
-        public  ObservableCollection<Inventar> magacinOprema;
-      
+        public ObservableCollection<Inventar> magacinOprema;
+
         public static MagacinRepozitorijum Instance
         {
             get
@@ -28,7 +24,8 @@ namespace Repository
             }
         }
 
-        private MagacinRepozitorijum() {
+        private MagacinRepozitorijum()
+        {
             magacinOprema = new ObservableCollection<Inventar>();
         }
 
@@ -48,15 +45,15 @@ namespace Repository
             {
                 magacinOprema = new ObservableCollection<Inventar>(oprema);
             }
-                return magacinOprema;
-            
+            return magacinOprema;
+
         }
 
         public int Sacuvaj(Inventar inventar)
         {
-            
+
             magacinOprema.Add(inventar);
-         
+
             string lokacija = @"..\..\..\Data\inventar.json";
             JsonSerializer serializer = new JsonSerializer();
             serializer.Formatting = Formatting.Indented;

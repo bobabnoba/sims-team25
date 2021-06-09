@@ -1,13 +1,8 @@
 ﻿using Model;
-using Repository;
-using Service;
-using System.Collections.ObjectModel;
-using System.Net.Http.Headers;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.SekretarCRUD
 {
@@ -19,7 +14,7 @@ namespace ZdravoKorporacija.Stranice.SekretarCRUD
 
         private TerminController tc = new TerminController();
         private NaloziController nc = new NaloziController();
-        
+
 
         public kreirajNalogSekretar()
         {
@@ -58,7 +53,7 @@ namespace ZdravoKorporacija.Stranice.SekretarCRUD
                 pol = PolEnum.Zenski;
             }
 
-            PacijentDTO nalog = new PacijentDTO(new ZdravstveniKartonDTO(jmbg), false, ime, prezime, (int)jmbg, br, mejl, "", pol, username, password, UlogaEnum.Pacijent) ;
+            PacijentDTO nalog = new PacijentDTO(new ZdravstveniKartonDTO(jmbg), false, ime, prezime, (int)jmbg, br, mejl, "", pol, username, password, UlogaEnum.Pacijent);
 
             if (nc.KreirajNalogPacijentu(nc.DTO2ModelNapravi(nalog)))
             {

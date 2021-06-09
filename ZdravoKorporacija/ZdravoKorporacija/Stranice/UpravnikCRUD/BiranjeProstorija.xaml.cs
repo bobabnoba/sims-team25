@@ -1,17 +1,9 @@
 ﻿using Controller;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ZdravoKorporacija.DTO;
 
 namespace ZdravoKorporacija.Stranice.UpravnikCRUD
@@ -41,7 +33,7 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
                     {
                         if (izabranaProstorija.Id == prostorija.Id)
                         {
-                           sveProstorije.Remove(prostorija);
+                            sveProstorije.Remove(prostorija);
                         }
                     }
                 }
@@ -103,8 +95,8 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
         {
             foreach (ProstorijaDTO selektovanaProstorija in dgIzabraneProstorije.SelectedItems.Cast<ProstorijaDTO>().ToList())
             {
-               izabraneProstorije.Remove(selektovanaProstorija);
-               sveProstorije.Add(selektovanaProstorija);
+                izabraneProstorije.Remove(selektovanaProstorija);
+                sveProstorije.Add(selektovanaProstorija);
             }
         }
 

@@ -1,9 +1,6 @@
-﻿using System;
+﻿using Model;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using Model;
 using ZdravoKorporacija.DTO;
 
 namespace ZdravoKorporacija.Konverteri
@@ -14,12 +11,12 @@ namespace ZdravoKorporacija.Konverteri
             => dtos.Select(dto => KonvertujDTOuEntitet(dto)).ToList();
 
         public Izvestaj KonvertujDTOuEntitet(IzvestajDTO dto)
-       {
-           TerminKonverter terminKonverter = new TerminKonverter();
-           if (dto != null)
-               return new Izvestaj(terminKonverter.KonvertujDTOuEntitet(dto.Termin), dto.Id, dto.Opis, dto.Simptomi);
-           else return new Izvestaj();
-       }
+        {
+            TerminKonverter terminKonverter = new TerminKonverter();
+            if (dto != null)
+                return new Izvestaj(terminKonverter.KonvertujDTOuEntitet(dto.Termin), dto.Id, dto.Opis, dto.Simptomi);
+            else return new Izvestaj();
+        }
 
         public IEnumerable<IzvestajDTO> KonvertujEntiteteUDTOS(List<Izvestaj> entiteti)
             => entiteti.Select(entitet => KonvertujEntitetUDTO(entitet)).ToList();

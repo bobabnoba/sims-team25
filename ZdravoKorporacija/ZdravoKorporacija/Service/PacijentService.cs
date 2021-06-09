@@ -1,12 +1,10 @@
 ﻿using Model;
+using Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using ZdravoKorporacija.Model;
-using Repository;
 using ZdravoKorporacija.DTO;
-using System;
-using System.Diagnostics;
-using ZdravoKorporacija.Service;
+using ZdravoKorporacija.Model;
 
 namespace Service
 {
@@ -57,15 +55,11 @@ namespace Service
 
         PacijentRepozitorijum pr = PacijentRepozitorijum.Instance;
         ReceptServis rs = ReceptServis.Instance;
-        IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapRecept");
-        Dictionary<int, int> ids = new Dictionary<int, int>();
 
         public bool IzdajRecept(PacijentDTO pacijent, ReceptDTO recept)
         {
-            ids = datotekaID.dobaviSve();
             rs.DodajRecept(recept);
             Pacijent p = new Pacijent(pacijent);
-            datotekaID.sacuvaj(ids);
             p.ZdravstveniKarton.recept.Add(new Recept(recept));
             AzurirajPacijenta(p);
             return true;
@@ -74,18 +68,17 @@ namespace Service
         public bool ObrisiRecept(PacijentDTO pacijent, ReceptDTO recept)
         {
             Pacijent p = new Pacijent(pacijent);
-            foreach(Recept rec in p.ZdravstveniKarton.recept.ToArray())
+            foreach (Recept rec in p.ZdravstveniKarton.recept.ToArray())
             {
-            if (recept.Id.Equals(rec.Id))
-                p.ZdravstveniKarton.recept.Remove(rec);
+                if (recept.Id.Equals(rec.Id))
+                    p.ZdravstveniKarton.recept.Remove(rec);
             }
             AzurirajPacijenta(p);
             rs.ObrisiRecept(recept);
-            datotekaID.sacuvaj(ids);
             return true;
         }
 
-            public bool KreirajNalogPacijentu(Pacijent pacijent)
+        public bool KreirajNalogPacijentu(Pacijent pacijent)
         {
             PacijentRepozitorijum datoteka = new PacijentRepozitorijum();
             List<Pacijent> pacijenti = datoteka.dobaviSve();
@@ -215,7 +208,7 @@ namespace Service
         public List<PacijentDTO> PregledSvihPacijenata2()
         {
             List<Pacijent> pacijenti = pr.dobaviSve2();
-            List < PacijentDTO > pacijentiDTO = new List<PacijentDTO>();
+            List<PacijentDTO> pacijentiDTO = new List<PacijentDTO>();
             foreach (Pacijent pacijent in pacijenti)
             {
                 pacijentiDTO.Add(convertToDTO(pacijent));

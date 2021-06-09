@@ -1,15 +1,12 @@
 ﻿using Model;
 using Repository;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.Model;
 
 
 namespace Service
-{ 
+{
     public class MagacinService
     {
 
@@ -17,7 +14,7 @@ namespace Service
         public bool DodajOpremu(InventarDTO inventarDTO)
         {
             IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapMagacin");
-            Dictionary<int, int> id_map  = datotekaID.dobaviSve();
+            Dictionary<int, int> id_map = datotekaID.dobaviSve();
 
             int id = nadjiSlobodanID(id_map);
             id_map[id] = 1;
@@ -63,7 +60,7 @@ namespace Service
         {
             MagacinRepozitorijum mr = MagacinRepozitorijum.Instance;
             return mr.DobaviSve();
-            
+
         }
 
         public ObservableCollection<InventarDTO> PregledSveOpremeDTO()

@@ -1,6 +1,5 @@
 ﻿using Controller;
 using Model;
-using Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,7 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.Model;
+using ZdravoKorporacija.Stranice.LekarCRUD;
 using ZdravoKorporacija.Stranice.Logovanje;
 
 namespace ZdravoKorporacija.Stranice.Uput
@@ -16,43 +15,40 @@ namespace ZdravoKorporacija.Stranice.Uput
     /// <summary>
     /// Interaction logic for zakaziPregledLekar.xaml
     /// </summary>
-    public partial class izdajUput : Window
+    public partial class izdajUput : Page
     {
         private TerminController terminController = TerminController.Instance;
-        private LekarRepozitorijum lekariDat = new LekarRepozitorijum();
-        private ProstorijaController prostorijeController = new ProstorijaController();
-        private ZdravstveniKartonServis zdravstveniKartonServis = new ZdravstveniKartonServis();
-        private PacijentController pacijentiController =  PacijentController.Instance;
+        private ProstorijaController prostorijeController = ProstorijaController.Instance;
+        private LekarController lekarController = LekarController.Instance;
+        private ZdravstveniKartonController zkController = ZdravstveniKartonController.Instance;
+        private PacijentController pacijentiController = PacijentController.Instance;
         private List<PacijentDTO> pacijenti = new List<PacijentDTO>();
-        private List<Lekar> lekari = new List<Lekar>();
+        private List<LekarDTO> lekari = new List<LekarDTO>();
         private List<TerminDTO> termini = new List<TerminDTO>();
-        private List<ProstorijaDTO> prostorije = new List<ProstorijaDTO>();
-        private List<Lekar> lekariZaPrikaz = new List<Lekar>();
+        private ObservableCollection<ProstorijaDTO> prostorije = new ObservableCollection<ProstorijaDTO>();
+        private List<LekarDTO> lekariZaPrikaz = new List<LekarDTO>();
 
         private TerminDTO p;
-        private ObservableCollection<TerminDTO> pregledi;
+
         String now = DateTime.Now.ToString("hh:mm:ss tt");
         DateTime today = DateTime.Today;
 
         private Dictionary<int, int> ids = new Dictionary<int, int>();
 
-        public izdajUput(ObservableCollection<TerminDTO> termini, Dictionary<int, int> ids)
+        public izdajUput()
         {
             InitializeComponent();
 
             p = new TerminDTO();
             pacijenti = pacijentiController.PregledSvihPacijenata2();
             cbPacijent.ItemsSource = pacijenti;
-            pregledi = termini;
-
-            this.ids = ids;
-
+ 
 
             CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
             date.BlackoutDates.Add(cdr);
 
 
-            lekari = lekariDat.dobaviSve();
+            lekari = (List<LekarDTO>)lekarController.dobaviListuDTOLekara();
             lekariZaPrikaz = lekari;
             lekariZaPrikaz.Remove(lekarLogin.lekar);
             Lekari.ItemsSource = lekariZaPrikaz;
@@ -65,20 +61,10 @@ namespace ZdravoKorporacija.Stranice.Uput
         private void potvrdi(object sender, RoutedEventArgs e)
         {
             termini = terminController.PregledSvihTermina2();
-            int id = 0;
-            for (int i = 0; i < 1000; i++)
-            {
-                if (ids[i] == 0)
-                {
-                    id = i;
-                    ids[i] = 1;
-                    break;
-                }
-            }
-            p.Id = id;
+           
             PacijentDTO pac = (PacijentDTO)cbPacijent.SelectedItem;
             ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
-            
+
 
             String d = date.Text;
             String t = null;
@@ -144,26 +130,44 @@ namespace ZdravoKorporacija.Stranice.Uput
             {
                 p.zdravstveniKarton = zk;
                 pac.ZdravstveniKarton = zk;
-                zdravstveniKartonServis.KreirajZdravstveniKarton(new ZdravstveniKarton(pac.ZdravstveniKarton), ids);
+                zkController.KreirajZdravstveniKarton2(pac.ZdravstveniKarton);
             }
 
-            this.pregledi.Add(p);
-            //if (terminController.ZakaziTermin(p, ids))
-            //{
+            lekarStart.uputi.Add(p);
+            CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
+            date.BlackoutDates.Add(cdr);
 
-            //    lekariDat.sacuvaj(lekari);
-            //}
-            //pac.AddTermin(p);
-            //pacijentiController.AzurirajPacijenta(pac);
             terminController.izdajUput(pac, p);
-            this.Close();
+            test.prozor.Content = new Uputi();
+            MessageBox.Show("Uspesno ste izdali uput!");
         }
 
         private void odustani(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            test.prozor.Content = new Uputi();
         }
 
+        private void time_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
+            if (time.SelectedIndex != -1 && date.SelectedDate.HasValue)
+            {
+                String t = cboItem.Content.ToString();
+                prostorije = terminController.DobaviSlobodneProstorije2(DateTime.Parse(date.Text + " " + t));
+                cbProstorija.ItemsSource = prostorije;
+            }
+        }
 
+        private void date_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem cboItem = time.SelectedItem as ComboBoxItem;
+            if (time.SelectedIndex != -1 && date.SelectedDate.HasValue)
+            {
+                String t = cboItem.Content.ToString();
+                prostorije = terminController.DobaviSlobodneProstorije2(DateTime.Parse(date.Text + " " + t));
+                cbProstorija.ItemsSource = prostorije;
+            }
+        }
     }
+
 }

@@ -1,7 +1,5 @@
 ﻿using Model;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ZdravoKorporacija.DTO
 {
@@ -14,8 +12,24 @@ namespace ZdravoKorporacija.DTO
             this.Prezime = Prezime;
         }
 
+        public KorisnikDTO(Korisnik korisnik)
+        {
+            if (korisnik != null)
+            { 
+            Jmbg = korisnik.Jmbg;
+            BrojTelefona = korisnik.BrojTelefona;
+            Mejl = korisnik.Mejl;
+            AdresaStanovanja = korisnik.AdresaStanovanja;
+            Pol = korisnik.Pol;
+            Username = korisnik.Username;
+            Password = korisnik.Password;
+            Uloga = korisnik.Uloga;
+            }
+        }
+
         public KorisnikDTO(string Ime, string Prezime, long jmbg) : this(Ime, Prezime)
         {
+
         }
 
         public KorisnikDTO(string ime, string prezime, Int64 jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, UlogaEnum uloga) : this(ime, prezime)

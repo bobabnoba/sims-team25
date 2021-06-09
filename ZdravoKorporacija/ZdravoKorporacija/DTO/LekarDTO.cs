@@ -1,8 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text;
 using Model;
+using System;
+using System.Collections.Generic;
 
 namespace ZdravoKorporacija.DTO
 {
@@ -12,11 +10,21 @@ namespace ZdravoKorporacija.DTO
 
         public LekarDTO(Lekar lekarEntitet)
         {
-            if(lekarEntitet!=null)
-            { 
-            this.Jmbg = lekarEntitet.Jmbg;
-            this.Ime = lekarEntitet.Ime;
-            this.Prezime = lekarEntitet.Prezime;
+            if (lekarEntitet != null)
+            {
+                this.Jmbg = lekarEntitet.Jmbg;
+                this.Ime = lekarEntitet.Ime;
+                this.Prezime = lekarEntitet.Prezime;
+                this.Specijalizacija = lekarEntitet.Specijalizacija;
+                this.Username = lekarEntitet.Username;
+                this.Specijalizacija = lekarEntitet.Specijalizacija;
+                this.AdresaStanovanja = lekarEntitet.AdresaStanovanja;
+                this.BrojTelefona = lekarEntitet.BrojTelefona;
+                this.Password = lekarEntitet.Password;
+                this.Mejl = lekarEntitet.Mejl;
+                this.Uloga = lekarEntitet.Uloga;
+                this.radniDani = lekarEntitet.radniDani;
+                this.Pol = lekarEntitet.Pol;
                 //this.termini = new ArrayList(lekarEntitet.termin);
             }
         }

@@ -1,6 +1,4 @@
 ﻿using Model;
-using Repository;
-using Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -72,7 +70,7 @@ namespace ZdravoKorporacija.Stranice
             {
                 time.Items.Add(tm.ToShortTimeString());
             }
-            
+
         }
 
         private void azurirajDostupne()
@@ -96,7 +94,7 @@ namespace ZdravoKorporacija.Stranice
             t1.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
             t1.zdravstveniKarton = zkk.KonvertujEntitetUDTO(controller.NadjiKartonID(pacijent.Jmbg));
 
-            
+
 
             if (controller.AzurirajTerminPacijent(controller.TerminDTO2Model(t1), controller.PacijentDTO2Model(pacijent)))
             {

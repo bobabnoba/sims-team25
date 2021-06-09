@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Model;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Service;
@@ -50,7 +40,7 @@ namespace ZdravoKorporacija.Stranice.sekretarObavestenja
             NotifikacijaDTO n = new NotifikacijaDTO();
             n = (NotifikacijaDTO)globalna.SelectedItem;
             controller.obrisiObavestenje(n.Sadrzaj);
-            globalna.ItemsSource = controller.pregled(); 
+            globalna.ItemsSource = controller.pregled();
         }
     }
 }

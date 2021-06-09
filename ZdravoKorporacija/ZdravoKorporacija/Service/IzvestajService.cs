@@ -1,21 +1,21 @@
-using System;
 using Model;
-using System.Collections.Generic;
 using Repository;
-using ZdravoKorporacija.Model;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using ZdravoKorporacija.DTO;
-using System.Diagnostics;
+using ZdravoKorporacija.Factory;
+using ZdravoKorporacija.Repository;
+using ZdravoKorporacija.Service;
 
 namespace Service
 {
-   public class IzvestajService
-   {
-        IzvestajRepozitorijum ir = IzvestajRepozitorijum.Instance;
+    public class IzvestajService : IIzvestajService
+    {
+        private static IIzvestajRepozitorijum _izvestajRepozitorijum;
         IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapIzvestaj");
-        ObservableCollection<Izvestaj> izvestaji = IzvestajRepozitorijum.Instance.DobaviSve();
+        public static ObservableCollection<Izvestaj> izvestaji;
         private static IzvestajService _instance;
-        Dictionary<int, int> id_map = new Dictionary<int, int>();
+        
 
         public static IzvestajService Instance
         {
@@ -23,14 +23,16 @@ namespace Service
             {
                 if (_instance == null)
                 {
+                    _izvestajRepozitorijum = IzvestajRepozitorijumFactory.Create();
                     _instance = new IzvestajService();
+                    izvestaji = _izvestajRepozitorijum.DobaviSve();
                 }
                 return _instance;
             }
         }
 
         public bool DodajIzvestaj(IzvestajDTO izvestaj, Dictionary<int, int> id_map)
-      {
+        {
 
             foreach (Izvestaj iz in izvestaji)
             {
@@ -40,45 +42,45 @@ namespace Service
                 }
             }
             izvestaji.Add(convertToModel(izvestaj));
-            Trace.WriteLine(convertToModel(izvestaj).Id);
-            ir.Sacuvaj(izvestaji);
+            //Trace.WriteLine(convertToModel(izvestaj).Id);
+            _izvestajRepozitorijum.Sacuvaj(izvestaji);
             datotekaID.sacuvaj(id_map);
             return true;
         }
-      
-      public bool ObrisiIzvestaj(IzvestajDTO izvestaj, Dictionary<int, int> id_map)
-      {
+
+        public bool ObrisiIzvestaj(IzvestajDTO izvestaj, Dictionary<int, int> id_map)
+        {
             foreach (Izvestaj iz in izvestaji)
             {
                 if (iz.Id.Equals(izvestaj.Id))
                 {
                     izvestaji.Remove(iz);
-                    ir.Sacuvaj(izvestaji);
+                    _izvestajRepozitorijum.Sacuvaj(izvestaji);
                     return true;
                 }
             }
             return false;
         }
-      
-      public bool AzurirajIzvestaj(IzvestajDTO izvestaj)
-      {
-             ObservableCollection<Izvestaj> izvestaji = ir.DobaviSve();
+
+        public bool AzurirajIzvestaj(IzvestajDTO izvestaj)
+        {
+            ObservableCollection<Izvestaj> izvestaji = _izvestajRepozitorijum.DobaviSve();
             foreach (Izvestaj iz in izvestaji)
             {
                 if (iz.Id.Equals(izvestaj.Id))
                 {
                     izvestaji.Remove(iz);
                     izvestaji.Add(convertToModel(izvestaj));
-                    ir.Sacuvaj(izvestaji);
+                    _izvestajRepozitorijum.Sacuvaj(izvestaji);
                     return true;
                 }
             }
             return false;
         }
-      
-      public IzvestajDTO PregledIzvestaj(string id)
-      {
-            ObservableCollection<Izvestaj> izvestaji = ir.DobaviSve();
+
+        public IzvestajDTO PregledIzvestaj(string id)
+        {
+            ObservableCollection<Izvestaj> izvestaji = _izvestajRepozitorijum.DobaviSve();
             foreach (Izvestaj iz in izvestaji)
             {
                 if (iz.Id.Equals(id))
@@ -88,10 +90,10 @@ namespace Service
             }
             return null;
         }
-      
-      public ObservableCollection<IzvestajDTO> PregledSvihIzvestaja()
-      {
-            ObservableCollection<Izvestaj> izvestaji = ir.DobaviSve();
+
+        public ObservableCollection<IzvestajDTO> PregledSvihIzvestaja()
+        {
+            ObservableCollection<Izvestaj> izvestaji = _izvestajRepozitorijum.DobaviSve();
             ObservableCollection<IzvestajDTO> izvestajDTOs = new ObservableCollection<IzvestajDTO>();
             foreach (Izvestaj i in izvestaji)
             {
@@ -99,8 +101,8 @@ namespace Service
             }
             return izvestajDTOs;
         }
-      
-      public Izvestaj convertToModel(IzvestajDTO izvestaj)
+
+        public Izvestaj convertToModel(IzvestajDTO izvestaj)
         {
             return new Izvestaj(izvestaj);
         }

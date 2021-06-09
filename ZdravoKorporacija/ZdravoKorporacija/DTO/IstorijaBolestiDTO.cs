@@ -1,7 +1,4 @@
-﻿using Model;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 
 namespace ZdravoKorporacija.DTO
 {
@@ -46,7 +43,7 @@ namespace ZdravoKorporacija.DTO
             if (!this.dijagnoza.Contains(newDijagnoza))
             {
                 this.dijagnoza.Add(newDijagnoza);
-            //    newDijagnoza.SetIstorijaBolesti(this);
+                //    newDijagnoza.SetIstorijaBolesti(this);
             }
         }
 
@@ -59,7 +56,7 @@ namespace ZdravoKorporacija.DTO
                 if (this.dijagnoza.Contains(oldDijagnoza))
                 {
                     this.dijagnoza.Remove(oldDijagnoza);
-              //      oldDijagnoza.SetIstorijaBolesti((IstorijaBolestiDTO)null);
+                    //      oldDijagnoza.SetIstorijaBolesti((IstorijaBolestiDTO)null);
                 }
         }
 
@@ -72,8 +69,8 @@ namespace ZdravoKorporacija.DTO
                 foreach (DijagnozaDTO oldDijagnoza in dijagnoza)
                     tmpDijagnoza.Add(oldDijagnoza);
                 dijagnoza.Clear();
-               // foreach (DijagnozaDTO oldDijagnoza in tmpDijagnoza)
-               //    oldDijagnoza.SetIstorijaBolesti((IstorijaBolestiDTO)null);
+                // foreach (DijagnozaDTO oldDijagnoza in tmpDijagnoza)
+                //    oldDijagnoza.SetIstorijaBolesti((IstorijaBolestiDTO)null);
                 tmpDijagnoza.Clear();
             }
         }

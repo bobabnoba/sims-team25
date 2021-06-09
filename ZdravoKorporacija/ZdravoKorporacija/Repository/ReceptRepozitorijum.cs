@@ -6,13 +6,13 @@
 
 using Model;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using ZdravoKorporacija.Repository;
 
 namespace Repository
 {
-    class ReceptRepozitorijum
+    class ReceptRepozitorijum : IReceptRepozitorijum
     {
         private string lokacija;
 
@@ -31,36 +31,11 @@ namespace Repository
             }
         }
         public ReceptRepozitorijum()
-            {
+        {
             lokacija = @"..\..\..\Data\recept.json";
-            }
-
-       
-        public bool Kreiraj()
-        {
-            // TODO: implement
-            return false;
         }
 
-        public bool Obrisi(Recept recept)
-        {
-            recepti.Remove(recept);
 
-            JsonSerializer serializer = new JsonSerializer();
-            serializer.Formatting = Formatting.Indented;
-            StreamWriter writer = new StreamWriter(lokacija);
-            JsonWriter jWriter = new JsonTextWriter(writer);
-            serializer.Serialize(jWriter, recepti);
-            jWriter.Close();
-            writer.Close();
-            return true;
-        }
-
-        public Recept Dobavi()
-        {
-            // TODO: implement
-            return null;
-        }
 
         public ObservableCollection<Recept> DobaviSve()
         {

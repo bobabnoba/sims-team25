@@ -1,19 +1,8 @@
-﻿using Model;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.Magacin
 {
@@ -23,7 +12,7 @@ namespace ZdravoKorporacija.Stranice.Magacin
     public partial class MagacinDodavanje : Window
     {
         UpravnikController upravnikKontroler = new UpravnikController();
-        ObservableCollection<InventarDTO> opremaUMagacinu = new ObservableCollection<InventarDTO>(); 
+        ObservableCollection<InventarDTO> opremaUMagacinu = new ObservableCollection<InventarDTO>();
         public MagacinDodavanje(ObservableCollection<InventarDTO> magacinOprema)
         {
             InitializeComponent();
@@ -36,7 +25,7 @@ namespace ZdravoKorporacija.Stranice.Magacin
             int kolicina = 0;
             try
             {
-               kolicina = int.Parse(textboxKolicina.Text);
+                kolicina = int.Parse(textboxKolicina.Text);
             }
             catch (FormatException)
             {
@@ -47,7 +36,8 @@ namespace ZdravoKorporacija.Stranice.Magacin
 
             InventarDTO opremaDTO = new InventarDTO(0, naziv, kolicina, proizvodjac, new DateTime());
 
-            if(upravnikKontroler.DodajUMagacin(opremaDTO)){
+            if (upravnikKontroler.DodajUMagacin(opremaDTO))
+            {
                 opremaUMagacinu.Add(opremaDTO);
             }
         }

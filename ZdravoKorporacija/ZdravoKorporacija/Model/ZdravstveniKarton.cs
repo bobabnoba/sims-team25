@@ -5,7 +5,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using ZdravoKorporacija.DTO;
 
 namespace Model
@@ -14,8 +13,8 @@ namespace Model
     {
         public System.Collections.ArrayList izvestajOHospitalizaciji;
 
-        public ZdravstveniKarton(){}
-  
+        public ZdravstveniKarton() { }
+
         public ZdravstveniKarton(Pacijent patient, long id, StanjePacijentaEnum zdravstvenoStanje, string alergije, KrvnaGrupaEnum krvnaGrupa, string vakcine)
         {
             this.izvestajOHospitalizaciji = new System.Collections.ArrayList();
@@ -37,7 +36,7 @@ namespace Model
             this.patient = pacijent;
             //this.istorijaBolesti = istorijaBolesti;
             this.recept = new List<Recept>();
-            if(recept != null) this.recept = new List<Recept>(recept);
+            if (recept != null) this.recept = new List<Recept>(recept);
         }
 
         public ZdravstveniKarton(ZdravstveniKartonDTO zk)

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ZdravoKorporacija.DTO
+﻿namespace ZdravoKorporacija.DTO
 {
     class IzvestajOHospitalizacijiDTO
     {

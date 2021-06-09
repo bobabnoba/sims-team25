@@ -14,6 +14,6 @@ namespace Model
         public int otkazanCnt;
         public String trenutakBanovanja;
         public long idKorisnika;
-        public Ban() {}
+        public Ban() { }
     }
 }

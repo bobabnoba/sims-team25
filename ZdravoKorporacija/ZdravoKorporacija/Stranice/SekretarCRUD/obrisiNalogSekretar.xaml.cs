@@ -1,11 +1,6 @@
-﻿using Model;
-using Repository;
-using Service;
-using System.Collections.ObjectModel;
-using System.Windows;
+﻿using System.Windows;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.SekretarCRUD
 {
@@ -14,7 +9,7 @@ namespace ZdravoKorporacija.Stranice.SekretarCRUD
     /// </summary>
     public partial class obrisiNalogSekretar : Window
     {
-        
+
         private PacijentDTO p1;
         private TerminController pacijentController = new TerminController();
         public obrisiNalogSekretar(PacijentDTO selected)

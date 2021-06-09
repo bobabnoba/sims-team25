@@ -59,7 +59,7 @@ namespace Model
                 terapija.Clear();
         }
         public IstorijaBolesti istorijaBolesti;
-       public Dijagnoza():base()
+        public Dijagnoza() : base()
         {
 
         }
@@ -71,7 +71,7 @@ namespace Model
             this.istorijaBolesti = istorijaBolesti;
         }
 
-        
+
 
         /// <pdGenerated>default parent getter</pdGenerated>
         public IstorijaBolesti GetIstorijaBolesti()

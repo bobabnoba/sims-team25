@@ -1,8 +1,6 @@
-﻿using System;
+﻿using Model;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Model;
 using ZdravoKorporacija.DTO;
 
 namespace ZdravoKorporacija.Konverteri
@@ -12,9 +10,9 @@ namespace ZdravoKorporacija.Konverteri
         public ReceptKonverter()
         {
 
-        //lekarKonverter = new LekarKonverter();
-        //zdravstveniKartonKonverter = new ZdravstveniKartonKonverter();
-    }
+            //lekarKonverter = new LekarKonverter();
+            //zdravstveniKartonKonverter = new ZdravstveniKartonKonverter();
+        }
 
         public List<Recept> KonvertujDTOSuEntitete(IEnumerable<ReceptDTO> dtos)
         {
@@ -27,7 +25,7 @@ namespace ZdravoKorporacija.Konverteri
             LekarKonverter lekarKonverter = new LekarKonverter();
             ZdravstveniKartonKonverter zdravstveniKartonKonverter = new ZdravstveniKartonKonverter();
             return new Recept(lekarKonverter.KonvertujDTOuEntitet(dto.Lekar), zdravstveniKartonKonverter.KonvertujDTOuEntitet(dto.zdravstveniKarton), dto.Id, dto.Doziranje, dto.Trajanje, dto.NazivLeka, dto.Pocetak);
-            
+
         }
 
         public IEnumerable<ReceptDTO> KonvertujEntiteteUDTOS(IEnumerable<Recept> entiteti)

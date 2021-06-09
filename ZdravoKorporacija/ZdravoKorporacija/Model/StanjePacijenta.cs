@@ -13,5 +13,5 @@ namespace Model
         Stacionarno,
         None
     }
-   
+
 }

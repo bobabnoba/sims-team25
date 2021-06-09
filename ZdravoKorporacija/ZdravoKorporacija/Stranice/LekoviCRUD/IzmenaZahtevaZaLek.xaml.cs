@@ -1,18 +1,10 @@
 ﻿using Model;
 using Repository;
 using Service;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ZdravoKorporacija.DTO;
 
 namespace ZdravoKorporacija.Stranice.LekoviCRUD
@@ -54,20 +46,24 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ObservableCollection<LekDTO> alterantivni;
-            if (dodavanjeAlternativnih == null) {
+            if (dodavanjeAlternativnih == null)
+            {
                 alterantivni = new ObservableCollection<LekDTO>();
             }
-            else {
+            else
+            {
                 alterantivni = new ObservableCollection<LekDTO>(selektovaniZahtev.Lek.alternativniLekovi);
             }
             LekDTO lek = new LekDTO(0, textBoxProizvodjac.Text, textBoxSastojci.Text, textBoxPojave.Text, textBoxNazivLeka.Text, textBoxKolicina.Text);
             int neophodno;
-            if (comboBoxBrojPotvrda.SelectedItem == null) {
-                MessageBox.Show("Greška","Morate selektovati broj potvrda");
-                return ;
+            if (comboBoxBrojPotvrda.SelectedItem == null)
+            {
+                MessageBox.Show("Greška", "Morate selektovati broj potvrda");
+                return;
             }
-            else { 
-            neophodno = (int)comboBoxBrojPotvrda.SelectedItem;
+            else
+            {
+                neophodno = (int)comboBoxBrojPotvrda.SelectedItem;
             }
             List<LekDTO> alekoviDTO = new List<LekDTO>();
 
@@ -77,11 +73,12 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
             {
                 izabrani = izborLekaraZaPotvrdu.izabraniLekari;
             }
-            else {
-               izabrani = new ObservableCollection<Lekar>(selektovaniZahtev.lekari);
+            else
+            {
+                izabrani = new ObservableCollection<Lekar>(selektovaniZahtev.lekari);
             }
-            
-            
+
+
             List<Lekar> lekariIzabrani = new List<Lekar>();
             foreach (Lekar lekarS in izabrani)
             {
@@ -97,7 +94,8 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
 
             zahtevLekDTO.Id = selektovaniZahtev.Id;
 
-            if (neodobreniLekController.AzurirajZahtev(indeksZahteva, zahtevLekDTO)) {
+            if (neodobreniLekController.AzurirajZahtev(indeksZahteva, zahtevLekDTO))
+            {
                 zahteviLekNeodobreni.RemoveAt(indeksZahteva);
                 zahteviLekNeodobreni.Insert(indeksZahteva, zahtevLekDTO);
             }

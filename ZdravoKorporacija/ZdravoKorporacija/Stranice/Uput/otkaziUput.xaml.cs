@@ -1,9 +1,7 @@
-﻿using Model;
-using Service;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Windows;
-using ZdravoKorporacija.Model;
+﻿using System.Windows;
+using ZdravoKorporacija.Controller;
+using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Stranice.LekarCRUD;
 
 namespace ZdravoKorporacija.Stranice.Uput
 {
@@ -12,28 +10,22 @@ namespace ZdravoKorporacija.Stranice.Uput
     /// </summary>
     public partial class otkaziUput : Window
     {
-        private TerminService storage = new TerminService();
-        private ObservableCollection<Termin> termini;
-        private PacijentService pacijentServis = new PacijentService();
-        Termin termin;
-        private Dictionary<int, int> ids = new Dictionary<int, int>();
+        private TerminController tc = TerminController.Instance;
 
-        public otkaziUput(ObservableCollection<Termin> ts, Termin t, Dictionary<int, int> ids)
+        TerminDTO termin;
+
+        public otkaziUput(TerminDTO t)
         {
             InitializeComponent();
-            termini = ts;
             termin = t;
-            this.ids = ids;
         }
 
         private void da(object sender, RoutedEventArgs e)
         {
-            this.ids[this.termin.Id] = 0;
-            storage.OtkaziTermin(termin, ids);
-            pacijentServis.ObrisiTerminPacijentu(termin);
-            termini.Remove(termin);
+            tc.OtkaziTermin(termin);
+            lekarStart.uputi.Remove(termin);
             this.Close();
-
+            MessageBox.Show("Uspesno ste otkazali uput!");
         }
 
         private void ne(object sender, RoutedEventArgs e)

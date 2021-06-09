@@ -1,21 +1,11 @@
 ﻿using Model;
-using Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.Konverteri;
-using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.PacijentCRUD
 {
@@ -67,7 +57,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
             anketa.Ocena = (int)ocjenaLjekara.SelectedItem;
             anketa.Komentar = (new TextRange(textbox.Document.ContentStart, textbox.Document.ContentEnd)).Text;
             anketa.Termin = termin;
-            
+
             anketaController.dodajAnketuLjekara(anketa);
 
             this.Close();

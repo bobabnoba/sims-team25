@@ -1,15 +1,13 @@
-﻿using System;
+﻿using Model;
+using Repository;
+using Service;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
-using Model;
-using ZdravoKorporacija.Model;
 using System.Linq;
-using ZdravoKorporacija.Repository;
-using Service;
-using Repository;
-using ZdravoKorporacija.Stranice.sekretarObavestenja;
 using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.Model;
+using ZdravoKorporacija.Repository;
 
 namespace ZdravoKorporacija.Service
 {
@@ -41,7 +39,7 @@ namespace ZdravoKorporacija.Service
             }
             notifikacije.Add(not);
             datoteka.sacuvaj(notifikacije);
-            foreach(Pacijent p in pacijenti)
+            foreach (Pacijent p in pacijenti)
             {
                 if(p.notifikacije == null)
                 {
@@ -87,6 +85,6 @@ namespace ZdravoKorporacija.Service
     }
 }
 
-  
-    
+
+
 

@@ -1,16 +1,14 @@
-﻿using System;
+﻿using Model;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Model;
 using ZdravoKorporacija.DTO;
 
 namespace ZdravoKorporacija.Konverteri
 {
     public class AnketaKonverter : IKonverter<Anketa, AnketaDTO>
     {
-       
-        public AnketaKonverter() {}
+
+        public AnketaKonverter() { }
 
         public List<Anketa> KonvertujDTOSuEntitete(IEnumerable<AnketaDTO> dtos)
             => dtos.Select(dto => KonvertujDTOuEntitet(dto)).ToList();
@@ -19,7 +17,7 @@ namespace ZdravoKorporacija.Konverteri
         {
             TerminKonverter terminKonverter = new TerminKonverter();
             if (dto != null)
-                return new Anketa(dto.Id, dto.IdAutora, dto.Datum, dto.Tip, dto.Ocena, dto.Komentar, terminKonverter.KonvertujDTOuEntitet(dto.Termin) );
+                return new Anketa(dto.Id, dto.IdAutora, dto.Datum, dto.Tip, dto.Ocena, dto.Komentar, terminKonverter.KonvertujDTOuEntitet(dto.Termin));
             else return new Anketa();
         }
         //public Anketa(int id, long idAutora, DateTime datum, TipAnkete tip, int ocena, string komentar, Termin termin)
@@ -33,7 +31,7 @@ namespace ZdravoKorporacija.Konverteri
 
             if (entitet != null)
             {
-                return new AnketaDTO(entitet.Id, entitet.IdAutora, entitet.Datum, entitet.Tip, 
+                return new AnketaDTO(entitet.Id, entitet.IdAutora, entitet.Datum, entitet.Tip,
                     entitet.Ocena, entitet.Komentar, terminKonverter.KonvertujEntitetUDTO(entitet.Termin));
             }
             else

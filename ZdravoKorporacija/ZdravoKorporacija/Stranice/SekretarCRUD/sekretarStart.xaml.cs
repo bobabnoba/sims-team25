@@ -1,13 +1,10 @@
 ﻿using Model;
+using Repository;
 using Service;
 using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Controls;
 using ZdravoKorporacija.Model;
-using ZdravoKorporacija.Stranice.sekretarObavestenja;
 using ZdravoKorporacija.Stranice.SekretarPREGLEDI;
-using Repository;
-using ZdravoKorporacija.Stranice.SekretarLekari;
 
 namespace ZdravoKorporacija.Stranice.SekretarCRUD
 {

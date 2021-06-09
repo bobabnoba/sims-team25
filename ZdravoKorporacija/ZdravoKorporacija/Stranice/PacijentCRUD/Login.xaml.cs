@@ -36,8 +36,8 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
             {
                 pogresniKred.Text = "Pogrešno uneseno korisničko ime/lozinka.";
             }
-                       
-                  
+
+
         }
 
         private void wizardCb_Checked(object sender, RoutedEventArgs e)

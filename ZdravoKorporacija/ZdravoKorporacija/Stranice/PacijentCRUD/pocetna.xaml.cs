@@ -81,6 +81,9 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
             Main.Content = new Terapija(pacijentDTO);
         }
 
+
     
+
+
     }
 }

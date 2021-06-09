@@ -1,10 +1,6 @@
 ﻿using Model;
 
 using Repository;
-
-using Service;
-
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -12,11 +8,9 @@ using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Model;
 using ZdravoKorporacija.Stranice;
-using ZdravoKorporacija.Stranice.LekarCRUD;
 using ZdravoKorporacija.Stranice.Logovanje;
 using ZdravoKorporacija.Stranice.PacijentCRUD;
 using ZdravoKorporacija.Stranice.SekretarCRUD;
-using ZdravoKorporacija.Stranice.UpravnikCRUD;
 
 namespace ZdravoKorporacija
 {
@@ -27,7 +21,9 @@ namespace ZdravoKorporacija
     public partial class MainWindow : Window
     {
         public static ContentControl cc = new ContentControl();
-        public static  List<Specijalista> spec = new List<Specijalista>();
+        public static List<Specijalista> spec = new List<Specijalista>();
+        public static MainWindow mw = new MainWindow();
+        private string CurrentLanguage { get; set; }
         UlogaEnum uloga;
 
         public MainWindow() 
@@ -36,16 +32,15 @@ namespace ZdravoKorporacija
 
 
             cc.Content = this.Content;
-            Specijalista s1 = new Specijalista("Veljko","Vukovic" );
+            Specijalista s1 = new Specijalista("Veljko", "Vukovic");
             s1.Specijalizacija = SpecijalizacijaEnum.Kardiohirurg;
             spec.Add(s1);
 
             Specijalista s2 = new Specijalista("Milos", "Zivic");
             s2.Specijalizacija = SpecijalizacijaEnum.Neurolog;
             spec.Add(s2);
-
+            mw = this;
         }
-
 
 
 
@@ -118,12 +113,11 @@ namespace ZdravoKorporacija
             uloga = UlogaEnum.Upravnik;
             upavnikLogin l = new upavnikLogin(uloga);
             l.Show();
-           
+
         }
         private void openLekarFrame(object sender, RoutedEventArgs e)
         {
-            lekarLogin ll = new lekarLogin(UlogaEnum.Lekar);
-            ll.Show();
+            this.Content = new lekarLogin(UlogaEnum.Lekar);
 
         }
         private void openSekretarFrame(object sender, RoutedEventArgs e)

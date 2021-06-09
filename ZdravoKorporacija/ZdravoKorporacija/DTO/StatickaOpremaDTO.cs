@@ -1,7 +1,5 @@
 ﻿using Model;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ZdravoKorporacija.DTO
 {
@@ -27,7 +25,7 @@ namespace ZdravoKorporacija.DTO
             this.termin = termin;
         }
 
-        public StatickaOpremaDTO(StatickaOprema statickaOprema) 
+        public StatickaOpremaDTO(StatickaOprema statickaOprema)
         {
             this.termin = new TerminDTO(statickaOprema.termin);
             Prostorija = new ProstorijaDTO(statickaOprema.Prostorija);

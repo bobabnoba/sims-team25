@@ -1,12 +1,9 @@
 ﻿using Controller;
 using Model;
-using Service;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.UpravnikCRUD
 {
@@ -41,7 +38,8 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
         {
             string ime = textboxNaziv.Text;
 
-            if (ime.Trim() == "") {
+            if (ime.Trim() == "")
+            {
                 MessageBox.Show("Ne možemo da pronadjemo naziv prostorije, molimo vas unesite ponovo naziv", "Greška");
                 return;
             }
@@ -63,20 +61,21 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
             }
             else
             {
-                MessageBox.Show("Ne možemo da pronadjemo tip prostorije, molimo vas izaberite tip prostorije","Greška");
-                return ;
+                MessageBox.Show("Ne možemo da pronadjemo tip prostorije, molimo vas izaberite tip prostorije", "Greška");
+                return;
             }
-         
+
             if (comboBoxSprat.SelectedIndex == -1)
             {
                 MessageBox.Show("Ne možemo da pronadjemo sprat, molimo vas izaberite sprat na kom se nalazi prostorija", "Greška");
                 return;
             }
-            else {
+            else
+            {
                 sprat = comboBoxSprat.SelectedIndex;
             }
 
-         
+
             ProstorijaDTO prostorija = new ProstorijaDTO(0, ime, tip, false, sprat);
 
             if (prostorijaKontroler.DodajProstoriju(prostorija))
@@ -84,7 +83,7 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
                 prostorije.Add(prostorija);
                 this.Close();
             }
-           
+
 
         }
     }

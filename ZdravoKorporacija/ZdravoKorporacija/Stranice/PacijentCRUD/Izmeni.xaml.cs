@@ -83,7 +83,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
                 
 
             }
-            
+
             ljekar.ItemsSource = dostupniLjekaridto;
 
             foreach (LekarDTO l in dostupniLjekaridto)

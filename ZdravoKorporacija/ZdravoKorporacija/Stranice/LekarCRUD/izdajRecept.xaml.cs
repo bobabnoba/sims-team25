@@ -1,29 +1,16 @@
-﻿using Model;
-using Repository;
-using Service;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
-using ZdravoKorporacija.Model;
 
 namespace ZdravoKorporacija.Stranice.LekarCRUD
 {
     /// <summary>
     /// Interaction logic for izdajRecept.xaml
     /// </summary>
-    public partial class izdajRecept : Window
+    public partial class izdajRecept : Page
     {
         private PacijentController pacijentController = PacijentController.Instance;
         private LekController lekController = LekController.Instance;
@@ -32,9 +19,6 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         TerminDTO ter;
         ReceptDTO r = new ReceptDTO();
 
-        String now = DateTime.Now.ToString("hh:mm:ss tt");
-        DateTime today = DateTime.Today;
-
         public izdajRecept(PacijentDTO selektovani)
         {
             bool ne = false;
@@ -42,15 +26,15 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             this.DataContext = this;
             lekovi = new ObservableCollection<LekDTO>();
             pac = selektovani;
-            if (pac.ZdravstveniKarton.Alergije!=null)
-            { 
-            
+            if (pac.ZdravstveniKarton.Alergije != null)
+            {
+
                 foreach (LekDTO lek in lekController.PregledSvihLekova())
+                {
+                    if (lek.Alergeni != null)
                     {
-                        if (lek.Alergeni != null)
+                        foreach (String st in lek.Alergeni.Split(","))
                         {
-                            foreach (String st in lek.Alergeni.Split(","))
-                            {
                             foreach (String s in pac.ZdravstveniKarton.Alergije.Split(","))
                             {
 
@@ -61,22 +45,19 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
                             }
 
                         }
-                            
-                        }
-                        
+
+                    }
+
                     if (!ne)
                     {
                         lekovi.Add(lek);
                     }
                 }
-
-            
-            
             }
             else { lekovi = new ObservableCollection<LekDTO>(lekController.PregledSvihLekova()); }
             CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
             Date.BlackoutDates.Add(cdr);
-  
+
             lekNaziv.ItemsSource = lekovi;
 
         }
@@ -91,7 +72,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
             Date.BlackoutDates.Add(cdr);
             ter = selektovani;
-         
+
             foreach (PacijentDTO p in pacijentController.PregledSvihPacijenata2())
             {
                 if (p.ZdravstveniKarton != null)
@@ -162,15 +143,34 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             catch (InvalidCastException)
             { }
 
+            if(pacijentController.IzdajRecept(pac, r))
+            {
+               
+                zdravstveniKartonPrikaz.recepti.Add(r);
+            }
 
-            pacijentController.IzdajRecept(pac, r);
-            zdravstveniKartonPrikaz.recepti.Add(r);
-            this.Close();
+
+            if (zdravstveniKartonPrikaz.tab == 1)
+            {
+                test.prozor.Content = new zdravstveniKartonPrikaz(pac);
+            }
+            else
+            {
+                test.prozor.Content = new zdravstveniKartonPrikaz(ter);
+            }
+            MessageBox.Show("Uspesno ste izdali recept!");
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            if (zdravstveniKartonPrikaz.tab == 1)
+            {
+                test.prozor.Content = new zdravstveniKartonPrikaz(pac);
+            }
+            else
+            {
+                test.prozor.Content = new zdravstveniKartonPrikaz(ter);
+            }
         }
 
         private void NoviLek_TextChanged(object sender, TextChangedEventArgs e)

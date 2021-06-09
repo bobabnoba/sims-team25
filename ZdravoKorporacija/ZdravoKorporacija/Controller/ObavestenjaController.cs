@@ -1,7 +1,6 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
-using System.Text;
-using Model;
 using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Service;
 using ZdravoKorporacija.ServiceSekretarUtility;

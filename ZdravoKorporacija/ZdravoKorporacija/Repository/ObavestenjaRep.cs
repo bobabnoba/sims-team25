@@ -1,8 +1,6 @@
 ﻿using Model;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 
 namespace ZdravoKorporacija.Repository
@@ -42,5 +40,5 @@ namespace ZdravoKorporacija.Repository
             return notifikacije;
         }
     }
-    }
+}
 
