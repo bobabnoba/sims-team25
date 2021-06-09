@@ -578,43 +578,36 @@
         "Id": 2,
         "Datum": "2021-05-25T21:40:25.8551023+02:00",
         "Tip": 1,
-        "Sadrzaj": "Zakazan termin: Pregled, vreme: 5/25/2021 6:00:00 PM",
-        "Status": "Neprocitano"
+        "Sadrzaj": "Popijte lek: Cardiopirin, vreme: 9:10 PM",
+        "Status": "Pročitano"
       },
       {
         "Id": 3,
         "Datum": "2021-05-25T21:40:25.8631577+02:00",
         "Tip": 1,
-        "Sadrzaj": "Zakazan termin: Operacija, vreme: 6/24/2021 9:30:00 AM",
-        "Status": "Neprocitano"
+        "Sadrzaj": "Vaš termin: Pregled, vreme: 10/23/2021 8:00:00 AM je pomeren za vreme: 10/23/2021 11:00:00 AM",
+        "Status": "Pročitano"
       },
       {
         "Id": 4,
-        "Datum": "2021-05-25T21:40:25.8644498+02:00",
+        "Datum": "2021-05-25T15:30:25.8644498+02:00",
         "Tip": 1,
-        "Sadrzaj": "Zakazan termin: Operacija, vreme: 10/23/2021 8:00:00 AM",
-        "Status": "Neprocitano"
+        "Sadrzaj": "Popijte lek: Brufen, vreme: 4:00 PM",
+        "Status": "Pročitano"
       },
       {
         "Id": 5,
         "Datum": "2021-05-25T21:40:25.8658905+02:00",
         "Tip": 1,
         "Sadrzaj": "Zakazan termin: Operacija, vreme: 5/28/2021 10:30:00 AM",
-        "Status": "Neprocitano"
+        "Status": "Pročitano"
       },
       {
         "Id": 6,
         "Datum": "2021-05-25T21:40:25.8672956+02:00",
         "Tip": 1,
-        "Sadrzaj": "Zakazan termin: Operacija, vreme: 6/18/2021 8:00:00 AM",
-        "Status": "Neprocitano"
-      },
-      {
-        "Id": 10000,
-        "Datum": "2021-05-25T23:23:35.4904474+02:00",
-        "Tip": 2,
-        "Sadrzaj": "dobar dan",
-        "Status": null
+        "Sadrzaj": "Srećne Uskršnje praznike želi vam Zdravo korporacija!",
+        "Status": "Pročitano"
       }
     ],
     "ZdravstveniKarton": {

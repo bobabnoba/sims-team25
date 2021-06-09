@@ -31,7 +31,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
         {
             InitializeComponent();
             this.pacijentDTO = pacijentDTO;
-            terminiDTO = new ObservableCollection<TerminDTO>(terminKontroler.dobaviListuDTOtermina(pacijentDTO));
+            terminiDTO = new ObservableCollection<TerminDTO>(terminKontroler.dobaviListuDTOProslihtermina(pacijentDTO));
             calendarComponents();
 
 
