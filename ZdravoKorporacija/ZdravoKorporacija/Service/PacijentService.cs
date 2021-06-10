@@ -4,6 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using ZdravoKorporacija.DTO;
+using System;
+using System.Diagnostics;
+using ZdravoKorporacija.Service;
+using ZdravoKorporacija.Konverteri;
 using ZdravoKorporacija.Model;
 
 namespace Service
@@ -25,6 +29,28 @@ namespace Service
             }
             return null;
         }
+    
+        public void azurirajBanInfo(Pacijent pacijent, int tipAktivnosti)
+        {
+            Ban b = BanRepozitorijum.Instance.dobavi(pacijent.Jmbg);
+            switch (tipAktivnosti)
+            {
+                case 0:
+                    b.zakazanCnt++;
+                    break;
+                case 1:
+                    b.pomerenCnt++;
+                    break;
+                case 2:
+                    b.otkazanCnt++;
+                    break;
+                default:
+                    break;
+            }
+
+            BanRepozitorijum.Instance.sacuvaj(b);
+        }
+
         public PacijentDTO NadjiPacijentaPoJMBGDTO(long jmbg)
         {
             PacijentRepozitorijum datoteka = new PacijentRepozitorijum();
@@ -207,11 +233,12 @@ namespace Service
 
         public List<PacijentDTO> PregledSvihPacijenata2()
         {
+            PacijentKonverter pacijentKonverter = new PacijentKonverter();
             List<Pacijent> pacijenti = pr.dobaviSve2();
             List<PacijentDTO> pacijentiDTO = new List<PacijentDTO>();
             foreach (Pacijent pacijent in pacijenti)
             {
-                pacijentiDTO.Add(convertToDTO(pacijent));
+                pacijentiDTO.Add(pacijentKonverter.KonvertujEntitetUDTO(pacijent));
             }
             return pacijentiDTO;
         }
@@ -248,7 +275,7 @@ namespace Service
         {
             ZdravstveniKartonServis zks = new ZdravstveniKartonServis();
             ZdravstveniKartonDTO kartonDTO = zks.Model2DTO(model.ZdravstveniKarton);
-            PacijentDTO dto = new PacijentDTO(kartonDTO, model.Guest, model.Ime, model.Prezime, model.Jmbg, model.BrojTelefona, model.Mejl, model.AdresaStanovanja, model.Pol, model.Username, model.Password, model.Uloga);
+            PacijentDTO dto = new PacijentDTO(kartonDTO, model.Guest, model.Ime, model.Prezime, model.Jmbg, model.BrojTelefona, model.Mejl, model.AdresaStanovanja, model.Pol, model.Username, model.Password);
             return dto;
         }
 
@@ -276,7 +303,7 @@ namespace Service
         }
         public Pacijent DTO2ModelNapravi(PacijentDTO dto)
         {
-            Pacijent model = new Pacijent(dto.Ime, dto.Prezime, dto.Jmbg, dto.BrojTelefona, dto.Mejl, dto.AdresaStanovanja, dto.Pol, dto.Username, dto.Password, dto.Uloga);
+            Pacijent model = new Pacijent(dto.Ime, dto.Prezime, dto.Jmbg, dto.BrojTelefona, dto.Mejl, dto.AdresaStanovanja, dto.Pol, dto.Username, dto.Password);
             model.ZdravstveniKarton = zks.findById(dto.Jmbg);
             return model;
 
@@ -336,12 +363,6 @@ namespace Service
         {
             return pacRepo.dobaviSve()
                 .FirstOrDefault(p => p.Username.Equals(dto.korisnickoIme) && p.Password.Equals(dto.lozinka));
-
-        }
-
-        public PacijentDTO convertToDTO(Pacijent pacijent)
-        {
-            return new PacijentDTO(pacijent);
 
         }
 

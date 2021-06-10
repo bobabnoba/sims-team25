@@ -15,12 +15,9 @@ namespace Model
         public Lekar() : base() { }
         public Lekar(String Ime, String Prezime) : base(Ime, Prezime)
         {
-
         }
 
-
-
-        public Lekar(string ime, string prezime, Int64 jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password, UlogaEnum uloga) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password, uloga)
+        public Lekar(string ime, string prezime, Int64 jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password)
         {
         }
 
@@ -38,7 +35,7 @@ namespace Model
                 this.BrojTelefona = lekarEntitet.BrojTelefona;
                 this.Password = lekarEntitet.Password;
                 this.Mejl = lekarEntitet.Mejl;
-                this.Uloga = lekarEntitet.Uloga;
+                //this.Uloga = lekarEntitet.Uloga;
                 this.radniDani = lekarEntitet.radniDani;
                 this.Pol = lekarEntitet.Pol;
                 //this.termini = new ArrayList(lekarEntitet.termin);

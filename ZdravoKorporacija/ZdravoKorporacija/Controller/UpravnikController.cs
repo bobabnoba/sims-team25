@@ -63,7 +63,8 @@ namespace ZdravoKorporacija.Controller
         public bool Registruj(string ime, string prezime, UlogaEnum uloga)
         {
             KorisnikService ks = new KorisnikService();
-            ks.DodajKorisnika(ime, prezime, uloga);
+           // ks.DodajKorisnika(ime,prezime,uloga);
+            ks.DodajKorisnika(ime,prezime);
             return false;
         }
 

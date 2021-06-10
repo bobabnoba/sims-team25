@@ -48,12 +48,12 @@ namespace ZdravoKorporacija
         {
             LekarRepozitorijum LekarJSON = new LekarRepozitorijum();
             List<Lekar> lekari = new List<Lekar>();
-            Lekar dr1 = new Lekar("Veljko", "Vukovic", 2334567890213, 066393345, "vuksivuk@gmail.com", "Beograd", PolEnum.Muski, "veksi", "vukovic", UlogaEnum.Lekar);
-            Pacijent p1 = new Pacijent("Dusan", "Markovic", 1234567890123, 069000333, "dusanmarkovic@gmail.com", "Smederevska tvrdjava", PolEnum.Muski, "dukikidu", "markovic99", UlogaEnum.Lekar);
+            Lekar dr1 = new Lekar("Veljko", "Vukovic", 2334567890213, 066393345, "vuksivuk@gmail.com", "Beograd", PolEnum.Muski, "veksi", "vukovic");
+            Pacijent p1 = new Pacijent("Dusan", "Markovic", 1234567890123, 069000333, "dusanmarkovic@gmail.com", "Smederevska tvrdjava", PolEnum.Muski, "dukikidu", "markovic99");
             ZdravstveniKarton zd1 = new ZdravstveniKarton(p1, 1, StanjePacijentaEnum.Kriticno, "pcele", KrvnaGrupaEnum.APozitivna, "nevekcinisan");
             Prostorija pr1 = new Prostorija(1, "soba za pregled", TipProstorijeEnum.Soba, true, 2);
             //dr1.AddTermin(new Termin(zd1, pr1, dr1, TipTerminaEnum.Pregled, new DateTime(2020, 5, 1, 8, 30, 52), 90));
-            Lekar dr2 = new Lekar("Milos", "Zivic", 2234567890113, 069393334, "zivko99@gmail.com", "Becej", PolEnum.Muski, "milos", "zivic", UlogaEnum.Lekar);
+            Lekar dr2 = new Lekar("Milos", "Zivic", 2234567890113, 069393334, "zivko99@gmail.com", "Becej", PolEnum.Muski, "milos", "zivic");
             lekari.Add(dr1);
             lekari.Add(dr2);
 
@@ -66,10 +66,10 @@ namespace ZdravoKorporacija
             List<Pacijent> pacijenti = new List<Pacijent>();
             Prostorija pr1 = new Prostorija(1, "soba za pregled", TipProstorijeEnum.Soba, true, 2);
             Prostorija pr2 = new Prostorija(2, "soba za operaciju", TipProstorijeEnum.OperacionaSala, true, 1);
-            Pacijent p1 = new Pacijent("Dusan", "Markovic", 1234567890123, 069000333, "dusanmarkovic@gmail.com", "Smederevska tvrdjava", PolEnum.Muski, "dukikidu", "markovic99", UlogaEnum.Pacijent);
-            Pacijent p2 = new Pacijent("Dusan", "Lekic", 3214567890122, 066333999, "dusanlekic@gmail.com", "Rokijev potok", PolEnum.Muski, "leka", "leka99", UlogaEnum.Pacijent);
-            Pacijent p3 = new Pacijent("Aleksa", "Papovic", 2134567890213, 066393654, "aleksapapovic@gmail.com", "Grbavica", PolEnum.Muski, "pape", "pape99", UlogaEnum.Pacijent);
-            Lekar dr1 = new Lekar("Veljko", "Vukovic", 2334567890213, 066393345, "vuksivuk@gmail.com", "Beograd", PolEnum.Muski, "veksi", "vukovic", UlogaEnum.Lekar);
+            Pacijent p1 = new Pacijent("Dusan", "Markovic", 1234567890123, 069000333, "dusanmarkovic@gmail.com", "Smederevska tvrdjava", PolEnum.Muski, "dukikidu", "markovic99");
+            Pacijent p2 = new Pacijent("Dusan", "Lekic", 3214567890122, 066333999, "dusanlekic@gmail.com", "Rokijev potok", PolEnum.Muski, "leka", "leka99");
+            Pacijent p3 = new Pacijent("Aleksa", "Papovic", 2134567890213, 066393654, "aleksapapovic@gmail.com", "Grbavica", PolEnum.Muski, "pape", "pape99");
+            Lekar dr1 = new Lekar("Veljko", "Vukovic", 2334567890213, 066393345, "vuksivuk@gmail.com", "Beograd", PolEnum.Muski, "veksi", "vukovic");
             ZdravstveniKarton zd1 = new ZdravstveniKarton(p1, 1, StanjePacijentaEnum.Kriticno, "pcele", KrvnaGrupaEnum.APozitivna, "nevekcinisan");
             ZdravstveniKarton zd2 = new ZdravstveniKarton(p2, 2, StanjePacijentaEnum.Stabilno, "nema", KrvnaGrupaEnum.ABNegativna, "sinovac");
             //Termin tr1 = new Termin(zd1, pr1, dr1, TipTerminaEnum.Pregled, new DateTime(2020, 5, 1, 8, 30, 52), 90);
@@ -95,8 +95,8 @@ namespace ZdravoKorporacija
         {
             SekretarRepozitorijum sekretarJSON = new SekretarRepozitorijum();
             List<Sekretar> sekretari = new List<Sekretar>();
-            Sekretar s1 = new Sekretar("Stefan", "Mitrovic", 4444567890123, 0621100333, "mitrovic@gmail.com", "Kragujevac", PolEnum.Muski, "mitros", "mitrovic99", UlogaEnum.Sekretar);
-            Sekretar s2 = new Sekretar("Aleksandra", "Petrovic", 5554567890123, 063123333, "saska@gmail.com", "Sombor", PolEnum.Zenski, "saska", "petrovic99", UlogaEnum.Sekretar);
+            Sekretar s1 = new Sekretar("Stefan", "Mitrovic", 4444567890123, 0621100333, "mitrovic@gmail.com", "Kragujevac", PolEnum.Muski, "mitros", "mitrovic99");
+            Sekretar s2 = new Sekretar("Aleksandra", "Petrovic", 5554567890123, 063123333, "saska@gmail.com", "Sombor", PolEnum.Zenski, "saska", "petrovic99");
             sekretari.Add(s1);
             sekretari.Add(s2);
             sekretarJSON.sacuvaj(sekretari);

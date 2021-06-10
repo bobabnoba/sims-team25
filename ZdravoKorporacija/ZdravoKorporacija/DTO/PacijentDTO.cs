@@ -63,7 +63,7 @@ namespace ZdravoKorporacija.DTO
             this.Jmbg = jmbg;
         }
 
-        public PacijentDTO(ZdravstveniKartonDTO zdravstveniKarton, bool guest, string ime, string prezime, long jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password, UlogaEnum uloga) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password, uloga)
+        public PacijentDTO(ZdravstveniKartonDTO zdravstveniKarton, bool guest, string ime, string prezime, long jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password)
         {
             this.termin = new List<TerminDTO>();
             ZdravstveniKarton = zdravstveniKarton;
@@ -81,7 +81,6 @@ namespace ZdravoKorporacija.DTO
             Pol = pacijent.Pol;
             Username = pacijent.Username;
             Password = pacijent.Password;
-            Uloga = pacijent.Uloga;
             this.termin = terminToTerminDTO(pacijent.termin);
             ZdravstveniKarton = new ZdravstveniKartonDTO(pacijent.ZdravstveniKarton);
             Guest = pacijent.Guest;

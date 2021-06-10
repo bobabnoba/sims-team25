@@ -23,7 +23,7 @@ namespace ZdravoKorporacija.DTO
             Pol = korisnik.Pol;
             Username = korisnik.Username;
             Password = korisnik.Password;
-            Uloga = korisnik.Uloga;
+            //Uloga = korisnik.Uloga;
             }
         }
 
@@ -32,17 +32,16 @@ namespace ZdravoKorporacija.DTO
 
         }
 
-        public KorisnikDTO(string ime, string prezime, Int64 jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, UlogaEnum uloga) : this(ime, prezime)
+        public KorisnikDTO(string ime, string prezime, Int64 jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol) : this(ime, prezime)
         {
             Jmbg = jmbg;
             BrojTelefona = brojTelefona;
             Mejl = mejl;
             AdresaStanovanja = adresaStanovanja;
             Pol = pol;
-            Uloga = uloga;
         }
 
-        public KorisnikDTO(string ime, string prezime, Int64 jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password, UlogaEnum uloga) : this(ime, prezime)
+        public KorisnikDTO(string ime, string prezime, Int64 jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password) : this(ime, prezime)
         {
             Jmbg = jmbg;
             BrojTelefona = brojTelefona;
@@ -51,7 +50,6 @@ namespace ZdravoKorporacija.DTO
             Pol = pol;
             Username = username;
             Password = password;
-            Uloga = uloga;
         }
 
 
@@ -64,7 +62,6 @@ namespace ZdravoKorporacija.DTO
         public PolEnum Pol { get; set; }
         public String Username { get; set; }
         public String Password { get; set; }
-        public UlogaEnum Uloga { get; set; }
 
     }
 }

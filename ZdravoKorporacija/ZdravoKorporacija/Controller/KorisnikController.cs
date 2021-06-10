@@ -18,6 +18,7 @@ namespace ZdravoKorporacija.Controller
             Pacijent ulogovani = pacijentService.dobaviUlogovanog(korisnickoIme, lozinka);
             return pacijentKonverter.KonvertujEntitetUDTO(ulogovani);
         }
+       
 
     }
 

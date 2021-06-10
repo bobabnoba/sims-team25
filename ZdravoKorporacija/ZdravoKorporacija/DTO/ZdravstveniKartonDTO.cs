@@ -68,7 +68,14 @@ namespace ZdravoKorporacija.DTO
         }
         public ZdravstveniKartonDTO(IEnumerable<ReceptDTO> recept, List<IstorijaBolesti> istorijaBolesti, PacijentDTO pacijent, long id)
         {
-            this.recept = new List<ReceptDTO>(recept);
+           if(this.recept != null)
+            {
+                this.recept = new List<ReceptDTO>(recept);
+            }
+            else
+            {
+                this.recept = new List<ReceptDTO>();
+            }
             //this.istorijaBolesti = istorijaBolesti;
             this.pacijent = pacijent;
             Id = id;

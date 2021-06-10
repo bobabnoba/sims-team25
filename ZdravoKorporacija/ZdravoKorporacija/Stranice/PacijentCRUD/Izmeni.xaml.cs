@@ -22,6 +22,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
         private List<LekarDTO> ljekaridto;
         private LekarController lekarKontroler = new LekarController();
         private TerminController terminKontroler = new TerminController();
+        private PacijentController pacijentKontroler = new PacijentController();
 
         public Izmeni(TerminDTO selektovani, ObservableCollection<TerminDTO> termini, PacijentDTO pacijentDTO)
         {
@@ -101,26 +102,21 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
             noviTermindDTO.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
             noviTermindDTO.zdravstveniKarton = pacijentDTO.ZdravstveniKarton;
 
-            if (terminKontroler.pomeriPregled(noviTermindDTO, pacijentDTO))
-            {
-                this.mojiPregledi.Remove(selektovanidto);
-                this.mojiPregledi.Add(noviTermindDTO);
-
-            }
+            terminKontroler.pomeriPregled(noviTermindDTO, pacijentDTO);
+            pacijentKontroler.azurirajBanInfo(pacijentDTO, 1);
+            this.mojiPregledi.Remove(selektovanidto);
+            this.mojiPregledi.Add(noviTermindDTO);
             this.Close();
         }
 
         private void odustani(object sender, RoutedEventArgs e)
         {
             this.Close();
-
         }
 
 
         private void timeChanged(object sender, SelectionChangedEventArgs e)
         {
-            
-
             noviTermindDTO.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem);
 
                 if(!noviTermindDTO.Pocetak.ToString().Equals(selektovanidto.Pocetak.ToString()))

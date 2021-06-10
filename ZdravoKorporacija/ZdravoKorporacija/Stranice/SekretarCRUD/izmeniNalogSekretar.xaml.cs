@@ -60,8 +60,8 @@ namespace ZdravoKorporacija.Stranice.SekretarCRUD
             {
                 pol = PolEnum.Zenski;
             }
-
-            PacijentDTO novi = new PacijentDTO(p1.ZdravstveniKarton, p1.Guest, ime, prezime, jmbg, br, mejl, "", pol, username, password, UlogaEnum.Pacijent);
+            
+            PacijentDTO novi = new PacijentDTO(p1.ZdravstveniKarton,p1.Guest,ime, prezime, jmbg, br, mejl, "", pol, username, password);
             if (tc.AzurirajPacijenta(tc.DTO2ModelNapravi(novi)))
             {
                 tc.PregledSvihPacijenata().Add(tc.PacijentDTO2Model(novi));

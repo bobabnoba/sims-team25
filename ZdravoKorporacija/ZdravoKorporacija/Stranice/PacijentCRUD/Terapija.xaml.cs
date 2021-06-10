@@ -78,18 +78,6 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
             mjeseci.SelectedIndex = newmnths - 1;
 
             dodajNotes();
-
-            //double width = 0;
-            //foreach(ComboBoxItem item in mjeseci.Items)
-            //{
-            //    item.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
-            //    if (item.DesiredSize.Width > width)
-            //        width = item.DesiredSize.Width;
-            //}
-            //mjeseci.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
-            //mjeseci.Width = mjeseci.DesiredSize.Width + width;
-
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

@@ -47,7 +47,6 @@
     "Pol": 0,
     "Username": "gas2",
     "Password": "va2",
-    "Uloga": 3
   },
   {
     "termin": [
@@ -106,8 +105,7 @@
           "AdresaStanovanja": "Becej",
           "Pol": 0,
           "Username": "milos",
-          "Password": "zivic",
-          "Uloga": 0
+          "Password": "zivic"
         },
         "Id": 2,
         "Tip": 0,
@@ -193,8 +191,7 @@
           "AdresaStanovanja": "Beograd",
           "Pol": 0,
           "Username": "veksi",
-          "Password": "vukovic",
-          "Uloga": 0
+          "Password": "vukovic"
         },
         "Id": 5,
         "Tip": 1,
@@ -361,8 +358,7 @@
           "AdresaStanovanja": "Beograd",
           "Pol": 0,
           "Username": "veksi",
-          "Password": "vukovic",
-          "Uloga": 0
+          "Password": "vukovic"
         },
         "Id": 11,
         "Tip": 0,
@@ -527,8 +523,7 @@
           "AdresaStanovanja": "Beograd",
           "Pol": 0,
           "Username": "veksi",
-          "Password": "vukovic",
-          "Uloga": 0
+          "Password": "vukovic"
         },
         "Id": 14,
         "Tip": 0,
@@ -585,7 +580,35 @@
         "Tip": 2,
         "Sadrzaj": "dobar dan",
         "Status": null
-      },
+      }
+    ],
+    "ZdravstveniKarton": {
+      "izvestajOHospitalizaciji": [],
+      "istorijaBolesti": [],
+      "recept": [],
+      "termin": [],
+      "patient": null,
+      "Id": 2134567890213,
+      "ZdravstvenoStanje": 3,
+      "Alergije": "",
+      "KrvnaGrupa": 8,
+      "Vakcine": ""
+    },
+    "Guest": false,
+    "banovan": false,
+    "Ime": "Aleksaaaaaa",
+    "Prezime": "Papovic",
+    "Jmbg": 2134567890213,
+    "BrojTelefona": 66393654,
+    "Mejl": "aleksapapovic@gmail.com",
+    "AdresaStanovanja": "",
+    "Pol": 0,
+    "Username": "aleksa",
+    "Password": "papovic"
+  },
+  {
+    "termin": [],
+    "notifikacije": [
       {
         "mediator": null,
         "Id": 7,
@@ -662,16 +685,31 @@
     },
     "Guest": false,
     "banovan": false,
-    "Ime": "Dusan",
-    "Prezime": "Lekic",
-    "Jmbg": 3214567890122,
-    "BrojTelefona": 66333999,
-    "Mejl": "dusanlekic@gmail.com",
-    "AdresaStanovanja": "Rokijev potok",
+    "Ime": "ddaa",
+    "Prezime": "ssaaa",
+    "Jmbg": 123,
+    "BrojTelefona": 321,
+    "Mejl": "asdasd",
+    "AdresaStanovanja": "",
+    "Pol": 1,
+    "Username": "asdad1",
+    "Password": "aasdsd2"
+  },
+  {
+    "termin": null,
+    "notifikacije": null,
+    "ZdravstveniKarton": null,
+    "Guest": false,
+    "banovan": false,
+    "Ime": "xD",
+    "Prezime": "Dx",
+    "Jmbg": 56,
+    "BrojTelefona": 783,
+    "Mejl": "as",
+    "AdresaStanovanja": "",
     "Pol": 0,
-    "Username": "dusan",
-    "Password": "lekic",
-    "Uloga": 3
+    "Username": "gas2",
+    "Password": "va2"
   },
   {
     "termin": [
@@ -743,8 +781,7 @@
           "AdresaStanovanja": "",
           "Pol": 0,
           "Username": "scepa2223",
-          "Password": "scepan1",
-          "Uloga": 0
+          "Password": "scepan1"
         },
         "Id": 7,
         "Tip": 0,
@@ -898,17 +935,79 @@
     "AdresaStanovanja": "",
     "Pol": 0,
     "Username": "dusan",
-    "Password": "markovic",
-    "Uloga": 3
+    "Password": "markovic"
   },
   {
     "termin": [
       {
+        "izvestaj": null,
+        "zdravstveniKarton": {
+          "izvestajOHospitalizaciji": [],
+          "istorijaBolesti": [],
+          "recept": [],
+          "termin": [],
+          "patient": null,
+          "Id": 5,
+          "ZdravstvenoStanje": 3,
+          "Alergije": null,
+          "KrvnaGrupa": 8,
+          "Vakcine": null
+        },
+        "prostorija": {
+          "inventar": [],
+          "statickaOprema": null,
+          "dinamickaOprema": null,
+          "Id": 0,
+          "Naziv": "soba11",
+          "Tip": 1,
+          "Slobodna": false,
+          "Sprat": 1
+        },
+        "Lekar": {
+          "termin": [
+            {
+              "izvestaj": null,
+              "zdravstveniKarton": null,
+              "prostorija": null,
+              "Id": 0,
+              "Tip": 0,
+              "Pocetak": "0001-01-01T00:00:00",
+              "Trajanje": 0.0
+            },
+            {
+              "izvestaj": null,
+              "zdravstveniKarton": null,
+              "prostorija": null,
+              "Id": 2,
+              "Tip": 0,
+              "Pocetak": "0001-01-01T00:00:00",
+              "Trajanje": 0.0
+            }
+          ],
+          "Specijalizacija": 0,
+          "radniDani": null,
+          "Ime": "Milos",
+          "Prezime": "Zivic",
+          "Jmbg": 2234567890113,
+          "BrojTelefona": 69393334,
+          "Mejl": "zivko99@gmail.com",
+          "AdresaStanovanja": "Becej",
+          "Pol": 0,
+          "Username": "milos",
+          "Password": "zivic"
+        },
+        "Id": 2,
+        "Tip": 0,
+        "Pocetak": "2021-04-23T09:00:00",
+        "Trajanje": 0.5,
+        "hitno": false
+      },
+      {
         "izvestaj": {
           "termin": null,
           "Id": 0,
-          "Opis": "Temperature",
-          "Simptomi": "Covid"
+          "Opis": "Simptomi ukazuju na umor i prehladu. Preporucuje se odmor i konzumacija vitamina u vecoj dozi.\r\n",
+          "Simptomi": "Pacijent ima temperaturu 37.2 i oseca malaksalost."
         },
         "zdravstveniKarton": {
           "izvestajOHospitalizaciji": [],
@@ -1048,8 +1147,7 @@
           "AdresaStanovanja": "Beograd",
           "Pol": 0,
           "Username": "veksi",
-          "Password": "vukovic",
-          "Uloga": 0
+          "Password": "vukovic"
         },
         "Id": 10,
         "Tip": 0,
@@ -1273,8 +1371,7 @@
           "AdresaStanovanja": "Beograd",
           "Pol": 0,
           "Username": "veksi",
-          "Password": "vukovic",
-          "Uloga": 0
+          "Password": "vukovic"
         },
         "Id": 13,
         "Tip": 0,
@@ -1348,7 +1445,6 @@
     "Pol": 0,
     "Username": "aleksa",
     "Password": "papovic",
-    "Uloga": 3
   },
   {
     "termin": [],
@@ -1435,15 +1531,14 @@
     },
     "Guest": false,
     "banovan": false,
-    "Ime": "ddaa",
-    "Prezime": "ssaaa",
-    "Jmbg": 123,
-    "BrojTelefona": 321,
-    "Mejl": "asdasd",
-    "AdresaStanovanja": "",
-    "Pol": 1,
-    "Username": "asdad1",
-    "Password": "aasdsd2",
-    "Uloga": 3
+    "Ime": "Dusan",
+    "Prezime": "Lekic",
+    "Jmbg": 3214567890122,
+    "BrojTelefona": 66333999,
+    "Mejl": "dusanlekic@gmail.com",
+    "AdresaStanovanja": "Rokijev potok",
+    "Pol": 0,
+    "Username": "dusan",
+    "Password": "lekic"
   }
 ]

@@ -35,6 +35,7 @@ namespace ZdravoKorporacija.Model
         List<Lekar> lekari = LekarRepozitorijum.Instance.dobaviSve();
         IDRepozitorijum datotekaID = new IDRepozitorijum("iDMapIzvestaj");
         Dictionary<int, int> id_map = new Dictionary<int, int>();
+        TerminKonverter terminKonverter = new TerminKonverter();
 
         IDRepozitorijum uputDat = new IDRepozitorijum("iDMapTermin");
         Dictionary<int, int> id_uput = new Dictionary<int, int>();
@@ -54,6 +55,33 @@ namespace ZdravoKorporacija.Model
             }
         }
 
+        public ITerminStrategija dobaviStrategiju(Termin termin)
+        {
+            if (termin.Tip == TipTerminaEnum.Pregled)
+            {
+                return new PregledStrategija();
+            }
+            else if (termin.Tip == TipTerminaEnum.Operacija)
+            {
+                return new OperacijaStrategija();
+            }
+            else if (termin.Tip == TipTerminaEnum.Renoviranje)
+            {
+                return new RenoviranjeStrategija();
+            }
+            else //if (termin.Tip == TipTerminaEnum.PremestanjeOpreme)
+            {
+                return new PremjestanjeOpremeStrategija();
+            }
+        }
+        public void zakaziTermin(Termin noviTermin)
+        {
+            TerminKontekst kontekst = new TerminKontekst(dobaviStrategiju(noviTermin));
+            noviTermin.Id = dodijeliID(); 
+            List<Termin> termini = terminRepozitorijum.dobaviSve();
+            termini.Add(kontekst.zakaziTermin(noviTermin)); 
+            terminRepozitorijum.sacuvaj(termini);
+        }
 
         public bool zakaziHitniLekar(TerminDTO termin,PacijentDTO pacijent)
         {
@@ -444,6 +472,7 @@ namespace ZdravoKorporacija.Model
         {
             return new DateTime((dt.Ticks + d.Ticks - 1) / d.Ticks * d.Ticks, dt.Kind);
         }
+
         public List<Termin> PregledSvihTermina()
         {
             List<Termin> termini = terminRepozitorijum.dobaviSve();
@@ -464,19 +493,6 @@ namespace ZdravoKorporacija.Model
         public TerminDTO konvertujEntitetUDTO(Termin termin)
         {
             return new TerminDTO(termin);
-        }
-
-
-
-        public List<Termin> PregledSvihTermina2Model(List<TerminDTO> dtos)
-        {
-            List<Termin> modeli = new List<Termin>();
-            foreach (TerminDTO tdto in dtos)
-            {
-                modeli.Add(DTO2Model(tdto));
-            }
-
-            return modeli;
         }
 
         public List<TerminDTO> PregledSvihTermina2DTO(List<Termin> modeli)
@@ -506,9 +522,7 @@ namespace ZdravoKorporacija.Model
                     termini.Add(termin);
                 }
             }
-
             return termini;
-
         }
 
         public List<Termin> PregledIstorijeTerminaPacijenta(Pacijent p)
@@ -532,31 +546,11 @@ namespace ZdravoKorporacija.Model
             List<TerminDTO> terminiDTO = new List<TerminDTO>();
             foreach (Termin termin in termini)
             {
-                terminiDTO.Add(convertToDTO(termin));
+                terminiDTO.Add(terminKonverter.KonvertujEntitetUDTO(termin));
             }
             return terminiDTO;
         }
 
-        public TerminDTO convertToDTO(Termin pacijent)
-        {
-            return new TerminDTO(pacijent);
-        }
-
-
-        public Termin InicijalizujTermin(int id, TipTerminaEnum tip, DateTime pocetak, Pacijent pacijent, Lekar lekar,
-            Prostorija prostorija)
-        {
-            Termin noviTermin = new Termin();
-            noviTermin.Id = id;
-            noviTermin.Tip = tip;
-            noviTermin.Pocetak = pocetak;
-            noviTermin.Lekar = lekar;
-            noviTermin.zdravstveniKarton = pacijent.ZdravstveniKarton;
-            noviTermin.prostorija = prostorija;
-            noviTermin.hitno = false;
-
-            return noviTermin;
-        }
 
         public int MapaTermina(Dictionary<int, int> ids)
         {
@@ -729,6 +723,7 @@ namespace ZdravoKorporacija.Model
             }
             return  ret;
         }
+      
 
         public bool AzurirajTerminPacijent(Termin termin, Pacijent pacijent)
         {
@@ -972,32 +967,7 @@ namespace ZdravoKorporacija.Model
 
     
 
-        public Boolean zakaziPregled(Termin termin, Pacijent pacijent)
-        {
-            List<Termin> termini = terminRepozitorijum.dobaviSve();
-            termin.Id = dodijeliID();
-            termin.Tip = TipTerminaEnum.Pregled;
-            termin.Trajanje = 30;
-            termin.zdravstveniKarton = pacijent.ZdravstveniKarton;
-
-
-            foreach (Termin t in termini)
-            {
-                if (t.Id.Equals(termin.Id))
-                    return false;
-            }
-
-            termini.Add(termin);
-            terminRepozitorijum.sacuvaj(termini);
-
-
-            azurirajBanInfo(pacijent, TA_ZAKAZIVANJE);
-
-            return true;
-        }
-
-
-
+     
         private void azurirajBanInfo(Pacijent pacijent, int tipAktivnosti)
         {
             Ban b = BanRepozitorijum.Instance.dobavi(pacijent.Jmbg);
@@ -1018,7 +988,6 @@ namespace ZdravoKorporacija.Model
 
             BanRepozitorijum.Instance.sacuvaj(b);
         }
-
 
         private int dodijeliID()
         {
@@ -1044,11 +1013,7 @@ namespace ZdravoKorporacija.Model
             return terminRepozitorijum.dobaviSve()
                 .FirstOrDefault(t => dto.Id.Equals(t.Id));
         }
-
-
-
     }
-
 }
 
 

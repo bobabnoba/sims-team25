@@ -35,9 +35,12 @@ namespace ZdravoKorporacija.Konverteri
             {
                 PacijentDTO pdto = new PacijentDTO(entitet.Ime, entitet.Prezime, entitet.Username, entitet.Password,
                     zdravstveniKartonKonverter.KonvertujEntitetUDTO(entitet.ZdravstveniKarton), entitet.Jmbg);
-                foreach (Notifikacija n in entitet.notifikacije)
+                if(entitet.notifikacije != null)
                 {
-                    pdto.notifikacije.Add(notifikacijaKonverter.KonvertujEntitetUDTO(n));
+                    foreach (Notifikacija n in entitet.notifikacije)
+                    {
+                        pdto.notifikacije.Add(notifikacijaKonverter.KonvertujEntitetUDTO(n));
+                    }
                 }
 
                 return pdto;

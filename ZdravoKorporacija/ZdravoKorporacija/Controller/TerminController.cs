@@ -34,6 +34,13 @@ namespace ZdravoKorporacija.Controller
         {
             return terminServis.DobaviSlobodneProstorije3(termin,pocetak,prostorija);
         }
+        // THIS WILL BE THE ONE  ///////////////////////////////
+        public void zakaziTermin(TerminDTO noviTermin)
+        {
+            Termin termin = terminKonverter.KonvertujDTOuEntitet(noviTermin);
+            terminServis.zakaziTermin(termin);
+        }
+
         public bool ObrisiLekara(Lekar lekar)
         {
             return lekarServis.ObrisiLekara(lekar);
@@ -127,7 +134,9 @@ namespace ZdravoKorporacija.Controller
         {
             return prostorijaServis.PregledSvihProstorija2Model(dtos);
         }
-        public ObservableCollection<Prostorija> DobaviSlobodneProstorije(Termin termin)
+        
+        public ObservableCollection<Prostorija> DobaviSlobodneProstorije(  Termin termin)
+
         {
             return terminServis.DobaviSlobodneProstorije(termin);
         }
@@ -169,10 +178,6 @@ namespace ZdravoKorporacija.Controller
         {
             return terminServis.PregledSvihTermina2DTO(modeli);
         }
-        public List<Termin> PregledSvihTermina2Model(List<TerminDTO> dtos)
-        {
-            return terminServis.PregledSvihTermina2Model(dtos);
-        }
         public List<PacijentDTO> PregledSvihPacijenata2DTO()
         {
             return pacijentServis.PregledSvihPacijenata2DTO();
@@ -209,10 +214,6 @@ namespace ZdravoKorporacija.Controller
         {
             return terminServis.PregledSvihTermina();
         }
-        public bool ZakaziTerminPacijent(Termin termin, Dictionary<int, int> ids, Pacijent pacijent)
-        {
-            return terminServis.ZakaziTerminPacijent(termin, ids, pacijent);
-        }
         public List<Lekar> DobaviSlobodneLekareHITNO(SpecijalizacijaEnum specijalizacija)
         {
             return terminServis.DobaviSlobodneLekareHITNO(specijalizacija);
@@ -238,21 +239,12 @@ namespace ZdravoKorporacija.Controller
         private PacijentKonverter pacijentKonverter = new PacijentKonverter();
 
 
-
         public IEnumerable<TerminDTO> dobaviListuDTOtermina(PacijentDTO pacijentDTO)
             => terminServis.PregledSvihTerminaPacijenta(pacijentKontroler.konvertujDTOuEntitet(pacijentDTO)).Select(entitet
                 => terminKonverter.KonvertujEntitetUDTO(entitet)).ToList();
         public IEnumerable<TerminDTO> dobaviListuDTOProslihtermina(PacijentDTO pacijentDTO)
             => terminServis.PregledIstorijeTerminaPacijenta(pacijentKontroler.konvertujDTOuEntitet(pacijentDTO)).Select(entitet
                 => terminKonverter.KonvertujEntitetUDTO(entitet)).ToList();
-
-        public Boolean zakaziPregled(TerminDTO terminDTO, PacijentDTO pacijentDTO)
-        {
-            Termin t = terminKonverter.KonvertujDTOuEntitet(terminDTO);
-            Pacijent p = pacijentServis.pronadjiEntitetZaDTO(pacijentDTO);
-
-            return terminServis.zakaziPregled(t, p);
-        }
 
         public void otkaziPregled(TerminDTO terminDTO, PacijentDTO pacijentDTO)
         {
@@ -316,42 +308,9 @@ namespace ZdravoKorporacija.Controller
             return ts.PregledTermina(id);
         }
 
-
         public List<TerminDTO> PregledSvihTermina2()
         {
             return ts.PregledSvihTermina2();
         }
-
-        public Termin NadjiTermin(DateTime datum, Prostorija prostorija)
-        {
-            return null;
-        }
-
-        public Termin InicijalizujTermin(int id, TipTerminaEnum tip, DateTime pocetak, Pacijent pacijent, Lekar lekar, Prostorija prostorija)
-        {
-            return ts.InicijalizujTermin(id, tip, pocetak, pacijent, lekar, prostorija);
-        }
-
-        //public List<Lekar> DobaviSlobodneLekare(List<Lekar> lekari, ObservableCollection<Termin> pregledi, DateTime pocetakTermina)
-        //{
-        //    return ts.DobaviSlobodneLekare(lekari, pregledi, pocetakTermina);
-        //}
-
-        //public List<Prostorija> DobaviSlobodneProstorije(List<Prostorija> prostorije, ObservableCollection<Termin> pregledi, Termin termin)
-        //{
-        //    return ts.DobaviSlobodneProstorije(prostorije,pregledi,termin);
-        //}
-
-        public void InicijalizujTerminLekaru(Termin t)
-        {
-            ts.InicijalizujTerminLekaru(t);
-        }
-
-        public ZdravstveniKarton ProveriKartonKodZakazivanja(Pacijent pacijent)
-        {
-            return ts.ProveriKartonKodZakazivanja(pacijent);
-        }
-
-
     }
 }

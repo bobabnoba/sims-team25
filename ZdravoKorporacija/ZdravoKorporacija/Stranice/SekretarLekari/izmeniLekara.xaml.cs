@@ -44,7 +44,7 @@ namespace ZdravoKorporacija.Stranice.SekretarLekari
             odrediPol();
             odrediSpecijalizaciju();
 
-            LekarDTO novi = new LekarDTO(ime, prezime, jmbg, br, mejl, "", pol, username, password, UlogaEnum.Lekar);
+            LekarDTO novi = new LekarDTO(ime, prezime, jmbg, br, mejl, "", pol, username, password);
             novi.Specijalizacija = specijalizacija;
 
             if (controller.AzurirajLekara(controller.DTO2ModelNapravi(novi)))
