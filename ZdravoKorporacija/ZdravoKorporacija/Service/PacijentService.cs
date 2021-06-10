@@ -7,6 +7,7 @@ using ZdravoKorporacija.DTO;
 using System;
 using System.Diagnostics;
 using ZdravoKorporacija.Service;
+using ZdravoKorporacija.Konverteri;
 
 namespace Service
 {
@@ -27,6 +28,28 @@ namespace Service
             }
             return null;
         }
+    
+        public void azurirajBanInfo(Pacijent pacijent, int tipAktivnosti)
+        {
+            Ban b = BanRepozitorijum.Instance.dobavi(pacijent.Jmbg);
+            switch (tipAktivnosti)
+            {
+                case 0:
+                    b.zakazanCnt++;
+                    break;
+                case 1:
+                    b.pomerenCnt++;
+                    break;
+                case 2:
+                    b.otkazanCnt++;
+                    break;
+                default:
+                    break;
+            }
+
+            BanRepozitorijum.Instance.sacuvaj(b);
+        }
+
         public PacijentDTO NadjiPacijentaPoJMBGDTO(long jmbg)
         {
             PacijentRepozitorijum datoteka = new PacijentRepozitorijum();
@@ -214,11 +237,12 @@ namespace Service
 
         public List<PacijentDTO> PregledSvihPacijenata2()
         {
+            PacijentKonverter pacijentKonverter = new PacijentKonverter();
             List<Pacijent> pacijenti = pr.dobaviSve2();
             List < PacijentDTO > pacijentiDTO = new List<PacijentDTO>();
             foreach (Pacijent pacijent in pacijenti)
             {
-                pacijentiDTO.Add(convertToDTO(pacijent));
+                pacijentiDTO.Add(pacijentKonverter.KonvertujEntitetUDTO(pacijent));
             }
             return pacijentiDTO;
         }
@@ -343,12 +367,6 @@ namespace Service
         {
             return pacRepo.dobaviSve()
                 .FirstOrDefault(p => p.Username.Equals(dto.korisnickoIme) && p.Password.Equals(dto.lozinka));
-
-        }
-
-        public PacijentDTO convertToDTO(Pacijent pacijent)
-        {
-            return new PacijentDTO(pacijent);
 
         }
 

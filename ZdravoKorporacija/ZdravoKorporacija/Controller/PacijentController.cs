@@ -35,6 +35,11 @@ namespace ZdravoKorporacija.Controller
             this.servis = new PacijentService();
         }
 
+        public void azurirajBanInfo(PacijentDTO pacijentDTO, int tipAktivnosti)
+        {
+            Pacijent pacijent = pacijentServis.pronadjiEntitetZaDTO(pacijentDTO);
+            servis.azurirajBanInfo(pacijent, tipAktivnosti);
+        }
 
         public Pacijent konvertujDTOuEntitet(PacijentDTO pDTO)
         {

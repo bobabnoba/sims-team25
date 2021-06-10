@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -26,21 +27,13 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
         public Zakazi(ObservableCollection<TerminDTO> termini, PacijentDTO pacijentDTO)
         {
             InitializeComponent();
-
+            pregledi = termini;
             this.pacijentDTO = pacijentDTO;
             this.terminDTO = new TerminDTO();
             this.terminKontroler = new TerminController();
-
-            pregledi = termini;
             dostupniLjekari = new BindingList<LekarDTO>();
-
             ljekari = (List<LekarDTO>)lekarKontroler.dobaviListuDTOLekara();
             dostupniLjekari = new BindingList<LekarDTO>();
-
-
-            //date.IsEnabled = false;
-            //time.IsEnabled = false;
-            //ljekar.IsEnabled = false;
             selektovaneVrijednosti();
         }
 
@@ -79,38 +72,26 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
             if (datumValidan() && vriejemValidno() && ljekarValidan()) { 
                 terminDTO.Pocetak = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
                 terminDTO.Lekar = (LekarDTO)ljekar.SelectedItem;
-                terminDTO.Trajanje = 30;
                 terminDTO.zdravstveniKarton = pacijentDTO.ZdravstveniKarton;
-                Boolean bu = terminKontroler.zakaziPregled(terminDTO, pacijentDTO);
+                terminDTO.Tip = TipTerminaEnum.Pregled;
+                terminKontroler.zakaziTermin(terminDTO);
                 this.pregledi.Add(terminDTO);
-            
                 this.Close();
             }
-
         }
 
         private void VremeChecked(object sender, RoutedEventArgs e)
         {
             btnPotvrdi.IsEnabled = true;
             selektovaneVrijednosti();
-            prioritetLjekar = false;
-            //date.IsEnabled = true;
-            //time.IsEnabled = true;
-            //ljekar.IsEnabled = false;
-
         }
 
         private void LekarChecked(object sender, RoutedEventArgs e)
         {
             btnPotvrdi.IsEnabled = true;
             selektovaneVrijednosti();
-            prioritetLjekar = true;
-            //date.IsEnabled = true;
-            //time.IsEnabled = false;
-            //ljekar.IsEnabled = true;
-
-
         }
+
         private void time_changed(object sender, SelectionChangedEventArgs e)
         {
             if (prioritetLjekar)
@@ -122,7 +103,6 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
                         if (td != null) time.Items.Remove(td.Pocetak.ToShortTimeString());
 
                     }
-                    //time.IsEnabled = true;
                 }
             }
             else
@@ -132,7 +112,6 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
                     DateTime terminPregleda = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
 
                     if (nedostupanLjekar(terminPregleda) != null) dostupniLjekari.Remove(nedostupanLjekar(terminPregleda));
-                    //ljekar.IsEnabled = true;
                 }
             }
 
@@ -147,9 +126,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
                     foreach (TerminDTO td in nedostupniTermini())
                     {
                         if (td != null) time.Items.Remove(td.Pocetak.ToShortTimeString());
-
                     }
-                   // time.IsEnabled = true;
                 }
             }
             else //prioritet vrijeme
@@ -158,7 +135,6 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
                 {
                     DateTime terminPregleda = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
                     if (nedostupanLjekar(terminPregleda) != null) dostupniLjekari.Remove(nedostupanLjekar(terminPregleda));
-                    //ljekar.IsEnabled = true;
                 }
             }
 
@@ -173,9 +149,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
                     foreach (TerminDTO td in nedostupniTermini())
                     {
                         if(td != null) time.Items.Remove(td.Pocetak.ToShortTimeString());
-
                     }
-                    //time.IsEnabled = true;
                 }
             }
             else
@@ -185,10 +159,8 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
                     DateTime terminPregleda = DateTime.Parse(date.Text + " " + time.SelectedItem.ToString());
                     
                     if (nedostupanLjekar(terminPregleda) != null) dostupniLjekari.Remove(nedostupanLjekar(terminPregleda));
-                    //ljekar.IsEnabled = true;
                 }               
             }
-
         }
 
 

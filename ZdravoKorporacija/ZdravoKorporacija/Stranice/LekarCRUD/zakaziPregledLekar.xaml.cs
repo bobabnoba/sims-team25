@@ -123,15 +123,23 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             else if (cbTip.SelectedIndex == 1)
                 tipTermina = TipTerminaEnum.Operacija;
 
-            noviTermin = new TerminDTO(new ZdravstveniKartonDTO(tc.NadjiKartonID(pac.Jmbg)), prostorijaTermina, tc.NadjiLekaraPoJMBG(lekarLogin.jmbg), tipTermina, pocetakTermina, 0.5, null);
-            noviTermin.Id = idTermina;
+            //noviTermin = new TerminDTO(new ZdravstveniKartonDTO(tc.NadjiKartonID(pac.Jmbg)), prostorijaTermina, tc.NadjiLekaraPoJMBG(lekarLogin.jmbg), tipTermina, pocetakTermina, 0.5, null);
 
-            if (tc.ZakaziTermin(tc.TerminDTO2Model(noviTermin), ids))
-            {
-                tc.DodajTermin(tc.TerminDTO2Model(noviTermin));
-                tc.AzurirajLekare();
-            }
+            //noviTermin.Id = idTermina;
 
+            //if (tc.ZakaziTermin(tc.TerminDTO2Model(noviTermin), ids))
+            //{
+            //    tc.DodajTermin(tc.TerminDTO2Model(noviTermin));
+            //    tc.AzurirajLekare();
+            //}
+
+            noviTermin = new TerminDTO();
+            noviTermin.Lekar = tc.NadjiLekaraPoJMBG(lekarLogin.jmbg);
+            noviTermin.zdravstveniKarton = new ZdravstveniKartonDTO(tc.NadjiKartonID(pac.Jmbg));
+            noviTermin.prostorija = prostorijaTermina;
+            noviTermin.Tip = tipTermina;
+
+            tc.zakaziTermin(noviTermin);
 
 
             tc.DodajTermin(tc.PacijentDTO2Model(pac), tc.TerminDTO2Model(noviTermin));

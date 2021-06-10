@@ -9,6 +9,8 @@ namespace Model
     public enum TipTerminaEnum
     {
         Pregled,
-        Operacija
+        Operacija,
+        Renoviranje,
+        PremestanjeOpreme
     }
 }

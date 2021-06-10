@@ -45,10 +45,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Images\damiano.jpg" />
     <Resource Include="Images\exclamation.png" />
-    <Resource Include="Images\GettyImages-493928198.jpg" />
-    <Resource Include="Images\icons8-active-male-50.png" />
     <Resource Include="Images\icons8-keyboard-40.png" />
     <Resource Include="Images\output-onlinepngtools.png" />
     <Resource Include="Images\pdf.png" />
