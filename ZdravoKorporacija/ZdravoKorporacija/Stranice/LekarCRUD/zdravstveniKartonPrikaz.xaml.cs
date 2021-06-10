@@ -32,8 +32,8 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
         public zdravstveniKartonPrikaz(PacijentDTO selektovani)
         {
-            //_receptController = ReceptControllerFactory.Create();
-            //_izvestajController = IzvestajControllerFactory.Create();
+            _receptController = ReceptControllerFactory.Create();
+            _izvestajController = IzvestajControllerFactory.Create();
             InitializeComponent();
             recepti = new ObservableCollection<ReceptDTO>();
             izvestaji = new ObservableCollection<IzvestajDTO>();
@@ -101,6 +101,8 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
         public zdravstveniKartonPrikaz(TerminDTO t)
         {
             InitializeComponent();
+            _receptController = ReceptControllerFactory.Create();
+            _izvestajController = IzvestajControllerFactory.Create();
             recepti = new ObservableCollection<ReceptDTO>();
             izvestaji = new ObservableCollection<IzvestajDTO>();
             pacijenti = pacijentController.PregledSvihPacijenata2();
