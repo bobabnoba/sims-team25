@@ -17,6 +17,8 @@ using ZdravoKorporacija.Service;
 using System.ComponentModel;
 using System.Linq;
 using ZdravoKorporacija.Controller;
+using ZdravoKorporacija.ServiceSekretarUtility;
+using ZdravoKorporacija.ServiceZaKonverzije;
 
 namespace ZdravoKorporacija.Stranice
 {
@@ -32,9 +34,9 @@ namespace ZdravoKorporacija.Stranice
         private Pacijent pacijent = new Pacijent();
         private Dictionary<int, int> ids = new Dictionary<int, int>();
         private Boolean prikazi;
-        private ObavestenjaService os = new ObavestenjaService();
+        private ObavestenjaSekretarUtility os = new ObavestenjaSekretarUtility();
         private TerminController controller = new TerminController();
-
+        private Mediator mediator;
         private AnketaRepozitorijum arepo = new AnketaRepozitorijum();
         private KorisnikService korisnikServis = new KorisnikService();
 

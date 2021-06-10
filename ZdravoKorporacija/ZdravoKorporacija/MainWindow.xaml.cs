@@ -137,10 +137,10 @@ namespace ZdravoKorporacija
             pl.Show();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ffBTN_Click(object sender, RoutedEventArgs e)
         {
-            pocetna p = new pocetna();
-            p.Show();
+            Feedback ff = new Feedback();
+            ff.Show();
         }
     }
 }

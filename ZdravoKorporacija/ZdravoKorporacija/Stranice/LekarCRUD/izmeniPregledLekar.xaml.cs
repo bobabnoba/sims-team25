@@ -79,7 +79,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             time.SelectedValue = selektovani.Pocetak.ToString("HH:mm");
 
             CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
-            date.BlackoutDates.Add(cdr);
+            //date.BlackoutDates.Add(cdr);
 
 
             if (t1.Tip == TipTerminaEnum.Pregled)

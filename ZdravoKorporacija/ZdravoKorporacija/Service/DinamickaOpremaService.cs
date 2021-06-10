@@ -38,17 +38,6 @@ namespace Service
             return false;
         }
 
-        public bool ObrisiOpremu(DinamickaOprema oprema)
-        {
-            // TODO: implement
-            return false;
-        }
-
-        public bool AzurirajOpremu(DinamickaOprema oprema)
-        {
-            // TODO: implement
-            return false;
-        }
 
         public ObservableCollection<DinamickaOprema> PregledSveOpreme()
         {

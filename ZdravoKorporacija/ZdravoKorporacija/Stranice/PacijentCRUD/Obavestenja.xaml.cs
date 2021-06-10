@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Threading;
 using ZdravoKorporacija.Controller;
 using ZdravoKorporacija.DTO;
+using ZdravoKorporacija.ServiceZaKonverzije;
 
 namespace ZdravoKorporacija.Stranice.PacijentCRUD
 {
@@ -13,6 +14,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
     /// </summary>
     public partial class Obavestenja : Page
     {
+        private Mediator mediator;
         private PacijentDTO pacijent;
         private Boolean prikaziNotifikaciju;
         private Boolean prikaziBelesku;
@@ -94,7 +96,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
                 {
                     this.prikaziBelesku = false;
 
-                    pacijent.notifikacije.Add(new NotifikacijaDTO(pacijent.notifikacije.Count + 1, beleska.Datum,
+                    pacijent.notifikacije.Add(new NotifikacijaDTO(mediator, pacijent.notifikacije.Count + 1, beleska.Datum,
                         TipNotifikacije.Podsetnik, beleska.Sadrzaj, "Neprocitano"));
                     pacijentController.dodajNotifikaciju(pacijent);
                 }
