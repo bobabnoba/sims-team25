@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using ZdravoKorporacija.Controller;
@@ -49,10 +50,12 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
             foreach (IzvestajDTO iz in _izvestajController.PregledSvihIzvestaja())
             {
-                if(pac.termin!=null)
+                Trace.WriteLine( iz.Id);
+                if (pac.termin!=null)
                 foreach (TerminDTO ter in pac.termin)
                 {
-                    if (ter.izvestaj.Id.Equals(iz.Id) && !izvestaji.Contains(iz))
+                        Trace.WriteLine(ter.izvestaj.Id + " " + iz.Id);
+                    if (ter.izvestaj.Id.Equals(iz.Id))
                     {
                         izvestaji.Add(iz);
                         break;

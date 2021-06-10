@@ -233,14 +233,19 @@ namespace Service
 
         public List<PacijentDTO> PregledSvihPacijenata2()
         {
-            PacijentKonverter pacijentKonverter = new PacijentKonverter();
             List<Pacijent> pacijenti = pr.dobaviSve2();
             List<PacijentDTO> pacijentiDTO = new List<PacijentDTO>();
             foreach (Pacijent pacijent in pacijenti)
             {
-                pacijentiDTO.Add(pacijentKonverter.KonvertujEntitetUDTO(pacijent));
+                pacijentiDTO.Add(convertToDTO(pacijent));
             }
             return pacijentiDTO;
+        }
+
+        public PacijentDTO convertToDTO(Pacijent pacijent)
+        {
+            return new PacijentDTO(pacijent);
+
         }
 
         public List<Pacijent> PregledSvihPacijenata()

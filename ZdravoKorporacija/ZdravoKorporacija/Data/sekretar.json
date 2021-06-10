@@ -8,7 +8,8 @@
     "AdresaStanovanja": "Kragujevac",
     "Pol": 0,
     "Username": "mitros",
-    "Password": "mitrovic99"
+    "Password": "mitrovic99",
+    "Uloga": 1
   },
   {
     "Ime": "Aleksandra",
@@ -19,6 +20,7 @@
     "AdresaStanovanja": "Sombor",
     "Pol": 1,
     "Username": "saska",
-    "Password": "petrovic99"
+    "Password": "petrovic99",
+    "Uloga": 1
   }
 ]
