@@ -7,10 +7,8 @@
         xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.PacijentCRUD"
         mc:Ignorable="d"
         Title="Zdravo korporacija"
-        Height="{Binding Source={x:Static SystemParameters.PrimaryScreenHeight}}"
-        Width="{Binding Source={x:Static SystemParameters.PrimaryScreenWidth}}" 
-        MinHeight="600"
-        MinWidth="900"
+        Height="768"
+        Width="1366" 
         WindowState="Maximized"
         WindowStartupLocation="CenterScreen">
     <Grid>

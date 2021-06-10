@@ -6,10 +6,8 @@
         xmlns:local="clr-namespace:ZdravoKorporacija.Stranice.PacijentCRUD"
         mc:Ignorable="d"
    Title="Zdravo korporacija"
-        Height="{Binding Source={x:Static SystemParameters.PrimaryScreenHeight}}"
-        Width="{Binding Source={x:Static SystemParameters.PrimaryScreenWidth}}" 
-        MinHeight="600"
-        MinWidth="900"
+        Height="768"
+        Width="1366" 
         WindowState="Maximized"
         WindowStartupLocation="CenterScreen">
 
@@ -59,7 +57,7 @@
                 <Image Source="/Images/icons8-keyboard-40.png"></Image>
             </Button>
             <Label Content="Lozinka:" FontSize="22" Grid.Row="3" HorizontalAlignment="Left" Grid.Column="1"/>
-            <PasswordBox Name="lozinkaText" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" FontSize="22" Grid.Row="3" Grid.Column="1" BorderBrush="Black" Margin="0,45,58,54" Grid.RowSpan="3"/>
+            <PasswordBox Name="lozinkaText" Background="Transparent" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" FontSize="22" Grid.Row="4" Grid.Column="1" BorderBrush="Black" />
             <CheckBox x:Name="wizardCb" VerticalAlignment="Center" Grid.Row="5" Grid.Column="1" Content="Prvi put koristim aplikaciju" Checked="wizardCb_Checked" >
                 <CheckBox.RenderTransform>
                     <TransformGroup>

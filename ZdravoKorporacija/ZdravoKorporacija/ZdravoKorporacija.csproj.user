@@ -353,6 +353,9 @@
     <Page Update="Stranice\PacijentCRUD\BeleskeStranica.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Stranice\PacijentCRUD\FeedbackPacijent.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Stranice\PacijentCRUD\Izmeni.xaml">
       <SubType>Designer</SubType>
     </Page>

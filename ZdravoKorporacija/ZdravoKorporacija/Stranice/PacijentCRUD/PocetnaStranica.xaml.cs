@@ -110,8 +110,10 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AnketiranjeBolnice ab = new AnketiranjeBolnice(pacijentDTO);
-            ab.Show();
+            //AnketiranjeBolnice ab = new AnketiranjeBolnice(pacijentDTO);
+            //ab.Show();
+            FeedbackPacijent feedbackForma = new FeedbackPacijent(pacijentDTO);
+            feedbackForma.Show();
         }
     }
 }

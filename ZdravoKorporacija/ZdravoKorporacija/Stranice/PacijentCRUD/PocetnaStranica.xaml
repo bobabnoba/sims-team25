@@ -69,8 +69,8 @@
 
         </Grid>
 
-        <TextBlock Text="(Ne)zadovoljni našim uslugama?" Width="400" FontFamily="Corbel" FontSize="30" Grid.ColumnSpan="3" Grid.Column="1" TextWrapping="Wrap" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Bottom"  Grid.RowSpan="2" Margin="70, 0, 0, 70"/>
-        <Button Content="Oceni nas" FontFamily="Corbel" FontWeight="Bold" FontSize = "26" Grid.Row="3"  Grid.Column="1" Background="#FF789EFF" HorizontalAlignment="Left"  Width="190" Margin="180,10,0,14" Height="40" Grid.ColumnSpan="2" Click="Button_Click" />
+        <TextBlock Text="Pomozi nam da unapredimo usluge!" Width="400" FontFamily="Corbel" FontSize="26" Grid.ColumnSpan="3" Grid.Column="1" TextWrapping="Wrap" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Bottom"  Grid.RowSpan="2" Margin="70, 0, 0, 70"/>
+        <Button Content="Ostavi feedback" FontFamily="Corbel" FontWeight="Bold" FontSize = "26" Grid.Row="3"  Grid.Column="1" Background="#FF789EFF" HorizontalAlignment="Left"  Width="190" Margin="180,10,0,14" Height="45" Grid.ColumnSpan="2" Click="Button_Click" />
 
     </Grid>
 </Page>
