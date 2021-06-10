@@ -221,8 +221,7 @@
     "AdresaStanovanja": "Beograd",
     "Pol": 0,
     "Username": "veksi",
-    "Password": "vukovic",
-    "Uloga": 0
+    "Password": "vukovic"
   },
   {
     "termin": [
@@ -430,8 +429,7 @@
     "AdresaStanovanja": "",
     "Pol": 0,
     "Username": "milos",
-    "Password": "zivic",
-    "Uloga": 0
+    "Password": "zivic"
   },
   {
     "termin": null,
@@ -445,8 +443,7 @@
     "AdresaStanovanja": "",
     "Pol": 0,
     "Username": "scepa2223",
-    "Password": "scepan1",
-    "Uloga": 0
+    "Password": "scepan1"
   },
   {
     "termin": null,
@@ -460,8 +457,7 @@
     "AdresaStanovanja": "",
     "Pol": 0,
     "Username": "kr1",
-    "Password": "kr1",
-    "Uloga": 0
+    "Password": "kr1"
   },
   {
     "termin": null,
@@ -475,8 +471,7 @@
     "AdresaStanovanja": "",
     "Pol": 1,
     "Username": "gaga",
-    "Password": "gaga",
-    "Uloga": 0
+    "Password": "gaga"
   },
   {
     "termin": null,
@@ -490,8 +485,7 @@
     "AdresaStanovanja": "",
     "Pol": 1,
     "Username": "gsa",
-    "Password": "fas",
-    "Uloga": 0
+    "Password": "fas"
   },
   {
     "termin": null,
@@ -505,8 +499,7 @@
     "AdresaStanovanja": "",
     "Pol": 1,
     "Username": "asd",
-    "Password": "gsdf",
-    "Uloga": 0
+    "Password": "gsdf"
   },
   {
     "termin": null,
@@ -520,7 +513,6 @@
     "AdresaStanovanja": "",
     "Pol": 0,
     "Username": "veksi",
-    "Password": "vukovic",
-    "Uloga": 0
+    "Password": "vukovic"
   }
 ]

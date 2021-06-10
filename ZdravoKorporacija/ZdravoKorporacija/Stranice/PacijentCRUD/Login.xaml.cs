@@ -12,6 +12,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
     public partial class Login : Window
     {
         private KorisnikController korisnikController = new KorisnikController();
+        private PacijentController pacijentController = new PacijentController();
         private UlogaEnum uloga;
         public static bool wizard;
 
@@ -25,7 +26,7 @@ namespace ZdravoKorporacija.Stranice.PacijentCRUD
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             PacijentDTO ulogovani =
-                korisnikController.ulogovaniPacijent(uloga, imeText.Text, lozinkaText.Password);
+                pacijentController.ulogovaniPacijent(imeText.Text, lozinkaText.Password);
             if (ulogovani != null)
             {
                 Pocetna pocetna = new Pocetna(ulogovani);

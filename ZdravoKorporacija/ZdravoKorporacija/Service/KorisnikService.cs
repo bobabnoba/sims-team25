@@ -16,13 +16,14 @@ namespace Service
         public Ban b;
         List<Ban> nepotrebna = BanRepozitorijum.Instance.dobaviSve(); //set bans
 
-        public bool DodajKorisnika(string ime, string sifra, UlogaEnum uloga)
+        //public bool DodajKorisnika(string ime, string sifra, UlogaEnum uloga)
+        public bool DodajKorisnika(string ime, string sifra)
         {
             Korisnik k = new Korisnik();
             k.Username = ime;
             k.Password = sifra;
             //default pacijent !!! test samo
-            k.Uloga = UlogaEnum.Pacijent;
+            //k.Uloga = UlogaEnum.Pacijent;
             //  ObservableCollection<Korisnik> korisnici = KorisnikRepozitorijum.Instance.korisnici;
             //  korisnici.Add(k);
             //  kr.Sacuvaj()

@@ -29,7 +29,7 @@ namespace Model
             this.Jmbg = jmbg;
         }
 
-        public Pacijent(ZdravstveniKarton zdravstveniKarton, bool guest, string ime, string prezime, int jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password, UlogaEnum uloga) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password, uloga)
+        public Pacijent(ZdravstveniKarton zdravstveniKarton, bool guest, string ime, string prezime, int jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password)
         {
             this.termin = new List<Termin>();
             ZdravstveniKarton = zdravstveniKarton;
@@ -38,7 +38,7 @@ namespace Model
 
         public List<Termin> termin;
 
-        public Pacijent(string ime, string prezime, Int64 jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password, UlogaEnum uloga) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password, uloga)
+        public Pacijent(string ime, string prezime, Int64 jmbg, int brojTelefona, string mejl, string adresaStanovanja, PolEnum pol, string username, string password) : base(ime, prezime, jmbg, brojTelefona, mejl, adresaStanovanja, pol, username, password)
         {
         }
 
@@ -53,7 +53,6 @@ namespace Model
             Pol = pacijent.Pol;
             Username = pacijent.Username;
             Password = pacijent.Password;
-            Uloga = pacijent.Uloga;
             this.termin = terminDTOToTermin(pacijent.termin);
             ZdravstveniKarton = new ZdravstveniKarton(pacijent.ZdravstveniKarton);
             Guest = pacijent.Guest;

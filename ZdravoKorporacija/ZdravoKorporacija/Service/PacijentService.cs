@@ -279,7 +279,7 @@ namespace Service
         {
             ZdravstveniKartonServis zks = new ZdravstveniKartonServis();
             ZdravstveniKartonDTO kartonDTO = zks.Model2DTO(model.ZdravstveniKarton);
-            PacijentDTO dto = new PacijentDTO(kartonDTO, model.Guest, model.Ime, model.Prezime, model.Jmbg, model.BrojTelefona, model.Mejl, model.AdresaStanovanja, model.Pol, model.Username, model.Password, model.Uloga);
+            PacijentDTO dto = new PacijentDTO(kartonDTO, model.Guest, model.Ime, model.Prezime, model.Jmbg, model.BrojTelefona, model.Mejl, model.AdresaStanovanja, model.Pol, model.Username, model.Password);
             return dto;
         }
 
@@ -307,7 +307,7 @@ namespace Service
         }
         public Pacijent DTO2ModelNapravi(PacijentDTO dto)
         {
-            Pacijent model = new Pacijent(dto.Ime, dto.Prezime, dto.Jmbg, dto.BrojTelefona, dto.Mejl, dto.AdresaStanovanja, dto.Pol, dto.Username, dto.Password, dto.Uloga);
+            Pacijent model = new Pacijent(dto.Ime, dto.Prezime, dto.Jmbg, dto.BrojTelefona, dto.Mejl, dto.AdresaStanovanja, dto.Pol, dto.Username, dto.Password);
             model.ZdravstveniKarton = zks.findById(dto.Jmbg);
             return model;
 

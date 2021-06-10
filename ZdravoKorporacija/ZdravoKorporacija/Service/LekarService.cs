@@ -47,7 +47,7 @@ namespace Service
         {
             LekarDTO dto = new LekarDTO();
             if (model != null) { 
-                dto = new LekarDTO(model.Ime, model.Prezime, model.Jmbg, model.BrojTelefona, model.Mejl, model.AdresaStanovanja, model.Pol, model.Username, model.Password, model.Uloga);
+                dto = new LekarDTO(model.Ime, model.Prezime, model.Jmbg, model.BrojTelefona, model.Mejl, model.AdresaStanovanja, model.Pol, model.Username, model.Password);
                 dto.Specijalizacija = model.Specijalizacija;
             }
             return dto;
@@ -116,7 +116,7 @@ namespace Service
 
         public Lekar DTO2ModelNapravi(LekarDTO dto)
         {
-            Lekar model = new Lekar(dto.Ime, dto.Prezime, dto.Jmbg, dto.BrojTelefona, dto.Mejl, dto.AdresaStanovanja, dto.Pol, dto.Username, dto.Password, dto.Uloga);
+            Lekar model = new Lekar(dto.Ime, dto.Prezime, dto.Jmbg, dto.BrojTelefona, dto.Mejl, dto.AdresaStanovanja, dto.Pol, dto.Username, dto.Password);
             model.Specijalizacija= dto.Specijalizacija;
             return model;
 

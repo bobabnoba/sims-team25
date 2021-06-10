@@ -58,7 +58,7 @@ namespace ZdravoKorporacija.Stranice.SekretarCRUD
                 pol = PolEnum.Zenski;
             }
 
-            PacijentDTO nalog = new PacijentDTO(new ZdravstveniKartonDTO(jmbg), false, ime, prezime, (int)jmbg, br, mejl, "", pol, username, password, UlogaEnum.Pacijent) ;
+            PacijentDTO nalog = new PacijentDTO(new ZdravstveniKartonDTO(jmbg), false, ime, prezime, (int)jmbg, br, mejl, "", pol, username, password) ;
 
             if (nc.KreirajNalogPacijentu(nc.DTO2ModelNapravi(nalog)))
             {

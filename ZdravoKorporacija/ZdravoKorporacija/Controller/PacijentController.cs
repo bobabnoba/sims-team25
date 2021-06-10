@@ -35,6 +35,12 @@ namespace ZdravoKorporacija.Controller
             this.servis = new PacijentService();
         }
 
+        public PacijentDTO ulogovaniPacijent(string korisnickoIme, string lozinka)
+        {
+            Pacijent ulogovani = pacijentServis.dobaviUlogovanog(korisnickoIme, lozinka);
+            return pacijentKonverter.KonvertujEntitetUDTO(ulogovani);
+        }
+
         public void azurirajBanInfo(PacijentDTO pacijentDTO, int tipAktivnosti)
         {
             Pacijent pacijent = pacijentServis.pronadjiEntitetZaDTO(pacijentDTO);

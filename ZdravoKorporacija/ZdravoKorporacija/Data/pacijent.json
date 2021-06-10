@@ -146,8 +146,7 @@
           "AdresaStanovanja": "Beograd",
           "Pol": 0,
           "Username": "veksi",
-          "Password": "vukovic",
-          "Uloga": 0
+          "Password": "vukovic"
         },
         "Id": 10,
         "Tip": 0,
@@ -371,8 +370,7 @@
           "AdresaStanovanja": "Beograd",
           "Pol": 0,
           "Username": "veksi",
-          "Password": "vukovic",
-          "Uloga": 0
+          "Password": "vukovic"
         },
         "Id": 13,
         "Tip": 0,
@@ -412,8 +410,7 @@
     "AdresaStanovanja": "",
     "Pol": 0,
     "Username": "aleksa",
-    "Password": "papovic",
-    "Uloga": 3
+    "Password": "papovic"
   },
   {
     "termin": [],
@@ -473,8 +470,7 @@
     "AdresaStanovanja": "",
     "Pol": 1,
     "Username": "asdad1",
-    "Password": "aasdsd2",
-    "Uloga": 3
+    "Password": "aasdsd2"
   },
   {
     "termin": null,
@@ -490,8 +486,7 @@
     "AdresaStanovanja": "",
     "Pol": 0,
     "Username": "gas2",
-    "Password": "va2",
-    "Uloga": 3
+    "Password": "va2"
   },
   {
     "termin": [
@@ -563,8 +558,7 @@
           "AdresaStanovanja": "",
           "Pol": 0,
           "Username": "scepa2223",
-          "Password": "scepan1",
-          "Uloga": 0
+          "Password": "scepan1"
         },
         "Id": 7,
         "Tip": 0,
@@ -693,8 +687,7 @@
     "AdresaStanovanja": "Radnička 7",
     "Pol": 0,
     "Username": "dusan",
-    "Password": "markovic",
-    "Uloga": 3
+    "Password": "markovic"
   },
   {
     "termin": [
@@ -753,8 +746,7 @@
           "AdresaStanovanja": "Becej",
           "Pol": 0,
           "Username": "milos",
-          "Password": "zivic",
-          "Uloga": 0
+          "Password": "zivic"
         },
         "Id": 2,
         "Tip": 0,
@@ -840,8 +832,7 @@
           "AdresaStanovanja": "Beograd",
           "Pol": 0,
           "Username": "veksi",
-          "Password": "vukovic",
-          "Uloga": 0
+          "Password": "vukovic"
         },
         "Id": 5,
         "Tip": 1,
@@ -1008,8 +999,7 @@
           "AdresaStanovanja": "Beograd",
           "Pol": 0,
           "Username": "veksi",
-          "Password": "vukovic",
-          "Uloga": 0
+          "Password": "vukovic"
         },
         "Id": 11,
         "Tip": 0,
@@ -1174,8 +1164,7 @@
           "AdresaStanovanja": "Beograd",
           "Pol": 0,
           "Username": "veksi",
-          "Password": "vukovic",
-          "Uloga": 0
+          "Password": "vukovic"
         },
         "Id": 14,
         "Tip": 0,
@@ -1278,7 +1267,6 @@
     "AdresaStanovanja": "Rokijev potok",
     "Pol": 0,
     "Username": "dusan",
-    "Password": "lekic",
-    "Uloga": 3
+    "Password": "lekic"
   }
 ]
