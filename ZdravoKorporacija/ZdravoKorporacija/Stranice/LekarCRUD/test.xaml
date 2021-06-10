@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ns="clr-namespace:ZdravoKorporacija"
         mc:Ignorable="d"
-        Title="test" Height="550" Width="837" WindowStartupLocation="CenterScreen" Background="{DynamicResource BackgroundColor}">
+        Title="test" Height="550" Width="900" WindowStartupLocation="CenterScreen" Background="{DynamicResource BackgroundColor}">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="btv" />
 
@@ -124,6 +124,7 @@
                     <MenuItem Name="tema" Header="{ns:Loc TemaMenu}" Template="{StaticResource VsMenuSub}" Style="{DynamicResource menuSub}" Click="promeniTemu"/>
                     <MenuItem Header="{ns:Loc JezikMenu}" Template="{StaticResource VsMenuSub}" Style="{DynamicResource menuSub}" Click="promeniJezik"/>
                 </MenuItem>
+                <MenuItem  Header="Feedback" Template="{StaticResource VsMenuEnd}" Click="MenuItem_Click_5" />
                 <MenuItem ToolTip="{ns:Loc OdjaviSeToolTip}" Header="{ns:Loc OdjaviSeMenu}" Template="{StaticResource VsMenuEnd}" Click="MenuItem_Click_4"/>
             </Menu>
         </StackPanel>

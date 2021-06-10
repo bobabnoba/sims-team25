@@ -95,5 +95,10 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             this.Close();
             MainWindow.mw.Show();
         }
+
+        private void MenuItem_Click_5(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new LekarFeedback();
+        }
     }
 }

@@ -22,6 +22,7 @@
             <ColumnDefinition Width="52*"/>
             <ColumnDefinition Width="13*"/>
         </Grid.ColumnDefinitions>
+        <Button Content="{ns:Loc OdobriZahtevBtn}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" Height="37" Click="dodaj" Grid.Column="1" Grid.Row="1"/>
         <Button Content="{ns:Loc IzmeniZahtevBtn}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="96" Height="38" Click="Button_Click_1" Grid.Column="2" Grid.Row="1"  />
         <Button Content="{ns:Loc IzbrisiZahtevBtn}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="96" Height="38" Click="Button_Click_2" Grid.Column="3" Grid.Row="1" />
         <DataGrid Style ="{DynamicResource dataGrid}" x:Name="dgZahtevi" AutoGenerateColumns="False" Grid.ColumnSpan="3" Grid.Column="1" SelectionChanged="dgZahtevi_SelectionChanged" CanUserAddRows="False" Grid.Row="3">
@@ -42,19 +43,8 @@
 
             </DataGrid.Columns>
 
+
         </DataGrid>
-        <Label Content="Zahtevi za dodavanje lekova&#xA;" HorizontalAlignment="Left" Margin="46,30,0,0" VerticalAlignment="Top" FontSize="32" Grid.ColumnSpan="3" Grid.Column="1"/>
-        <Button Content="{ns:Loc OdobriZahtevBtn}" HorizontalAlignment="Left" Margin="45,318,0,0" VerticalAlignment="Top" Width="120" Height="25" Click="dodaj" Grid.Column="2" Grid.ColumnSpan="2"/>
-        <Menu x:Name="Menu" Margin="0,105,90,91" HorizontalAlignment="Right" Width="116" Grid.ColumnSpan="2" Grid.Column="1">
-            <Menu.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <VirtualizingStackPanel Orientation="Vertical"/>
-                </ItemsPanelTemplate>
-            </Menu.ItemsPanel>
-            <MenuItem Header="_Raspored termina" Margin="-1,1,1,-39" Click="MenuItem_Click"/>
-            <MenuItem Header="_Prikaz pacijenata" Margin="-1,43,1,-81"  Click="MenuItem_Click_2"/>
-            <MenuItem Header="_Uputi" Margin="0,85,0,-123" Click="MenuItem_Click_1"/>
-            <MenuItem Header="_Zahtevi za lekove" Margin="0,127,0,-165" Click="MenuItem_Click_4" />
-        </Menu>
+
     </Grid>
 </Page>

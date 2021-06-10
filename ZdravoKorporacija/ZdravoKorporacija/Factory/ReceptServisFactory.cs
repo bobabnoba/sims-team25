@@ -10,8 +10,8 @@ namespace ZdravoKorporacija.Factory
     {
         public static IReceptServis Create()
         {
-            //return ReceptServis.Instance;
-            return new ReceptServis();
+            return ReceptServis.Instance;
+            //return new ReceptServis();
         }
     }
 }

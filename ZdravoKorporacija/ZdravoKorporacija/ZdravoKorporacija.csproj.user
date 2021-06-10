@@ -31,6 +31,9 @@
     <Compile Update="Stranice\LekarCRUD\izmeniPregledLekar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Stranice\LekarCRUD\LekarFeedback.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Stranice\LekarCRUD\lekarStart.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -273,6 +276,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\LekarCRUD\izmeniPregledLekar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\LekarCRUD\LekarFeedback.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\LekarCRUD\lekarStart.xaml">

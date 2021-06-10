@@ -49,6 +49,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
             foreach (IzvestajDTO iz in _izvestajController.PregledSvihIzvestaja())
             {
+                if(pac.termin!=null)
                 foreach (TerminDTO ter in pac.termin)
                 {
                     if (ter.izvestaj.Id.Equals(iz.Id) && !izvestaji.Contains(iz))
@@ -118,7 +119,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
             }
             foreach (IzvestajDTO iz in _izvestajController.PregledSvihIzvestaja())
             {
-                if (pac != null)
+                if (pac != null && (pac.termin!=null))
                 {
                     foreach (TerminDTO ter in pac.termin)
                     {
@@ -143,6 +144,7 @@ namespace ZdravoKorporacija.Stranice.LekarCRUD
 
             foreach (ReceptDTO r in _receptController.PregledSvihRecepata())
             {
+                if (pac.ZdravstveniKarton!=null)
                 foreach (ReceptDTO rec in pac.ZdravstveniKarton.recept)
                 {
                     if (r.Id.Equals(rec.Id))

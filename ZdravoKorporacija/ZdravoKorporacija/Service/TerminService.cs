@@ -424,6 +424,7 @@ namespace ZdravoKorporacija.Model
                     termini.Add(new Termin(termin));
                     tr.sacuvaj(termini);
                     ret =  true;
+                    break;
                 }
             }
             return ret;
