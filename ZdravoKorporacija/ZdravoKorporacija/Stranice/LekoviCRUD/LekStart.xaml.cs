@@ -37,8 +37,9 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
             Func<ChartPoint, string> labelPoint = chartPoint => string.Format("{0}({1:P})", chartPoint.Y, chartPoint.Participation);
 
             chart1.Series = new SeriesCollection { };
-         
-              foreach(Lek lek in lekServis.PregledSvihLekova()) {
+
+            foreach (Lek lek in lekServis.PregledSvihLekova())
+            {
                 PieSeries pieSeria = new PieSeries
                 {
                     Title = lek.NazivLeka,
@@ -47,8 +48,8 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
                     LabelPoint = labelPoint
                 };
                 chart1.Series.Add(pieSeria);
-               }
-          
+            }
+
 
 
         }
@@ -66,7 +67,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-
+            test2.f.Content = new IzvestajLekovi();
         }
 
         private void dgLekovi_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -81,8 +82,9 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
         }
 
         public Func<ChartPoint, string> Naziv { get; set; }
-        public void PieChart() {
-            Naziv = chartPoint => string.Format("{0}({1:P})",chartPoint.Y,chartPoint.Participation);
+        public void PieChart()
+        {
+            Naziv = chartPoint => string.Format("{0}({1:P})", chartPoint.Y, chartPoint.Participation);
             DataContext = this;
         }
 
@@ -98,6 +100,6 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
             selectedSeries.PushOut = 8;
         }
 
-      
+
     }
 }

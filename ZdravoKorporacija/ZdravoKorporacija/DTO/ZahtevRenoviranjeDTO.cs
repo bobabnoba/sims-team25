@@ -15,7 +15,10 @@ namespace ZdravoKorporacija.DTO
         public String PocetakSati { get; set; }
         public String Trajanje { get; set; }
 
+        public DateTime Kraj { get; set; }
+        public String Spajanje { get; set; }
 
+        public String Razdvajanje { get; set; }
 
         public List<ProstorijaDTO> prostorije;
 
@@ -62,14 +65,63 @@ namespace ZdravoKorporacija.DTO
 
 
         public ZahtevRenoviranjeDTO() { }
-        public ZahtevRenoviranjeDTO(int id, ProstorijaDTO prostorija, DateTime pocetakD,String pocetakS, String trajanje)
+        public ZahtevRenoviranjeDTO(int id, ProstorijaDTO prostorija, DateTime pocetakD,String pocetakS, String trajanje,String spajanje,String razdvajanje)
         {
             Id = id;
             Prostorija = prostorija;
             PocetakDan = pocetakD;
             PocetakSati = pocetakS;
             Trajanje = trajanje;
+            Spajanje = spajanje;
+            Razdvajanje = razdvajanje;
             prostorije = new List<ProstorijaDTO>();
         }
+
+        public ZahtevRenoviranjeDTO(ZahtevRenoviranja zahtevRenoviranja ) 
+        {
+            Id = zahtevRenoviranja.Id;
+            Prostorija = new ProstorijaDTO(zahtevRenoviranja.Prostorija);
+            PocetakDan = zahtevRenoviranja.Pocetak;
+            PocetakSati = zahtevRenoviranja.PocetakSati;
+            Trajanje = zahtevRenoviranja.Trajanje;
+            Kraj = zahtevRenoviranja.Kraj;
+            Spajanje = zahtevRenoviranja.Spajanje;
+            Razdvajanje = zahtevRenoviranja.Razdvajanje;
+            prostorije = konvertujListuProstorijaUListuDTO(zahtevRenoviranja.prostorije);
+        }
+
+        public List<ZahtevRenoviranjeDTO> konvertujListuEntitetaUListuDTO(List<ZahtevRenoviranja> zahtevi)
+        {
+            List<ZahtevRenoviranjeDTO> zahteviDTO = new List<ZahtevRenoviranjeDTO>();
+            if (zahtevi != null)
+            {
+
+                foreach (ZahtevRenoviranja zahtev in zahtevi)
+                {
+                    zahteviDTO.Add(new ZahtevRenoviranjeDTO(zahtev));
+                }
+
+            }
+            return zahteviDTO;
+        }
+
+        public List<ProstorijaDTO> konvertujListuProstorijaUListuDTO(List<Prostorija> prostorije)
+        {
+            List<ProstorijaDTO> prostorijeDTO = new List<ProstorijaDTO>();
+            if (prostorije != null)
+            {
+
+                foreach (Prostorija prostorija in prostorije)
+                {
+                    prostorijeDTO.Add(new ProstorijaDTO(prostorija));
+                }
+
+            }
+            return prostorijeDTO;
+        }
+
+
+
+
     }
 }

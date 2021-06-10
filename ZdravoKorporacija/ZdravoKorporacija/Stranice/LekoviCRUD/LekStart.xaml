@@ -40,7 +40,7 @@
         <DataGrid x:Name="dgLekovi" AutoGenerateColumns="False"  Grid.Row="4" Grid.ColumnSpan="5" Grid.Column="1" SelectionChanged="dgLekovi_SelectionChanged"    CanUserAddRows="False"    >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Width="*" Binding="{Binding Id}" />
-                <DataGridTextColumn Header="Naziv" Width="*" Binding="{Binding Naziv}" />
+                <DataGridTextColumn Header="Naziv" Width="*" Binding="{Binding NazivLeka}" />
                 <DataGridTextColumn Header="Proizvodjac" Width="*" Binding="{Binding Proizvodjac}" />
                 <DataGridTextColumn Header="Sastojci" Width="*" Binding="{Binding Sastojci}" />
                 <DataGridTextColumn Header="Kolicina" Width="*" Binding="{Binding Kolicina}" />
