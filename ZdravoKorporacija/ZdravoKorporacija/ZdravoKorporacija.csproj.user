@@ -207,6 +207,9 @@
     <Compile Update="Stranice\UpravnikCRUD\dodajZaposlenog.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Stranice\UpravnikCRUD\Feedback.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Stranice\UpravnikCRUD\izbrisiProstorijuUpravnik.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -474,6 +477,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\UpravnikCRUD\dodajZaposlenog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Stranice\UpravnikCRUD\Feedback.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Stranice\UpravnikCRUD\izbrisiProstorijuUpravnik.xaml">

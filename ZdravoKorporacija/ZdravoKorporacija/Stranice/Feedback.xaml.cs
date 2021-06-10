@@ -34,7 +34,7 @@ namespace ZdravoKorporacija.Stranice
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             feedbackDTO = new FeedbackFormaDTO(sadrzajTB.Text, ProveriUlogu());
-            controller.DodajFormu(controller.DTO2ModelNapravi(feedbackDTO));
+            controller.DodajFormu(feedbackDTO);
             grid.ItemsSource = controller.PregledSvihFormi2DTO(controller.PregledSvihFormi());
 
         }

@@ -23,9 +23,11 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
     /// </summary>
     public partial class upravnikPocetna : Page
     {
+        KorisnikDTO upravnik;
         public upravnikPocetna(KorisnikDTO ulogovaniUpravnik)
         {
             InitializeComponent();
+            upravnik = ulogovaniUpravnik;
             labelKorisnik.Content = ulogovaniUpravnik.Ime + "  " + ulogovaniUpravnik.Prezime;
         }
 
@@ -83,6 +85,11 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
         private void button1_Click(object sender, RoutedEventArgs e)
         {
          
+        }
+
+        private void feedback(object sender, RoutedEventArgs e)
+        {
+            test2.f.Content = new Feedback(upravnik);
         }
     }
 }

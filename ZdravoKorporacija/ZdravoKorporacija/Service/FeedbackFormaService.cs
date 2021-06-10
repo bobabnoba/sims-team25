@@ -36,8 +36,9 @@ namespace ZdravoKorporacija.Service
             }
             return ret;
         } 
-        public bool DodajFormu(FeedbackForma forma)
+        public bool DodajFormu(FeedbackFormaDTO formaDTO)
         {
+            FeedbackForma forma = new FeedbackForma(formaDTO);
             List<FeedbackForma> forme = repozitorijum.DobaviSve();
             bool ret = true;
             foreach(FeedbackForma ff in forme)

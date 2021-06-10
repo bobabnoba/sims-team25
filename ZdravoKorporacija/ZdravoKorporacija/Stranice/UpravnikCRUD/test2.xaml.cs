@@ -33,8 +33,8 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
             Debug.WriteLine("Ulogovan je" + upravnik.Username + " " + upravnik.Password);
         }
 
-     
-        
+
+
 
 
 

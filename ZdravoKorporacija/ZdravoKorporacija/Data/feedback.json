@@ -2,5 +2,9 @@
   {
     "uloga": 0,
     "sadrzaj": "asdasdads"
+  },
+  {
+    "uloga": 2,
+    "sadrzaj": "mnogo lose\r\n"
   }
 ]

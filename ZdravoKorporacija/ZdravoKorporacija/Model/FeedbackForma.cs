@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Model;
+using ZdravoKorporacija.DTO;
 
 namespace ZdravoKorporacija.Model
 {
@@ -9,6 +10,12 @@ namespace ZdravoKorporacija.Model
     {
 
         public FeedbackForma() { }
+
+        public FeedbackForma(FeedbackFormaDTO formaDTO)
+        {
+            this.sadrzaj = formaDTO.sadrzaj;
+            this.uloga = formaDTO.uloga;
+        }
 
         public FeedbackForma(string sadrzaj, UlogaEnum uloga)
         {

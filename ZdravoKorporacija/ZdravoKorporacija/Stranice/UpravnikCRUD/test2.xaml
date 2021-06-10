@@ -36,21 +36,21 @@
                 </Grid.ColumnDefinitions>
                 <Menu  Name="menu1" Grid.Row="1" Grid.RowSpan="3" Grid.Column="0"  BorderThickness="0" Background="Black" Foreground="White" FontSize="16" FontWeight="Bold" Grid.ColumnSpan="1" PreviewMouseLeftButtonDown="rctHeader_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="rctHeader_PreviewMouseLeftButtonUp" PreviewMouseMove="rctHeader_PreviewMouseMove">
 
-                    <MenuItem Header="Pocetna"  PreviewMouseLeftButtonDown="MenuItem_Click" FontSize="13">
+                    <MenuItem Header="Pocetna"  PreviewMouseLeftButtonDown="MenuItem_Click" FontSize="13" Background="Black">
                     </MenuItem>
-                    <MenuItem Header="O korporaciji" Foreground="White" FontSize="13">
+                    <MenuItem Header="O korporaciji" Foreground="White" FontSize="13" Background="Black">
                     </MenuItem>
-                    <MenuItem Header="Kontakt" Foreground="White" FontSize="13">
+                    <MenuItem Header="Kontakt" Foreground="White" FontSize="13" Background="Black">
                     </MenuItem>
-                    <MenuItem Header="Ocene" Foreground="White" FontSize="13">
+                    <MenuItem Header="Ocene" Foreground="White" FontSize="13" Background="Black">
                     </MenuItem>
-                    <MenuItem Header="Zaposleni" PreviewMouseLeftButtonDown="MenuItem_Click_5" FontSize="13">
+                    <MenuItem Header="Zaposleni" PreviewMouseLeftButtonDown="MenuItem_Click_5" FontSize="13" Background="Black">
                     </MenuItem>
-                    <MenuItem Header="Lekovi" Foreground="White" FontSize="13" PreviewMouseLeftButtonDown="MenuItem_Click_2">
+                    <MenuItem Header="Lekovi" Foreground="White" FontSize="13" PreviewMouseLeftButtonDown="MenuItem_Click_2" Background="Black">
                     </MenuItem>
-                    <MenuItem Header="Prostroije" Foreground="White" FontSize="13" PreviewMouseLeftButtonDown="MenuItem_Click_1">
+                    <MenuItem Header="Prostroije" Foreground="White" FontSize="13" PreviewMouseLeftButtonDown="MenuItem_Click_1" Background="Black">
                     </MenuItem>
-                    <MenuItem Header="Profil" Foreground="White" FontSize="13">
+                    <MenuItem Header="Profil" Foreground="White" FontSize="13" Background="Black">
                     </MenuItem>
                 </Menu>
 

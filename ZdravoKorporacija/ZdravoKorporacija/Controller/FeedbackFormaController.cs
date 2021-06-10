@@ -41,7 +41,7 @@ namespace ZdravoKorporacija.Controller
         {
             return servis.ObrisiFormu(sadrzaj);
         }
-        public bool DodajFormu(FeedbackForma forma)
+        public bool DodajFormu(FeedbackFormaDTO forma)
         {
             return servis.DodajFormu(forma);
         }
