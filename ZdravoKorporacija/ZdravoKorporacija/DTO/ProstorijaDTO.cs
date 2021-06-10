@@ -26,7 +26,7 @@ namespace ZdravoKorporacija.DTO
             if (prostorija != null)
             {
                 this.inventar = prostorija.inventar;
-                //this.statickaOprema = new StatickaOpremaDTO( prostorija.statickaOprema);
+                this.statickaOprema = konvertujListuEntitetaUListuDTO(prostorija.statickaOprema);
                 this.dinamickaOprema = prostorija.dinamickaOprema;
                 Id = prostorija.Id;
                 Naziv = prostorija.Naziv;
@@ -36,7 +36,20 @@ namespace ZdravoKorporacija.DTO
             }
         }
 
+        public List<StatickaOpremaDTO> konvertujListuEntitetaUListuDTO(List<StatickaOprema> oprema)
+        {
+            List<StatickaOpremaDTO> opremaDTO = new List<StatickaOpremaDTO>();
+            if (oprema != null)
+            {
 
+                foreach (StatickaOprema statickaOprema in oprema)
+                {
+                    opremaDTO.Add(new StatickaOpremaDTO(statickaOprema));
+                }
+
+            }
+            return opremaDTO;
+        }
 
         public List<StatickaOpremaDTO> statickaOprema;
 

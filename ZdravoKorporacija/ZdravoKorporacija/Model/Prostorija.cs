@@ -31,16 +31,34 @@ namespace Model
 
         public Prostorija(ProstorijaDTO prostorija)
         {
-            if(prostorija!=null)
-            { 
-            this.inventar = prostorija.inventar;
-            //this.statickaOprema = prostorija.statickaOprema;
-            this.dinamickaOprema = prostorija.dinamickaOprema;
-            Id = prostorija.Id;
-            Naziv = prostorija.Naziv;
-            Tip = prostorija.Tip;
-            Slobodna = prostorija.Slobodna;
-            Sprat = prostorija.Sprat;
+            if (prostorija != null)
+            {
+                this.inventar = prostorija.inventar;
+                this.statickaOprema = konvertujListuEntitetaUListuDTO(prostorija.statickaOprema);
+                this.dinamickaOprema = prostorija.dinamickaOprema;
+                Id = prostorija.Id;
+                Naziv = prostorija.Naziv;
+                Tip = prostorija.Tip;
+                Slobodna = prostorija.Slobodna;
+                Sprat = prostorija.Sprat;
+            }
+        }
+
+        public List<StatickaOprema> konvertujListuEntitetaUListuDTO(List<StatickaOpremaDTO> statickaOpremaDTO)
+        {
+            if (statickaOpremaDTO != null)
+            {
+                List<StatickaOprema> staticka = new List<StatickaOprema>();
+                foreach (StatickaOpremaDTO opremaDTO in statickaOpremaDTO)
+                {
+                    staticka.Add(new StatickaOprema(opremaDTO));
+                }
+
+                return staticka;
+            }
+            else
+            {
+                return new List<StatickaOprema>();
             }
         }
 

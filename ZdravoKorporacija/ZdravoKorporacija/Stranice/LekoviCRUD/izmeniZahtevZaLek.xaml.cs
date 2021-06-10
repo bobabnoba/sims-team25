@@ -56,7 +56,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
             ObservableCollection<LekDTO> alterantivni = dodavanjeAlternativnih.alternativniLekovi;
 
 
-            LekDTO lek = new LekDTO(0, textBoxProizvodjac.Text, textBoxSastojci.Text, textBoxPojave.Text, textBoxNazivLeka.Text);
+            LekDTO lek = new LekDTO(0, textBoxProizvodjac.Text, textBoxSastojci.Text, textBoxPojave.Text, textBoxNazivLeka.Text,textBoxKolicina.Text);
 
             int neophodno = (int)comboBoxBrojPotvrda.SelectedItem;
 

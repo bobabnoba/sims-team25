@@ -49,5 +49,11 @@ namespace ZdravoKorporacija.Stranice.StatickaOpremaCRUD
         {
 
         }
+
+        private void premesti(object sender, RoutedEventArgs e)
+        {
+            StatickaPremestanjeProstorijaUProstoriju statickaPremstanje = new StatickaPremestanjeProstorijaUProstoriju();
+            statickaPremstanje.Show();
+        }
     }
 }

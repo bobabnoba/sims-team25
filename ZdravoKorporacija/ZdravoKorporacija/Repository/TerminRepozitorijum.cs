@@ -76,7 +76,7 @@ namespace ZdravoKorporacija.Model
           
             var joa = JArray.FromObject(ter);
            
-            int i = 0;
+            //int i = 0;
 
             //foreach ( JObject z in joa) {
                 

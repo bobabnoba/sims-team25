@@ -45,6 +45,6 @@
         <Button Content="Izbriši opremu" Grid.Row="5" Grid.Column="5" Click="Button_Click_2"/>
         <Button Content="Kreiraj izveštaj"  Grid.Row="4" Grid.Column="7"  Click="Button_Click_2" />
         <Button Content="Premesti iz magacina" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"  Click="dodaj" />
-        <Button Content="Premesti iz prostorije"  Grid.Row="7" Grid.Column="4" Grid.ColumnSpan="2"   Click="dodaj" />
+        <Button Content="Premesti iz prostorije"  Grid.Row="7" Grid.Column="4" Grid.ColumnSpan="2"   Click="premesti" />
     </Grid>
 </Page>

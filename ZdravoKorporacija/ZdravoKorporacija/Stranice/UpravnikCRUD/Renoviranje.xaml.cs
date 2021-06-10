@@ -15,6 +15,7 @@ using ZdravoKorporacija.DTO;
 using System.Linq;
 using System.Collections.ObjectModel;
 using Controller;
+using System.Diagnostics;
 
 namespace ZdravoKorporacija.Stranice.UpravnikCRUD
 {
@@ -29,6 +30,8 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
 
         public ObservableCollection<ProstorijaDTO> izabraneProstorije;
         ComboBox satiCombobox;
+        String spajanje;
+        String razdvajanje;
 
 
         public Renoviranje(int index)
@@ -37,7 +40,7 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
             izabraneProstorije = new ObservableCollection<ProstorijaDTO>();
             prostorije = prostorijeKontroler.PregledSvihProstorijaDTO();
             cbProstorija.ItemsSource = prostorije;
-            cbProstorija.SelectedIndex = index ;
+            cbProstorija.SelectedIndex = index;
             satiCombobox = sati;
             kalendarInit();
         }
@@ -60,8 +63,9 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
 
         private void potvrdi(object sender, RoutedEventArgs e)
         {
-            ZahtevRenoviranjeDTO zahtevRenoviranje = new ZahtevRenoviranjeDTO(0,(ProstorijaDTO) cbProstorija.SelectedItem, (DateTime)timePicker.SelectedDate, (String)sati.SelectedItem, textBoxTrajanje.Text);
+            ZahtevRenoviranjeDTO zahtevRenoviranje = new ZahtevRenoviranjeDTO(0, (ProstorijaDTO)cbProstorija.SelectedItem, (DateTime)timePicker.SelectedDate, (String)sati.SelectedItem, textBoxTrajanje.Text, spajanje, razdvajanje);
             zahtevRenoviranje.prostorije = izabraneProstorije.ToList<ProstorijaDTO>();
+           
             renoviranjeKontroler.ZakaziRenoviranje(zahtevRenoviranje);
         }
 
@@ -70,10 +74,10 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
             this.Close();
         }
         private void date_changed(object sender, SelectionChangedEventArgs e)
-        { 
-        
+        {
+
         }
-            private void sati_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void sati_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
@@ -85,12 +89,20 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
 
         private void radioButton_Checked(object sender, RoutedEventArgs e)
         {
+            spajanje = "Spajanje";
+            razdvajanje = "";
+            Debug.WriteLine(spajanje);
+            Debug.WriteLine(razdvajanje);
+
 
         }
 
         private void radioButton1_Checked(object sender, RoutedEventArgs e)
         {
-
+            spajanje = "";
+            razdvajanje = "Razdvajanje";
+            Debug.WriteLine(spajanje);
+            Debug.WriteLine(razdvajanje);
         }
     }
 }

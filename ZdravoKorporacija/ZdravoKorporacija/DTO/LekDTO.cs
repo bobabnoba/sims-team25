@@ -13,6 +13,7 @@ namespace ZdravoKorporacija.DTO
         public String NusPojave { get; set; }
         public String NazivLeka { get; set; }
 
+        public String Kolicina  { get; set; }
         public String Alergeni { get; set; }
 
         public List<LekDTO> alternativniLekovi;
@@ -61,13 +62,14 @@ namespace ZdravoKorporacija.DTO
                 alternativniLekovi.Clear();
         }
         public LekDTO() { }
-        public LekDTO(int ID, String pr, String sas, String np, String nl)
+        public LekDTO(int ID, String pr, String sas, String np, String nl,String kol)
         {
             Id = ID;
             Proizvodjac = pr;
             Sastojci = sas;
             NusPojave = np;
             NazivLeka = nl;
+            Kolicina = kol;
             this.alternativniLekovi = new List<LekDTO>();
         }
 
@@ -77,6 +79,7 @@ namespace ZdravoKorporacija.DTO
             Sastojci =lek.Sastojci;
             NusPojave = lek.NusPojave;
             NazivLeka = lek.NazivLeka;
+            Kolicina = ""+ lek.Kolicina;
             this.alternativniLekovi = konvertujListuEntitetaUListuDTO(lek.alternativniLekovi);
         }
         public List<LekDTO> konvertujListuEntitetaUListuDTO(List<Lek> lekovi)

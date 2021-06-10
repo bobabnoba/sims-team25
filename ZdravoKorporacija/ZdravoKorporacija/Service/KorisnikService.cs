@@ -6,6 +6,7 @@ using System.Text;
 using System.Linq;
 using System.Collections.ObjectModel;
 using System.Windows;
+using ZdravoKorporacija.DTO;
 
 namespace Service
 {
@@ -32,21 +33,21 @@ namespace Service
 
             return false;
         }
-            public Korisnik Uloguj(UlogaEnum uloga, string ime, string sifra)
+            public KorisnikDTO Uloguj(UlogaEnum uloga, string ime, string sifra)
         {
          
-            Korisnik unos = new Korisnik();
+            KorisnikDTO unos = new KorisnikDTO();
             unos.Username = ime;
             unos.Password = sifra;
 
 
             if (uloga == UlogaEnum.Upravnik)
             {
-                ObservableCollection<Korisnik> lista = new ObservableCollection<Korisnik>(kr.DobaviSve());
-                Korisnik upravnik = (Korisnik)lista.FirstOrDefault(s => s.Username.Equals(unos.Username));
+                ObservableCollection<KorisnikDTO> lista = new ObservableCollection<KorisnikDTO>(kr.DobaviSveDTO());
+                KorisnikDTO upravnik = (KorisnikDTO)lista.FirstOrDefault(s => s.Username.Equals(unos.Username));
                 if (upravnik != null)
                 {
-                    Korisnik ulogovani = (Korisnik)lista.FirstOrDefault(s => (s.Username.Equals(unos.Username) && s.Password.Equals(unos.Password)));
+                    KorisnikDTO ulogovani = (KorisnikDTO)lista.FirstOrDefault(s => (s.Username.Equals(unos.Username) && s.Password.Equals(unos.Password)));
                     if (ulogovani != null)
                     {
                         return ulogovani;
@@ -68,8 +69,8 @@ namespace Service
 
             if (uloga == UlogaEnum.Pacijent)
             {
-                ObservableCollection<Korisnik> lista = new ObservableCollection<Korisnik>(kr.DobaviSve());
-                Korisnik pacijent = (Korisnik)lista.FirstOrDefault(s => s.Username.Equals(unos.Username));
+                ObservableCollection<KorisnikDTO> lista = new ObservableCollection<KorisnikDTO>(kr.DobaviSveDTO());
+                KorisnikDTO pacijent = (KorisnikDTO)lista.FirstOrDefault(s => s.Username.Equals(unos.Username));
                 if (pacijent != null)
                 {
                     return pacijent;
@@ -78,8 +79,8 @@ namespace Service
 
             if (uloga == UlogaEnum.Lekar)
             {
-                ObservableCollection<Korisnik> lista = new ObservableCollection<Korisnik>(kr.DobaviSve());
-                Korisnik lekar = (Korisnik)lista.FirstOrDefault(s => s.Username.Equals(unos.Username));
+                ObservableCollection<KorisnikDTO> lista = new ObservableCollection<KorisnikDTO>(kr.DobaviSveDTO());
+                KorisnikDTO lekar = (KorisnikDTO)lista.FirstOrDefault(s => s.Username.Equals(unos.Username));
                 if (lekar != null)
                 {
                     return lekar;
@@ -88,8 +89,8 @@ namespace Service
 
             if (uloga == UlogaEnum.Sekretar)
             {
-                ObservableCollection<Korisnik> lista = new ObservableCollection<Korisnik>(kr.DobaviSve());
-                Korisnik sekretar = (Korisnik)lista.FirstOrDefault(s => s.Username.Equals(unos.Username));
+                ObservableCollection<KorisnikDTO> lista = new ObservableCollection<KorisnikDTO>(kr.DobaviSveDTO());
+                KorisnikDTO sekretar = (KorisnikDTO)lista.FirstOrDefault(s => s.Username.Equals(unos.Username));
                 if (sekretar != null)
                 {
                     return sekretar;

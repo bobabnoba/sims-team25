@@ -31,7 +31,10 @@ namespace Model
         }
 
         public StatickaOprema(StatickaOpremaDTO statickaOpremaDTO) {
-            this.termin = new Termin(statickaOpremaDTO.termin);
+            if (statickaOpremaDTO != null)
+            {
+                this.termin = new Termin(statickaOpremaDTO.termin);
+            }
         }
 
     }

@@ -10,13 +10,13 @@ namespace Service
 {
     class ZahtevIzbacivanjaService
     {
-        public bool ZakaziIzbacivanje(InventarDTO inventarDTO, ZahtevIzbacivanja zahtevIzabacivanja, DateTime dt, string sati, string trajanje)
+        public bool ZakaziIzbacivanje(InventarDTO inventarDTO, ZahtevIzbacivanja zahtevIzabacivanja, string sati, string trajanje)
         {
             ZahtevIzbacivanjaRepozitorijum datoteka = ZahtevIzbacivanjaRepozitorijum.Instance;
             List<ZahtevIzbacivanja> zahtevi = datoteka.dobaviSve();
             IDRepozitorijum datotekaIDIzbacivanja = new IDRepozitorijum("iDMapZahtevIzbacivanja");
             Dictionary<int, int> id_map = datotekaIDIzbacivanja.dobaviSve();
-
+            DateTime dt = zahtevIzabacivanja.Pocetak;
             int id = nadjiSlobodanID(id_map);
             id_map[id] = 1;
             

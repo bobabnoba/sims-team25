@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Shell;
+using ZdravoKorporacija.DTO;
 using ZdravoKorporacija.Stranice.LekoviCRUD;
 
 namespace ZdravoKorporacija.Stranice.UpravnikCRUD
@@ -26,15 +27,16 @@ namespace ZdravoKorporacija.Stranice.UpravnikCRUD
     public partial class test2 : Window
     {
         public static Frame f;
-        public Korisnik upravnik;
+        public KorisnikDTO upravnik;
         private bool mRestoreIfMove = false;
-        public test2(Korisnik ulogovan)
+        public test2(KorisnikDTO ulogovan)
         {
             InitializeComponent();
             f = this.frame;
             upravnik = ulogovan;
             Debug.WriteLine("Ulogovan je" + upravnik.Username+ " "+upravnik.Password);
         }
+     
         
         void Window_SourceInitialized(object sender, EventArgs e)
 {
@@ -259,7 +261,7 @@ public struct RECT
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            frame.Content = new upravnikPocetna();
+            frame.Content = new upravnikPocetna(this.upravnik);
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)

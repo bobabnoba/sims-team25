@@ -60,7 +60,7 @@ namespace ZdravoKorporacija.Stranice.LekoviCRUD
             else {
                 alterantivni = new ObservableCollection<LekDTO>(selektovaniZahtev.Lek.alternativniLekovi);
             }
-            LekDTO lek = new LekDTO(0, textBoxProizvodjac.Text, textBoxSastojci.Text, textBoxPojave.Text, textBoxNazivLeka.Text);
+            LekDTO lek = new LekDTO(0, textBoxProizvodjac.Text, textBoxSastojci.Text, textBoxPojave.Text, textBoxNazivLeka.Text, textBoxKolicina.Text);
             int neophodno;
             if (comboBoxBrojPotvrda.SelectedItem == null) {
                 MessageBox.Show("Greška","Morate selektovati broj potvrda");

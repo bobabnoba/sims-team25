@@ -50,7 +50,7 @@ namespace Model
         {
             if(termin!=null)
             { 
-                if(termin.izvestaj!=null)
+            if(termin.izvestaj!=null)
             this.izvestaj = new Izvestaj(termin.izvestaj);
             this.zdravstveniKarton = new ZdravstveniKarton(termin.zdravstveniKarton);
             this.prostorija = new Prostorija(termin.prostorija);

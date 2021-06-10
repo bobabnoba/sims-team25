@@ -11,7 +11,6 @@ namespace ZdravoKorporacija.Repository
 {
     class ZahtevLekRepozitorijum
     {
-        private string lokacija;
 
         private static ZahtevLekRepozitorijum _instance;
         public ObservableCollection<ZahtevLek> zahteviLek;

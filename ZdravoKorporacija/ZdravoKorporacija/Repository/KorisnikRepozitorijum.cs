@@ -4,6 +4,7 @@ using Model;
 using System.Collections.ObjectModel;
 using System.IO;
 using Newtonsoft.Json;
+using ZdravoKorporacija.DTO;
 
 namespace Repository
 {
@@ -13,6 +14,7 @@ namespace Repository
 
         private static KorisnikRepozitorijum _instance;
         public ObservableCollection<Korisnik> korisnici;
+        public ObservableCollection<KorisnikDTO> korisniciDTO;
         public static KorisnikRepozitorijum Instance
         {
             get
@@ -66,6 +68,28 @@ namespace Repository
             }
             return ucitaniKorisnici;
         }
+
+
+        public List<KorisnikDTO> DobaviSveDTO()
+        {
+            string lokacija = @"..\..\..\Data\korisnici.json";
+            List<KorisnikDTO> ucitaniKorisnici = new List<KorisnikDTO>();
+            if (File.Exists(lokacija))
+            {
+                string jsonText = File.ReadAllText(lokacija);
+                if (!string.IsNullOrEmpty(jsonText))
+                {
+                    ucitaniKorisnici = JsonConvert.DeserializeObject<List<KorisnikDTO>>(jsonText);
+                }
+            }
+            if (ucitaniKorisnici != null)
+            {
+                korisniciDTO = new ObservableCollection<KorisnikDTO>(ucitaniKorisnici);
+            }
+            return ucitaniKorisnici;
+        }
+
+
 
         public bool Sacuvaj()
         { 

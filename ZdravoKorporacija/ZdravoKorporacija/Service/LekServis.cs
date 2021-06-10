@@ -106,12 +106,13 @@ namespace Service
             Dictionary<int, int> id_map = datotekaID.dobaviSve();
             int id = nadjiSlobodanID(id_map);
             id_map[id] = 1;
-
-            Lek lek = new Lek(zahtevLek.Lek.Id,zahtevLek.Lek.Proizvodjac,zahtevLek.Lek.Sastojci,zahtevLek.Lek.NusPojave,zahtevLek.Lek.NazivLeka);
+            Double kolicina = Double.Parse(zahtevLek.Lek.Kolicina);
+            Lek lek = new Lek(zahtevLek.Lek.Id,zahtevLek.Lek.Proizvodjac,zahtevLek.Lek.Sastojci,zahtevLek.Lek.NusPojave,zahtevLek.Lek.NazivLeka,kolicina);
             ZahtevLek zahtevZaLek = new ZahtevLek(lek,zahtevLek.NeophodnihPotvrda,zahtevLek.BrojPotvrda);
             
             foreach (LekDTO lekD in zahtevLek.Lek.alternativniLekovi) {
-                Lek l = new Lek(lekD.Id,lekD.NusPojave,lekD.Sastojci,lekD.NusPojave,lekD.NazivLeka);
+                Double kolicinaAlternativnog = Double.Parse(lekD.Kolicina);
+                Lek l = new Lek(lekD.Id,lekD.NusPojave,lekD.Sastojci,lekD.NusPojave,lekD.NazivLeka,kolicinaAlternativnog);
                 zahtevZaLek.Lek.alternativniLekovi.Add(l);
              }
 

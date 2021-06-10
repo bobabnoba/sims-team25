@@ -26,14 +26,28 @@ namespace Service
             DinamickaOprema dinamickaOprema = new DinamickaOprema(opremaDTO, opremaDTO.Kolicina);
             dinamickaOprema.Prostorija = new Prostorija(opremaDTO.Prostorija);
             InventarDTO inventar = new InventarDTO(opremaDTO.Id, opremaDTO.Naziv, opremaDTO.UkupnaKolicina, opremaDTO.Proizvodjac, opremaDTO.DatumNabavke);
+          
 
             if (dinamickaOprema.Kolicina <= dinamickaOprema.UkupnaKolicina)
             {
                 dinamickaOprema.UkupnaKolicina -= dinamickaOprema.Kolicina;
+                inventar.UkupnaKolicina = dinamickaOprema.UkupnaKolicina;
                 DinamickaOpremaRepozitorijum.Instance.magacinDinamickaOprema.Add(dinamickaOprema);
-                magacinServis.ObrisiOpremu(inventar);
+              
                 dinamickaOpremaRepozitorijum.Sacuvaj();
-                return true;
+
+               ObservableCollection<InventarDTO> magacin = magacinServis.PregledSveOpremeDTO();
+               
+                foreach (InventarDTO magacinskaOprema in magacin)
+                {
+                    if (inventar.Id.Equals(magacinskaOprema.Id))
+                    {
+                        magacinServis.ObrisiOpremu(magacinskaOprema);
+                        magacinServis.DodajOpremu(inventar);
+                        
+                        return true;
+                    }
+                }
             }
             return false;
         }

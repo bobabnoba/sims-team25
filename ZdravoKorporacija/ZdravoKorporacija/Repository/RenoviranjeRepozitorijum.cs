@@ -12,6 +12,7 @@ namespace Repository
     {
         private static RenoviranjeRepozitorijum _instance;
         public ObservableCollection<ZahtevRenoviranja> zahteviRenoviranja;
+        string lokacija = @"..\..\..\Data\zahteviRenoviranja.json";
         public static RenoviranjeRepozitorijum Instance
         {
             get
@@ -32,7 +33,6 @@ namespace Repository
 
         public int Sacuvaj()
         {
-            string lokacija = @"..\..\..\Data\zahteviRenoviranja.json";
             JsonSerializer serializer = new JsonSerializer();
             serializer.Formatting = Formatting.Indented;
             StreamWriter writer = new StreamWriter(lokacija);
@@ -41,6 +41,24 @@ namespace Repository
             jWriter.Close();
             writer.Close();
             return 1;
+        }
+
+        public ObservableCollection<ZahtevRenoviranja> dobaviSve()
+        {
+            List<ZahtevRenoviranja> renovirani= new List<ZahtevRenoviranja>();
+            if (File.Exists(lokacija))
+            {
+                string jsonText = File.ReadAllText(lokacija);
+                if (!string.IsNullOrEmpty(jsonText))
+                {
+                   renovirani = JsonConvert.DeserializeObject<List<ZahtevRenoviranja>>(jsonText);
+                }
+            }
+            if (renovirani != null)
+            {
+                this.zahteviRenoviranja = new ObservableCollection<ZahtevRenoviranja>(renovirani);
+            }
+            return this.zahteviRenoviranja;
         }
 
     }
